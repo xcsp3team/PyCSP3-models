@@ -18,7 +18,7 @@ A sequence satisfying these conditions is called an all-interval series of order
 
 
 
-## Example
+### Example
 
 For $n=8$, a solution is:
 ```
@@ -27,25 +27,27 @@ For $n=8$, a solution is:
 
 
 ## Data 
-a number n, the size of the sequence.
+A number n, the size of the sequence.
 
-## Model 
+## Model(s) 
 
-A model can be found in this [GitHub page](https://github.com/xcsp3team/pycsp3/blob/master/problems/csp/academic/AllInterval.py).
-There are a main variant and another one (called aux) with auxiliary variables.
+In AllInterval.py, there are two variants:
+ 
+ - a main variant;
+ - a variant  (called aux) with auxiliary variables.
 
-You can also find a step-by-step modeling process in this [Jupyter notebook](/documentation/models/CSP/AllInterval/).
+You can also find a step-by-step modeling process in this [Jupyter notebook](http://pycsp.org/documentation/models/CSP/AllInterval/).
 
-*Involved Constraints*: [AllDifferent](/documentation/constraints/AllDifferent/), [Intension](/documentation/constraints/Intension/)
+*Involved Constraints*: [AllDifferent](http://pycsp.org//documentation/constraints/AllDifferent/), [Intension](http://pycsp.org//documentation/constraints/Intension/)
 
 
 
 ## Command Line
 
 ```shell
-python problems/csp/academic/AllInterval.py -data=8 [-solve]
+python AllInterval.py -data=8 [-solve]
 
-python problems/csp/academic/AllInterval.py -data=8 -variant=aux [-solve]
+python AllInterval.py -data=8 -variant=aux [-solve]
 ```
 
 ## Some Results
