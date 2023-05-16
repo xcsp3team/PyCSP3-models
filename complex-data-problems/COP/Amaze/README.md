@@ -15,7 +15,7 @@ The file Amaze_simple.json contains an example of data.
 
 ## Model
 
-*Involved Constraints*: [Count](https://pycsp.org/documentation/constraints/Count) [Sum](https://pycsp.org/documentation/constraints/Sum)
+*Involved Constraints*: [Count](https://pycsp.org/documentation/constraints/Count) [Sum](https://pycsp.org/documentation/constraints/Sum) [Extension](https://pycsp.org/documentation/constraints/Extension) [Intension](https://pycsp.org/documentation/constraints/Intension)
 
 
 ## Command Line
