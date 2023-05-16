@@ -32,7 +32,7 @@ For n=9, a solution is
 
 A representation of the graph is here: 
 
-![assets/](https://pycsp.org/assets/figures/diamondfree.png)
+![diamondfree](https://pycsp.org/assets/figures/diamondfree.png)
 
 ## Data
 A number n, the number of nodes of the graph.
