@@ -1,4 +1,4 @@
-# Problem Dubois
+# Problem GracefulGraph
 
 ## Description
 This is the [problem 053](https://www.csplib.org/Problems/prob053/) of the CSPLib:

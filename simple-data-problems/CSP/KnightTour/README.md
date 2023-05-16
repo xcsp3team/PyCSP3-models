@@ -11,12 +11,12 @@ once. If the knight ends on a square that is one knight's move from the beginnin
 This is an animation of on _open_ knigth tour on a 5x5 board (source: [wikipedia](https://en.wikipedia.org/wiki/Knight%27s_tour))
 
 ![knight tour](https://upload.wikimedia.org/wikipedia/commons/c/ca/Knights-Tour-Animation.gif)
-There are three variant, one with only constraint in intension, two with constraint in extension.
 
 ## Data
 A number n, the size of the board.
 
 ## Model(s)
+There are three variant, one with only constraint in intension, two with constraint in extension.
 
 
 
