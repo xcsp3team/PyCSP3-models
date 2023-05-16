@@ -1,4 +1,4 @@
-# Problem Areas
+# Problem Lightup
 
 ## Description
 
@@ -16,7 +16,7 @@
 ## Command Line
 
 ```shell
-python3 Areas.py -data=TODO [-solve]
+python3 Lightup.py -data=TODO [-solve]
 ```
 
 

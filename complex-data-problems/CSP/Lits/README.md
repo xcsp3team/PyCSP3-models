@@ -1,4 +1,4 @@
-# Problem Areas
+# Problem Lits
 
 ## Description
 
@@ -16,7 +16,7 @@
 ## Command Line
 
 ```shell
-python3 Areas.py -data=TODO [-solve]
+python3 Lits.py -data=TODO [-solve]
 ```
 
 
