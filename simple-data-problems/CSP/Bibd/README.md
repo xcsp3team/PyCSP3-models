@@ -1,11 +1,3 @@
----
-title: Bibd
-permalink: /all-models/B/Bibd/
-layout: default
-parent: B
-grand_parent: All Models
----
-
 # Problem Bibd
 
 ## Description 
@@ -49,8 +41,9 @@ Data is specified by a list \[$v$,$b$,$r$,$k$,$\lambda$], corresponding to:
 
 ## Model(s) 
 
-A model can be found in this [GitHub page](https://github.com/xcsp3team/pycsp3/blob/master/problems/csp/academic/Bibd.py).
-There are a main variant and another one (called aux) with auxiliary variables.
+There are two variants:
+ - a main variant
+ - another one (called aux) with auxiliary variables.
 
 You can also find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/Bibd/).
 
@@ -59,7 +52,6 @@ You can also find a step-by-step modeling process in this [Jupyter notebook](htt
 
 
 ## Command Line
-By default, Bibd.py is in problems/csp/academic directory.
 
 ```shell
 python Bibd.py
