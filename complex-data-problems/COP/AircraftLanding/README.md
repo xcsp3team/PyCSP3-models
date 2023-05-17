@@ -25,7 +25,7 @@ Data are parsed using the parser given in the directory. The archive contains se
 
 ## Model
 
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent) [Extension](https://pycsp.org/documentation/constraints/Extension) [Intension](https://pycsp.org/documentation/constraints/Intension) [Sum](https://pycsp.org/documentation/constraints/Sum) [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
+*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent) [Extension](https://pycsp.org/documentation/constraints/Extension) [Sum](https://pycsp.org/documentation/constraints/Sum) [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
 
 
 ## Command Line
