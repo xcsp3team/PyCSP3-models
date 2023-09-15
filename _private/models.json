@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Amaze",
+        "fullname": "simple-data-problems/COP/Amaze",
+        "tags": ["mzn09", "recreational"],
+        "constraints" : ["AllDifferent", "Sum"],
+        "type" : "COP"
+    },
+    {
+        "name": "Bacp",
+        "fullname": "simple-data-problems/COP/Bacp",
+        "tags": ["mzn10", "realistic"],
+        "constraints" : ["AllDifferent", "Count"],
+        "type" : "CSP"
+    }
+]
