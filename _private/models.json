@@ -1,7 +1,7 @@
 [
     {
         "name": "Amaze",
-        "fullname": "simple-data-problems/COP/Amaze",
+        "fullname": "simple-data-problems/COP/BoardColoration",
         "tags": ["mzn09", "recreational"],
         "constraints" : ["AllDifferent", "Sum"],
         "type" : "COP"

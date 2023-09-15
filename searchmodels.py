@@ -62,11 +62,11 @@ class _Options:
 if __name__ == '__main__':
     Options = _Options()
     Options.set_values("constraint", "tag", "name")
-    Options.set_flags("cop", "csp", "reverse")
+    Options.set_flags("cop", "csp", "reverse", "json", "github")
     Options.parse(sys.argv)
 
-    if len(sys.argv) == 1 or (Options.csp and Options.cop):
-        print("usage: python searchmodels.py [-constraint=Sum] [-tag=xcsp23] [-name='Bacp*'] [-cop|csp] [-reverse]")
+    if len(sys.argv) == 1 or (Options.csp and Options.cop) or (Options.json and Options.github):
+        print("usage: python searchmodels.py [-constraint=Sum] [-tag=xcsp23] [-name='Bacp*'] [-cop|csp] [-reverse] [-json|-file]")
         sys.exit(1)
     results = []
     constraints = []
@@ -115,4 +115,13 @@ if __name__ == '__main__':
     if Options.reverse :
         allmodels = [model['name'] for model in models]
         results = [m for m in allmodels if m not in results]
-    print("results: ", results)
+
+    if Options.json :
+        tmp = [model for model in models if model['name'] in results]
+        print(tmp)
+    elif Options.github:
+        for model in models:
+            if model['name'] in results:
+                print("https://github.com/xcsp3team/pycsp3-models//tree/main/" + model['fullname'])
+    else:
+        print(" ".join(results))
