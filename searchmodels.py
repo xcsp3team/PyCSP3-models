@@ -62,11 +62,29 @@ class _Options:
 if __name__ == '__main__':
     Options = _Options()
     Options.set_values("constraint", "tag", "name")
-    Options.set_flags("cop", "csp", "reverse", "json", "github")
+    Options.set_flags("cop", "csp", "reverse", "json", "github", "help", "showtags", "showconstraints")
     Options.parse(sys.argv)
 
     if len(sys.argv) == 1 or (Options.csp and Options.cop) or (Options.json and Options.github):
-        print("usage: python searchmodels.py [-constraint=Sum] [-tag=xcsp23] [-name='Bacp*'] [-cop|csp] [-reverse] [-json|-file]")
+        print("usage: python searchmodels.py [-constraint=Sum] [-tag=xcsp23] [-name='Bacp*'] [-cop|csp] [-reverse] [-json|-file] [-showtags] [-showcontraints]")
+        sys.exit(1)
+    if Options.help :
+        print("usage: python searchmodels.py [-constraint=Sum] [-tag=xcsp23] [-name='Bacp'] [-cop|csp] [-reverse] [-json|-file] [-showtags] [-showcontraints]")
+        print()
+        print("Extract problems with respect to a given query. You can mix different queries resulting to all problems that matches all queries. You can also reverse the results.")
+        print()
+        print("  -help display this help and exit")
+        print("  -showtags show all available tags")
+        print("  -showconstraints show all available constraints")
+        print()
+        print("  -constraint=Sum  extract all problems with Sum constraint")
+        print("  -tag=xcsp2  extract all problems with tag containing xcsp2 (xcsp22, xcsp23...)")
+        print("  -name=Ba extract all problems containing BA as a substring")
+        print("  -cop|-csp extract  cop or csp problems")
+        print("  -reverse reverse the results")
+        print()
+        print("  -json display results as a json file")
+        print("  -github display results as links to github project\n")
         sys.exit(1)
     results = []
     constraints = []
@@ -75,6 +93,24 @@ if __name__ == '__main__':
     csp = []
     cop = []
     models = json.load(open("_private/models.json"))
+    if Options.showtags:
+        tags = {}
+        for model in models:
+            for t in model['tags']:
+                if t not in tags.keys():
+                    tags[t] = 1
+        print(" ".join(tags.keys()))
+        sys.exit()
+
+    if Options.showconstraints:
+        constraints = {}
+        for model in models:
+            for c in model['constraints']:
+                if c not in constraints.keys():
+                    constraints[c] = 1
+        print(" ".join(constraints.keys()))
+        sys.exit()
+
     for model in models:
         if Options.constraint is not None:
             constraints.extend([model['name'] for c in model['constraints'] if c == Options.constraint])
