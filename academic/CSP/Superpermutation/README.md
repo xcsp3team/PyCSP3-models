@@ -1,6 +1,4 @@
-
-# Problem Super Permutation
-
+# Problem Superpermutation
 ## Description
 The definition can be found in [wikipedia](https://en.wikipedia.org/wiki/Superpermutation).
 
@@ -20,24 +18,15 @@ However, for n = 5, there are several smallest superpermutations having the leng
 A number n, the number of integers.
 ## Model(s)
 
-
 There are two variants of this problem, one with table and cardinality constraints, the other ones with element and intension constraints.
 
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent/),
-[Extension](https://pycsp.org/documentation/constraints/Extension/), [Element](https://pycsp.org/documentation/constraints/Element/).
-
-
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension), [Element](http://pycsp.org/documentation/constraints/Element)
 
 ## Command Line
-
-
-```shell
+```
 python Superpermutation -data=4
 python Superpermutation -data=4 -variant=table
- ```
+```
 
-## Some Results
-
-| Data | Number of Solutions |
-|------|---------------------|
-| 4    | 1                   |
+## Tags
+ academic

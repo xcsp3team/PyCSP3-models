@@ -1,5 +1,4 @@
 # Problem Ortholatin
-
 ## Description
 You can see below, the beginning of the description provided by  [wikipedia](https://en.wikipedia.org/wiki/Graeco-Latin_square).
 
@@ -23,10 +22,7 @@ A solution for n=5:
 A number n, the size of the square.
 
 ## Model(s)
-
-
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent/),
-[AllDifferentMatrix](https://pycsp.org/documentation/constraints/AllDifferentMatrix/), [Extension](https://pycsp.org/documentation/constraints/Extension/).
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [AllDifferentMatrix](http://pycsp.org/documentation/constraints/AllDifferentMatrix), [Extension](http://pycsp.org/documentation/constraints/Extension)
 
 
 
@@ -37,11 +33,3 @@ A number n, the size of the square.
   python Ortholatin.py
   python Ortholatin.py -data=7
  ```
-
-## Some Results
-
-| Data | Number of Solutions |
-|------|---------------------|
-| 4    | 2                   |
-| 5    | 4                   |
-| 6    | 0                   |

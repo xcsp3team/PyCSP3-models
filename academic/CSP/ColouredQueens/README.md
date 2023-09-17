@@ -1,7 +1,5 @@
-# Problem Coloured Queens
-
+# Problem ColouredQueens
 ## Description
-
 
 The queens graph is a graph with n*n nodes corresponding to the squares of a chess-board.
 There is an edge between nodes iff they are on the same row, column, or diagonal, i.e. if two queens on those squares would attack each other.
@@ -29,20 +27,15 @@ a number n, the size of the chessboard.
 ## Model(s)
 
 
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent/). 
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
 
 
 ## Command Line
 
-```shell
+```
 python ColouredQueens.py
 python ColouredQueens.py -data=10
 ```
 
-## Some Results
-
-| Data | Number of Solutions
-| --- | ---          
-| 6   | 0
-| 7   | 20160
-
+## Tags
+ academic

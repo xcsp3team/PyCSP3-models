@@ -1,17 +1,45 @@
 """
-Problem 003 on CSPLib
+This is the [problem 003](https://www.csplib.org/Problems/prob003/) of the CSPLib:
 
-Examples of Execution:
-  python3 QuasiGroup.py
-  python3 QuasiGroup.py -data=8 -variant=base-v3
-  python3 QuasiGroup.py -data=5 -variant=base-v4
-  python3 QuasiGroup.py -data=8 -variant=base-v5
-  python3 QuasiGroup.py -data=8 -variant=base-v6
-  python3 QuasiGroup.py -data=9 -variant=base-v7
-  python3 QuasiGroup.py -data=8 -variant=aux-v3
-  python3 QuasiGroup.py -data=5 -variant=aux-v4
-  python3 QuasiGroup.py -data=8 -variant=aux-v5
-  python3 QuasiGroup.py -data=9 -variant=aux-v7
+"*An order m quasigroup is a Latin square of size m. That is, a m×m multiplication table in which each element occurs once in every row and column.:*"
+
+### Example
+
+```
+1    2   3   4
+4    1   2   3
+3    4   1   2
+2    3   4   1
+```
+
+## Data
+A number n, the size of the square.
+
+## Model(s)
+There are 7 variants of this problem.
+
+You can find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/Quasigroup/).
+
+
+constraints: AllDifferentMatrix, Element
+
+
+
+## Command Line
+
+python QuasiGroup.py
+python QuasiGroup.py -data=8 -variant=base-v3
+python QuasiGroup.py -data=5 -variant=base-v4
+python QuasiGroup.py -data=8 -variant=base-v5
+python QuasiGroup.py -data=8 -variant=base-v6
+python QuasiGroup.py -data=9 -variant=base-v7
+python QuasiGroup.py -data=8 -variant=aux-v3
+python QuasiGroup.py -data=5 -variant=aux-v4
+python QuasiGroup.py -data=8 -variant=aux-v5
+python QuasiGroup.py -data=9 -variant=aux-v7
+
+## Tags
+ academic notebook
  """
 
 from pycsp3 import *

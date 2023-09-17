@@ -1,6 +1,4 @@
-
-# Problem Quens
-
+# Problem Queens
 ## Description
 This is the [problem 054](https://www.csplib.org/Problems/prob054/) of the CSPLib:
 
@@ -21,25 +19,15 @@ You can find a step-by-step modeling process in this [Jupyter notebook](https://
 
 There are 3 variants of this problem, one with AllDifferent constraints, the other ones with constraint in intension.
 
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferentMatrix/),
-[Intension](https://pycsp.org/documentation/constraints/Intension/).
-
-
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Intension](http://pycsp.org/documentation/constraints/Intension)
 
 ## Command Line
-
-
-```shell
+```
 python Queens.py
 python Queens.py -data=6
 python Queens.py -data=6 -variant=v1
 python Queens.py -data=6 -variant=v2
- ```
+```
 
-## Some Results
-
-| Data | Number of Solutions |
-|------|---------------------|
-| 6    | 4                   |
-| 8    | 92                  |
-| 10   | 724                 |
+## Tags
+ academic notebook

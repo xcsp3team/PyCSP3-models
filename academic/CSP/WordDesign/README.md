@@ -1,6 +1,4 @@
-
-# Problem Word Design
-
+# Problem WordDesign
 ## Description
 This is the [problem 033](https://www.csplib.org/Problems/prob033/) of the CSPLib:
 
@@ -16,30 +14,16 @@ over the alphabet W = { A,C,G,T } with the following properties:
 
 This problem has its roots in Bioinformatics and Coding Theory.
 
-
-
 ## Data
 TODO
-
-
 A number n, the number of integer.
 ## Model(s)
-
-
-
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum/),
-[LexIncreasing](https://pycsp.org/documentation/constraints/LexIncreasing/).
-
-
-
-
+  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing)
 
 ## Command Line
-
-
-```shell
+```
 python WordDesign -data=[WordDesign.json,n=10]
- ```
+```
 
-## Some Results
-TODO ...
+## Tags
+ academic

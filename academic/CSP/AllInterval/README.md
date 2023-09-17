@@ -1,6 +1,5 @@
-# Problem All-Interval Series 
-
-## Description 
+# Problem AllInterval
+## Description
 
 Given the twelve standard pitch-classes (c, c\#, d, $\dots$), represented by numbers $0,1,\dots,11$, find a series in which each pitch-class occurs exactly once and in which the musical intervals between neighboring notes cover the full set of intervals from the minor second (1 semitone) to the major seventh (11 semitones).
 That is, for each of the intervals, there is a pair of neighboring pitch-classes in the series, between which this interval appears.
@@ -28,35 +27,29 @@ For $n=8$, a solution is:
 ```
 
 
-## Data 
+## Data
 A number n, the size of the sequence.
 
-## Model(s) 
+## Model(s)
 
 In AllInterval.py, there are two variants:
- 
+
  - a main variant;
  - a variant  (called aux) with auxiliary variables.
 
 You can also find a step-by-step modeling process in this [Jupyter notebook](http://pycsp.org/documentation/models/CSP/AllInterval/).
 
-*Involved Constraints*: [AllDifferent](http://pycsp.org//documentation/constraints/AllDifferent/), [Intension](http://pycsp.org//documentation/constraints/Intension/)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Intension](http://pycsp.org/documentation/constraints/Intension)
 
 
 
 ## Command Line
 
-```shell
+```
 python AllInterval.py -data=8 [-solve]
-
 python AllInterval.py -data=8 -variant=aux [-solve]
 ```
 
-## Some Results
-
-| Data | Number of Solutions 
-| ---  | ---          
-| 8    | 20
-| 9    | 60
-| 10   | 148
+## Tags
+ academic notebook
 

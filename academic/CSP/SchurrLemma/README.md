@@ -1,6 +1,4 @@
-
-# Problem Schurr Lemma
-
+# Problem SchurrLemma
 ## Description
 This is the [problem 015](https://www.csplib.org/Problems/prob015/) of the CSPLib.
 
@@ -14,34 +12,18 @@ A solution for 5 integers to put inside 4 boxes:
 1 2 1 2 3
 ```
 
-
 ## Data
 A couple \[n,d], n is the number of balls, d the number of boxes
 
 ## Model(s)
-
-
-
 There are 3 variants of this problem, one with AllDifferent constraints, the other ones with constraint NValues.
 
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferentMatrix/),
-[NValues](https://pycsp.org/documentation/constraints/NValues/).
-
-
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [NValues](http://pycsp.org/documentation/constraints/NValues)
 
 ## Command Line
-
-
-```shell
   python SchurrLemma.py
   python SchurrLemma.py -data=[10,10]
   python SchurrLemma.py -data=[10,10] -variant=mod
- ```
 
-## Some Results
-
-| Data   | Number of Solutions |
-|--------|---------------------|
-| \[3,4] | 60                  |
-| \[3,5] | 20                  |
-| \[4,4] | 228                 |
+## Tags
+ academic
