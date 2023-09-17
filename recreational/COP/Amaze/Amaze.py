@@ -1,12 +1,24 @@
 """
-See Problem in MiniZinc -- https://github.com/MiniZinc/minizinc-benchmarks/tree/master/amaze
+See Problem in [MiniZinc](https://github.com/MiniZinc/minizinc-benchmarks/tree/master/amaze)
 
 Given a grid containing pairs of numbers (ranging from 1 to a greater value), connect the pairs (e.g. 1 to 1; 2 to 2; etc)
 by drawing a line horizontally and vertically, but not diagonally.
 The lines must never cross.
 
-Example of Execution:
-  python3 Amaze.py -data=Amaze_simple.json
+
+## Data
+The file Amaze_simple.json contains an example of data.
+
+
+## Model
+
+constraints: Count, Sum, Extension, Intension
+
+## Command Line
+python Amaze.py -data=Amaze_simple.json [-solve]
+
+## Tags
+ recreational mzn
 """
 
 from pycsp3 import *

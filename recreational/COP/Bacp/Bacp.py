@@ -1,11 +1,28 @@
 """
-Problem 030 on CSPLib
+[Problem 30](https://www.csplib.org/Problems/prob030/) of the CSPLib.
 
-Examples of Execution:
-  python3 Bacp.py -data=Bacp_10.json -variant=m1
-  python3 Bacp.py -data=Bacp_10.json -variant=m2
-  python3 Bacp.py -data=Bacp_10.json -variant=m1-d
-  python3 Bacp.py -data=Bacp_10.json -variant=m2-d
+The BACP is to design a balanced academic curriculum by assigning periods to courses in a way that the academic load of each period is balanced, i.e., as similar as possible .
+
+## Data
+ - nCourses, nPeriods, minCredits, maxCredits, minCourses, maxCourses
+ - credits (tuple): each course has a number of credits
+ - prerequisites (tuple of tuple): each course has a set of prerequisites
+
+An example is provided in the json file.
+
+## Model
+Thera are two variants:
+ - one with extension constraints
+ - one with intension constraints (TODO: not sure)
+
+constraints: Sum, Intension, Extension, Minimum, Maximum, Count
+
+
+## Command Line
+python Bacp.py -data=Bacp_10.json [-solve]
+
+## Tags
+ recreational 
 """
 
 from pycsp3 import *
