@@ -12,6 +12,7 @@ if __name__ == '__main__':
     outputfile.write(f"# Problem {name}\n")
     outputfile.write("## Description\n")
     start = False
+    python = False
     for line in inputlines:
         if line == '"""\n':
             if start:
@@ -24,6 +25,14 @@ if __name__ == '__main__':
             constraints = [c.strip() for c in constraints]
             outputfile.write(", ".join([f"[{c}]({constraints_path}{c})" for c in constraints]))
             outputfile.write("\n")
-        else :
+        else:
+            if line.startswith("python"):
+                if not python :
+                    outputfile.write("```\n")
+                    python = True
+            if not line.startswith("python"):
+                if python:
+                    outputfile.write("```\n")
+                    python = False
             outputfile.write(line)
     outputfile.close()
