@@ -1,5 +1,4 @@
-# Problem Coins Grid
-
+# Problem CoinsGrid
 ## Description
 This problem can be found in [Constraint Solving and Planning with Picat](https://link.springer.com/book/10.1007/978-3-319-25883-6), page 43:
 
@@ -29,25 +28,19 @@ The optimum for a grid of size 8 and 4 coins to put in each row and column.
 ## Data
 
 A couple \[n,c], where n is the size of the grid and c is the number of coins (by default \[31,14])
+
 ## Model(s)
 
 
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum/).
+  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 
 ## Command Line
 
-```shell
+```
 python CoinsGrid.py
 python CoinsGrid.py -data=[10,4]
 ```
 
-## Some Results
-
-
-
-| Data                    | Optimum |
-|-------------------------|---------|
-| \[8,4]                  | 80      |
-| \[8,5]                  | 198     |
-
+## Tags
+ academic

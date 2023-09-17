@@ -1,5 +1,4 @@
-# Problem Cookie Monster
-
+# Problem CookieMonster
 ## Description
 This problem is proposed by Richard Green
 
@@ -11,11 +10,6 @@ empty all the cookies from the jars in the smallest possible number of moves, an
 Cookie Monster Problem is to determine this number for any given set of cookie jars.*"
 
 
-### Example
-
-The optimum for a grid of size 8 and 4 coins to put in each row and column.
-
-TODO
 
 ## Data
 We need a list of quantities in jars as e.g., \[1, 2, 4, 12, 13, 15],
@@ -24,20 +18,15 @@ meaning that there are six jars, containing 1, 2, 4, 12, 13 and 15 cookies each.
 ## Model(s)
 
 
-*Involved Constraints*: [Intension](https://pycsp.org/documentation/constraints/Intension/), [Element](https://pycsp.org/documentation/constraints/Element/).
+  constraints: [Intension](http://pycsp.org/documentation/constraints/Intension), [Element](http://pycsp.org/documentation/constraints/Element)
 
 
 ## Command Line
 
-```shell
+```
 python CookieMonster.py
 python CookieMonster.py -data=cookies_example.json
 ```
 
-## Some Results
-
-
-
-| Data                    | Optimum |
-|-------------------------|---------|
-| \[15, 13, 12, 4, 2, 1]  | 4       |
+## Tags
+ academic

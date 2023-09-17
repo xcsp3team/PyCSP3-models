@@ -20,7 +20,7 @@ python Ramsey.py
 python Ramsey.py -data=10
 
 ## Tags
-simple test
+ academic
 """
 
 from pycsp3 import *

@@ -17,8 +17,10 @@ A number n, the number of nodes of the graph.
 
 ## Command Line
 
+```
 python Ramsey.py
 python Ramsey.py -data=10
+```
 
 ## Tags
-  simple test
+ academic

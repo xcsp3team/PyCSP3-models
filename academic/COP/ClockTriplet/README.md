@@ -1,5 +1,4 @@
-# Problem Clock Triplet
-
+# Problem ClockTriplet
 ## Description
 
 The description can be found [here](http://www.f1compiler.com/samples/Dean%20Clark%27s%20Problem.f1.html)
@@ -23,23 +22,16 @@ The model here is given in a general form.
 
 ## Data
 A couple [r,n], where r is the size of the tuple (by default triplet) and n the number of hours (by default 12).
+
 ## Model(s)
 
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum/), [AllDifferent](https://pycsp.org/documentation/constraints/Alldifferent/),
-[Intension](https://pycsp.org/documentation/constraints/Intension/).
+  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Intension](http://pycsp.org/documentation/constraints/Intension)
 
 ## Command Line
 
-```shell
+```
 python ClockTriplet.py -data=[3,12]
 ```
 
-## Some Results
-
-
-
-| Data                    | Optimum |
-|-------------------------|---------|
-| \[3,12]                 | 21      |
-
-
+## Tags
+ academic

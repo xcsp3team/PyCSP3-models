@@ -1,5 +1,4 @@
-# Problem Golomb-Ruler
-
+# Problem GolombRuler
 ## Description
 This is the [problem 006](https://www.csplib.org/Problems/prob006/) of the CSPLib:
 
@@ -25,9 +24,8 @@ The optimum for n=8
 
 ## Data
 A number n, the number of integers.
+
 ## Model(s)
-
-
 You can find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/GolombRuler/).
 
 There are 3 variants:
@@ -35,10 +33,11 @@ There are 3 variants:
  - one with auxilliary variables
  - and one with  intension constraints.
 
-*Involved Constraints*: [Intension](https://pycsp.org/documentation/constraints/Intension/), [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent/).
+  constraints: [Intension](http://pycsp.org/documentation/constraints/Intension), [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
 
 
 ## Command Line
+
 
 ```
 python GolombRuler.py
@@ -47,12 +46,6 @@ python GolombRuler.py -data=10 -variant=dec
 python GolombRuler.py -data=10 -variant=aux
 ```
 
-## Some Results
+## Tags
+ academic
 
-
-
-| Data                    | Optimum |
-|-------------------------|---------|
-|  8                      | 34      |
-|  9                      | 44      |
-|  10                     | 55      |

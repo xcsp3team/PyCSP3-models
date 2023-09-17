@@ -1,6 +1,4 @@
-
-# Problem Water Bucket
-
+# Problem WaterBucket
 ## Description
 This is the [problem 018](https://www.csplib.org/Problems/prob018/) of the CSPLib:
 
@@ -18,8 +16,7 @@ a tuple \[c1, c2, c3, g1, g2, g3, h], where
 ## Model(s)
 
 
-
-*Involved Constraints*: [Extension](https://pycsp.org/documentation/constraints/Extension/).
+  constraints: [Extension](http://pycsp.org/documentation/constraints/Extension)
 
 
 ## Command Line
@@ -29,10 +26,6 @@ python WaterBucket.py
 python WaterBucket.py -data=[8,5,3,4,4,0,8]
 ```
 
-## Some Results
+## Tags
+ academic
 
-
-
-| Data             | Optimum |
-|------------------|---------|
-| \[8,5,3,4,4,0,8] | 7       |

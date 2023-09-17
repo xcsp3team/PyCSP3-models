@@ -1,6 +1,4 @@
-
-# Problem War Or Peace
-
+# Problem WarOrPeace
 ## Description
 The problem is described [here](http://www.hakank.org/)
 
@@ -14,33 +12,22 @@ The minimum number of peace treaties for n in \[2..12] seems to be floor(n^2/4),
 Hence, it is 0, 1, 2, 4, 6, 9, 12, 16, 20, 25, 30, 36, 42, 49, 56, 64, 72, 81, ...
 
 
-
-
-
 ## Data
 A number n,  the number of countries.
 
 ## Model(s)
 
+There are two variants.
 
-There are two variants. 
-
-*Involved Constraints*: [Intension](https://pycsp.org/documentation/constraints/Intension/), [Sum](https://pycsp.org/documentation/constraints/Sum/).
+ cnstraints: Intension, Sum
 
 
 ## Command Line
-By default, WarOrPeace.py is in the directory problems/cop/academic/
 
 ```
 python WarorPeace.py -data=8
 python WarorPeace.py -data=8 -variant=or
 ```
 
-## Some Results
-
-
-
-| Data | Optimum |
-|------|---------|
-| 8    | 12      |
-| 9    | 16      |
+## Tags
+ academic
