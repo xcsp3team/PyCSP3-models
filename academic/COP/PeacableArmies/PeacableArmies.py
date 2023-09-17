@@ -1,6 +1,5 @@
 """
 
-## Description
 This is the [problem 110](https://www.csplib.org/Problems/prob110/) of the CSPLib:
 
 In the “Armies of queens” problem, we are required to place two equal-sized armies of black and white queens on a chessboard
