@@ -1,11 +1,11 @@
 import json
-import sys
+import os
 
 import os
 
 models = []
 for root, dirs, files in os.walk("."):
-    if "data-problems" not in root:
+    if "academic" not in root:
         continue
     for file in files:
         if file.endswith(".py") and "parser" not in file:
@@ -23,8 +23,8 @@ for root, dirs, files in os.walk("."):
                     start = True
                 elif start:
                     tags = [t.strip() for t in line.strip().split(" ")]
-                    print(tags, line)
                     start = False
             f.close()
             models.append({"name": name, "fullname": model[:-3], "constraints" : constraints, "type": type, "tags": tags})
-print(models)
+print(json.dumps(models))
+
