@@ -1,4 +1,21 @@
 """
+TODO
+
+## Data
+## Model
+
+constraints: Sum, Cardinality
+
+
+## Command Line
+
+python Bugs.py
+
+## Tags
+
+recreational
+
+
 """
 from pycsp3 import *
 

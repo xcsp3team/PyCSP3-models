@@ -1,10 +1,18 @@
 """
-Problem 022 on CSPLib
+[Problem 022](https://www.csplib.org/Problems/prob022/data/bus_scheduling_csplib_t1.dzn.html) of the CSPLib:
+Bus driver scheduling can be formulated as a set paritioning problem. These consist of a given set of tasks (pieces of work) to cover and a large set of possible shifts, where each shift covers a subset of the tasks and has an associated cost. We must select a subset of possible shifts that covers each piece of work once and only once: this is called a partition.
+## Data
 
-The model below is without the cost parameter, as in Minizinc.
+TODO
 
-Example of Execution:
-  python3 BusScheduling.py -data=BusScheduling_r1.json
+## Model
+constraints: Sum, Count
+
+## Command Line
+python BusScheduling.py -data=BusScheduling_example.dzn
+
+## Tags
+recreational csplib
 """
 
 from pycsp3 import *
