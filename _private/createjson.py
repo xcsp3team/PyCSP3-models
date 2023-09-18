@@ -25,6 +25,6 @@ for root, dirs, files in os.walk("."):
                     tags = [t.strip() for t in line.strip().split(" ")]
                     start = False
             f.close()
-            models.append({"name": name, "fullname": model[:-3], "constraints" : constraints, "type": type, "tags": tags})
+            models.append({"name": name, "fullname": os.path.dirname(model), "constraints" : constraints, "type": type, "tags": tags})
 print(json.dumps(models))
 

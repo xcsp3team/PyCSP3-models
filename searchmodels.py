@@ -62,7 +62,7 @@ class _Options:
 if __name__ == '__main__':
     Options = _Options()
     Options.set_values("constraint", "tag", "name")
-    Options.set_flags("cop", "csp", "reverse", "json", "github", "help", "showtags", "showconstraints")
+    Options.set_flags("cop", "csp", "reverse", "json", "github", "file", "help", "showtags", "showconstraints")
     Options.parse(sys.argv)
 
     if len(sys.argv) == 1 or (Options.csp and Options.cop) or (Options.json and Options.github):
@@ -159,5 +159,10 @@ if __name__ == '__main__':
         for model in models:
             if model['name'] in results:
                 print("https://github.com/xcsp3team/pycsp3-models//tree/main/" + model['fullname'])
+    elif Options.file:
+        for model in models:
+            if model['name'] in results:
+                print(model['fullname'])
+
     else:
         print(" ".join(results))
