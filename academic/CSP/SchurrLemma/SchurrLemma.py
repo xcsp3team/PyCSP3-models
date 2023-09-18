@@ -25,7 +25,7 @@ constraints: AllDifferent, NValues
   python SchurrLemma.py -data=[10,10] -variant=mod
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

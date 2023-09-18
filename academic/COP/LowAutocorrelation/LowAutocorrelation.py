@@ -27,7 +27,7 @@ python LowAutocorrelation.py
 python LowAutocorrelation.py -data=16
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

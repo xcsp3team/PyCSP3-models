@@ -23,7 +23,7 @@ constraints: Sum, LexIncreasing
 python WordDesign -data=[WordDesign.json,n=10]
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

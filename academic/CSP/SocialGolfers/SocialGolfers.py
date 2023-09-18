@@ -24,7 +24,7 @@ python SocialGolfers.py -data=[5,3,6]
 python SocialGolfers.py -data=[5,3,6] -variant=1
 
 ## Tags
- academic notebook
+ academic notebook csplib
 """
 
 from pycsp3 import *

@@ -56,7 +56,7 @@ python Bibd.py -data=[9,0,0,3,9]
 python Bibd.py -data=[9,0,0,3,9] -variant=aux
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

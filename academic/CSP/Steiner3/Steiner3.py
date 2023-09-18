@@ -22,7 +22,7 @@ python Steiner3.py
 python Steiner3.py -data=6
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

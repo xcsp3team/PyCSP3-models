@@ -45,7 +45,7 @@ python DiamondFree.py
 python DiamondFree.py -data=10
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

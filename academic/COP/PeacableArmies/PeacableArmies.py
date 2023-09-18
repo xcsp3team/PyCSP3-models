@@ -38,7 +38,7 @@ python PeacableArmies.py -data=10 -variant=m1
 python PeacableArmies.py -data=10 -variant=m2
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

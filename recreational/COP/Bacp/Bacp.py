@@ -22,7 +22,7 @@ constraints: Sum, Intension, Extension, Minimum, Maximum, Count
 python Bacp.py -data=Bacp_10.json [-solve]
 
 ## Tags
- recreational 
+ recreational csplib
 """
 
 from pycsp3 import *

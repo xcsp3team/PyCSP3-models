@@ -38,7 +38,7 @@ python StillLife.py -data=[7,7]
 python StillLife.py -data=[7,7] -variant=wastage
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

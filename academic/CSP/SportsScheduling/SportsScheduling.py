@@ -26,7 +26,7 @@ python SportsScheduling.py -data=10
 python SportsScheduling.py -data=10 -variant=dummy
 
 ## Tags
- academic notebook
+ academic notebook csplib
 """
 
 from pycsp3 import *

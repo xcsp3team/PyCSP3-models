@@ -21,7 +21,7 @@ constraints: AllDifferent, Increasing, Intension, Sum
   python NumberPartitioning.py -data=10
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

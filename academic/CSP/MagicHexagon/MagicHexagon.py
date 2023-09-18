@@ -15,7 +15,7 @@ constraints: AllDifferent, Sum, Intension
   python MagicHexagon.py -data=[4,10]
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

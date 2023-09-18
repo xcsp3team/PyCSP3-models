@@ -35,7 +35,7 @@ python Opd.py -data=[4,6,4]
 python Opd.py -data=[4,6,4] -variant=aux
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

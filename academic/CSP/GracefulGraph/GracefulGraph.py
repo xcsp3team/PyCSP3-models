@@ -26,7 +26,7 @@ constraints: AllDifferent, Intension
   python3 GracefulGraph.py -data=[3,5]
  ```
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

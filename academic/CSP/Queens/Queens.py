@@ -27,7 +27,7 @@ python Queens.py -data=6 -variant=v1
 python Queens.py -data=6 -variant=v2
 
 ## Tags
- academic notebook
+ academic notebook csplib
 """
 
 from pycsp3 import *

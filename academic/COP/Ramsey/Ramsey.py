@@ -20,7 +20,7 @@ python Ramsey.py
 python Ramsey.py -data=10
 
 ## Tags
- academic
+ academic csplib
 """
 
 from pycsp3 import *

@@ -24,7 +24,7 @@ constraints: Cardinality, Sum
   python MagicSequence.py -data=10
 
 ## Tags
- academic notebook
+ academic notebook csplib
 
 """
 
