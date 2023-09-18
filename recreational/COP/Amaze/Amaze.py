@@ -5,13 +5,10 @@ Given a grid containing pairs of numbers (ranging from 1 to a greater value), co
 by drawing a line horizontally and vertically, but not diagonally.
 The lines must never cross.
 
-
 ## Data
 The file Amaze_simple.json contains an example of data.
 
-
 ## Model
-
 constraints: Count, Sum, Extension, Intension
 
 ## Command Line

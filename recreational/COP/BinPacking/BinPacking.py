@@ -20,11 +20,10 @@ constraints: BinPacking, Cardinality, Extension, Sum, LexDecreasing, Decreasing
 
 
 ## Command Line
-
-python BinPacking.py -data=BinPacking_n1c1w4a.json [-solve]
+python BinPacking.py -data=BinPacking_n1c1w4a.json
 
 ## Tags
- recreationals
+ recreational
 """
 
 from pycsp3 import *

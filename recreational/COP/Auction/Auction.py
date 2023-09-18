@@ -13,7 +13,7 @@ constraints: Count, Sum
 
 ## Command Line
   python Auction.py [-solve]
-  python Auction.py -data=Auction_example.json [-solve]
+  python Auction.py -data=Auction_example.json
 
 ## Tags
  recreactional csplib

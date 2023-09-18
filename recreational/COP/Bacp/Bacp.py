@@ -19,7 +19,7 @@ constraints: Sum, Intension, Extension, Minimum, Maximum, Count
 
 
 ## Command Line
-python Bacp.py -data=Bacp_10.json [-solve]
+python Bacp.py -data=Bacp_10.json
 
 ## Tags
  recreational csplib
