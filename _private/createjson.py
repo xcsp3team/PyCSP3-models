@@ -26,5 +26,7 @@ for root, dirs, files in os.walk("."):
                     start = False
             f.close()
             models.append({"name": name, "fullname": os.path.dirname(model), "constraints" : constraints, "type": type, "tags": tags})
+
+models.sort(key=lambda model: model["name"])
 print(json.dumps(models))
 
