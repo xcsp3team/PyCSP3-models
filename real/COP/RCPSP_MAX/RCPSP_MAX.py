@@ -12,7 +12,7 @@ The Licence seems to be like a MIT Licence.
   psp-c-051.json
 
 ## Model
-  constraints: Cumulative, Intension
+  constraints: Cumulative
 
 ## Execution
   python RCPSP_MAX.py -data=<datafile.json>
