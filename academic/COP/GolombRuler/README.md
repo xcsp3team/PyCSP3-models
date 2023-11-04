@@ -47,5 +47,5 @@ python GolombRuler.py -data=10 -variant=aux
 ```
 
 ## Tags
- academic
+ academic notebook csplib
 

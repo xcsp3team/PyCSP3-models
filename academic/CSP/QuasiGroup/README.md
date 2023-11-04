@@ -42,7 +42,7 @@ python QuasiGroup.py -data=9 -variant=aux-v7
 ```
 
 ## Tags
- academic notebook
+ academic notebook csplib
  """
 
 from pycsp3 import *

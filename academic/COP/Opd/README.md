@@ -38,4 +38,4 @@ python Opd.py -data=[4,6,4] -variant=aux
 ```
 
 ## Tags
- academic
+ academic csplib

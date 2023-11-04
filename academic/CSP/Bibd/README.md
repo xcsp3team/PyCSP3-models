@@ -59,4 +59,4 @@ python Bibd.py -data=[9,0,0,3,9] -variant=aux
 ```
 
 ## Tags
- academic notebook
+ academic csplib

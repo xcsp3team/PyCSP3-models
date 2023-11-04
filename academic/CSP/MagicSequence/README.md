@@ -25,5 +25,5 @@ You can find a step-by-step modeling process in this [Jupyter notebook](https://
   python MagicSequence.py -data=10
 
 ## Tags
- academic notebook
+ academic notebook csplib
 

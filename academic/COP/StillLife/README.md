@@ -41,4 +41,4 @@ python StillLife.py -data=[7,7] -variant=wastage
 ```
 
 ## Tags
- academic
+ academic csplib

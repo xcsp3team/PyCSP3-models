@@ -22,4 +22,4 @@ A couple \[k,n\], n is the number of values and k the number of occurences for a
   python Langford.py -data=[3,10]
 
 ## Tags
- academic
+ academic csplib

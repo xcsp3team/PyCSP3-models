@@ -51,5 +51,5 @@ python AllInterval.py -data=8 -variant=aux [-solve]
 ```
 
 ## Tags
- academic notebook
+ academic
 

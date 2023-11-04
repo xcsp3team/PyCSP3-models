@@ -37,4 +37,4 @@ python QueenAttacking.py -data=6 -variant=table
 ```
 
 ## Tags
- academic
+ academic csplib

@@ -27,5 +27,5 @@ python WaterBucket.py -data=[8,5,3,4,4,0,8]
 ```
 
 ## Tags
- academic
+ academic csplib
 

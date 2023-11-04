@@ -10,7 +10,7 @@ in which every possible length-n string on A occurs exactly once as a substring.
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  python Debruijn.py -data=[3,6]
+  python Debruijn.py -data=[number,number]
 
 ## Links
   - https://en.wikipedia.org/wiki/De_Bruijn_sequence

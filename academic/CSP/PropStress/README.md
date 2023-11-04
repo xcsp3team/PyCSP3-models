@@ -6,11 +6,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Data
   an integer n
 
-## Model
-  constraints: [](http://pycsp.org/documentation/constraints/)
-
 ## Execution
-  python PropStress.py -data=<integer>
+  python PropStress.py -data=[number]
 
 ## Links
   - https://www.minizinc.org/challenge2009/results2009.html

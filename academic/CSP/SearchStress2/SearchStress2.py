@@ -9,7 +9,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: Sum
 
 ## Execution
-  python SearchStress2.py -data=[integer,integer]
+  python SearchStress2.py -data=[number,number]
 
 ## Links
   - https://www.minizinc.org/challenge2009/results2009.html
@@ -80,5 +80,5 @@ satisfy(
 )
 
 """ Comments
-1) data for 2009 are: (2,7),(3,6),(4,5),(4,6),(5,5),(5,6),(6,4),(6,5),(6,6),(7,2)
+1) data used in 2009 are: (2,7),(3,6),(4,5),(4,6),(5,5),(5,6),(6,4),(6,5),(6,6),(7,2)
 """

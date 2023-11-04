@@ -22,4 +22,4 @@ A number n.
   python NumberPartitioning.py -data=10
 
 ## Tags
- academic
+ academic csplib

@@ -1,7 +1,6 @@
 # Problem ChangeMaking
 ## Description
 
-## Description
 
 The full description can be found in [wikipedia](https://en.wikipedia.org/wiki/Change-making_problem):
 

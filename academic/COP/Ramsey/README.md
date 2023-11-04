@@ -23,4 +23,4 @@ python Ramsey.py -data=10
 ```
 
 ## Tags
- academic
+ academic csplib

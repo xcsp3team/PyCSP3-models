@@ -5,11 +5,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Data
   an integer n
 
-## Model
-  constraints:
-
 ## Execution
-  python PropStress.py -data=<integer>
+  python PropStress.py -data=[number]
 
 ## Links
   - https://www.minizinc.org/challenge2009/results2009.html
@@ -41,5 +38,5 @@ satisfy(
 )
 
 """ Comments
-1) data for 2009 are: 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
+1) data used in 2009 are: 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
 """

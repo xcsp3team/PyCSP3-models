@@ -26,4 +26,4 @@ There are 3 variants of this problem, one with AllDifferent constraints, the oth
   python SchurrLemma.py -data=[10,10] -variant=mod
 
 ## Tags
- academic
+ academic csplib

@@ -30,4 +30,4 @@ python Queens.py -data=6 -variant=v2
 ```
 
 ## Tags
- academic notebook
+ academic notebook csplib

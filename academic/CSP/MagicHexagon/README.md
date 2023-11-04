@@ -16,4 +16,4 @@ A couple \[k,n\], TODO
   python MagicHexagon.py -data=[4,10]
 
 ## Tags
- academic
+ academic csplib
