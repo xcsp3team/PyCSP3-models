@@ -1,47 +1,35 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2008 Minizinc challenge.
-The model was created by Hakan Kjellerstrand.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-  an integer n
-
-## Model
-  constraints: AllDifferent, Element
+  two integers (n,k)
 
 ## Execution
-  python Quasigroup7.py -data=<integer>
+  python SearchStress.py -data=[number,number]
 
 ## Links
-  - https://www.csplib.org/Problems/prob003/
   - https://www.minizinc.org/challenge2008/results2008.html
 
 ## Tags
-  academic, csplib, mzn08
+  academic, mzn08
 """
 
 from pycsp3 import *
 
-n = data or 8
+n, k = data  # number of copies (of the graph) in sequence, and size of each subgraph (and number of colors)
 
-# x[i][j] is the value at row i and column j of the quasi-group
-x = VarArray(size=[n, n], dom=range(n))
+# x[i] is the color of the ith node
+x = VarArray(size=[n * k + 1], dom=range(k))
 
 satisfy(
-    # all rows must be different
-    [AllDifferent(x[i]) for i in range(n)],
+    [x[i * k] != x[i * k + j] for i in range(n) for j in range(1, k)],
+    [x[(i + 1) * k] != x[i * k + j] for i in range(n) for j in range(1, k)],
+    [x[i * k + j1] != x[i * k + j2] for i in range(n) for j1 in range(1, k) for j2 in range(j1 + 1, k)],
 
-    # all columns must be different
-    [AllDifferent(x[:, j]) for j in range(n)],
-
-    # ensuring idempotence  tag(idempotence)
-    [x[i][i] == i for i in range(n)],
-
-    [x[i, x[j][i]] == x[x[j][i], j] for i in range(n) for j in range(n)],
-
-    [x[i][-1] + 2 >= i for i in range(n)]
+    x[0] != x[-1]
 )
 
 """
-1) data used in 2008 are: 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+1) data used in 2008 are: (4,4), (8,4), (8,8)
 """

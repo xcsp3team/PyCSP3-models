@@ -9,7 +9,7 @@ in which every possible length-n string on A occurs exactly once as a substring.
   constraints: AllDifferent, Cardinality, Minimum, Sum
 
 ## Execution
-  python Debruijn.py -data=[3,6]
+  python Debruijn.py -data=[number,number]
 
 ## Links
   - https://en.wikipedia.org/wiki/De_Bruijn_sequence
@@ -54,5 +54,5 @@ satisfy(
 )
 
 """ Comments
-1) Data of mzn08 are: (2,3), (2,7), (2,8), (2,9), (2,10), (3,6), (3,7), (3,8), (4,6), (4,7), (4,8)
+1) data in 2008 are: (2,3), (2,7), (2,8), (2,9), (2,10), (3,6), (3,7), (3,8), (4,6), (4,7), (4,8)
 """

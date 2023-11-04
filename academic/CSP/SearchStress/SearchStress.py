@@ -3,13 +3,10 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-  an integer n
-
-## Model
-  constraints:
+  two integers (n,k)
 
 ## Execution
-  python SearchStress.py -data=<integer>
+  python SearchStress.py -data=[number,number]
 
 ## Links
   - https://www.minizinc.org/challenge2008/results2008.html
