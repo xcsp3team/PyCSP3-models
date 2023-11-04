@@ -22,7 +22,7 @@ for root, dirs, files in os.walk("."):
                 if line.startswith("## Tags"):
                     start = True
                 elif start:
-                    tags = [t.strip() for t in line.strip().split(" ")]
+                    tags = [t.strip().rstrip(",") for t in line.strip().split(" ")]
                     start = False
             f.close()
             models.append({"name": name, "fullname": os.path.dirname(model), "constraints" : constraints, "type": type, "tags": tags})
