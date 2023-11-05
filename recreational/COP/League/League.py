@@ -1,43 +1,94 @@
 """
-See Problem in MiniZinc -- https://github.com/MiniZinc/minizinc-benchmarks/tree/master/league
+Make leagues for some games:
+ - ranking should be close in each league
+ - in a league, variety of country (where player comes from) is needed
 
-Make leagues for some games.
- - Ranking should be close in each league.
- - In a league, variety of country (where player comes from) is needed.
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2012 Minizinc challenge.
+No Licence was explicitly mentioned (MIT Licence assumed).
 
-Example of Execution:
-  python3 League.py -data=League_010-03-04.json
+## Data Example
+  020-3-5.json
+
+## Model
+  constraints: Count, Maximum, Minimum, Sum
+
+## Execution
+  python League.py -data=<datafile.json>
+  python League.py -data=<datafile.dzn> -parser=League_ParserZ.py
+
+## Links
+  - https://www.minizinc.org/challenge2012/results2012.html
+
+## Tags
+  real, mzn12
 """
 
 from pycsp3 import *
 
-leagueSize, players = data  # rankings and countries of players
-rankings, countries = zip(*players)
-nPlayers = len(players)
-nLeagues = nPlayers // leagueSize + (1 if nPlayers % leagueSize != 0 else 0)
-nFullLeagues = nLeagues if nPlayers % leagueSize == 0 else nLeagues - (leagueSize - nPlayers % leagueSize)
-sizes = [leagueSize + (0 if i < nFullLeagues else -1) for i in range(nLeagues)]
+leagueSize, rankings, nationalities = data
+sr, sn = sorted(list(set(rankings))), sorted(list(set(nationalities))),
+assert sr[0] == 0 and all(sr[i + 1] == sr[i] + 1 for i in range(len(sr) - 1))
+assert sn[0] == 0 and all(sn[i + 1] == sn[i] + 1 for i in range(len(sn) - 1))
 
-# p[i][j] is the jth player of the ith league
-p = VarArray(size=[nLeagues, leagueSize], dom=lambda i, j: range(nPlayers) if j < sizes[i] else None)
+nRanks, nNationalities = len(sr), len(sn)
+nPlayers = len(rankings)
+nLeagues = (nPlayers + leagueSize - 1) // leagueSize
 
-# r[i][j] is the ranking of the jth player of the ith league
-r = VarArray(size=[nLeagues, leagueSize], dom=lambda i, j: rankings if j < sizes[i] else None)
+# sl[i] is the size of the ith league
+sl = VarArray(size=nLeagues, dom=range(leagueSize - 1, leagueSize + 1))
 
-# c[i][j] is the country of the jth player of the ith league
-c = VarArray(size=[nLeagues, leagueSize], dom=lambda i, j: countries if j < sizes[i] else None)
+# x[j] is the league of the jth player
+x = VarArray(size=nPlayers, dom=range(nLeagues))
 
-table = {(i, rankings[i], countries[i]) for i in range(nPlayers)}
+max_rank = VarArray(size=nLeagues, dom=range(nRanks))
+min_rank = VarArray(size=nLeagues, dom=range(nRanks))
+diff_rank = VarArray(size=nLeagues, dom=range(nRanks))
+
+# b[i][j] is 1 if the jth nationality is present in the ith league
+b = VarArray(size=[nLeagues, nNationalities], dom={0, 1})
+
+# nn[i] is the number of nationalities in the ith league
+nn = VarArray(size=nLeagues, dom=range(leagueSize + 1))
 
 satisfy(
-    # each player belongs to only one league
-    AllDifferent(p),
+    # computing the size of leagues
+    [Count(x, value=i) == sl[i] for i in range(nLeagues)],
 
-    # linking players with their rankings and countries
-    [(p[i][j], r[i][j], c[i][j]) in table for i in range(nLeagues) for j in range(sizes[i])]
+    # managing ranks
+    [
+        [
+            If(
+                x[j] == i,
+                Then=max_rank[i] >= rankings[j]
+            ) for i in range(nLeagues) for j in range(nPlayers)
+        ],
+        [
+            If(
+                x[j] == i,
+                Then=min_rank[i] <= rankings[j]
+            ) for i in range(nLeagues) for j in range(nPlayers)
+        ],
+        [diff_rank[i] == max_rank[i] - min_rank[i] for i in range(nLeagues)]
+    ],
+
+    # determining which nationality is present in each league
+    [b[i][j] == Exist(x[p] == i for p in range(nPlayers) if nationalities[p] == j) for i in range(nLeagues) for j in range(nNationalities)],
+
+    # determining the number of nationalities in each league
+    [nn[i] == Sum(b[i]) for i in range(nLeagues)],
+
+    # tag(symmetry-breaking)
+    [max_rank[i] <= max_rank[i + 1] for i in range(nLeagues - 1)],
+
+    # bad assumption from the original MZN model
+    [diff_rank[i] > 0 for i in range(nLeagues)]
 )
 
 minimize(
-    # minimizing overall differences between highest and lowest rankings of players in leagues while paying attention to numbers of countries
-    Sum(Maximum(r[i]) - Minimum(r[i]) for i in range(nLeagues)) * 100 - Sum(NValues(c[i]) for i in range(nLeagues))
+    Sum(diff_rank) * 10000 - Sum(nn)
 )
+
+""" Comments
+1) we insert the last group to be coherent with the original model (from the 2012 competition)
+Otherwise, it seems that this group must be discarded to solve the initial problem
+"""
