@@ -1,8 +1,29 @@
 """
-See https://en.wikipedia.org/wiki/Fillomino
+Fillomino is played on a rectangular grid, with some cells containing numbers.
+The goal is to divide the grid into regions called polyominoes (by filling in their boundaries)
+such that each given number n in the grid satisfies the following constraints:
+  - each clue n is part of a polyomino of size n
+  - no two polyominoes of matching size (number of cells) are orthogonally adjacent (share a side)
 
-Example of Execution:
-  python3 Fillomino.py -data=Fillomino-08.json
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2009/2011/2014 Minizinc challenges.
+No Licence was explicitly mentioned (MIT Licence assumed).
+
+## Data Example
+  08.json
+
+## Model
+  constraints: Element, Sum
+
+## Execution
+  python Fillomino.py -data=<datafile.json>
+  python Fillomino.py -data=<datafile.dzn> -parser=Fillomino_ParserZ.py
+
+## Links
+  - https://en.wikipedia.org/wiki/Fillomino
+  - https://www.minizinc.org/challenge2014/results2014.html
+
+## Tags
+  recreational, mzn09, mzn11, mzn14
 """
 
 from pycsp3 import *
@@ -10,70 +31,81 @@ from pycsp3 import *
 puzzle = data
 n, m = len(puzzle), len(puzzle[0])
 
-preassigned = dict()  # we collect pre-assigned starting squares for the first occurrences of specified values
-for i in range(n):
-    for j in range(m):
-        if puzzle[i][j] != 0 and puzzle[i][j] not in preassigned:  # the second part is important
-            preassigned[puzzle[i][j]] = (i + 1, j + 1)  # +1 because of the border
-
-nRegions = len(preassigned) + (n * m - sum(preassigned.keys()))
-nValues = max(*preassigned.keys(), n * m - sum(preassigned.keys())) + 1  # this is the maximal distance + 1
+horizon = min(9, n + m) + 1
 
 
-def tables():
-    t = {(1, ANY, ANY, ANY, ANY, ANY, 0, ANY, ANY, ANY, ANY)}
-    for k in range(nRegions):
-        t.add((gt(1), k, k, ANY, ANY, ANY, 0, 1, ANY, ANY, ANY))
-        t.add((gt(1), k, ANY, k, ANY, ANY, 0, ANY, 1, ANY, ANY))
-        t.add((gt(1), k, ANY, ANY, k, ANY, 0, ANY, ANY, 1, ANY))
-        t.add((gt(1), k, ANY, ANY, ANY, k, 0, ANY, ANY, ANY, 1))
-        for v in range(1, nValues):
-            t.add((gt(1), k, k, ANY, ANY, ANY, v, v - 1, ANY, ANY, ANY))
-            t.add((gt(1), k, ANY, k, ANY, ANY, v, ANY, v - 1, ANY, ANY))
-            t.add((gt(1), k, ANY, ANY, k, ANY, v, ANY, ANY, v - 1, ANY))
-            t.add((gt(1), k, ANY, ANY, ANY, k, v, ANY, ANY, ANY, v - 1))
-    return t, {(v, v, k, k) for v in range(nValues) for k in range(nRegions)} | {(v, ne(v), k, ne(k)) for v in range(nValues) for k in range(nRegions)}
+def join(r, c):
+    return [
+        AllHold(  # TODO AllHold vs conjunction
+            when[r][c] == 1 + when[rr][cc],
+            area[r][c] == area[rr][cc],
+            what[r][c] == what[rr][cc]
+        ) for rr, cc in [(r - 1, c), (r + 1, c), (r, c - 1), (r, c + 1)] if 0 <= rr < n and 0 <= cc < m
+    ]
 
 
-table_connection, table_region = tables()
+same_in_range = [
+    [sum(puzzle[rr][cc] == puzzle[r][c] for rr in range(n) for cc in range(m) if (rr > r or rr == r and cc > c) and abs(rr - r) + abs(cc - c) < puzzle[r][c])
+     for c in range(m)] for r in range(n)
+]
 
-# x[i][j] is the region (number) where the square at row i and column j belongs (borders are inserted for simplicity)
-x = VarArray(size=[n + 2, m + 2], dom=lambda i, j: {-1} if i in {0, n + 1} or j in {0, m + 1} else range(nRegions))
+# size[k] is the size of the area k
+size = VarArray(size=n * m, dom=range(n * m + 1))
 
-# y[i][j] is the value of the square at row i and column j
-y = VarArray(size=[n + 2, m + 2],
-             dom=lambda i, j: {-1} if i in {0, n + 1} or j in {0, m + 1} else {puzzle[i - 1][j - 1]} if puzzle[i - 1][j - 1] != 0 else range(nValues))
+# area[i][j] is the area owning the cell at coordinates (i,j)
+area = VarArray(size=[n, m], dom=range(n * m))
 
-# d[i][j] is the distance of the square at row i and column j wrt the starting square of the (same) region
-d = VarArray(size=[n + 2, m + 2], dom=lambda i, j: {-1} if i in {0, n + 1} or j in {0, m + 1} else range(nValues))
+# when[i][j] is the time at which the cell at coordinates (i,j) is fixed
+when = VarArray(size=[n, m], dom=range(horizon))
 
-# s[k] is the size of the kth region
-s = VarArray(size=nRegions, dom=range(nValues))
+# what[i][j] is the number in cell at coordinates (i,j)
+what = VarArray(size=[n, m], dom=range(1, 10))
 
 satisfy(
-    # setting starting squares of pre-assigned regions
-    [(x[i][j] == k, d[i][j] == 0, s[k] == sz) for k, (sz, (i, j)) in enumerate(preassigned.items())],
+    # setting clues
+    [what[i][j] == puzzle[i][j] for i in range(n) for j in range(m) if puzzle[i][j] > 0],
 
-    # setting values according to the size of the regions
-    [y[i][j] == s[x[i][j]] for i in range(1, n + 1) for j in range(1, m + 1) if puzzle[i - 1][j - 1] == 0 or (i, j) not in preassigned.values()],
-
-    # controlling the size of each region
-    [s[k] == Sum(x[i][j] == k for i in range(1, n + 1) for j in range(1, m + 1)) for k in range(nRegions)],
-
-    # ensuring connection
-    [(y[i][j], x.cross(i, j), d.cross(i, j)) in table_connection for i in range(1, n + 1) for j in range(1, m + 1)],
-
-    # two regions of the same size cannot have neighbouring squares
+    # setting unambiguous roots at time 0
     [
-        [(y[i][j], y[i][j + 1], x[i][j], x[i][j + 1]) in table_region for i in range(1, n + 1) for j in range(1, m)],
-        [(y[i][j], y[i + 1][j], x[i][j], x[i + 1][j]) in table_region for j in range(1, m + 1) for i in range(1, n)]
+        (
+            when[i][j] == 0,
+            area[i][j] == i * m + j
+        ) for i in range(n) for j in range(m) if puzzle[i][j] > 0 and same_in_range[i][j] == 0
+    ],
+
+    # each cell contains the number corresponding to the size of its area
+    [what[i][j] == size[area[i][j]] for i in range(n) for j in range(m)],
+
+    # each area size is the number of cells in that area
+    [size[k] == Sum(area[i][j] == k for i in range(n) for j in range(m)) for k in range(n * m)],
+
+    # each cell is either the root of an area or is an extension of a neighbouring cell
+    [
+        If(
+            when[i][j] == 0,
+            Then=area[i][j] == i * m + j,
+            Else=AtLeastOne(join(i, j))  # TODO test AtLeastOne vs disjunction
+        ) for i in range(n) for j in range(m)
+    ],
+
+    # the distance to the area root of a cell cannot be larger than the size of the area
+    [when[i][j] <= size[area[i][j]] for i in range(n) for j in range(m)],
+
+    # neighbouring areas must have different sizes
+    [
+        [(x != y) == (size[x] != size[y]) for i in range(n) for j in range(1, m) if (x := area[i][j - 1], y := area[i][j])],
+        [(x != y) == (size[x] != size[y]) for i in range(1, n) for j in range(m) if (x := area[i - 1][j], y := area[i][j])]
     ]
 )
 
-""" Comments
-1) cross() is a predefined method on matrices of variables (of type ListVar).
-   Hence, x.cross(i, j) is equivalent to :
-   [t[i][j], t[i][j - 1], t[i][j + 1], t[i - 1][j], t[i + 1][j]] 
-2) gt(1) when building a tuple allows to handle all tuples with a value > 1
-   Later, it will be possible to generate smart tables instead of starred tables 
 """
+1) Note that:
+  [(x != y) == (size[x] != size[y]) for i in range(n) for j in range(1, m) if (x := area[i][j - 1]) and (y := area[i][j])]
+is equivalent to:
+  [(area[i][j - 1] != area[i][j]) == (size[area[i][j - 1]] != size[area[i][j]]) for i in range(n) for j in range(1, m)]
+
+2) Instead of posting the If statement, we could write:
+  [((when[i][j] == 0) & (area[i][j] == i * m + j)) | ((0 < when[i][j]) & disjunction(join(i, j))) for i in range(n) for j in range(m)],
+"""
+
+# java ace Fillomino-5x5-1.xml -s=all -valh=Asgs -p=AP
