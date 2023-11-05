@@ -26,11 +26,11 @@ if __name__ == '__main__':
             outputfile.write(", ".join([f"[{c}]({constraints_path}{c})" for c in constraints]))
             outputfile.write("\n")
         else:
-            if line.startswith("python"):
+            if line.strip().startswith("python"):
                 if not python :
                     outputfile.write("```\n")
                     python = True
-            if not line.startswith("python"):
+            if not line.strip().startswith("python"):
                 if python:
                     outputfile.write("```\n")
                     python = False

@@ -28,9 +28,11 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Accap.py -data=<datafile.json>
   python Accap.py -variant=sum -data=<datafile.json>
   python Accap.py -data=<datafile.dzn> -parser=Accap_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html

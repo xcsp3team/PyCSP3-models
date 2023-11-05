@@ -1,76 +1,69 @@
 """
-This is the [problem 065](https://www.csplib.org/Problems/prob065/) of the CSPLib:
+An OPD (v,b,r) problem is to find a binary matrix of v rows and b columns such that:
+   - each row sums to r,
+   - the dot product between any pair of distinct rows is minimal
 
-An OPD problem ⟨v,b,r⟩ is to find a matrix of v rows and b columns of 0-1 values such that each row sums to r,
-and the maximum, denoted $\lambda$, of the dot products beween all pairs of distinct rows is minimal.
-Equivalently, the objective is to find v subsets of cardinality r drawn from a given set of b elements,
-such that the largest intersection of any two of the v sets has minimal cardinality, denoted $\lambda$.
-
-### Example
-The optimum for \[4,4,4] is 4 and a solution is
-
-```
-    1 1 1 1
-    1 1 1 1
-    1 1 1 1
-    1 1 1 1
-```
-
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015/2017 Minizinc challenges.
+The MZN model was proposed by Pierre Flener and Jean-Noel Monette (loosely based on Ralph Becket's BIBD model)
+No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-A triplet \[v,b,r] as defined above.
+  three integers (v,b,r)
 
-## Model(s)
+## Model
+  constraints: Sum, Lex
 
+## Execution
+  python OPD.py -data=[number,number,number]
 
-There are two variants, one with auxilliary variables, one without.
-
- constraints: Intension, LexIncreasing, Sum
-
-
-## Command Line
-
-python Opd.py
-python Opd.py -data=[4,6,4]
-python Opd.py -data=[4,6,4] -variant=aux
+## Links
+  - https://www.csplib.org/Problems/prob065/
+  - https://link.springer.com/article/10.1007/s10601-006-9014-4
+  - https://www.sciencedirect.com/science/article/abs/pii/S1571065314000596?via%3Dihub
+  - https://link.springer.com/chapter/10.1007/11564751_7
+  - https://www.minizinc.org/challenge2017/results2017.html
 
 ## Tags
- academic csplib
+  academic, csplib, mzn15, mzn17
 """
 
 from pycsp3 import *
 
-v, b, r = data or (4, 4, 4)
+v, b, r = data
 
-# x[i][j] is the value at row i and column j
+
+def lower_bound():
+    rv = r * v
+    ceil_rv = rv // b + (1 if rv % b != 0 else 0)
+    num = (ceil_rv * ceil_rv * (rv % b) + (rv // b) * (rv // b) * (b - (rv % b)) - rv)
+    den = v * (v - 1)
+    return num // den + (1 if num % den != 0 else 0)
+
+
+# x[i][j] is the value in the cell at coordinates (i,j)
 x = VarArray(size=[v, b], dom={0, 1})
 
-satisfy(
-    # each row sums to 'r'
-    Sum(x[i]) == r for i in range(v)
-)
-
-if not variant():
-    minimize(
-        # minimizing the maximum value of dot products between all pairs of distinct rows
-        Maximum(x[i] * x[j] for i, j in combinations(range(v), 2))
-    )
-
-elif variant("aux"):
-    # s[i][j][k] is the scalar variable for the product of x[i][k] and x[j][k]
-    s = VarArray(size=[v, v, b], dom=lambda i, j, k: {0, 1} if i < j else None)
-
-    satisfy(
-        # computing scalar variables
-        s[i][j][k] == x[i][k] * x[j][k] for i, j in combinations(range(v), 2) for k in range(b)
-    )
-
-    minimize(
-        # minimizing the maximum value of dot products between all pairs of distinct rows
-        Maximum(Sum(s[i][j]) for i, j in combinations(range(v), 2))
-    )
+# z is the value of lambda
+z = Var(dom=range(lower_bound(), b + 1))
 
 satisfy(
+    # every row must sum to r
+    [Sum(x[i]) == r for i in range(v)],
+
+    # the dot product of every pair of distinct rows must be at most equal to lambda
+    [x[i] * x[j] <= z for i, j in combinations(v, 2)],
+
     # tag(symmetry-breaking)
     LexIncreasing(x, matrix=True)
 )
+
+minimize(
+    # minimizing the value of lambda
+    z
+)
+
+"""
+1) data used in challenges are:
+  for 2015: (10,350,100) (10,100,30) (10,30,9) (11,22,10) (13,26,6)
+  for 2017: (15,350,100) (13,250,80) (6,50,25) (6,60,30) (8,28,14)
+"""
