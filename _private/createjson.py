@@ -16,7 +16,7 @@ for root, dirs, files in os.walk("."):
             tags = []
             start = False
             for line in lines:
-                if line.startswith("constraints") or line.startswith("Constraints"):
+                if line.strip().startswith("constraints") or line.startswith("Constraints"):
                     constraints = [c.strip() for c in line.strip().split(":")[1].split(',')]
                 if line.startswith("## Tags"):
                     start = True
