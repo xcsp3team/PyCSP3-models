@@ -1,0 +1,50 @@
+"""
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2016/2022 challenges.
+No Licence was explicitly mentioned (MIT Licence assumed).
+
+## Data Example
+  12-2-05.json
+
+## Model
+  constraints: Flow, Sum
+
+## Execution
+  python NFC.py -data=<datafile.json>
+  python NFC.py -data=<datafile.dzn> -parser=NFC_ParserZ.py
+
+## Links
+  - https://www.minizinc.org/challenge2022/results2022.html
+
+## Tags
+  crafted, mzn16, mzn22
+"""
+
+from pycsp3 import *
+
+shift, workers = data
+nPeriods = len(workers)
+
+arcs = [(i, (i + 1) % nPeriods) for i in range(nPeriods)] + [(i, (i + nPeriods - shift) % nPeriods) for i in range(nPeriods)]
+
+# w[i] is the number of workers at the ith period
+w = VarArray(size=nPeriods, dom=range(max(workers) + 1))
+
+f = VarArray(size=nPeriods, dom=range(max(workers) + 1))
+
+# z is the cost of the flow
+z = Var(dom=range(nPeriods * max(workers) + 1))
+
+satisfy(
+    # ensuring a minimum number of workers at each period
+    [w[i] >= workers[i] for i in range(nPeriods)],
+
+    # computing the cost of the flow
+    Flow(w + f, balance=0, arcs=arcs, weights=[1] * nPeriods + [0] * nPeriods) == z,
+
+    [w[i] == Sum(f[(i + k) % nPeriods] for k in range(1, shift + 1)) for i in range(nPeriods)]
+)
+
+minimize(
+    # minimizing the cost of the flow
+    z
+)
