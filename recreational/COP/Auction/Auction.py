@@ -16,7 +16,7 @@ constraints: Count, Sum
   python Auction.py -data=Auction_example.json
 
 ## Tags
- recreactional csplib
+ recreational csplib
 """
 
 from pycsp3 import *

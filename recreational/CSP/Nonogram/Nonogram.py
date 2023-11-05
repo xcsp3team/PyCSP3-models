@@ -18,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://en.wikipedia.org/wiki/Nonogram
 
 ## Tags
-  recreational, mzn11, mzn12, zmn13
+  recreational, mzn11, mzn12, mzn13
 """
 
 from pycsp3 import *

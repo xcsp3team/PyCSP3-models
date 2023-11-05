@@ -11,7 +11,7 @@ Related papers:
 An example is given in the json file.
 
 ## Model
-constraints: Decreasing, Sum LexDecreasing
+constraints: Decreasing, Sum, LexDecreasing
 
 ## Command Line
 python Cutstock.py -data=Cutstock_small.json

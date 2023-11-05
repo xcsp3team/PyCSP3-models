@@ -6,7 +6,7 @@ import os
 models = []
 for root, dirs, files in os.walk("."):
     for file in files:
-        if file.endswith(".py") and "PARSER" not in file.upper() and file not in ["createjson.py", "readme.py", "searchmodel.py"]:
+        if file.endswith(".py") and "PARSER" not in file.upper() and file not in ["createjson.py", "readme.py", "searchmodels.py"]:
             model = os.path.join(root, file)[2:]
             type = "CSP" if "CSP" in model else "COP"
             name = os.path.basename(model).split(".")[0]
