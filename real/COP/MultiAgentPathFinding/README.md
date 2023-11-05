@@ -11,9 +11,11 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python MultiAgenPathFinding.py -data=<datafile.json>
   python MultiAgenPathFinding.py -variant=table -data=<datafile.json>
   python MultiAgentPathFinding.py -data=<datafile.dzn> -parser=MultiAgentPathFinding_ParserZ.py
+```
 
 ## Links
   - https://ieeexplore.ieee.org/document/8372050

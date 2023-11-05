@@ -12,8 +12,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Sugiyama.py -data=<datafile.json>
   python Sugiyama.py -data=<datafile.dzn> -parser=Sugiyama_ParserZ.py
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Layered_graph_drawing

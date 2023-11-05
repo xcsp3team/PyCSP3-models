@@ -18,8 +18,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python ShipScheduling.py -data=<datafile.json>
   python ShipScheduling.py -data=<datafile.dzn> -parser=ShipScheduling_ParserZ.py
+```
 
 ## Links
   - https://ojs.aaai.org/index.php/ICAPS/article/view/13494

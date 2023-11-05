@@ -11,8 +11,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python OpenStacks.py -data=<datafile.json>
   python OpenStacks.py -data=<datafile.dzn> -parser=OpenStacks_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2015/results2015.html

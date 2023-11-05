@@ -1,22 +1,7 @@
 # Problem ProgressiveParty
-
 ## Description
+Problem 013 on CSPLib
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum) [Channel](https://pycsp.org/documentation/constraints/Channel) [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
-
-
-## Command Line
-
-```shell
-python3 ProgressiveParty.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 ProgressiveParty.py -data=ProgressiveParty_example.json

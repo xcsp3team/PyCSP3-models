@@ -10,8 +10,10 @@ The MZN model was proposed by Ties Westendorp, under the MIT Licence.
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python RosterSickness.py -data=<datafile.json>
   python RosterSickness.py -data=<datafile.dzn> -parser=RosterSickness_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html

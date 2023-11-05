@@ -15,8 +15,10 @@ The MZN model was proposed by Mats Carlsson, under the MIT Licence.
   constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Element](http://pycsp.org/documentation/constraints/Element)
 
 ## Execution
+```
   python Blocks.py -data=<datafile.json>
   python Blocks.py -data=<datafile.dzn> -parser=Blocks_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html

@@ -13,7 +13,9 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist, under the MIT Licence.
   constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python ValveNetwork.py -data=6
+```
 
 ## Links
   - https://adventofcode.com/2022

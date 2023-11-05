@@ -18,7 +18,7 @@ This problem has its roots in Bioinformatics and Coding Theory.
 TODO
 A number n, the number of integer.
 ## Model(s)
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing)
+  constraints: [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Command Line
 ```

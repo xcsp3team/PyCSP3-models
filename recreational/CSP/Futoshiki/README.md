@@ -1,22 +1,7 @@
 # Problem Futoshiki
-
 ## Description
+See https://en.wikipedia.org/wiki/Futoshiki
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
-
-
-## Command Line
-
-```shell
-python3 Futoshiki.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 Futoshiki.py -data=Futoshiki_futo3_0.json

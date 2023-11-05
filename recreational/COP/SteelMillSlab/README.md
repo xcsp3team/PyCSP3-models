@@ -1,22 +1,8 @@
 # Problem SteelMillSlab
-
 ## Description
+See Problem 038 on CSPLib
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum) [Decreasing](https://pycsp.org/documentation/constraints/Decreasing)
-
-
-## Command Line
-
-```shell
-python3 SteelMillSlab.py -data=TODO [-solve]
+Examples of Execution:
 ```
-
-
+  python3 SteelMillSlab.py -data=SteelMillSlab_bench_2_0.json
+  python3 SteelMillSlab.py -data=SteelMillSlab_bench_2_0.json -variant=01

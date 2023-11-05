@@ -14,8 +14,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Roster.py -data=<datafile.json>
   python Roster.py -data=<datafile.dzn> -parser=Roster_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2023/results2023.html

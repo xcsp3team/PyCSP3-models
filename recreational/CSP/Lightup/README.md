@@ -1,22 +1,8 @@
 # Problem Lightup
-
 ## Description
+See https://en.wikipedia.org/wiki/Light_Up_(puzzle)
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Count](https://pycsp.org/documentation/constraints/Count)
-
-
-## Command Line
-
-```shell
-python3 Lightup.py -data=TODO [-solve]
+Examples of Execution:
 ```
-
-
+  python3 Lightup.py -data=Lightup_example.json
+  python3 Lightup.py -data=Lightup_example.txt -dataparser=Lightup_Parser.py

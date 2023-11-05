@@ -10,8 +10,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Flow](http://pycsp.org/documentation/constraints/Flow), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python NFC.py -data=<datafile.json>
   python NFC.py -data=<datafile.dzn> -parser=NFC_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html

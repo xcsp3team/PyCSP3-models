@@ -1,22 +1,9 @@
 # Problem Warehouse
-
 ## Description
+See Problem 034 on CSPLib
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Count](https://pycsp.org/documentation/constraints/Count) [Cardinality](https://pycsp.org/documentation/constraints/Cardinality) [BinPacking](https://pycsp.org/documentation/constraints/BinPacking) [NValues](https://pycsp.org/documentation/constraints/NValues) [Sum](https://pycsp.org/documentation/constraints/Sum)
-
-
-## Command Line
-
-```shell
-python3 Warehouse.py -data=TODO [-solve]
+Examples of Execution:
 ```
-
-
+  python3 Warehouse.py -data=Warehouse_example.json
+  python3 Warehouse.py -data=Warehouse_example.txt -dataparser=Warehouse_Parser.py
+  python3 Warehouse.py -data=Warehouse_example.txt -dataparser=Warehouse_Parser.py -variant=compact

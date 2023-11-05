@@ -10,7 +10,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [](http://pycsp.org/documentation/constraints/)
 
 ## Execution
+```
   python SlowConvergence.py -data=<integer>
+```
 
 ## Links
   - https://www.minizinc.org/challenge2008/results2008.html

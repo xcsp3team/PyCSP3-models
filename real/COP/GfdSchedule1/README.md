@@ -19,8 +19,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [NValues](http://pycsp.org/documentation/constraints/NValues), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python GfdSchedule1.py -data=<datafile.json>
   python GfdSchedule1.py -data=<datafile.dzn> -parser=GfdSchedule_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2015/results2015.html

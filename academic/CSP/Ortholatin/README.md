@@ -30,6 +30,8 @@ A number n, the size of the square.
 
 
 ```shell
+```
   python Ortholatin.py
   python Ortholatin.py -data=7
+```
  ```

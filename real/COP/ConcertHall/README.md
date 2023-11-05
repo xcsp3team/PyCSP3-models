@@ -15,8 +15,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python ConcertHall.py -data=<datafile.json>
   python ConcertHall.py -data=<datafile.dzn> -parser=ConcertHall_ParserZ.py
+```
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-006-7095-8

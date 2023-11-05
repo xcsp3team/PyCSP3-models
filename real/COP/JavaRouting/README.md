@@ -11,8 +11,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element)
 
 ## Execution
+```
   python JavaRouting.py -data=<datafile.json>
   python JavaRouting.py -data=<datafile.dzn> -parser=JavaRouting_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2021/results2021.html

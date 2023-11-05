@@ -46,7 +46,7 @@ There are two variants:
 
 You can also find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/Bibd/).
 
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing)
+  constraints: [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 
 

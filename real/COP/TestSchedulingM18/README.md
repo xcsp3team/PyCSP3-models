@@ -22,8 +22,10 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python TestSchedulingM18.py -data=<datafile.json>
   python TestSchedulingM18.py -data=<datafile.dzn> -parser=TestSchedulingM18_ParserZ.py
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob073/

@@ -13,8 +13,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element)
 
 ## Execution
+```
   python RelToOntology.py -data=<datafile.json>
   python RelToOntology.py -data=<datafile.dzn> -parser=RelToOntology_ParserZ.py
+```
 
 ## Links
   - https://www.ijcai.org/proceedings/2018/0178.pdf

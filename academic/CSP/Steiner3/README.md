@@ -16,7 +16,7 @@ A number n, the number of integers.
 
 ## Model(s)
 
-  constraints: [Increasing](http://pycsp.org/documentation/constraints/Increasing), [Extension](http://pycsp.org/documentation/constraints/Extension)
+  constraints: [Extension](http://pycsp.org/documentation/constraints/Extension), [Increasing](http://pycsp.org/documentation/constraints/Increasing)
 
 ## Command Line
 ```

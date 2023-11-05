@@ -16,7 +16,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative)
 
 ## Execution
+```
   python Ghoulomb.py -data=[number,number,number]
+```
 
 ## Links
   - https://www.minizinc.org/challenge2013/results2013.html

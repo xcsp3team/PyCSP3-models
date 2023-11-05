@@ -23,8 +23,10 @@ A couple [k,p] where k is the size of each clique and p is the size of each path
 
 
 ```shell
+```
   python3 GracefulGraph.py
   python3 GracefulGraph.py -data=[3,5]
+```
  ```
 ## Tags
  academic csplib

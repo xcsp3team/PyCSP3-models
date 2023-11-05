@@ -13,8 +13,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python WwtppReal.py -data=<datafile.json>
   python WwtppReal.py -data=<datafile.dzn> -parser=WwtppReal_ParserZ.py
+```
 
 ## Links
   - https://arxiv.org/abs/1609.05367

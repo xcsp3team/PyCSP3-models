@@ -1,22 +1,8 @@
 # Problem Vrp
-
 ## Description
+See https://en.wikipedia.org/wiki/Vehicle_routing_problem
+This model is similar to the one proposed by Jakob Puchinger for the 2009 MiniZinc competition
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Count](https://pycsp.org/documentation/constraints/Count)
-
-
-## Command Line
-
-```shell
-python3 Vrp.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 vrp.py -data=Vrp_P-n16-k8.json

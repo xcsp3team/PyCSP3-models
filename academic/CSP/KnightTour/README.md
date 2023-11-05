@@ -16,13 +16,15 @@ A number n, the size of the board.
 ## Model(s)
 There are three variant, one with only constraint in intension, two with constraint in extension.
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Intension](http://pycsp.org/documentation/constraints/Intension), [Extension](http://pycsp.org/documentation/constraints/Extension)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension)
 
 ## Command Line
+```
   python KnightTour.py
   pythongithub KnightTour.py -data=16
   python KnightTour.py -data=16 -variant=table-2
   python KnightTour.py -data=16 -variant=table-3
+```
 
 ## Tags
  academic

@@ -13,7 +13,9 @@ The model was created by Hendrik 'Henk' Bierlee, with a licence that seems to be
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Lex](http://pycsp.org/documentation/constraints/Lex), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Regular](http://pycsp.org/documentation/constraints/Regular)
 
 ## Execution
+```
   python PeacableQueens.py -data=[integer]
+```
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-540-24664-0_19

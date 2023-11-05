@@ -7,11 +7,13 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   15-4-3.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum)
+  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python League13.py -data=<datafile.json>
   python League13.py -data=<datafile.dzn> -parser=League_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2013/results2013.html

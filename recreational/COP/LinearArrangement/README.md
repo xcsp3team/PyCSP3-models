@@ -1,22 +1,8 @@
 # Problem LinearArrangement
-
 ## Description
+For a given (undirected) graph G, the problem consists in arranging the nodes of the graph in a line
+in such a way to minimize the sum of distances between adjacent nodes (in G).
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum) [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
-
-
-## Command Line
-
-```shell
-python3 LinearArrangement.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 LinearArrangement.py -data=MinLA01.json

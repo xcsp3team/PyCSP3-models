@@ -7,11 +7,13 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   02.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Minimum](http://pycsp.org/documentation/constraints/Minimum)
+  constraints: [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Fastfood.py -data=<datafile.json>
   python Fastfood.py -data=<datafile.dzn> -parser=Fastfood_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2012/results2012.html

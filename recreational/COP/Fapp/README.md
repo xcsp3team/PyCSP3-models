@@ -1,22 +1,8 @@
 # Problem Fapp
-
 ## Description
+See Challenge ROADEF 2001 (FAPP: Problème d'affectation de fréquences avec polarization)
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum)
-
-
-## Command Line
-
-```shell
-python3 Fapp.py -data=TODO [-solve]
+Examples of Execution:
 ```
-
-
+  python3 Fapp.py -data=Fapp_ex2.json
+  python3 Fapp.py -data=Fapp_ex2.json -variant=short

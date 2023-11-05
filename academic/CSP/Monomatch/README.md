@@ -20,7 +20,9 @@ The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Lice
   Constraints: Count, Lex, NValues, Sum
 
 ## Execution
+```
   python Monomatch.py -data=[number,number]
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Dobble

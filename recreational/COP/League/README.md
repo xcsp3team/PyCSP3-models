@@ -14,8 +14,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python League.py -data=<datafile.json>
   python League.py -data=<datafile.dzn> -parser=League_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2012/results2012.html

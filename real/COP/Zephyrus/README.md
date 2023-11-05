@@ -14,8 +14,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Zephyrus.py -data=<datafile.json>
   python Zephyrus.py -data=<datafile.dzn> -parser=Zephyrus_ParserZ.py
+```
 
 ## Links
   - https://bitbucket.org/jacopomauro/zephyrus2/src/master/

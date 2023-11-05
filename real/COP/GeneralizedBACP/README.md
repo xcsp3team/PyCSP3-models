@@ -13,8 +13,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python GeneralizedBACP.py -data=<datafile.json>
   python GeneralizedBACP.py -data=<datafile.dzn> -parser=GeneralizedBACP_ParserZ.py
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob064/

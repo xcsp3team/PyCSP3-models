@@ -11,8 +11,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python ProteinDesign.py -data=<datafile.json>
   python ProteinDesign.py -data=<datafile.dzn> -parser=ProteinDesign_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2018/results2018.html

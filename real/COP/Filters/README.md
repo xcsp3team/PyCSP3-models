@@ -10,11 +10,13 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   ar2-3.json
 
 ## Model
-  constraints: [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Maximum](http://pycsp.org/documentation/constraints/Maximum)
+  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
 
 ## Execution
+```
   python Filters.py -data=<datafile.json>
   python Filters.py -data=<datafile.dzn> -parser=Filters_ParserZ.py
+```
 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S1383762103000754

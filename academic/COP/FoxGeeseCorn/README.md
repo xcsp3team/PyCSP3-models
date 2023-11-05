@@ -24,7 +24,9 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python FoxGeeseCorn.py -data=[6,7,8,4,15,8,12,9]
+```
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-018-9297-2

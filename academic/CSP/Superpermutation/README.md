@@ -20,7 +20,7 @@ A number n, the number of integers.
 
 There are two variants of this problem, one with table and cardinality constraints, the other ones with element and intension constraints.
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension), [Element](http://pycsp.org/documentation/constraints/Element)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension)
 
 ## Command Line
 ```

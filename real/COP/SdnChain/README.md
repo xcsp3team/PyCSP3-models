@@ -22,8 +22,10 @@ TODO : problem with an instance (bound)
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python SdnChain.py -data=<datafile.json>
   python SdnChain.py -data=<datafile.dzn> -parser=SdnChain_ParserZ.py
+```
 
 ## Links
   - https://inria.hal.science/hal-02395208

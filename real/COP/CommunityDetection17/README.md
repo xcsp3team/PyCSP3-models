@@ -13,8 +13,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python CommunityDetection17.py -data=<datafile.json>
   python CommunityDetection17.py -data=<datafile.dzn> -parser=CommunityDetection17_ParserZ.py
+```
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-66158-2_31

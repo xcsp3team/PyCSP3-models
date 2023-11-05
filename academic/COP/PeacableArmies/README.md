@@ -30,7 +30,7 @@ A number n, the size of the chessboard.
 
 There are two variants with two different models.
 
-  constraints: [Intension](http://pycsp.org/documentation/constraints/Intension), [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Intension](http://pycsp.org/documentation/constraints/Intension), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 
 ## Command Line

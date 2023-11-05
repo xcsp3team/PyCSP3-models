@@ -10,8 +10,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python HRC.py -data=<datafile.json>
   python HRC.py -data=<datafile.dzn> -parser=HRC_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2019/results2019.html

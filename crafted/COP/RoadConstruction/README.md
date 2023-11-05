@@ -13,8 +13,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python RoadConstruction.py -data=<datafile.json>
   python RoadConstruction.py -data=<datafile.dzn> -parser=RoadConstruction_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2014/results2014.html

@@ -1,22 +1,7 @@
 # Problem SchedulingJS
-
 ## Description
+See https://en.wikipedia.org/wiki/Job_shop_scheduling
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Maximum](https://pycsp.org/documentation/constraints/Maximum) [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
-
-
-## Command Line
-
-```shell
-python3 SchedulingJS.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 SchedulingJS.py -data=Sadeh-js-e0ddr1-0.json

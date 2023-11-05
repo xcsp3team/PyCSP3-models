@@ -10,10 +10,12 @@ this model uses different planning horizons for adjusting the hardness of the pr
   an integer (as the network is included in the model below)
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension), [Element](http://pycsp.org/documentation/constraints/Element)
+  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python ValveNetwork.py -data=6
+```
 
 ## Links
   - https://adventofcode.com/2022

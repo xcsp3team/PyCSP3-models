@@ -17,8 +17,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element), [Regular](http://pycsp.org/documentation/constraints/Regular), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python TTPPV.py -data=<datafile.json>
   python TTPPV.py -data=<datafile.dzn> -parser=TTPPV_ParserZ.py
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob068/models/

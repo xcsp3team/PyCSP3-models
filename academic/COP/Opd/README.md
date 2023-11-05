@@ -1,41 +1,30 @@
 # Problem Opd
 ## Description
-This is the [problem 065](https://www.csplib.org/Problems/prob065/) of the CSPLib:
+An OPD (v,b,r) problem is to find a binary matrix of v rows and b columns such that:
+   - each row sums to r,
+   - the dot product between any pair of distinct rows is minimal
 
-An OPD problem ⟨v,b,r⟩ is to find a matrix of v rows and b columns of 0-1 values such that each row sums to r,
-and the maximum, denoted $\lambda$, of the dot products beween all pairs of distinct rows is minimal.
-Equivalently, the objective is to find v subsets of cardinality r drawn from a given set of b elements,
-such that the largest intersection of any two of the v sets has minimal cardinality, denoted $\lambda$.
-
-### Example
-The optimum for \[4,4,4] is 4 and a solution is
-
-```
-    1 1 1 1
-    1 1 1 1
-    1 1 1 1
-    1 1 1 1
-```
-
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015/2017 Minizinc challenges.
+The MZN model was proposed by Pierre Flener and Jean-Noel Monette (loosely based on Ralph Becket's BIBD model)
+No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-A triplet \[v,b,r] as defined above.
+  three integers (v,b,r)
 
-## Model(s)
+## Model
+  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
-
-There are two variants, one with auxilliary variables, one without.
-
-  constraints: [Intension](http://pycsp.org/documentation/constraints/Intension), [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing), [Sum](http://pycsp.org/documentation/constraints/Sum)
-
-
-## Command Line
-
+## Execution
 ```
-python Opd.py
-python Opd.py -data=[4,6,4]
-python Opd.py -data=[4,6,4] -variant=aux
+  python OPD.py -data=[number,number,number]
 ```
+
+## Links
+  - https://www.csplib.org/Problems/prob065/
+  - https://link.springer.com/article/10.1007/s10601-006-9014-4
+  - https://www.sciencedirect.com/science/article/abs/pii/S1571065314000596?via%3Dihub
+  - https://link.springer.com/chapter/10.1007/11564751_7
+  - https://www.minizinc.org/challenge2017/results2017.html
 
 ## Tags
- academic csplib
+  academic, csplib, mzn15, mzn17

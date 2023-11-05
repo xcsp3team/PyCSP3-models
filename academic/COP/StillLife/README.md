@@ -28,7 +28,7 @@ A tuple \[n,m], where n is the number of rows and m the number of columns.
 
 There are two variants, a classical one and a "wastage" one.
 
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension)
+  constraints: [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 
 ## Command Line

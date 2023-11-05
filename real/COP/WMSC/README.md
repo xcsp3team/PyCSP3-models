@@ -14,8 +14,10 @@ MIT License.
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python WMSC.py -data=b0_c115_i1_base_full_e3_sr702_cd86.json
   python WMSC.py -data=b0_c115_i1_base_full_e3_sr702_cd86.dzn -dataparser=WMSC_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2021/results2021.html

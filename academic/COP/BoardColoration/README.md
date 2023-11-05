@@ -25,7 +25,7 @@ There are 3 variants according to  the way optimization must be conducted (calle
 
 You can also find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/COP/BoardColoration/).
 
-  constraints: [NValues](http://pycsp.org/documentation/constraints/NValues), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing)
+  constraints: [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NValues](http://pycsp.org/documentation/constraints/NValues)
 
 ## Command Line
 ```

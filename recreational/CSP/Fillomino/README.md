@@ -16,8 +16,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Fillomino.py -data=<datafile.json>
   python Fillomino.py -data=<datafile.dzn> -parser=Fillomino_ParserZ.py
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Fillomino

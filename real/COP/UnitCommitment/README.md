@@ -10,8 +10,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python UnitCommitment.py -data=sm-10-13-00.json
   python UnitCommitment.py -data=sm-10-13-00.dzn -dataparser=UnitCommitment_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2023/results2023.html

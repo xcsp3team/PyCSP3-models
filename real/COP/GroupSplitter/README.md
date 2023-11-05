@@ -15,8 +15,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python GroupSplitter.py -data=<datafile.json>
   python GroupSplitter.py -data=<datafile.dzn> -parser=GroupSplitter_ParserZ.py
+```
 
 ## Links
   - http://amsdottorato.unibo.it/9068/1/main.pdf

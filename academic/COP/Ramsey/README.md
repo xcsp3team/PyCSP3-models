@@ -12,7 +12,7 @@ A number n, the number of nodes of the graph.
 
 ## Model(s)
 
-  constraints: [NValues](http://pycsp.org/documentation/constraints/NValues), [Maximum](http://pycsp.org/documentation/constraints/Maximum)
+  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NValues](http://pycsp.org/documentation/constraints/NValues)
 
 
 ## Command Line

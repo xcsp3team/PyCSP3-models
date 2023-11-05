@@ -17,7 +17,7 @@ You can  find a step-by-step modeling process in this [Jupyter notebook](https:/
 
 There are 2 variants of this problem one with constraints sum the other with constraints in intension.
 
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Intension](http://pycsp.org/documentation/constraints/Intension), [Sum](http://pycsp.org/documentation/constraints/Sum), [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing)
+  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Intension](http://pycsp.org/documentation/constraints/Intension), [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Command Line
 ```

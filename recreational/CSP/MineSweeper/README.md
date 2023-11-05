@@ -1,22 +1,8 @@
 # Problem MineSweeper
-
 ## Description
+See https://en.wikipedia.org/wiki/Minesweeper_(video_game)
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum)
-
-
-## Command Line
-
-```shell
-python3 MineSweeper.py -data=TODO [-solve]
+Examples of Execution:
 ```
-
-
+  python3 MineSweeper.py
+  python3 MineSweeper.py -data=MineSweeper-example.json

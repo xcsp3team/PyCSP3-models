@@ -16,8 +16,10 @@ The Licence seems to be like a MIT Licence.
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative)
 
 ## Execution
+```
   python RCPSP_MAX.py -data=<datafile.json>
   python RCPSP_MAX.py -data=<datafile.dzn> -parser=RCPSP_MAX_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2010/results2010.html

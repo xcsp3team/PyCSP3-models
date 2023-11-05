@@ -18,8 +18,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python BACP.py -data=<datafile.json>
   python BACP.py -data=<datafile.dzn> -parser=BACP_ParserZ.py
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob030/

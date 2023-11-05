@@ -24,8 +24,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python LinearToProgram.py -data=<datafile.json>
   python LinearToProgram.py -data=<datafile.dzn> -parser=LinearToProgram_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2013/results2013.html

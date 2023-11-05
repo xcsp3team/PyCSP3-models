@@ -21,7 +21,7 @@ A number n, the size of the chessboard.
 
 There are three variants, one with table constraints, one with auxilliary variables and a hybrid one.
 
-  constraints: [Intension](http://pycsp.org/documentation/constraints/Intension), [Extension](http://pycsp.org/documentation/constraints/Extension), [Sum](http://pycsp.org/documentation/constraints/Sum), [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 
 ## Command Line

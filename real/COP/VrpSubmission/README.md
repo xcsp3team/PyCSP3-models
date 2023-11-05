@@ -13,7 +13,9 @@ based on Andrea Rendl's work from 2015 and the Routing model used by the LNS sol
   constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python VrpSubmission.py -data=file.json
+```
 
 ## Links
   - https://www.minizinc.org/challenge2021/results2021.html

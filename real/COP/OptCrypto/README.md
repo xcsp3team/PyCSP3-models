@@ -10,7 +10,9 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python OptCrypto.py -data=[integer]
+```
 
 ## Links
   - https://www.minizinc.org/challenge2021/results2021.html

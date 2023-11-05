@@ -33,7 +33,7 @@ There are 3 variants:
  - one with auxilliary variables
  - and one with  intension constraints.
 
-  constraints: [Intension](http://pycsp.org/documentation/constraints/Intension), [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Intension](http://pycsp.org/documentation/constraints/Intension)
 
 
 ## Command Line

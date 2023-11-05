@@ -1,22 +1,8 @@
 # Problem Kakuro
-
 ## Description
+See https://en.wikipedia.org/wiki/Kakuro
+See "Kakuro as a Constraint Problem" by Helmut Simonis
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent) [Sum](https://pycsp.org/documentation/constraints/Sum)
-
-
-## Command Line
-
-```shell
-python3 Kakuro.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 Kakuro.py -data=Kakuro_easy-000.json

@@ -15,8 +15,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python RCPSPWetDiverse.py -data=<datafile.json>
   python RCPSPWetDiverse.py -data=<datafile.dzn> -parser=RCPSPWetDiverse_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2019/results2019.html

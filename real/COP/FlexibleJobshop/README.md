@@ -12,11 +12,13 @@ The MZN model was proposed by Andreas Schutt (Copyright 2013 National ICT Austra
   easy01.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Count](http://pycsp.org/documentation/constraints/Count)
+  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python FlexibleJobshop.py -data=<datafile.json>
   python FlexibleJobshop.py -data=<datafile.dzn> -parser=FlexibleJobshop_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2013/results2013.html

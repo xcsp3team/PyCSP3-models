@@ -21,8 +21,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python Celar.py -data=<datafile.json>
   python Celar.py -data=<datafile.dzn> -parser=Celar_ParserZ.py
+```
 
 ## Links
   - https://link.springer.com/article/10.1023/A:1009812409930

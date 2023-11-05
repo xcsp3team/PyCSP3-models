@@ -1,22 +1,7 @@
 # Problem StripPacking
-
 ## Description
+See https://en.wikipedia.org/wiki/Strip_packing_problem
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
-
-
-## Command Line
-
-```shell
-python3 StripPacking.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 StripPacking.py -data=StripPacking_C1P1.json

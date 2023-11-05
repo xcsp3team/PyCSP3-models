@@ -20,8 +20,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Channel](http://pycsp.org/documentation/constraints/Channel), [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Regular](http://pycsp.org/documentation/constraints/Regular), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python Elitserien.py -data=<datafile.json>
   python Elitserien.py -data=<datafile.dzn> -parser=Elitserien_ParserZ.py
+```
 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S0377221716309584?via%3Dihub

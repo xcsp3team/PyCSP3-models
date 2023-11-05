@@ -18,8 +18,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python OncallRostering.py -data=<datafile.json>
   python OncallRostering.py -data=<datafile.dzn> -parser=OncallRostering_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2018/results2018.html

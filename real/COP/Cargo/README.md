@@ -17,8 +17,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Element](http://pycsp.org/documentation/constraints/Element), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Cargo.py -data=<datafile.json>
   python Cargo.py -data=<datafile.dzn> -parser=Cargo_ParserZ.py
+```
 
 ## Links
   - https://optimization-online.org/wp-content/uploads/2013/02/3755.pdf

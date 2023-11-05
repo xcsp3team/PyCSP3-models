@@ -1,22 +1,7 @@
 # Problem SchedulingFS
-
 ## Description
+See https://en.wikipedia.org/wiki/Flow_shop_scheduling
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Maximum](https://pycsp.org/documentation/constraints/Maximum) [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
-
-
-## Command Line
-
-```shell
-python3 SchedulingFS.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 SchedulingFS.py -data=SchedulingFS-Taillard-os-04-04-0.json

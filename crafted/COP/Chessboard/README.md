@@ -12,7 +12,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Chessboard.py -data=<datafile.json>
+```
 
 ## Links
   - https://www.minizinc.org/challenge2023/results2023.html

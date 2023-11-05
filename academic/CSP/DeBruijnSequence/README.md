@@ -21,7 +21,7 @@ a couple \[n,|a|], the value of n and the size of the alphabet.
 
 ## Model(s)
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum), [Intension](http://pycsp.org/documentation/constraints/Intension), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Minimum](http://pycsp.org/documentation/constraints/Minimum)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Intension](http://pycsp.org/documentation/constraints/Intension), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Command Line
 

@@ -10,8 +10,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python SkillAllocation.py -data=<datafile.json>
   python SkillAllocation.py -data=<datafile.dzn> -parser=SkillAllocation_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2020/results2020.html

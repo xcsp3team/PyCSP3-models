@@ -10,7 +10,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python StochasticFJSP.py -data=<datafile.json>
+```
 
 ## Links
   - https://www.minizinc.org/challenge2014/results2014.html

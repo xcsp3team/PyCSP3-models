@@ -14,7 +14,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python StillLifeWastage.py -data=[number]
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Still_life_(cellular_automaton)

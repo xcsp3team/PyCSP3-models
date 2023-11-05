@@ -1,22 +1,8 @@
 # Problem TravelingTournamentWithPredefinedVenues
-
 ## Description
+ Problem 068 on CSPLib
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent) [Sum](https://pycsp.org/documentation/constraints/Sum)
-
-
-## Command Line
-
-```shell
-python3 TravelingTournamentWithPredefinedVenues.py -data=TODO [-solve]
+Examples of Execution:
 ```
-
-
+  python3 TravelingTournamentWithPredefinedVenues.py -data=Ttppv_circ8bbal.json -variant=a2
+  python3 TravelingTournamentWithPredefinedVenues.py -data=Ttppv_circ8bbal.json -variant=a3

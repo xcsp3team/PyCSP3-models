@@ -14,8 +14,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Count](http://pycsp.org/documentation/constraints/Count), [Flow](http://pycsp.org/documentation/constraints/Flow), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Mapping.py -data=<datafile.json>
   python Mapping.py -data=<datafile.dzn> -parser=Mapping_ParserZ.py
+```
 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S0045790614002286

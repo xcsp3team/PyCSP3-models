@@ -1,22 +1,7 @@
 # Problem LatinSquare2
-
 ## Description
+See https://en.wikipedia.org/wiki/Latin_square
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
-
-
-## Command Line
-
-```shell
-python3 LatinSquare2.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 LatinSquare2.py -data=LatinSquare2_7-2-0.json

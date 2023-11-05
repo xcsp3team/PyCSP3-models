@@ -1,22 +1,11 @@
 # Problem Sudoku
-
 ## Description
+See https://en.wikipedia.org/wiki/Sudoku
+See, e.g., "Sudoku as a Constraint Problem" by Helmut Simonis
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum) [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
-
-
-## Command Line
-
-```shell
-python3 Sudoku.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 Sudoku.py -data=[9,None]
+  python3 Sudoku.py -data=Sudoku_s13a.json
+  python3 Sudoku.py -data=Sudoku_s13a.json -variant=table
+  python3 Sudoku.py -data=Sudoku_example.txt -dataparser=Sudoku_Parser.py

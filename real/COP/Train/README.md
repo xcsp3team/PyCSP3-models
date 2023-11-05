@@ -18,8 +18,10 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Train.py -data=<datafile.json>
   python Train.py -data=<datafile.dzn> -parser=Train_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2018/results2018.html

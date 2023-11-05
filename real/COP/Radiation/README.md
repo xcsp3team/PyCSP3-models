@@ -15,8 +15,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Radiation.py -data=<datafile.json>
   python Radiation.py -data=<datafile.dzn> -parser=Radiation_ParserZ.py
+```
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-010-9104-1

@@ -21,9 +21,11 @@ There are 3 variants of this problem, one with AllDifferent constraints, the oth
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [NValues](http://pycsp.org/documentation/constraints/NValues)
 
 ## Command Line
+```
   python SchurrLemma.py
   python SchurrLemma.py -data=[10,10]
   python SchurrLemma.py -data=[10,10] -variant=mod
+```
 
 ## Tags
  academic csplib

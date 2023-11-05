@@ -13,8 +13,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element)
 
 ## Execution
+```
   python Amaze2.py -data=<datafile.json>
   python Amaze2.py -data=<datafile.dzn> -parser=Amaze_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2012/results2012.html

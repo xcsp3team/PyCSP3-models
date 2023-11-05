@@ -10,7 +10,9 @@ The MZN model was proposed by Kelvin Davis, under the MIT Licence.
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element)
 
 ## Execution
+```
   python ArithmeticTarget.py -data=<datafile.json>
+```
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html

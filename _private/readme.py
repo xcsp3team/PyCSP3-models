@@ -22,7 +22,7 @@ if __name__ == '__main__':
         if "constraints:" in line:
             outputfile.write("  constraints: ")
             constraints = line.strip().split(":")[1].split(",")
-            constraints = [c.strip() for c in constraints]
+            constraints = sorted([c.strip() for c in constraints])
             outputfile.write(", ".join([f"[{c}]({constraints_path}{c})" for c in constraints]))
             outputfile.write("\n")
         else:

@@ -16,7 +16,9 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python CommunityDetection.py -data=<datafile.json>
+```
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-66158-2_31

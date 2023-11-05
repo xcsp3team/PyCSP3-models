@@ -18,8 +18,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python MSPSP.py -data=<datafile.json>
   python MSPSP.py -data=<datafile.dzn> -parser=MSPSP_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2012/results2012.html

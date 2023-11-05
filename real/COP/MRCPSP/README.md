@@ -13,8 +13,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python MRCPSP.py -data=<datafile.json>
   python MRCPSP.py -data=<datafile.dzn> -parser=MRCPSP_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2023/results2023.html

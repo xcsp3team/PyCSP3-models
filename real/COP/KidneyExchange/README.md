@@ -18,9 +18,11 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python KidneyExchange.py -data=<datafile.json>
   python KidneyExchange.py -data=<datafile.dzn> -parser=KidneyExchange_ParserZ.py
   python KidneyExchange.py -data=<datafile.txt> -parser=KidneyExchange_ParserW.py
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Optimal_kidney_exchange

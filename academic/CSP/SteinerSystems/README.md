@@ -12,7 +12,9 @@ In an alternate notation for block designs, an S(t,k,n) would be a t-(n,k,1) des
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python SteinerSystems -data=[number,number,number]
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Steiner_system

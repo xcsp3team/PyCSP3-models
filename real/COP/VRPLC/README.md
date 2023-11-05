@@ -14,8 +14,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python VRPLC.py -data=<datafile.json>
   python VRPC.py -data=<datafile.dzn> -parser=VRPLC_ParserZ.py
+```
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-016-9241-2

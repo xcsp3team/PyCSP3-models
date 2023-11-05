@@ -14,8 +14,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum)
 
 ## Execution
+```
   python LargeCumulative.py -data=<datafile.json>
   python LargeCumulative.py -data=<datafile.dzn> -parser=LargeCumulative_ParserZ.py
+```
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-23219-5_11

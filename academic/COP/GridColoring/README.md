@@ -10,7 +10,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Intension](http://pycsp.org/documentation/constraints/Intension)
 
 ## Execution
+```
   python GridColoring.py -data=[number,number]
+```
 
 ## Links
   - https://www.minizinc.org/challenge2015/results2015.html

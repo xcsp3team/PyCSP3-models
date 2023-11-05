@@ -10,7 +10,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python MQueens.py -data=[number]
+```
 
 ## Links
   - https://www.minizinc.org/challenge2014/results2014.html

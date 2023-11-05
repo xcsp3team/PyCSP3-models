@@ -16,11 +16,13 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   n025f5d20m10k3.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python GfdSchedule2.py -data=<datafile.json>
   python GfdSchedule2.py -data=<datafile.dzn> -parser=GfdSchedule_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html

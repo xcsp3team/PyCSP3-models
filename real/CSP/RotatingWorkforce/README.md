@@ -13,8 +13,10 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist, under the MIT Licence.
   constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Regular](http://pycsp.org/documentation/constraints/Regular), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python RotatingWorkforce.py -data=<datafile.json>
   python RotatingWorkforce.py -data=<datafile.dzn> -dataparser=RotatingWorkforce_ParserZ.py
+```
 
 ## Links
   - https://www.semanticscholar.org/paper/2-The-Rotating-Workforce-Scheduling-Problem-Musliu-Schutt/4048daa6fe7917009174dab7f3fe84e84fdc36dd

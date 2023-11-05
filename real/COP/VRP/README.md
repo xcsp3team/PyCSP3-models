@@ -11,8 +11,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python VRP.py -data=<datafile.json>
   python VRP.py -data=<datafile.dzn> -parser=VRP_ParserZ.py
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Vehicle_routing_problem

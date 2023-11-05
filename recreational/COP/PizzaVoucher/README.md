@@ -1,22 +1,7 @@
 # Problem PizzaVoucher
-
 ## Description
+See Problem freepizza in MiniZinc
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum) [Count](https://pycsp.org/documentation/constraints/Count)
-
-
-## Command Line
-
-```shell
-python3 PizzaVoucher.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 PizzaVoucher.py -data=PizzaVoucher_pizza6.json

@@ -18,8 +18,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python ParityLearning.py -data=<datafile.json>
   python ParityLearning.py -data=<datafile.dzn> -parser=ParityLearning_ParserZ.py
+```
 
 ## Links
   - https://www.cis.upenn.edu/~mkearns/papers/CrawfordKearnsSchapire.pdf

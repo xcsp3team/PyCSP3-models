@@ -9,11 +9,13 @@ This is the [problem 023](https://www.csplib.org/Problems/prob023/) of the CSP l
 A couple \[k,n\], TODO
 
 ## Model(s)
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum), [Intension](http://pycsp.org/documentation/constraints/Intension)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Intension](http://pycsp.org/documentation/constraints/Intension), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Command Line
+```
   python MagicHexagon.py
   python MagicHexagon.py -data=[4,10]
+```
 
 ## Tags
  academic csplib

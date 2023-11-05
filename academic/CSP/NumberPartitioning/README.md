@@ -18,8 +18,10 @@ A number n.
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Increasing](http://pycsp.org/documentation/constraints/Increasing), [Intension](http://pycsp.org/documentation/constraints/Intension), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Command Line
+```
   python NumberPartitioning.py
   python NumberPartitioning.py -data=10
+```
 
 ## Tags
  academic csplib

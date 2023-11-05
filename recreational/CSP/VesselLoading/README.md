@@ -1,22 +1,7 @@
 # Problem VesselLoading
-
 ## Description
+See Problem 008 on CSPLib
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
-
-
-## Command Line
-
-```shell
-python3 VesselLoading.py -data=TODO [-solve]
+Examples of Execution:
 ```
-
-
+  python3 VesselLoading.py -data=VesselLoading-inst2.json

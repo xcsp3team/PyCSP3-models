@@ -15,7 +15,9 @@ The MZN model was proposed by Hendrik 'Henk' Bierlee, under the MIT Licence.
   constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Lex](http://pycsp.org/documentation/constraints/Lex), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Regular](http://pycsp.org/documentation/constraints/Regular)
 
 ## Execution
+```
   python GeneralizedPeacableQueens.py -data=[number,number]
+```
 
 ## Links
   - https://oeis.org/A250000

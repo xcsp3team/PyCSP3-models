@@ -14,7 +14,9 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist (Licence at https://githu
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Channel](http://pycsp.org/documentation/constraints/Channel), [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Perfect1Factorization.py -data=[number]
+```
 
 ## Links
   - https://www.minizinc.org/challenge2021/results2021.html

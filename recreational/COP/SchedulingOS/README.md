@@ -1,22 +1,7 @@
 # Problem SchedulingOS
-
 ## Description
+See https://en.wikipedia.org/wiki/Open-shop_scheduling
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap) [Maximum](https://pycsp.org/documentation/constraints/Maximum) [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
-
-
-## Command Line
-
-```shell
-python3 SchedulingOS.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 SchedulingOS.py -data=GP-os-01.json

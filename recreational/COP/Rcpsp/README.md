@@ -1,22 +1,7 @@
 # Problem Rcpsp
-
 ## Description
+Problem 061 on CSPLib
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative)
-
-
-## Command Line
-
-```shell
-python3 Rcpsp.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 Rcpsp.py -data=Rcpsp_j30-01-01.json

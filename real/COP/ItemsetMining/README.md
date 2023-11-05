@@ -18,11 +18,13 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   anneal-k1.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum), [Lex](http://pycsp.org/documentation/constraints/Lex), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python ItemsetMining.py -data=<datafile.json>
   python ItemsetMining.py -data=<datafile.dzn> -parser=ItemsetMining_ParserZ.py
+```
 
 ## Links
   - http://dx.doi.org/10.1016/j.artint.2011.05.002

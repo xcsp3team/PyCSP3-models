@@ -13,8 +13,10 @@ and released under CC BY-NC-SA license (https://creativecommons.org/licenses/by-
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Hoist.py -data=<datafile.json>
   python Hoist.py -data=<datafile.dzn> -parser=Hoist_ParserZ.py
+```
 
 ## Links
   - https://data.4tu.nl/articles/_/12682700/1

@@ -10,8 +10,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python PrizeCollecting.py -data=<datafile.json>
   python PrizeCollecting.py -data=<datafile.dzn> -parser=PrizeCollecting_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2016/results2016.html

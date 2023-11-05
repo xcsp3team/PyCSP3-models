@@ -17,8 +17,10 @@ A model can be found in this jupyter notebook [GitHub page](https://github.com/x
   constraints: [Extension](http://pycsp.org/documentation/constraints/Extension)
 
 ## Command Line
+```
   python3 Dubois.py
   python3 Dubois.py -data=10
+```
 
 ## Tags
  academic notebook

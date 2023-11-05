@@ -15,8 +15,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element)
 
 ## Execution
+```
   python TPP.py -data=<datafile.json>
   python TPP.py -data=<datafile.dzn> -parser=TPP_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2016/results2016.html

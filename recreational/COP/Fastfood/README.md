@@ -1,22 +1,9 @@
 # Problem Fastfood
-
 ## Description
+See Problem in Minizinc (Challenge 2012)
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum) [Element](https://pycsp.org/documentation/constraints/Element) [Minimum](https://pycsp.org/documentation/constraints/Minimum)
-
-
-## Command Line
-
-```shell
-python3 Fastfood.py -data=TODO [-solve]
+Examples of Execution:
 ```
-
-
+  python3 Fastfood.py -data=Fastfood_ff01.json
+  python3 Fastfood.py -data=Fastfood_ff01.json -variant=table
+  python3 Fastfood.py -data=Fastfood_example.dzn -dataparser=Fastfood_ParserZ.py

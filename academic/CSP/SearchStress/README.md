@@ -7,7 +7,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   two integers (n,k)
 
 ## Execution
+```
   python SearchStress.py -data=[number,number]
+```
 
 ## Links
   - https://www.minizinc.org/challenge2008/results2008.html

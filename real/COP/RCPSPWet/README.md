@@ -16,8 +16,10 @@ The MZN model was proposed by University of Melbourne and NICTA (seems to be a M
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python RCPSPWet.py -data=<datafile.json>
   python RCPSPWet.py -data=<datafile.dzn> -parser=RCPSPWet_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2017/results2017.html

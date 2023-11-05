@@ -14,8 +14,10 @@ The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Lice
   constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)
 
 ## Execution
+```
   python PentominoesZayenz.py -data=sm-10-13-00.json
   python PentominoesZayenz.py -data=sm-10-13-00.dzn -dataparser=PentominoesZayenz_ParserZ.py
+```
 
 ## Links
   - https://www.researchgate.net/publication/228523019_Modeling_irregular_shape_placement_problems_with_regular_constraints

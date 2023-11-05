@@ -11,8 +11,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Clause](http://pycsp.org/documentation/constraints/Clause)
 
 ## Execution
+```
   python Rubik.py -data=<datafile.json>
   python Rubik.py -data=<datafile.dzn> -parser=Rubik_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2013/results2013.html

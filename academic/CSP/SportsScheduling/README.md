@@ -17,7 +17,7 @@ You can  find a step-by-step modeling process in this [Jupyter notebook](https:/
 
 There are 2 variants of this problem, one classic and one with dummy variables.
 
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Intension](http://pycsp.org/documentation/constraints/Intension), [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Count](http://pycsp.org/documentation/constraints/Count), [Extension](http://pycsp.org/documentation/constraints/Extension)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Count](http://pycsp.org/documentation/constraints/Count), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension)
 
 
 

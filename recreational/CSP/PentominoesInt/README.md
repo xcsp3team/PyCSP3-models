@@ -10,8 +10,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)
 
 ## Execution
+```
   python PentominoesInt.py -data=<datafile.json>
   python PentominoesInt.py -data=<datafile.dzn> -parser=PentominoesInt_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2020/results2020.html

@@ -7,7 +7,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   an integer n
 
 ## Execution
+```
   python PropStress.py -data=[number]
+```
 
 ## Links
   - https://www.minizinc.org/challenge2009/results2009.html

@@ -1,22 +1,7 @@
 # Problem Rack2
-
 ## Description
+Problem 031 on CSPLib
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Decreasing](https://pycsp.org/documentation/constraints/Decreasing) [Sum](https://pycsp.org/documentation/constraints/Sum)
-
-
-## Command Line
-
-```shell
-python3 Rack2.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 Rack2.py -data=Rack_r2b.json

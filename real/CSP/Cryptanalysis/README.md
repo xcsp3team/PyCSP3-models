@@ -13,7 +13,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Cryptanalysis.py -data=<n,z,k>
+```
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-44953-1_37

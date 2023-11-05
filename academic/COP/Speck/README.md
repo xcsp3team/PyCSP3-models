@@ -10,7 +10,9 @@ The MZN model was proposed by David Gerault, under the MIT Licence.
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Speck.py -data=[number,number]
+```
 
 ## Links
   - https://www.minizinc.org/challenge2023/results2023.html

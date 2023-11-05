@@ -22,7 +22,9 @@ The original MZN model was proposed by Peter J. Stuckey, with a Licence that sem
   Constraints: Count, Lex, Sum, Table
 
 ## Execution
+```
   python Neighbours.py -data=[number,number]
+```
 
 ## Links
   - https://research.ibm.com/haifa/ponderthis/challenges/December2012.html

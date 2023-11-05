@@ -13,8 +13,10 @@ The original model has: Copyright (C) 2011 The University of Melbourne and NICTA
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum)
 
 ## Execution
+```
   python CyclicRCPSP.py -data=<datafile.json>
   python CyclicRCPSP.py -data=<datafile.dzn> -parser=CyclicRCPSP_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2014/results2014.html

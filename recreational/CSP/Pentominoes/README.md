@@ -10,8 +10,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)
 
 ## Execution
+```
   python Pentominoes.py -data=<datafile.json>
   python Pentominoes.py -data=<datafile.dzn> -parser=Pentominoes_ParserZ.py
+```
 
 ## Links
   - https://fr.wikipedia.org/wiki/Pentomino

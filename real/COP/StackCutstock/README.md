@@ -10,8 +10,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python StackCutstock.py -data=<datafile.json>
   python StackCutstock.py -data=<datafile.dzn> -parser=StackCutstock_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2019/results2019.html

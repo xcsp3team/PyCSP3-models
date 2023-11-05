@@ -1,22 +1,13 @@
 # Problem Survo
-
 ## Description
+See https://en.wikipedia.org/wiki/Survo_puzzle
 
+In a Survo puzzle, the task is to fill an m × n table with integers 1, 2, ..., m·n
+so that each of these numbers appears only once and their row and column sums
+are equal to integers given on the bottom and the right side of the table.
+Often some of the integers are given readily in the table in order to guarantee
+uniqueness of the solution and/or for making the task easier.
 
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent) [Sum](https://pycsp.org/documentation/constraints/Sum)
-
-
-## Command Line
-
-```shell
-python3 Survo.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 Survo.py -data=Survo-01.json

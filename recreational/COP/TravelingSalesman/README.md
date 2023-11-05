@@ -1,22 +1,8 @@
 # Problem TravelingSalesman
-
 ## Description
+See https://en.wikipedia.org/wiki/Travelling_salesman_problem
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent) [Sum](https://pycsp.org/documentation/constraints/Sum)
-
-
-## Command Line
-
-```shell
-python3 TravelingSalesman.py -data=TODO [-solve]
+Examples of Execution:
 ```
-
-
+  python3 TravelingSalesman.py -data=TravelingSalesman_10-20-0.json
+  python3 TravelingSalesman.py -data=TravelingSalesman_10-20-0.json -variant=table

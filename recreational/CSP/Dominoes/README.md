@@ -1,22 +1,8 @@
 # Problem Dominoes
-
 ## Description
+See "Teaching Constraints through Logic Puzzles" by Peter Szeredi
+See "Dominoes as a Constraint Problem" by Helmut Simonis
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
-
-
-## Command Line
-
-```shell
-python3 Dominoes.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 Dominoes.py -data=Dominoes_grid1.json

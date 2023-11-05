@@ -1,22 +1,7 @@
 # Problem Subisomorphism
-
 ## Description
+See, e.g., "AllDifferent-based filtering for subgraph isomorphism"  by Christine Solnon, Artificial Intelligence, 174(12-13): 850-864 (2010)
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
-
-
-## Command Line
-
-```shell
-python3 Subisomorphism.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 Subisomorphism.py -data=Subisomorphism_A-01.json

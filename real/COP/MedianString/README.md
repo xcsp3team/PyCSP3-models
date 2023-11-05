@@ -10,8 +10,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python MedianString.py -data=<datafile.json>
   python MedianString.py -data=<datafile.dzn> -parser=MedianString_ParserZ.py
+```
 
 ## Links
   - https://ojs.aaai.org/index.php/AAAI/article/view/5530

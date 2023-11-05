@@ -1,22 +1,21 @@
 # Problem Bugs
-
 ## Description
-
-
+TODO
 
 ## Data
-
-
-
 ## Model
 
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum) [Cardinality](https://pycsp.org/documentation/constraints/Cardinality)
+  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 
 ## Command Line
 
-```shell
-python3 Bugs.py -data=TODO [-solve]
 ```
+python Bugs.py
+```
+
+## Tags
+
+recreational
 
 

@@ -15,7 +15,9 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Triangular.py -data=<number>
+```
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html

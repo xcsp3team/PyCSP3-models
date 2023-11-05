@@ -15,8 +15,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python TimeChangingGraphColoring.py -data=<datafile.json>
   python TimeChangingGraphColoring.py -data=<datafile.dzn> -parser=TimeChangingGraphColoring_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2017/results2017.html

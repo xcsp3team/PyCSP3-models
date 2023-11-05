@@ -13,8 +13,10 @@ The licence seems to be like a MIT Licence.
   constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Count](http://pycsp.org/documentation/constraints/Count), [NValues](http://pycsp.org/documentation/constraints/NValues), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python PhysicianSchedule.py -data=sm-10-13-00.json
   python PhysicianSchedule.py -data=sm-10-13-00.dzn -dataparser=PhysicianSchedule_ParserZ.py
+```
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-030-78230-6_29

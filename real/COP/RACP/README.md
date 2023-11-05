@@ -14,8 +14,10 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python RACP.py -data=<datafile.json>
   python RACP.py -data=<datafile.dzn> -parser=RACP_ParserZ.py
+```
 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S037722171730927X?via%3Dihub

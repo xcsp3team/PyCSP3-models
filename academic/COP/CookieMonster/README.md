@@ -18,7 +18,7 @@ meaning that there are six jars, containing 1, 2, 4, 12, 13 and 15 cookies each.
 ## Model(s)
 
 
-  constraints: [Intension](http://pycsp.org/documentation/constraints/Intension), [Element](http://pycsp.org/documentation/constraints/Element)
+  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Intension](http://pycsp.org/documentation/constraints/Intension)
 
 
 ## Command Line

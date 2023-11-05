@@ -10,8 +10,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python SteelMillSlab.py -data=<datafile.json>
   python SteelMillSlab.py -data=<datafile.dzn> -parser=SteelMillSlab_ParserZ.py
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob038/

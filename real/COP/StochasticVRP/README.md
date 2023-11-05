@@ -10,7 +10,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python StochasticVRP.py -data=<datafile.json>
+```
 
 ## Links
   - https://www.minizinc.org/challenge2019/results2019.html

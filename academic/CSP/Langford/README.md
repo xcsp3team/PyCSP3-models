@@ -18,8 +18,10 @@ A couple \[k,n\], n is the number of values and k the number of occurences for a
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Intension](http://pycsp.org/documentation/constraints/Intension)
 
 ## Command Line
+```
   python Langford.py
   python Langford.py -data=[3,10]
+```
 
 ## Tags
  academic csplib

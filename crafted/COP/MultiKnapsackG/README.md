@@ -12,8 +12,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Knapsack](http://pycsp.org/documentation/constraints/Knapsack), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python MultiKnapsackG.py -data=<datafile.json>
   python MultiKnapsackG.py -data=<datafile.dzn> -parser=MultiKnapsackG_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2019/results2019.html

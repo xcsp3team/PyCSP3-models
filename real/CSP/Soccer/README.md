@@ -13,8 +13,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python Soccer.py -data=<datafile.json>
   python Soccer.py -data=<datafile.dzn> -parser=Soccer_ParserZ.py
+```
 
 ## Links
   - https://www.aimsciences.org/article/doi/10.3934/jimo.2018109

@@ -27,7 +27,7 @@ A number n, the given amount of money.
 There are two variants, one classic and one compact (with less variables).
 
 
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Intension](http://pycsp.org/documentation/constraints/Intension)
+  constraints: [Intension](http://pycsp.org/documentation/constraints/Intension), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 
 ## Command Line

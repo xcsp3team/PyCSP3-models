@@ -24,8 +24,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Maximum](http://pycsp.org/documentation/constraints/Maximum)
 
 ## Execution
+```
   python DepotPlacement.py -data=<datafile.json>
   python DepotPlacement.py -data=<datafile.dzn> -parser=DepotPlacement_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2016/results2016.html

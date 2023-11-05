@@ -10,8 +10,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative)
 
 ## Execution
+```
   python RCPSP.py -data=<datafile.json>
   python RCPSP.py -data=<datafile.dzn> -parser=RCPSP_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2013/results2013.html

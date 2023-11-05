@@ -17,8 +17,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python TravelingThief.py -data=sm-10-13-00.json
   python TravelingThief.py -data=sm-10-13-00.dzn -dataparser=TravelingThief_ParserZ.py
+```
 
 ## Links
   - https://sites.google.com/view/ttp-gecco2023/home

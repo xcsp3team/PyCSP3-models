@@ -14,8 +14,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python BnnPlanner.py -data=<datafile.json>
   python BnnPlanner.py -data=<datafile.dzn> -parser=BnnPlanner_ParserZ.py
+```
 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S0004370220300503

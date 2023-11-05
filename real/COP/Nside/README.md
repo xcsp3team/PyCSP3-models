@@ -16,8 +16,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Nside.py -data=<datafile.json>
   python Nside.py -data=<datafile.dzn> -parser=Nside_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2019/results2019.html

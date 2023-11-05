@@ -1,22 +1,8 @@
 # Problem TemplateDesign
-
 ## Description
+See Problem 002 on CSPLib
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Decreasing](https://pycsp.org/documentation/constraints/Decreasing) [Sum](https://pycsp.org/documentation/constraints/Sum)
-
-
-## Command Line
-
-```shell
-python3 TemplateDesign.py -data=TODO [-solve]
+Examples of Execution:
 ```
-
-
+  python3 TemplateDesign.py -data=TemplateDesign_catfood_2.json
+  python3 TemplateDesign.py -data=TemplateDesign_catfood_2.json -variant=aux

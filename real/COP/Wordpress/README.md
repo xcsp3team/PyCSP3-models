@@ -10,8 +10,10 @@ The MZN model was proposed by Bogdan David, under the MIT Licence.
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Wordpress.py -data=sm-10-13-00.json
   python Wordpress.py -data=sm-10-13-00.dzn -dataparser=Wordpress_ParserZ.py
+```
 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S2352220821000274

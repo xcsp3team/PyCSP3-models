@@ -11,8 +11,10 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python TeamAssignment.py -data=<datafile.json>
   python TeamAssignment.py -data=<datafile.dzn> -parser=TeamAssignment_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html

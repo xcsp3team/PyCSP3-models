@@ -11,8 +11,10 @@ MIT Licence.
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python SudokuOpt.py -data=sm-10-13-00.json
   python SudokuOpt.py -data=sm-10-13-00.dzn -dataparser=SudokuOpt_ParserZ.py
+```
 
 ## Links
   - http://www.hakank.org/minizinc/sudoku_problems2/

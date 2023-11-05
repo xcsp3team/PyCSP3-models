@@ -10,8 +10,10 @@ The MZN model was proposed by Greame Gange, with a Licence that seems to be like
   constraints: [MaximumArg](http://pycsp.org/documentation/constraints/MaximumArg), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Tower.py -data=<datafile.json>
   python Tower.py -data=<datafile.dzn> -parser=Tower_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html

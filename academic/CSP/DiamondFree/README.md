@@ -38,7 +38,7 @@ A number n, the number of nodes of the graph.
 
 ## Model(s)
 
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Intension](http://pycsp.org/documentation/constraints/Intension), [Decreasing](http://pycsp.org/documentation/constraints/Decreasing), [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing)
+  constraints: [Decreasing](http://pycsp.org/documentation/constraints/Decreasing), [Intension](http://pycsp.org/documentation/constraints/Intension), [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Command Line
 

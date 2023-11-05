@@ -18,8 +18,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python CollectiveConstruction.py -data=<datafile.json>
   python CollectiveConstruction.py -data=<datafile.dzn> -parser=CollectiveConstruction_ParserZ.py
+```
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-030-58475-7_43

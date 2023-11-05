@@ -13,8 +13,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python SeatMoving.py -data=sm-10-13-00.json
   python SeatMoving.py -data=sm-10-13-00.dzn -dataparser=SeatMoving_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2021/results2021.html

@@ -13,8 +13,10 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python SteinerTree.py -data=<datafile.json>
   python SteinerTree.py -data=<datafile.dzn> -parser=SteinerTree_ParserZ.py
+```
 
 ## Links
   - https://www.minizinc.org/challenge2018/results2018.html

@@ -1,22 +1,7 @@
 # Problem Lits
-
 ## Description
+See https://en.wikipedia.org/wiki/LITS
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Count](https://pycsp.org/documentation/constraints/Count)
-
-
-## Command Line
-
-```shell
-python3 Lits.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 Lits.py -data=Lits_example.json

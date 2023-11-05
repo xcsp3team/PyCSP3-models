@@ -1,22 +1,7 @@
 # Problem Blackhole
-
 ## Description
+Problem 081 on CSPLib
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Channel](https://pycsp.org/documentation/constraints/Channel)
-
-
-## Command Line
-
-```shell
-python3 Blackhole.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 Blackhole.py -data=Blackhole-01.json

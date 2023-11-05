@@ -15,7 +15,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
+```
   python CostasArray_z.py -data=[number]
+```
 
 ## Links
   - https://mathworld.wolfram.com/CostasArray.html

@@ -14,8 +14,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
+```
   python TableLayout.py -data=<datafile.json>
   python TableLayout.py -data=<datafile.dzn> -parser=TableLayout_ParserZ.py
+```
 
 ## Links
   - https://dl.acm.org/doi/abs/10.1145/2034691.2034697

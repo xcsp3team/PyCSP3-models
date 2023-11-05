@@ -13,8 +13,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python CableTreeWiring.py -data=<datafile.json>
   python CableTreeWiring.py -data=<datafile.dzn> -parser=CableTreeWiring_ParserZ.py
+```
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-021-09321-w

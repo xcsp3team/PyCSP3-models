@@ -21,8 +21,10 @@ You can find a step-by-step modeling process in this [Jupyter notebook](https://
   constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Command Line
+```
   python MagicSequence.py
   python MagicSequence.py -data=10
+```
 
 ## Tags
  academic notebook csplib

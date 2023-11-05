@@ -1,22 +1,8 @@
 # Problem GraphColoring
-
 ## Description
+See https://turing.cs.hbg.psu.edu/txn131/graphcoloring.html
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Sum](https://pycsp.org/documentation/constraints/Sum) [Maximum](https://pycsp.org/documentation/constraints/Maximum)
-
-
-## Command Line
-
-```shell
-python3 GraphColoring.py -data=TODO [-solve]
+Examples of Execution:
 ```
-
-
+  python3 GraphColoring.py -data=GraphColoring_1-fullins-3.json
+  python3 GraphColoring.py -data=GraphColoring_1-fullins-3.json -variant=sum

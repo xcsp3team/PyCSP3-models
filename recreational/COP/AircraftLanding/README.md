@@ -1,5 +1,4 @@
 # Problem AircraftLanding
-
 ## Description
 See OR-library
 
@@ -19,20 +18,17 @@ Each plane has to land on one of the runways within its predetermined time windo
 
 ## Data
 Data are parsed using the parser given in the directory. The archive contains several data.
-
-
-
+TODO : data
 
 ## Model
-
-*Involved Constraints*: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent) [Extension](https://pycsp.org/documentation/constraints/Extension) [Sum](https://pycsp.org/documentation/constraints/Sum) [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Extension](http://pycsp.org/documentation/constraints/Extension), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 
 ## Command Line
-
-```shell
-  python3 AircraftLanding.py -data=airland1.txt -dataparser=AircraftLanding_Parser.py
-  python3 AircraftLanding.py -data=airland1.txt -dataparser=AircraftLanding_Parser.py -variant=table
+```
+  python AircraftLanding.py -data=airland1.txt -dataparser=AircraftLanding_Parser.py
+  python AircraftLanding.py -data=airland1.txt -dataparser=AircraftLanding_Parser.py -variant=table
 ```
 
-
+## Tags
+ recreational

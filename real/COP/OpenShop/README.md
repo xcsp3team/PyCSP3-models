@@ -19,8 +19,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
 
 ## Execution
+```
   python OpenShop.py -data=<datafile.json>
   python OpenShop.py -data=<datafile.dzn> -parser=OpenShop_ParserZ.py
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Open-shop_scheduling

@@ -25,7 +25,7 @@ A couple [r,n], where r is the size of the tuple (by default triplet) and n the 
 
 ## Model(s)
 
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Intension](http://pycsp.org/documentation/constraints/Intension)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Intension](http://pycsp.org/documentation/constraints/Intension), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Command Line
 

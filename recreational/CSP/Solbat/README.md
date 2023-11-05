@@ -14,8 +14,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python Solbat.py -data=<datafile.json>
   python Solbat.py -data=<datafile.dzn> -parser=Solbat_ParserZ.py
+```
 
 ## Links
   - http://www.csee.umbc.edu/courses/671/fall09/resources/smith06.pdf

@@ -1,22 +1,7 @@
 # Problem NurseRostering
-
 ## Description
+See http://www.schedulingbenchmarks.org/nurseinstances1_24.html
 
-
-
-## Data
-
-
-
-## Model
-
-*Involved Constraints*: [Count](https://pycsp.org/documentation/constraints/Count) [Sum](https://pycsp.org/documentation/constraints/Sum)
-
-
-## Command Line
-
-```shell
-python3 NurseRostering.py -data=TODO [-solve]
+Example of Execution:
 ```
-
-
+  python3 NurseRostering.py -data=NurseRostering_00.json
