@@ -13,7 +13,7 @@ The Licence seems to be like a MIT Licence.
   psp-c-051.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Intension](http://pycsp.org/documentation/constraints/Intension)
+  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative)
 
 ## Execution
   python RCPSP_MAX.py -data=<datafile.json>
@@ -23,4 +23,4 @@ The Licence seems to be like a MIT Licence.
   - https://www.minizinc.org/challenge2010/results2010.html
 
 ## Tags
-  industrial, mzn10
+  real, mzn10

@@ -1,13 +1,28 @@
 """
-See https://en.wikipedia.org/wiki/Nonogram
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2011/2012/2013 Minizinc challenges.
+No Licence was explicitly mentioned (MIT Licence assumed).
 
-Examples of Execution:
-  python3 Nonogram.py -data=Nonogram_example.json
-  python3 Nonogram.py -data=Nonogram_example.json -variant=table
-  python3 Nonogram.py -data=Nonogram_example.txt -dataparser=Nonogram_Parser.py
+## Data Example
+  fast-03.json
+
+## Model
+  constraints: Regular
+
+## Execution
+  python Nonogram.py -data=<datafile.json>
+  python Nonogram.py -data=<datafile.dzn> -parser=Nonogram_ParserZ.py
+
+## Links
+  - https://www.csplib.org/Problems/prob012/
+  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://en.wikipedia.org/wiki/Nonogram
+
+## Tags
+  recreational, mzn11, mzn12, zmn13
 """
 
 from pycsp3 import *
+from pycsp3.problems.data.parsing import split_with_rows_of_size
 
 rows, cols = data  # patterns for row and columns
 nRows, nCols = len(rows), len(cols)
@@ -16,27 +31,22 @@ nRows, nCols = len(rows), len(cols)
 x = VarArray(size=[nRows, nCols], dom={0, 1})
 
 if not variant():
-    def automaton(pattern):
-        q = Automaton.q  # for building state names
-        transitions = []
-        if len(pattern) == 0:
-            n_states = 1
-            transitions.append((q(0), 0, q(0)))
-        else:
-            n_states = sum(pattern) + len(pattern)
-            num = 0
-            for i, size in enumerate(pattern):
-                transitions.append((q(num), 0, q(num)))
-                transitions.extend((q(num + j), 1, q(num + j + 1)) for j in range(size))
-                transitions.append((q(num + size), 0, q(num + size + (1 if i < len(pattern) - 1 else 0))))
-                num += size + 1
-        return Automaton(start=q(0), final=q(n_states - 1), transitions=transitions)
+    def automaton_for(clue):
+        q = Automaton.q  # for building names of states
+        if clue[0] == 0:
+            return Automaton(start=q(1), final=q(1), transitions=[(q(1), 0, q(1))])
+        non_mul, non_add = [[[0, 0], [1, 1]], [[1, 0], [0, 1]]], [[[0, 0], [0, 1]], [[1, 0], [0, 1]]]
+        p = len(clue)
+        t = split_with_rows_of_size(
+            [1, 2] + [(i + 1) * non_mul[clue[i - 1]][clue[i]][s] + non_add[clue[i - 1]][clue[i]][s] for i in range(1, p) for s in range(2)] + [p + 1, 0], 2)
+        transitions = [(q(i), j, q(t[i - 1][j])) for i in range(1, p + 2) for j in range(2) if t[i - 1][j] != 0]
+        return Automaton(start=q(1), final=q(p + 1), transitions=transitions)
 
 
     satisfy(
-        [x[i] in automaton(rows[i]) for i in range(nRows)],
+        [x[i] in automaton_for(rows[i]) for i in range(nRows)],
 
-        [x[:, j] in automaton(cols[j]) for j in range(nCols)]
+        [x[:, j] in automaton_for(cols[j]) for j in range(nCols)]
     )
 
 elif variant("table"):
