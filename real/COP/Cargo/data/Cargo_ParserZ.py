@@ -1,0 +1,28 @@
+from pycsp3.problems.data.parsing import *
+
+nVessels = number_in(line())
+nPiles = number_in(next_line())
+data['H'] = number_in(next_line())
+data['T'] = number_in(next_line())
+stCap = number_in(next_line())
+reclN = number_in(next_line())
+data['stackBefore'] = number_in(next_line())
+tMaxBetwRecl = number_in(next_line())
+delayMax = number_in(next_line())
+sumDelayMax = number_in(next_line())
+data['limits'] = OrderedDict(
+    [("dailyStacking", stCap), ("nReclaimers", reclN), ("maxReclaimingGap", tMaxBetwRecl), ("maxDelay", delayMax), ("sumMaxDelay", sumDelayMax)])
+discrPadPos = number_in(next_line())
+discrStackStart = number_in(next_line())
+mulTonnage = number_in(next_line())
+mulPileLen = number_in(next_line())
+hourDiscr = number_in(next_line())
+data['factors'] = OrderedDict([("meter", discrPadPos), ("time", discrStackStart), ("tonnage", mulTonnage), ("length", mulPileLen), ("hour", hourDiscr)])
+next_line()
+data['etas'] = numbers_in(next_line())
+whichV = decrement(numbers_in(next_line()))
+dS_ = numbers_in(next_line())
+dR = numbers_in(next_line())
+assert nVessels == len(data['etas'])
+assert nPiles == len(whichV) == len(dS_) == len(dR)
+data['piles'] = [OrderedDict([("whichV", whichV[i]), ("dS_", dS_[i]), ("dR", dR[i])]) for i in range(nPiles)]
