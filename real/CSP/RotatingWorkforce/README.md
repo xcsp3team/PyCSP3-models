@@ -1,28 +1,24 @@
 # Problem RotatingWorkforce
 ## Description
-Rotating Workforce Scheduling.
+Rotating workforce scheduling problem.
+See paper link below.
 
-The problem aims to schedule workers satisfying shift sequence constraints while ensuring that enough shifts are covered on each day.
-All workers complete the same schedule, just starting at different days.
-See CPAIOR paper cited below.
-
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2018/2019 Minizinc challenges.
-The MZN model was proposed by Andreas Schutt.
-No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2022 Minizinc challenge.
+The MZN model was proposed by Mikael Zayenz Lagerkvist, under the MIT Licence.
 
 ## Data Example
-  0103.json
+  e025s7.json
 
 ## Model
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Regular](http://pycsp.org/documentation/constraints/Regular)
+  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Regular](http://pycsp.org/documentation/constraints/Regular), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
   python RotatingWorkforce.py -data=<datafile.json>
-  python RotatingWorkforce.py -data=<datafile.dzn> -parser=RotatingWorkforce_ParserZ.py
+  python RotatingWorkforce.py -data=<datafile.dzn> -dataparser=RotatingWorkforce_ParserZ.py
 
 ## Links
-  - https://link.springer.com/chapter/10.1007/978-3-319-93031-2_31
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.semanticscholar.org/paper/2-The-Rotating-Workforce-Scheduling-Problem-Musliu-Schutt/4048daa6fe7917009174dab7f3fe84e84fdc36dd
+  - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-  real, mzn18, mzn19
+  real, mzn22
