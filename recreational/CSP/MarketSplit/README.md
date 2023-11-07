@@ -5,6 +5,15 @@ See "
 
 The feasibility problem consists of m 0-1 equality knapsack constraints defined on the same set of 10(m−1) variables.
 
-Example of Execution:
+
+## Data
+TODO + parser
+
+
+## Execution:
 ```
   python3 MarketSplit.py -data=MarketSplit_04.json
+```
+
+## Tags
+  recreational

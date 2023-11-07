@@ -1,10 +1,23 @@
 """
-See Problem 132 on CSPLib
 See "Exploiting symmetries within constraint satisfaction search", by P. Meseguer and C. Torras,
     Artificial intelligence 129(1), 133–163, 2001 (Example of Section 3.3)
 
-Execution:
+## Data
+TODO
+
+## Model
+ constraints: Table
+
+## Execution:
   python3 Layout.py -data Layout_example.json
+
+## Links
+ - https://www.csplib.org/Problems/prob132/
+
+## Tags
+  recreational, csplib
+
+Execution:
 """
 
 from pycsp3 import *

@@ -1,9 +1,20 @@
 """
-See https://en.wikipedia.org/wiki/Kakuro
-See "Kakuro as a Constraint Problem" by Helmut Simonis
+It is a kind of logic puzzle. See "Kakuro as a Constraint Problem" by Helmut Simonis.
 
-Example of Execution:
-  python3 Kakuro.py -data=Kakuro_easy-000.json
+## Data
+ TODO
+
+## Model
+ constraints: AllDifferent, Sum, Table
+
+## Execution:
+    python3 Kakuro.py -data=Kakuro_easy-000.json
+
+## Links
+ - https://en.wikipedia.org/wiki/Kakuro
+
+## Tags
+ recreational
 """
 
 from pycsp3 import *

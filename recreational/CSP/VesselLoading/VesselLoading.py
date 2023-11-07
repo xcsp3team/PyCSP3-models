@@ -1,8 +1,20 @@
 """
-See Problem 008 on CSPLib
+Supply vessels transport containers from site to site.
 
-Examples of Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: AllDifferent, Sum
+
+## Execution:
   python3 VesselLoading.py -data=VesselLoading-inst2.json
+
+## Links
+ - https://www.csplib.org/Problems/prob008
+
+## Tags
+  recreational, csplib
 """
 
 from pycsp3 import *

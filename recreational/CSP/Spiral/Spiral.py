@@ -1,5 +1,19 @@
 """
-See "Teaching Constraints through Logic Puzzles" by Peter Szeredi
+A logic puzzle. See "Teaching Constraints through Logic Puzzles" by Peter Szeredi.
+
+## Data
+TODO + parser
+
+## Model
+  constraints: Cardinality, Increasing
+
+## Execution:
+  python3 Spiral.py
+  python3 Spiral.py -data[7, 5]
+
+
+## Tags
+  recreational
 """
 
 from pycsp3 import *

@@ -1,8 +1,19 @@
 """
 Problem 081 on CSPLib
 
-Example of Execution:
+## Data
+ TODO
+## Model
+ constraints: Channel, Increasing, Slide, Table
+
+## Execution:
   python3 Blackhole.py -data=Blackhole-01.json
+
+## Links
+ - https://www.csplib.org/Problems/prob081/
+
+## Tags
+ recreational, csplib
 """
 
 from pycsp3 import *

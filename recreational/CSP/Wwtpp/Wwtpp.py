@@ -1,9 +1,23 @@
 """
 See "Solving the Wastewater Treatment Plant Problem with SMT", by Miquel Bofill, Víctor Muñoz, Javier Murillo. CoRR abs/1609.05367 (2016)
 
-Examples of Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: AllDifferent, Sum
+
+## Execution:
   python3 Wwtpp.py -data=Wwtpp_ex04400.json
   python3 Wwtpp.py -data=Wwtpp_ex04400.json -variant=short
+
+## Links
+ - https://arxiv.org/abs/1609.05367
+
+## Tags
+  recreational
+
+Examples of Execution:
 """
 
 from pycsp3 import *

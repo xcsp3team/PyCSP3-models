@@ -1,9 +1,20 @@
 """
-See https://en.wikipedia.org/wiki/Shikaku
-See "Shikaku as a Constraint Problem" by Helmut Simonis
+A logic puzzle. See "Shikaku as a Constraint Problem" by Helmut Simonis.
 
-Example of Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: Table
+
+## Execution:
   python3 Shikaku.py -data=Shikaku_grid1.json
+
+## Links
+ - https://en.wikipedia.org/wiki/Shikaku
+
+## Tags
+  recreational
 """
 
 from pycsp3 import *

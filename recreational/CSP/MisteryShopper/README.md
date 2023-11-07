@@ -1,7 +1,21 @@
 # Problem MisteryShopper
 ## Description
-Problem 004 on CSPLib
+See description on CSPLib.
 
-Example of Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Channel](http://pycsp.org/documentation/constraints/Channel), [Channel](http://pycsp.org/documentation/constraints/Channel), [Lex](http://pycsp.org/documentation/constraints/Lex)
+
+## Execution:
 ```
-  python3 MisteryShopper.py -data=MisteryShopper_04.json
+    python3 MisteryShopper.py -data=MisteryShopper_04.json
+```
+
+## Links
+ - https://www.csplib.org/Problems/prob004
+
+## Tags
+  recreational, csplib
+

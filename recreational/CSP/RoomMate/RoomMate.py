@@ -1,10 +1,23 @@
 """
-See https://en.wikipedia.org/wiki/Stable_roommates_problem
-   "Stable Roommates and Constraint Programming" by Patrick Prosser. CPAIOR 2014: 15-28
-    http://www.dcs.gla.ac.uk/~pat/roommates/distribution/
+"Stable Roommates and Constraint Programming" by Patrick Prosser. CPAIOR 2014: 15-28.
 
-Example of Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: Table
+
+## Execution:
   python3 RoomMate.py -data=RoomMate_sr0006.json
+
+## Links
+ - https://en.wikipedia.org/wiki/Stable_roommates_problem
+ - http://www.dcs.gla.ac.uk/~pat/roommates/distribution/
+
+## Tags
+  recreational
+
+
 """
 
 from pycsp3 import *

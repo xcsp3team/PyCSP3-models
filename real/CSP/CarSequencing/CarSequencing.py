@@ -1,9 +1,33 @@
 """"
-Problem 001 on CSPLib
+A number of cars are to be produced; they are not identical, because different options are available as variants on the basic model.
+The assembly line has different stations which install the various options (air-conditioning, sun-roof, etc.).
+These stations have been designed to handle at most a certain percentage of the cars passing along the assembly line.
+Furthermore, the cars requiring a certain option must not be bunched together, otherwise the station will not be able to cope.
+Consequently, the cars must be arranged in a sequence so that the capacity of each station is never exceeded.
+For instance, if a particular station can only cope with at most half of the cars passing along the line, the sequence must
+be built so that at most 1 car in any 2 requires that option.
 
-Examples of Execution:
-  python3 CarSequencing.py -data=CarSequencing_dingbas.json
-  python3 CarSequencing.py -data=CarSequencing_dingbas.json -variant=table
+
+## Data (example)
+  dingbas.json
+
+## Model
+  Two variants manage differently the way assembled car options are computed:
+  - a main variant involving logical constraints
+  - a variant 'table' involving  table constraints
+
+  constraints: Cardinality, Intension, Extension, Sum
+
+## Execution
+  - python CarSequencing.py -data=dingbas.json
+  - python CarSequencing.py -variant=table -data=dingbas.json
+
+## Links
+  - https://www.csplib.org/Problems/prob001/
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
+
+## Tags
+  real, xcsp22
 """
 
 from pycsp3 import *

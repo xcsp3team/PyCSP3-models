@@ -1,8 +1,20 @@
 """"
-See Problem 014 on CSPLib
+A logic puzzle.
 
-Examples of Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: Cardinality, Regulat, Sum
+
+## Execution:
   python3 SolitaireBattleship.py -data=SolitaireBattleship_sb-12-12-5-0.json
+
+## Links
+ - https://www.csplib.org/Problems/prob014/
+
+## Tags
+  recreational, csplib
 """
 
 from pycsp3 import *

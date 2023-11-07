@@ -1,12 +1,24 @@
 # Problem SolitaireBattleship
 ## Description
 """"
-See Problem 014 on CSPLib
+A logic puzzle.
 
-Examples of Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Regulat](http://pycsp.org/documentation/constraints/Regulat), [Sum](http://pycsp.org/documentation/constraints/Sum)
+
+## Execution:
 ```
   python3 SolitaireBattleship.py -data=SolitaireBattleship_sb-12-12-5-0.json
 ```
+
+## Links
+ - https://www.csplib.org/Problems/prob014/
+
+## Tags
+  recreational, csplib
 
 from pycsp3 import *
 

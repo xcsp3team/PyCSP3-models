@@ -1,8 +1,20 @@
 # Problem Kakuro
 ## Description
-See https://en.wikipedia.org/wiki/Kakuro
-See "Kakuro as a Constraint Problem" by Helmut Simonis
+It is a kind of logic puzzle. See "Kakuro as a Constraint Problem" by Helmut Simonis.
 
-Example of Execution:
+## Data
+ TODO
+
+## Model
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+
+## Execution:
 ```
-  python3 Kakuro.py -data=Kakuro_easy-000.json
+    python3 Kakuro.py -data=Kakuro_easy-000.json
+```
+
+## Links
+ - https://en.wikipedia.org/wiki/Kakuro
+
+## Tags
+ recreational

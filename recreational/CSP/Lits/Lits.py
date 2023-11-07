@@ -1,8 +1,21 @@
 """
-See https://en.wikipedia.org/wiki/LITS
+A binary determination puzzle.
 
-Example of Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: Count, Table
+
+## Execution:
   python3 Lits.py -data=Lits_example.json
+
+## Links
+ - https://en.wikipedia.org/wiki/LITS
+
+## Tags
+  recreational
+
 """
 
 from collections import OrderedDict

@@ -1,9 +1,21 @@
 """
-See https://en.wikipedia.org/wiki/Magic_square
+A mathematical puzzle.
 
-Examples of Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: AllDifferent, Sum
+
+## Execution:
   python3 MagicSquare.py -data=[4,null]
   python3 MagicSquare.py -data=MagicSquare_example0.txt -dataparser=MagicSquare_Parser.py
+
+## Links
+ - https://en.wikipedia.org/wiki/Magic_square
+
+## Tags
+  recreational
 """
 
 from pycsp3 import *

@@ -1,8 +1,18 @@
 """
-See https://en.wikipedia.org/wiki/Futoshiki
+It is a logic puzzle game from Japan.
+## Data
 
-Example of Execution:
+## Model
+ constraints: AllDifferent
+
+## Execution:
   python3 Futoshiki.py -data=Futoshiki_futo3_0.json
+
+## Links
+ - https://en.wikipedia.org/wiki/Futoshiki
+
+## Tags
+ recreational
 """
 
 from pycsp3 import *

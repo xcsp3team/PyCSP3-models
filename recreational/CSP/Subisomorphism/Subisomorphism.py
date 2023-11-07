@@ -1,8 +1,18 @@
 """
 See, e.g., "AllDifferent-based filtering for subgraph isomorphism"  by Christine Solnon, Artificial Intelligence, 174(12-13): 850-864 (2010)
 
-Example of Execution:
+
+## Data
+TODO + parser
+
+## Model
+  constraints: AllDifferent, Table
+
+## Execution:
   python3 Subisomorphism.py -data=Subisomorphism_A-01.json
+
+## Tags
+  recreational
 """
 
 from pycsp3 import *

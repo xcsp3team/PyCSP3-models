@@ -1,8 +1,22 @@
 """
-See, e.g., "Fast Global Filtering for Eternity II" by Eric Bourreau and Thierry Benoist. Constraint Programming Letters, 2008, 3, pp.036-049
+On a board of size n×m, you have to put square tiles (pieces) that are described by four colors (one for each direction : top, right, bottom and left).
+All adjacent tiles on the board must have matching colors along their common edge. All edges must have color ’0’ on the border of the board.
 
-Example of Execution:
-  python3 Eternity.py -data=Eternity_07x05.json
+## Data (example)
+  07x05.json
+
+## Model
+  constraints: AllDifferent, Extension, Intension
+
+## Execution
+  - python Eternity.py -data=07x05.json
+
+## Links
+  - https://hal-lirmm.ccsd.cnrs.fr/lirmm-00364330/document
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
+
+## Tags
+  recreational, xcsp22
 """
 
 from pycsp3 import *

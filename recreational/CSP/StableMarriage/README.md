@@ -13,6 +13,16 @@ it is always possible to make all marriages stable, with an algorithm running in
 Nevertheless, this problem remains interesting
 as it shows how a nice and compact model can be written.
 
-Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+
+## Execution:
 ```
   python3 StableMarriage.py -data=StableMarriage-example.json
+```
+
+## Tags
+  recreational

@@ -1,7 +1,21 @@
 # Problem Lits
 ## Description
-See https://en.wikipedia.org/wiki/LITS
+A binary determination puzzle.
 
-Example of Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Table](http://pycsp.org/documentation/constraints/Table)
+
+## Execution:
 ```
   python3 Lits.py -data=Lits_example.json
+```
+
+## Links
+ - https://en.wikipedia.org/wiki/LITS
+
+## Tags
+  recreational
+

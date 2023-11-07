@@ -1,9 +1,25 @@
 """
-See https://en.wikipedia.org/wiki/Minesweeper_(video_game)
+A logic puzzle video game.
 
-Examples of Execution:
+## Data
+TODO + parser
+
+## Model
+  constraints: Sum
+
+## Execution:
   python3 MineSweeper.py
   python3 MineSweeper.py -data=MineSweeper-example.json
+
+## Links
+ - https://en.wikipedia.org/wiki/Minesweeper_(video_game)
+
+## Tags
+  recreational
+
+
+Examples of Execution:
+
 """
 
 from pycsp3 import *
