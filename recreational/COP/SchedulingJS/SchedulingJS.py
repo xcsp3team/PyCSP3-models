@@ -1,8 +1,20 @@
 """
-See https://en.wikipedia.org/wiki/Job_shop_scheduling
+TODO
 
-Example of Execution:
+## Data
+TODO
+
+## Model
+  constraints: Increasing, Maximum, NoOverlap
+
+## Execution
   python3 SchedulingJS.py -data=Sadeh-js-e0ddr1-0.json
+
+## Links
+  - https://en.wikipedia.org/wiki/Job_shop_scheduling
+
+## Tags
+recreational
 """
 from pycsp3 import *
 

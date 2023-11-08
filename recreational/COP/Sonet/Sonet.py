@@ -1,8 +1,20 @@
 """
-See Problem 056 on CSPLib
+Problem 056 on CSPLib.
 
-Example of Execution:
+## Data
+TODO
+
+## Model
+  constraints: LexIncreasing, Sum, Table
+
+## Execution
   python3 Sonet.py -data=Sonet_sonet1.json
+
+## Links
+  - https://www.csplib.org/Problems/prob056/
+
+## Tags
+recreational csplib
 """
 
 from pycsp3 import *

@@ -16,8 +16,6 @@ TODO + parser
 
 ## Tags
   recreational
-
-Examples of Execution:
 """
 
 from pycsp3 import *

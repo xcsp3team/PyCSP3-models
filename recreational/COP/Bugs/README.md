@@ -2,11 +2,12 @@
 ## Description
 TODO
 
+
 ## Data
+
 ## Model
 
   constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Sum](http://pycsp.org/documentation/constraints/Sum)
-
 
 ## Command Line
 
@@ -14,6 +15,7 @@ TODO
 python Bugs.py
 ```
 
+## Links
 ## Tags
 
 recreational

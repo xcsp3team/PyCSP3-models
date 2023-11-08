@@ -15,6 +15,14 @@ The compatibility constraints are:
  - glass excludes copper
  - copper excludes plastic
 
-Execution:
-```
-  python3 Vellino.py -data=Vellino-example.json
+
+## Data
+TODO
+
+## Model
+  constraints: [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing), [Sum](http://pycsp.org/documentation/constraints/Sum)
+
+## Execution
+
+## Tags
+recreational

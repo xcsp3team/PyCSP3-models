@@ -1,8 +1,21 @@
 """
-Problem 013 on CSPLib
+Problem 013 on CSPLib.<br />
+The problem is to timetable a party at a yacht club.
 
-Example of Execution:
+## Data
+TODO
+
+## Model
+  constraints: AllDifferent, Channel, Sum
+
+## Execution
   python3 ProgressiveParty.py -data=ProgressiveParty_example.json
+
+## Links
+  - https://www.csplib.org/Problems/prob013/
+
+## Tags
+recreational csplib
 """
 
 from pycsp3 import *

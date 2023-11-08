@@ -1,13 +1,28 @@
 # Problem OpenStacks
 ## Description
 """"
-See https://ipg.host.cs.st-andrews.ac.uk/challenge/
+TODO
 
-Examples of Execution:
+## Data
+TODO
+
+## Model
+There is two variants of this mode.
+  constraints: [Alldifferent](http://pycsp.org/documentation/constraints/Alldifferent), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+
+## Execution
 ```
   python3 OpenStacks.py -data=OpenStacks_example.json -variant=m1
   python3 OpenStacks.py -data=OpenStacks_example.json -variant=m2
 ```
+
+## Links
+  - https://ipg.host.cs.st-andrews.ac.uk/challenge/
+
+## Tags
+
+Examples of Execution:
+
 
 from pycsp3 import *
 

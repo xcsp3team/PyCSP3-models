@@ -1,9 +1,22 @@
 """
-See Problem 002 on CSPLib
+Problem 002 on CSPLib.<br />
+This problem arises from a colour printing firm which produces a variety of products from thin board, including cartons for human and animal food and magazine inserts.
 
-Examples of Execution:
+## Data
+TODO
+
+## Model
+  constraints:Decreasing, Sum
+
+## Execution
   python3 TemplateDesign.py -data=TemplateDesign_catfood_2.json
   python3 TemplateDesign.py -data=TemplateDesign_catfood_2.json -variant=aux
+
+## Links
+  - https://www.csplib.org/Problems/prob002/
+
+## Tags
+recreational csplib
 """
 
 from pycsp3 import *

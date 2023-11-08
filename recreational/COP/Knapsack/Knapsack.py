@@ -1,10 +1,25 @@
 """
-Problem 133 on CSPLib
+Problem 133 on CSPLib. <br />
+The knapsack problem or rucksack problem is a problem in combinatorial optimization.
 
-See https://en.wikipedia.org/wiki/Knapsack_problem
+## Data
+TODO
+
+## Model
+constraints: Sum
+
+## Execution
+  python3 Knapsack.py -data=Knapsack_20-50-00.json
+
+## Links
+ - https://www.csplib.org/Problems/prob133/
+ - https://en.wikipedia.org/wiki/Knapsack_problem
+
+## Tags
+recreational csplib
+See
 
 Example of Execution:
-  python3 Knapsack.py -data=Knapsack_20-50-00.json
 """
 
 from pycsp3 import *

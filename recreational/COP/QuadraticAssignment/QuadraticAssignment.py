@@ -1,9 +1,21 @@
 """
-See QAPLib and https://en.wikipedia.org/wiki/Quadratic_assignment_problem
+The Quadratic Assignment Problem (QAP) has remained one of the great challenges in combinatorial optimization (from QAPLIB).
 
-Example of Execution:
+## Data
+
+## Model
+  constraints: AllDifferent, Sum, Table
+
+## Execution
   python3 QuadraticAssignment.py -data=QuadraticAssignment_qap.json
   python3 QuadraticAssignment.py -data=QuadraticAssignment_example.txt -dataparser=QuadraticAssignment_Parser.py
+
+## Links
+  - https://en.wikipedia.org/wiki/Quadratic_assignment_problem
+  - https://coral.ise.lehigh.edu/data-sets/qaplib/
+
+## Tags
+recreational
 """
 
 from pycsp3 import *

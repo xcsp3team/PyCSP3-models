@@ -1,10 +1,22 @@
 """
 See "Radio Link Frequency Assignment", by B. Cabon, S. de Givry, L. Lobjois, T. Schiex, J. Warners, Constraints An Int. J. 4(1): 79-89 (1999)
+## Data
+A json archive is in data directory.
 
-Examples of Execution:
+## Model
+There exists 3 variants of this problem depending the minimization function.
+  constraints: Maximum, NValues, Table, Sum
+
+## Execution
   python3 Rlfap.py -data=Rlfap-card-scen-04.json -variant=card
   python3 Rlfap.py -data=Rlfap-span-scen-05.json -variant=span
   python3 Rlfap.py -data=Rlfap-max-graph-05.json -variant=max
+
+## Links
+  - https://link.springer.com/article/10.1023/A:1009812409930
+
+## Tags
+recreational
 """
 
 from pycsp3 import *

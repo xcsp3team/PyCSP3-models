@@ -14,6 +14,10 @@ An example is given in the json file.
 ## Model
   constraints: [Decreasing](http://pycsp.org/documentation/constraints/Decreasing), [LexDecreasing](http://pycsp.org/documentation/constraints/LexDecreasing), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
-## Command Line
+## Execution
 ```
 python Cutstock.py -data=Cutstock_small.json
+```
+
+## Tags
+recreational

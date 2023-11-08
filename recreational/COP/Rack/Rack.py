@@ -1,8 +1,21 @@
 """
-Problem 031 on CSPLib
+Problem 031 of csplib. <br />
+The rack configuration problem consists of plugging a set of electronic cards into racks with electronic connectors (from csplib).
 
-Example of Execution:
+## Data
+TODO
+
+## Model
+  constraints: Decreasing, Sum, Table
+
+## Execution
   python3 Rack.py -data=Rack_r2.json
+
+## Links
+  - https://www.csplib.org/Problems/prob031/
+
+## Tags
+recreational csplib
 """
 
 from pycsp3 import *

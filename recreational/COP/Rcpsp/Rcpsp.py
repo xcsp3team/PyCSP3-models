@@ -1,4 +1,5 @@
 """
+TODO : in any directories...
 Problem 061 on CSPLib
 
 Example of Execution:

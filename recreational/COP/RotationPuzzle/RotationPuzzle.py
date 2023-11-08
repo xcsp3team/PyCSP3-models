@@ -7,10 +7,14 @@ The puzzle is a 4x4 grid of numbers. There are four operations, each of
 which involves rotating the numbers in a 3x3 subgrid clockwise.
 Given an arbitrary initial state, with all values from 0 to 15 put
 in the grid, one must reach the following final state:
+
+```
   0  1  2  3
   4  5  6  7
   8  9 10  11
   12 13 14 15
+```
+
 by applying a minimal sequence of rotations. We can observe that the effect
 of rotations on the final state is given by the following cycles:
 - (0, 1, 2, 6, 10, 9, 8, 4)
@@ -18,9 +22,22 @@ of rotations on the final state is given by the following cycles:
 - (4, 5, 6, 10, 14, 13, 12, 8)
 - (5, 6, 7, 11, 15, 14, 13, 9)
 
-Examples of Execution:
+## Data
+TODO
+
+## Model
+  constraints: AllDifferent, Table
+
+## Execution
   python3 RotationPuzzle.py -data=0
   python3 RotationPuzzle.py -data=inst.json
+
+## Links
+  - https://www.csplib.org/Problems/prob013/
+
+## Tags
+recreational
+
 """
 
 from collections import OrderedDict

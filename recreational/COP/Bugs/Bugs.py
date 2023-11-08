@@ -1,16 +1,18 @@
 """
 TODO
 
+
 ## Data
+
 ## Model
 
 constraints: Sum, Cardinality
-
 
 ## Command Line
 
 python Bugs.py
 
+## Links
 ## Tags
 
 recreational

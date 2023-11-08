@@ -11,10 +11,13 @@ Related papers:
 An example is given in the json file.
 
 ## Model
-constraints: Decreasing, Sum, LexDecreasing
+constraints: Decreasing, LexDecreasing, Sum
 
-## Command Line
+## Execution
 python Cutstock.py -data=Cutstock_small.json
+
+## Tags
+recreational
 """
 
 from pycsp3 import *

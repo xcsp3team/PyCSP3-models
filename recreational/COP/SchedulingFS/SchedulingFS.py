@@ -1,8 +1,20 @@
 """
-See https://en.wikipedia.org/wiki/Flow_shop_scheduling
+TODO
 
-Example of Execution:
+## Data
+TODO
+
+## Model
+  constraints: Increasing, Maximum, NoOverlap
+
+## Execution
   python3 SchedulingFS.py -data=SchedulingFS-Taillard-os-04-04-0.json
+
+## Links
+  - https://en.wikipedia.org/wiki/Flow_shop_scheduling
+
+## Tags
+recreational
 """
 
 from pycsp3 import *

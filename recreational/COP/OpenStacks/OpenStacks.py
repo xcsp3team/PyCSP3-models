@@ -1,9 +1,24 @@
 """"
-See https://ipg.host.cs.st-andrews.ac.uk/challenge/
+TODO
 
-Examples of Execution:
+## Data
+TODO
+
+## Model
+There is two variants of this mode.
+  constraints: Alldifferent, Maximum, Minimum, Sum, Table
+
+## Execution
   python3 OpenStacks.py -data=OpenStacks_example.json -variant=m1
   python3 OpenStacks.py -data=OpenStacks_example.json -variant=m2
+
+## Links
+  - https://ipg.host.cs.st-andrews.ac.uk/challenge/
+
+## Tags
+
+Examples of Execution:
+
 """
 
 from pycsp3 import *
