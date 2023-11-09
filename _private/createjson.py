@@ -14,17 +14,21 @@ for root, dirs, files in os.walk("."):
             lines = f.readlines()
             constraints = []
             tags = []
+            links = []
             start = False
             for line in lines:
-                if line.strip().startswith("constraints") or line.startswith("Constraints"):
-                    constraints = [c.strip() for c in line.strip().split(":")[1].split(',')]
-                if line.startswith("## Tags"):
+                stripped = line.strip()
+                if stripped.startswith("- http"):
+                    links.append(stripped.split("-")[1].strip())
+                if stripped.startswith("constraints") or stripped.startswith("Constraints"):
+                    constraints = [c.strip() for c in stripped.split(":")[0].split(',')]
+                if stripped.startswith("## Tags"):
                     start = True
                 elif start:
-                    tags = [t.strip().rstrip(",") for t in line.strip().split(" ")]
+                    tags = [t.strip().rstrip(",") for t in stripped.split(" ")]
                     start = False
             f.close()
-            models.append({"name": name, "fullname": os.path.dirname(model), "constraints" : constraints, "type": type, "tags": tags})
+            models.append({"name": name, "fullname": os.path.dirname(model), "constraints" : constraints, "type": type, "tags": tags, "links": links})
 
 models.sort(key=lambda model: model["name"])
 print(json.dumps(models))
