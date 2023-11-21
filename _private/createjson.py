@@ -8,7 +8,7 @@ for root, dirs, files in os.walk("."):
     for file in files:
         if file.endswith(".py") and "PARSER" not in file.upper() and file not in ["createjson.py", "readme.py", "searchmodels.py"]:
             model = os.path.join(root, file)[2:]
-            type = "CSP" if "CSP" in model else "COP"
+            type = "CSP"
             name = os.path.basename(model).split(".")[0]
             f = open(model, "r")
             lines = f.readlines()
@@ -18,6 +18,8 @@ for root, dirs, files in os.walk("."):
             start = False
             for line in lines:
                 stripped = line.strip()
+                if stripped.startswith("minimize(") or stripped.startswith("maximize("):
+                    type = "COP"
                 if stripped.startswith("- http"):
                     links.append(stripped.split("-")[1].strip())
                 if stripped.startswith("constraints") or stripped.startswith("Constraints"):

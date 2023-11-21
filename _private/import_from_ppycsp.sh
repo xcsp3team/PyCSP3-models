@@ -1,10 +1,10 @@
 #!/bin/csh
-# usage ./import_from_ppycsp.sh model [academic|real|recreational] [CSP|COP]
-# ./_private/import_from_ppycsp.sh  ../ppycsp3/pproblems/mzn08/DeBruijn.py academic CSP
+# usage ./import_from_ppycsp.sh model [academic|real|recreational]
+# ./_private/import_from_ppycsp.sh  ../ppycsp3/pproblems/mzn08/DeBruijn.py academic
 set file = `basename $1:r`
 set original_dir = $1:h
 echo $original_dir
-set dir = ./$2/$3/$file
+set dir = ./$2/$file
 mkdir $dir
 mkdir $dir/data
 cp $1 $dir
