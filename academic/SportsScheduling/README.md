@@ -10,23 +10,19 @@ into two slots indicating the two involved teams (for example, one playing at ho
  - every team plays at most twice in the same period over the tournament;
 
 ## Data
-A number n, the number of teams.
+  an integer n, the number of teams
 
-## Model(s)
-You can  find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/SportsScheduling/).
+## Model
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Count](http://pycsp.org/documentation/constraints/Count), [Table](http://pycsp.org/documentation/constraints/Table)
 
-There are 2 variants of this problem, one classic and one with dummy variables.
+## Execution
+  - python SportScheduling.py -data=[number]
+  - python SportsScheduling.py -variant=table -data=[number]
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Count](http://pycsp.org/documentation/constraints/Count), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension)
+## Links
+  - https://www.csplib.org/Problems/prob026/
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
-
-
-## Command Line
-```
-python SportsScheduling.py
-python SportsScheduling.py -data=10
-python SportsScheduling.py -data=10 -variant=dummy
-```
 
 ## Tags
  academic notebook csplib

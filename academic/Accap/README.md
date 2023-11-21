@@ -17,7 +17,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 
-## Data Example
+## Data
   inst3.json
 
 ## Model

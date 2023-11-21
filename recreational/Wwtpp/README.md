@@ -19,5 +19,3 @@ TODO + parser
 
 ## Tags
   recreational
-
-Examples of Execution:

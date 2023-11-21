@@ -1,7 +1,16 @@
 """
 This is the [problem 003](https://www.csplib.org/Problems/prob003/) of the CSPLib:
 
-"*An order m quasigroup is a Latin square of size m. That is, a m×m multiplication table in which each element occurs once in every row and column.:*"
+An order n quasigroup is a Latin square of size n.
+That is, a n×n multiplication table in which each element occurs once in every row and column.
+A quasigroup can be specified by a set and a binary multiplication operator, ∗ defined over this set.
+Quasigroup existence problems determine the existence or non-existence of quasigroups of
+a given size with additional properties. For example:
+  - QG3: quasigroups for which (a ∗ b) ∗ (b ∗ a) = a
+  - QG5: quasigroups for which ((b ∗ a) ∗ b) ∗ b = a
+  - QG6: quasigroups for which (a ∗ b) ∗ b = a ∗ (a ∗ b)
+For each of these problems, we may additionally demand that the quasigroup is idempotent.
+That is, a ∗ a = a for every element a.
 
 ### Example
 
@@ -12,18 +21,16 @@ This is the [problem 003](https://www.csplib.org/Problems/prob003/) of the CSPLi
 2    3   4   1
 ```
 
+
 ## Data
 A number n, the size of the square.
 
-## Model(s)
-There are 7 variants of this problem.
+## Model
 
 You can find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/Quasigroup/).
 
 
-constraints: AllDifferentMatrix, Element
-
-
+constraints:  Element
 
 ## Command Line
 
@@ -38,8 +45,12 @@ python QuasiGroup.py -data=5 -variant=aux-v4
 python QuasiGroup.py -data=8 -variant=aux-v5
 python QuasiGroup.py -data=9 -variant=aux-v7
 
+## Links
+  - https://www.csplib.org/Problems/prob003/
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
+
 ## Tags
- academic notebook csplib
+ academic notebook csplib xcspé2
  """
 
 from pycsp3 import *
@@ -106,7 +117,10 @@ elif variant("aux"):
         y = VarArray(size=[n, n], dom=range(n))
 
         satisfy(
-            (x[:, j][x[j][i]] == y[i][j], x[i][x[j][i]] == y[i][j]) for i, j in pairs if i != j
+            (
+                x[:, j][x[j][i]] == y[i][j],
+                x[i][x[j][i]] == y[i][j]
+            ) for i, j in pairs if i != j
         )
 
 """ Comments

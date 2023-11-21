@@ -1,30 +1,31 @@
 # Problem SolitaireBattleship
 ## Description
 """"
-A logic puzzle.
+See Problem 014 on CSPLib
 
-## Data
-TODO + parser
+## Data Example
+  113.json
 
 ## Model
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Regulat](http://pycsp.org/documentation/constraints/Regulat), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Regular](http://pycsp.org/documentation/constraints/Regular), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
-## Execution:
-```
-  python3 SolitaireBattleship.py -data=SolitaireBattleship_sb-12-12-5-0.json
-```
+## Execution
+  - python SolitaireBattleship.py -data=<datafile.json>
 
 ## Links
- - https://www.csplib.org/Problems/prob014/
+  - https://www.csplib.org/Problems/prob014/
+  - https://redirect.cs.umbc.edu/courses/671/fall09/resources/smith06.pdf
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
 ## Tags
-  recreational, csplib
+  recreational, csplib, xcsp22
 
 from pycsp3 import *
 
 fleet, hints, rowSums, colSums = data
 surfaces = [ship.size * ship.cnt for ship in fleet]
 pos, neg = [ship.size for ship in fleet], [-ship.size for ship in fleet]
+hints = [] if hints is None else hints
 n, nTypes = len(colSums), len(pos)
 
 
@@ -39,7 +40,7 @@ def automaton(horizontal):
     return Automaton(start=q(0), final=q(0), transitions=t)
 
 
-horizontal_automaton, vertical_automaton = automaton(True), automaton(False)  # automata for ships online
+Ah, Av = automaton(True), automaton(False)  # automata for ships online
 
 # s[i][j] is 1 iff the cell at row i and col j is occupied by a ship segment
 s = VarArray(size=[n + 2, n + 2], dom={0, 1})
@@ -89,24 +90,24 @@ satisfy(
      for i in range(1, n + 1) for j in range(1, n + 1)],
 
     # tag(channeling)
-    [iff(s[i][j] == 1, t[i][j] != 0) for i in range(n + 2) for j in range(n + 2)],
+    [s[i][j] == (t[i][j] != 0) for i in range(n + 2) for j in range(n + 2)],
 
     # counting the number of occurrences of ship segments of each type
-    Cardinality(t[1:n + 1, 1:n + 1], occurrences={pos[i]: cp[i] for i in range(nTypes)} + {neg[i]: cn[i] for i in range(nTypes)}),
+    Cardinality(t[1:n + 1, 1:n + 1], occurrences={pos[i]: cp[i] for i in range(nTypes)} | {neg[i]: cn[i] for i in range(nTypes)}),
 
     # ensuring the right number of occurrences of ship segments of each type
     [cp[i] + cn[i] == surfaces[i] for i in range(nTypes)],
 
     # ensuring row connectedness of ship segments
-    [t[i + 1] in horizontal_automaton for i in range(n)],
+    [t[i + 1] in Ah for i in range(n)],
 
     # ensuring column connectedness of ship segments
-    [t[:, j + 1] in vertical_automaton for j in range(n)],
+    [t[:, j + 1] in Av for j in range(n)],
 
     # tag(clues)
-    [hint_ctr(c, i, j) for (c, i, j) in hints] if hints else None
+    [hint_ctr(c, i, j) for (c, i, j) in hints]
 )
 
 """ Comments
-1) another way of setting border values to 0 is with constraints 'Sum', as in:
- [Sum(s[0]) == 0, Sum(s[n + 1]) == 0, Sum(s[:, 0]) == 0, Sum(s[:, n + 1]) == 0],
+1) another way of setting border values to 0 is :
+  [s[0] == 0, s[-1] == 0, s[:, 0] == 0, s[:, -1] == 0]

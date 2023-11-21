@@ -12,10 +12,12 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   three integers (v,b,r)
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Lex](http://pycsp.org/documentation/constraints/Lex)
+  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
+```
   python OPD.py -data=[number,number,number]
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob065/

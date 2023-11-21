@@ -9,21 +9,19 @@ into two slots indicating the two involved teams (for example, one playing at ho
  - every team plays at most twice in the same period over the tournament;
 
 ## Data
-A number n, the number of teams.
+  an integer n, the number of teams
 
-## Model(s)
-You can  find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/SportsScheduling/).
+## Model
+  constraints: AllDifferent, Cardinality, Count, Table
 
-There are 2 variants of this problem, one classic and one with dummy variables.
+## Execution
+  - python SportScheduling.py -data=[number]
+  - python SportsScheduling.py -variant=table -data=[number]
 
-constraints: Cardinality, Intension, AllDifferent, Count, Extension
+## Links
+  - https://www.csplib.org/Problems/prob026/
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
-
-
-## Command Line
-python SportsScheduling.py
-python SportsScheduling.py -data=10
-python SportsScheduling.py -data=10 -variant=dummy
 
 ## Tags
  academic notebook csplib
@@ -39,7 +37,7 @@ def match_number(t1, t2):
     return nMatches - ((nTeams - t1) * (nTeams - t1 - 1)) // 2 + (t2 - t1 - 1)
 
 
-table = {(t1, t2, match_number(t1, t2)) for t1, t2 in combinations(range(nTeams), 2)}
+T = {(t1, t2, match_number(t1, t2)) for t1, t2 in combinations(range(nTeams), 2)}
 
 # m[w][p] is the number of the match at week w and period p
 m = VarArray(size=[nWeeks, nPeriods], dom=range(nMatches))
@@ -55,7 +53,7 @@ satisfy(
     AllDifferent(m),
 
     # linking variables through ternary table constraints
-    [(x[w][p], y[w][p], m[w][p]) in table for w in range(nWeeks) for p in range(nPeriods)],
+    [(x[w][p], y[w][p], m[w][p]) in T for w in range(nWeeks) for p in range(nPeriods)],
 
     # each week, all teams are different (each team plays each week)
     [AllDifferent(x[w] + y[w]) for w in range(nWeeks)],

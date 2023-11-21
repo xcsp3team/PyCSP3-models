@@ -19,19 +19,18 @@ A solution for n=5:
 ```
 
 ## Data
-A number n, the size of the square.
+  a unique integer, the order of the problem instance
 
-## Model(s)
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [AllDifferentMatrix](http://pycsp.org/documentation/constraints/AllDifferentMatrix), [Extension](http://pycsp.org/documentation/constraints/Extension)
+## Model
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Table](http://pycsp.org/documentation/constraints/Table)
 
+## Execution
+  - python Ortholatin.py -data=[number]
 
+## Links
+  - https://en.wikipedia.org/wiki/Mutually_orthogonal_Latin_squares
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
-## Command Line
+## Tags
+  academic, xcsp22
 
-
-```shell
-```
-  python Ortholatin.py
-  python Ortholatin.py -data=7
-```
- ```

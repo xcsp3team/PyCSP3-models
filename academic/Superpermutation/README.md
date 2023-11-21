@@ -13,20 +13,19 @@ The first four smallest superpermutations have respective lengths 1, 3, 9, and 3
 However, for n = 5, there are several smallest superpermutations having the length 153.
 
 
-
 ## Data
-A number n, the number of integers.
-## Model(s)
+  an integer n
 
-There are two variants of this problem, one with table and cardinality constraints, the other ones with element and intension constraints.
+## Model
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Table](http://pycsp.org/documentation/constraints/Table)
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension)
+## Execution
+  - python Superpermutation.py -data=[number]
+  - python Superpermutation.py -variant=table -data=[number]
 
-## Command Line
-```
-python Superpermutation -data=4
-python Superpermutation -data=4 -variant=table
-```
+## Links
+  - https://en.wikipedia.org/wiki/Superpermutation
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
 ## Tags
- academic
+ academic xcsp22

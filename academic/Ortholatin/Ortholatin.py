@@ -18,23 +18,25 @@ A solution for n=5:
 ```
 
 ## Data
-A number n, the size of the square.
+  a unique integer, the order of the problem instance
 
-## Model(s)
-constraints: AllDifferent, AllDifferentMatrix, Extension
+## Model
+  constraints: AllDifferent, Table
 
+## Execution
+  - python Ortholatin.py -data=[number]
 
+## Links
+  - https://en.wikipedia.org/wiki/Mutually_orthogonal_Latin_squares
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
-## Command Line
+## Tags
+  academic, xcsp22
 
-
-```shell
-  python Ortholatin.py
-  python Ortholatin.py -data=7
- ```
 """
 
 from pycsp3 import *
+
 
 n = data or 5
 
@@ -47,7 +49,7 @@ y = VarArray(size=[n, n], dom=range(n))
 # z is the matrix used to control orthogonality
 z = VarArray(size=[n * n], dom=range(n * n))
 
-table = {(i, j, i * n + j) for i in range(n) for j in range(n)}
+T = {(i, j, i * n + j) for i in range(n) for j in range(n)}
 
 satisfy(
     # ensuring that x is a Latin square
@@ -63,10 +65,15 @@ satisfy(
     AllDifferent(z),
 
     # computing z from x and y
-    [(x[i][j], y[i][j], z[i * n + j]) in table for i in range(n) for j in range(n)],
+    [(x[i][j], y[i][j], z[i * n + j]) in T for i in range(n) for j in range(n)],
 
     # tag(symmetry-breaking)
-    [(x[0][j] == j, y[0][j] == j) for j in range(n)]
+    [
+        (
+            x[0][j] == j,
+            y[0][j] == j
+        ) for j in range(n)
+    ]
 )
 
 """ Comments

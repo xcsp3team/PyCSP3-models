@@ -38,7 +38,7 @@ A number n, the number of nodes of the graph.
 
 ## Model(s)
 
-  constraints: [Decreasing](http://pycsp.org/documentation/constraints/Decreasing), [Intension](http://pycsp.org/documentation/constraints/Intension), [LexIncreasing](http://pycsp.org/documentation/constraints/LexIncreasing), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Command Line
 
@@ -47,5 +47,10 @@ python DiamondFree.py
 python DiamondFree.py -data=10
 ```
 
+## Links
+  - https://www.csplib.org/Problems/prob050/
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
+
+
 ## Tags
- academic csplib
+ academic csplib, xcsp22

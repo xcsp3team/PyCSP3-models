@@ -37,15 +37,20 @@ A number n, the number of nodes of the graph.
 
 ## Model(s)
 
-constraints: Sum, Intension, Decreasing, LexIncreasing
+constraints: Lex, Sum
 
 ## Command Line
 
 python DiamondFree.py
 python DiamondFree.py -data=10
 
+## Links
+  - https://www.csplib.org/Problems/prob050/
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
+
+
 ## Tags
- academic csplib
+ academic csplib, xcsp22
 """
 
 from pycsp3 import *
@@ -75,5 +80,8 @@ satisfy(
     Sum(y) == s,
 
     # tag(symmetry-breaking)
-    [Decreasing(y), LexIncreasing(x)]
+    [
+        Decreasing(y),
+        LexIncreasing(x)
+    ]
 )
