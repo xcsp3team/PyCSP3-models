@@ -9,4 +9,4 @@ mkdir $dir
 mkdir $dir/data
 cp $1 $dir
 cp $original_dir/"$file"_ParserZ.py $dir/data
-python _private/readme.py $dir/$file.py
+python3 _private/readme.py $dir/$file.py

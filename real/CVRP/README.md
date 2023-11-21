@@ -1,26 +1,20 @@
 # Problem CVRP
 ## Description
-Capacitated Vehicle Routing problem.
-
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015 Minizinc challenge.
-The MZN model was proposed by Andrea Rendl (CP formulation adapted to use instances for MIP models).
-No Licence was explicitly mentioned (MIT Licence assumed).
+See Problem 086 on CSPLib, and VVRLib.
 
 ## Data Example
-  A-n37-k5.json
+  A-n32-k5.json
 
 ## Model
-  constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-```
-  python CVRP.py -data=<datafile.json>
-  python CVRP.py -data=<datafile.dzn> -parser=CVRP_ParserZ.py
-```
+  - python CVRP.py -data=<datafile.json>
 
 ## Links
-  - https://en.wikipedia.org/wiki/Vehicle_routing_problem
-  - https://www.minizinc.org/challenge2015/results2015.html
+  - https://www.csplib.org/Problems/prob086/
+  - http://vrp.galgos.inf.puc-rio.br/index.php/en/
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
 
 ## Tags
-  real, mzn15
+  real, csplib, xcsp22
