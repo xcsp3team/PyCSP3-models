@@ -14,12 +14,12 @@ The article stressed the fact that a simple backtracking algorithm would be simp
 due to the number of permutations.
 
 ## Data
-  two integers r and n
+  Two integers r and n
 
 ## Model
   The model here is given in a general form.
 
-  constraints: AllDifferent, Sum, Slide
+  constraints: AllDifferent, Slide, Sum
 
 ## Execution
   - python ClockTriplet.py -data=[number,number]
@@ -29,7 +29,7 @@ due to the number of permutations.
   - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
 
 ## Tags
-  academic, xcsp22
+  academic, recreational, xcsp22
 """
 
 from pycsp3 import *

@@ -8,13 +8,13 @@ The MZN model was proposed by Barry O'Sullivan (Cork Constraint Computation Cent
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-  a number n
+  A number n
 
 ## Model
   constraints: AllDifferent
 
 ## Execution
-  python CostasArray_z.py -data=[number]
+  python CostasArray_z.py -data=number
 
 ## Links
   - https://mathworld.wolfram.com/CostasArray.html

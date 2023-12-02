@@ -2,7 +2,7 @@
 From Tony Hurlimann, A coin puzzle, SVOR-contest 2007.
 
 ## Data
-  two integers n and c
+  Two integers n and c
 
 ## Model
   constraints: Sum
@@ -15,7 +15,7 @@ From Tony Hurlimann, A coin puzzle, SVOR-contest 2007.
   - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
 
 ## Tags
-  recreational, xcsp22
+  academic, recreational, xcsp22
 """
 
 from pycsp3 import *
