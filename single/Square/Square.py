@@ -1,14 +1,12 @@
 """
-See http://en.wikibooks.org/wiki/Puzzles/Arithmetical_puzzles/Digits_of_the_Square
-
 There is one four-digit whole number x, such that the last four digits of x^2
 are in fact the original number x. What is it?
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Execution
-  python3 Square.py
+  python Square.py
 
 ## Links
  - http://en.wikibooks.org/wiki/Puzzles/Arithmetical_puzzles/Digits_of_the_Square

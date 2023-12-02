@@ -12,13 +12,13 @@ The witnesses are unanimous about the following facts:
  - Nobody likes everyone.
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
-  constraints: Count
+  constraints: Count, Element
 
 ## Execution
-  python3 Sandwich.py
+  python Sandwich.py
 
 ## Tags
   single

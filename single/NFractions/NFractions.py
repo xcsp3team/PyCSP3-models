@@ -2,20 +2,19 @@
 Problem 041 on CSPLib
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
   constraints: AllDifferent
 
 ## Execution
-  python3 NFractions.py
+  python NFractions.py
 
 ## Links
  - https://www.csplib.org/Problems/prob041/
 
 ## Tags
   single, csplib
-
 """
 
 from pycsp3 import *

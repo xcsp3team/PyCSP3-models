@@ -10,17 +10,16 @@ We know that:
  - Purdey only extended credit to regular customers, such as the family that bought the muslin on credit
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
   constraints: AllDifferent
 
 ## Execution
-  python3 Purdey.py
+  python Purdey.py
 
 ## Tags
   single
-
 """
 
 from pycsp3 import *
@@ -42,8 +41,8 @@ satisfy(
     AllDifferent(cash, credit, ham, peas),
     peas != Logans,
     peas != kerosene,
-    (kerosene == Boyds) | (cloth == Boyds),
-    (kerosene == Garveys) | (cloth == Garveys),
+    either(kerosene == Boyds, cloth == Boyds),
+    either(kerosene == Garveys, cloth == Garveys),
     ham == flour,
     credit == cloth,
     credit != Boyds

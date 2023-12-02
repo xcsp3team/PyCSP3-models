@@ -1,21 +1,18 @@
 """
 Well-known crypto-arithmetic puzzle of unknown origin (e.g., a model is present in Gecode)
 
-
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
   constraints: AllDifferent, Sum
 
 ## Execution
-  python3 Alpha.py
-  python3 Alpha.py -variant=var
-
+  python Alpha.py
+  python Alpha.py -variant=var
 
 ## Tags
   single
-
 """
 
 from pycsp3 import *

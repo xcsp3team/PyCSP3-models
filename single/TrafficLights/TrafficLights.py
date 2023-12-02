@@ -2,17 +2,16 @@
 Problem 016 on CSPLib
 
 ## Data
-all integrated (single instance)
-
+  all integrated (single problem)
 
 ## Execution
-  python3 TrafficLights.py
+  python TrafficLights.py
 
 ## Links
  - https://www.csplib.org/Problems/prob016/
 
 ## Tags
-  single csplib
+  single, csplib
 """
 
 from pycsp3 import *

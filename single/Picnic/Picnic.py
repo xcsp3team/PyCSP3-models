@@ -13,13 +13,13 @@ We know that:
  - The person who arrived by sailboat is not the person who brought the soda and the other person who brought the cookies.
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
   constraints: AllDifferent
 
 ## Execution
-  python3 Picnic.py
+  python Picnic.py
 
 ## Tags
   single

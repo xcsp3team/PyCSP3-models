@@ -2,10 +2,10 @@
 A toy problem from my course about CP.
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Execution
-  python3 Witch.py
+  python Witch.py
 
 ## Tags
   single
@@ -13,10 +13,10 @@ all integrated (single instance)
 
 from pycsp3 import *
 
-# x is the number of magic potions for love
+# x is the number of magic potions for inspiring love
 x = Var(range(400))
 
-# y is the number of magic potions for youth
+# y is the number of magic potions for restoring youth
 y = Var(range(400))
 
 satisfy(

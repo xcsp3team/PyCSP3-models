@@ -6,16 +6,15 @@ Some of them have preferences next to whom they want to stand:
  - Fred wants to stand next to Mary and Donald.
  - Paul wants to stand next to Fred and Donald.
 
-
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
   constraints: AllDifferent, Sum, Table
 
 ## Execution
-  python3 Photo.py
-  python3 Photo.py -variant=aux
+  python Photo.py
+  python Photo.py -variant=aux
 
 ## Tags
   single
@@ -43,14 +42,14 @@ elif variant("aux"):
     # costs[i] is the cost of not respecting the ith preference
     costs = VarArray(size=len(preferences), dom={0, 1})
 
-    table = {(i, j, 0 if abs(i - j) == 1 else 1) for i in range(7) for j in range(7) if i != j}
+    T = {(i, j, 0 if abs(i - j) == 1 else 1) for i in range(7) for j in range(7) if i != j}
 
     satisfy(
         # all friends are at a different position
         AllDifferent(friends),
 
         # determining which preferences are not satisfied
-        [(f1, f2, costs[i]) in table for i, (f1, f2) in enumerate(preferences)]
+        [(f1, f2, costs[i]) in T for i, (f1, f2) in enumerate(preferences)]
     )
 
     minimize(

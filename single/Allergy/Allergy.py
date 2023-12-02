@@ -1,6 +1,6 @@
 """
-Four friends (two women named Debra and Janet, and two men named Hugh and Rick) found that each of them is allergic to something different:
-eggs, mold, nuts and ragweed.
+Four friends are two women named Debra and Janet, and two men named Hugh and Rick.
+They found that each of them is allergic to something different: eggs, mold, nuts and ragweed.
 We would like to match each one's surname (Baxter, Lemon, Malone and Fleet) with his or her allergy.
 We know that:
  - Rick is not allergic to mold
@@ -9,19 +9,17 @@ We know that:
  - Debra is allergic to ragweed
  - Janet (who isn't Lemon) is neither allergic to eggs nor to mold
 
-
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
   constraints: AllDifferent
 
 ## Execution
-  python3 Allergy.py
+  python Allergy.py
 
 ## Tags
- single
-
+  single
 """
 
 from pycsp3 import *

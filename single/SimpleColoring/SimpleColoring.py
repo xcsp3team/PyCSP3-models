@@ -2,7 +2,7 @@
 A simple coloring problem
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Execution
   python SimpleColoring.py
