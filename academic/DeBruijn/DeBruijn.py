@@ -3,7 +3,13 @@ In combinatorial mathematics, a de Bruijn sequence of order n on an alphabet A o
 in which every possible length-n string on A occurs exactly once as a substring.
 
 ## Data
-  a pair (b,n) of integer values
+  A pair (b,n) of integer values, the value of n and the size of the alphabet.
+
+### Example
+  For n=2 and an alphabet {a,b,c}, a sequence is
+  ```
+     a a c b b c c a b
+  ```
 
 ## Model
   constraints: AllDifferent, Cardinality, Minimum, Sum
@@ -13,6 +19,7 @@ in which every possible length-n string on A occurs exactly once as a substring.
 
 ## Links
   - https://en.wikipedia.org/wiki/De_Bruijn_sequence
+  - https://mathworld.wolfram.com/deBruijnSequence.html
   - http://www.hakank.org/common_cp_models/#debruijn
   - https://www.minizinc.org/challenge2008/results2008.html
 

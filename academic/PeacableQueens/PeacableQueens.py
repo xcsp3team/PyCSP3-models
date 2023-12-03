@@ -6,7 +6,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 The model was created by Hendrik 'Henk' Bierlee, with a licence that seems to be like a MIT Licence.
 
 ## Data
-  an integer n
+  An integer n
 
 ## Model
   constraints: Count, Lex, Precedence, Regular

@@ -8,7 +8,7 @@ The MZN model was proposed by Pierre Flener and Jean-Noel Monette (loosely based
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-  three integers (v,b,r)
+  Three integers (v,b,r)
 
 ## Model
   constraints: Sum, Lex

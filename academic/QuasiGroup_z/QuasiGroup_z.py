@@ -3,10 +3,10 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-  two integers (n,k)
+  Two integers (n,k)
 
 ## Execution
-  python SearchStress.py -data=[number,number]
+  python QuasiGroup_z.py -data=[number,number]
 
 ## Links
   - https://www.minizinc.org/challenge2008/results2008.html

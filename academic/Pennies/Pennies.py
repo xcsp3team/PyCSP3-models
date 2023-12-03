@@ -6,13 +6,13 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist, under the MIT Licence.
 The original model involves an option type while we use the special value -1.
 
 ## Data
-  an integer n
+  An integer n
 
 ## Model
   constraints: AllDifferent, Sum
 
 ## Execution
-  python Pennies.py -data=<number>
+  python Pennies.py -data=number
 
 ## Links
   - https://blog.computationalcomplexity.org/2023/06/can-you-put-n-pennies-on-n-x-n.html

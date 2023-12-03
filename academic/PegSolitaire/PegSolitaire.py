@@ -6,7 +6,7 @@ the pegs are gradually removed until a goal configuration is obtained.
 In the classic ‘central’ Solitaire, the goal is to reverse the starting position, leaving just a single peg in the central hole
 
 ## Data
-  three integers
+  Three integers
 
 ## Model
   Here, the model is for the English style (standard), with 33 holes.

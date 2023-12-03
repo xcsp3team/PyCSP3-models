@@ -1,16 +1,18 @@
 """
-The SATisfiability problem
+The SATisfiability problem.
 
 ## Data
-TODO + parser
+  xxxx
 
 ## Model
-  constraints: Clauses, Sum
+  There are thre variants.
+
+  constraints: Clause, Sum
 
 ## Execution:
-  python3 Sat.py -data=Sat_flat30-16.json -variant=clause
-  python3 Sat.py -data=Sat_flat30-16.json -variant=sum
-  python3 Sat.py -data=Sat_flat30-16.json -variant=dual
+  python Sat.py -data=<datafile.json> -variant=clause
+  python Sat.py -data=<datafile.json> -variant=sum
+  python Sat.py -data=<datafile.json> -variant=dual
 
 ## Links
  - https://en.wikipedia.org/wiki/Boolean_satisfiability_problem

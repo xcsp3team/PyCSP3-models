@@ -1,30 +1,30 @@
 """
-You can see below, the beginning of the description provided by  [wikipedia](https://en.wikipedia.org/wiki/Knight%27s_tour).
-
-"*A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square exactly
-once. If the knight ends on a square that is one knight's move from the beginning square (so that it could tour the board again immediately, following the same path), the tour is closed; otherwise, it is open.*".
-
-### Example
-This is an animation of on _open_ knigth tour on a 5x5 board (source: [wikipedia](https://en.wikipedia.org/wiki/Knight%27s_tour))
-
-![knight tour](https://upload.wikimedia.org/wikipedia/commons/c/ca/Knights-Tour-Animation.gif)
+A knight's tour is a sequence of moves of a knight on a chessboard such that the knight visits every square exactly once.
+If the knight ends on a square that is one knight's move from the beginning square (so that it could tour the board again immediately,
+following the same path), the tour is closed; otherwise, it is open.
 
 ## Data
-A number n, the size of the board.
+  A number n, the size of the board.
 
-## Model(s)
-There are three variant, one with only constraint in intension, two with constraint in extension.
+## Example
+  This is an animation on a 5x5 board (source: [wikipedia](https://en.wikipedia.org/wiki/Knight%27s_tour))
+  ![knight tour](https://upload.wikimedia.org/wikipedia/commons/c/ca/Knights-Tour-Animation.gif)
 
-constraints: AllDifferent, Intension, Extension
+## Model
+  There are two variant, a main one with intensional constraints, and one with table constraints
 
-## Command Line
-  python KnightTour.py
-  pythongithub KnightTour.py -data=16
-  python KnightTour.py -data=16 -variant=table-2
-  python KnightTour.py -data=16 -variant=table-3
+  constraints: AllDifferent, Table
+
+## Execution
+  - python KnightTour.py -data=number
+  - python KnightTour.py -data=number -variant=table-2
+  - python KnightTour.py -data=number -variant=table-3
+
+## Links
+  - https://en.wikipedia.org/wiki/Knight%27s_tour
 
 ## Tags
- academic
+  academic
 """
 
 from pycsp3 import *
@@ -85,7 +85,7 @@ elif variant("table"):
 
     def table_recursive(i, tmp):
         if i == len(tmp):
-            table.add(tuple(tmp[:]))
+            T.append(tuple(tmp[:]))
         else:
             for v in jumps[tmp[i - 1]]:
                 if len([j for j in range(0, i - 1) if tmp[j] == v]) == 0:
@@ -93,15 +93,16 @@ elif variant("table"):
                     table_recursive(i + 1, tmp)
 
 
-    table = set()
+    T = list()
     for i in range(n * n):
         table_recursive(1, [i] + [0] * (r - 1))
 
     satisfy(
         # two successive knights are at a knight jump apart
-        [x[(i + j) % (n * n)] for j in range(r)] in table for i in range(0, n * n, r - 1)
+        (x[(i + j) % (n * n)] for j in range(r)) in T for i in range(0, n * n, r - 1)
     )
 
 """ Comments
 1) it is possible to use extension constraints instead of intension constraints (see, e.g., the problem QueensKnights)
+2) it is faster to use a list than a set for the table T
 """

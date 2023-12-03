@@ -1,5 +1,5 @@
 """
-This is the [problem 029](https://www.csplib.org/Problems/prob029/) of the CSPLib:
+This is [Problem 029](https://www.csplib.org/Problems/prob029/) at CSPLib.
 
 This problem, posed first by G.L. Honaker, is to put a queen and the n<sup>2</sup> numbers 1...,n<sup>2</sup>
 on a nxn  chessboard so that:
@@ -9,32 +9,26 @@ on a nxn  chessboard so that:
 
 Note that 1 is not prime, and that the queen does not attack its own cell.
 
-### Example
-The optimum for a chessboard of size 8 is 9.
-
+## Example
+  The optimum for a chessboard of size 8 is 9.
 
 ## Data
-A number n, the size of the chessboard.
+  A number n, the size of the chessboard.
 
-## Model(s)
+## Model
+  There are several variants
 
-There are three variants, one with table constraints, one with auxilliary variables and a hybrid one.
+  constraints: AllDifferent, Sum, Table
 
- constraints: Intension, Extension, Sum, AllDifferent
-
-
-## Command Line
-
-```
-python QueenAttacking.py
-python QueenAttacking.py -data=6
-python QueenAttacking.py -data=6 -variant=aux
-python QueenAttacking.py -data=6 -variant=hybrid
-python QueenAttacking.py -data=6 -variant=table
-```
+## Execution
+  - python QueenAttacking.py
+  - python QueenAttacking.py -data=number
+  - python QueenAttacking.py -data=number -variant=aux
+  - python QueenAttacking.py -data=number -variant=hybrid
+  - python QueenAttacking.py -data=number -variant=table
 
 ## Tags
- academic csplib
+  academic, csplib
 """
 
 from pycsp3 import *
@@ -111,13 +105,13 @@ elif variant("hybrid"):  # hybrid as compilation will build and combine both int
 
 elif variant("table"):
     def neighbours(r1, c1):
-        return [(r1 + r2) * n + c1 + c2 for (r2, c2) in [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)] if
-                0 <= r1 + r2 < n and 0 <= c1 + c2 < n]
+        jumps = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
+        return [(r1 + r2) * n + c1 + c2 for (r2, c2) in jumps if 0 <= r1 + r2 < n and 0 <= c1 + c2 < n]
 
 
-    table1 = {(i, j) for i in range(n * n) for j in neighbours(i // n, i % n)}
-    table2 = {(i, j, 1 if (i == j) | (i // n != j // n) & (i % n != j % n) & (abs(i // n - j // n) != abs(i % n - j % n)) else 0) for i in range(n * n) for j in
-              range(n * n)}
+    T1 = {(i, j) for i in range(n * n) for j in neighbours(i // n, i % n)}
+    T2 = {(i, j, 1 if i == j or i // n != j // n and i % n != j % n and abs(i // n - j // n) != abs(i % n - j % n) else 0)
+          for i in range(n * n) for j in range(n * n)}
 
     # p[j] is 1 iff the j+1th prime number is not attacked by a queen
     p = VarArray(size=m, dom={0, 1})
@@ -127,10 +121,10 @@ elif variant("table"):
         AllDifferent(x),
 
         # ensuring a knight move between two successive values
-        [(x[i], x[i + 1]) in table1 for i in range(n * n - 1)],
+        [(x[i], x[i + 1]) in T1 for i in range(n * n - 1)],
 
         # determining if prime numbers are attacked by the queen
-        [(q, x[k], p[j]) in table2 for j, k in enumerate(p - 1 for p in primes)]
+        [(q, x[k], p[j]) in T2 for j, k in enumerate(p - 1 for p in primes)]
     )
 
     minimize(

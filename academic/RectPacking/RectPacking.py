@@ -6,7 +6,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 The MZN model has Copyright (C) 2009-2014 The University of Melbourne and NICTA.
 
 ## Data
-  two integers (n,k)
+  Two integers (n,k)
 
 ## Model
   constraints: Cumulative, NoOverlap

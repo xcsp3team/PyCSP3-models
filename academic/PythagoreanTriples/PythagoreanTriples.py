@@ -7,13 +7,13 @@ satisfying a2 + b2 = c2 are all the same color.
 For example, in the Pythagorean triple 3, 4 and 5 (32 + 42 = 52 ), if 3 and 4 are colored red, then 5 must be colored blue.
 
 ## Data
-  a unique integer n
+  A unique integer n
 
 ## Model
   constraints: NValues
 
 ## Execution
-  - python PythagoreanTriples.py -data=[number]
+  - python PythagoreanTriples.py -data=number
 
 ## Links
   - https://en.wikipedia.org/wiki/Boolean_Pythagorean_triples_problem

@@ -1,30 +1,28 @@
 """
-You can see below, the beginning of the description provided by  [wikipedia](https://en.wikipedia.org/wiki/Graeco-Latin_square).
-
-"*A Latin square of order n is an n by n array filled with n different symbols (for example, values between 1 and n),
+A Latin square of order n is an n by n array filled with n different symbols (for example, values between 1 and n),
 each occurring exactly once in each row and exactly once in each column.
 Two latin squares of the same order n are orthogonal if each pair of elements in the same position occurs exactly once.
-The most easy way to see this is by concatenating elements in the same position and verify that no pair appears twice.*"
-
-### Example
-
-A solution for n=5:
-```
-[0, 1, 2, 3, 4]          [0, 1, 2, 3, 4]
-[4, 2, 3, 0, 1]          [3, 4, 1, 2, 0]
-[3, 4, 1, 2, 0]          [4, 2, 3, 0, 1]
-[1, 3, 0, 4, 2]          [2, 0, 4, 1, 3]
-[2, 0, 4, 1, 3]          [1, 3, 0, 4, 2]
-```
+The most easy way to see this is by concatenating elements in the same position and verify that no pair appears twice.
+There are orthogonal latin squares of any size except 1, 2, and 6.
 
 ## Data
   a unique integer, the order of the problem instance
+
+## Example
+  A solution for n=5:
+  ```
+    [0, 1, 2, 3, 4]          [0, 1, 2, 3, 4]
+    [4, 2, 3, 0, 1]          [3, 4, 1, 2, 0]
+    [3, 4, 1, 2, 0]          [4, 2, 3, 0, 1]
+    [1, 3, 0, 4, 2]          [2, 0, 4, 1, 3]
+    [2, 0, 4, 1, 3]          [1, 3, 0, 4, 2]
+  ```
 
 ## Model
   constraints: AllDifferent, Table
 
 ## Execution
-  - python Ortholatin.py -data=[number]
+  - python Ortholatin.py -data=number
 
 ## Links
   - https://en.wikipedia.org/wiki/Mutually_orthogonal_Latin_squares
@@ -32,11 +30,9 @@ A solution for n=5:
 
 ## Tags
   academic, xcsp22
-
 """
 
 from pycsp3 import *
-
 
 n = data or 5
 

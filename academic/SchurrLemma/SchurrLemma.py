@@ -1,31 +1,29 @@
 """
-This is the [problem 015](https://www.csplib.org/Problems/prob015/) of the CSPLib.
+This is [Problem 015](https://www.csplib.org/Problems/prob015/) at CSPLib.
 
-"*The problem is to put n balls labelled 1...n into 3 boxes so that for any triple of balls (x,y,z) with x+y=z, not all are in the same box*".
-
-The variant mod provided in the model is a variant proposed by  Bessiere Meseguer Freuder Larrosa,"On forward checking for non-binary constraint satisfaction", 2002.
+The problem is to put n balls labelled 1...n into 3 boxes so that for any triple of balls (x,y,z) with x+y=z, not all are in the same box.
+The variant 'mod' has been proposed by Bessiere Meseguer Freuder Larrosa, "On forward checking for non-binary constraint satisfaction", 2002.
 
 ### Example
-A solution for 5 integers to put inside 4 boxes:
-```
-1 2 1 2 3
-```
+  A solution for 5 integers to put inside 4 boxes:
+  ```
+    1 2 1 2 3
+  ```
 
 ## Data
-A couple \[n,d], n is the number of balls, d the number of boxes
+  A pair (n,d) where n is the number of balls, d the number of boxes
 
-## Model(s)
-There are 3 variants of this problem, one with AllDifferent constraints, the other ones with constraint NValues.
+## Model
+  There are two variants of this problem, one with NValues, the other one with AllDifferent
 
-constraints: AllDifferent, NValues
+  constraints: AllDifferent, NValues
 
-## Command Line
-  python SchurrLemma.py
-  python SchurrLemma.py -data=[10,10]
-  python SchurrLemma.py -data=[10,10] -variant=mod
+## Execution
+  - python SchurrLemma.py -data=[number,number]
+  - python SchurrLemma.py -data=[number,number] -variant=mod
 
 ## Tags
- academic csplib
+  academic, csplib
 """
 
 from pycsp3 import *
