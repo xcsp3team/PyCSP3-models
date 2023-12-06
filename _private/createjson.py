@@ -23,7 +23,7 @@ for root, dirs, files in os.walk("."):
                 if stripped.startswith("- http"):
                     links.append(stripped.split("-")[1].strip())
                 if stripped.startswith("constraints") or stripped.startswith("Constraints"):
-                    constraints = [c.strip() for c in stripped.split(":")[0].split(',')]
+                    constraints = [c.strip() for c in stripped.split(":")[1].split(',')]
                 if stripped.startswith("## Tags"):
                     start = True
                 elif start:

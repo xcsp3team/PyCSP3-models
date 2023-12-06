@@ -17,7 +17,7 @@ Two variants of the objective function.
   - https://turing.cs.hbg.psu.edu/txn131/graphcoloring.html
 
 ## Tags
-Examples of Execution:
+ recreational
 """
 
 from pycsp3 import *
