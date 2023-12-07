@@ -5,7 +5,7 @@ that each t-element subset of S is contained in exactly one block.
 In an alternate notation for block designs, an S(t,k,n) would be a t-(n,k,1) design."
 
 ## Data
-  three integers (t,k,n)
+  Three integers (t,k,n)
 
 ## Model
   constraints: Count, Lex, Sum

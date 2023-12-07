@@ -7,14 +7,14 @@ The MZN model was proposed by Ralph Becket.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-  an integer n, the order of the problem instance
+  An integer n, the order of the problem instance
 
 ## Model
   constraints: Sum, Table
 
 ## Execution
   python StillLife.py -data=[number]
-  python StillLife.py -variant=table -data=[number]
+  python StillLife.py -data=[number] -variant=table
 
 ## Links
   - https://en.wikipedia.org/wiki/Still_life_(cellular_automaton)

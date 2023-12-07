@@ -1,10 +1,11 @@
 """
 This is [Problem 015](https://www.csplib.org/Problems/prob015/) at CSPLib.
 
-The problem is to put n balls labelled 1...n into 3 boxes so that for any triple of balls (x,y,z) with x+y=z, not all are in the same box.
+The problem is to put n balls labelled 1,...,n into 3 boxes so that for any triple of balls (x,y,z) with x+y=z,
+not all are in the same box.
 The variant 'mod' has been proposed by Bessiere Meseguer Freuder Larrosa, "On forward checking for non-binary constraint satisfaction", 2002.
 
-### Example
+## Example
   A solution for 5 integers to put inside 4 boxes:
   ```
     1 2 1 2 3

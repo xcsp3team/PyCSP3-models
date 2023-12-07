@@ -1,30 +1,30 @@
 """
-This is the [problem 010](https://www.csplib.org/Problems/prob010/) of the CSPLib.
+This is [Problem 010](https://www.csplib.org/Problems/prob010/) at CSPLib.
 
-"*The coordinator of a local golf club has come to you with the following problem. In their club, there are 32 social golfers, e
-ach of whom play golf once a week, and always in groups of 4. They would like you to come up with a schedule of play for these golfers,
+The coordinator of a local golf club has come to you with the following problem.
+In their club, there are 32 social golfers, each of whom play golf once a week, and always in groups of 4.
+They would like you to come up with a schedule of play for these golfers,
 to last as many weeks as possible, such that no golfer plays in the same group as any other golfer on more than one occasion.
 The problem can easily be generalized to that of scheduling groups of golfers over at most weeks, such
 that no golfer plays in the same group as any other golfer twice (i.e. maximum socialisation is achieved).
-For the original problem, the values of and are respectively 8 and 4.*".
+For the original problem, the values of and are respectively 8 and 4.
 
 ## Data
-A triplet \[n,s,w], n is the number of groups, s the size of the groups and w the number of weeks.
+  A triplet (n,s,w), where n is the number of groups, s the size of the groups and w the number of weeks.
 
-## Model(s)
-You can  find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/SocialGolfers/).
+## Model
+  You can  find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/SocialGolfers/).
 
-There are 2 variants of this problem one with constraints sum the other with constraints in intension.
+  There are 2 variants: a main one, and a variant '01' with additional variables
 
-constraints: Cardinality, Intension, Sum, LexIncreasing
+  constraints: Cardinality, Lex, Sum
 
-## Command Line
-python SocialGolfers.py
-python SocialGolfers.py -data=[5,3,6]
-python SocialGolfers.py -data=[5,3,6] -variant=1
+## Execution
+  - python SocialGolfers.py -data=[number,number,number]
+  - python SocialGolfers.py -data=[number,number,number] -variant=01
 
 ## Tags
- academic notebook csplib
+  academic, notebook, csplib
 """
 
 from pycsp3 import *
@@ -38,7 +38,12 @@ if not variant():
 
     satisfy(
         # ensuring that two players don't meet more than one time
-        [(g[w1][p1] != g[w1][p2]) | (g[w2][p1] != g[w2][p2]) for w1, w2 in combinations(nWeeks, 2) for p1, p2 in combinations(nPlayers, 2)],
+        [
+            If(
+                g[w1][p1] == g[w1][p2],
+                Then=g[w2][p1] != g[w2][p2]
+            ) for w1, w2 in combinations(nWeeks, 2) for p1, p2 in combinations(nPlayers, 2)
+        ],
 
         # respecting the size of the groups
         [Cardinality(g[w], occurrences={i: size for i in range(nGroups)}) for w in range(nWeeks)],
@@ -64,7 +69,7 @@ elif variant("01"):
 
     satisfy(
         # each week, each player plays exactly once
-        [Sum(x[w][g][p] for g in range(nGroups)) == 1 for w in range(nWeeks) for p in range(nPlayers)],
+        [Sum(x[w, :, p]) == 1 for w in range(nWeeks) for p in range(nPlayers)],
 
         # each week, each group contains exactly the right number of players
         [Sum(x[w][g]) == size for w in range(nWeeks) for g in range(nGroups)],
@@ -87,6 +92,21 @@ elif variant("01"):
             LexDecreasing([x[w][0] for w in range(nWeeks)], strict=True),
 
             # golfers are strictly ordered
-            LexDecreasing([[x[w][g][p] for w in range(nWeeks) for g in range(nGroups)] for p in range(nPlayers)], strict=True)
+            LexDecreasing([x[:, :, p] for p in range(nPlayers)], strict=True)
         ]
     )
+
+""" Comments
+1) note that:
+   Sum(x[w, :, p])
+ is a shortcut for:
+   Sum(x[w][g][p] for g in range(nGroups))
+2) Note that:
+   LexDecreasing(x[:, 0]
+ is a shortcut for: 
+   LexDecreasing([x[w][0] for w in range(nWeeks)]
+2) Note that:
+   LexDecreasing([x[:, :, p] for p in range(nPlayers)]
+ is a shortcut for:
+   LexDecreasing([[x[w][g][p] for w in range(nWeeks) for g in range(nGroups)] for p in range(nPlayers)]
+"""

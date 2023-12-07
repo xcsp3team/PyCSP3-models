@@ -1,50 +1,41 @@
 """
-This is the [problem 032](https://www.csplib.org/Problems/prob032/) of the CSPLib:
+This is [Problem 032](https://www.csplib.org/Problems/prob032/) at CSPLib:
 
 This problem arises from the Game of Life, invented by John Horton Conway in the 1960s and popularized by Martin Gardner in his Scientific American columns.
-
 Life is played on a squared board, considered to extend to infinity in all directions. Each square of the board is a cell,
-which at any time during the game is either alive or dead. A cell has eight neighbours:
-
+which at any time during the game is either alive or dead. A cell has eight neighbours.
 The configuration of live and dead cells at time t leads to a new configuration at time t+1 according to the rules of the game:
-
  - if a cell has exactly three living neighbours at time t, it is alive at time t+1
  - if a cell has exactly two living neighbours at time t it is in the same state at time t+1 as it was at time t
  - otherwise, the cell is dead at time t+1
 
-
-### Example
-
-Here is a solution for a 3x3 still-life with 6 live cells (the optimum). (source from CSPlib):
-
-![Life3](https://www.csplib.org/Problems/prob032/assets/life3.jpg)
+## Example
+  Here is a solution for a 3x3 still-life with 6 live cells (the optimum). (source from CSPlib):
+  ![Life3](https://www.csplib.org/Problems/prob032/assets/life3.jpg)
 
 ## Data
-A tuple \[n,m], where n is the number of rows and m the number of columns.
+  A pair (n,m), where n is the number of rows and m the number of columns.
 
-## Model(s)
+## Model
+  There are two variants, a classical one and a "wastage" one.
 
+  constraints: Sum, Table
 
-There are two variants, a classical one and a "wastage" one.
+## Execution
+  python StillLife.py -data=[number,number]
+  python StillLife.py -data=[number,number] -variant=wastage
 
- constraints: Sum, Extension, Intension
+## Links
+  - https://www.csplib.org/Problems/prob032/
 
-
-## Command Line
-
-
-python StillLife.py
-python StillLife.py -data=[7,7]
-python StillLife.py -data=[7,7] -variant=wastage
 
 ## Tags
- academic csplib
+  academic, csplib
 """
 
 from pycsp3 import *
 
 n, m = data or (8, 8)
-
 
 if not variant():
     table = {(v, 0) for v in range(9) if v != 3} | {(2, 1), (3, 1)}
@@ -93,7 +84,7 @@ elif variant("wastage"):
         s1 = t0 + t2 + t6 + t8 + s3
         s2 = t0 * t2 + t2 * t8 + t8 * t6 + t6 * t0 + s3
         return (t4 != 1 or (2 <= s1 <= 3 and (s2 > 0 or wa >= 2) and (s2 > 1 or wa >= 1))) and \
-               (t4 != 0 or (s1 != 3 and (0 < s3 < 4 or wa >= 2)) and (s3 > 1 or wa >= 1))
+            (t4 != 0 or (s1 != 3 and (0 < s3 < 4 or wa >= 2)) and (s3 > 1 or wa >= 1))
 
 
     table = {(*t, i) for t in product(range(2), repeat=9) for i in range(3) if condition_for_tuple(*t, i)}

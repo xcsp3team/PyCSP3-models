@@ -3,7 +3,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 The MZN model was proposed by David Gerault, under the MIT Licence.
 
 ## Data
-  two integers (n,nr)
+  Two integers (n,nr)
 
 ## Model
   constraints: Sum
