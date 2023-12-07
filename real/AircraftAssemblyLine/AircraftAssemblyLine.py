@@ -9,14 +9,15 @@ The schedule must satisfy several operational constraints, the main ones being:
 
 This model has been co-developed by teams of ONERA and CRIL.
 
-## Data (example)
-  1-178-00-0.json
+## Data Example
+  2-178-70-2.json
 
 ## Model
   constraints: Cumulative, NoOverlap, Sum
 
 ## Execution
-  python AircraftAssemblyLine.py -data=<datafile.json> -dataParser=AircraftAssemblyLine_Converter.py
+  python AircraftAssemblyLine.py -data=<datafile.json>
+  python AircraftAssemblyLine.py -data=<xcsp23/datafile.json> -dataParser=AircraftAssemblyLine_Converter.py
 
 ## Links
   - https://drops.dagstuhl.de/opus/frontdoor.php?source_opus=19069

@@ -13,7 +13,7 @@ Each plane has to land on one of the runways within its predetermined time windo
 ## Execution
   - python AircraftLanding.py -data=<datafile.json>
   - python AircraftLanding.py -data=<datafile.json> -variant=table
-  - python AircraftLanding.py -data=<datafile.txt> -parser=AircraftLanding_Parser.py
+  - python AircraftLanding.py -data=<airlands/datafile.txt> -parser=AircraftLanding_Parser.py
 
 ## Links
   - http://people.brunel.ac.uk/~mastjjb/jeb/orlib/airlandinfo.html

@@ -14,7 +14,7 @@ See the PhD thesis by Adrien Varet (2022, Aix Marseille University).
   constraints: Count, Lex, Precedence, Sum, Table
 
 ## Execution
-  python Benzenoide.py -data=[number]
+  python Benzenoide.py -data=number
 
 ## Links
   - https://www.theses.fr/2022AIXM0508
@@ -109,6 +109,7 @@ minimize(
  y[neighbors[i][j]]
    is a shortcut for:
  [y[k][l] for k, l in neighbors[i][j]] 
+3) Data for the XCSP23 competition are : [6,7,8,9,10,11,12,13,14,15] 
 """
 
 # [(y[i][j], y[k][l]) in [(ne(1), ANY), (1, 2)] for i in range(n) for j in range(widths[i])

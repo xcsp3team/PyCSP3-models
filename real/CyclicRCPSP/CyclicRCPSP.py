@@ -6,7 +6,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 The original model has: Copyright (C) 2011 The University of Melbourne and NICTA
 
 ## Data Example
-  medium-1.json
+  easy-4.json
 
 ## Model
   constraints: Cumulative, Maximum, Minimum

@@ -9,6 +9,7 @@
   - python CyclicBandwidth.py -data=<datafile.json>
   - python CyclicBandwidth.py -data=<datafile.json> -variant=aux
   - python CyclicBandwidth.py -data=<datafile.json> -variant=table
+  - python CyclicBandwidth.py -data=<datafile.txt> -parser=CyclicBandwith_Parser.py
 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S0305054814003177
