@@ -4,7 +4,7 @@ The MZN model was proposed by Hakan Kjellerstrand, after translating the one by 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  g16-p10-a10.json
+  g16-p20-a20.json
 
 ## Model
   constraints: AllDifferent, Maximum, Sum, Table

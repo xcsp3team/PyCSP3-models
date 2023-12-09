@@ -14,7 +14,7 @@ The MZN model was proposed by the KULeuven team.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  anneal-k1.json
+  hepatitis-k2.json
 
 ## Model
   constraints: Count, Sum, Lex, Table

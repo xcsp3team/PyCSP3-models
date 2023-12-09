@@ -5,15 +5,11 @@ The model, below, is close to (can be seen as the close translation of) the one 
 The MZN model was proposed by Jean-Noel Monette, and modified by Gustav Bjordal with help by Fatima Zohra Lebbah, Justin Pearson, and Pierre Flener.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
-## Data Example
-  UD3.json
-
 ## Model
   constraints: BinPacking, Cardinality, Maximum, Sum
 
 ## Execution
-  python GeneralizedBACP.py -data=<datafile.json>
-  python GeneralizedBACP.py -data=<datafile.dzn> -parser=GeneralizedBACP_ParserZ.py
+  python GBACPz.py -data=<datafile.dzn> -parser=GBACP_ParserZ.py
 
 ## Links
   - https://www.csplib.org/Problems/prob064/

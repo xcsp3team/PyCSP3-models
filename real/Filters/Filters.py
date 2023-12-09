@@ -6,7 +6,7 @@ The MZN model was proposed by Krzysztof Kuchcinski.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  ar2-3.json
+  ar1-3.json
 
 ## Model
   constraints: NoOverlap, Maximum

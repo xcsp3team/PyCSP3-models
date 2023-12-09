@@ -8,7 +8,7 @@ The MZN model was proposed by Jacopo Mauro and Tong Liu.
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
-  u06g1p1.json
+  execute 'python GroupSplitter.py -data=<datafile.dzn> -parser=GroupSplitter_ParserZ.py -export' to get a JSON file
 
 ## Model
   constraints: Count, Element, Sum, Table

@@ -1,22 +1,26 @@
 """
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2013 Minizinc challenge.
+Make leagues for some games:
+ - ranking should be close in each league
+ - in a league, variety of country (where player comes from) is needed
+
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2012 Minizinc challenge.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  15-4-3.json
+  020-3-5.json
 
 ## Model
-  constraints: Count, Sum, Maximum, Minimum
+  constraints: Count, Maximum, Minimum, Sum
 
 ## Execution
-  python League13.py -data=<datafile.json>
-  python League13.py -data=<datafile.dzn> -parser=League_ParserZ.py
+  python League.py -data=<datafile.json>
+  python League.py -data=<datafile.dzn> -parser=League_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.minizinc.org/challenge2012/results2012.html
 
 ## Tags
-  real, mzn13
+  real, mzn12
 """
 
 from pycsp3 import *
@@ -52,8 +56,18 @@ satisfy(
 
     # managing ranks
     [
-        [max_rank[i] == Maximum(rankings[j] * (x[j] == i) for j in range(nPlayers)) for i in range(nLeagues)],
-        [min_rank[i] == Minimum(rankings[j] + 10000 * (x[j] != i) for j in range(nPlayers)) for i in range(nLeagues)],
+        [
+            If(
+                x[j] == i,
+                Then=max_rank[i] >= rankings[j]
+            ) for i in range(nLeagues) for j in range(nPlayers)
+        ],
+        [
+            If(
+                x[j] == i,
+                Then=min_rank[i] <= rankings[j]
+            ) for i in range(nLeagues) for j in range(nPlayers)
+        ],
         [diff_rank[i] == max_rank[i] - min_rank[i] for i in range(nLeagues)]
     ],
 
@@ -63,20 +77,18 @@ satisfy(
     # determining the number of nationalities in each league
     [nn[i] == Sum(b[i]) for i in range(nLeagues)],
 
-    # sorting result
-    [
-        Increasing(max_rank),
-        Increasing(min_rank)
-    ]
+    # tag(symmetry-breaking)
+    [max_rank[i] <= max_rank[i + 1] for i in range(nLeagues - 1)],
+
+    # bad assumption from the original MZN model
+    [diff_rank[i] > 0 for i in range(nLeagues)]
 )
 
 minimize(
-    100 * Sum(diff_rank) - Sum(nn)
+    Sum(diff_rank) * 10000 - Sum(nn)
 )
 
-"""
-1) Simplifying code with Ordered constraints (compared to Minizinc):
-  [max_rank[i] <= max_rank[i + 1] for i in range(nLeagues - 1)],
-  [min_rank[i] <= min_rank[i + 1] for i in range(nLeagues - 1)]
-2) This is a model in Minizinc 2013, after fixing some issues of 2012
+""" Comments
+1) we insert the last group to be coherent with the original model (from the 2012 competition)
+Otherwise, it seems that this group must be discarded to solve the initial problem
 """

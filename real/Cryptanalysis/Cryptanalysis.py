@@ -120,7 +120,7 @@ satisfy(
             eqK[i][r1][j1][r2][j2] == eqK[i][r2][j2][r1][j1],  # symmetry
 
             If(  # Va=Vb => EQ(a,b)
-                conjunction(Kcomp[r1][j1][i][k] == Kcomp[r2][j2][i][k] for k in range(NBK)),
+                [Kcomp[r1][j1][i][k] == Kcomp[r2][j2][i][k] for k in range(NBK)],
                 Then=eqK[i][r1][j1][r2][j2] == 1
             ),
 
@@ -149,7 +149,10 @@ satisfy(
             ),
 
             EQ_Y[J1][J2] == Sum(  # Lower bound on the equalities between MC(SB(A)) and MC(SB(B))
-                eqK[i][r1][j1][r2][j2] & (deltaX[r1][j1][i] + deltaX[r2][j2][i] == 0) | (deltaY[r1 - 1][j1][i] + deltaY[r2 - 1][j2][i] == 0) for i in range(4)
+                either(
+                    both(eqK[i][r1][j1][r2][j2], deltaX[r1][j1][i] + deltaX[r2][j2][i] == 0),
+                    deltaY[r1 - 1][j1][i] + deltaY[r2 - 1][j2][i] == 0
+                ) for i in range(4)
             )
         ) for J1 in range(BC, n * BC) for J2 in range(J1 + 1, n * BC) if (r1 := J1 // BC, j1 := J1 % BC, r2 := J2 // BC, j2 := J2 % BC)
     ],

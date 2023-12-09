@@ -7,7 +7,7 @@ The MZN model was proposed by Krzysztof Kuchcinski.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  ring-mp3.json
+  mesh2x2-2.json
 
 ## Model
   constraints: BinPacking, Count, Flow, Maximum, Sum

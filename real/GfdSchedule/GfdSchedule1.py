@@ -12,7 +12,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
-  n030f3d30m7k4.json
+  n025f5d20m10k3.json
 
 ## Model
   constraints: Count, Element, NValues, Sum

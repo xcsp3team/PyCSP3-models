@@ -4,7 +4,7 @@ Marco Chiarandini, Luca Di Gaspero, Stefano Gualandi, and Andrea Schaerf at Univ
 See CSPLib.
 
 ## Data
-  UD01.json
+  UD04.json
 
 ## Model
   Two variants compute differently the delta values:

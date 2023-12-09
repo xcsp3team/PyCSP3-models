@@ -6,7 +6,7 @@ The MZN model was proposed by Ria Szeredi and Andreas Schutt (Copyright: Data61,
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  j30-25-5.json
+  j30-15-5.json
 
 ## Model
   constraints: Cumulative, Element, Sum
