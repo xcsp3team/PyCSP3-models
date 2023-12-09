@@ -10,7 +10,7 @@ The licence seems to be like a MIT Licence.
   constraints: NoOverlap
 
 ## Execution
-  python PerfectSquare.py -data=sm-10-13-00.json
+  python PerfectSquare.py -data=<datafile.json>
 
 ## Links
   - https://hal.science/hal-01245074

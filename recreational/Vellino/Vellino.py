@@ -14,17 +14,20 @@ The compatibility constraints are:
  - glass excludes copper
  - copper excludes plastic
 
-
-## Data
-TODO
+## Data Example
+  05.json
 
 ## Model
-  constraints: LexIncreasing, Sum
+  constraints: Lex, Sum
 
 ## Execution
+  python Vellino.py -data=<datafile.json>
+
+## Links
+  - https://link.springer.com/chapter/10.1007/10704567_6
 
 ## Tags
-recreational
+  recreational, notebook
 """
 
 from pycsp3 import *

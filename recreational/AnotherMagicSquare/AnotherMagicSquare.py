@@ -2,7 +2,7 @@
 On a square grid of size n × n, all numbers ranging from 1 to n*n must be put so that the numbers surrounding each number add to a multiple of that number.
 
 ## Data
-  a unique integer n
+  A unique integer n
 
 ## Model
   constraints: AllDifferent, Sum
@@ -15,7 +15,7 @@ On a square grid of size n × n, all numbers ranging from 1 to n*n must be put s
   - https://www.cril.univ-artois.fr/XCSP23/competitions/csp/csp
 
 ## Tags
-  recreational, xcsp23
+  academic, recreational, xcsp23
 """
 
 from pycsp3 import *

@@ -6,13 +6,13 @@ It is easy to build a solution, but finding a random solution is more complex.
 A CP model is interesting as one can easily add side constraints to form Aztec diamonds with some specific properties.
 
 ## Data
-  a unique integer, the order of the diamond
+  A unique integer, the order of the diamond
 
 ## Model
   constraints: Table
 
 ## Execution
-  - python AztecDiamond.py -data=[number]
+  - python AztecDiamond.py -data=number
 
 ## Links
   - https://en.wikipedia.org/wiki/Aztec_diamond

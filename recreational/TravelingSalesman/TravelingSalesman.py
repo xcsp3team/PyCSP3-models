@@ -14,7 +14,7 @@ TODO
   - https://en.wikipedia.org/wiki/Travelling_salesman_problem
 
 ## Tags
-recreational
+  recreational
 """
 
 from pycsp3 import *
@@ -51,7 +51,6 @@ minimize(
     # minimizing the travelled distance
     Sum(d)
 )
-
 
 """ Comments
 1) writing dom=distances is equivalent (and more compact) than writing dom={v for row in distances for v in row}

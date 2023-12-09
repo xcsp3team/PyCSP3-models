@@ -14,19 +14,18 @@ The problem can be generalized for any order n.
 
 
 ## Data
- n the number of celles
+ An integer n, the number of cells
 
 ## Model
   constraints: Circuit
 
 ## Execution
-  python3 Audrey.py
-  python3 Audrey.py -data=10
-  python3 Audrey.py -data=10 -variant=display1
-  python3 Audrey.py -data=10 -variant=display2
+  python Audrey.py -data=number
+  python Audrey.py -data=number -variant=display1
+  python Audrey.py -data=number -variant=display2
 
 ## Tags
-  recreational
+  academic, recreational
 """
 
 from pycsp3 import *
