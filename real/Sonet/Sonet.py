@@ -12,8 +12,8 @@ of nodes, and a limit on the number of channels. The demand of a pair of nodes m
 between multiple rings. The objective is to minimize the total number of ADMs used while
 satisfying all demands.
 
-## Data (example)
-  s3ring03json
+## Data Example
+  s2ring02.json
 
 ## Model
   constraints: Lex, Sum, Table

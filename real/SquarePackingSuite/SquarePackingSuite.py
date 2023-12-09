@@ -2,7 +2,7 @@
 The Square packing problem involves packing all squares with sizes 1 × 1 to n × n into an enclosing container.
 
 ## Data
-  an integer
+  An integer
 
 ## Model
   constraints: Cumulative, NoOverlap

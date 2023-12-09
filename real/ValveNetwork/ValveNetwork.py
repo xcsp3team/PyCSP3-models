@@ -6,7 +6,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 The MZN model was proposed by Mikael Zayenz Lagerkvist, under the MIT Licence.
 
 ## Data
-  an integer (as the network is included in the model below)
+  n integer (as the network is included in the model below)
 
 ## Model
   constraints: Element, Sum, Table

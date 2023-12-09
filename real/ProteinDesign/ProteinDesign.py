@@ -4,7 +4,7 @@ The MZN model was proposed by Simon de Givry.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  test.json
+  execute 'python ProteinDesign.py -data=<datafile.dzn> -parser=ProteinDesign_ParserZ.py -export' to get a JSON file
 
 ## Model
   constraints: Sum, Table

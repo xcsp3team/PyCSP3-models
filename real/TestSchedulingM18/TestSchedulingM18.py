@@ -15,7 +15,7 @@ The MZN model was proposed by Gustav Björdal (in 2018).
 No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Data Example
-  t030m10r03-15.json
+  t020m10r10-17.json
 
 ## Model
   constraints: Cumulative, Maximum, Minimum, NoOverlap, Precedence, Table

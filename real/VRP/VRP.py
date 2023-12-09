@@ -4,7 +4,7 @@ The MZN model was proposed by Jakob Puchinger.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  A-n38-k5.json
+  P-n20-k2.json
 
 ## Model
   constraints: Count, Sum

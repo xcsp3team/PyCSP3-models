@@ -8,7 +8,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  k02-42.json
+  k05-05.json
 
 ## Model
   constraints: Count, Sum

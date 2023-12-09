@@ -1,55 +1,61 @@
 """
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2009/2013 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+Problem 061 on CSPLib
 
 ## Data Example
-  11.json
+  j030-01-01.json
 
 ## Model
   constraints: Cumulative
 
 ## Execution
-  python RCPSP.py -data=<datafile.json>
-  python RCPSP.py -data=<datafile.dzn> -parser=RCPSP_ParserZ.py
+  - python RCPSP-22.py -data=<datafile.json>
+  - python RCPSP-22.py -data=<datafile.txt> -parser=RCPSP_Parser.py
 
 ## Links
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.om-db.wi.tum.de/psplib/data.html
+  - https://www.csplib.org/Problems/prob061/
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
 
 ## Tags
-  real, mzn09, mzn13
+  real, csplib, xcsp22
 """
 
 from pycsp3 import *
 
-capacities, durations, requirements, successors = data
-nResources, nTasks = len(capacities), len(durations)
-horizon = sum(durations) + 1
+jobs, horizon, capacities, _ = data
+durations, successors, quantities = zip(*jobs)  # [job.duration for job in jobs]
+nJobs = len(jobs)
 
-# x[i] is the starting time of the ith task
-x = VarArray(size=nTasks, dom=range(horizon))
-
-# z is the total end time (makespan)
-z = Var(range(horizon))
+# s[i] is the starting time of the ith job
+s = VarArray(size=nJobs, dom=lambda i: {0} if i == 0 else range(horizon))
 
 satisfy(
-    # precedence relations
-    [x[i] + durations[i] <= x[j] for i in range(nTasks) for j in successors[i]],
+    # precedence constraints
+    [s[i] + durations[i] <= s[j] for i in range(nJobs) for j in successors[i]],
 
-    # redundant non-overlapping constraints  tag(redundant-constraints)
-    [(x[i] + durations[i] <= x[j]) | (x[j] + durations[j] <= x[i]) for i, j in combinations(nTasks, 2)
-     if any(requirements[r, i] + requirements[r, j] > capacities[r] for r in range(nResources))],
-
-    # cumulative resource constraints
+    # resource constraints
     [
         Cumulative(
-            tasks=[(x[i], durations[i], requirements[r][i]) for i in range(nTasks)]
-        ) <= capacities[r] for r in range(nResources)
-    ],
-
-    # constraining the objective value
-    [x[i] + durations[i] <= z for i in range(nTasks)]
+            Task(origin=s[i], length=durations[i], height=quantities[i][k]) for i in range(nJobs) if quantities[i][k] > 0
+        ) <= capacity for k, capacity in enumerate(capacities)
+    ]
 )
 
 minimize(
-    z
+    s[-1]
 )
+
+""" Comments
+1) for posting Cumulative constraints in an alternative way, it would be less compact to write:
+ def cumulative_for(k):
+    origins, lengths, heights = zip(*[(s[i], duration, quantities[k]) for i, (duration, _, quantities) in enumerate(jobs) if quantities[k] > 0])
+    return Cumulative(origins=origins, lengths=lengths, heights=heights)
+ ...
+ [cumulative_for(k) <= capacity for k, capacity in enumerate(capacities)]
+
+2) in case of 1), using zip is compacter than writing something like:
+ indexes = [i for i in range(nJobs) if jobs[i].requiredQuantities[k] > 0]
+ origins = [s[i] for i in indexes]
+ lengths = [jobs[i].duration for i in indexes]
+ heights = [jobs[i].requiredQuantities[k] for i in indexes]
+"""

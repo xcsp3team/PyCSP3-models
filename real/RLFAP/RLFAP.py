@@ -2,7 +2,7 @@
 Radio Link Frequency Assignment.
 
 ## Data Example
-  scen01.json
+  graph01.json
 
 ## Model
   constraints: Maximum, NValues, Sum

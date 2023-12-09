@@ -1,0 +1,14 @@
+{
+    "nbTasks" : 15,
+    "nbJobs" : 3,
+    "nbMachines" : 3,
+    "maxTime" : 200,
+    "nbAdditionalTasks" : 1,
+    "job" : [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3],
+    "duration" : [9, 4, 6, 3, 5, 6, 4, 7, 8, 5, 4, 9, 6, 3, 8],
+    "machines_for_task" : [[1, 2], [1, 3], [2, 3], [1, 2], [2, 3], [1, 2, 3], [1, 3], [1, 2], [2, 3], [1, 3], [2, 3], [1, 2, 3], [1, 3], [1, 2, 3], [2, 3]],
+    "additional_tasks_start" : [8, 11],
+    "additional_tasks_end" : [12, 15],
+    "additional_tasks_machine" : [1, 1],
+    "weights" : [1, 2]
+}

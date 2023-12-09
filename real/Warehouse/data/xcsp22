@@ -1,0 +1,11 @@
+# values to be used with Warehouse_Random.py
+# as e.g., python Warehouse.py -dataparser=Warehouse_Random.py 40 80 100 10 1000 0
+40 80 100 10 1000 0
+40 80 100 10 1000 1
+40 80 100 10 1000 2
+50 100 100 10 1000 0
+50 100 100 10 1000 1
+50 100 100 10 1000 2
+60 120 100 10 1000 0
+60 120 100 10 1000 1
+60 120 100 10 1000 2

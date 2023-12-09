@@ -9,7 +9,7 @@ The MZN model was proposed by the University of Melbourne and NICTA, Copyright (
 The Licence seems to be like a MIT Licence.
 
 ## Data Example
-  psp-c-051.json
+  psp-j20-34.json
 
 ## Model
   constraints: Cumulative

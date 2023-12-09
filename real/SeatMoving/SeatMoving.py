@@ -6,7 +6,7 @@ The MZN model was proposed by Toshimitsu Fujiwara.
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
-  sm-10-11-00.json
+  sm-10-12-00.json
 
 ## Model
   constraints: AllDifferent, Element, Sum, Table

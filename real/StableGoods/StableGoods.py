@@ -3,7 +3,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
-  s-206.json
+  s-d06.json
 
 ## Model
   constraints: Element, Sum, Table

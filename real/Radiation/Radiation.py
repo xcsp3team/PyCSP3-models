@@ -8,7 +8,7 @@ The MZN model was proposed by Sebastian Brand.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  m06-15-15.json
+  01.json
 
 ## Model
   constraints: Sum

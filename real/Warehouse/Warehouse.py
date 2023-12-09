@@ -2,7 +2,7 @@
 See Problem 034 on CSPLib
 
 ## Data Example
-  cap044.json
+  opl-example.json
 
 ## Model
   constraints: Element, Sum

@@ -3,7 +3,7 @@ Balanced Nursing Workload Problem.
 See Problem 069 at CSPLib.
 
 ## Data Example
-  2zones0.json
+  2zones1.json
 
 ## Model
   constraints: Cardinality, Sum

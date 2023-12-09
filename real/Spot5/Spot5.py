@@ -13,7 +13,7 @@ The MZN model was proposed by Simon de Givry.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  0005.json
+  not shown because large data files
 
 ## Model
   constraints: Sum, Table

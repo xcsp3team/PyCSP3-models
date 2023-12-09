@@ -1,0 +1,1 @@
+{"nDays": 10, "workers": [{"workload": 100, "unavailableDays": [0, 9], "fixedDays": []}, {"workload": 100, "unavailableDays": [0, 2, 9], "fixedDays": []}, {"workload": 100, "unavailableDays": [2], "fixedDays": [0]}, {"workload": 100, "unavailableDays": [1], "fixedDays": []}], "offset": 2, "adjacency": 1, "wednesday": 1}

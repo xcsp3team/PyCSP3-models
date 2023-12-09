@@ -2,7 +2,7 @@
 Realistic employee shift scheduling Problem.
 
 ## Data Example
-  01.json
+  00.json
 
 ## Model
   constraints: Count, Regular, Sum, Table

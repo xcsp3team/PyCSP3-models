@@ -4,7 +4,7 @@ The MZN model was proposed by Erik Thörnbald (Uppsala University).
 No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Data Example
-  1-6-24.json
+  2-5-6.json
 
 ## Model
   constraints: AllDifferent, BinPacking, Maximum, Minimum, Sum
