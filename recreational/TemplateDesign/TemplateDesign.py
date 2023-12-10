@@ -1,22 +1,23 @@
 """
-Problem 002 on CSPLib.<br />
+Problem 002 on CSPLib.
+
 This problem arises from a colour printing firm which produces a variety of products from thin board, including cartons for human and animal food and magazine inserts.
 
-## Data
-TODO
+## Data Example
+  catfood-2.json
 
 ## Model
-  constraints:Decreasing, Sum
+  constraints: Sum
 
 ## Execution
-  python3 TemplateDesign.py -data=TemplateDesign_catfood_2.json
-  python3 TemplateDesign.py -data=TemplateDesign_catfood_2.json -variant=aux
+  python TemplateDesign.py -data=<datafile.json>
+  python TemplateDesign.py -data=<datafile.json> -variant=aux
 
 ## Links
   - https://www.csplib.org/Problems/prob002/
 
 ## Tags
-recreational csplib
+  recreational, csplib
 """
 
 from pycsp3 import *

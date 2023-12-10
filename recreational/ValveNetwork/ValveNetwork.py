@@ -6,13 +6,13 @@ Instead of using different networks for varying hardness,
 this model uses different planning horizons for adjusting the hardness of the problem.
 
 ## Data
-  an integer (as the network is included in the model below)
+  An integer (as the network is included in the model below)
 
 ## Model
-  constraints: Sum, Extension, Intension, Element
+  constraints: Element, Sum, Table
 
 ## Execution
-  python ValveNetwork.py -data=6
+  python ValveNetwork.py -data=number
 
 ## Links
   - https://adventofcode.com/2022
@@ -62,7 +62,7 @@ cf = VarArray(size=nSteps, dom=range(sum(flow) + 1))
 
 satisfy(
     # toto
-    
+
     # computing flows
     [cf[t] == op[:, t] * flow for t in range(nSteps)],
 

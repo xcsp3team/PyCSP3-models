@@ -10,8 +10,8 @@ MIT Licence.
   constraints: AllDifferent, Sum
 
 ## Execution
-  python SudokuOpt.py -data=sm-10-13-00.json
-  python SudokuOpt.py -data=sm-10-13-00.dzn -dataparser=SudokuOpt_ParserZ.py
+  python SudokuOpt.py -data=<datafile.json>
+  python SudokuOpt.py -data=<datafile.dzn> -dataparser=SudokuOpt_ParserZ.py
 
 ## Links
   - http://www.hakank.org/minizinc/sudoku_problems2/

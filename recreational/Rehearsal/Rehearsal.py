@@ -1,22 +1,23 @@
 """
-Problem 039 on CSPLib. <br />
+Problem 039 on CSPLib.
+
 A concert is to consist of nine pieces of music of different durations each involving a different combination of the five members of the orchestra (from csplib).
 
 ## Data
-TODO
+  RehearsalSmith.json
 
 ## Model
   constraints: AllDifferent, Sum
 
 ## Execution
-  python3 Rehearsal.py -data=rehearsalSmith.json
-  python3 Rehearsal.py -data=rehearsalSmith.json -variant=bis
+  python Rehearsal.py -data=<datafile.json>
+  python Rehearsal.py -data=<datafile.json> -variant=bis
 
 ## Links
   - https://www.csplib.org/Problems/prob039/
 
 ## Tags
-recreational csplib
+  real, csplib
 """
 
 from pycsp3 import *

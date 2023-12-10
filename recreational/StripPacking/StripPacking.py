@@ -1,13 +1,14 @@
 """
 A a 2-dimensional geometric minimization problem.
-## Data
-TODO + parser
+
+## Data Example
+  C1P1.json
 
 ## Model
   constraints: NoOverlap, Table
 
 ## Execution:
-  python3 StripPacking.py -data=StripPacking_C1P1.json
+  python StripPacking.py -data=<datafile.json>
 
 ## Links
  - https://en.wikipedia.org/wiki/Strip_packing_problem

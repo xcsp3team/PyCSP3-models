@@ -8,8 +8,8 @@ TODO + parser
   constraints: AllDifferent, Sum
 
 ## Execution:
-  python3 Wwtpp.py -data=Wwtpp_ex04400.json
-  python3 Wwtpp.py -data=Wwtpp_ex04400.json -variant=short
+  python Wwtpp.py -data=Wwtpp_ex04400.json
+  python Wwtpp.py -data=Wwtpp_ex04400.json -variant=short
 
 ## Links
  - https://arxiv.org/abs/1609.05367

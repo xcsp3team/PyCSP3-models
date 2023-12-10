@@ -1,14 +1,14 @@
 """
 Supply vessels transport containers from site to site.
 
-## Data
-TODO + parser
+## Data Example
+  inst1.json
 
 ## Model
   constraints: AllDifferent, Sum
 
 ## Execution:
-  python3 VesselLoading.py -data=VesselLoading-inst2.json
+  python VesselLoading.py -data=<datafile.json>
 
 ## Links
  - https://www.csplib.org/Problems/prob008

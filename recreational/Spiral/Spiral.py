@@ -2,15 +2,14 @@
 A logic puzzle. See "Teaching Constraints through Logic Puzzles" by Peter Szeredi.
 
 ## Data
-TODO + parser
+  Two integers n and m.
 
 ## Model
-  constraints: Cardinality, Increasing
+  constraints: Cardinality
 
-## Execution:
-  python3 Spiral.py
-  python3 Spiral.py -data[7, 5]
-
+## Execution
+  python Spiral.py
+  python Spiral.py -data[number,number]
 
 ## Tags
   recreational

@@ -4,17 +4,17 @@ A matching is a separation of the set into disjoint pairs (‘roommates’).
 The matching is stable if there are no two elements which are not roommates and which both prefer each other to their roommate under the matching.
 This is distinct from the stable-marriage problem in that the stable-roommates problem allows matches between any two elements, not just between classes of
 ”men” and ”women”.
-See wikipedia.org
 
 ## Data Example
-  RoomMate_sr0006.json
+  sr0006.json
 
 ## Model
   constraints: Element, Table
 
 ## Execution
   - python RoomMate.py -data=<datafile.json>
-  - python RoomMate.py -variant=table -data=<datafile.json>
+  - python RoomMate.py -data=<datafile.json> -variant=table
+  - python RoomMate.py -data=<datafile.txt> -parser=RoomMate_Parser.py
 
 ## Links
   - https://en.wikipedia.org/wiki/Stable_roommates_problem

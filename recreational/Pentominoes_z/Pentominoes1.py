@@ -1,0 +1,56 @@
+"""
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2008/2011/2013 Minizinc challenges.
+No Licence was explicitly mentioned (MIT Licence assumed).
+
+## Data Example
+  02.json
+
+## Model
+  constraints: Regular
+
+## Execution
+  python Pentominoes1.py -data=<datafile.json>
+  python Pentominoes1.py -data=<datafile.dzn> -parser=Pentominoes_ParserZ.py
+
+## Links
+  - https://fr.wikipedia.org/wiki/Pentomino
+  - https://www.minizinc.org/challenge2013/results2013.html
+
+## Tags
+  recreational, mzn08, mzn11, mzn13
+"""
+
+from pycsp3 import *
+from pycsp3.problems.data.parsing import split_with_rows_of_size
+
+width, height, tiles, dfa = data
+nTiles = len(tiles)
+
+
+def automaton_for(tile):
+    n_states, n_symbols = tile[0], tile[1]
+    t = split_with_rows_of_size(dfa[tile[-1]:tile[-1] + n_states * n_symbols], n_symbols)
+    q = Automaton.q  # for building names of states
+    trs = [(q(i), j, q(t[i - 1][j - 1])) for i in range(1, n_states + 1) for j in range(1, n_symbols + 1) if t[i - 1][j - 1] != 0]
+    return Automaton(start=q(1), final=[q(i) for i in range(tile[2], tile[3] + 1)], transitions=trs)
+
+
+# x[i][j] is the index of the tile in the cell with coordinates (i,j)
+x = VarArray(size=[height, width], dom=range(1, nTiles + 2))
+
+satisfy(
+    # forbidding the special symbol if not at the end of a row
+    [x[h][w] != nTiles + 1 for h in range(height) for w in range(width - 1)],
+
+    # setting the special symbol at the end of each row
+    [x[h][-1] == nTiles + 1 for h in range(height)],
+
+    # ensuring each tile is present
+    [x in automaton_for(tile) for tile in tiles]
+)
+
+""" Comments
+1) Note that x is automatically flattened when posting the Regular constraints
+
+2) In Minizinc challenges 2008, 2011 and 2013: same instances in 2011 and 2013; two original additional instances in 2008
+"""

@@ -1,15 +1,14 @@
 """
 See, e.g., "AllDifferent-based filtering for subgraph isomorphism"  by Christine Solnon, Artificial Intelligence, 174(12-13): 850-864 (2010)
 
-
-## Data
-TODO + parser
+## Data Example
+  A-01.json
 
 ## Model
   constraints: AllDifferent, Table
 
 ## Execution:
-  python3 Subisomorphism.py -data=Subisomorphism_A-01.json
+  python Subisomorphism.py -data=<datafile.json>
 
 ## Tags
   recreational

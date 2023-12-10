@@ -1,23 +1,21 @@
 """
-Given A set of subsets $S_1,...,S_m$ of the universal set $U=\{1,...,n\}$,
-find smallest subset of subsets $T\subset S$ such that $\cup_{t_i \in T} ti=U$.
+Given a set of subsets S_1,...,S_m$of the universal set U={1,...,n},
+find the smallest subset of subsets T of S such that their union is U.
 
-## Data
-The data are represented by a set of subsets S1,...,Sm of the universal set U={1,...,n}.
-The problem is to find the smallest number of subsets from S such that their union gives U?
+## Data Example
+  example.json
 
 ## Model
   constraints: Count, Sum
 
 ## Execution
-    python3 SetCovering.py -data=Subsets_example.json
-
+  python SetCovering.py -data=<datafile.json>
 
 ## Links
-  -   https://algorist.com/problems/Set_Cover.html
+  - https://algorist.com/problems/Set_Cover.html
 
 ## Tags
-recreational
+  recreational
 """
 
 from pycsp3 import *

@@ -1,5 +1,7 @@
 """
-See Problem 034 on CSPLib
+See Problem 034 on CSPLib.
+
+In the Warehouse Location problem (WLP), a company considers opening warehouses at some candidate locations in order to supply its existing stores.
 
 ## Data Example
   opl-example.json

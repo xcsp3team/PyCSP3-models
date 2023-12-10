@@ -1,14 +1,14 @@
 """
 A logic puzzle. See "Shikaku as a Constraint Problem" by Helmut Simonis.
 
-## Data
-TODO + parser
+## Data Example
+  grid01.json
 
 ## Model
   constraints: Table
 
 ## Execution:
-  python3 Shikaku.py -data=Shikaku_grid1.json
+  python3 Shikaku.py -data=<datafile.json>
 
 ## Links
  - https://en.wikipedia.org/wiki/Shikaku
@@ -56,7 +56,6 @@ satisfy(
     # rooms must not overlap
     [no_overlapping(i, j) for i, j in combinations(nRooms, 2)]
 )
-
 
 """ Comments
 1) it is also possible to write (but this is less compact):

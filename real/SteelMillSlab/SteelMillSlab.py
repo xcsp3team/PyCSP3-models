@@ -1,60 +1,97 @@
 """
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017/2019 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+Problem 038 on CSPLib.
 
-## Data Example
-  13-0.json
+Steel is produced by casting molten iron into slabs.
+
+## Data
+  bench-2-0.json
 
 ## Model
-  constraints:  BinPacking, Count, Sum
+  constraints: Sum, Table
 
 ## Execution
   python SteelMillSlab.py -data=<datafile.json>
-  python SteelMillSlab.py -data=<datafile.dzn> -parser=SteelMillSlab_ParserZ.py
+  python SteelMillSlab.py -data=<datafile.json> -variant=01
 
 ## Links
   - https://www.csplib.org/Problems/prob038/
-  - https://www.minizinc.org/challenge2017/results2017.html
 
 ## Tags
-  real, csplib, mzn17, mzn19
+  real, csplib
 """
 
 from pycsp3 import *
 
-slabSizes, orders = data
-colors, sizes = zip(*orders)
-nOrders, nColors = len(orders), len(set(colors))
-nSlabs, slabSizeLimit = nOrders, max(slabSizes) + 1
+capacities, orders = data
+possibleLosses = [min(v for v in [0] + capacities if v >= i) - i for i in range(max(capacities) + 1)]
+sizes, colors = zip(*orders)
+allColors = sorted(set(colors))
+colorGroups = [[i for i, order in enumerate(orders) if order.color == color] for color in allColors]
+nOrders, nSlabs, nColors = len(orders), len(orders), len(allColors)
 
-# gaps between each possible required size s and the closest slab with a size greater than s
-gaps = cp_array(min(c - s for c in slabSizes if c >= s) for s in range(slabSizeLimit))
+# sb[i] is the slab used to produce the ith order
+sb = VarArray(size=nOrders, dom=range(nSlabs))
 
-# x[k] is the slab for the kth order
-x = VarArray(size=nOrders, dom=range(nSlabs))
+# ld[j] is the load of the jth slab
+ld = VarArray(size=nSlabs, dom=range(max(capacities) + 1))
 
-# y[i] is the size (load) of the ith slab
-y = VarArray(size=nSlabs, dom=range(slabSizeLimit))
+# ls[j] is the loss of the jth slab
+ls = VarArray(size=nSlabs, dom=set(possibleLosses))
+
+if not variant():
+    satisfy(
+        # computing (and checking) the load of each slab
+        [[sb[i] == j for i in range(nOrders)] * sizes == ld[j] for j in range(nSlabs)],
+
+        # computing the loss of each slab
+        [(ld[j], ls[j]) in {(i, loss) for i, loss in enumerate(possibleLosses)} for j in range(nSlabs)],
+
+        # no more than two colors for each slab
+        [Sum(disjunction(sb[i] == j for i in g) for g in colorGroups) <= 2 for j in range(nSlabs)]
+    )
+
+elif variant("01"):
+    # y[j][i] is 1 iff the jth slab is used to produce the ith order
+    y = VarArray(size=[nSlabs, nOrders], dom={0, 1})
+
+    # z[j][c] is 1 iff the jth slab is used to produce an order of color c
+    z = VarArray(size=[nSlabs, nColors], dom={0, 1})
+
+    satisfy(
+        # linking variables sb and y
+        [iff(sb[i] == j, y[j][i]) for j in range(nSlabs) for i in range(nOrders)],
+
+        # linking variables sb and z
+        [If(sb[i] == j, Then=z[j][allColors.index(orders[i].color)]) for j in range(nSlabs) for i in range(nOrders)],
+
+        # computing (and checking) the load of each slab
+        [y[j] * sizes == ld[j] for j in range(nSlabs)],
+
+        # computing the loss of each slab
+        [(ld[j], ls[j]) in {(i, loss) for i, loss in enumerate(possibleLosses)} for j in range(nSlabs)],
+
+        # no more than two colors for each slab
+        [Sum(z[j]) <= 2 for j in range(nSlabs)]
+    )
 
 satisfy(
-    # each slab can contain at most 2 colors
-    [Sum(Exist(x[k] == i for k in range(nOrders) if colors[k] == c) for c in range(nColors)) <= 2 for i in range(nSlabs)],
-
-    # computing loads of slabs
-    BinPacking(x, sizes=sizes, loads=y),
+    # tag(redundant-constraints)
+    Sum(ld) == sum(sizes),
 
     # tag(symmetry-breaking)
-    (
-        [If(y[i] == 0, Then=y[i + 1] == 0) for i in range(nSlabs - 1)],
-        [x[k] <= x[l] for k, l in combinations(nOrders, 2) if sizes[k] == sizes[l] or colors[k] == colors[l]]
-    )
+    [
+        Decreasing(ld),
+
+        [sb[i] <= sb[j] for i, j in combinations(nOrders, 2) if orders[i] == orders[j]]
+    ]
 )
 
 minimize(
-    # minimizing total weight of steel produces
-    Sum(gaps[y[i]] for i in range(nSlabs))
+    # minimizing summed up loss
+    Sum(ls)
 )
 
-"""
- [Precedence(x), Decreasing(y)] for symmetry-breaking ?
+""" Comments
+1) for computing (and checking) the load of each slab
+   the reverse side ? eq(z[s]{c] = 1 => or(...) is not really necessary but could it be helpful?
 """
