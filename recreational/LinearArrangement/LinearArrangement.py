@@ -3,16 +3,16 @@ For a given (undirected) graph G, the problem consists in arranging the nodes of
 in such a way to minimize the sum of distances between adjacent nodes (in G).
 
 ## Data
- TODO
+  MinLA01.json
 
 ## Model
   constraints: AllDifferent, Sum
 
 ## Execution
-  python3 LinearArrangement.py -data=MinLA01.json
+  python3 LinearArrangement.py -data=<datafile.json>
 
 ## Tags
- recreational
+  recreational
 """
 
 from pycsp3 import *

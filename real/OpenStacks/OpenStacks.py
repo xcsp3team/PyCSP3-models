@@ -1,54 +1,108 @@
-"""
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2009/2011/2015 Minizinc challenges.
-The MZN model was proposed by Peter J. Stuckey.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+""""
 
 ## Data Example
   pb-20-20-1.json
 
 ## Model
-  constraints: AllDifferent, Element, Maximum, Sum
+  There are two variants of this model.
+
+  constraints: Alldifferent, Maximum, Minimum, Sum, Table
 
 ## Execution
-  python OpenStacks.py -data=<datafile.json>
-  python OpenStacks.py -data=<datafile.dzn> -parser=OpenStacks_ParserZ.py
+  python OpenStacks.py -data=OpenStacks_example.json -variant=m1
+  python OpenStacks.py -data=OpenStacks_example.json -variant=m2
 
 ## Links
-  - https://www.minizinc.org/challenge2015/results2015.html
+  - https://ipg.host.cs.st-andrews.ac.uk/challenge/
 
 ## Tags
-  real, mzn09, mzn11, mzn15
+  real
 """
 
 from pycsp3 import *
 
 orders = data
-nCustomers, nProducts = len(orders), len(orders[0])
+n, m = len(orders), len(orders[0])  # n orders (customers), m possible products
 
-quantities = [sum(orders[i]) for i in range(nCustomers)]  # total quantities per customer
+if variant("m1"):
+    def table1(i):
+        v = sum(orders[i])
+        return {(0, 0, 0)} | {(i, ANY, 1) for i in range(1, v)} | {(v, 0, 0), (v, 1, 1)}
 
-# x[i] is the schedule of the ith product
-x = VarArray(size=nProducts, dom=range(nProducts))
 
-# y[i][t] is the quantity of products built for customer i at time t
-y = VarArray(size=[nCustomers, nProducts + 1], dom=range(max(quantities) + 1))
+    # p[j] is the period (time) of the jth product
+    p = VarArray(size=m, dom=range(m))
 
-satisfy(
-    # scheduling products
-    AllDifferent(x),
+    # np[i][j] is the number of products made at time j and required by customer i
+    np = VarArray(size=[n, m], dom=lambda i, j: range(sum(orders[i]) + 1))
 
-    # no product built at time 0
-    [y[i][0] == 0 for i in range(nCustomers)],
+    # r[i][t] is 1 iff the product made at time t concerns customer i
+    r = VarArray(size=[n, m], dom={0, 1})
 
-    # computing the quantity of products built at any time
-    [y[i][t] == y[i][t - 1] + orders[i][x[t - 1]] for t in range(1, nProducts + 1) for i in range(nCustomers)]
-)
+    # o[i][t] is 1 iff the stack is open for customer i at time t
+    o = VarArray(size=[n, m], dom={0, 1})
 
-minimize(
-    Maximum(
-        Sum(both(
-            y[i][j - 1] < quantities[i],
-            y[i][j] > 0
-        ) for i in range(nCustomers)) for j in range(1, nProducts + 1)
+    satisfy(
+        # all products are scheduled at different times
+        AllDifferent(p),
+
+        [orders[i][p[j]] == r[i][j] for i in range(n) for j in range(m)],
+
+        [np[i][j] == (r[i][j] if j == 0 else np[i][j - 1] + r[i][j]) for i in range(n) for j in range(m)],
+
+        [(np[i][j], r[i][j], o[i][j]) in table1(i) for i in range(n) for j in range(m)],
     )
-)
+
+    minimize(
+        # minimizing the number of stacks that are simultaneously open
+        Maximum(Sum(o[:, t]) for t in range(m))
+    )
+
+elif variant("m2"):
+    def table2(t):
+        return {(ANY, te, 0) for te in range(t)} | {(ts, ANY, 0) for ts in range(t + 1, m)} | {(ts, te, 1) for ts in range(t + 1) for te in range(t, m)}
+
+
+    # p[j] is the period (time) of the jth product
+    p = VarArray(size=m, dom=range(m))
+
+    # s[i] is the starting time of the ith stack
+    s = VarArray(size=n, dom=range(m))
+
+    # e[i] is the ending time of the ith stack
+    e = VarArray(size=n, dom=range(m))
+
+    # o[i][t] is 1 iff the ith stack is open at time t
+    o = VarArray(size=[n, m], dom={0, 1})
+
+    satisfy(
+        # all products are scheduled at different times
+        AllDifferent(p),
+
+        # computing starting times of stacks
+        [Minimum(p[j] for j in range(m) if orders[i][j] == 1) == s[i] for i in range(n)],
+
+        # computing ending times of stacks
+        [Maximum(p[j] for j in range(m) if orders[i][j] == 1) == e[i] for i in range(n)],
+
+        # inferring when stacks are open
+        [(s[i], e[i], o[i][t]) in table2(t) for i in range(n) for t in range(m)],
+    )
+
+    minimize(
+        # minimizing the number of stacks that are simultaneously open
+        Maximum(Sum(o[:, t]) for t in range(m))
+    )
+
+""" Comments
+1) to have ordinary tables, we have to use: to_ordinary_table(tab, [v + 1, 2, 2]) and to_ordinary_table(tab, [m, m, 2])
+
+2) If we want explicitly the number of open stacks at time t, we write instead:
+ # ns[t] is the number of open stacks at time t
+ ns = VarArray(size=m, dom=range(m + 1))
+
+ # computing the number of open stacks at any time
+ [Sum(o[:, j]) == ns[j] for j in range(m)]
+
+ minimize (Maximum(ns))
+"""

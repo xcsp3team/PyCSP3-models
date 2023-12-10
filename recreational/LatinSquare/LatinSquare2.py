@@ -1,8 +1,20 @@
 """
-See https://en.wikipedia.org/wiki/Latin_square
+A Latin square is an n × n array filled with n different symbols, each occurring exactly once in each row and exactly once in each column.
 
-Example of Execution:
-  python3 LatinSquare2.py -data=LatinSquare2_7-2-0.json
+## Data Example
+  7-2-0.json
+
+## Model
+  constraints: AllDifferent
+
+## Execution:
+  python LatinSquare.py -data=<datafile.json>
+
+## Links
+ - https://en.wikipedia.org/wiki/Latin_square
+
+## Tags
+  recreational
 """
 
 from pycsp3 import *

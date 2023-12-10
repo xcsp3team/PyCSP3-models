@@ -1,23 +1,22 @@
 """
-TODO
 
 ## Data
-  inst3.json
+  1-fullins-3.json
 
 ## Model
-Two variants of the objective function.
+  There are two variants wrt the objective function.
 
   constraints: Maximum, Sum
 
 ## Execution
-  python3 GraphColoring.py -data=GraphColoring_1-fullins-3.json
-  python3 GraphColoring.py -data=GraphColoring_1-fullins-3.json -variant=sum
+  python GraphColoring.py -data=<datafile.json>
+  python GraphColoring.py -data=<datafile.json> -variant=sum
 
 ## Links
   - https://turing.cs.hbg.psu.edu/txn131/graphcoloring.html
 
 ## Tags
- recreational
+  recreational
 """
 
 from pycsp3 import *

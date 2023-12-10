@@ -13,7 +13,7 @@ Given a grid with imposed black cells (spots) and a dictionary, the problem is t
 
 ## Execution
   - python Crossword.py -data=<datafile.json>
-  - python Crossword.py -variant=alt -data=<datafile.json>
+  - python Crossword.py -data=<datafile.json> -variant=alt
   - python Crossword.py -data=[vg0405,dict=ogd2008] -parser=Crossword_Parser.py
 
 ## Links

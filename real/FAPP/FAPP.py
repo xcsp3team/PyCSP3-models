@@ -1,25 +1,25 @@
 """
 See Challenge ROADEF 2001 (FAPP: Problème d'affectation de fréquences avec polarization)
 
-## Data
-TODO
+## Data Example
+  ex2.json
 
 ## Model
- Two variants manage in a slightly different manner the way distances are computed:
+  Two variants manage in a slightly different manner the way distances are computed:
   - a main variant involving logical constraints
   - a variant 'sum' forcing the presence of Sum constraints
 
   constraints: NoOverlap, Sum
 
 ## Execution
-  python3 Fapp.py -data=Fapp_ex2.json
-  python3 Fapp.py -data=Fapp_ex2.json -variant=short
+  python FAPP.py -data=<datafile.json>
+  python FAPP.py -data=<datafile.json>
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
   - https://www.roadef.org/challenge/2001/fr/
+
 ## Tags
- recreational
+  real
 """
 
 from pycsp3 import *

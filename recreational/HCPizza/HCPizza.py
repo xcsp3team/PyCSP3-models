@@ -9,8 +9,8 @@ and at most H cells of any kind in total.
 The slices being cut out cannot overlap, and do not need to cover the entire pizza.
 The goal is to cut correct slices out of the pizza maximizing the total number of cells in all slices.
 
-## Data (example)
-  10-10-2-6.json
+## Data Example
+  10-10-2-6-00.json
 
 ## Model
   constraints: Sum, Table

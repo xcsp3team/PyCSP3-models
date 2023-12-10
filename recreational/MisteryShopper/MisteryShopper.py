@@ -1,21 +1,20 @@
 """
 See description on CSPLib.
 
-## Data
-TODO + parser
+## Data Example
+  04.json
 
 ## Model
   constraints: AllDifferent, Channel, Lex, Channel
 
 ## Execution:
-    python3 MisteryShopper.py -data=MisteryShopper_04.json
+  python MisteryShopper.py -data=MisteryShopper_04.json
 
 ## Links
  - https://www.csplib.org/Problems/prob004
 
 ## Tags
   recreational, csplib
-
 """
 
 from pycsp3 import *

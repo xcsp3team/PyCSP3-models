@@ -1,21 +1,20 @@
 """
 A binary determination puzzle.
 
-## Data
-TODO + parser
+## Data Example
+  example.json
 
 ## Model
   constraints: Count, Table
 
 ## Execution:
-  python3 Lits.py -data=Lits_example.json
+  python Lits.py -data=<datafile.json>
 
 ## Links
  - https://en.wikipedia.org/wiki/LITS
 
 ## Tags
   recreational
-
 """
 
 from collections import OrderedDict

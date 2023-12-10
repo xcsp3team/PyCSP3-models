@@ -1,15 +1,15 @@
 """
 It is a logic puzzle.
 
-## Data
-TODO + parser
+## Data Example
+  example.json
 
 ## Model
   constraints: Count
 
 ## Execution:
-  python3 Lightup.py -data=Lightup_example.json
-  python3 Lightup.py -data=Lightup_example.txt -dataparser=Lightup_Parser.py
+  python Lightup.py -data=<datafile.json>
+  python Lightup.py -data=<datafile.txt> -dataparser=Lightup_Parser.py
 
 ## Links
  - https://en.wikipedia.org/wiki/Light_Up_(puzzle)

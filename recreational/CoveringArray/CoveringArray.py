@@ -2,7 +2,7 @@
 See Problem 045 on CSPLib.
 
 ## Data
-  four integers: t, k, g and b
+  Four integers: t, k, g and b
 
 ## Model
   constraints: AllDifferent, Channel, Table

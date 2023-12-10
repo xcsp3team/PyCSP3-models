@@ -2,14 +2,15 @@
 A mathematical puzzle.
 
 ## Data
-TODO + parser
+
 
 ## Model
   constraints: AllDifferent, Sum
 
 ## Execution:
-  python3 MagicSquare.py -data=[4,null]
-  python3 MagicSquare.py -data=MagicSquare_example0.txt -dataparser=MagicSquare_Parser.py
+  python MagicSquare.py -data=[4,null]
+  python MagicSquare.py -data=<datafile.json>
+  python MagicSquare.py -data=<datafile.txt>x -dataparser=MagicSquare_Parser.py
 
 ## Links
  - https://en.wikipedia.org/wiki/Magic_square
@@ -39,5 +40,3 @@ satisfy(
     # respecting specified clues (if any)  tag(clues)
     [x[i][j] == clues[i][j] for i in range(n) for j in range(n) if clues and clues[i][j] != 0]
 )
-
-

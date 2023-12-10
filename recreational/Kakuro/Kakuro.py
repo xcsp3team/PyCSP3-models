@@ -1,20 +1,20 @@
 """
 It is a kind of logic puzzle. See "Kakuro as a Constraint Problem" by Helmut Simonis.
 
-## Data
- TODO
+## Data Example
+  easy-000.json
 
 ## Model
  constraints: AllDifferent, Sum, Table
 
 ## Execution:
-    python3 Kakuro.py -data=Kakuro_easy-000.json
+  python Kakuro.py -data=<datafile.jon>
 
 ## Links
  - https://en.wikipedia.org/wiki/Kakuro
 
 ## Tags
- recreational
+  recreational
 """
 
 from pycsp3 import *

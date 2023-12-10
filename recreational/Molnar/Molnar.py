@@ -2,7 +2,7 @@
 See Problem 035 on CSPLib.
 
 ## Data
-  two integers, k and d
+  Two integers, k and d
 
 ## Model
 
