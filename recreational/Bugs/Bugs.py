@@ -1,24 +1,18 @@
 """
-TODO
-
 
 ## Data
+  example.json
 
 ## Model
-
-constraints: Sum, Cardinality
+  constraints: Cardinality, Sum
 
 ## Command Line
+  python Bugs.py -data=<datafile.json>
 
-python Bugs.py
-
-## Links
 ## Tags
-
-recreational
-
-
+  recreational
 """
+
 from pycsp3 import *
 
 height, width = data.height, data.width

@@ -1,31 +1,29 @@
-# Problem BACP
+# Problem Bacp
 ## Description
-Balanced academic curriculum problem:
-  - a curriculum is a set of courses with prerequisites
-  - each course must be assigned within a set number of periods
-  - a course cannot be scheduled before its prerequisites
-  - each course confers a number of academic credits (its 'load')
-  - students have lower and upper bounds on the number of credits they can study for in a given period
-  - students have lower and upper bounds on the number of courses they can study for in a given period
+Problem 30 of the CSPLib. <br />
+The BACP is to design a balanced academic curriculum by assigning periods to courses in a way that the academic load of each period is balanced, i.e., as similar as possible .
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2010/2011 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+## Data
+ - nCourses, nPeriods, minCredits, maxCredits, minCourses, maxCourses
+ - credits (tuple): each course has a number of credits
+ - prerequisites (tuple of tuple): each course has a set of prerequisites
 
-## Data Example
-  01.json
+An example is provided in the json file.
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+Thera are two variants:
+ - one with extension constraints
+ - one with intension constraints
 
-## Execution
+  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+
+## Command Line
 ```
-  python BACP.py -data=<datafile.json>
-  python BACP.py -data=<datafile.dzn> -parser=BACP_ParserZ.py
+python Bacp.py -data=Bacp_10.json
 ```
 
 ## Links
-  - https://www.csplib.org/Problems/prob030/
-  - https://www.minizinc.org/challenge2011/results2011.html
+ - https://www.csplib.org/Problems/prob030/
 
 ## Tags
-  real, csplib, mzn10, mzn11
+ recreational csplib

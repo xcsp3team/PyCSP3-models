@@ -2,18 +2,19 @@
 Problem 081 on CSPLib
 
 ## Data
- TODO
+  example.json
+
 ## Model
  constraints: Channel, Increasing, Slide, Table
 
 ## Execution:
-  python3 Blackhole.py -data=Blackhole-01.json
+  python Blackhole.py -data=<datafile.json>>
 
 ## Links
  - https://www.csplib.org/Problems/prob081/
 
 ## Tags
- recreational, csplib
+  recreational, csplib
 """
 
 from pycsp3 import *

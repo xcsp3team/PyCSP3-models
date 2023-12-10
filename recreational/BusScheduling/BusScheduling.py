@@ -16,7 +16,7 @@ python BusScheduling.py -data=BusScheduling_example.dzn
  - https://www.csplib.org/Problems/prob022/
 
 ## Tags
-recreational csplib
+  recreational, csplib
 """
 
 from pycsp3 import *

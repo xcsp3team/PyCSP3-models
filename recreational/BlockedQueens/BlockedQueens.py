@@ -12,8 +12,8 @@ See problem 080 at CSPLib.
   constraints: AllDifferent
 
 ## Execution
-  - python BlockedQueens.py -data=28-1449787798.json
-  - python BlockedQueens.py -data=28-1449787798 -parser=BlockedQueens_Parser.py
+  - python BlockedQueens.py -data=<datafile.json>
+  - python BlockedQueens.py -data=<datafile.txt> -parser=BlockedQueens_Parser.py
 
 ## Links
   - https://www.csplib.org/Problems/prob080/

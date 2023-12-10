@@ -14,7 +14,7 @@ The problem can be generalized for any order n.
 
 
 ## Data
- An integer n, the number of cells
+  An integer n, the number of cells
 
 ## Model
   constraints: Circuit

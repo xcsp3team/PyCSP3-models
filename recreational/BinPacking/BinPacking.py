@@ -5,11 +5,8 @@ The bin packing problem (BPP) can be informally defined in a very simple way.
 We are given n items, each having an integer weight wj (j = 1, ..., n), and an unlimited number of identical bins of integer capacity c.
 The objective is to pack all the items into the minimum number of bins so that the total weight packed in any bin does not exceed the capacity.
 
-## Data
-  - binCapacity: the capacities of bins
-  - itemWeights (tuple): the weights of each item
-
-An example is provided in the json file.
+## Data Example
+  n1c1w4a.json
 
 ## Model
   There are two variants:
@@ -18,15 +15,14 @@ An example is provided in the json file.
 
   constraints: BinPacking, Cardinality, Lex, Sum, Table
 
-
 ## Execution
   python BinPacking.py -data=<datafile.json>
 
 ## Links
- - https://site.unibo.it/operations-research/en/research/bpplib-a-bin-packing-problem-library
+  - https://site.unibo.it/operations-research/en/research/bpplib-a-bin-packing-problem-library
 
 ## Tags
- recreational
+  recreational
 """
 
 from pycsp3 import *

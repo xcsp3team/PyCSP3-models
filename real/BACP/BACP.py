@@ -1,92 +1,99 @@
 """
-Balanced academic curriculum problem:
-  - a curriculum is a set of courses with prerequisites
-  - each course must be assigned within a set number of periods
-  - a course cannot be scheduled before its prerequisites
-  - each course confers a number of academic credits (its 'load')
-  - students have lower and upper bounds on the number of credits they can study for in a given period
-  - students have lower and upper bounds on the number of courses they can study for in a given period
+Problem 30 of the CSPLib.
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2010/2011 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+BACP is to design a balanced academic curriculum by assigning periods to courses in a way that the academic load of each period is balanced, i.e., as similar as possible .
 
 ## Data Example
-  09.json
+  10.json
 
 ## Model
-  constraints: Sum
+  Thera are two variants:
+   - one with extension constraints
+   - one with intension constraints
+
+  constraints: Count, Minimum, Maximum, Sum, Table
 
 ## Execution
-  python BACP.py -data=<datafile.json>
-  python BACP.py -data=<datafile.dzn> -parser=BACP_ParserZ.py
+  python BACP.py -data=<datafile.json>>
 
 ## Links
-  - https://www.csplib.org/Problems/prob030/
-  - https://www.minizinc.org/challenge2011/results2011.html
+ - https://www.csplib.org/Problems/prob030/
 
 ## Tags
-  real, csplib, mzn10, mzn11
+  real, csplib
 """
 
 from pycsp3 import *
 
-nPeriods, l_lb, l_ub, c_lb, c_ub, loads, prerequisites = data
-nCourses = len(loads)
+nCourses, nPeriods, minCredits, maxCredits, minCourses, maxCourses, credits, prerequisites = data
+maxCredits = maxCredits * maxCourses if subvariant("d") else maxCredits
+assert nCourses == len(credits)
 
-C, P, L = range(nCourses), range(nPeriods), range(l_lb, l_ub + 1)
+# s[c] is the period (schedule) for course c
+s = VarArray(size=nCourses, dom=range(nPeriods))
 
-# x[i] is the period where is assigned the ith course
-x = VarArray(size=nCourses, dom=P)
+# co[p] is the number of courses at period p
+co = VarArray(size=nPeriods, dom=range(minCourses, maxCourses + 1))
 
-# pd[k][i] is 1 if the kth period is assigned to the ith course
-pd = VarArray(size=[nPeriods, nCourses], dom={0, 1})
+# cr[p] is the number of credits at period p
+cr = VarArray(size=nPeriods, dom=range(minCredits, maxCredits + 1))
 
-# ld[k] is the load of the kth period
-ld = VarArray(size=nPeriods, dom=L)
+if variant("m1"):
+    def table(c):
+        return {(0,) * p + (credits[c],) + (0,) * (nPeriods - p - 1) + (p,) for p in range(nPeriods)}
 
-# z is the value of the objective (load)
-z = Var(dom=L)
+
+    # cp[c][p] is 0 if the course c is not planned at period p, the number of credits for c otherwise
+    cp = VarArray(size=[nCourses, nPeriods], dom=lambda c, p: {0, credits[c]})
+
+    satisfy(
+        # channeling between arrays cp and s
+        [(*cp[c], s[c]) in table(c) for c in range(nCourses)],
+
+        # counting the number of courses in each period
+        [Count(s, value=p) == co[p] for p in range(nPeriods)],
+
+        # counting the number of credits in each period
+        [Sum(cp[:, p]) == cr[p] for p in range(nPeriods)]
+    )
+
+elif variant("m2"):
+    # pc[p][c] is 1 iff the course c is at period p
+    pc = VarArray(size=[nPeriods, nCourses], dom={0, 1})
+
+    satisfy(
+        # tag(channeling)
+        [iff(pc[p][c], s[c] == p) for p in range(nPeriods) for c in range(nCourses)],
+
+        # ensuring that each course is assigned to a period
+        [Sum(pc[:, c]) == 1 for c in range(nCourses)],
+
+        # counting the number of courses in each period
+        [Sum(pc[p]) == co[p] for p in range(nPeriods)],
+
+        # counting the number of credits in each period
+        [pc[p] * credits == cr[p] for p in range(nPeriods)]
+    )
 
 satisfy(
-    # determining whether periods are assigned to courses
-    [pd[k][i] == (x[i] == k) for k in P for i in C],
-
-    # respecting limits in terms of courses per period
-    [Sum(pd[k]) in range(c_lb, c_ub + 1) for k in P],
-
-    # computing period loads
-    [ld[k] == loads * pd[k] for k in P],
-
-    # constraining the objective value
-    [ld[k] <= z for k in P],
-
-    # enforcing prerequisites between courses
-    [x[j] < x[i] for (i, j) in prerequisites],
-
-    # implied linear constraints  tag(redundant-constraints)
-    [
-        (
-            prod >= K * l_lb,
-            prod <= K * z
-        ) for (prod, K) in ((loads * [x[i] > k for i in C], nPeriods - k - 1) for k in P)
-    ]
+    # handling prerequisites
+    s[c1] < s[c2] for (c1, c2) in prerequisites
 )
 
-minimize(
-    z
-)
+if subvariant("d"):
+    minimize(
+        # minimizing the maximal distance in term of credits
+        Maximum(cr) - Minimum(cr)
+    )
+else:
+    minimize(
+        # minimizing the maximum number of credits in periods
+        Maximum(cr)
+    )
+
+annotate(decision=s)
 
 """ Comments
-1) One can also write:
-    [ld[k] == Sum(pd[kl][i] * loads[i] for i in C) for k in P],
- and 
-    [Sum((x[i] > k) * loads[i] for i in C) >= (nPeriods - k - 1) * l_lb for k in P], 
-
-2) prerequisites do not seem to be posted in the Minizinc model
-
-3) the last group can be written as:
- [
-   [loads * [x[i] > k for i in C] >= (nPeriods - k - 1) * l_lb for k in P],
-   [loads * [x[i] > k for i in C] <= (nPeriods - k - 1) * z for k in P]
- ]
+1) the way we build the table could also be written as:
+ return {tuple(credits[c] if j == p else p if j == nPeriods else 0 for j in range(nPeriods + 1)) for p in range(nPeriods)}
 """
