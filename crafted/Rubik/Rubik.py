@@ -4,7 +4,7 @@ These instances are initially given in flat format (i.e., not from a model).
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  4-cube.json
+  execute 'python Rubik.py -data=<datafile.dzn> -parser=Rubik_ParserZ.py -export' for getting JSON files
 
 ## Model
   constraints: Clause

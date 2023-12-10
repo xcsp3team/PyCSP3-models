@@ -1,40 +1,49 @@
 """
+Shortest Path Problem.
+
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2008 Minizinc challenge.
+The MZN model was proposed by Jakob Puchinger.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
-## Data
-  an integer n
+## Data Example
+  00.json
+
+## Model
+  constraints: Sum
 
 ## Execution
-  python SlowConvergence.py -data=[number]
+  python ShortestPath.py -data=<datafile.json>
+  python ShortestPath.py -data=<datafile.dzn> -parser=ShortestPath_ParserZ.py
 
 ## Links
   - https://www.minizinc.org/challenge2008/results2008.html
 
 ## Tags
-  academic, mzn08
+  crafted, mzn08
 """
 
 from pycsp3 import *
 
-n = data
+n, edges, start, end = data
+src, dst, lgt = zip(*edges)
+m = len(edges)
 
-y = VarArray(size=n + 1, dom=range(10 * n + 1))
 
-x = VarArray(size=n + 1, dom=range(10 * n + 1))
+def select(t, j):
+    return (x[i] for i in range(m) if t[i] == j)
+
+
+# x[i] is 1 if the ith edge is used
+x = VarArray(size=m, dom={0, 1})
 
 satisfy(
-    [y[i - 1] - y[i] <= 0 for i in range(2, n + 1)],
+    Sum(select(src, start)) - Sum(select(dst, start)) == 1,
 
-    [y[0] - y[i] <= n - i + 1 for i in range(1, n + 1)],
+    Sum(select(src, end)) - Sum(select(dst, end)) == -1,
 
-    y[-1] - x[0] <= 0,
-
-    [x[i] - x[j] <= 0 for i in range(1, n) for j in range(i + 1, n + 1)],
-
-    y[0] >= n
+    [Sum(select(src, j)) - Sum(select(dst, j)) == 0 for j in range(n) if j not in (start, end)]
 )
 
-"""
-1) data used in 2008 are: 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000
-"""
+minimize(
+    x * lgt
+)

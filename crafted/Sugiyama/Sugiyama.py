@@ -59,11 +59,10 @@ satisfy(
 
     # computing crossings
     [
-        y[j] ==
-        both(
+        y[j] == both(
             x[src[e1]] < x[src[e2]],
-            x[dst[e2]] < x[dst[e1]]
-        ) + both(
+            x[dst[e2]] < x[dst[e1]])
+        + both(
             x[src[e2]] < x[src[e1]],
             x[dst[e1]] < x[dst[e2]]
         ) for j, (e1, e2) in enumerate(crossings)
