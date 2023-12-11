@@ -22,4 +22,4 @@ See Wikipedia.
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  real, mzn15, mzn19, xcsp23
+  realistic, mzn15, mzn19, xcsp23

@@ -21,4 +21,4 @@ of the (unlimited) renewable resources required to complete the project by a pre
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  real, xcsp23
+  realistic, xcsp23

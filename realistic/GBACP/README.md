@@ -1,26 +1,29 @@
-# Problem GeneralizedBACP
+# Problem GBACP
 ## Description
-Generalised Balanced Academic Curriculum problem.
+This is a generalisation of the Balanced Academic Curriculum Problem (BACP) proposed by
+Marco Chiarandini, Luca Di Gaspero, Stefano Gualandi, and Andrea Schaerf at University of Udine.
+See CSPLib.
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2016/2017/2020 Minizinc challenges.
-The MZN model was proposed by Jean-Noel Monette, and modified by Gustav Bjordal with help by Fatima Zohra Lebbah, Justin Pearson, and Pierre Flener.
-No Licence was explicitly mentioned (MIT Licence assumed).
-
-## Data Example
-  UD3.json
+## Data
+  UD04.json
 
 ## Model
-  constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  Two variants compute differently the delta values:
+  - a main variant involving the constraint Maximum
+  - a variant 'table' involving binary table constraints
+
+  constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-```
-  python GeneralizedBACP.py -data=<datafile.json>
-  python GeneralizedBACP.py -data=<datafile.dzn> -parser=GeneralizedBACP_ParserZ.py
-```
+  - python GBACP.py -data=<datafile.json>
+  - python GBACP.py -data=<datafile.json> -variant=table
 
 ## Links
+  - https://opthub.uniud.it/problem/timetabling/gbac
+  - https://link.springer.com/chapter/10.1007/978-3-540-88439-2_11
   - https://www.csplib.org/Problems/prob064/
   - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  real, csplib, mzn16, mzn17, mzn20
+  realistic, csplib, mzn16, mzn17, mzn20, xcsp23

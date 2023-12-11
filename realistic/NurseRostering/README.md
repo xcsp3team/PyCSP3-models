@@ -3,7 +3,7 @@
 Realistic employee shift scheduling Problem.
 
 ## Data Example
-  01.json
+  00.json
 
 ## Model
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Regular](http://pycsp.org/documentation/constraints/Regular), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
@@ -17,4 +17,4 @@ Realistic employee shift scheduling Problem.
   - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
 
 ## Tags
-  real, xcsp22
+  realistic, xcsp22

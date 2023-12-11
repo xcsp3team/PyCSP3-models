@@ -3,7 +3,7 @@
 See Problem 045 on CSPLib.
 
 ## Data
-  four integers: t, k, g and b
+  Four integers: t, k, g and b
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Channel](http://pycsp.org/documentation/constraints/Channel), [Table](http://pycsp.org/documentation/constraints/Table)

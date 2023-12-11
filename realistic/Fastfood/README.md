@@ -19,4 +19,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2012/results2012.html
 
 ## Tags
-  crafted, mzn11, mzn12
+  realistic, mzn11, mzn12

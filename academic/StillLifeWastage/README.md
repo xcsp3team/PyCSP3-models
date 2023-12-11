@@ -8,14 +8,14 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-  an integer n, the order of the problem instance
+  An integer n, the order of the problem instance
 
 ## Model
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
-  python StillLifeWastage.py -data=[number]
+  python StillLifeWastage.py -data=number
 ```
 
 ## Links

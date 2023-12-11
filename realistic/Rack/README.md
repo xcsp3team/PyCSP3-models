@@ -1,21 +1,22 @@
 # Problem Rack
 ## Description
-Problem 031 of csplib. <br />
-The rack configuration problem consists of plugging a set of electronic cards into racks with electronic connectors (from csplib).
+See Problem 031 at csplib.
 
-## Data
-TODO
+The rack configuration problem consists of plugging a set of electronic cards into racks with electronic connectors.
+
+## Data Example
+  r1.json
 
 ## Model
-  constraints: [Decreasing](http://pycsp.org/documentation/constraints/Decreasing), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
-  python3 Rack.py -data=Rack_r2.json
+  python Rack.py -data=Rack_r2.json
 ```
 
 ## Links
   - https://www.csplib.org/Problems/prob031/
 
 ## Tags
-recreational csplib
+  realistic, csplib

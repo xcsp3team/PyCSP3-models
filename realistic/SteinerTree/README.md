@@ -22,4 +22,4 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   - https://www.minizinc.org/challenge2018/results2018.html
 
 ## Tags
-  real, mzn18
+  realistic, mzn18

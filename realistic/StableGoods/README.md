@@ -4,7 +4,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
-  s-206.json
+  s-d06.json
 
 ## Model
   constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
@@ -19,4 +19,4 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2020/results2020.html
 
 ## Tags
-  real, mzn20
+  realistic, mzn20

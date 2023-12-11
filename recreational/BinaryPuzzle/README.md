@@ -8,14 +8,14 @@ One has to fill the remaining empty cells with either 0 or 1 according to the fo
   - each row is unique and each column is unique.
 
 ## Data
-  a unique integer n
+  A unique integer n
 
 ## Model
   constraints: [AllDifferentList](http://pycsp.org/documentation/constraints/AllDifferentList), [Regular](http://pycsp.org/documentation/constraints/Regular), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python BinaryPuzzle.py -data=[number]
-  - python BinaryPuzzle.py -data=[number] -variant=regular
+  - python BinaryPuzzle.py -data=number
+  - python BinaryPuzzle.py -data=number -variant=regular
 
 ## Links
   - https://www.researchgate.net/publication/243972408_Binary_Puzzle_is_NP-complete

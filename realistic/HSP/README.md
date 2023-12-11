@@ -27,4 +27,4 @@ time of a set of jobs (i.e., the makespan), while, at the same time, satisfying 
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  real, xcsp23
+  realistic, xcsp23

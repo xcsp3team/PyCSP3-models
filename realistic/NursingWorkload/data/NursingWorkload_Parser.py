@@ -1,4 +1,4 @@
-""""
+"""
 Parser for WagInstances at Problem 040 on CSPLib
 """
 from pycsp3.problems.data.parsing import *

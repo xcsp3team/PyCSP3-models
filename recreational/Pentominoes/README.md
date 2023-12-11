@@ -11,8 +11,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Execution
 ```
-  python Pentominoes.py -data=<datafile.json>
-  python Pentominoes.py -data=<datafile.dzn> -parser=Pentominoes_ParserZ.py
+  python Pentominoes1.py -data=<datafile.json>
+  python Pentominoes1.py -data=<datafile.dzn> -parser=Pentominoes_ParserZ.py
 ```
 
 ## Links

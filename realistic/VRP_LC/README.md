@@ -1,4 +1,4 @@
-# Problem VRPLC
+# Problem VRP_LC
 ## Description
 The Vehicle Routing Problem with Location Congestion (VRPLC) adds cumulative scheduling constraints
 on to the standard Pickup and Delivery Problem with Time Windows (PDPTW).
@@ -15,8 +15,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Execution
 ```
-  python VRPLC.py -data=<datafile.json>
-  python VRPC.py -data=<datafile.dzn> -parser=VRPLC_ParserZ.py
+  python VRP_LC.py -data=<datafile.json>
+  python VRP_LC.py -data=<datafile.dzn> -parser=VRP_LC_ParserZ.py
 ```
 
 ## Links
@@ -24,4 +24,4 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2018/results2018.html
 
 ## Tags
-  real, mzn18, mzn23
+  realistic, mzn18, mzn23

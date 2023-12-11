@@ -3,7 +3,7 @@
 Radio Link Frequency Assignment.
 
 ## Data Example
-  scen01.json
+  graph-01.json
 
 ## Model
   constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NValues](http://pycsp.org/documentation/constraints/NValues), [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -18,4 +18,4 @@ Radio Link Frequency Assignment.
   - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
 
 ## Tags
-  real, xcsp22
+  realistic, xcsp22

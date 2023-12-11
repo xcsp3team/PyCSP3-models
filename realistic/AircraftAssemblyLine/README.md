@@ -10,15 +10,16 @@ The schedule must satisfy several operational constraints, the main ones being:
 
 This model has been co-developed by teams of ONERA and CRIL.
 
-## Data (example)
-  1-178-00-0.json
+## Data Example
+  2-178-70-2.json
 
 ## Model
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
-  python AircraftAssemblyLine.py -data=<datafile.json> -dataParser=AircraftAssemblyLine_Converter.py
+  python AircraftAssemblyLine.py -data=<datafile.json>
+  python AircraftAssemblyLine.py -data=<xcsp23/datafile.json> -dataParser=AircraftAssemblyLine_Converter.py
 ```
 
 ## Links
@@ -26,4 +27,4 @@ This model has been co-developed by teams of ONERA and CRIL.
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  real, xcsp23
+  realistic, xcsp23

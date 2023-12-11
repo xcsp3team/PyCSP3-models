@@ -19,4 +19,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2017/results2017.html
 
 ## Tags
-  real, mzn17
+  realistic, mzn17

@@ -5,7 +5,7 @@ The MZN model was proposed by Simon de Givry.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  test.json
+  execute 'python ProteinDesign.py -data=<datafile.dzn> -parser=ProteinDesign_ParserZ.py -export' to get a JSON file
 
 ## Model
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
@@ -20,4 +20,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2018/results2018.html
 
 ## Tags
-  real, mzn13, mzn18
+  realistic, mzn13, mzn18

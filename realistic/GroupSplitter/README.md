@@ -9,7 +9,7 @@ The MZN model was proposed by Jacopo Mauro and Tong Liu.
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
-  u06g1p1.json
+  execute 'python GroupSplitter.py -data=<datafile.dzn> -parser=GroupSplitter_ParserZ.py -export' to get a JSON file
 
 ## Model
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
@@ -25,4 +25,4 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2019/results2019.html
 
 ## Tags
-  real, mzn17, mzn19
+  realistic, mzn17, mzn19

@@ -1,8 +1,8 @@
-# Problem PSP1
+# Problem PSP
 ## Description
 This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem 058 on CSPLib.
 
-## Data (example)
+## Data Example
   001.json
 
 ## Model
@@ -20,4 +20,4 @@ This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  real, csplib, xcsp23
+  realistic, csplib, xcsp23

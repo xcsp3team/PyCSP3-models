@@ -10,7 +10,7 @@ However, the original model involved set variables.
 The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Licence.
 
 ## Data
-  two integers (n,p)
+  Two integers (n,p)
 
 ## Model
   There are two variants:

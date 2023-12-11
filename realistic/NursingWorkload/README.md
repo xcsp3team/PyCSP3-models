@@ -4,7 +4,7 @@ Balanced Nursing Workload Problem.
 See Problem 069 at CSPLib.
 
 ## Data Example
-  2zones0.json
+  2zones1.json
 
 ## Model
   constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -18,4 +18,4 @@ See Problem 069 at CSPLib.
   - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
 
 ## Tags
-  real, csplib, xcsp22
+  realistic, csplib, xcsp22

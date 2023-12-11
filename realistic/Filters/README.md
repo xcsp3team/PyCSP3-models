@@ -7,7 +7,7 @@ The MZN model was proposed by Krzysztof Kuchcinski.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  ar2-3.json
+  ar1-3.json
 
 ## Model
   constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
@@ -24,4 +24,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2016/results2016.html
 
 ## Tags
-  real, mzn10, mzn12, mzn13, mzn16
+  realistic, mzn10, mzn12, mzn13, mzn16

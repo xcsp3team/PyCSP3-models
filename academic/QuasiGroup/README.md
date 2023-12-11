@@ -1,6 +1,6 @@
 # Problem QuasiGroup
 ## Description
-This is the [problem 003](https://www.csplib.org/Problems/prob003/) of the CSPLib:
+This is [Problem 003](https://www.csplib.org/Problems/prob003/) at CSPLib.
 
 An order n quasigroup is a Latin square of size n.
 That is, a n×n multiplication table in which each element occurs once in every row and column.
@@ -13,47 +13,39 @@ a given size with additional properties. For example:
 For each of these problems, we may additionally demand that the quasigroup is idempotent.
 That is, a ∗ a = a for every element a.
 
-### Example
-
-```
-1    2   3   4
-4    1   2   3
-3    4   1   2
-2    3   4   1
-```
-
-
 ## Data
-A number n, the size of the square.
+  A unique integer, the order of the problem instance
+
+## Example
+  ```
+    1    2   3   4
+    4    1   2   3
+    3    4   1   2
+    2    3   4   1
+  ```
 
 ## Model
-
-You can find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/Quasigroup/).
-
+  You can find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/Quasigroup/).
 
   constraints: [Element](http://pycsp.org/documentation/constraints/Element)
 
-## Command Line
-
-```
-python QuasiGroup.py
-python QuasiGroup.py -data=8 -variant=base-v3
-python QuasiGroup.py -data=5 -variant=base-v4
-python QuasiGroup.py -data=8 -variant=base-v5
-python QuasiGroup.py -data=8 -variant=base-v6
-python QuasiGroup.py -data=9 -variant=base-v7
-python QuasiGroup.py -data=8 -variant=aux-v3
-python QuasiGroup.py -data=5 -variant=aux-v4
-python QuasiGroup.py -data=8 -variant=aux-v5
-python QuasiGroup.py -data=9 -variant=aux-v7
-```
+## Execution
+  - python QuasiGroup.py -variant=base-v3 -data=number
+  - python QuasiGroup.py -variant=base-v4 -data=number
+  - python QuasiGroup.py -variant=base-v5 -data=number
+  - python QuasiGroup.py -variant=base-v6 -data=number
+  - python QuasiGroup.py -variant=base-v7 -data=number
+  - python QuasiGroup.py -variant=aux-v3 -data=number
+  - python QuasiGroup.py -variant=aux-v4 -data=number
+  - python QuasiGroup.py -variant=aux-v5 -data=number
+  - python QuasiGroup.py -variant=aux-v7 -data=number
 
 ## Links
   - https://www.csplib.org/Problems/prob003/
   - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
 ## Tags
- academic notebook csplib xcspé2
+  academic, notebook, csplib, xcsp22
  """
 
 from pycsp3 import *

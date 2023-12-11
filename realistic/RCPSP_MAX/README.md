@@ -10,7 +10,7 @@ The MZN model was proposed by the University of Melbourne and NICTA, Copyright (
 The Licence seems to be like a MIT Licence.
 
 ## Data Example
-  psp-c-051.json
+  psp-j20-34.json
 
 ## Model
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative)
@@ -25,4 +25,4 @@ The Licence seems to be like a MIT Licence.
   - https://www.minizinc.org/challenge2010/results2010.html
 
 ## Tags
-  real, mzn10
+  realistic, mzn10

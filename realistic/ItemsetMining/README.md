@@ -15,7 +15,7 @@ The MZN model was proposed by the KULeuven team.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  anneal-k1.json
+  hepatitis-k2.json
 
 ## Model
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
@@ -32,4 +32,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2013/results2013.html
 
 ## Tags
-  real, mzn11, mzn12, mzn13
+  realistic, mzn11, mzn12, mzn13

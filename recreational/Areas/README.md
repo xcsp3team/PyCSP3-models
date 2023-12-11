@@ -9,19 +9,19 @@ has the area equal to this integer (two squares are contiguous if they share a s
 Important: we assume in the model below that each specified integer delimits its own region
 (i.e., we cannot use two equal specified integers for the same region).
 
-## Data
-TODO
+## Data Example
+  3-3-3.json
 
 ## Model
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution:
 ```
-  python3 Areas.py -data=Areas-3-3-3.json
+  python3 Areas.py -data=<datafile.json>
 ```
 
 ## Links
  - https://www.comp.nus.edu.sg/~henz/projects/puzzles/arith/index.html
 
 ## Tags
- recreational
+  recreational

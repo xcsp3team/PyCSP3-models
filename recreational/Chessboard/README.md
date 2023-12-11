@@ -20,4 +20,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2023/results2023.html
 
 ## Tags
-  crafted, mzn23
+  recreational, mzn23

@@ -16,7 +16,7 @@ See the PhD thesis by Adrien Varet (2022, Aix Marseille University).
 
 ## Execution
 ```
-  python Benzenoide.py -data=[number]
+  python Benzenoide.py -data=number
 ```
 
 ## Links
@@ -25,4 +25,4 @@ See the PhD thesis by Adrien Varet (2022, Aix Marseille University).
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  real, xcsp23
+  realistic, xcsp23

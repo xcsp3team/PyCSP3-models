@@ -2,15 +2,15 @@
 ## Description
 A binary determination puzzle.
 
-## Data
-TODO + parser
+## Data Example
+  example.json
 
 ## Model
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution:
 ```
-  python3 Lits.py -data=Lits_example.json
+  python Lits.py -data=<datafile.json>
 ```
 
 ## Links
@@ -18,4 +18,3 @@ TODO + parser
 
 ## Tags
   recreational
-

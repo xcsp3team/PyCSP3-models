@@ -3,11 +3,11 @@
 A toy problem from my course about CP.
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Execution
 ```
-  python3 Witch.py
+  python Witch.py
 ```
 
 ## Tags

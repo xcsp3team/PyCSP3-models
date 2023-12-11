@@ -7,13 +7,13 @@ This problem consists in finding a partition of the set of numbers {1, 2, ..., n
 See Problem 049 on CSPLib.
 
 ## Data
-  an integer n
+  An integer n
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python NumberPartitioning.py -data=[number]
+  - python NumberPartitioning.py -data=number
 
 ## Links
   - https://www.csplib.org/Problems/prob049/

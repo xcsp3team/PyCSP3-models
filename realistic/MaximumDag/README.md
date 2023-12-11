@@ -22,4 +22,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2016/results2016.html
 
 ## Tags
-  real, mzn16
+  realistic, mzn16

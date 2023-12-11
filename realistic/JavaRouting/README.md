@@ -20,4 +20,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2021/results2021.html
 
 ## Tags
-  real, mzn13, mzn21
+  realistic, mzn13, mzn21

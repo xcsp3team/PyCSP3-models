@@ -7,7 +7,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 The original model has: Copyright (C) 2011 The University of Melbourne and NICTA
 
 ## Data Example
-  medium-1.json
+  easy-4.json
 
 ## Model
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum)
@@ -22,4 +22,4 @@ The original model has: Copyright (C) 2011 The University of Melbourne and NICTA
   - https://www.minizinc.org/challenge2014/results2014.html
 
 ## Tags
-  real, mzn11, mzn14
+  realistic, mzn11, mzn14

@@ -1,4 +1,4 @@
-# Problem GfdSchedule1
+# Problem GfdSchedule
 ## Description
 A Scheduling problem, such that:
  - items are grouped by kinds
@@ -13,7 +13,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
-  n030f3d30m7k4.json
+  n025f5d20m10k3.json
 
 ## Model
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [NValues](http://pycsp.org/documentation/constraints/NValues), [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -28,4 +28,4 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2015/results2015.html
 
 ## Tags
-  real, mzn15
+  realistic, mzn15

@@ -4,7 +4,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  fast-03.json
+  dom-06.json
 
 ## Model
   constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)

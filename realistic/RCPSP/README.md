@@ -1,22 +1,21 @@
 # Problem RCPSP
 ## Description
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2009/2013 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+Problem 061 on CSPLib
 
 ## Data Example
-  11.json
+  j030-01-01.json
 
 ## Model
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative)
 
 ## Execution
-```
-  python RCPSP.py -data=<datafile.json>
-  python RCPSP.py -data=<datafile.dzn> -parser=RCPSP_ParserZ.py
-```
+  - python RCPSP-22.py -data=<datafile.json>
+  - python RCPSP-22.py -data=<datafile.txt> -parser=RCPSP_Parser.py
 
 ## Links
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.om-db.wi.tum.de/psplib/data.html
+  - https://www.csplib.org/Problems/prob061/
+  - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
 
 ## Tags
-  real, mzn09, mzn13
+  realistic, csplib, xcsp22

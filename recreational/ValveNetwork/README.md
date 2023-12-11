@@ -7,14 +7,14 @@ Instead of using different networks for varying hardness,
 this model uses different planning horizons for adjusting the hardness of the problem.
 
 ## Data
-  an integer (as the network is included in the model below)
+  An integer (as the network is included in the model below)
 
 ## Model
-  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
-  python ValveNetwork.py -data=6
+  python ValveNetwork.py -data=number
 ```
 
 ## Links

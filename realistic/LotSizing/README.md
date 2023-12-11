@@ -23,4 +23,4 @@ MIT Licence.
   - https://www.minizinc.org/challenge2019/results2019.html
 
 ## Tags
-  real, csplib, mzn19, mzn20
+  realistic, csplib, mzn19, mzn20

@@ -17,4 +17,4 @@ See Problem 040 on CSPLib.
   - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
 
 ## Tags
-  real, csplib, xcsp22
+  realistic, csplib, xcsp22

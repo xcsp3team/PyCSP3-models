@@ -3,11 +3,11 @@
 From the Minizinc tutorial
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Execution
 ```
-  python3 Recipe.py
+  python Recipe.py
 ```
 
 ## Links

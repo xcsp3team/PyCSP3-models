@@ -14,19 +14,15 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  06.json
+  pizza06.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
   python FreePizza.py -data=<datafile.json>
-  python FreePizza.py -data=<datafile.dzn> -parser=FreePizza_ParserZ.py
 ```
 
-## Links
-  - https://www.minizinc.org/challenge2015/results2015.html
-
 ## Tags
-  real, mzn15
+  realistic

@@ -5,7 +5,7 @@ such that the sums of the n rows, the n columns and the two main diagonals form 
 of 2n + 2 consecutive integers.
 
 ## Data
-  a unique integer n
+  A unique integer n
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -18,4 +18,4 @@ of 2n + 2 consecutive integers.
   - https://www.cril.univ-artois.fr/XCSP23/competitions/csp/csp
 
 ## Tags
-  recreational, xcsp23
+  academic, recreational, xcsp23

@@ -23,4 +23,4 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist, under the MIT Licence.
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-  real, mzn22
+  realistic, mzn22

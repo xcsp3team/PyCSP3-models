@@ -10,7 +10,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data
-  two integers (n,m)
+  Two integers (n,m)
 
 ## Model
   Constraints: Sum

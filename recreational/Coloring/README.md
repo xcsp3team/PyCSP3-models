@@ -1,21 +1,21 @@
 # Problem Coloring
 ## Description
-See
+In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices are of the same color.
 
-## Data
-all integrated (single instance)
+## Data Example
+  rand01.json
 
 ## Model
  constraint: Maximum
 
 ## Execution:
 ```
-  python3 Coloring.py -data=Coloring_rand1.json
-  python3 Coloring.py -data=Coloring_rand1.json -variant=csp
+  python Coloring.py -data=<datafile.json>
+  python Coloring.py -data=<datafile.json> -variant=csp
 ```
 
 ## Links
  - https://en.wikipedia.org/wiki/Graph_coloring
 
 ## Tags
- crafted
+  recreational

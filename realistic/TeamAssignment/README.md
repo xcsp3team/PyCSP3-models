@@ -5,7 +5,7 @@ The MZN model was proposed by Erik Thörnbald (Uppsala University).
 No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Data Example
-  1-6-24.json
+  2-5-6.json
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -20,4 +20,4 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-  real, mzn18, mzn22
+  realistic, mzn18, mzn22

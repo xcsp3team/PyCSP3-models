@@ -10,18 +10,16 @@ Yannick and Zachary didn’t always get along very well, they preferred not trav
 the three friends be satisfied?
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
   constraints: [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
-  python3 TravelingWorld.py
-  python3 TravelingWorld.py -variant="integer"
+  python TravelingWorld.py
+  python TravelingWorld.py -variant=integer
 ```
-
-## Links
 
 ## Tags
   single
