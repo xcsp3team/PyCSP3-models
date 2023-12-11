@@ -13,8 +13,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: Sum, Table
 
 ## Execution
-  python StillLife.py -data=[number]
-  python StillLife.py -data=[number] -variant=table
+  python StillLife_z.py -data=number
+  python StillLife_z.py -data=number -variant=table
 
 ## Links
   - https://en.wikipedia.org/wiki/Still_life_(cellular_automaton)
