@@ -63,6 +63,4 @@ minimize(
   Sum(u[i], -u[j], capacity * x[i][j])
 is equivalent to:
   [u[i], u[j], x[i][j]] * [1, -1, capacity] 
-
-
 """

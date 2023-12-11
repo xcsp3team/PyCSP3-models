@@ -1,5 +1,15 @@
 """
-TODO
+## Data Example
+  frobserved-7-15-11-13-9-1-11-7-4_1.json
+
+## Model
+  constraints: Count, Sum, Table
+
+## Execution
+  python Tal.py -data=<datafile.json>
+
+## Tags
+  real
 """
 from pycsp3 import *
 import math
@@ -71,30 +81,35 @@ satisfy(
 
     [a[i][j] <= lengths[i - 1] - j for i in range(1, nLevels, 2) for j in range(1, nWords) if j < lengths[i] and j + maxArity > lengths[i - 1]],
 
-    [(x[i][0] == 0, l[i][0] == l[i - 1][0]) for i in range(2, nLevels, 2)],
+    [
+        (
+            x[i][0] == 0,
+            l[i][0] == l[i - 1][0]
+        ) for i in range(2, nLevels, 2)
+    ],
 
-    [[x[i][j]] + select_label(i - 1) + [l[i][j]] in table_for(len(select_label(i - 1))) for i in range(2, nLevels, 2) for j in range(1, lengths[i])],
+    [(x[i][j], y, l[i][j]) in table_for(len(y)) for i in range(2, nLevels, 2) for j in range(1, lengths[i]) if (y := select_label(i - 1),)],
 
     [
-        [
+        (
             x[i][j] >= j,
-            imply(l[i][j] == 0, x[i][j] == lengths[i] - 1),
-            imply(l[i][j] > 0, x[i][j] > x[i][j - 1]),
-            imply(l[i][j - 1] == 0, l[i][j] == 0)
-        ] for i in range(2, nLevels, 2) for j in range(1, lengths[i])
+            If(l[i][j] == 0, Then=x[i][j] == lengths[i] - 1),
+            If(l[i][j] > 0, Then=x[i][j] > x[i][j - 1]),
+            If(l[i][j - 1] == 0, Then=l[i][j] == 0)
+        ) for i in range(2, nLevels, 2) for j in range(1, lengths[i])
     ],
 
     # grammar a
     [
-        (iff(l[i][j] == 0, a[i][j] == 0),
-         [a[i][j], l[i][j]] + [l[i - 1][k] for k in range(j, j + n_possible_sons(i, j))] + [c[i][j]] in table_for_grammar(n_possible_sons(i, j)))
-        for i in range(1, nLevels, 2) for j in range(lengths[i])
+        (
+            (l[i][j] == 0) == (a[i][j] == 0),
+            (a[i][j], l[i][j], l[i - 1][j: j + k], c[i][j]) in table_for_grammar(k)
+        ) for i in range(1, nLevels, 2) for j in range(lengths[i]) if (k := n_possible_sons(i, j),)
     ],
 
     [predicate(l, a, i, j, lengths) for i in range(0, nLevels, 2) for j in range(nWords) if j < lengths[i]],
 
     l[2 * maxHeight][1] == 0 if 0 < maxHeight and 2 * maxHeight < l.length else None
-
 )
 
 minimize(

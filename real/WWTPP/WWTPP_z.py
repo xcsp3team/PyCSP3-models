@@ -12,8 +12,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: Sum
 
 ## Execution
-  python WwtppReal.py -data=<datafile.json>
-  python WwtppReal.py -data=<datafile.dzn> -parser=WwtppReal_ParserZ.py
+  python WWTPP_z.py -data=<datafile.json>
+  python WWTPP_z.py -data=<datafile.dzn> -parser=WWTPP_ParserZ.py
 
 ## Links
   - https://arxiv.org/abs/1609.05367

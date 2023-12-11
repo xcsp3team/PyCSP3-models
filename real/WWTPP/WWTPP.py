@@ -2,20 +2,20 @@
 See "Solving the Wastewater Treatment Plant Problem with SMT", by Miquel Bofill, Víctor Muñoz, Javier Murillo. CoRR abs/1609.05367 (2016)
 
 ## Data
-TODO + parser
+  ex04400.json
 
 ## Model
   constraints: AllDifferent, Sum
 
 ## Execution:
-  python Wwtpp.py -data=Wwtpp_ex04400.json
-  python Wwtpp.py -data=Wwtpp_ex04400.json -variant=short
+  python WWTPP.py -data=<datafile.json>
+  python WWTPP.py -data=<datafile.json> -variant=short
 
 ## Links
  - https://arxiv.org/abs/1609.05367
 
 ## Tags
-  recreational
+  real
 """
 
 from pycsp3 import *
