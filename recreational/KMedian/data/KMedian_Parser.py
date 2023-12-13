@@ -1,4 +1,4 @@
-""""
+"""
 Parser for problem instances at http://people.brunel.ac.uk/~mastjjb/jeb/orlib/pmedinfo.html
 """
 from pycsp3.problems.data.parsing import *

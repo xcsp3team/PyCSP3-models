@@ -6,13 +6,13 @@ in which the n∗(n−1)/2 vectors between the marks are all-different.
 See problem 076 at CSPLib.
 
 ## Data
-  a unique integer, the order of the grid
+  A unique integer, the order of the grid
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
-  - python CostasArray.py -data=[number]
+  - python CostasArray.py -data=number
 
 ## Links
   - https://en.wikipedia.org/wiki/Costas_array

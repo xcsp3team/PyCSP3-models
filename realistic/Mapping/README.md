@@ -8,7 +8,7 @@ The MZN model was proposed by Krzysztof Kuchcinski.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  ring-mp3.json
+  mesh2x2-2.json
 
 ## Model
   constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Count](http://pycsp.org/documentation/constraints/Count), [Flow](http://pycsp.org/documentation/constraints/Flow), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -24,4 +24,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2021/results2021.html
 
 ## Tags
-  real, mzn15, mzn16, mzn18, mzn21
+  realistic, mzn15, mzn16, mzn18, mzn21

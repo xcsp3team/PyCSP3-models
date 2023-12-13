@@ -1,22 +1,25 @@
 # Problem Domino
 ## Description
-This problem is described in "[Making AC3 an optimal algorithm](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.1730&rep=rep1&type=pdf)"
-by Zhang and Yap, IJCAI 2001. Informally the Domino problem is an undirected constraint graph with a cycle and a trigger constraint.
+This problem is described in the paper cited below.
+Informally the Domino problem is an undirected constraint graph with a cycle and a trigger constraint.
 
 ## Data
-A couple (n,d), where n is the number of variables and d the size of the domain.
+  a pair (n,d), where n is the number of variables and d the size of the domain
 
-## Model(s)
-There are two variants, one if  constraints in intension, the other with constraints in extension.
+## Model
+  There are two variants: a main one and a variant 'table" with constraints in extension.
 
-  constraints: [AllEqual](http://pycsp.org/documentation/constraints/AllEqual), [Extension](http://pycsp.org/documentation/constraints/Extension), [Intension](http://pycsp.org/documentation/constraints/Intension)
+  constraints: [AllEqual](http://pycsp.org/documentation/constraints/AllEqual), [Table](http://pycsp.org/documentation/constraints/Table)
 
-## Command Line
+## Execution
 ```
-  python3 Domino.py
-  python3 Domino.py -data=[300,300]
-  python3 Domino.py -data=[300,300] -variant=table
+  python Domino.py
+  python Domino.py -data=[number,number]
+  python Domino.py -data=[number,number] -variant=table
 ```
+
+## Links
+  - https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.1730&rep=rep1&type=pdf
 
 ## Tags
- academic
+  academic

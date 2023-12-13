@@ -1,4 +1,4 @@
-# Problem NurseRostering
+# Problem NurseRostering_p
 ## Description
 This problem was described in the JAIR paper cited below.
 
@@ -14,15 +14,15 @@ The problem is modeled with one Regular constraint per row and one Alldifferent 
 
 The model/automaton below is made stricter so as (hopefully) to generate harder instances.
 
-## Data
-  roster-5-00-01.dat
+## Data Example
+  roster-5-00-02.json
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Regular](http://pycsp.org/documentation/constraints/Regular)
 
 ## Execution
-  - python NurseRostering.py -data=<datafile.json>
-  - python NurseRostering.py -data=<datafile.dat> -parser=NurseRostering_Parser.py
+  - python NurseRostering_p.py -data=<datafile.json>
+  - python NurseRostering_p.py -data=<datafile.dat> -parser=NurseRostering_Parser.py
 
 ## Links
   - https://dl.acm.org/doi/abs/10.5555/2387915.2387920

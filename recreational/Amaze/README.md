@@ -1,4 +1,4 @@
-# Problem Amaze1
+# Problem Amaze
 ## Description
 Given a grid containing some pairs of identical numbers, connect each pair of similar numbers by drawing a line sith horizontal or vertical segments,
 while paying attention to not having crossed lines.
@@ -7,7 +7,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  2012-03-08.json
+  03-08.json
 
 ## Model
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)

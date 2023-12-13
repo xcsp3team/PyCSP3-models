@@ -1,4 +1,4 @@
-# Problem TTPPV
+# Problem TTP_PV
 ## Description
 Traveling Tournament Problem with Predefined Venues (TTPPV).
 The problem consists of finding an optimal compact single round robin schedule for a sport event.
@@ -18,8 +18,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Execution
 ```
-  python TTPPV.py -data=<datafile.json>
-  python TTPPV.py -data=<datafile.dzn> -parser=TTPPV_ParserZ.py
+  python TTP_PV.py -data=<datafile.json>
+  python TTP_PV.py -data=<datafile.dzn> -parser=TTP_PV_ParserZ.py
 ```
 
 ## Links
@@ -28,4 +28,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-  real, csplib, mzn14, mzn17, mzn22
+  realistic, csplib, mzn14, mzn17, mzn22

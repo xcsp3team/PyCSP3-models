@@ -5,7 +5,7 @@ The MZN model was proposed by Hakan Kjellerstrand, after translating the one by 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  g16-p10-a10.json
+  g16-p20-a20.json
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
@@ -22,4 +22,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-  real, mzn17, mzn22
+  realistic, mzn17, mzn22

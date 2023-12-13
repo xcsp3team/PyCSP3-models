@@ -1,11 +1,10 @@
 # Problem Agatha
 ## Description
-The Dreadsbury Mansion Mystery (4 solutions)
-F. J. Pelletier, "Seventy-five problems for testing automatic theorem provers",
-Journal of Automated Reasoning, 2: 191 216, 1986.
+The Dreadsbury Mansion Mystery.
 
 Someone who lives in Dreadsbury Mansion killed Aunt Agatha.
 Agatha, the butler, and Charles live in Dreadsbury Mansion, and are the only people who live therein.
+We know that:
  - A killer always hates his victim, and is never richer than his victim.
  - Charles hates no one that Aunt Agatha hates.
  - Agatha hates everyone except the butler.
@@ -14,10 +13,10 @@ Agatha, the butler, and Charles live in Dreadsbury Mansion, and are the only peo
  - No one hates everyone.
 
 ## Data
-  all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Intension](http://pycsp.org/documentation/constraints/Intension)
+  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element)
 
 ## Execution
 ```

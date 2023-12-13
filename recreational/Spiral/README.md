@@ -3,17 +3,16 @@
 A logic puzzle. See "Teaching Constraints through Logic Puzzles" by Peter Szeredi.
 
 ## Data
-TODO + parser
+  Two integers n and m.
 
 ## Model
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Increasing](http://pycsp.org/documentation/constraints/Increasing)
+  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality)
 
-## Execution:
+## Execution
 ```
-  python3 Spiral.py
-  python3 Spiral.py -data[7, 5]
+  python Spiral.py
+  python Spiral.py -data[number,number]
 ```
-
 
 ## Tags
   recreational

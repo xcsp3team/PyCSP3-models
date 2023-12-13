@@ -2,15 +2,15 @@
 ## Description
 See description on CSPLib.
 
-## Data
-TODO + parser
+## Data Example
+  04.json
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Channel](http://pycsp.org/documentation/constraints/Channel), [Channel](http://pycsp.org/documentation/constraints/Channel), [Lex](http://pycsp.org/documentation/constraints/Lex)
 
 ## Execution:
 ```
-    python3 MisteryShopper.py -data=MisteryShopper_04.json
+  python MisteryShopper.py -data=MisteryShopper_04.json
 ```
 
 ## Links
@@ -18,4 +18,3 @@ TODO + parser
 
 ## Tags
   recreational, csplib
-

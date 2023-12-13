@@ -4,7 +4,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
-  05-02-dict-55.json
+  execute 'python CrosswordsOpt.py -data=<datafile.dzn> -parser=CrosswordsOpt_ParserZ.py -export' to get JSON files
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)

@@ -1,7 +1,5 @@
 # Problem WarOrPeace
 ## Description
-Problem based on information from http://www.hakank.org/
-
 There are n countries.
 Each pair of two countries is either at war or has a peace treaty.
 Each pair of two countries that has a common enemy has a peace treaty.
@@ -17,8 +15,8 @@ Hence, it is 0, 1, 2, 4, 6, 9, 12, 16, 20, 25, 30, 36, 42, 49, 56, 64, 72, 81, .
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python WarOrPeace.py -data=[number]
-  - python WarOrPeace.py -data=[number] -variant=or
+  - python WarOrPeace.py -data=number
+  - python WarOrPeace.py -data=number -variant=or
 
 ## Links
   - https://oeis.org/A002620

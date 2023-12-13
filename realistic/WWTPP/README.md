@@ -1,26 +1,21 @@
-# Problem WwtppReal
+# Problem WWTPP
 ## Description
-Waste Water Treatment Plant Scheduling Problem.
+See "Solving the Wastewater Treatment Plant Problem with SMT", by Miquel Bofill, Víctor Muñoz, Javier Murillo. CoRR abs/1609.05367 (2016)
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2010/2011 Minizinc challenges.
-The MZN model was proposed by Miquel Bofill.
-No Licence was explicitly mentioned (MIT Licence assumed).
-
-## Data Example
-  02840.json
+## Data
+  ex04400.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
-## Execution
+## Execution:
 ```
-  python WwtppReal.py -data=<datafile.json>
-  python WwtppReal.py -data=<datafile.dzn> -parser=WwtppReal_ParserZ.py
+  python WWTPP.py -data=<datafile.json>
+  python WWTPP.py -data=<datafile.json> -variant=short
 ```
 
 ## Links
-  - https://arxiv.org/abs/1609.05367
-  - https://www.minizinc.org/challenge2011/results2011.html
+ - https://arxiv.org/abs/1609.05367
 
 ## Tags
-  real, mzn10, mzn11
+  realistic

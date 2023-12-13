@@ -3,7 +3,7 @@
 The Square packing problem involves packing all squares with sizes 1 × 1 to n × n into an enclosing container.
 
 ## Data
-  an integer
+  An integer
 
 ## Model
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
@@ -17,4 +17,4 @@ The Square packing problem involves packing all squares with sizes 1 × 1 to n �
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  academic, real, xcsp23
+  real, xcsp23

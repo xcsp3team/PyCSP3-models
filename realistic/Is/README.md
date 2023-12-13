@@ -19,4 +19,4 @@ The MZN model was proposed by Gabriel Hjort Blindell (Copyright (c) 2013-2015)
   - https://www.minizinc.org/challenge2020/results2020.html
 
 ## Tags
-  real, mzn15, mzn20
+  realistic, mzn15, mzn20

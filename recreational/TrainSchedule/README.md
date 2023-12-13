@@ -1,6 +1,5 @@
 # Problem TrainSchedule
 ## Description
-
 The Brussels Central Problem (Fom course at UCL -- Louvain La Neuve))
 
 The SNCB finally decided to rely on optimization technologies to schedule the departure
@@ -11,18 +10,16 @@ of its fleet at Brussels central. The problem to be solved is the following:
  (number of time units, or 'gap', which depends of the train that has left).
 - The goal is to minimize the cost incurred by early and late departs.
 
-
-## Data
-TODO
+## Data Example
+  Brusselsd.json
 
 ## Model
   constraints: [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
-  python3 TrainSchedule.py -data=brussels.json
+  python TrainSchedule.py -data=<datafile.json>
 ```
 
-
 ## Tags
-recreational
+  recreational

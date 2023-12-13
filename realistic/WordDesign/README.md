@@ -1,4 +1,4 @@
-# Problem WordDesign1
+# Problem WordDesign
 ## Description
 See Problem 033 on CSPLib.
 
@@ -30,4 +30,4 @@ This problem has its roots in Bioinformatics and Coding Theory.
   - https://www.cril.univ-artois.fr/XCSP23/competitions/csp/csp
 
 ## Tags
-  real, xcsp23
+  realistic, xcsp23

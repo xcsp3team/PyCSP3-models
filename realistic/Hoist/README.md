@@ -24,4 +24,4 @@ and released under CC BY-NC-SA license (https://creativecommons.org/licenses/by-
   - https://www.minizinc.org/challenge2020/results2020.html
 
 ## Tags
-  real, mzn20
+  realistic, mzn20

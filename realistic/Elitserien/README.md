@@ -31,4 +31,4 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2018/results2018.html
 
 ## Tags
-  real, mzn14, mzn16, mzn18, mzn23
+  realistic, mzn14, mzn16, mzn18, mzn23

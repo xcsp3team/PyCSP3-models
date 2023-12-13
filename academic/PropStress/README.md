@@ -4,11 +4,11 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-  an integer n
+  An integer n
 
 ## Execution
 ```
-  python PropStress.py -data=[number]
+  python PropStress.py -data=number
 ```
 
 ## Links

@@ -7,17 +7,16 @@ Some of them have preferences next to whom they want to stand:
  - Fred wants to stand next to Mary and Donald.
  - Paul wants to stand next to Fred and Donald.
 
-
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
-  python3 Photo.py
-  python3 Photo.py -variant=aux
+  python Photo.py
+  python Photo.py -variant=aux
 ```
 
 ## Tags

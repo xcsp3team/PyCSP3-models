@@ -8,7 +8,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 The MZN model was proposed by Mikael Zayenz Lagerkvist (Licence at https://github.com/MiniZinc/mzn-challenge/blob/develop/2021/p1f-pjs/LICENSE)
 
 ## Data
-  an integer n
+  An integer n
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Channel](http://pycsp.org/documentation/constraints/Channel), [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)

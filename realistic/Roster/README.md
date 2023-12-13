@@ -8,7 +8,7 @@ Instances (and the model) wre developed in the context of the ESPRIT PROJECT 221
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
-  08.json
+  05.json
 
 ## Model
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -23,4 +23,4 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2023/results2023.html
 
 ## Tags
-  real, mzn09, mzn11, mzn15, mzn23
+  realistic, mzn09, mzn11, mzn15, mzn23

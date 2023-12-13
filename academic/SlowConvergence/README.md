@@ -4,14 +4,11 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-  an integer n
-
-## Model
-  constraints: [](http://pycsp.org/documentation/constraints/)
+  An integer n
 
 ## Execution
 ```
-  python SlowConvergence.py -data=<integer>
+  python SlowConvergence.py -data=number
 ```
 
 ## Links

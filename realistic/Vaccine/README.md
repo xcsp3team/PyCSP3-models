@@ -20,4 +20,4 @@ Compared to the Minizinc model, we do not use set variables.
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-  real, mzn22
+  realistic, mzn22

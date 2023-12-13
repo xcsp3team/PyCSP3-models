@@ -5,7 +5,7 @@ The MZN model was proposed by Jakob Puchinger.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  A-n38-k5.json
+  P-n20-k2.json
 
 ## Model
   constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -21,4 +21,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2013/results2013.html
 
 ## Tags
-  real, mzn09, mzn11, mzn12, mzn13
+  realistic, mzn09, mzn11, mzn12, mzn13

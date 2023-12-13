@@ -13,14 +13,14 @@ The witnesses are unanimous about the following facts:
  - Nobody likes everyone.
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count)
+  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element)
 
 ## Execution
 ```
-  python3 Sandwich.py
+  python Sandwich.py
 ```
 
 ## Tags

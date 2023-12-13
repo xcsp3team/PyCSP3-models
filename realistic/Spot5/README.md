@@ -14,7 +14,7 @@ The MZN model was proposed by Simon de Givry.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  0005.json
+  not shown because large data files
 
 ## Model
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
@@ -30,4 +30,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2014/results2014.html
 
 ## Tags
-  real, mzn14, mzn15, mzn22
+  realistic, mzn14, mzn15, mzn22

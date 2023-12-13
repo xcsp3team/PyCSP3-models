@@ -11,16 +11,15 @@ We know that:
  - Purdey only extended credit to regular customers, such as the family that bought the muslin on credit
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
 ```
-  python3 Purdey.py
+  python Purdey.py
 ```
 
 ## Tags
   single
-

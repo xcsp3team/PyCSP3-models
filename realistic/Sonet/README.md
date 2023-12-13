@@ -13,8 +13,8 @@ of nodes, and a limit on the number of channels. The demand of a pair of nodes m
 between multiple rings. The objective is to minimize the total number of ADMs used while
 satisfying all demands.
 
-## Data (example)
-  s3ring03json
+## Data Example
+  s2ring02.json
 
 ## Model
   constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
@@ -28,4 +28,4 @@ satisfying all demands.
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  real, csplib, xcsp23
+  realistic, csplib, xcsp23

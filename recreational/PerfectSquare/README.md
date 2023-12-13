@@ -12,7 +12,7 @@ The licence seems to be like a MIT Licence.
 
 ## Execution
 ```
-  python PerfectSquare.py -data=sm-10-13-00.json
+  python PerfectSquare.py -data=<datafile.json>
 ```
 
 ## Links

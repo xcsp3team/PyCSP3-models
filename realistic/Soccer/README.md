@@ -23,4 +23,4 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2020/results2020.html
 
 ## Tags
-  real, mzn18, mzn20
+  realistic, mzn18, mzn20

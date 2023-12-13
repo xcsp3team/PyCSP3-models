@@ -32,4 +32,4 @@ TODO : problem with an instance (bound)
   - https://www.minizinc.org/challenge2020/results2020.html
 
 ## Tags
-  real, mzn20
+  realistic, mzn20

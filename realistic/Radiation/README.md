@@ -9,7 +9,7 @@ The MZN model was proposed by Sebastian Brand.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  m06-15-15.json
+  01.json
 
 ## Model
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -25,4 +25,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2012/results2012.html
 
 ## Tags
-  real, mzn08, mzn12, mzn13, mzn15, mzn20
+  realistic, mzn08, mzn12, mzn13, mzn15, mzn20

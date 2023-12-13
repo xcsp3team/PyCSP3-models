@@ -1,4 +1,4 @@
-# Problem RCPSPWet
+# Problem RCPSP_WET
 ## Description
 Resource-Constrained Project Scheduling Problems with Weighted Earliness/Tardiness objective (RCPSP/WET).
 
@@ -17,12 +17,12 @@ The MZN model was proposed by University of Melbourne and NICTA (seems to be a M
 
 ## Execution
 ```
-  python RCPSPWet.py -data=<datafile.json>
-  python RCPSPWet.py -data=<datafile.dzn> -parser=RCPSPWet_ParserZ.py
+  python RCPSP_WET.py -data=<datafile.json>
+  python RCPSP_WET.py -data=<datafile.dzn> -parser=RCPSP_WET_ParserZ.py
 ```
 
 ## Links
   - https://www.minizinc.org/challenge2017/results2017.html
 
 ## Tags
-  real, mzn16, mzn17
+  realistic, mzn16, mzn17

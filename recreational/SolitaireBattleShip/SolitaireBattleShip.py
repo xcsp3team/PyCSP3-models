@@ -1,4 +1,4 @@
-""""
+"""
 See Problem 014 on CSPLib
 
 ## Data Example
@@ -8,7 +8,7 @@ See Problem 014 on CSPLib
   constraints: Cardinality, Regular, Sum, Table
 
 ## Execution
-  - python SolitaireBattleship.py -data=<datafile.json>
+  python SolitaireBattleShip.py -data=<datafile.json>
 
 ## Links
   - https://www.csplib.org/Problems/prob014/

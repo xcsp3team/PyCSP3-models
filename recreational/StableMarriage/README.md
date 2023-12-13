@@ -14,14 +14,14 @@ Nevertheless, this problem remains interesting
 as it shows how a nice and compact model can be written.
 
 ## Data
-TODO + parser
+  example.json
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution:
 ```
-  python3 StableMarriage.py -data=StableMarriage-example.json
+  python StableMarriage.py -data=StableMarriage-example.json
 ```
 
 ## Tags

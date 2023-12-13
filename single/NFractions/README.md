@@ -3,14 +3,14 @@
 Problem 041 on CSPLib
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
 ```
-  python3 NFractions.py
+  python NFractions.py
 ```
 
 ## Links
@@ -18,4 +18,3 @@ all integrated (single instance)
 
 ## Tags
   single, csplib
-

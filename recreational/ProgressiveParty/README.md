@@ -12,8 +12,8 @@ capacity. A table with boat capacities and crew sizes can be found below; there 
 periods. A guest boat cannot not revisit a host and guest crews cannot meet more than once.
 The problem facing the rally organizer is that of minimizing the number of host boats.
 
-## Data (example)
-  example.json
+## Data Example
+  data-12-05.json
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Channel](http://pycsp.org/documentation/constraints/Channel), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)

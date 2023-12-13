@@ -4,7 +4,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-  two integers (n,k)
+  Two integers n and k
 
 ## Execution
 ```

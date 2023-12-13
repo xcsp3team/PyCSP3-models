@@ -8,7 +8,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  0200.json
+  0100.json
 
 ## Model
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -23,4 +23,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2017/results2017.html
 
 ## Tags
-  real, mzn14, mzn17
+  realistic, mzn14, mzn17

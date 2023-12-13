@@ -21,4 +21,4 @@ See CP paper below.
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  real, xcsp23
+  realistic, xcsp23

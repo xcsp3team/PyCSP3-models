@@ -8,7 +8,7 @@ The model and the instances are extracted from an industrial use-case.
 MIT License.
 
 ## Data
-  b0-c115-i0-small-subset-e3-sr1295-cd41.json
+  b0-c253-i6-small-cost-e4-sr472-cd16.json
 
 ## Model
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -23,4 +23,4 @@ MIT License.
   - https://www.minizinc.org/challenge2021/results2021.html
 
 ## Tags
-  real, mzn21
+  realistic, mzn21

@@ -1,4 +1,4 @@
-# Problem Celar
+# Problem CELAR
 ## Description
 CELAR radio link frequency assignment problem.
 
@@ -15,7 +15,7 @@ The MZN model was proposed by Simon de Givry.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  graph11.json
+  celar06-sub0.json
 
 ## Model
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
@@ -31,4 +31,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2016/results2016.html
 
 ## Tags
-  real, mzn13, mzn16
+  realistic, mzn13, mzn16

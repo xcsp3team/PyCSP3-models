@@ -16,7 +16,7 @@ The MZN model was proposed by Gustav Björdal (in 2018).
 No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Data Example
-  t030m10r03-15.json
+  t020m10r10-17.json
 
 ## Model
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Table](http://pycsp.org/documentation/constraints/Table)
@@ -32,4 +32,4 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   - https://www.minizinc.org/challenge2018/results2018.html
 
 ## Tags
-  real, csplib, mzn18, mzn23
+  realistic, csplib, mzn18, mzn23

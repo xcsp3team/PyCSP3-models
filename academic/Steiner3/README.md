@@ -1,28 +1,24 @@
 # Problem Steiner3
 ## Description
-This is the [problem 044](https://www.csplib.org/Problems/prob044/) of the CSPLib:
+This is [Problem 044](https://www.csplib.org/Problems/prob044/) at CSPLib:
 
-"*The ternary Steiner problem of order n consists of finding a set of n.(n−1)/6 triples of distinct integer
-elements in {1...n} such that any two triples have at most one common element.*"
+The ternary Steiner problem of order n consists of finding a set of n.(n−1)/6 triples of distinct integer
+elements in {1...n} such that any two triples have at most one common element.
 
-
-### Example
-A solution for n=7 is
-
-((1, 2, 3), (1, 4, 5), (1, 6, 7), (2, 4, 6), (2, 5, 7), (3, 4, 7), (3, 5, 6))
+## Example
+  A solution for n=7 is:
+ ```((1, 2, 3), (1, 4, 5), (1, 6, 7), (2, 4, 6), (2, 5, 7), (3, 4, 7), (3, 5, 6))```
 
 ## Data
-A number n, the number of integers.
+  A number n, the number of integers.
 
-## Model(s)
+## Model
+  constraints: [Table](http://pycsp.org/documentation/constraints/Table)
 
-  constraints: [Extension](http://pycsp.org/documentation/constraints/Extension), [Increasing](http://pycsp.org/documentation/constraints/Increasing)
-
-## Command Line
+## Execution
 ```
-python Steiner3.py
-python Steiner3.py -data=6
+  python Steiner3.py -data=number
 ```
 
 ## Tags
- academic csplib
+  academic, csplib

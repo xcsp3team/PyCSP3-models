@@ -19,4 +19,4 @@ The MZN model was proposed by Greame Gange, with a Licence that seems to be like
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-  real, mzn20, mzn22
+  realistic, mzn20, mzn22

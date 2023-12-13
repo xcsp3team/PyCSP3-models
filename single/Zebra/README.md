@@ -26,16 +26,15 @@ We know that:
  - the Italian either lives in the red, white or green house
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
 ```
-  python3 Zebra.py
+  python Zebra.py
 ```
-
 
 ## Tags
   single

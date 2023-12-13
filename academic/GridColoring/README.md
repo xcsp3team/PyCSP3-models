@@ -4,10 +4,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
-  two integers n and m
-
-## Model
-  constraints: [Intension](http://pycsp.org/documentation/constraints/Intension)
+  Two integers n and m
 
 ## Execution
 ```

@@ -7,7 +7,7 @@ The MZN model was proposed by Ria Szeredi and Andreas Schutt (Copyright: Data61,
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  j30-25-5.json
+  j30-15-5.json
 
 ## Model
   constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
@@ -22,4 +22,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2023/results2023.html
 
 ## Tags
-  real, mzn16, mzn23
+  realistic, mzn16, mzn23

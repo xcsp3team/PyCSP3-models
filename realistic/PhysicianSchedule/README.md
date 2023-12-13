@@ -23,4 +23,4 @@ The licence seems to be like a MIT Licence.
   - https://www.minizinc.org/challenge2021/results2021.html
 
 ## Tags
-  real, mzn21
+  realistic, mzn21

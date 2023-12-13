@@ -33,4 +33,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2013/results2013.html
 
 ## Tags
-  real, mzn13
+  realistic, mzn13

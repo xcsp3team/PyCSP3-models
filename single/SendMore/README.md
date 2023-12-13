@@ -1,15 +1,13 @@
 # Problem SendMore
 ## Description
-See https://en.wikipedia.org/wiki/Verbal_arithmetic
-
 A model for a general form of this problem is in CryptoPuzzle.py
 
 ## Data
-all integrated (single instance)
+  all integrated (single problem)
 
 ## Execution
 ```
-  python3 SendMore.py
+  python SendMore.py
 ```
 
 ## Links
@@ -17,4 +15,3 @@ all integrated (single instance)
 
 ## Tags
   single
-

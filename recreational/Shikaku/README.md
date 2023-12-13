@@ -2,15 +2,15 @@
 ## Description
 A logic puzzle. See "Shikaku as a Constraint Problem" by Helmut Simonis.
 
-## Data
-TODO + parser
+## Data Example
+  grid01.json
 
 ## Model
   constraints: [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution:
 ```
-  python3 Shikaku.py -data=Shikaku_grid1.json
+  python3 Shikaku.py -data=<datafile.json>
 ```
 
 ## Links

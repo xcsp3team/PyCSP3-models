@@ -11,7 +11,7 @@ See Problem 084 on CSPLib
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python Hadamard.py -data=[number]
+  - python Hadamard.py -data=number
 
 ## Links
   - https://www.csplib.org/Problems/prob084/

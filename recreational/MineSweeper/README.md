@@ -3,15 +3,15 @@
 A logic puzzle video game.
 
 ## Data
-TODO + parser
+  no JSON file for the moment
 
 ## Model
   constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
 
 ## Execution:
 ```
-  python3 MineSweeper.py
-  python3 MineSweeper.py -data=MineSweeper-example.json
+  python MineSweeper.py
+  python MineSweeper.py -data=<datafile.json>MineSweeper-example.json
 ```
 
 ## Links
@@ -19,7 +19,3 @@ TODO + parser
 
 ## Tags
   recreational
-
-
-Examples of Execution:
-

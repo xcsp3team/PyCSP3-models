@@ -1,20 +1,19 @@
 # Problem SchedulingOS
 ## Description
-TODO
 
 ## Data
-TODO
+  GP-os-01.json
 
 ## Model
-  constraints: [Increasing](http://pycsp.org/documentation/constraints/Increasing), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
+  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
 
 ## Execution
 ```
-  python3 SchedulingOS.py -data=GP-os-01.json
+  python SchedulingOS.py -data=<datafile.json>
 ```
 
 ## Links
   - https://en.wikipedia.org/wiki/Open-shop_scheduling
 
 ## Tags
-recreational
+  realistic

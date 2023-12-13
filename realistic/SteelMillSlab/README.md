@@ -1,23 +1,23 @@
 # Problem SteelMillSlab
 ## Description
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017/2019 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+Problem 038 on CSPLib.
 
-## Data Example
-  13-0.json
+Steel is produced by casting molten iron into slabs.
+
+## Data
+  bench-2-0.json
 
 ## Model
-  constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
   python SteelMillSlab.py -data=<datafile.json>
-  python SteelMillSlab.py -data=<datafile.dzn> -parser=SteelMillSlab_ParserZ.py
+  python SteelMillSlab.py -data=<datafile.json> -variant=01
 ```
 
 ## Links
   - https://www.csplib.org/Problems/prob038/
-  - https://www.minizinc.org/challenge2017/results2017.html
 
 ## Tags
-  real, csplib, mzn17, mzn19
+  realistic, csplib

@@ -1,21 +1,22 @@
 # Problem MagicHexagon
 ## Description
-This is the [problem 023](https://www.csplib.org/Problems/prob023/) of the CSP lib:
-"*A magic hexagon  consists of the numbers 1 to 19 arranged in a hexagonal pattern:*"
+This is [Problem 023](https://www.csplib.org/Problems/prob023/) at CSPlib.
 
-
+A magic hexagon  consists of the numbers 1 to 19 arranged in a hexagonal pattern.
 
 ## Data
-A couple \[k,n\], TODO
+  A pair of integers (n,s)
 
-## Model(s)
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Intension](http://pycsp.org/documentation/constraints/Intension), [Sum](http://pycsp.org/documentation/constraints/Sum)
+## Model
+  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
-## Command Line
+## Execution
 ```
-  python MagicHexagon.py
-  python MagicHexagon.py -data=[4,10]
+  python MagicHexagon.py -data=[number,number]
 ```
+
+## Links
+  - https://www.csplib.org/Problems/prob023
 
 ## Tags
- academic csplib
+  academic, csplib
