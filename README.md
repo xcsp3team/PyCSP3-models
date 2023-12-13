@@ -17,9 +17,9 @@ These problems/models mainly come from the literature/community, in particular f
 
 - scientific conference papers, typically from top main conferences such as CP, CPAIOR, IJCAI, AAAI, ECAI, ... 
 - scientific jounral papers, typically from top main journals such as Constraints, AIJ, JAIR, ...
+- [XCSP3 Competitions](https://xcsp.org/competitions/)
 - [CSPLib](https://www.csplib.org/)
 - [Minizinc Challenges](https://github.com/MiniZinc/mzn-challenge)
-- [XCSP3 Competitions](https://xcsp.org/competitions/)
 - [LPCP-Contests](https://github.com/lpcp-contest)
 
 ## Finding Models
