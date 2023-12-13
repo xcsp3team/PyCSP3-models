@@ -1,7 +1,7 @@
 # PyCSP3 Models (and Data)
 
 PyCSP3 is a Python library allowing us to write models of combinatorial constrained problems in a declarative way.
-See [pycsp3.org](https://pycsp3.org)
+See [pycsp3.org](https://www.pycsp.org/)
 
 In this repository, you will find **more than 300 models** for various kinds of problems, together with some data files, from frameworks known as CSP (Constraint Satisfaction Problem) and COP (
 Constraint Optimization Problem).
