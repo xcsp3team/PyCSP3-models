@@ -5,7 +5,7 @@ See [pycsp3.org](https://pycsp3.org)
 
 In this repository, you will find **more than 300 models** for various kinds of problems, together with some data files, from frameworks known as CSP (Constraint Satisfaction Problem) and COP (
 Constraint Optimization Problem).
-These models are classified in five main directories, listed below:
+These models are classified in five main directories:
 
 - academic: problems for which data are given by a fixed number of elementary values (typically, integers)
 - crafted: problems which have been designed for showing some specific feature(s)
@@ -15,7 +15,7 @@ These models are classified in five main directories, listed below:
 
 These problems/models mainly come from the literature/community, in particular from:
 
-- scientific papers from top main conferences such as CP, CPAIOR, IJCAI, AAAI, ECAI, ... and journals such as Constraints, AIJ, JAIR, ...
+- scientific papers from top main conferences such as CP, CPAIOR, IJCAI, AAAI, ECAI, ... 
 - scientific papers from top main jounrals such as Constraints, AIJ, JAIR, ...
 - [CSPLib](https://www.csplib.org/)
 - [Minizinc Challenges](https://github.com/MiniZinc/mzn-challenge)
