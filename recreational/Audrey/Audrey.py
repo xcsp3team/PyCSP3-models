@@ -12,7 +12,6 @@ Then, starting from the 1, you need to write the 2 using the same permitted move
 
 The problem can be generalized for any order n.
 
-
 ## Data
   An integer n, the number of cells
 

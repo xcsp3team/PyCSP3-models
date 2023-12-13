@@ -16,7 +16,7 @@ the three friends be satisfied?
 
 ## Execution
   python TravelingWorld.py
-  python TravelingWorld.py -variant=integer
+  python TravelingWorld.py -variant=number
 
 ## Tags
   single
