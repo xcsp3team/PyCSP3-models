@@ -20,7 +20,7 @@ These problems/models mainly come from the literature/community, in particular f
 - [XCSP3 Competitions](https://xcsp.org/competitions/)
 - [CSPLib](https://www.csplib.org/)
 - [Minizinc Challenges](https://github.com/MiniZinc/mzn-challenge)
-- [LPCP-Contests](https://github.com/lpcp-contest)
+- [LPCP Contests](https://github.com/lpcp-contest)
 
 ## Finding Models
 
