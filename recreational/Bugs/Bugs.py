@@ -53,8 +53,13 @@ satisfy(
     [n2[i] * lengths[bugs[i].type] == n1[i] for i in range(nBugs)],
 
     # if two cells have the same value, then all cells in the rectangle they delimit must take this value
-    [imply(x[i][j] == x[k][l], x[i][j] == x[m][n]) for (i, j, k, l, m, n) in product(range(height), range(width), repeat=3) if
-     i <= m <= k and not neighbors(i, j, k, l) and (i != k or j < l) and min(j, l) <= n <= max(j, l) and (m, n) != (i, j) and (m, n) != (k, l)]
+    [
+        If(
+            x[i][j] == x[k][l],
+            Then=x[i][j] == x[m][n]
+        ) for (i, j, k, l, m, n) in product(range(height), range(width), repeat=3)
+        if i <= m <= k and not neighbors(i, j, k, l) and (i != k or j < l) and min(j, l) <= n <= max(j, l) and (m, n) != (i, j) and (m, n) != (k, l)
+    ]
 )
 
 maximize(

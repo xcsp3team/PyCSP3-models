@@ -14,7 +14,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Execution
   python SolitaireBattleship_z.py -data=<datafile.json>
-  python SolitaireBattleShip_z.py -data=<datafile.dzn> -parser=SolitaireBattleship_z_ParserZ.py
+  python SolitaireBattleship_z.py -data=<datafile.dzn> -parser=SolitaireBattleship_z_ParserZ.py
 
 ## Links
   - http://www.csee.umbc.edu/courses/671/fall09/resources/smith06.pdf

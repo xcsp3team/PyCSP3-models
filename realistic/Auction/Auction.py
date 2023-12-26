@@ -39,3 +39,8 @@ maximize(
     # maximizing summed values of selected bids
     x * values
 )
+
+"""
+1) we avoid using values instead of vals as name for the list of bid values 
+   as it may enter in conflict with the function values() in a notebook 
+"""

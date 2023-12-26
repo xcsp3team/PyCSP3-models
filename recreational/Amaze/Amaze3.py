@@ -6,7 +6,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  03-08.json
+  simple.json
 
 ## Model
   constraints: Count

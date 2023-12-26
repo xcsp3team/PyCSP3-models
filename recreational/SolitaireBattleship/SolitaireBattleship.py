@@ -2,13 +2,13 @@
 See Problem 014 on CSPLib
 
 ## Data Example
-  sb-12-12-5-0.json
+  12-12-5-0.json
 
 ## Model
   constraints: Cardinality, Regular, Sum, Table
 
 ## Execution
-  python SolitaireBattleShip.py -data=<datafile.json>
+  python SolitaireBattleship.py -data=<datafile.json>
 
 ## Links
   - https://www.csplib.org/Problems/prob014/

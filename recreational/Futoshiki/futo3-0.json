@@ -1,1 +1,24 @@
-{"size":3,"numHints":[{"row":0,"col":0,"number":2}],"opHints":[{"row":0,"col":1,"lessThan":true,"horizontal":true},{"row":2,"col":0,"lessThan":true,"horizontal":true}]}
+{
+  "size": 3,
+  "numHints": [
+    {
+      "row": 0,
+      "col": 0,
+      "number": 2
+    }
+  ],
+  "opHints": [
+    {
+      "row": 0,
+      "col": 1,
+      "lessThan": true,
+      "horizontal": true
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "lessThan": true,
+      "horizontal": true
+    }
+  ]
+}
