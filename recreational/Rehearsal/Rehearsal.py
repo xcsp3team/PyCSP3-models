@@ -4,7 +4,7 @@ Problem 039 on CSPLib.
 A concert is to consist of nine pieces of music of different durations each involving a different combination of the five members of the orchestra (from csplib).
 
 ## Data
-  RehearsalSmith.json
+  rs.json
 
 ## Model
   constraints: AllDifferent, Sum

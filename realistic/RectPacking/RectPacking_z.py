@@ -12,7 +12,7 @@ The MZN model has Copyright (C) 2009-2014 The University of Melbourne and NICTA.
   constraints: Cumulative, NoOverlap
 
 ## Execution
-  python RectPacking.py -data=[number,number]
+  python RectPacking_z.py -data=[number,number]
 
 ## Links
   - https://www.minizinc.org/challenge2014/results2014.html

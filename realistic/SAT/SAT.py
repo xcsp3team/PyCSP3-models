@@ -2,10 +2,10 @@
 The SATisfiability problem.
 
 ## Data
-  xxxx
+  flat30-16.json
 
 ## Model
-  There are thre variants.
+  There are three variants.
 
   constraints: Clause, Sum
 
@@ -23,7 +23,6 @@ The SATisfiability problem.
 
 from pycsp3 import *
 
-print(data)
 n, e, clauses = data
 
 

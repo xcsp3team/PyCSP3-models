@@ -12,8 +12,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: Count, Element
 
 ## Execution
-  python Amaze2.py -data=<datafile.json>
-  python Amaze2.py -data=<datafile.dzn> -parser=Amaze_ParserZ.py
+  python Amaze_z2.py -data=<datafile.json>
+  python Amaze_z2.py -data=<datafile.dzn> -parser=Amaze_ParserZ.py
 
 ## Links
   - https://www.minizinc.org/challenge2012/results2012.html

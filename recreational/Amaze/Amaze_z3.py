@@ -12,8 +12,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: Count
 
 ## Execution
-  python Amaze3.py -data=<datafile.json>
-  python Amaze3.py -data=<datafile.dzn> -parser=Amaze_ParserZ.py
+  python Amaze_z3.py -data=<datafile.json>
+  python Amaze_z3.py -data=<datafile.dzn> -parser=Amaze_ParserZ.py
 
 ## Links
   - https://www.minizinc.org/challenge2019/results2019.html
