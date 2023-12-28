@@ -10,11 +10,15 @@ BACP is to design a balanced academic curriculum by assigning periods to courses
   Thera are two variants:
    - one with extension constraints
    - one with intension constraints
+  and one subvariant "d"
 
   constraints: Count, Minimum, Maximum, Sum, Table
 
 ## Execution
-  python BACP.py -data=<datafile.json>>
+  python BACP.py -data=<datafile.json> -variant=m1
+  python BACP.py -data=<datafile.json> -variant=m2
+  python BACP.py -data=<datafile.json> -variant=m1-d
+  python BACP.py -data=<datafile.json> -variant=m2-d
 
 ## Links
  - https://www.csplib.org/Problems/prob030/

@@ -13,9 +13,10 @@ In its simplest form, it is a way of coloring the vertices of a graph such that 
 
 ## Links
  - https://en.wikipedia.org/wiki/Graph_coloring
+ - https://www.cril.univ-artois.fr/XCSP23/competitions/csp/csp
 
 ## Tags
-  recreational
+  recreational, xcsp23
 """
 
 from pycsp3 import *

@@ -17,7 +17,7 @@ A concert is to consist of nine pieces of music of different durations each invo
   - https://www.csplib.org/Problems/prob039/
 
 ## Tags
-  real, csplib
+  realistic, csplib
 """
 
 from pycsp3 import *

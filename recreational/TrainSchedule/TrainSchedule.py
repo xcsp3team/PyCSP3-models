@@ -10,7 +10,7 @@ of its fleet at Brussels central. The problem to be solved is the following:
 - The goal is to minimize the cost incurred by early and late departs.
 
 ## Data Example
-  Brusselsd.json
+  Brussels.json
 
 ## Model
   constraints: NoOverlap, Sum

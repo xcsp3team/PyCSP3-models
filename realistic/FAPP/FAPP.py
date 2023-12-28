@@ -13,7 +13,7 @@ See Challenge ROADEF 2001 (FAPP: Problème d'affectation de fréquences avec pol
 
 ## Execution
   python FAPP.py -data=<datafile.json>
-  python FAPP.py -data=<datafile.json>
+  python FAPP.py -data=<datafile.json> -variant=short
 
 ## Links
   - https://www.roadef.org/challenge/2001/fr/
@@ -23,6 +23,9 @@ See Challenge ROADEF 2001 (FAPP: Problème d'affectation de fréquences avec pol
 """
 
 from pycsp3 import *
+from pycsp3.dashboard import options
+
+options.keepsum = True  # to get a better formed XCSP instance (to be rechecked!)
 
 domains, routes, hard_constraints, soft_constraints = data
 domains = [domains[route.domain] for route in routes]  # we skip the indirection
@@ -98,7 +101,7 @@ elif variant("short"):
 
     satisfy(
         # computing intermediary distances
-        [d[i][j] == abs(f[i] - f[j]) for i, j in combinations(range(n), 2) if d[i][j]],
+        [d[i][j] == abs(f[i] - f[j]) for i, j in combinations(n, 2) if d[i][j]],
 
         # soft radio-electric compatibility constraints
         [(d[min(i, j)][max(i, j)], p[i], p[j], k, v1[l], v2[l]) in table_soft(i, j, tuple(er), tuple(nr)) for l, (i, j, er, nr) in enumerate(soft_constraints)]

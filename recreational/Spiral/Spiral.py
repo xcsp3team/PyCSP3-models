@@ -9,7 +9,7 @@ A logic puzzle. See "Teaching Constraints through Logic Puzzles" by Peter Szered
 
 ## Execution
   python Spiral.py
-  python Spiral.py -data[number,number]
+  python Spiral.py -data=[number,number]
 
 ## Tags
   recreational

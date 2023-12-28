@@ -7,6 +7,7 @@ Consequently, the cars must be arranged in a sequence so that the capacity of ea
 For instance, if a particular station can only cope with at most half of the cars passing along the line, the sequence must
 be built so that at most 1 car in any 2 requires that option.
 
+See problem 001 at CSPLib.
 
 ## Data Example
   dingbas.json
@@ -20,8 +21,8 @@ be built so that at most 1 car in any 2 requires that option.
 
 ## Execution
   - python CarSequencing.py -data=<datafile.json>
-  - python CarSequencing.py -data=<datafile.txt>
   - python CarSequencing.py -data=<datafile.json> -variant=table
+  - python CarSequencing.py -data=<datafile.txt> -parser=CarSequencing_Parser.py
 
 ## Links
   - https://www.csplib.org/Problems/prob001/

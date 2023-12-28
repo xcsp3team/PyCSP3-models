@@ -36,7 +36,7 @@ sb = VarArray(size=nOrders, dom=range(nSlabs))
 ld = VarArray(size=nSlabs, dom=range(max(capacities) + 1))
 
 # ls[j] is the loss of the jth slab
-ls = VarArray(size=nSlabs, dom=set(possibleLosses))
+ls = VarArray(size=nSlabs, dom=possibleLosses)
 
 if not variant():
     satisfy(
@@ -44,7 +44,7 @@ if not variant():
         [[sb[i] == j for i in range(nOrders)] * sizes == ld[j] for j in range(nSlabs)],
 
         # computing the loss of each slab
-        [(ld[j], ls[j]) in {(i, loss) for i, loss in enumerate(possibleLosses)} for j in range(nSlabs)],
+        [(ld[j], ls[j]) in enumerate(possibleLosses) for j in range(nSlabs)],
 
         # no more than two colors for each slab
         [Sum(disjunction(sb[i] == j for i in g) for g in colorGroups) <= 2 for j in range(nSlabs)]
@@ -62,13 +62,18 @@ elif variant("01"):
         [iff(sb[i] == j, y[j][i]) for j in range(nSlabs) for i in range(nOrders)],
 
         # linking variables sb and z
-        [If(sb[i] == j, Then=z[j][allColors.index(orders[i].color)]) for j in range(nSlabs) for i in range(nOrders)],
+        [
+            If(
+                sb[i] == j,
+                Then=z[j][allColors.index(orders[i].color)]
+            ) for j in range(nSlabs) for i in range(nOrders)
+        ],
 
         # computing (and checking) the load of each slab
         [y[j] * sizes == ld[j] for j in range(nSlabs)],
 
         # computing the loss of each slab
-        [(ld[j], ls[j]) in {(i, loss) for i, loss in enumerate(possibleLosses)} for j in range(nSlabs)],
+        [(ld[j], ls[j]) in enumerate(possibleLosses) for j in range(nSlabs)],
 
         # no more than two colors for each slab
         [Sum(z[j]) <= 2 for j in range(nSlabs)]

@@ -24,7 +24,7 @@ In the classic ‘central’ Solitaire, the goal is to reverse the starting posi
 
 from pycsp3 import *
 
-from PegSolitaire_Generator import generate_boards, build_transitions
+from data.PegSolitaire_Generator import generate_boards, build_transitions
 
 assert variant() in {"english", "french"}
 

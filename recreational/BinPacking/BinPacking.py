@@ -17,6 +17,7 @@ The objective is to pack all the items into the minimum number of bins so that t
 
 ## Execution
   python BinPacking.py -data=<datafile.json>
+  python BinPacking.py -data=<datafile.json> -variant=table
 
 ## Links
   - https://site.unibo.it/operations-research/en/research/bpplib-a-bin-packing-problem-library

@@ -8,8 +8,8 @@ The Quadratic Assignment Problem (QAP) has remained one of the great challenges 
   constraints: AllDifferent, Sum, Table
 
 ## Execution
-  python QuadraticAssignment.py -data=QuadraticAssignment_qap.json
-  python QuadraticAssignment.py -data=QuadraticAssignment_example.txt -dataparser=QuadraticAssignment_Parser.py
+  python QuadraticAssignment.py -data=<datafile.json>
+  python QuadraticAssignment.py -data=<datafile.txt> -dataparser=QuadraticAssignment_Parser.py
 
 ## Links
   - https://en.wikipedia.org/wiki/Quadratic_assignment_problem

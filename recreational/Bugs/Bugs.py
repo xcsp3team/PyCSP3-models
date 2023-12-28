@@ -44,22 +44,17 @@ satisfy(
     [n1[group[j]] <= (len(group) - j) * lengths[i] for i, group in enumerate(groups) for j in range(len(group))],
 
     # computing values of n1
-    Cardinality(x, occurrences={i: n1[i] for i in range(nBugs)}),
+    Cardinality(x, occurrences=n1),
 
     # computing values of n2
-    Cardinality([x[bug.row][bug.col] for bug in bugs], occurrences={i: n2[i] for i in range(nBugs)}),
+    Cardinality([x[bug.row][bug.col] for bug in bugs], occurrences=n2),
 
     # linking variables of n1 and n2
     [n2[i] * lengths[bugs[i].type] == n1[i] for i in range(nBugs)],
 
     # if two cells have the same value, then all cells in the rectangle they delimit must take this value
-    [
-        If(
-            x[i][j] == x[k][l],
-            Then=x[i][j] == x[m][n]
-        ) for (i, j, k, l, m, n) in product(range(height), range(width), repeat=3)
-        if i <= m <= k and not neighbors(i, j, k, l) and (i != k or j < l) and min(j, l) <= n <= max(j, l) and (m, n) != (i, j) and (m, n) != (k, l)
-    ]
+    [imply(x[i][j] == x[k][l], x[i][j] == x[m][n]) for (i, j, k, l, m, n) in product(range(height), range(width), repeat=3) if
+     i <= m <= k and not neighbors(i, j, k, l) and (i != k or j < l) and min(j, l) <= n <= max(j, l) and (m, n) != (i, j) and (m, n) != (k, l)]
 )
 
 maximize(

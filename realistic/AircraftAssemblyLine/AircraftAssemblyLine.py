@@ -79,11 +79,18 @@ satisfy(
     ],
 
     # no overlap (is there a better way to handle that?)
-    [NoOverlap(tasks=[(x[i], durations[i]), (x[j], durations[j])]) for i in range(nTasks) for j in range(nTasks) if i != j and
-     len(usedAreas[i].intersection(neutralizedAreas[j])) > 0],
+    [
+        NoOverlap(
+            tasks=[(x[i], durations[i]), (x[j], durations[j])]
+        ) for i in range(nTasks) for j in range(nTasks) if i != j and len(usedAreas[i].intersection(neutralizedAreas[j])) > 0
+    ],
 
     # avoiding tasks using the same machine to overlap
-    [NoOverlap(tasks=[(x[j], durations[j]) for j in tasksPerMachine[i]]) for i in range(nMachines)]
+    [
+        NoOverlap(
+            tasks=[(x[j], durations[j]) for j in tasksPerMachine[i]]
+        ) for i in range(nMachines)
+    ]
 )
 
 minimize(

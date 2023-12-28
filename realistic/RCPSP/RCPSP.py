@@ -8,8 +8,8 @@ Problem 061 on CSPLib
   constraints: Cumulative
 
 ## Execution
-  - python RCPSP-22.py -data=<datafile.json>
-  - python RCPSP-22.py -data=<datafile.txt> -parser=RCPSP_Parser.py
+  - python RCPSP.py -data=<datafile.json>
+  - python RCPSP.py -data=<datafile.sm> -parser=RCPSP_Parser.py
 
 ## Links
   - https://www.om-db.wi.tum.de/psplib/data.html

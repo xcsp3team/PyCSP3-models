@@ -43,7 +43,12 @@ satisfy(
     [prices[i][l[i]] == c[i] for i in range(nProducts)],
 
     # purchasing a product at a city is only possible if you visit that city
-    [imply(s[i] == i, l[j] != i) for i in range(nCities) for j in range(nProducts)],
+    [
+        If(
+            s[i] == i,
+            Then=l[j] != i
+        ) for i in range(nCities) for j in range(nProducts)
+    ],
 
     Circuit(s),
 

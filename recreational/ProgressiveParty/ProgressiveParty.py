@@ -12,7 +12,7 @@ periods. A guest boat cannot not revisit a host and guest crews cannot meet more
 The problem facing the rally organizer is that of minimizing the number of host boats.
 
 ## Data Example
-  data-12-05.json
+  12-05.json
 
 ## Model
   constraints: AllDifferent, Channel, Element, Sum
