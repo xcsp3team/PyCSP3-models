@@ -8,7 +8,7 @@ See description on CSPLib.
   constraints: AllDifferent, Channel, Lex, Channel
 
 ## Execution:
-  python MisteryShopper.py -data=MisteryShopper_04.json
+  python MisteryShopper.py -data=<datafile.json>
 
 ## Links
  - https://www.csplib.org/Problems/prob004

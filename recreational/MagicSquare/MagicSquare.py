@@ -1,16 +1,16 @@
 """
 A mathematical puzzle.
 
-## Data
-
+## Data Example
+  example01.json
 
 ## Model
   constraints: AllDifferent, Sum
 
 ## Execution:
-  python MagicSquare.py -data=[4,null]
+  python MagicSquare.py -data=[number,null]
   python MagicSquare.py -data=<datafile.json>
-  python MagicSquare.py -data=<datafile.txt>x -dataparser=MagicSquare_Parser.py
+  python MagicSquare.py -data=<datafile.txt>x -parser=MagicSquare_Parser.py
 
 ## Links
  - https://en.wikipedia.org/wiki/Magic_square

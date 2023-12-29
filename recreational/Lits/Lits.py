@@ -103,7 +103,7 @@ satisfy(
 )
 
 """ Comments
-1) x[i:i+2][j:j+2] is not correct
+1) x[i:i+2][j:j+2] is not correct: we need to use a slice
 
 2) other possible array on which building the model:
  shapes = [
