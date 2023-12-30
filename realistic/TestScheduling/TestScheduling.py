@@ -21,8 +21,8 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   constraints: Cumulative, Maximum, Minimum, NoOverlap, Precedence, Table
 
 ## Execution
-  python TestSchedulingM18.py -data=<datafile.json>
-  python TestSchedulingM18.py -data=<datafile.dzn> -parser=TestSchedulingM18_ParserZ.py
+  python TestScheduling.py -data=<datafile.json>
+  python TestScheduling.py -data=<datafile.dzn> -parser=TestScheduling_ParserZ.py
 
 ## Links
   - https://www.csplib.org/Problems/prob073/

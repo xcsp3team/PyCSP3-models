@@ -12,8 +12,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: Precedence, Sum
 
 ## Execution
-  python CommunityDetection17.py -data=<datafile.json>
-  python CommunityDetection17.py -data=<datafile.dzn> -parser=CommunityDetection17_ParserZ.py
+  python CommunityDetection_z1.py -data=<datafile.json>
+  python CommunityDetection_z1.py -data=<datafile.dzn> -parser=CommunityDetection_ParserZ.py
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-66158-2_31

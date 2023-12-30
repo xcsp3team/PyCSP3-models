@@ -12,8 +12,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: Sum
 
 ## Execution
-  python DiameterCMST.py -data=<datafile.json>
-  python DiameterCMST.py -data=<datafile.dzn> -parser=DiameterCMST_ParserZ.py
+  python DC_MST.py -data=<datafile.json>
+  python DC_MST.py -data=<datafile.dzn> -parser=DC_MST_ParserZ.py
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html

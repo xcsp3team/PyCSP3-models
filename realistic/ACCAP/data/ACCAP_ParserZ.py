@@ -10,5 +10,5 @@ s = next_line()
 data['airlines'] = [decrement(numbers_in(v)) for v in s[s.index("{") + 1:s.rindex("}")].split("},{")]
 nAirlines = number_in(next_line())
 nFlights = number_in(next_line())
-assert nAirlines == len(data['FA']) and nFlights == len(data['flights'])
+assert nAirlines == len(data['airlines']) and nFlights == len(data['flights'])
 times = number_in(next_line())  # not used

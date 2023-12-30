@@ -24,7 +24,6 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 from pycsp3.problems.data.parsing import split_with_rows_of_size
 
-print(data)
 rows, cols = data  # patterns for row and columns
 nRows, nCols = len(rows), len(cols)
 

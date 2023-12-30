@@ -82,4 +82,5 @@ satisfy(
 """
 1) The automatas may be non-deterministic. This is why we have two variants.
 2) generating the deterministic automatas may be very long
+3) TODO: there is a problem with the function that makes a deterministic copy. To be fixed!
 """

@@ -9,8 +9,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: Channel, Element, Sum
 
 ## Execution
-  python TDTSP.py -data=<datafile.json>
-  python TDTSP.py -data=<datafile.dzn> -parser=TDTSP_ParserZ.py
+  python TD_TSP.py -data=<datafile.json>
+  python TD_TSP.py -data=<datafile.dzn> -parser=TD_TSP_ParserZ.py
 
 ## Links
   - https://www.minizinc.org/challenge2017/results2017.html

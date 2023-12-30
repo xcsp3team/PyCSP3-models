@@ -12,8 +12,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: Maximum, Sum
 
 ## Execution
-  python MaximumDag.py -data=<datafile.json>
-  python MaximumDag.py -data=<datafile.dzn> -parser=MaximumDag_ParserZ.py
+  python MaximumDAG.py -data=<datafile.json>
+  python MaximumDAG.py -data=<datafile.dzn> -parser=MaximumDAG_ParserZ.py
 
 ## Links
   - https://www.minizinc.org/challenge2016/results2016.html
