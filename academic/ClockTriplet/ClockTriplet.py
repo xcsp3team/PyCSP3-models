@@ -39,7 +39,7 @@ r, n = data or (3, 12)
 # x[i] is the ith number in the circle
 x = VarArray(size=n, dom=range(1, n + 1))
 
-# z is the minimal value such that any (circular) subsequence of x  of size r is less than or equal to z
+# z is the minimal value such that any (circular) subsequence of x of size r is less than or equal to z
 z = Var(dom=range(sum(n - v for v in range(r)) + 1))
 
 satisfy(
@@ -47,10 +47,17 @@ satisfy(
     AllDifferent(x),
 
     # any subsequence of size r must be less than or equal to z
-    [Slide(Sum(x[j] for j in [(i + k) % n for k in range(r)]) <= z for i in range(n))],
+    [
+        Slide(
+            Sum(x[j] for j in [(i + k) % n for k in range(r)]) <= z for i in range(n)
+        )
+    ],
 
     # tag(symmetry-breaking)
-    [x[0] == 1, x[1] < x[-1]]
+    [
+        x[0] == 1,
+        x[1] < x[-1]
+    ]
 )
 
 minimize(

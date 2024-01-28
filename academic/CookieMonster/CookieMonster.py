@@ -40,14 +40,14 @@ x = VarArray(size=[horizon, nJars], dom=range(max(jars) + 1))
 y = VarArray(size=horizon, dom=range(max(jars) + 1))
 
 # f is the first time when all jars are empty
-f = Var(range(horizon))
+f = Var(dom=range(horizon))
 
 satisfy(
     # initial state
-    [x[0][i] == jars[i] for i in range(nJars)],
+    x[0] == jars,
 
     # final state
-    [x[-1][i] == 0 for i in range(nJars)],
+    x[-1] == 0,
 
     # handling the action of the cookie monster at time t (to t+1)
     [
@@ -74,13 +74,12 @@ minimize(
 )
 
 """ Comments
-1) the two groups of constraints concerning the initial and final states could be equivalently written:
-  # initial state
-  x[0] == jars,
-
-  # final state
-  x[-1] == [0 for _ in range(nJars)],
-
-2) we can also write:
-  x[-1] == [0] * nJars,
+1) x[0] == jars 
+ is equivalent to:
+   [x[0][i] == jars[i] for i in range(nJars)],
+2) x[-1] == 0 
+ is equivalent to:
+   x[-1] == [0] * nJars
+ and to:
+   [x[-1][i] == 0 for i in range(nJars)],
 """

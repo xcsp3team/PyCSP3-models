@@ -26,7 +26,7 @@ the problem of finding such a series is the all-interval series problem of order
 ## Model
   There are two variants:
      - a main variant;
-     - a variant  (called aux) with auxiliary variables.
+     - a variant 'aux' involving auxiliary variables.
 
   You can also find a step-by-step modeling process in this [Jupyter notebook](http://pycsp.org/documentation/models/CSP/AllInterval/).
 

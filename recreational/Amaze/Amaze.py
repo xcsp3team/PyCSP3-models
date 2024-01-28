@@ -31,10 +31,10 @@ T = ({(0, ANY, ANY, ANY, ANY)}
 
 satisfy(
     # putting two occurrences of each value on the board
-    [x[i, j] == v for v in range(1, nValues) for i, j in points[v - 1]],
+    [x[i][j] == v for v in range(1, nValues) for i, j in points[v - 1]],
 
     # each cell with a fixed value has exactly one neighbour with the same value
-    [Count([x[i - 1][j], x[i + 1][j], x[i][j - 1], x[i][j + 1]], value=v) == 1 for v in range(1, nValues) for i, j in points[v - 1]],
+    [ExactlyOne(x.beside(i, j), value=v) for v in range(1, nValues) for i, j in points[v - 1]],
 
     # each empty cell either contains 0 or has exactly two neighbours with the same value
     [(x[i][j], x[i - 1][j], x[i + 1][j], x[i][j - 1], x[i][j + 1]) in T for i, j in free_cells]
@@ -52,10 +52,14 @@ minimize(
           ...
   the hybrid conditions are automatically converted to form starred tuples except if the option -keephybrid is set
 
-2) even if  data come from a text file via a parser that builds tuples (and not lists)
+2) data come from a text file via a parser that builds tuples (and not lists)
    so, we have to write tuple(p) because tuples (in data) are automatically converted to lists
 
-3) old code:
+3)  [ExactlyOne(x.beside(i, j), value=v) for v in range(1, nValues) for i, j in points[v - 1]]
+  is equivalent to:
+    [Count([x[i - 1][j], x[i + 1][j], x[i][j - 1], x[i][j + 1]], value=v) == 1 for v in range(1, nValues) for i, j in points[v - 1]]
+
+4) old code:
  for v in range(1,nValues):
      for i, j in combinations(range(1, 5), 2):
          for vv in range(nValues):
