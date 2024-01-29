@@ -1,9 +1,6 @@
 # PyCSP3 Models (and Data)
 
 
-**WARNING.** *Currently, the site pycsp.org is not available. This is due to a payment problem, and as we follow **soviet-like procedures** here in France (most of the time, we must use purchase orders), this may take some time. 
-For the same kind of reasons, I have decided to limit/cancel my missions, as with CNRS, each mission requires a couple of hours for just filling forms. **This is not acceptable** (especially for the administrative agents who endure this Kafkaian world; some of them becoming depressed). I agree that our working environment is **not professional**.*
-
 PyCSP3 is a Python library allowing us to write models of combinatorial constrained problems in a declarative way.
 See [pycsp3.org](https://www.pycsp.org/)
 
