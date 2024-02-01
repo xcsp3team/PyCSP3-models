@@ -1,5 +1,5 @@
 # Problem CookieMonster
-## Description
+
 Cookie Monster Problem (by Richard Green)
 
 Suppose that we have a number of cookie jars, each containing a certain number of cookies.

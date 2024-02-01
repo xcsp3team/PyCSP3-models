@@ -1,5 +1,5 @@
 # Problem Kakuro
-## Description
+
 It is a kind of logic puzzle. See "Kakuro as a Constraint Problem" by Helmut Simonis.
 
 ## Data Example
@@ -15,6 +15,7 @@ It is a kind of logic puzzle. See "Kakuro as a Constraint Problem" by Helmut Sim
 
 ## Links
  - https://en.wikipedia.org/wiki/Kakuro
+ - https://www.researchgate.net/publication/228524341_Kakuro_as_a_Constraint_Problem
 
 ## Tags
   recreational

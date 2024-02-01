@@ -1,5 +1,5 @@
 # Problem Spot5
-## Description
+
 SPOT5 earth observation satellite management problem.
 
 The  management problems  to  be solved  can  be roughly  described as follows:

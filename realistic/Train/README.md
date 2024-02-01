@@ -1,5 +1,5 @@
 # Problem Train
-## Description
+
 We have n trains moving along a single track with m stations.
 There is a non-zero constant flow of passengers arriving at all but the first and last station who wish to travel to the final station.
 Trains are originally scheduled so that they collect the passengers and drop them at the final station.

@@ -1,5 +1,5 @@
 # Problem AnotherMagicSquare
-## Description
+
 On a square grid of size n × n, all numbers ranging from 1 to n*n must be put so that the numbers surrounding each number add to a multiple of that number.
 
 ## Data

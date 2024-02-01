@@ -1,5 +1,5 @@
 # Problem Knapsack
-## Description
+
 Problem 133 on CSPLib.
 
 The knapsack problem or rucksack problem is a problem in combinatorial optimization.

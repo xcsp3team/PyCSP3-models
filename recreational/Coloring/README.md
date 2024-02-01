@@ -1,5 +1,5 @@
 # Problem Coloring
-## Description
+
 In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices are of the same color.
 
 ## Data Example
@@ -16,6 +16,7 @@ In its simplest form, it is a way of coloring the vertices of a graph such that 
 
 ## Links
  - https://en.wikipedia.org/wiki/Graph_coloring
+ - https://www.cril.univ-artois.fr/XCSP23/competitions/csp/csp
 
 ## Tags
-  recreational
+  recreational, xcsp23

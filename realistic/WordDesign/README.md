@@ -1,5 +1,5 @@
 # Problem WordDesign
-## Description
+
 See Problem 033 on CSPLib.
 
 The problem is to find as large as possible a set S of strings (words) of length 8

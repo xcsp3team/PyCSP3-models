@@ -1,5 +1,5 @@
 # Problem CoveringArray
-## Description
+
 See Problem 045 on CSPLib.
 
 ## Data

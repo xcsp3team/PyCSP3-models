@@ -1,5 +1,5 @@
 # Problem BinPacking
-## Description
+
 A Bin Packing Problem.
 
 The bin packing problem (BPP) can be informally defined in a very simple way.
@@ -19,6 +19,7 @@ The objective is to pack all the items into the minimum number of bins so that t
 ## Execution
 ```
   python BinPacking.py -data=<datafile.json>
+  python BinPacking.py -data=<datafile.json> -variant=table
 ```
 
 ## Links

@@ -1,5 +1,5 @@
 # Problem SchedulingJS
-## Description
+
 
 ## Data
   Sadeh-js-e0ddr1-0.json

@@ -1,5 +1,5 @@
 # Problem Ramsey
-## Description
+
 This is [Problem 017](https://www.csplib.org/Problems/prob017/) at CSPLib.
 
 The edges of a complete graph (with n nodes) must be coloured with the minimum number of colours.

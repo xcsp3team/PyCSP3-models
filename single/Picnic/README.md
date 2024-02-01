@@ -1,5 +1,5 @@
 # Problem Picnic
-## Description
+
 Five friends (three women named Mindy, Sabrina and Tanya and two men named Anton and Chet) agreed to meet on an island
 in the middle of the bay for a picnic lunch on Sunday.
 Each arrived on a different type of conveyance (jet-ski, kayak, outrigger canoe, sailboard, and sailboat),

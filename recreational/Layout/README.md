@@ -1,7 +1,6 @@
 # Problem Layout
-## Description
-See "Exploiting symmetries within constraint satisfaction search", by P. Meseguer and C. Torras,
-    Artificial intelligence 129(1), 133–163, 2001 (Example of Section 3.3)
+
+Given a grid, we want to place a number of pieces such that every piece is completely included in the grid and no overlapping occurs between pieces.
 
 ## Data Example
   example.json
@@ -16,6 +15,7 @@ See "Exploiting symmetries within constraint satisfaction search", by P. Mesegue
 
 ## Links
  - https://www.csplib.org/Problems/prob132/
+ - https://www.sciencedirect.com/science/article/pii/S0004370201001047
 
 ## Tags
   recreational, csplib

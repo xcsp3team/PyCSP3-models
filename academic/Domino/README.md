@@ -1,5 +1,5 @@
 # Problem Domino
-## Description
+
 This problem is described in the paper cited below.
 Informally the Domino problem is an undirected constraint graph with a cycle and a trigger constraint.
 

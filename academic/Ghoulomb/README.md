@@ -1,5 +1,5 @@
 # Problem Ghoulomb
-## Description
+
 This is a variation of the classic Golomb ruler problem, proposed for Minizinc challenges:
   - three Golomb rulers are constructed, but only the second one has to be minimized
   - Cumulative is used instead of AllDifferent

@@ -1,5 +1,5 @@
-# Problem MaximumDag
-## Description
+# Problem MaximumDAG
+
 Maximum Directed Acyclic Graph.
 Given a directed graph G=(V,E) find the subgraph of G that is a DAG, while maximizing the number of edges.
 
@@ -14,8 +14,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Execution
 ```
-  python MaximumDag.py -data=<datafile.json>
-  python MaximumDag.py -data=<datafile.dzn> -parser=MaximumDag_ParserZ.py
+  python MaximumDAG.py -data=<datafile.json>
+  python MaximumDAG.py -data=<datafile.dzn> -parser=MaximumDAG_ParserZ.py
 ```
 
 ## Links

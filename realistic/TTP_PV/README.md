@@ -1,5 +1,5 @@
 # Problem TTP_PV
-## Description
+
 Traveling Tournament Problem with Predefined Venues (TTPPV).
 The problem consists of finding an optimal compact single round robin schedule for a sport event.
 Given a set of n teams, each team has to play against every other team exactly once.

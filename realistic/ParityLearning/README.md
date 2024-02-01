@@ -1,5 +1,5 @@
 # Problem ParityLearning
-## Description
+
 Optimization variant of the minimal disagreement parity (MDP) problem.
 
 The MDP problem is introduced in the paper whose link is given below.

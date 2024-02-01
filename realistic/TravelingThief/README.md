@@ -1,5 +1,5 @@
 # Problem TravelingThief
-## Description
+
 Travelling Thief Problem
 
 One has to visit all cities while picking items.

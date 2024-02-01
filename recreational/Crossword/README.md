@@ -1,5 +1,5 @@
 # Problem Crossword
-## Description
+
 Given a grid with imposed black cells (spots) and a dictionary, the problem is to fulfill the grid with the words contained in the dictionary.
 
 ## Data Example

@@ -1,5 +1,5 @@
-# Problem DiameterCMST
-## Description
+# Problem DC_MST
+
 Diameter Constrained Minimum Spanning Tree.
 Given an undirected graph G=(V,E) and an integer k find a spanning tree of G of minimum cost such that its diameter is not greater than k.
 
@@ -14,8 +14,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Execution
 ```
-  python DiameterCMST.py -data=<datafile.json>
-  python DiameterCMST.py -data=<datafile.dzn> -parser=DiameterCMST_ParserZ.py
+  python DC_MST.py -data=<datafile.json>
+  python DC_MST.py -data=<datafile.dzn> -parser=DC_MST_ParserZ.py
 ```
 
 ## Links

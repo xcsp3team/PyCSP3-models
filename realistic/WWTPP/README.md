@@ -1,5 +1,5 @@
 # Problem WWTPP
-## Description
+
 See "Solving the Wastewater Treatment Plant Problem with SMT", by Miquel Bofill, Víctor Muñoz, Javier Murillo. CoRR abs/1609.05367 (2016)
 
 ## Data

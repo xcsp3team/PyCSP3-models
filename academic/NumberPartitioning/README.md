@@ -1,5 +1,5 @@
 # Problem NumberPartitioning
-## Description
+
 This is [Problem 049](https://www.csplib.org/Problems/prob049/) at CSPLib.
 
 This problem consists in finding a partition of the set of numbers {1, 2, ..., n} into two sets A and B such that:

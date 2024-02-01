@@ -1,5 +1,5 @@
 # Problem CommunityDetection
-## Description
+
 Constrained Community Detection Problem
 
 The problem is to find communities in a graph with maximum modularity value while satisfying the fact that some pairs of nodes must be assigned

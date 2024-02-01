@@ -1,5 +1,5 @@
 # Problem SteelMillSlab
-## Description
+
 Problem 038 on CSPLib.
 
 Steel is produced by casting molten iron into slabs.

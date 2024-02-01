@@ -1,5 +1,5 @@
 # Problem LowAutocorrelation
-## Description
+
 This is [Problem 005](https://www.csplib.org/Problems/prob005/) at CSPLib.
 
 These problems have many practical applications in communications and electrical engineering.

@@ -1,5 +1,5 @@
 # Problem NFC
-## Description
+
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2016/2022 challenges.
 No Licence was explicitly mentioned (MIT Licence assumed).
 

@@ -1,5 +1,5 @@
 # Problem VRP
-## Description
+
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
 The MZN model was proposed by Jakob Puchinger.
 No Licence was explicitly mentioned (MIT Licence assumed).

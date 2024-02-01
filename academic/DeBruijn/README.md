@@ -1,5 +1,5 @@
 # Problem DeBruijn
-## Description
+
 In combinatorial mathematics, a de Bruijn sequence of order n on an alphabet A of size b is a cyclic sequence
 in which every possible length-n string on A occurs exactly once as a substring.
 

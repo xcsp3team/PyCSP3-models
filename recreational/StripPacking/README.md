@@ -1,5 +1,5 @@
 # Problem StripPacking
-## Description
+
 A a 2-dimensional geometric minimization problem.
 
 ## Data Example

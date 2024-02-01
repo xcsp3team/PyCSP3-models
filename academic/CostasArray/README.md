@@ -1,5 +1,5 @@
 # Problem CostasArray
-## Description
+
 A costas array is a pattern of n marks on an n∗n grid, one mark per row and one per column,
 in which the n∗(n−1)/2 vectors between the marks are all-different.
 

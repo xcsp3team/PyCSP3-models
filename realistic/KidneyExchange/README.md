@@ -1,5 +1,5 @@
 # Problem KidneyExchange
-## Description
+
 Cardinality-constrained Multi-cycle Problem (CCMCP).
 
 This problem appears as one of the main optimization problems modelling kidney exchange.

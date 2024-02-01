@@ -1,5 +1,5 @@
 # Problem OpenShop
-## Description
+
 An open shop problem is identical to a job-shop problem with the exception that there is no ordering on the tasks of a job.
 A job is a sequence of tasks.
 A task involves processing by a single machine for some duration.

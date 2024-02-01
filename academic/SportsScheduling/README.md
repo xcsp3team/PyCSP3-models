@@ -1,5 +1,5 @@
 # Problem SportsScheduling
-## Description
+
 This is [Problem 010](https://www.csplib.org/Problems/prob010/) at CSPLib.
 
 The problem is to schedule a tournament of teams over weeks, with each week divided into  periods, and each period divided into two slots

@@ -1,5 +1,5 @@
 # Problem MagicSequence
-## Description
+
 This is [Problem 019](https://www.csplib.org/Problems/prob019/) at CSPLib.
 
 A magic sequence of length n is a sequence of integers x between 0 and n−1, such that for all i in 0 to n−1,

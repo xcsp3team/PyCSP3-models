@@ -1,5 +1,5 @@
 # Problem FreePizza
-## Description
+
 Taken from the Intelligent Systems course at Simon Fraser University.
 
 The problem arises in the University College Cork student dorms. There is a large order

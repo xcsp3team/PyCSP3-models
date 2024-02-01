@@ -1,5 +1,5 @@
 # Problem NursingWorkload
-## Description
+
 Balanced Nursing Workload Problem.
 See Problem 069 at CSPLib.
 

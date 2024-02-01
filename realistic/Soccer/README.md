@@ -1,5 +1,5 @@
 # Problem Soccer
-## Description
+
 Soccer Computational Problem (Position in Ranking Problem).
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2018/2020 Minizinc challenges.

@@ -1,5 +1,5 @@
 # Problem SeatMoving
-## Description
+
 The problem is to move a person from a start position to a goal position.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.

@@ -1,5 +1,5 @@
 # Problem CalvinPuzzle
-## Description
+
 The purpose of the game is to fill a grid of size n × n with all values ranging from 1 to n*n such that:
   - if the next number in the sequence is going to be placed vertically or horizontally, then it must be placed exactly three squares away
   from the previous number (there must be a two square gap between the numbers);

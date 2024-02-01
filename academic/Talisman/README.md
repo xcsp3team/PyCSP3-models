@@ -1,5 +1,5 @@
 # Problem Talisman
-## Description
+
 An n x n array  of the integers from 1 to n^2 such that the difference between any integer
 and its neighbor (horizontally, vertically, or diagonally, without wrapping around)
 is greater than or equal to some value k is called a (n,k)-talisman square.

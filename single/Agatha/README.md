@@ -1,5 +1,5 @@
 # Problem Agatha
-## Description
+
 The Dreadsbury Mansion Mystery.
 
 Someone who lives in Dreadsbury Mansion killed Aunt Agatha.

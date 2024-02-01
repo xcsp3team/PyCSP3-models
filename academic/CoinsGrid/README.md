@@ -1,5 +1,5 @@
 # Problem CoinsGrid
-## Description
+
 From Tony Hurlimann, A coin puzzle, SVOR-contest 2007.
 
 ## Data

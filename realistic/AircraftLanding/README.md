@@ -1,5 +1,5 @@
 # Problem AircraftLanding
-## Description
+
 See OR-library, and the model proposed in the Choco Tutorial, where the following short description is taken:
 Given a set of planes and runways, the objective is to minimize the total (weighted) deviation from the target landing time for each plane.
 There are costs associated with landing either earlier or later than a target landing time for each plane.
@@ -14,7 +14,7 @@ Each plane has to land on one of the runways within its predetermined time windo
 ## Execution
   - python AircraftLanding.py -data=<datafile.json>
   - python AircraftLanding.py -data=<datafile.json> -variant=table
-  - python AircraftLanding.py -data=<airlands/datafile.txt> -parser=AircraftLanding_Parser.py
+  - python AircraftLanding.py -data=<datafile.txt> -parser=AircraftLanding_Parser.py
 
 ## Links
   - http://people.brunel.ac.uk/~mastjjb/jeb/orlib/airlandinfo.html

@@ -1,5 +1,5 @@
 # Problem Mario
-## Description
+
 This models a routing problem based on a little example of Mario's day.
 Mario is an Italian Plumber and his work is mainly to find gold in the plumbing of all the houses of the neighborhood.
 Mario is moving in the city using his kart that has a specified amount of fuel.
@@ -11,19 +11,19 @@ From a more general point of view, the problem is to find a path in a graph:
  - The sum of weights associated to arcs in the path is restricted (fuel consumption)
  - The sum of weights associated to nodes in the path has to be maximized (gold coins)
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2013/2014/2017 Minizinc challenges.
-The MZN model was proposed by maury Ollagnier and Jean-Guillaume Fages.
-No Licence was explicitly mentioned (MIT Licence assumed).
+This problem was proposed by maury Ollagnier and Jean-Guillaume Fages.
 
 ## Data Example
   easy-2.json
 
 ## Model
-  constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
   python Mario.py -data=<datafile.json>
+  python Mario.py -data=<datafile.json> -variant=table
+  python Mario.py -data=<datafile.json> -variant=aux
   python Mario.py -data=<datafile.dzn> -parser=Mario_ParserZ.py
 ```
 
@@ -31,4 +31,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2017/results2017.html
 
 ## Tags
-  recreational, mzn13, mzn14, mzn17
+  recreational

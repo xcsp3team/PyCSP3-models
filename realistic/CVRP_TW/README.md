@@ -1,5 +1,5 @@
 # Problem CVRP_TW
-## Description
+
 Capacitated Vehicle Routing problem with Time Windows, Service Times and Pickup and deliveries.
 
 The model, below, is close to (can be seen as the close translation of) the one (called VrpSubmission) submitted to the 2021 Minizinc challenge.

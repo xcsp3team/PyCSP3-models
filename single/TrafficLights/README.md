@@ -1,5 +1,5 @@
 # Problem TrafficLights
-## Description
+
 Problem 016 on CSPLib
 
 ## Data

@@ -1,5 +1,5 @@
 # Problem Langford
-## Description
+
 This is [Problem 024](https://www.csplib.org/Problems/prob024/) at CSPLib.
 
 Consider two sets of the numbers from 1 to 4.

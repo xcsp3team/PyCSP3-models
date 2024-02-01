@@ -1,5 +1,5 @@
 # Problem Roster
-## Description
+
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
 Instances (and the model) wre developed in the context of the ESPRIT PROJECT 22165 CHIC-2, with contributions from:
   - IC-Parc, Imperial College, London,

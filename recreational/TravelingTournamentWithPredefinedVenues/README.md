@@ -1,5 +1,5 @@
 # Problem TravelingTournamentWithPredefinedVenues
-## Description
+
 Problem 068 on CSPLib
 
 ## Data Example

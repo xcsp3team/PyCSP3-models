@@ -1,5 +1,5 @@
 # Problem PSP
-## Description
+
 This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem 058 on CSPLib.
 
 ## Data Example

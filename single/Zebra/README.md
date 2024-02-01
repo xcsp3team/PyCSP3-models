@@ -1,5 +1,5 @@
 # Problem Zebra
-## Description
+
 The Zebra puzzle (sometimes referred to as Einstein's puzzle) is defined as follows.
 There are five houses in a row, numbered from left to right.
 Each of the five houses is painted a different color, and has one inhabitant.

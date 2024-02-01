@@ -1,5 +1,5 @@
 # Problem AircraftAssemblyLine
-## Description
+
 This problem has been proposed by Stéphanie Roussel from ONERA (Toulouse), and comes from an aircraft manufacturer.
 The objective is to schedule tasks on an aircraft assembly line in order to minimize the overall number of operators required on the line.
 The schedule must satisfy several operational constraints, the main ones being:

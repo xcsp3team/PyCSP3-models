@@ -1,5 +1,5 @@
 # Problem JavaRouting
-## Description
+
 The model, below, is rebuilt from instances submitted to the 2013/2021 Minizinc challenges.
 These instances are initially automatically generated from a problem description in Java.
 No Licence was explicitly mentioned (MIT Licence assumed).

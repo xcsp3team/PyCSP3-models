@@ -1,5 +1,5 @@
 # Problem TravelingTournament
-## Description
+
 The Traveling Tournament Problem is a sports timetabling problem that abstracts two issues in creating timetables: home/away pattern feasibility and team travel (from link below).
 
 ## Data Example

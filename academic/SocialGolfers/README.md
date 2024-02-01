@@ -1,5 +1,5 @@
 # Problem SocialGolfers
-## Description
+
 This is [Problem 010](https://www.csplib.org/Problems/prob010/) at CSPLib.
 
 The coordinator of a local golf club has come to you with the following problem.

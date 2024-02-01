@@ -1,5 +1,5 @@
 # Problem QuasiGroup
-## Description
+
 This is [Problem 003](https://www.csplib.org/Problems/prob003/) at CSPLib.
 
 An order n quasigroup is a Latin square of size n.

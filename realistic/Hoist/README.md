@@ -1,5 +1,5 @@
 # Problem Hoist
-## Description
+
 Hoist Scheduling (M hoists, 1 track).
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.

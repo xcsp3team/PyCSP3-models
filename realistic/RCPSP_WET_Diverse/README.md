@@ -1,5 +1,5 @@
 # Problem RCPSP_WET_Diverse
-## Description
+
 Resource-Constrained Project Scheduling Problems with Weighted Earliness/Tardiness objective (RCPSP/WET).
 The objective is to find an optimal schedule so that tasks start as close as possible to the given start time for each task,
 penalizing earliness or tardiness according to the given weight for earliness and tardiness per task.

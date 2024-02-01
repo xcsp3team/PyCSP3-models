@@ -1,5 +1,5 @@
 # Problem Lits
-## Description
+
 A binary determination puzzle.
 
 ## Data Example

@@ -1,5 +1,5 @@
 # Problem Warehouse
-## Description
+
 See Problem 034 on CSPLib.
 
 In the Warehouse Location problem (WLP), a company considers opening warehouses at some candidate locations in order to supply its existing stores.
@@ -14,6 +14,7 @@ In the Warehouse Location problem (WLP), a company considers opening warehouses 
   - python Warehouse.py -data=<datafile.json>
   - python Warehouse.py -data=<datafile.json> -variant=compact
   - python Warehouse.py -data=<datafile.txt> -parser=Warehouse_Parser.py
+  - python Warehouse.py -parser=Warehouse_Random.py 20 50 100 10 1000 0
 
 ## Links
   - https://www.csplib.org/Problems/prob034/

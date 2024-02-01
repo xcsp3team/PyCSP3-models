@@ -1,5 +1,5 @@
 # Problem ValveNetwork
-## Description
+
 This is a model for the Valve network planning for Advent of Code 2022 Day 16.
 Instead of using different networks for varying hardness, this model uses different planning horizons for adjusting the hardness of the problem.
 

@@ -1,5 +1,5 @@
 # Problem Dinner
-## Description
+
 My son came to me the other day and said, "Dad, I need help with a math problem."
 The problem went like this:
  - We're going out to dinner taking 1-6 grandparents, 1-10 parents and/or 1-40 children

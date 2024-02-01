@@ -1,5 +1,5 @@
 # Problem PeacableQueens
-## Description
+
 On a board, put the maximal number of black and white queens while having no attack from opposing sides.
 The number of black queens must be equal to the number of white queens.
 

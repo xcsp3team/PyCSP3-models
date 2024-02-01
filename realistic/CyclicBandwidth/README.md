@@ -1,5 +1,5 @@
 # Problem CyclicBandwidth
-## Description
+
 ## Data Example
   caterpillar13.json
 

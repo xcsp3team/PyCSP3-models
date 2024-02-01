@@ -1,5 +1,5 @@
 # Problem Molnar
-## Description
+
 See Problem 035 on CSPLib.
 
 ## Data

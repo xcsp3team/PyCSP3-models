@@ -18,7 +18,7 @@ if __name__ == '__main__':
             inputlines = open(model, "r").readlines()
             outputfile = open(f"{dir}/README.md", "w")
             outputfile.write(f"# Problem {p}\n")
-            outputfile.write("## Description\n")
+            outputfile.write("\n")
             start = False
             python = False
             for line in inputlines:

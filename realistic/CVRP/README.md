@@ -1,5 +1,5 @@
 # Problem CVRP
-## Description
+
 See Problem 086 on CSPLib, and VVRLib.
 
 ## Data Example

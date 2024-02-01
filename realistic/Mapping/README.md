@@ -1,5 +1,5 @@
 # Problem Mapping
-## Description
+
 Mapping an H263 encoder on a system with a network on chip/
 This is a simplified version of the model presented in the paper cited below.
 

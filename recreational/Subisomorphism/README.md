@@ -1,6 +1,7 @@
 # Problem Subisomorphism
-## Description
-See, e.g., "AllDifferent-based filtering for subgraph isomorphism"  by Christine Solnon, Artificial Intelligence, 174(12-13): 850-864 (2010)
+
+An instance of the subgraph isomorphism problem is defined by a pattern graph Gp = (Vp, Ep) and a target graph Gt = (Vt, Et):
+the objective is to determine whether Gp is isomorphic to some subgraph(s) in Gt.
 
 ## Data Example
   A-01.json
@@ -12,6 +13,9 @@ See, e.g., "AllDifferent-based filtering for subgraph isomorphism"  by Christine
 ```
   python Subisomorphism.py -data=<datafile.json>
 ```
+
+## Links
+  - https://www.sciencedirect.com/science/article/pii/S0004370210000718
 
 ## Tags
   recreational

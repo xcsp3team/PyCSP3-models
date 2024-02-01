@@ -1,5 +1,5 @@
 # Problem CELAR
-## Description
+
 CELAR radio link frequency assignment problem.
 
 The Radio Link Frequency Assignment Problem (RLFAP) consists in assigning frequencies to communication links

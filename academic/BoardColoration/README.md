@@ -1,5 +1,5 @@
 # Problem BoardColoration
-## Description
+
 All squares of a board of a specified size (specified numbers of rows and columns) must be colored with the minimum number of colors.
 The four corners of any rectangle inside the board must not be assigned the same color.
 

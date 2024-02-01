@@ -1,5 +1,5 @@
 # Problem Filters
-## Description
+
 This problem is about optimizing the scheduling of filter operations, commonly used in High-Level Synthesis.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.

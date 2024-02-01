@@ -1,5 +1,5 @@
 # Problem RCPSP_WET
-## Description
+
 Resource-Constrained Project Scheduling Problems with Weighted Earliness/Tardiness objective (RCPSP/WET).
 
 The objective is to find a optimal schedule so that tasks start as close as possible to

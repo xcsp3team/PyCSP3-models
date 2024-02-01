@@ -1,5 +1,5 @@
 # Problem ValveNetwork
-## Description
+
 This is a model for the Valve network planning for Advent of Code 2022 Day 16.
 The original model has been written by Mikael Zayenz Lagerkvist for the Minizinc challenge 2023.
 

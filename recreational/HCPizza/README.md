@@ -1,5 +1,5 @@
 # Problem HCPizza
-## Description
+
 A model for the Practice Problem of Google Hash Code 2017.
 
 The pizza corresponds to a 2-dimensional grid of n rows and m columns.

@@ -1,5 +1,5 @@
 # Problem Allergy
-## Description
+
 Four friends are two women named Debra and Janet, and two men named Hugh and Rick.
 They found that each of them is allergic to something different: eggs, mold, nuts and ragweed.
 We would like to match each one's surname (Baxter, Lemon, Malone and Fleet) with his or her allergy.

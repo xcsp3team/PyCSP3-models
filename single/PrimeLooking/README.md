@@ -1,5 +1,5 @@
 # Problem PrimeLooking
-## Description
+
 Martin Gardner Problem:
   - Call a number "prime-looking" if it is composite but not divisible by 2,3 or 5.
   - The three smallest prime-looking numbers are 49, 77 and 91.

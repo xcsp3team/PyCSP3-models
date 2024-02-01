@@ -1,5 +1,5 @@
 # Problem StillLifeWastage
-## Description
+
 The Maximum Density Sill-Life Problem is to fill an n ×n board of cells with the maximum number of live cells
 so that the board is stable under the rules of Conway’s Game of Life.
 In the CP conference paper (whose reference is given below), the problem is to minimise “wastage” instead.

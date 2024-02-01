@@ -1,5 +1,5 @@
 # Problem Cryptanalysis
-## Description
+
 Chosen Key Differential Cryptanalysis.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2016 Minizinc challenge.

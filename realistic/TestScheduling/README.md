@@ -1,5 +1,5 @@
-# Problem TestSchedulingM18
-## Description
+# Problem TestScheduling
+
 This problem was presented as the Industrial Modelling Challenge at the conference CP2015.
 
 From CSPLib: "The problem arises in the context of a testing facility.
@@ -23,8 +23,8 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Execution
 ```
-  python TestSchedulingM18.py -data=<datafile.json>
-  python TestSchedulingM18.py -data=<datafile.dzn> -parser=TestSchedulingM18_ParserZ.py
+  python TestScheduling.py -data=<datafile.json>
+  python TestScheduling.py -data=<datafile.dzn> -parser=TestScheduling_ParserZ.py
 ```
 
 ## Links

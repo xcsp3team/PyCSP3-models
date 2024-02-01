@@ -1,5 +1,5 @@
 # Problem SquarePackingSuite
-## Description
+
 The Square packing problem involves packing all squares with sizes 1 × 1 to n × n into an enclosing container.
 
 ## Data

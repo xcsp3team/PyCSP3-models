@@ -1,5 +1,5 @@
 # Problem PerfectSquare
-## Description
+
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2021 Minizinc challenge.
 The original MZN model was proposed by Krzysztof Kuchcinski, and data come from the paper cited below.
 The licence seems to be like a MIT Licence.

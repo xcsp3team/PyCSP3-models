@@ -1,5 +1,5 @@
 # Problem League
-## Description
+
 Make leagues for some games:
  - ranking should be close in each league
  - in a league, variety of country (where player comes from) is needed

@@ -1,5 +1,5 @@
 # Problem ShipScheduling
-## Description
+
 From the ICAPS conference paper (whose reference is given below):
 "Ship scheduling deals with assigning arrival and departure times to a ﬂeet of ships,
 as well as the amount and sometimes type of cargo that is carried on each ship.

@@ -1,9 +1,6 @@
 # Problem MarketSplit
-## Description
-See "A Class of Hard Small 0-1 Programs" by Gérard Cornuéjols and Milind Dawande, INFORMS J. Comput. 11(2): 205-210 (1999)
 
 The feasibility problem consists of m 0-1 equality knapsack constraints defined on the same set of 10(m−1) variables.
-
 
 ## Data Example
   04.json
@@ -15,6 +12,10 @@ The feasibility problem consists of m 0-1 equality knapsack constraints defined 
 ```
   python MarketSplit.py -data=<datafile.json>
 ```
+
+## Links
+  - https://pubsonline.informs.org/doi/abs/10.1287/ijoc.11.2.205?journalCode=ijoc
+  - https://link.springer.com/chapter/10.1007/3-540-69346-7_22
 
 ## Tags
   recreational

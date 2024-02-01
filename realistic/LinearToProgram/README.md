@@ -1,5 +1,5 @@
 # Problem LinearToProgram
-## Description
+
 This model finds a shortest program to compute a linear combination of variables.
 The difficulty is that the program can only use the binary plus and the unary minus.
 To symbolic program is linked to a set of examples against which it must conform.

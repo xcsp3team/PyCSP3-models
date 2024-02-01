@@ -1,5 +1,5 @@
 # Problem Photo
-## Description
+
 Betty, Chris, Donald, Fred, Gary, Mary, and Paul want to align in one row for taking a photo.
 Some of them have preferences next to whom they want to stand:
  - Betty wants to stand next to Gary and Mary.

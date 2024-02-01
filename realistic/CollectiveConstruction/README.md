@@ -1,5 +1,5 @@
 # Problem CollectiveConstruction
-## Description
+
 Multi-agent Collective Construction (MACC).
 
 The multi-agent collective construction problem tasks agents to construct any given three-dimensional structure on a grid by repositioning blocks.

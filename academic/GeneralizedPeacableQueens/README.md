@@ -1,5 +1,5 @@
 # Problem GeneralizedPeacableQueens
-## Description
+
 Generalized Peaceable Queens.
 
 On a board, put the maximal number of black and white queens while having no attack from opposing sides.

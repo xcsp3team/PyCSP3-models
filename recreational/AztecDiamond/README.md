@@ -1,5 +1,5 @@
 # Problem AztecDiamond
-## Description
+
 An Aztec diamond of order n consists of 2n centered rows of unit squares, of respective lengths 2, 4, ..., 2n-2, 2n, 2n-2, ..., 4, 2.
 An Aztec diamond of order n has exactly 2^(n*(n+1)/2) tilings by dominos.
 

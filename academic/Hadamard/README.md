@@ -1,5 +1,5 @@
 # Problem Hadamard
-## Description
+
 For every odd positive integer n (and m = (n−1)/2), the 2cc Hadamard matrix Legendre pairs are defined from m quadratic constraints and 2 linear constraints.
 
 See Problem 084 on CSPLib

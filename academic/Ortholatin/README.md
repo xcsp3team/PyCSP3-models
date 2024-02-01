@@ -1,5 +1,5 @@
 # Problem Ortholatin
-## Description
+
 A Latin square of order n is an n by n array filled with n different symbols (for example, values between 1 and n),
 each occurring exactly once in each row and exactly once in each column.
 Two latin squares of the same order n are orthogonal if each pair of elements in the same position occurs exactly once.

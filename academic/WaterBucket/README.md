@@ -1,5 +1,5 @@
 # Problem WaterBucket
-## Description
+
 This is [Problem 018](https://www.csplib.org/Problems/prob018/) at CSPLib:
 
 You are given an 8 pint bucket of water, and two empty buckets which can contain 5 and 3 pints respectively.

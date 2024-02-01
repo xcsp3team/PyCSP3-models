@@ -1,5 +1,5 @@
 # Problem RIP
-## Description
+
 The Resource Investment Problem (RIP) is also known as the Resource Availability Cost Problem (RACP).
 The RIP assumes that the level of renewable resources can be varied at a certain cost and aims at minimizing this total cost
 of the (unlimited) renewable resources required to complete the project by a pre-specified project deadline.

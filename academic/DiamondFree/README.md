@@ -1,5 +1,5 @@
 # Problem DiamondFree
-## Description
+
 A diamond is a set of four vertices in a graph such that there are at least five edges between those vertices.
 Conversely, a graph is diamond-free if it has no diamond as an induced subgraph, i.e. for every set of four vertices
 the number of edges between those vertices is at most four.

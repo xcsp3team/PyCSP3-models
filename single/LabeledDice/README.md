@@ -1,5 +1,5 @@
 # Problem LabeledDice
-## Description
+
 There are 13 words as follows:
 ``buoy, cave, celt, flub, fork, hemp, judy, junk, limn, quip, swag, visa, wish ``
 There are 24 different letters that appear in the 13 words.

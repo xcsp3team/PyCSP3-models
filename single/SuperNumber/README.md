@@ -1,5 +1,5 @@
 # Problem SuperNumber
-## Description
+
 We are looking for the 10-digit number which satisfies the following conditions:
   - all digits from 0-9 occur exactly once
   - the first 2 digits are divisible by 2

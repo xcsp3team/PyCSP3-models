@@ -1,5 +1,5 @@
 # Problem Hidato
-## Description
+
 Hidato, also known as Hidoku is a logic puzzle game invented by Gyora M. Benedek, an Israeli mathematician.
 The goal of Hidato is to fill the grid with consecutive numbers that connect horizontally, vertically, or diagonally.
 
