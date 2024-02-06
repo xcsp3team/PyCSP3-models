@@ -24,7 +24,7 @@ The model was created by Hendrik 'Henk' Bierlee, with a licence that seems to be
 """
 
 from pycsp3 import *
-from pycsp3.classes.auxiliary.ptypes import TypeSquareSymmetry
+from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry
 
 n = data  # the order (number of rows and columns) of the board
 symmetries = [sym.apply_on(n) for sym in TypeSquareSymmetry]

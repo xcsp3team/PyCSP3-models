@@ -26,7 +26,7 @@ See the PhD thesis by Adrien Varet (2022, Aix Marseille University).
 """
 
 from pycsp3 import *
-from pycsp3.classes.auxiliary.ptypes import TypeHexagonSymmetry
+from pycsp3.classes.auxiliary.enums import TypeHexagonSymmetry
 
 n = data or 8  # order of the coronenoide
 w = 2 * n - 1  # maximal width

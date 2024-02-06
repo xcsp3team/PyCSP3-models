@@ -32,7 +32,7 @@ The original MZN model was proposed by Peter J. Stuckey, with a Licence that sem
 """
 
 from pycsp3 import *
-from pycsp3.classes.auxiliary.ptypes import TypeSquareSymmetry, TypeRectangleSymmetry
+from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry, TypeRectangleSymmetry
 
 n, m = data  # number of rows and number of columns
 

@@ -26,7 +26,7 @@ The MZN model was proposed by Hendrik 'Henk' Bierlee, under the MIT Licence.
 """
 
 from pycsp3 import *
-from pycsp3.classes.auxiliary.ptypes import TypeSquareSymmetry
+from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry
 
 n, q = data  # the order (number of rows and columns) of the board and the number of armies
 colors = range(q + 1)  # including 0

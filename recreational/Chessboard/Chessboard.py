@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 """
 
 from pycsp3 import *
-from pycsp3.classes.auxiliary.ptypes import TypeSquareSymmetry
+from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry
 
 n, values, limits = data
 nPieces = 5

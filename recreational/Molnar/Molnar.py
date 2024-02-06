@@ -24,7 +24,7 @@ See Problem 035 on CSPLib.
 
 from pycsp3 import *
 
-from pycsp3.classes.entities import TypeNode
+from pycsp3.classes.nodes import TypeNode
 
 k, d = data
 
@@ -39,7 +39,7 @@ def det_terms(t):
 def determinant(t):
     terms = det_terms(t)
     # we extract coeffs from terms for posting a simpler Sum constraint below
-    terms = [(term.sons[0], -1) if term.type == TypeNode.NEG else (term, 1) for term in terms]
+    terms = [(term.cnt[0], -1) if term.type == TypeNode.NEG else (term, 1) for term in terms]
     return [t for t, _ in terms] * [c for _, c in terms]
 
 
