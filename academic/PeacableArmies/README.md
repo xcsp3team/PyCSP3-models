@@ -1,5 +1,5 @@
 # Problem PeacableArmies
-## Description
+
 This is [Problem 110](https://www.csplib.org/Problems/prob110/) at CSPLib.
 
 In the “Armies of queens” problem, we are required to place two equal-sized armies of black and white queens on a chessboard

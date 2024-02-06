@@ -1,5 +1,5 @@
 # Problem CarpetCutting
-## Description
+
 The carpet cutting problem is a two-dimensional cutting and packing problem in which carpet shapes are cut
 from a rectangular carpet roll with a fixed roll width and a sufficiently long roll length.
 See the "Optimal Carpet Cutting" conference paper published at CP'11.

@@ -1,5 +1,5 @@
 # Problem TimeChangingGraphColoring
-## Description
+
 Time-changing Graph Coloring Problem.
 
 The problem is to minimize the number of steps for converting an initial coloring to an end coloring

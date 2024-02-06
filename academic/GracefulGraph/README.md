@@ -1,5 +1,5 @@
 # Problem GracefulGraph
-## Description
+
 This is [Problem 053](https://www.csplib.org/Problems/prob053/) at CSPLib.
 
 A labelling f of the nodes of a graph with q edges is graceful if f assigns each node a unique label from 0, 1...,q

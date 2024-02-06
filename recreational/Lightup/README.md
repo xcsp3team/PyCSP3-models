@@ -1,5 +1,5 @@
 # Problem Lightup
-## Description
+
 It is a logic puzzle.
 
 ## Data Example

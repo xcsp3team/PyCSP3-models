@@ -1,5 +1,5 @@
 # Problem OPD
-## Description
+
 An OPD (v,b,r) problem is to find a binary matrix of v rows and b columns such that:
    - each row sums to r,
    - the dot product between any pair of distinct rows is minimal

@@ -1,5 +1,5 @@
 # Problem Dominoes
-## Description
+
 You are given a grid of size n × m containing numbers being parts of dominoes.
 For example, for n = 7 and m = 8, the grid contains all dominoes from 0-0 to 6-6.
 One has to find the position (and rotation) of each domino.

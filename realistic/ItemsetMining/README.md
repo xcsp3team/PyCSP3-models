@@ -1,5 +1,5 @@
 # Problem ItemsetMining
-## Description
+
 A traditional task in machine learning is the task of concept learning.
 Given a dataset of positive and negative examples, the aim is here to find a
 formula in DNF (Disjunctive Normal Form) which characterizes the positive examples

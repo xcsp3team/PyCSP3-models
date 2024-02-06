@@ -1,5 +1,5 @@
 # Problem HSP
-## Description
+
 We consider a facility with a single handling resource (a hoist).
 The hoist has to perform a sequence of moves in order to accomplish a set of jobs, with varying
 processing requirements, while satisfying processing and transport resource constraints.

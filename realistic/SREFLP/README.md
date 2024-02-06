@@ -1,5 +1,5 @@
 # Problem SREFLP
-## Description
+
 The Single-Row Facility Layout Problem (SRFLP) is an ordering problem considering a set of departments in a facility,
 with given lengths and pairwise traffic intensities.
 Its goal is to find a linear ordering of the departments minimizing the weighted sum of the distances between department pairs.

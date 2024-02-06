@@ -1,5 +1,5 @@
 # Problem SimpleColoring
-## Description
+
 A simple coloring problem
 
 ## Data

@@ -1,5 +1,5 @@
 # Problem LargeScaleScheduling
-## Description
+
 Large scale scheduling instances have been built to show the interest of a scalable time-table filtering algorithm for the Cumulative Constraint.
 
 ## Data (example)

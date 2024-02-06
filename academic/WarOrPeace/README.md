@@ -1,5 +1,5 @@
 # Problem WarOrPeace
-## Description
+
 There are n countries.
 Each pair of two countries is either at war or has a peace treaty.
 Each pair of two countries that has a common enemy has a peace treaty.

@@ -1,5 +1,5 @@
 # Problem GraphColoring
-## Description
+
 
 ## Data
   1-fullins-3.json

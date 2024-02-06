@@ -1,5 +1,5 @@
 # Problem GolombRuler
-## Description
+
 This is [Problem 006](https://www.csplib.org/Problems/prob006/) at CSPLib.
 
 A Golomb ruler is defined as a set of n integers a1 < a2 < ... < an such that the n x (n-1)/2 differences aj - ai are distinct.

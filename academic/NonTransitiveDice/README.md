@@ -1,5 +1,5 @@
 # Problem NonTransitiveDice
-## Description
+
 A set of dice is intransitive if the binary relation “X rolls a higher number than Y more than half the time” on its elements is not transitive.
 This situation is similar to that in the game Rock, Paper, Scissors, in which each element has an advantage over one choice and a disadvantage to the other.
 The problem is to exhibit such a set of dice.

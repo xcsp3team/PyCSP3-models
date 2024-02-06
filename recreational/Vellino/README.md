@@ -1,5 +1,5 @@
 # Problem Vellino
-## Description
+
 From "Constraint Programming in OPL", P. Van Hentenryck, L. Michel, L. Perron, and J.-C. Régin, CP'99
 
 This configuration problem involves putting components of different materials (glass, plastic, steel, wood, and copper)

@@ -1,5 +1,5 @@
 # Problem DakotaFurniture
-## Description
+
 The Dakota Furniture Company manufactures desks, tables, and chairs.
 The manufacture of each type of furniture requires lumber and two types of skilled labor: finishing and carpentry.
 The amount of each resource needed to make each type of furniture is given in the following table

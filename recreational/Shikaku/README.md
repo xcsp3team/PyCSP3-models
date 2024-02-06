@@ -1,5 +1,5 @@
 # Problem Shikaku
-## Description
+
 A logic puzzle. See "Shikaku as a Constraint Problem" by Helmut Simonis.
 
 ## Data Example

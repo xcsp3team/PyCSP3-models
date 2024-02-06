@@ -1,5 +1,5 @@
 # Problem Abbots
-## Description
+
 The Abbot's Puzzle, from "Amusements in Mathematics, Dudeney" (number 110).
 
 We know that 100 bushels of corn were distributed among 100 people.

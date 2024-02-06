@@ -1,5 +1,5 @@
 # Problem EchelonStock2
-## Description
+
 See Problem 040 on CSPLib.
 
 ## Data Example

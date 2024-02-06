@@ -1,5 +1,5 @@
 # Problem ProgressiveParty
-## Description
+
 See Problem 013 on CSPLib.
 
 The problem is to timetable a party at a yacht club.
@@ -13,7 +13,7 @@ periods. A guest boat cannot not revisit a host and guest crews cannot meet more
 The problem facing the rally organizer is that of minimizing the number of host boats.
 
 ## Data Example
-  data-12-05.json
+  12-05.json
 
 ## Model
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Channel](http://pycsp.org/documentation/constraints/Channel), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)

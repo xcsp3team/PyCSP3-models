@@ -1,5 +1,5 @@
 # Problem SchedulingOS
-## Description
+
 
 ## Data
   GP-os-01.json

@@ -1,5 +1,5 @@
 # Problem Monomatch
-## Description
+
 Construction of a mono-matching game.
 
 This type of game is most well-known as Dobble or Spot-It, and contains a set of cards with symbols on them.

@@ -1,5 +1,5 @@
 # Problem Zephyrus
-## Description
+
 The deployment optimization problem is the problem of how to correctly deploy all the software components
 needed by a cloud application on suitable VMs on the cloud at minimal cost.
 

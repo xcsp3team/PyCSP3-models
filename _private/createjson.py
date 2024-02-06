@@ -33,7 +33,7 @@ for thedir in directories:
                 tags = [t.strip().rstrip(",") for t in stripped.split(" ")]
                 start = False
         models.append(
-            {"name": p, "fullname": model, "constraints": constraints, "type": type, "tags": tags,
+            {"name": p, "fullname": dir, "constraints": constraints, "type": type, "tags": tags,
              "links": links})
 
 models.sort(key=lambda model: model["name"])

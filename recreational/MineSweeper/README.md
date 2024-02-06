@@ -1,5 +1,5 @@
 # Problem MineSweeper
-## Description
+
 A logic puzzle video game.
 
 ## Data
@@ -11,7 +11,7 @@ A logic puzzle video game.
 ## Execution:
 ```
   python MineSweeper.py
-  python MineSweeper.py -data=<datafile.json>MineSweeper-example.json
+  python MineSweeper.py -data=<datafile.json>
 ```
 
 ## Links

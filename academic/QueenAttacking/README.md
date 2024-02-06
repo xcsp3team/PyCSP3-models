@@ -1,5 +1,5 @@
 # Problem QueenAttacking
-## Description
+
 This is [Problem 029](https://www.csplib.org/Problems/prob029/) at CSPLib.
 
 This problem, posed first by G.L. Honaker, is to put a queen and the n<sup>2</sup> numbers 1...,n<sup>2</sup>

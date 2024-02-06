@@ -1,5 +1,5 @@
 # Problem AllInterval
-## Description
+
 Given the twelve standard pitch-classes (c, c#, d, ...), represented by numbers 0,1,...,11,
 find a series in which each pitch-class occurs exactly once and in which the musical intervals
 between neighboring notes cover the full set of intervals from the minor second (1 semitone) to the major seventh (11 semitones).
@@ -27,7 +27,7 @@ the problem of finding such a series is the all-interval series problem of order
 ## Model
   There are two variants:
      - a main variant;
-     - a variant  (called aux) with auxiliary variables.
+     - a variant 'aux' involving auxiliary variables.
 
   You can also find a step-by-step modeling process in this [Jupyter notebook](http://pycsp.org/documentation/models/CSP/AllInterval/).
 

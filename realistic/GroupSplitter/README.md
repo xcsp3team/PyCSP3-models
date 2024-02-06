@@ -1,5 +1,5 @@
 # Problem GroupSplitter
-## Description
+
 A group of people want to do activities (Cinema then Restaurant) in subgroups
 where the activities for subgroups are supposed to  match better members' preferences.
 The aim of our model is to find the best activities and group combinations to recommend.

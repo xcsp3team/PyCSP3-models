@@ -1,5 +1,5 @@
 # Problem Futoshiki
-## Description
+
 It is a logic puzzle game from Japan.
 
 ## Data Example

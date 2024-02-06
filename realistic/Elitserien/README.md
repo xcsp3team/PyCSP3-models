@@ -1,5 +1,5 @@
 # Problem Elitserien
-## Description
+
 In a 14-team league, form 2 divisions which hold a SRRT (Single Round-Robin Tournament):
   - each 7-team division must hold a SRRT to start the season
   - this must be followed by two SRRTs between the entire league, the second SRRT being a mirror of the first

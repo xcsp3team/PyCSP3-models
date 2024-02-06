@@ -1,5 +1,5 @@
 # Problem VRP_LC
-## Description
+
 The Vehicle Routing Problem with Location Congestion (VRPLC) adds cumulative scheduling constraints
 on to the standard Pickup and Delivery Problem with Time Windows (PDPTW).
 

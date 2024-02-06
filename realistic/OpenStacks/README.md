@@ -1,5 +1,5 @@
 # Problem OpenStacks
-## Description
+
 
 ## Data Example
   pb-20-20-1.json
@@ -11,8 +11,8 @@
 
 ## Execution
 ```
-  python OpenStacks.py -data=OpenStacks_example.json -variant=m1
-  python OpenStacks.py -data=OpenStacks_example.json -variant=m2
+  python OpenStacks.py -data=<datafile.json> -variant=m1
+  python OpenStacks.py -data=<datafile.json> -variant=m2
 ```
 
 ## Links

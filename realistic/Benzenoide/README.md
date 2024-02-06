@@ -1,5 +1,5 @@
 # Problem Benzenoide
-## Description
+
 The benzenoid generation problem is defined as follows: given a set of structural properties P,
 generate all the benzenoids which satisfy each property of P.
 For instance, these structural properties may deal with the number of carbons, the number of

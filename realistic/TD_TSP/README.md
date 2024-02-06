@@ -1,5 +1,5 @@
-# Problem TDTSP
-## Description
+# Problem TD_TSP
+
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015/2017 Minizinc challenges.
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
@@ -11,8 +11,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Execution
 ```
-  python TDTSP.py -data=<datafile.json>
-  python TDTSP.py -data=<datafile.dzn> -parser=TDTSP_ParserZ.py
+  python TD_TSP.py -data=<datafile.json>
+  python TD_TSP.py -data=<datafile.dzn> -parser=TD_TSP_ParserZ.py
 ```
 
 ## Links

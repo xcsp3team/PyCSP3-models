@@ -1,5 +1,5 @@
 # Problem Areas
-## Description
+
 See "Teaching Constraints through Logic Puzzles" by Peter Szeredi
 
 A rectangular board is given with some squares specified as positive integers.

@@ -1,5 +1,5 @@
 # Problem RotationPuzzle
-## Description
+
 See http://www-groups.dcs.st-and.ac.uk/~gap/ForumArchive/Harris.1/Bob.1/Re__GAP_.59/1.html
 
 This problem was called "rotation" at Nokia's web site.

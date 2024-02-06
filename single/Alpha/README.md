@@ -1,5 +1,5 @@
 # Problem Alpha
-## Description
+
 Well-known crypto-arithmetic puzzle of unknown origin (e.g., a model is present in Gecode)
 
 ## Data

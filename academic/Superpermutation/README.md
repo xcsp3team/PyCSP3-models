@@ -1,5 +1,5 @@
 # Problem Superpermutation
-## Description
+
 In combinatorial mathematics, a superpermutation on n symbols is a string that contains each permutation of n symbols
 as a substring. While trivial superpermutations can simply be made up of every permutation listed together,
 superpermutations can also be shorter (except for the trivial case of n = 1) because overlap is allowed.

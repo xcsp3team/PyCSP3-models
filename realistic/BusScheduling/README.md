@@ -1,5 +1,5 @@
 # Problem BusScheduling
-## Description
+
 Problem 022 of csplib.
 
 Bus driver scheduling can be formulated as a set paritioning problem.

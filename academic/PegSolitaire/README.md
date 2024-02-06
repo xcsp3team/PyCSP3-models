@@ -1,5 +1,5 @@
 # Problem PegSolitaire
-## Description
+
 Peg Solitaire is played on a board with a number of holes.
 In the English version of the game considered here, the board is in the shape of a cross with 33 holes.
 Pegs are arranged on the board so that at least one hole remains. By making horizontal or vertical draughts-like moves,

@@ -1,5 +1,5 @@
 # Problem SafeCracking
-## Description
+
 From the Oz Primer.
 
 The code of Professor Smart's safe is a sequence of 9 distinct

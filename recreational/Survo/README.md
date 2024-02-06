@@ -1,5 +1,5 @@
 # Problem Survo
-## Description
+
 In a Survo puzzle, the task is to fill an m × n table with integers 1, 2, ..., m·n
 so that each of these numbers appears only once and their row and column sums
 are equal to integers given on the bottom and the right side of the table.

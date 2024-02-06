@@ -1,5 +1,5 @@
 # Problem RelToOntology
-## Description
+
 The Relational-To-Ontology Mapping Problem is viewed here as a Steiner Tree Problem with side constraints.
 See IJCAI paper below.
 

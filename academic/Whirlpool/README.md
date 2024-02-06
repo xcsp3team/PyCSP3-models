@@ -1,5 +1,5 @@
 # Problem Whirlpool
-## Description
+
 Perfect diagonal extended whirlpool permutation
 
 A whirlpool permutation is an n x m matrix containing number 1..n*m where every 2x2 sub matrix is either ordered cw (clockwise) or ccw (counter-clockwise).

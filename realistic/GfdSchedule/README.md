@@ -1,5 +1,5 @@
 # Problem GfdSchedule
-## Description
+
 A Scheduling problem, such that:
  - items are grouped by kinds
  - items are processed by groups using facilities

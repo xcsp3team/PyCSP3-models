@@ -1,5 +1,5 @@
 # Problem NaiveMagicSequence
-## Description
+
 This naive model for the magic sequence allows us to test the ability of solvers to handle many simple constraints at the same time.
 For a problem of size 50, roughly 5000 propagators are needed.
 

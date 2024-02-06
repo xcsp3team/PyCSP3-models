@@ -1,5 +1,5 @@
 # Problem RoomMate
-## Description
+
 In mathematics, economics and computer science, the stable-roommate problem is the problem of finding a stable matching for an even-sized set.
 A matching is a separation of the set into disjoint pairs (‘roommates’).
 The matching is stable if there are no two elements which are not roommates and which both prefer each other to their roommate under the matching.

@@ -1,5 +1,5 @@
 # Problem Cargo
-## Description
+
 This is a real-world cargo assembly planning problem arising in a coal supply chain.
 The cargoes are built on the stockyard at a port terminal from coal delivered by trains.
 Then the cargoes are loaded onto vessels.

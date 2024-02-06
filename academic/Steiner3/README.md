@@ -1,5 +1,5 @@
 # Problem Steiner3
-## Description
+
 This is [Problem 044](https://www.csplib.org/Problems/prob044/) at CSPLib:
 
 The ternary Steiner problem of order n consists of finding a set of n.(n−1)/6 triples of distinct integer

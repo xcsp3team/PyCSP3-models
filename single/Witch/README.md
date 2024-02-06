@@ -1,5 +1,5 @@
 # Problem Witch
-## Description
+
 A toy problem from my course about CP.
 
 ## Data

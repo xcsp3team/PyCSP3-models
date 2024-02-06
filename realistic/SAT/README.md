@@ -1,12 +1,12 @@
 # Problem SAT
-## Description
+
 The SATisfiability problem.
 
 ## Data
-  xxxx
+  flat30-16.json
 
 ## Model
-  There are thre variants.
+  There are three variants.
 
   constraints: [Clause](http://pycsp.org/documentation/constraints/Clause), [Sum](http://pycsp.org/documentation/constraints/Sum)
 
@@ -21,4 +21,4 @@ The SATisfiability problem.
  - https://en.wikipedia.org/wiki/Boolean_satisfiability_problem
 
 ## Tags
-  academic
+  realistic

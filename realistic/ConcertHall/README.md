@@ -1,5 +1,5 @@
 # Problem ConcertHall
-## Description
+
 The concert hall scheduling problem considers a set of identical halls,
 and a set of concerts each having a start time, end time and profit.
 Each concert may either be allocated to a hall, or not scheduled.

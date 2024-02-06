@@ -1,5 +1,5 @@
 # Problem RACP
-## Description
+
 Resource Availability Cost Problem (also known as Resource Investment Problem).
 See EJOR paper cited below.
 

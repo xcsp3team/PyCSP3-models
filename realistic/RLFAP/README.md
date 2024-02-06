@@ -1,5 +1,5 @@
 # Problem RLFAP
-## Description
+
 Radio Link Frequency Assignment.
 
 ## Data Example
@@ -11,7 +11,7 @@ Radio Link Frequency Assignment.
 ## Execution
   - python RLFAP.py -data=<datafile.json> -variant=card
   - python RLFAP.py -data=<datafile.json> -variant=span
-  - python RLFAP.py -data=<datafile.txt> -variant=max
+  - python RLFAP.py -data=<datafile.json> -variant=max
 
 ## Links
   - https://link.springer.com/article/10.1023/A:1009812409930

@@ -1,5 +1,5 @@
 # Problem Dudeney
-## Description
+
 In number theory, a Dudeney number in a given number base b is a natural number
 equal to the perfect cube of another natural number such that the digit sum
 of the first natural number is equal to the second.

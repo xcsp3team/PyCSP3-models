@@ -1,5 +1,5 @@
 # Problem NurseRostering_p
-## Description
+
 This problem was described in the JAIR paper cited below.
 
 This problem was inspired by a rostering context.

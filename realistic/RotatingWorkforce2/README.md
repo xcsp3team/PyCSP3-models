@@ -1,5 +1,5 @@
-# Problem RotatingWorkforce
-## Description
+# Problem RotatingWorkforce2
+
 Rotating workforce scheduling problem.
 See paper link below.
 
@@ -14,8 +14,8 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist, under the MIT Licence.
 
 ## Execution
 ```
-  python RotatingWorkforce.py -data=<datafile.json>
-  python RotatingWorkforce.py -data=<datafile.dzn> -dataparser=RotatingWorkforce_ParserZ.py
+  python RotatingWorkforce2.py -data=<datafile.json>
+  python RotatingWorkforce2.py -data=<datafile.dzn> -dataparser=RotatingWorkforce2_ParserZ.py
 ```
 
 ## Links

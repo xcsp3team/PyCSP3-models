@@ -1,5 +1,5 @@
 # Problem Queens
-## Description
+
 This is [Problem 054](https://www.csplib.org/Problems/prob054/) at CSPLib.
 
 Can n queens (of the same colour) be placed on a n×n chessboard so that none of the queens can attack each other?

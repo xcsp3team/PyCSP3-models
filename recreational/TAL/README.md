@@ -1,5 +1,5 @@
 # Problem TAL
-## Description
+
 ## Data Example
   frobserved-7-15-11-13-9-1-11-7-4_1.json
 

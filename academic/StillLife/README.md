@@ -1,5 +1,5 @@
 # Problem StillLife
-## Description
+
 This is [Problem 032](https://www.csplib.org/Problems/prob032/) at CSPLib:
 
 This problem arises from the Game of Life, invented by John Horton Conway in the 1960s and popularized by Martin Gardner in his Scientific American columns.

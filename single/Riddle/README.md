@@ -1,5 +1,5 @@
 # Problem Riddle
-## Description
+
 Illustrative problem used in the PyCSP3 guide (See Chapter 1)
 
 ## Data

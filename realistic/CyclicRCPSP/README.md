@@ -1,5 +1,5 @@
 # Problem CyclicRCPSP
-## Description
+
 This is a cyclic resource-constrained project scheduling problem with generalised precedence relations
 constrained to scarce cumulative resources and tasks which are repeated infinitely.
 

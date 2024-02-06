@@ -1,5 +1,5 @@
 # Problem Blocks
-## Description
+
 Blocks World Puzzle
 
 Some numbered blocks are stacked into piles. The objective is to transform a start configuration into a goal configuration

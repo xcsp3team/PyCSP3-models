@@ -1,5 +1,5 @@
 # Problem TableLayout
-## Description
+
 Automatic layout of tables is useful in word processing applications.
 When the table contains text, minimizing the height of the table for a fixed maximum width is a difficult combinatorial optimization problem.
 See links to papers below.

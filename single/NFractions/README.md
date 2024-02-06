@@ -1,5 +1,5 @@
 # Problem NFractions
-## Description
+
 Problem 041 on CSPLib
 
 ## Data

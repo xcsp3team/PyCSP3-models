@@ -1,5 +1,5 @@
 # Problem ATSP
-## Description
+
 Artificial Teeth Scheduling Problem.
 See ICAPS paper link below.
 

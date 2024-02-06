@@ -1,5 +1,5 @@
 # Problem JapanEncoding
-## Description
+
 There are several popular character encodings in Japan: EUC-JP, SJIS, UTF-8.
 If they are mixed into one text file, text information is lost.
 Recovering original encodings from a given byte stream is to assign an encoding to each character.

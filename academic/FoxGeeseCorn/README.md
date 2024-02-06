@@ -1,5 +1,5 @@
 # Problem FoxGeeseCorn
-## Description
+
 This is a generalization of the famous Fox-Goose-Corn puzzle. In this version, a farmer
 wants to transport some foxes, geese and bags of corn from the west to the east side of a
 river. She has a boat with a capacity available for her to move some of the goods at once

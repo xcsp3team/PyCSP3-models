@@ -1,5 +1,5 @@
 # Problem QuadraticAssignment
-## Description
+
 The Quadratic Assignment Problem (QAP) has remained one of the great challenges in combinatorial optimization (from QAPLIB).
 
 ## Data
@@ -10,8 +10,8 @@ The Quadratic Assignment Problem (QAP) has remained one of the great challenges 
 
 ## Execution
 ```
-  python QuadraticAssignment.py -data=QuadraticAssignment_qap.json
-  python QuadraticAssignment.py -data=QuadraticAssignment_example.txt -dataparser=QuadraticAssignment_Parser.py
+  python QuadraticAssignment.py -data=<datafile.json>
+  python QuadraticAssignment.py -data=<datafile.txt> -dataparser=QuadraticAssignment_Parser.py
 ```
 
 ## Links

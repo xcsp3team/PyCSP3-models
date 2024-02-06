@@ -1,5 +1,5 @@
 # Problem ClockTriplet
-## Description
+
 The problem was originally posed by Dean Clark and then presented to a larger audience by Martin Gardner.
 The problem was discussed in Dr. Dobbs's Journal, May 2004 in an article  by Timothy Rolfe.
 According to the article, in his August 1986 column for Isaac Asimov's Science Fiction Magazine,

@@ -1,5 +1,5 @@
 # Problem GBACP
-## Description
+
 This is a generalisation of the Balanced Academic Curriculum Problem (BACP) proposed by
 Marco Chiarandini, Luca Di Gaspero, Stefano Gualandi, and Andrea Schaerf at University of Udine.
 See CSPLib.

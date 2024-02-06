@@ -1,5 +1,5 @@
 # Problem OncallRostering
-## Description
+
 A staff member must be assigned to each "day" in a rostering period.
 A "day", means either one of Monday through to Thursday or all of Friday through Sunday; the latter is considered to be the weekend.
 Individual staff members may be unavailable on some days and may also be required to be on-call on some (other) days.

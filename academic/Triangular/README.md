@@ -1,5 +1,5 @@
 # Problem Triangular
-## Description
+
 This problem is taken from Daily Telegraph and Sunday Times.
 The problem is to find, for an equilateral triangular grid of size n (length of a side),
 the maximum number of nodes that can be selected without having all selected corners of any equilateral triangle

@@ -1,5 +1,5 @@
 # Problem RCPSP_MAX
-## Description
+
 Resource-constrained Project Scheduling Problems with minimal and maximal time lags (RCPSP-max).
 We have resources, activities, and precedence constraints.
 Resources have a specific capacity and activities require some resources for their execution.

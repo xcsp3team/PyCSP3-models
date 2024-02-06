@@ -1,5 +1,5 @@
 # Problem MisteryShopper
-## Description
+
 See description on CSPLib.
 
 ## Data Example
@@ -10,7 +10,7 @@ See description on CSPLib.
 
 ## Execution:
 ```
-  python MisteryShopper.py -data=MisteryShopper_04.json
+  python MisteryShopper.py -data=<datafile.json>
 ```
 
 ## Links

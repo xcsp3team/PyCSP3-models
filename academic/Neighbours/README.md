@@ -1,5 +1,5 @@
 # Problem Neighbours
-## Description
+
 From the IBM Challenge "Ponder This".
 
 There are people living in the separate squares of a rectangular grid.

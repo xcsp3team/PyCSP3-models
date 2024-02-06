@@ -1,5 +1,5 @@
 # Problem CableTreeWiring
-## Description
+
 Deriving the optimal wiring sequence for a given layout of a cable tree.
 See paper cited below.
 

@@ -1,5 +1,5 @@
 # Problem DepotPlacement
-## Description
+
 Taken from the original Minizinc model:
 "There are two warehouses, A and B. Each warehouse has a fixed set of customers.
 No customer is served by both warehouses - so the two sets are disjoint.

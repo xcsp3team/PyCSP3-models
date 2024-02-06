@@ -1,5 +1,5 @@
 # Problem MedianString
-## Description
+
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
 No Licence was explicitly mentioned (MIT Licence is assumed).
 

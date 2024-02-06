@@ -1,5 +1,5 @@
 # Problem SchurrLemma
-## Description
+
 This is [Problem 015](https://www.csplib.org/Problems/prob015/) at CSPLib.
 
 The problem is to put n balls labelled 1,...,n into 3 boxes so that for any triple of balls (x,y,z) with x+y=z,

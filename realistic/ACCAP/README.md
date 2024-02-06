@@ -1,5 +1,5 @@
 # Problem ACCAP
-## Description
+
 Airport Check-in Counter Allocation Problem (ACCAP) with fixed opening/closing times.
 
 Airports have a specific set of check-in counters available for common use by multiple airlines throughout the day.

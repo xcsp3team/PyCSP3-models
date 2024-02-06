@@ -1,5 +1,5 @@
 # Problem BIBD
-## Description
+
 This is [Problem 28](http://www.csplib.org/Problems/prob028) at CSPLib:
 
 Balanced Incomplete Block Design (BIBD) generation is a standard combinatorial problem from design theory,
@@ -34,7 +34,7 @@ A BIBD is therefore specified by its parameters (v,b,r,k,l).
 ## Model(s)
   There are two variants:
     - a main variant
-    - another one (called aux) with auxiliary variables.
+    - another one (called aux) involving auxiliary variables.
 
   You can also find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/Bibd/).
 

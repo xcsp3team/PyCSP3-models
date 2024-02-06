@@ -1,5 +1,5 @@
 # Problem Rubik
-## Description
+
 The model, below, is rebuilt from instances submitted to the 2013 Minizinc challenge.
 These instances are initially given in flat format (i.e., not from a model).
 No Licence was explicitly mentioned (MIT Licence assumed).

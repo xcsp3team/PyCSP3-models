@@ -1,5 +1,5 @@
 # Problem Recipe
-## Description
+
 From the Minizinc tutorial
 
 ## Data

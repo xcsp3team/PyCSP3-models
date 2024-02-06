@@ -1,5 +1,5 @@
 # Problem Blackhole
-## Description
+
 Problem 081 on CSPLib
 
 ## Data

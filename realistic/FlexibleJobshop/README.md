@@ -1,5 +1,5 @@
 # Problem FlexibleJobshop
-## Description
+
 Flexible Job Shop Scheduling is more general than Job Shop Scheduling as some tasks can be run an alternative machines.
 The goal remains to find a feasible schedule minimising the makespan.
 Each job is composed of tasks and each task must be executed by exactly one among several optional operations.

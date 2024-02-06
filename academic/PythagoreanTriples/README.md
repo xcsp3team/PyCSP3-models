@@ -1,5 +1,5 @@
 # Problem PythagoreanTriples
-## Description
+
 The Boolean Pythagorean triples problem is a problem from Ramsey theory about whether the positive integers can be colored red and blue
 so that no Pythagorean triples consist of all red or all blue members.
 The Boolean Pythagorean triples problem was solved by Marijn Heule, Oliver Kullmann and Victor W. Marek in May 2016 through a computer-assisted proof.

@@ -1,5 +1,5 @@
 # Problem Sonet
-## Description
+
 This is Problem 064 on CSPLib, called Synchronous Optical Networking Problem (SONET).
 
 In the SONET problem we are given a set of nodes, and for

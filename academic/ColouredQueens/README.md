@@ -1,5 +1,5 @@
 # Problem ColouredQueens
-## Description
+
 The queens graph is a graph with n*n nodes corresponding to the squares of a chess-board.
 There is an edge between nodes iff they are on the same row, column, or diagonal, i.e. if two queens on those squares would attack each other.
 The coloring problem is to color the queens graph with n colors.

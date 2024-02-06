@@ -1,5 +1,5 @@
 # Problem TravelingWorld
-## Description
+
 Illustrative problem used in the PyCSP3 guide (See Chapter 1)
 
 Once upon a time, there were three friends called Xavier, Yannick and Zachary, who wanted to travel
@@ -18,7 +18,7 @@ the three friends be satisfied?
 ## Execution
 ```
   python TravelingWorld.py
-  python TravelingWorld.py -variant=integer
+  python TravelingWorld.py -variant=number
 ```
 
 ## Tags

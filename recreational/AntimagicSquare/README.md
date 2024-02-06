@@ -1,5 +1,5 @@
 # Problem AntimagicSquare
-## Description
+
 An anti-magic square of order n is an arrangement of the numbers 1 to n*n in a square,
 such that the sums of the n rows, the n columns and the two main diagonals form a sequence
 of 2n + 2 consecutive integers.

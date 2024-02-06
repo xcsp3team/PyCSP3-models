@@ -1,5 +1,5 @@
 # Problem TSP_TW
-## Description
+
 The Traveling Salesman Problem with Time Windows (TSPTW) is a popular variant of the TSP where the salesman’s customers
 must be visited within given time windows.
 See IJCAI paper below.

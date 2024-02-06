@@ -1,5 +1,5 @@
 # Problem Vaccine
-## Description
+
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2022 Minizinc challenge.
 The MZN model was proposed by Peter J. Stuckey, under the MIT Licence.
 Compared to the Minizinc model, we do not use set variables.

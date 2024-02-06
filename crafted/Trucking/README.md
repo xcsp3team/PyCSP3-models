@@ -1,5 +1,5 @@
 # Problem Trucking
-## Description
+
 There are some trucks.
 Each truck can transport a given Load of material, and has an associated cost.
 In each time period a demand has to be fulfilled.

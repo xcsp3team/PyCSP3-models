@@ -1,5 +1,5 @@
 # Problem FAPP
-## Description
+
 See Challenge ROADEF 2001 (FAPP: Problème d'affectation de fréquences avec polarization)
 
 ## Data Example
@@ -15,7 +15,7 @@ See Challenge ROADEF 2001 (FAPP: Problème d'affectation de fréquences avec pol
 ## Execution
 ```
   python FAPP.py -data=<datafile.json>
-  python FAPP.py -data=<datafile.json>
+  python FAPP.py -data=<datafile.json> -variant=short
 ```
 
 ## Links

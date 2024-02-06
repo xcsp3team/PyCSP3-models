@@ -1,5 +1,5 @@
 # Problem BnnPlanner
-## Description
+
 Planning with Learned Binarized Neural Networks.
 See AIJ paper cited below.
 

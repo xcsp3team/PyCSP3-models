@@ -1,5 +1,5 @@
 # Problem Perfect1Factorization
-## Description
+
 A 1-factorization is a partition of the edges of a graph into m-1 complete matchings.
 For the 1-factorization to be perfect, every pair of matchings must form a Hamiltonian circuit of the graph.
 To make the problem interesting it is specified as an optimization-problem, forcing an ordering on the solutions.

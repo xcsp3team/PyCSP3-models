@@ -1,5 +1,5 @@
 # Problem MSPSP
-## Description
+
 Multi-Skilled Project Scheduling Problem
 
 This is a variation of the basic resource-constrained project scheduling problem.
