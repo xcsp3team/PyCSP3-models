@@ -44,8 +44,13 @@ satisfy(
     # planes must land at different times
     AllDifferent(x),
 
-    # the separation time required between any two planes must be satisfied:
-    [NoOverlap(origins=[x[i], x[j]], lengths=[separations[i][j], separations[j][i]]) for i, j in combinations(nPlanes, 2)]
+    # the separation time required between any two planes must be satisfied
+    [
+        NoOverlap(
+            origins=[x[i], x[j]],
+            lengths=[separations[i][j], separations[j][i]]
+        ) for i, j in combinations(nPlanes, 2)
+    ]
 )
 
 if not variant():
@@ -54,13 +59,13 @@ if not variant():
         [e[i] == max(0, target[i] - x[i]) for i in range(nPlanes)],
 
         # computing tardiness of planes
-        [t[i] == max(0, x[i] - target[i]) for i in range(nPlanes)],
+        [t[i] == max(0, x[i] - target[i]) for i in range(nPlanes)]
     )
 
 elif variant("table"):
     satisfy(
         # computing earliness and tardiness of planes
-        (x[i], e[i], t[i]) in {(v, max(0, target[i] - v), max(0, v - target[i])) for v in range(earliest[i], latest[i] + 1)} for i in range(nPlanes)
+        (x[i], e[i], t[i]) in {(v, max(0, target[i] - v), max(0, v - target[i])) for v in x[i].dom} for i in range(nPlanes)
     )
 
 minimize(
@@ -77,4 +82,8 @@ minimize(
    
 2) for the 2022 competition, we used as objective for the mini-track:
    Sum(e) + Sum(t)
+   
+3) for v in x[i].dom
+ is equivalent to:
+   for v in range(earliest[i], latest[i] + 1)
 """

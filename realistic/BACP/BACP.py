@@ -7,7 +7,7 @@ BACP is to design a balanced academic curriculum by assigning periods to courses
   10.json
 
 ## Model
-  Thera are two variants:
+  There are two variants:
    - one with extension constraints
    - one with intension constraints
   and one subvariant "d"

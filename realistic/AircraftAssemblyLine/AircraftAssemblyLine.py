@@ -43,7 +43,7 @@ def station_of_task(i):
     return -1 if r == -1 else next(j for j in range(nStations) if stationMachines[j][r] == 1)
 
 
-stationOfTasks = [station_of_task(i) for i in range(nTasks)]  # station of the ith task (-1 if can be everywhere)
+stationOfTasks = [station_of_task(i) for i in range(nTasks)]  # station of the ith task (-1 if it can be everywhere)
 
 # x[i] is the starting time of the ith task
 x = VarArray(size=nTasks, dom=range(takt * nStations + 1))

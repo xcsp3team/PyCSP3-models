@@ -24,7 +24,7 @@ from pycsp3 import *
 
 bids = data or default_data("example.json")
 items = sorted({item for bid in bids for item in bid.items})
-values = integer_scaling(bid.value for bid in bids)
+vals = integer_scaling(bid.value for bid in bids)
 nBids = len(bids)
 
 # x[i] is 1 iff the ith bid is selected
@@ -37,7 +37,7 @@ satisfy(
 
 maximize(
     # maximizing summed values of selected bids
-    x * values
+    x * vals
 )
 
 """

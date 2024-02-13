@@ -66,7 +66,7 @@ satisfy(
 if not variant():
     satisfy(
         # computing the maximal distance between two flights of the same airline
-        y[i] + requirements[i] - 1 - y[j] <= d[a] for a in range(nAirlines) for i in airlines[a] for j in airlines[a] if i != j
+        y[i] + (requirements[i] - 1) - y[j] <= d[a] for a in range(nAirlines) for i in airlines[a] for j in airlines[a] if i != j
     )
 
 elif variant("sum"):
