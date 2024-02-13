@@ -1,1 +1,219 @@
-{"n": 10, "times": [{"earliest": 129, "target": 155, "latest": 559}, {"earliest": 195, "target": 258, "latest": 744}, {"earliest": 89, "target": 98, "latest": 510}, {"earliest": 96, "target": 106, "latest": 521}, {"earliest": 110, "target": 123, "latest": 555}, {"earliest": 120, "target": 135, "latest": 576}, {"earliest": 124, "target": 138, "latest": 577}, {"earliest": 126, "target": 140, "latest": 573}, {"earliest": 135, "target": 150, "latest": 591}, {"earliest": 160, "target": 180, "latest": 657}], "costs": [{"early_penalty": 1000, "late_penalty": 1000}, {"early_penalty": 1000, "late_penalty": 1000}, {"early_penalty": 3000, "late_penalty": 3000}, {"early_penalty": 3000, "late_penalty": 3000}, {"early_penalty": 3000, "late_penalty": 3000}, {"early_penalty": 3000, "late_penalty": 3000}, {"early_penalty": 3000, "late_penalty": 3000}, {"early_penalty": 3000, "late_penalty": 3000}, {"early_penalty": 3000, "late_penalty": 3000}, {"early_penalty": 3000, "late_penalty": 3000}], "separations": [[99999, 3, 15, 15, 15, 15, 15, 15, 15, 15], [3, 99999, 15, 15, 15, 15, 15, 15, 15, 15], [15, 15, 99999, 8, 8, 8, 8, 8, 8, 8], [15, 15, 8, 99999, 8, 8, 8, 8, 8, 8], [15, 15, 8, 8, 99999, 8, 8, 8, 8, 8], [15, 15, 8, 8, 8, 99999, 8, 8, 8, 8], [15, 15, 8, 8, 8, 8, 99999, 8, 8, 8], [15, 15, 8, 8, 8, 8, 8, 99999, 8, 8], [15, 15, 8, 8, 8, 8, 8, 8, 99999, 8], [15, 15, 8, 8, 8, 8, 8, 8, 8, 99999]]}
+{
+  "n": 10,
+  "times": [
+    {
+      "earliest": 129,
+      "target": 155,
+      "latest": 559
+    },
+    {
+      "earliest": 195,
+      "target": 258,
+      "latest": 744
+    },
+    {
+      "earliest": 89,
+      "target": 98,
+      "latest": 510
+    },
+    {
+      "earliest": 96,
+      "target": 106,
+      "latest": 521
+    },
+    {
+      "earliest": 110,
+      "target": 123,
+      "latest": 555
+    },
+    {
+      "earliest": 120,
+      "target": 135,
+      "latest": 576
+    },
+    {
+      "earliest": 124,
+      "target": 138,
+      "latest": 577
+    },
+    {
+      "earliest": 126,
+      "target": 140,
+      "latest": 573
+    },
+    {
+      "earliest": 135,
+      "target": 150,
+      "latest": 591
+    },
+    {
+      "earliest": 160,
+      "target": 180,
+      "latest": 657
+    }
+  ],
+  "costs": [
+    {
+      "early_penalty": 1000,
+      "late_penalty": 1000
+    },
+    {
+      "early_penalty": 1000,
+      "late_penalty": 1000
+    },
+    {
+      "early_penalty": 3000,
+      "late_penalty": 3000
+    },
+    {
+      "early_penalty": 3000,
+      "late_penalty": 3000
+    },
+    {
+      "early_penalty": 3000,
+      "late_penalty": 3000
+    },
+    {
+      "early_penalty": 3000,
+      "late_penalty": 3000
+    },
+    {
+      "early_penalty": 3000,
+      "late_penalty": 3000
+    },
+    {
+      "early_penalty": 3000,
+      "late_penalty": 3000
+    },
+    {
+      "early_penalty": 3000,
+      "late_penalty": 3000
+    },
+    {
+      "early_penalty": 3000,
+      "late_penalty": 3000
+    }
+  ],
+  "separations": [
+    [
+      99999,
+      3,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    [
+      3,
+      99999,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15
+    ],
+    [
+      15,
+      15,
+      99999,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8
+    ],
+    [
+      15,
+      15,
+      8,
+      99999,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8
+    ],
+    [
+      15,
+      15,
+      8,
+      8,
+      99999,
+      8,
+      8,
+      8,
+      8,
+      8
+    ],
+    [
+      15,
+      15,
+      8,
+      8,
+      8,
+      99999,
+      8,
+      8,
+      8,
+      8
+    ],
+    [
+      15,
+      15,
+      8,
+      8,
+      8,
+      8,
+      99999,
+      8,
+      8,
+      8
+    ],
+    [
+      15,
+      15,
+      8,
+      8,
+      8,
+      8,
+      8,
+      99999,
+      8,
+      8
+    ],
+    [
+      15,
+      15,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      99999,
+      8
+    ],
+    [
+      15,
+      15,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      99999
+    ]
+  ]
+}

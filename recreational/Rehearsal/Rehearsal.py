@@ -25,49 +25,59 @@ from pycsp3 import *
 durations, playing = data
 nPieces, nPlayers = len(durations), len(playing)
 
-# o[i] is the piece played in slot (order) i
-o = VarArray(size=nPieces, dom=range(nPieces))
+# p[j] is the piece played in slot j
+p = VarArray(size=nPieces, dom=range(nPieces))
 
-# a[p] is the (beginning of the) slot  when the player p arrives
-a = VarArray(size=nPlayers, dom=range(nPieces))
+# s[i] is (the slot) when the ith player arrives (starts)
+s = VarArray(size=nPlayers, dom=range(nPieces))
 
-# l[p] is the (end of the) slot when the player p leaves
-l = VarArray(size=nPlayers, dom=range(nPieces))
+# e[i] is (the slot) when the ith player leaves (ends)
+e = VarArray(size=nPlayers, dom=range(nPieces))
 
 if not variant():
 
     satisfy(
         # all pieces of music must be played in some order
-        AllDifferent(o),
+        AllDifferent(p),
 
         # a player must be present when a piece of music requires him/her
-        [(playing[p][o[i]] == 0) | (a[p] <= i) & (i <= l[p]) for p in range(nPlayers) for i in range(nPieces)]
+        [
+            If(
+                playing[i][p[j]],
+                Then=both(s[i] <= j, j <= e[i])
+            ) for i in range(nPlayers) for j in range(nPieces)
+        ]
     )
 
     minimize(
         # minimizing the waiting time of players (i.e. without playing)
-        Sum(durations[o[i]] * ((playing[p][o[i]] == 0) & (a[p] <= i) & (i <= l[p])) for p in range(nPlayers) for i in range(nPieces))
+        Sum(durations[p[j]] * conjunction(playing[i][p[j]] == 0, s[i] <= j, j <= e[i]) for i in range(nPlayers) for j in range(nPieces))
     )
 
 elif variant("bis"):
 
-    # ep[p][i] is 1 iff the player p must effectively play in slot i
+    # ep[i][j] is 1 iff the ith player must effectively play in the jth slot
     ep = VarArray(size=[nPlayers, nPieces], dom={0, 1})
 
     satisfy(
         # all pieces of music must be played in some order
-        AllDifferent(o),
+        AllDifferent(p),
 
         # determining when players must effectively play
-        [ep[p][i] == playing[p][o[i]] for p in range(nPlayers) for i in range(nPieces)],
+        [ep[i][j] == playing[i][p[j]] for i in range(nPlayers) for j in range(nPieces)],
 
         # a player must be present when a piece of music requires him/her
-        [(ep[p][i] == 0) | (a[p] <= i) & (i <= l[p]) for p in range(nPlayers) for i in range(nPieces)]
+        [
+            If(
+                ep[i][j],
+                Then=(s[i] <= j) & (j <= e[i])
+            ) for i in range(nPlayers) for j in range(nPieces)
+        ]
     )
 
     minimize(
         # minimizing the waiting time of players (i.e. without playing)
-        Sum(durations[o[i]] * ((ep[p][i] == 0) & (a[p] <= i) & (i <= l[p])) for p in range(nPlayers) for i in range(nPieces))
+        Sum(durations[p[j]] * conjunction(ep[i][j] == 0, s[i] <= j, j <= e[i]) for i in range(nPlayers) for j in range(nPieces))
     )
 
 """ Comments
@@ -75,5 +85,5 @@ elif variant("bis"):
    which, to som respect, allows a better control of the generated instances. Here, however, the outputs  are not
    so different for this problem.
 
-2) we cannot currently write: (a[p] <= i <= l[p]) (this is technically not obvious to handle that, and even seems almost impossible)
+2) we cannot currently write: (a[p] <= i <= b[p]) (this is technically not obvious to handle that, and even seems almost impossible)
 """

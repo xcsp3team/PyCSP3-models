@@ -43,7 +43,7 @@ flights, airlines = data
 durations, requirements, x = zip(*flights)  # requirements in terms of numbers of counters; x stands for starts
 nFlights, nAirlines, nCounters = len(flights), len(airlines), sum(requirements)
 
-# y[i] is the first counter (index) of the series required by flight i
+# y[i] is the first counter (index) of the series required by the ith flight
 y = VarArray(size=nFlights, dom=range(nCounters))
 
 # d[a] is the maximal distance between two flights of the airline a
@@ -54,7 +54,10 @@ z = Var(dom=range(max(requirements), nCounters + 1))
 
 satisfy(
     # ensuring no counter is shared
-    NoOverlap(origins=(x, y), lengths=(durations, requirements)),
+    NoOverlap(
+        origins=(x, y),
+        lengths=(durations, requirements)
+    ),
 
     # computing the number of used counters
     [y[i] + requirements[i] <= z for i in range(nFlights)]
