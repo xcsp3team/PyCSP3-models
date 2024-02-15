@@ -75,7 +75,10 @@ elif variant("aux"):
 
 satisfy(
     # tag(symmetry-breaking)
-    [x[0] == 0, Increasing(x, strict=True)]
+    [
+        x[0] == 0,
+        Increasing(x, strict=True)
+    ]
 )
 
 minimize(

@@ -44,8 +44,8 @@ satisfy(
 
     # computing dominance
     [
-        [y[i][0] == Sum(x[i][r1] > x[(i + 1) % n][r2] for r1 in range(m) for r2 in range(m)) for i in range(n)],
-        [y[i][1] == Sum(x[(i + 1) % n][r1] > x[i][r2] for r1 in range(m) for r2 in range(m)) for i in range(n)]
+        [y[i][0] == Sum(x[i][r1] > x[i + 1][r2] for r1 in range(m) for r2 in range(m)) for i in range(n)],
+        [y[i][1] == Sum(x[i + 1][r1] > x[i][r2] for r1 in range(m) for r2 in range(m)) for i in range(n)]
     ],
 
     # computing dominance gap
@@ -62,6 +62,7 @@ if variant("opt"):
     )
 
 """ Comments
+0) index auto-indexing is active by default:  x[i + 1] is equal to x[(i + 1) % n]
 1) no need for posting:
    # ensuring non-transitivity
    [y[i][0] > y[i][1] for i in range(n)],

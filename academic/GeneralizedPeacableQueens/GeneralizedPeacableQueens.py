@@ -73,7 +73,7 @@ satisfy(
         [
             LexIncreasing(
                 x,
-                [x[row] for row in symmetry]
+                x[symmetry]
             ) for symmetry in symmetries
         ]
     )
@@ -87,7 +87,9 @@ maximize(
 """
 1) data used in 2022 are:  (8,3), (9,5), (11,5), (13,5), (25,4)
 2) note that:
+ x[symmetry]
+   is a shortcut for
  [x[row] for row in symmetry]
-   is a shortcut for:
+   which, itself, is a shortcut for:
  [[x[k][l] for k, l in row] for row in symmetry]
 """

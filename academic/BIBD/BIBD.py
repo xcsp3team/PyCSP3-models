@@ -49,9 +49,9 @@ A BIBD is therefore specified by its parameters (v,b,r,k,l).
 
 from pycsp3 import *
 
-v, b, r, k, l = data or (6, 0, 0, 3, 8)
-b = (l * v * (v - 1)) // (k * (k - 1)) if b == 0 else b  # when specified at 0, b is automatically computed
-r = (l * (v - 1)) // (k - 1) if r == 0 else r  # when specified at 0, r is automatically computed
+v, b, r, k, ld = data or (6, 0, 0, 3, 8)
+b = (ld * v * (v - 1)) // (k * (k - 1)) if b == 0 else b  # when specified at 0, b is automatically computed
+r = (ld * (v - 1)) // (k - 1) if r == 0 else r  # when specified at 0, r is automatically computed
 
 # x[i][j] is the value of the matrix at row i and column j
 x = VarArray(size=[v, b], dom={0, 1})
@@ -65,7 +65,7 @@ if not variant():
         [Sum(col) == k for col in columns(x)],
 
         # scalar constraints with respect to lambda
-        [row1 * row2 == l for row1, row2 in combinations(x, 2)]
+        [row1 * row2 == ld for row1, row2 in combinations(x, 2)]
     )
 
 elif variant("aux"):
@@ -83,7 +83,7 @@ elif variant("aux"):
         [s[i][j][k] == x[i][k] * x[j][k] for i, j in combinations(v, 2) for k in range(b)],
 
         # scalar constraints with respect to lambda
-        [Sum(s[i][j]) == l for i, j in combinations(v, 2)]
+        [Sum(s[i][j]) == ld for i, j in combinations(v, 2)]
     )
 
 satisfy(

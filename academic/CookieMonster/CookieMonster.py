@@ -53,7 +53,7 @@ satisfy(
     [
         either(
             x[t + 1][i] == x[t][i],
-            x[t + 1][i] == x[t][i] - y[t]
+            Or=x[t + 1][i] == x[t][i] - y[t]
         ) for t in range(horizon - 1) for i in range(nJars)
     ],
 

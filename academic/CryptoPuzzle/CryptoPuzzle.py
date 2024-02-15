@@ -53,7 +53,11 @@ satisfy(
     AllDifferent(x),
 
     # the most significant letter of each word cannot be equal to 0
-    [x1[-1] != 0, x2[-1] != 0, x3[-1] != 0]
+    [
+        x1[-1] != 0,
+        x2[-1] != 0,
+        x3[-1] != 0
+    ]
 )
 
 if not variant():

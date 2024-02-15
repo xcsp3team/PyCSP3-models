@@ -44,8 +44,6 @@ def conflicts():
     return t
 
 
-conflicts = conflicts()
-
 # x[i] is 0 (resp., 1) if integer i is in part/subset 0 (resp., 1)
 x = VarArray(size=n + 1, dom={0, 1})
 
@@ -54,6 +52,8 @@ satisfy(
     x[0] == 0,
 
     # ensuring that no Pythagorean triple is present in the same part
-    [NValues(x[i], x[j], x[k]) > 1 if not variant() else (x[i], x[j], x[k]) in [(0, 0, 1), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0)]
-     for i, j, k in conflicts]
+    [
+        NotAllEqual(x[i], x[j], x[k]) if not variant() else (x[i], x[j], x[k]) in [(0, 0, 1), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0)]
+        for i, j, k in conflicts()
+    ]
 )

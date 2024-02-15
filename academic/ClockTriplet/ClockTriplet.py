@@ -35,12 +35,13 @@ due to the number of permutations.
 from pycsp3 import *
 
 r, n = data or (3, 12)
+ub = sum(n - v for v in range(r))
 
 # x[i] is the ith number in the circle
 x = VarArray(size=n, dom=range(1, n + 1))
 
 # z is the minimal value such that any (circular) subsequence of x of size r is less than or equal to z
-z = Var(dom=range(sum(n - v for v in range(r)) + 1))
+z = Var(dom=range(ub + 1))
 
 satisfy(
     # a permutation is required

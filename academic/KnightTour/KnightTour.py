@@ -39,7 +39,10 @@ satisfy(
     AllDifferent(x),
 
     # putting the first knight in the first cell, and the second knight in the first possible cell  tag(symmetry-breaking)
-    [x[0] == 0, x[1] == n + 2]
+    [
+        x[0] == 0,
+        x[1] == n + 2
+    ]
 )
 
 if not variant():

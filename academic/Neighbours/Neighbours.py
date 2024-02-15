@@ -80,7 +80,7 @@ elif variant("table"):
 
 satisfy(
     # tag(symmetry-breaking)
-    LexIncreasing(x, [x[row] for row in symmetry]) for symmetry in symmetries
+    LexIncreasing(x, x[symmetry]) for symmetry in symmetries
 )
 
 maximize(

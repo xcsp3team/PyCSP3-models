@@ -87,7 +87,7 @@ elif variant("wastage"):
             (t4 != 0 or (s1 != 3 and (0 < s3 < 4 or wa >= 2)) and (s3 > 1 or wa >= 1))
 
 
-    table = {(*t, i) for t in product(range(2), repeat=9) for i in range(3) if condition_for_tuple(*t, i)}
+    T = {(*t, i) for t in product(range(2), repeat=9) for i in range(3) if condition_for_tuple(*t, i)}
 
     # x[i][j] is 1 iff the cell at row i and col j is alive (note that there is a border)
     x = VarArray(size=[n + 2, n + 2], dom=lambda i, j: {0} if i in {0, n + 1} or j in {0, n + 1} else {0, 1})
@@ -108,12 +108,12 @@ elif variant("wastage"):
         ],
 
         # still life + wastage constraints
-        [(x[i - 1:i + 2, j - 1:j + 2], w[i][j]) in table for i in range(1, n + 1) for j in range(1, n + 1)],
+        [(x[i - 1:i + 2, j - 1:j + 2], w[i][j]) in T for i in range(1, n + 1) for j in range(1, n + 1)],
 
         # managing wastage on the border
         [
             [(w[0][j] + x[1][j] == 1, w[n + 1][j] + x[n][j] == 1) for j in range(1, n + 1)],
-            [(w[i][0] + x[i][1] == 1, w[i][n + 1] + x[i][n] == 1) for i in range(1, n + 1)],
+            [(w[i][0] + x[i][1] == 1, w[i][n + 1] + x[i][n] == 1) for i in range(1, n + 1)]
         ],
 
         # summing wastage

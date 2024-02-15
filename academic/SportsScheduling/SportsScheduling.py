@@ -35,7 +35,7 @@ def match_number(t1, t2):
     return nMatches - ((nTeams - t1) * (nTeams - t1 - 1)) // 2 + (t2 - t1 - 1)
 
 
-T = {(t1, t2, match_number(t1, t2)) for t1, t2 in combinations(range(nTeams), 2)}
+T = {(t1, t2, match_number(t1, t2)) for t1, t2 in combinations(nTeams, 2)}
 
 # m[w][p] is the number of the match at week w and period p
 m = VarArray(size=[nWeeks, nPeriods], dom=range(nMatches))

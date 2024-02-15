@@ -52,5 +52,5 @@ elif variant("v1"):
 
 elif variant("v2"):
     satisfy(
-        (q[i] != q[j]) & (abs(q[i] - q[j]) != j - i) for i, j in combinations(n, 2)
+        both(q[i] != q[j], abs(q[i] - q[j]) != j - i) for i, j in combinations(n, 2)
     )

@@ -78,7 +78,8 @@ satisfy(
     # tag(symmetry-breaking)
     [
         Decreasing(p),
-        [(p[i + 1] == 0) | (xy[i] < xy[i + 1]) for i in range(n - 1)]
+
+        [If(p[i + 1], Then=xy[i] < xy[i + 1]) for i in range(n - 1)]
     ]
 )
 

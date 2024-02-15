@@ -25,7 +25,7 @@ t, k, g, b = data or (3, 5, 2, 10)
 n = factorial(k) // factorial(t) // factorial(k - t)
 d = g ** t
 
-T = {tuple(sum(pr[a] * g ** i for i, a in enumerate(reversed(co))) for co in combinations(range(k), t)) for pr in product(range(g), repeat=k)}
+T = {tuple(sum(pr[a] * g ** i for i, a in enumerate(reversed(cb))) for cb in combinations(range(k), t)) for pr in product(range(g), repeat=k)}
 
 # p[i][j] is one of the position of the jth value of the ith 't'-combination
 p = VarArray(size=[n, d], dom=range(b))

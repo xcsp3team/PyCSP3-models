@@ -68,7 +68,7 @@ satisfy(
     # tag(symmetry-breaking)
     (
         Precedence(x, values=[BLACK, WHITE]),
-        [LexIncreasing(x, [x[row] for row in symmetry]) for symmetry in symmetries]
+        [LexIncreasing(x, x[symmetry]) for symmetry in symmetries]
     )
 )
 

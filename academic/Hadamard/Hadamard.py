@@ -38,7 +38,11 @@ satisfy(
     Sum(y) == 1,
 
     # quadratic constraints
-    [Sum(x[i] * x[i + k] for i in range(n)) + Sum(y[i] * y[i + k] for i in range(n)) == -2 for k in range(1, m + 1)]
+    [
+        Sum(x[i] * x[i + k] for i in range(n))
+        + Sum(y[i] * y[i + k] for i in range(n))
+        == -2 for k in range(1, m + 1)
+    ]
 )
 
 """

@@ -44,7 +44,7 @@ satisfy(
     [AllDifferent(x[:, j]) for j in range(n)],
 
     # computing values of y
-    [(y[i1][i2][j] == x[i1][j]) | (y[i1][i2][j] == x[i2][j]) for i1, i2 in combinations(m, 2) for j in range(1, n)],
+    [either(y[i1][i2][j] == x[i1][j], y[i1][i2][j] == x[i2][j]) for i1, i2 in combinations(m, 2) for j in range(1, n)],
 
     # tag(symmetry-breaking)
     (
