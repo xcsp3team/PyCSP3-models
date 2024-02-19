@@ -19,8 +19,6 @@ to be put in an enclosing rectangle (container) without overlapping of the squar
   realistic
 """
 
-import math
-
 from pycsp3 import *
 
 width, height = data.container

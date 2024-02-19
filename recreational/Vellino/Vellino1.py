@@ -61,21 +61,47 @@ satisfy(
         Match(
             c[i],
             Cases={
-                Red: [p[i][Plastic] == 0, p[i][Steel] == 0, p[i][Wood] <= 1],
-                Blue: [p[i][Wood] == 0, p[i][Plastic] == 0],
-                Green: [p[i][Steel] == 0, p[i][Glass] == 0, p[i][Wood] <= 2]
+                Red: [
+                    p[i][Plastic] == 0,
+                    p[i][Steel] == 0,
+                    p[i][Wood] <= 1
+                ],
+                Blue: [
+                    p[i][Wood] == 0,
+                    p[i][Plastic] == 0
+                ],
+                Green: [
+                    p[i][Steel] == 0,
+                    p[i][Glass] == 0,
+                    p[i][Wood] <= 2
+                ]
             }
         ) for i in range(nBins)
     ],
 
     # wood requires plastic
-    [If(p[i][Wood] > 0, Then=p[i][Plastic] > 0) for i in range(nBins)],
+    [
+        If(
+            p[i][Wood] > 0,
+            Then=p[i][Plastic] > 0
+        ) for i in range(nBins)
+    ],
 
     # glass excludes copper
-    [If(p[i][Glass] > 0, Then=p[i][Copper] == 0) for i in range(nBins)],
+    [
+        If(
+            p[i][Glass] > 0,
+            Then=p[i][Copper] == 0
+        ) for i in range(nBins)
+    ],
 
     # copper excludes plastic
-    [If(p[i][Copper] > 0, Then=p[i][Plastic] == 0) for i in range(nBins)],
+    [
+        If(
+            p[i][Copper] > 0,
+            Then=p[i][Plastic] == 0
+        ) for i in range(nBins)
+    ],
 
     # tag(symmetry-breaking)
     [LexIncreasing(p[i], p[i + 1]) for i in range(nBins - 1)]

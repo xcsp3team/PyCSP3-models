@@ -26,8 +26,7 @@ free_cells = [(i, j) for i in range(1, n + 1) for j in range(1, m + 1) if (i, j)
 # x[i][j] is the value at row i and column j (a boundary is put around the board).
 x = VarArray(size=[n + 2, m + 2], dom=lambda i, j: {0} if i in {0, n + 1} or j in {0, m + 1} else range(nValues))
 
-T = ({(0, ANY, ANY, ANY, ANY)}
-     | {tuple(ne(v) if k in (i, j) else v for k in range(5)) for v in range(1, nValues) for i, j in combinations(range(1, 5), 2)})
+T = [(0, ANY, ANY, ANY, ANY)] + [tuple(ne(v) if k in (i, j) else v for k in range(5)) for v in range(1, nValues) for i, j in combinations(range(1, 5), 2)]
 
 satisfy(
     # putting two occurrences of each value on the board

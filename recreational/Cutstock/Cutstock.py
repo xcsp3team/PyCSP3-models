@@ -36,7 +36,10 @@ satisfy(
     [r[i] * lengths <= p[i] * pieceLength for i in range(nPieces)],
 
     # tag(symmetry-breaking)
-    [Decreasing(p), LexDecreasing(r)]
+    [
+        Decreasing(p),
+        LexDecreasing(r)
+    ]
 )
 
 minimize(

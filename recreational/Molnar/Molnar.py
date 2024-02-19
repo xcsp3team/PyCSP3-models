@@ -60,3 +60,11 @@ satisfy(
     # tag(symmetryBreaking)
     LexIncreasing(x, matrix=True)
 )
+
+"""
+1) we could use 
+ return Sum(t * c for t, c in terms)
+   instead of 
+  return [t for t, _ in terms] * [c for _, c in terms]
+ but the output is more involved
+"""

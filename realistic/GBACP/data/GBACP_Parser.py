@@ -1,5 +1,4 @@
 from pycsp3.problems.data.parsing import *
-from random import seed, shuffle
 
 data['nYears'] = number_in(next_line())
 data['nPeriodsPerYear'] = number_in(next_line())

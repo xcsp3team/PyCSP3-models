@@ -42,16 +42,21 @@ satisfy(
     AllDifferent(x + y),
 
     # unary constraints
-    [(x[i][j] in P[i], y[i][j] in P[j]) for i, j in dominoes],
+    [
+        (
+            x[i][j] in P[i],
+            y[i][j] in P[j]
+        ) for i, j in dominoes
+    ],
 )
 
 if not variant():
     satisfy(
         # adjacency constraints
         If(
-            dist != nCols,  # if not adjacent in the same column
-            Then=both(dist == 1, x[i][j] // nCols == y[i][j] // nCols)  # then adjacent in the same line
-        ) for i, j in dominoes if (dist := abs(x[i][j] - y[i][j]),)
+            d != nCols,  # if not adjacent in the same column
+            Then=both(d == 1, x[i][j] // nCols == y[i][j] // nCols)  # then adjacent in the same line
+        ) for i, j in dominoes if (d := abs(x[i][j] - y[i][j]),)
     )
 
 elif variant("table"):

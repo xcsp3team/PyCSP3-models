@@ -12,8 +12,8 @@ The purpose of the game is to fill a grid of size n × n with all values ranging
   constraints: AllDifferent, Count, Table
 
 ## Execution
-  - python CalvinPuzzle.py -data=[number]
-  - python CalvinPuzzle.py -data=[number] -variant=table
+  - python CalvinPuzzle.py -data=number
+  - python CalvinPuzzle.py -data=number -variant=table
 
 ## Links
   - https://chycho.blogspot.com/2014/01/an-exercise-for-mind-10-by-10-math.html
@@ -54,7 +54,7 @@ if not variant():
 
 elif variant("table"):
 
-    def table(i, j):
+    def T(i, j):
         r = len(N[i][j]) + 1
         return [tuple(k if i == 0 else (k + 1) if i == j else ANY for i in range(r)) for k in range(1, n * n) for j in range(1, r)] \
             + [(n * n, *[ANY] * (r - 1))]
@@ -62,7 +62,7 @@ elif variant("table"):
 
     satisfy(
         # each cell must be linked to its neighbors
-        (x[i][j], N[i][j]) in table(i, j) for i in range(n) for j in range(n)
+        (x[i][j], N[i][j]) in T(i, j) for i in range(n) for j in range(n)
     )
 
 """

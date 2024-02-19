@@ -86,7 +86,7 @@ satisfy(
 
 if subvariant("d"):
     minimize(
-        # minimizing the maximal distance in term of credits
+        # minimizing the maximal distance in terms of credits
         Maximum(cr) - Minimum(cr)
     )
 else:

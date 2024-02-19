@@ -8,7 +8,7 @@ next_line()
 nBugTypes = next_int()
 
 next_line()
-bugTypesLength = [next_int() for i in range(nBugTypes)];
+bugTypesLength = [next_int() for i in range(nBugTypes)]
 
 next_line()
 nBugs = next_int()

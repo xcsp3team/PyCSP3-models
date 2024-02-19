@@ -78,7 +78,7 @@ satisfy(
      for t in range(1, nSteps) for i in Nodes],
 
     # computing the result of actions
-    [IfThenElse(
+    [If(
         ac[t][j] == OPEN,
         Then=[
             op[x[t][j], t],

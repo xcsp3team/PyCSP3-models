@@ -1,7 +1,5 @@
 from pycsp3.problems.data.parsing import *
 
-from collections import defaultdict
-
 data['n'] = numbers_in(line())[1]
 clauses = []
 while not line().startswith("solve"):

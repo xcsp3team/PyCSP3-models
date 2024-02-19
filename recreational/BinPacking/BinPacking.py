@@ -77,6 +77,7 @@ if not variant():
         # items are stored decreasingly in each bin according to their weights
         [Decreasing(x[i]) for i in range(nBins)]
     )
+
 elif variant("table"):
     def table():
         def table_recursive(n_stored, i, curr):
@@ -99,14 +100,14 @@ elif variant("table"):
         return tuples
 
 
-    table = table()
+    T = table()
     satisfy(
-        x[i] in table for i in range(nBins)
+        x[i] in T for i in range(nBins)
     )
 
 satisfy(
     # ensuring that each item is stored in a bin
-    Cardinality(x, occurrences={0: nBins * maxPerBin - nItems} + {wgt: occ for (wgt, occ) in occurrences_of_weights()}),
+    Cardinality(x, occurrences={0: nBins * maxPerBin - nItems} | {wgt: occ for (wgt, occ) in occurrences_of_weights()}),
 
     # tag(symmetry-breaking)
     LexDecreasing(x)

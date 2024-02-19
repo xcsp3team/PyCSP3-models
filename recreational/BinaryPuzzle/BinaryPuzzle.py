@@ -1,5 +1,5 @@
 """
-A binary puzzle (also known as a binary Sudoku) is a puzzle played on a n × n grid;
+A binary puzzle (also known as a binary Sudoku) is a puzzle played on an n × n grid;
 initially some of the cells may contain 0 or 1 (but this is not the case for the 2023 competition).
 One has to fill the remaining empty cells with either 0 or 1 according to the following rules:
   -  no more than two similar numbers next to or below each other are allowed,

@@ -25,7 +25,6 @@ data['horizon'] = sum(distance(v1, v2) for v1, v2 in data['agents'])
 
 def neighbors_of(v):
     i, j = coordinates(v)
-    t = [M[k][l] for k, l in [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)] if 0 <= k < n and 0 <= l < n and M[k][l] != 0]
     return [v] + [M[k][l] for k, l in [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)] if 0 <= k < n and 0 <= l < n and M[k][l] != 0]
 
 

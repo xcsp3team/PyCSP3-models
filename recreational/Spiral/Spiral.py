@@ -51,10 +51,10 @@ segment_scopes = cp_array(scope(k + 1) for k in range(nSegments))  # cp_array is
 
 satisfy(
     # putting each value on each row, and also the special value 0
-    [Cardinality(x[i], occurrences={0: n - m} + {v: 1 for v in range(1, m + 1)}) for i in range(n)],
+    [Cardinality(x[i], occurrences={0: n - m} | {v: 1 for v in range(1, m + 1)}) for i in range(n)],
 
     # putting each value on each column, and also the special value 0
-    [Cardinality(x[:, j], occurrences={0: n - m} + {v: 1 for v in range(1, m + 1)}) for j in range(n)],
+    [Cardinality(x[:, j], occurrences={0: n - m} | {v: 1 for v in range(1, m + 1)}) for j in range(n)],
 )
 
 if not variant():

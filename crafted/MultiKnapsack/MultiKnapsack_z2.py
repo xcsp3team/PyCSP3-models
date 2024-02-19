@@ -33,7 +33,12 @@ x = VarArray(size=nItems, dom={0, 1})
 w = VarArray(size=nBins, dom=lambda j: range(binSizes[j] + 1))
 
 satisfy(
-    Knapsack(x, weights=weights, wlimit=w[j], profits=profits) == z for j, weights in enumerate(weightsPerBin)
+    Knapsack(
+        x,
+        weights=weights,
+        wlimit=w[j],
+        profits=profits
+    ) == z for j, weights in enumerate(weightsPerBin)
 )
 
 maximize(

@@ -28,7 +28,7 @@ x = VarArray(size=nCards, dom=range(nCards))
 # y[j] is the position i of the card whose value is j
 y = VarArray(size=nCards, dom=range(nCards))
 
-table = {(i, j) for i in range(nCards) for j in range(nCards) if i % m == (j + 1) % m or j % m == (i + 1) % m}
+T = {(i, j) for i in range(nCards) for j in range(nCards) if i % m == (j + 1) % m or j % m == (i + 1) % m}
 
 satisfy(
     # linking variables of x and y
@@ -38,13 +38,16 @@ satisfy(
     y[0] == 0,
 
     # cards must be played in the order of the piles
-    [Increasing([y[j] for j in pile], strict=True) for pile in piles],
+    [Increasing(y[pile], strict=True) for pile in piles],
 
     # each new card put on the stack must be at a rank higher or lower than the previous one
-    Slide((x[i], x[i + 1]) in table for i in range(nCards - 1))
+    Slide((x[i], x[i + 1]) in T for i in range(nCards - 1))
 )
 
 """ Comments
 1) Slide is only used to have more compact XCSP3 instances
    we could have written: [(x[i], x[i + 1]) in table for i in range(nCards - 1)]
+2) Increasing(y[pile], strict=True)
+is equivalent to:
+   Increasing([y[j] for j in pile], strict=True)
 """

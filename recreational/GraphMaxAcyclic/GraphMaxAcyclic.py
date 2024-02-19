@@ -38,13 +38,18 @@ satisfy(
 if not variant():
     satisfy(
         # ensuring acyclicity
-        iff(x[i] > x[j], a[i][j] == 1) for (i, j) in valid_arcs
+        a[i][j] == (x[i] > x[j]) for (i, j) in valid_arcs
     )
 
 elif variant("cnt"):
     satisfy(
         # ensuring acyclicity
-        [imply(x[i] <= x[j], a[i][j] == 0) for (i, j) in valid_arcs],
+        [
+            If(
+                x[i] <= x[j],
+                Then=a[i][j] == 0
+            ) for (i, j) in valid_arcs
+        ],
 
         [Count(a[:, j], value=1) <= 3 for j in range(n) if valid_numbers[j] > 3]
     )

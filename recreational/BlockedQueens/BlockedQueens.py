@@ -41,8 +41,11 @@ satisfy(
     [abs(q[i] - q[j]) != abs(i - j) for i, j in combinations(n, 2)]
 )
 
-# # controlling no two queens on the same upward diagonal
-# AllDifferent(q[i] + i for i in range(n)),
-#
-# # controlling no two queens on the same downward diagonal
-# AllDifferent(q[i] - i for i in range(n)),
+""" Comments
+1) one could also post:
+  # controlling no two queens on the same upward diagonal
+  AllDifferent(q[i] + i for i in range(n)),
+
+  # controlling no two queens on the same downward diagonal
+  AllDifferent(q[i] - i for i in range(n)),
+"""

@@ -1,6 +1,4 @@
 from pycsp3.problems.data.parsing import *
-import re
-import re
 
 nResources = number_in(line())
 data['rcap'] = numbers_in(next_line())

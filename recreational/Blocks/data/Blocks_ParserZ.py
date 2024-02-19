@@ -1,5 +1,4 @@
 from pycsp3.problems.data.parsing import *
-import re
 
 skip_empty_lines(or_prefixed_by="%")
 

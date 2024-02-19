@@ -10,7 +10,7 @@ Here, it is the feasability version, as used, e.g., in (Refalo, CP 2004) and (Pe
 
 ## Execution
   python MultiKnapsack.py -data=<datafile.json>
-  python MultiKnapsack.py -data=<datafile.json> -parser=MultiKnapsack_Parser.py
+  python MultiKnapsack.py -data=<datafile.txt> -parser=MultiKnapsack_Parser.py
 
 ## Links
   - https://www.researchgate.net/publication/271198281_Benchmark_instances_for_the_Multidimensional_Knapsack_Problem
@@ -28,7 +28,7 @@ n = len(weights)
 x = VarArray(size=n, dom={0, 1})
 
 satisfy(
-    x * coeffs <= k for (coeffs, k) in constraints
+    x * C <= k for (C, k) in constraints
 )
 
 maximize(

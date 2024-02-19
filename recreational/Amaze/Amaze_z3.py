@@ -55,8 +55,14 @@ satisfy(
 
     # tag(redundant-constraints)
     [
-        [Exist(x[i], value=k + 1) for k, ((u, _), (v, _)) in enumerate(points) for i in range(min(u, v) + 1, max(u, v))],
-        [Exist(x[:, j], value=k + 1) for k, ((_, u), (_, v)) in enumerate(points) for j in range(min(u, v) + 1, max(u, v))]
+        [
+            Exist(x[i], value=k + 1)
+            for k, ((u, _), (v, _)) in enumerate(points) for i in range(min(u, v) + 1, max(u, v))
+        ],
+        [
+            Exist(x[:, j], value=k + 1)
+            for k, ((_, u), (_, v)) in enumerate(points) for j in range(min(u, v) + 1, max(u, v))
+        ]
     ]
 )
 

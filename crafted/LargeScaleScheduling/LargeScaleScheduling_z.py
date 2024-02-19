@@ -28,7 +28,6 @@ from pycsp3 import *
 
 limit, durations, heights = data
 nTasks = len(durations)
-
 horizon = sum(durations) + 1  # trivial upper bound on the horizon
 
 # x[i] is the starting time of the ith task

@@ -1,5 +1,5 @@
 from pycsp3.problems.data.parsing import *
-from enum import Enum, unique, auto
+from enum import Enum, auto
 
 
 def aut(n_occurrences=1):

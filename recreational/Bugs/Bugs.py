@@ -26,7 +26,7 @@ x = VarArray(size=[height, width], dom=range(-1, nBugs))
 # n1[i] is the number of cells with value i
 n1 = VarArray(size=nBugs, dom=range(height * width + 1))
 
-# n2[i] is the number of cells with with value i and a bug on it
+# n2[i] is the number of cells with value i and a bug on it
 n2 = VarArray(size=nBugs, dom=range(nBugs + 1))
 
 
@@ -36,10 +36,10 @@ def neighbors(i, j, k, l):
 
 satisfy(
     # each bug cell can take either its bug index for value or the one of another bug of the same type
-    [(x[bug.row][bug.col]) in groups[bug.type] for bug in bugs],
+    [x[i][j] in groups[k] for (i, j, k) in bugs],
 
     # a bug cell value is smaller or equal to the bug index  tag(symmetry-breaking)
-    [x[bug.row][bug.col] <= i for i, bug in enumerate(bugs)],
+    [x[i][j] <= k for k, (i, j, _) in enumerate(bugs)],
 
     [n1[group[j]] <= (len(group) - j) * lengths[i] for i, group in enumerate(groups) for j in range(len(group))],
 
@@ -47,14 +47,19 @@ satisfy(
     Cardinality(x, occurrences=n1),
 
     # computing values of n2
-    Cardinality([x[bug.row][bug.col] for bug in bugs], occurrences=n2),
+    Cardinality([x[i][j] for (i, j, _) in bugs], occurrences=n2),
 
     # linking variables of n1 and n2
     [n2[i] * lengths[bugs[i].type] == n1[i] for i in range(nBugs)],
 
     # if two cells have the same value, then all cells in the rectangle they delimit must take this value
-    [imply(x[i][j] == x[k][l], x[i][j] == x[m][n]) for (i, j, k, l, m, n) in product(range(height), range(width), repeat=3) if
-     i <= m <= k and not neighbors(i, j, k, l) and (i != k or j < l) and min(j, l) <= n <= max(j, l) and (m, n) != (i, j) and (m, n) != (k, l)]
+    [
+        If(
+            x[i][j] == x[k][l],
+            Then=x[i][j] == x[m][n]
+        ) for (i, j, k, l, m, n) in product(range(height), range(width), repeat=3)
+        if i <= m <= k and not neighbors(i, j, k, l) and (i != k or j < l) and min(j, l) <= n <= max(j, l) and (m, n) != (i, j) and (m, n) != (k, l)
+    ]
 )
 
 maximize(
