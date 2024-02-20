@@ -44,14 +44,14 @@ if not variant() or variant("opt"):
     )
 
 elif variant("table"):
-    table = list(permutations(range(1, n + 1)))
+    T = list(permutations(range(1, n + 1)))
 
     satisfy(
         # imposing distinct values on each row and each column
-        [line in table for line in x + columns(x)],
+        [line in T for line in x + columns(x)],
 
         # imposing distinct values on each block  tag(blocks)
-        [x[i:i + base, j:j + base] in table for i in range(0, n, base) for j in range(0, n, base)]
+        [x[i:i + base, j:j + base] in T for i in range(0, n, base) for j in range(0, n, base)]
     )
 
 satisfy(

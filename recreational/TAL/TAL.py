@@ -6,10 +6,10 @@
   constraints: Count, Sum, Table
 
 ## Execution
-  python Tal.py -data=<datafile.json>
+  python TAL.py -data=<datafile.json>
 
 ## Tags
-  real
+  realistic
 """
 from pycsp3 import *
 import math
@@ -47,24 +47,16 @@ def table_for(vector_length):
 
 
 def table_for_grammar(n):
-    return {tuple(ANY if v == 2147483646 else v for v in ele) for ele in grammar[n]}
+    return {tuple(ANY if v == 2147483646 else v for v in t) for t in grammar[n]}
 
 
-def select_label(i):
-    return [var for j, var in enumerate(l[i]) if j < lengths[i]]
-
-
-def n_possible_sons(i, j):
-    return min(lengths[i - 1] - j, maxArity)
-
-
-def predicate(l, a, i, j, lengths):
+def predicate(i, j):
     r = range(1 if i != 0 and j == lengths[i] - 1 else 0, min(j + 1, maxArity))
     return xor(*([l[i][j] == 0] + [a[i + 1][j - k] >= k + 1 for k in r]))
 
 
 satisfy(
-    [Count(select_label(i), value=0) == s[i - 1] for i in range(1, nLevels - 1)],
+    [Count(l[i][:lengths[i]], value=0) == s[i - 1] for i in range(1, nLevels - 1)],
 
     [s[i - 1] == s[i] for i in range(1, nLevels - 1, 2)],
 
@@ -88,7 +80,7 @@ satisfy(
         ) for i in range(2, nLevels, 2)
     ],
 
-    [(x[i][j], y, l[i][j]) in table_for(len(y)) for i in range(2, nLevels, 2) for j in range(1, lengths[i]) if (y := select_label(i - 1),)],
+    [(x[i][j], l[i - 1][:lengths[i - 1]], l[i][j]) in table_for(lengths[i - 1]) for i in range(2, nLevels, 2) for j in range(1, lengths[i])],
 
     [
         (
@@ -104,12 +96,12 @@ satisfy(
         (
             (l[i][j] == 0) == (a[i][j] == 0),
             (a[i][j], l[i][j], l[i - 1][j: j + k], c[i][j]) in table_for_grammar(k)
-        ) for i in range(1, nLevels, 2) for j in range(lengths[i]) if (k := n_possible_sons(i, j),)
+        ) for i in range(1, nLevels, 2) for j in range(lengths[i]) if (k := min(lengths[i - 1] - j, maxArity),)
     ],
 
-    [predicate(l, a, i, j, lengths) for i in range(0, nLevels, 2) for j in range(nWords) if j < lengths[i]],
+    [predicate(i, j) for i in range(0, nLevels, 2) for j in range(nWords) if j < lengths[i]],
 
-    l[2 * maxHeight][1] == 0 if 0 < maxHeight and 2 * maxHeight < l.length else None
+    l[2 * maxHeight][1] == 0 if 0 < maxHeight and 2 * maxHeight < len(l) else None
 )
 
 minimize(

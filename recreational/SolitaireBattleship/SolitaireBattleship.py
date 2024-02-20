@@ -76,7 +76,14 @@ def hint_ctr(c, i, j):
 
 satisfy(
     # no ship on borders
-    [(s[0][k] == 0, s[-1][k] == 0, s[k][0] == 0, s[k][-1] == 0) for k in range(n + 2)],
+    [
+        (
+            s[0][k] == 0,
+            s[-1][k] == 0,
+            s[k][0] == 0,
+            s[k][-1] == 0
+        ) for k in range(n + 2)
+    ],
 
     # respecting the specified row tallies
     [Sum(s[i + 1]) == k for i, k in enumerate(rowSums)],

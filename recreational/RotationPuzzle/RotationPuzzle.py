@@ -1,6 +1,4 @@
 """
-See http://www-groups.dcs.st-and.ac.uk/~gap/ForumArchive/Harris.1/Bob.1/Re__GAP_.59/1.html
-
 This problem was called "rotation" at Nokia's web site.
 
 The puzzle is a 4x4 grid of numbers. There are four operations, each of
@@ -28,9 +26,6 @@ of rotations on the final state is given by the following cycles:
   python RotationPuzzle.py -data=number
   python RotationPuzzle.py -data=<datafile.json>
 
-## Links
-  - https://www.csplib.org/Problems/prob013/
-
 ## Tags
   recreational
 """
@@ -53,6 +48,7 @@ mappings = [[v] + [v if v not in t else t[(len(t) + t.index(v) - 1) % len(t)] fo
 scopes = [list(OrderedDict.fromkeys(t)) for t in mappings]
 tables = [{(op, v, *(v if pos == mappings[i][op] else ANY for pos in scopes[i])) for op in range(5) for v in range(16)} for i in
           range(nCells)]  # tables for transitions
+print(tables)
 
 # x[t][i] is the value in the ith cell at time t
 x = VarArray(size=[nPeriods, nCells], dom=range(nCells))
@@ -62,6 +58,8 @@ o = VarArray(size=nPeriods, dom=range(nRotations + 1))  # +1 for 0 (no rotation)
 
 # f is the time at which the final state is reached
 f = Var(range(1, nPeriods))
+
+print(nPeriods)
 
 satisfy(
     # setting the initial state (at time 0)
@@ -74,7 +72,7 @@ satisfy(
     [x[f][i] == i for i in range(nCells)],
 
     # once the final state is reached, there is no more rotation
-    [(f > t) | (o[t] == 0) for t in range(1, nPeriods)],
+    [If(f <= t, Then=o[t] == 0) for t in range(1, nPeriods)],
 
     # tag(redundant-constraints)
     [AllDifferent(x[t]) for t in range(1, nPeriods)]

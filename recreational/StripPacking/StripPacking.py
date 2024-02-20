@@ -49,5 +49,8 @@ satisfy(
     [(r[i], w[i], h[i]) in {(0, wgt, hgt), (1, hgt, wgt)} for i, (wgt, hgt) in enumerate(rectangles)],
 
     # no overlapping between rectangles
-    NoOverlap(origins=[(x[i], y[i]) for i in range(nRectangles)], lengths=[(w[i], h[i]) for i in range(nRectangles)])
+    NoOverlap(
+        origins=[(x[i], y[i]) for i in range(nRectangles)],
+        lengths=[(w[i], h[i]) for i in range(nRectangles)]
+    )
 )

@@ -33,7 +33,7 @@ x = VarArray(size=nTrains, dom=range(horizon))
 
 satisfy(
     # respecting security gaps between two trains leaving the station
-    NoOverlap(origins=(x[i], x[j]), lengths=(gaps[i], gaps[j])) for i, j in combinations(range(nTrains), 2)
+    NoOverlap(origins=(x[i], x[j]), lengths=(gaps[i], gaps[j])) for i, j in combinations(nTrains, 2)
 )
 
 minimize(

@@ -48,7 +48,14 @@ b = VarArray(size=nRooms, dom=range(nRows + 1))
 
 satisfy(
     # each room must be surrounded by its borders
-    [(l[i] <= col, r[i] > col, t[i] <= row, b[i] > row) for i, (row, col, _) in enumerate(rooms)],
+    [
+        (
+            l[i] <= col,
+            r[i] > col,
+            t[i] <= row,
+            b[i] > row
+        ) for i, (row, col, _) in enumerate(rooms)
+    ],
 
     # respecting the surface of each room
     [(r[i] - l[i]) * (b[i] - t[i]) == val for i, (_, _, val) in enumerate(rooms)],

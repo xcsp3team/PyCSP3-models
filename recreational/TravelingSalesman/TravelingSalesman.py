@@ -41,11 +41,11 @@ if not variant():
     )
 
 elif variant("table"):
-    table = {(i, j, distances[i][j]) for i in range(nCities) for j in range(nCities) if i != j}
+    T = {(i, j, distances[i][j]) for i in range(nCities) for j in range(nCities) if i != j}
 
     satisfy(
         # computing the distance between any two successive cities in the tour
-        (c[i], c[(i + 1) % nCities], d[i]) in table for i in range(nCities)
+        (c[i], c[(i + 1) % nCities], d[i]) in T for i in range(nCities)
     )
 
 minimize(
