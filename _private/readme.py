@@ -1,19 +1,47 @@
 import sys
 import os
 import os.path
+import re
+
+def create_alternative_models(name, directory):
+    alternatives = {}
+    p = re.compile(name + ".*.py")
+    for file in os.listdir(directory):
+        if p.match(file) and file != name+".py" and file != name+"1.py":
+            lines = open(f"{directory}/{file}", "r").readlines()
+            start = False
+            tags = []
+            for line in lines:
+                stripped = line.strip()
+                if stripped.startswith("## Tags"):
+                    start = True
+                elif start:
+                    tags = [t.strip().rstrip(",") for t in stripped.split(" ")]
+                    start = False
+                if "constraints:" in line:
+                    constraints = line.strip().split(":")[1].split(",")
+                    constraints = sorted([c.strip() for c in constraints])
+            alternatives[file] = {"tags": tags, "constraints": constraints}
+    return alternatives
+
+
+
 
 if __name__ == '__main__':
     constraints_path = "http://pycsp.org/documentation/constraints/"
     directories = ["academic", "single", "realistic", "crafted", "recreational"]
-
+    directories = ["recreational"]
     for thedir in directories:
         problems = sorted([ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ])
 
         for p in problems:
+            if p != "Amaze":
+                continue
+
             dir = f"{thedir}/{p}"
             model = f"{p}.py" if os.path.isfile(f"{dir}/{p}.py") else f"{p}1.py"
+            alternatives = create_alternative_models(p, dir)
             model = dir+"/"+model
-            print(model)
 
             inputlines = open(model, "r").readlines()
             outputfile = open(f"{dir}/README.md", "w")
@@ -43,4 +71,16 @@ if __name__ == '__main__':
                             outputfile.write("```\n")
                             python = False
                     outputfile.write(line)
+
+            if(len(alternatives) > 0):
+                outputfile.write("## Alternative Models\n")
+                for k in sorted(alternatives.keys()):
+                    outputfile.write("#### " + k + "\n")
+                    outputfile.write(" - constraints: ")
+                    outputfile.write(", ".join([f"[{c}]({constraints_path}{c})" for c in alternatives[k]["constraints"]]))
+                    outputfile.write("\n")
+                    outputfile.write(" - tags: ")
+                    outputfile.write(", ".join([tag for tag in alternatives[k]["tags"]]))
+                    outputfile.write("\n")
             outputfile.close()
+
