@@ -8,8 +8,8 @@
 
 ## Execution
 ```
-  python Tal.py -data=<datafile.json>
+  python TAL.py -data=<datafile.json>
 ```
 
 ## Tags
-  real
+  realistic

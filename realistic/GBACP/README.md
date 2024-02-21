@@ -27,3 +27,11 @@ See CSPLib.
 
 ## Tags
   realistic, csplib, mzn16, mzn17, mzn20, xcsp23
+
+<br />
+
+## _Alternative Models_
+
+#### GBACP_z.py
+ - constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, csplib, mzn16, mzn17, mzn20

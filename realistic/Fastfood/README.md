@@ -18,3 +18,11 @@
 
 ## Tags
   realistic
+
+<br />
+
+## _Alternative Models_
+
+#### Fastfood_z.py
+ - constraints: [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn11, mzn12

@@ -34,3 +34,11 @@ The configuration of live and dead cells at time t leads to a new configuration 
 
 ## Tags
   academic, csplib
+
+<br />
+
+## _Alternative Models_
+
+#### StillLife_z.py
+ - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+ - tags: academic, mzn09

@@ -20,3 +20,11 @@
 
 ## Tags
   realistic
+
+<br />
+
+## _Alternative Models_
+
+#### OpenStacks_z.py
+ - constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn09, mzn11, mzn15

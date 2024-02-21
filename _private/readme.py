@@ -30,14 +30,10 @@ def create_alternative_models(name, directory):
 if __name__ == '__main__':
     constraints_path = "http://pycsp.org/documentation/constraints/"
     directories = ["academic", "single", "realistic", "crafted", "recreational"]
-    directories = ["recreational"]
     for thedir in directories:
         problems = sorted([ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ])
 
         for p in problems:
-            if p != "Amaze":
-                continue
-
             dir = f"{thedir}/{p}"
             model = f"{p}.py" if os.path.isfile(f"{dir}/{p}.py") else f"{p}1.py"
             alternatives = create_alternative_models(p, dir)
@@ -73,7 +69,7 @@ if __name__ == '__main__':
                     outputfile.write(line)
 
             if(len(alternatives) > 0):
-                outputfile.write("## Alternative Models\n")
+                outputfile.write("\n<br />\n\n## _Alternative Models_\n\n")
                 for k in sorted(alternatives.keys()):
                     outputfile.write("#### " + k + "\n")
                     outputfile.write(" - constraints: ")

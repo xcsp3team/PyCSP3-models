@@ -31,3 +31,11 @@ This problem has its roots in Bioinformatics and Coding Theory.
 
 ## Tags
   realistic, xcsp23
+
+<br />
+
+## _Alternative Models_
+
+#### WordDesign2.py
+ - constraints: [Les](http://pycsp.org/documentation/constraints/Les), [MDD](http://pycsp.org/documentation/constraints/MDD)
+ - tags: realistic, xcsp23

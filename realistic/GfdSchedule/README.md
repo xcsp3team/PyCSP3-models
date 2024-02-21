@@ -29,3 +29,11 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Tags
   realistic, mzn15
+
+<br />
+
+## _Alternative Models_
+
+#### GfdSchedule2.py
+ - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn16, mzn18, mzn22

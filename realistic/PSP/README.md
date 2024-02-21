@@ -21,3 +21,11 @@ This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem
 
 ## Tags
   realistic, csplib, xcsp23
+
+<br />
+
+## _Alternative Models_
+
+#### PSP2.py
+ - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, csplib, xcsp23

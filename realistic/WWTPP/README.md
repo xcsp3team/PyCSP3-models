@@ -19,3 +19,11 @@ See "Solving the Wastewater Treatment Plant Problem with SMT", by Miquel Bofill,
 
 ## Tags
   realistic
+
+<br />
+
+## _Alternative Models_
+
+#### WWTPP_z.py
+ - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn10, mzn11

@@ -22,3 +22,11 @@ The goal is to divide the grid into regions called polyominoes (by filling in th
 
 ## Tags
   recreational
+
+<br />
+
+## _Alternative Models_
+
+#### Fillomino_z.py
+ - constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: recreational, mzn09, mzn11, mzn14

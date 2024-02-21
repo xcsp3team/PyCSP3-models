@@ -25,3 +25,11 @@ An OPD (v,b,r) problem is to find a binary matrix of v rows and b columns such t
 
 ## Tags
   academic, csplib
+
+<br />
+
+## _Alternative Models_
+
+#### OPD_z.py
+ - constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: academic, csplib, mzn15, mzn17

@@ -16,3 +16,11 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Tags
   academic, mzn08
+
+<br />
+
+## _Alternative Models_
+
+#### SearchStress2.py
+ - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: academic, mzn09

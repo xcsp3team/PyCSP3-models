@@ -20,3 +20,11 @@ to be put in an enclosing rectangle (container) without overlapping of the squar
 
 ## Tags
   realistic
+
+<br />
+
+## _Alternative Models_
+
+#### RectPacking_z.py
+ - constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
+ - tags: academic, mzn09, mzn14

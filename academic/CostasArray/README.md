@@ -21,3 +21,11 @@ See problem 076 at CSPLib.
 
 ## Tags
   academic, csplib, xcsp22
+
+<br />
+
+## _Alternative Models_
+
+#### CostasArray_z.py
+ - constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+ - tags: academic, mzn10, mzn11, mzn15

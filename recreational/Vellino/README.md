@@ -31,3 +31,11 @@ The compatibility constraints are:
 
 ## Tags
   recreational, notebook
+
+<br />
+
+## _Alternative Models_
+
+#### Vellino2.py
+ - constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: recreational, notebook

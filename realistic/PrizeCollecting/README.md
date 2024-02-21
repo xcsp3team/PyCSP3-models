@@ -21,3 +21,11 @@ See also the model in Minizinc
 
 ## Tags
   realistic
+
+<br />
+
+## _Alternative Models_
+
+#### PrizeCollecting_z.py
+ - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn11, mzn16

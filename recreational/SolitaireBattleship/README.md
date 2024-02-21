@@ -20,3 +20,11 @@ See Problem 014 on CSPLib
 
 ## Tags
   recreational, csplib, xcsp22
+
+<br />
+
+## _Alternative Models_
+
+#### SolitaireBattleship_z.py
+ - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: recreational, mzn10, mzn11, mzn12, mzn14, mzn16

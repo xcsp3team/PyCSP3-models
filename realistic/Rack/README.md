@@ -20,3 +20,11 @@ The rack configuration problem consists of plugging a set of electronic cards in
 
 ## Tags
   realistic, csplib
+
+<br />
+
+## _Alternative Models_
+
+#### Rack2.py
+ - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+ - tags: realistic, csplib

@@ -18,3 +18,11 @@ Problem 081 on CSPLib
 
 ## Tags
   recreational, csplib
+
+<br />
+
+## _Alternative Models_
+
+#### Blackhole_z.py
+ - constraints: [Channel](http://pycsp.org/documentation/constraints/Channel), [Table](http://pycsp.org/documentation/constraints/Table)
+ - tags: recreational, csplib, mzn09, mzn11, mzn13

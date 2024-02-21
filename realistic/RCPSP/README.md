@@ -19,3 +19,11 @@ Problem 061 on CSPLib
 
 ## Tags
   realistic, csplib, xcsp22
+
+<br />
+
+## _Alternative Models_
+
+#### RCPSP_z.py
+ - constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative)
+ - tags: realistic, mzn08, mzn13

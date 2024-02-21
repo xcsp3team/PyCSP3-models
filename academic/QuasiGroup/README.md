@@ -120,3 +120,11 @@ elif variant("aux"):
 
 """ Comments
 1) note that we can post tuples of constraints instead of individually, as demonstrated in aux-v7
+
+<br />
+
+## _Alternative Models_
+
+#### QuasiGroup_z.py
+ - constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element)
+ - tags: academic, csplib, mzn08

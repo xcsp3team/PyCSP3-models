@@ -18,3 +18,11 @@ See Problem 086 on CSPLib, and VVRLib.
 
 ## Tags
   realistic, csplib, xcsp22
+
+<br />
+
+## _Alternative Models_
+
+#### CVRP_z.py
+ - constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn15

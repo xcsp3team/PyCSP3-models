@@ -24,3 +24,11 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Tags
   realistic, mzn12
+
+<br />
+
+## _Alternative Models_
+
+#### League13.py
+ - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn13

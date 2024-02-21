@@ -17,3 +17,11 @@ Large scale scheduling instances have been built to show the interest of a scala
 
 ## Tags
   crafted, xcsp23
+
+<br />
+
+## _Alternative Models_
+
+#### LargeScaleScheduling_z.py
+ - constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum)
+ - tags: crafted, mzn15, mzn18

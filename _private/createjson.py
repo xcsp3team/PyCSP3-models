@@ -34,6 +34,7 @@ for thedir in directories:
     for p in problems:
         dir = f"{thedir}/{p}"
         model = f"{p}.py" if os.path.isfile(f"{dir}/{p}.py") else f"{p}1.py"
+        originalmodel = model
         model = dir + "/" + model
         type = "CSP"
         lines = open(model, "r").readlines()
@@ -55,9 +56,10 @@ for thedir in directories:
                 tags = [t.strip().rstrip(",") for t in stripped.split(" ")]
                 start = False
         alternatives = create_alternative_models(p, dir)
-        models.append(
-            {"name": p, "fullname": dir, "constraints": constraints, "type": type, "tags": tags,
-             "links": links})
+        if not (originalmodel == f"{p}1.py" and len(alternatives) > 1):
+            models.append(
+                {"name": p, "fullname": dir, "constraints": constraints, "type": type, "tags": tags,
+                 "links": links})
 
         for k in sorted(alternatives.keys()):
             models.append(

@@ -21,3 +21,11 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Tags
   recreational, mzn08, mzn11, mzn13
+
+<br />
+
+## _Alternative Models_
+
+#### Pentominoes2.py
+ - constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)
+ - tags: recreational, mzn20

@@ -21,3 +21,11 @@ Steel is produced by casting molten iron into slabs.
 
 ## Tags
   realistic, csplib
+
+<br />
+
+## _Alternative Models_
+
+#### SteelMillSlab_z.py
+ - constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, csplib, mzn17, mzn19

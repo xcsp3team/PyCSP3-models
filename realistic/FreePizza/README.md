@@ -26,3 +26,11 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Tags
   realistic
+
+<br />
+
+## _Alternative Models_
+
+#### FreePizza_z.py
+ - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn15

@@ -12,7 +12,7 @@ Here, it is the feasability version, as used, e.g., in (Refalo, CP 2004) and (Pe
 ## Execution
 ```
   python MultiKnapsack.py -data=<datafile.json>
-  python MultiKnapsack.py -data=<datafile.json> -parser=MultiKnapsack_Parser.py
+  python MultiKnapsack.py -data=<datafile.txt> -parser=MultiKnapsack_Parser.py
 ```
 
 ## Links
@@ -20,3 +20,14 @@ Here, it is the feasability version, as used, e.g., in (Refalo, CP 2004) and (Pe
 
 ## Tags
  recreational
+
+<br />
+
+## _Alternative Models_
+
+#### MultiKnapsack_z1.py
+ - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: crafted, mzn14
+#### MultiKnapsack_z2.py
+ - constraints: [Knapsack](http://pycsp.org/documentation/constraints/Knapsack), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: crafted, mzn15, mzn19

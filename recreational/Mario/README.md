@@ -32,3 +32,11 @@ This problem was proposed by maury Ollagnier and Jean-Guillaume Fages.
 
 ## Tags
   recreational
+
+<br />
+
+## _Alternative Models_
+
+#### Mario_z.py
+ - constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: recreational, mzn13, mzn14, mzn17

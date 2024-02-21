@@ -21,3 +21,11 @@
 
 ## Tags
   recreational, csplib
+
+<br />
+
+## _Alternative Models_
+
+#### Nonogram_z.py
+ - constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)
+ - tags: recreational, mzn11, mzn12, mzn13

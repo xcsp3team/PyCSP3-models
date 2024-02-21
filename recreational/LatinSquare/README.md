@@ -19,3 +19,11 @@ A Latin square is an n × n array filled with n different symbols, each occurrin
 
 ## Tags
   recreational
+
+<br />
+
+## _Alternative Models_
+
+#### LatinSquare2.py
+ - constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+ - tags: recreational

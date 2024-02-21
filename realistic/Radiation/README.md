@@ -21,3 +21,11 @@ See paper whose reference is given below.
 
 ## Tags
   realistic
+
+<br />
+
+## _Alternative Models_
+
+#### Radiation_z.py
+ - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn08, mzn12, mzn13, mzn15, mzn20

@@ -1,7 +1,5 @@
 # Problem RotationPuzzle
 
-See http://www-groups.dcs.st-and.ac.uk/~gap/ForumArchive/Harris.1/Bob.1/Re__GAP_.59/1.html
-
 This problem was called "rotation" at Nokia's web site.
 
 The puzzle is a 4x4 grid of numbers. There are four operations, each of
@@ -30,9 +28,6 @@ of rotations on the final state is given by the following cycles:
   python RotationPuzzle.py -data=number
   python RotationPuzzle.py -data=<datafile.json>
 ```
-
-## Links
-  - https://www.csplib.org/Problems/prob013/
 
 ## Tags
   recreational

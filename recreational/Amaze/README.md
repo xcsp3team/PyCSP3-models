@@ -17,11 +17,12 @@ while paying attention to not having crossed lines.
 ## Links
 
 ## Tags
-  &nbsp; recreational
+  recreational
 
 <br />
 
 ## _Alternative Models_
+
 #### Amaze_z1.py
  - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
  - tags: recreational, mzn12

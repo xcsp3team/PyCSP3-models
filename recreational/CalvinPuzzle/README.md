@@ -13,8 +13,8 @@ The purpose of the game is to fill a grid of size n × n with all values ranging
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Count](http://pycsp.org/documentation/constraints/Count), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python CalvinPuzzle.py -data=[number]
-  - python CalvinPuzzle.py -data=[number] -variant=table
+  - python CalvinPuzzle.py -data=number
+  - python CalvinPuzzle.py -data=number -variant=table
 
 ## Links
   - https://chycho.blogspot.com/2014/01/an-exercise-for-mind-10-by-10-math.html

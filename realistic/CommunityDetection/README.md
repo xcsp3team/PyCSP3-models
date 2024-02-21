@@ -26,3 +26,11 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Tags
   realistic, mzn21
+
+<br />
+
+## _Alternative Models_
+
+#### CommunityDetection_z1.py
+ - constraints: [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn17

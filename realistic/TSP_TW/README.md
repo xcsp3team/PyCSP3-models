@@ -21,3 +21,11 @@ See IJCAI paper below.
 
 ## Tags
   realistic, xcsp23
+
+<br />
+
+## _Alternative Models_
+
+#### TSP_TW2.py
+ - constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, xcsp23

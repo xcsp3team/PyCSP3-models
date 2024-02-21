@@ -22,8 +22,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Execution
 ```
-  python Celar.py -data=<datafile.json>
-  python Celar.py -data=<datafile.dzn> -parser=Celar_ParserZ.py
+  python CELAR.py -data=<datafile.json>
+  python CELAR.py -data=<datafile.dzn> -parser=CELAR_ParserZ.py
 ```
 
 ## Links
