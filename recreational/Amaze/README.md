@@ -18,3 +18,13 @@ while paying attention to not having crossed lines.
 
 ## Tags
   recreational
+## Alternative Models
+### Amaze_z1.py
+ - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - tags: recreational, mzn12
+### Amaze_z2.py
+ - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element)
+ - tags: recreational, mzn12
+### Amaze_z3.py
+ - constraints: [Count](http://pycsp.org/documentation/constraints/Count)
+ - tags: recreational, mzn14, mzn19
