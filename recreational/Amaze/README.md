@@ -21,6 +21,7 @@ while paying attention to not having crossed lines.
 
 <br />
 <br />
+
 ## Alternative Models
 #### Amaze_z1.py
  - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
