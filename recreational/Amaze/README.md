@@ -20,7 +20,6 @@ while paying attention to not having crossed lines.
   &nbsp; recreational
 
 <br />
-<br />
 
 ## Alternative Models
 #### Amaze_z1.py
