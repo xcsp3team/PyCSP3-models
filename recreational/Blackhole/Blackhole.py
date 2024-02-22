@@ -5,7 +5,7 @@ Problem 081 on CSPLib
   example.json
 
 ## Model
- constraints: Channel, Increasing, Slide, Table
+ constraints: Channel, Slide, Table
 
 ## Execution:
   python Blackhole.py -data=<datafile.json>>

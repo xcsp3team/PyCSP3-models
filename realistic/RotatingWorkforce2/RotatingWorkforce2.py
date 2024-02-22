@@ -35,13 +35,13 @@ Not_off = range(1, nShifts)
 
 q = Automaton.q
 
-transitions = [(q(0), Not_off, q(0)), (q(0), Off, q(1)), (q(1), Not_off, q(0)), (q(1), Off, q(2)), (q(2), Shifts, q(2))]
-A1 = Automaton(start=q(0), final=q(2), transitions=transitions)
+trs = [(q(0), Not_off, q(0)), (q(0), Off, q(1)), (q(1), Not_off, q(0)), (q(1), Off, q(2)), (q(2), Shifts, q(2))]
+A1 = Automaton(start=q(0), final=q(2), transitions=trs)
 
-transitions = [(q(0), Off, q(0)), (q(0), (Day, Evening), q(4)), (q(0), Night, q(1))] \
-              + [(q(1), Off, q(0)), (q(1), Night, q(2)), (q(2), Off, q(0)), (q(2), Night, q(3)), (q(3), Off, q(0))] \
-              + [(q(4), Off, q(0)), (q(4), (Day, Evening), q(4))]
-A2 = Automaton(start=q(0), final=[q(i) for i in range(5)], transitions=transitions)
+trs = [(q(0), Off, q(0)), (q(0), (Day, Evening), q(4)), (q(0), Night, q(1))] \
+      + [(q(1), Off, q(0)), (q(1), Night, q(2)), (q(2), Off, q(0)), (q(2), Night, q(3)), (q(3), Off, q(0))] \
+      + [(q(4), Off, q(0)), (q(4), (Day, Evening), q(4))]
+A2 = Automaton(start=q(0), final=[q(i) for i in range(5)], transitions=trs)
 
 # x[i][j] is the shift for the jth day of the ith week
 x = VarArray(size=[nWeeks, nDays], dom=range(nShifts))
@@ -54,7 +54,12 @@ y = flatten(xp)
 
 satisfy(
     # ensuring shift requirements are met for each day
-    [Cardinality(x[:, j], occurrences={i: requirements[j][i - 1] for i in range(1, nShifts)}) for j in range(nDays)],
+    [
+        Cardinality(
+            x[:, j],
+            occurrences={i: requirements[j][i - 1] for i in range(1, nShifts)}
+        ) for j in range(nDays)
+    ],
 
     # at least 2 consecutive days off each week
     [x[i] in A1 for i in range(nWeeks)],
@@ -63,7 +68,12 @@ satisfy(
     [Sum(y[j] == 0 for j in range(i, i + 6)) != 0 for i in range(0, nWeeks * nDays)],
 
     # computing free weekends
-    [fw[i] == both(x[i][Saturday] == 0, x[i][Sunday] == 0) for i in range(nWeeks)],
+    [
+        fw[i] == both(
+            x[i][Saturday] == 0,
+            x[i][Sunday] == 0
+        ) for i in range(nWeeks)
+    ],
 
     # at least 1 out of 3 weekends off
     [Sum(fw[j % nWeeks] == 1 for j in range(i, i + 3)) != 0 for i in range(nWeeks)],

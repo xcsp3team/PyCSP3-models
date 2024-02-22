@@ -66,8 +66,8 @@ def automaton():
 
     t = split_with_rows_of_size(t, nShifts + 1)
     q = Automaton.q
-    transitions = [(q(i + 1), j, q(t[i][j])) for i in range(len(t)) for j in Sp1 if t[i][j] != 0]
-    return Automaton(start=q(1), final=[q(i) for i in range(1, len(t) + 1)], transitions=transitions)
+    trs = [(q(i + 1), j, q(t[i][j])) for i in range(len(t)) for j in Sp1 if t[i][j] != 0]
+    return Automaton(start=q(1), final=[q(i) for i in range(1, len(t) + 1)], transitions=trs)
 
 
 # x[i][d] is the shift for the ith worker on the dth day

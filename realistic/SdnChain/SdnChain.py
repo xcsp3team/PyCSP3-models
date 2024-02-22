@@ -86,7 +86,12 @@ satisfy(
     [
         If(
             sd[i] == 1,
-            Then=Sum(both(nodes[vnf[j], DOMAIN] == i, nodes[vnf[j], TYPE] == t) for j in range(nVnfs)) in range(mi, ma + 1)
+            Then=Sum(
+                both(
+                    nodes[vnf[j], DOMAIN] == i,
+                    nodes[vnf[j], TYPE] == t
+                ) for j in range(nVnfs)
+            ) in range(mi, ma + 1)
         ) for i, t, mi, ma in domain_constraints
     ],
 
