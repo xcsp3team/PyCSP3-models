@@ -17,7 +17,7 @@ This problem has its roots in Bioinformatics and Coding Theory.
   words.json, mdd.json, and a number n
 
 ## Model
-  constraints: Les, MDD
+  constraints: Lex, MDD
 
 ## Execution
   python WordDesign2.py -data=[words.json,mdd.json,n=<number>]
