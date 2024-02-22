@@ -60,7 +60,10 @@ y = VarArray(size=n, dom=lambda i: range(height - i))
 
 satisfy(
     # no overlap on boxes
-    NoOverlap(origins=[(x[i], y[i]) for i in range(n)], lengths=[(i + 1, i + 1) for i in range(n)]),
+    NoOverlap(
+        origins=[(x[i], y[i]) for i in range(n)],
+        lengths=[(i + 1, i + 1) for i in range(n)]
+    ),
 
     # tag(redundant-constraints)
     [

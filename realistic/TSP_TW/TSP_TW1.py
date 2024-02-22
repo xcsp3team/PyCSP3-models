@@ -37,7 +37,11 @@ a = VarArray(size=n, dom=range(horizon))
 
 satisfy(
     #  making it a tour while starting and ending at city 0
-    [x[0] == 0, x[-1] == 0, a[0] == 0],
+    [
+        x[0] == 0,
+        x[-1] == 0,
+        a[0] == 0
+    ],
 
     AllDifferent(x[:-1]),
 

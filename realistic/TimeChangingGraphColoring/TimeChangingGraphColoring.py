@@ -35,7 +35,7 @@ nSteps = 10
 # x[t][i] is the color of node i at time t
 x = VarArray(size=[nSteps, n], dom=range(nColors))
 
-# z is the number of steps to to convert the initial coloring into the end coloring by applying at most 'k' changes of colors
+# z is the number of steps to convert the initial coloring into the end coloring by applying at most 'k' changes of colors
 # at each step, while always maintaining a valid coloring.
 z = Var(dom=range(1, nSteps))
 

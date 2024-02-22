@@ -46,7 +46,12 @@ satisfy(
     [
         If(
             x[i] not in qualifiedEngineers[i],
-            Then=Exist(both(y[e][t] == jobs[i][0], x[i] == e) for e in range(nEngineers) for t in range(nTrainings))
+            Then=Exist(
+                both(
+                    y[e][t] == jobs[i][0],
+                    x[i] == e
+                ) for e in range(nEngineers) for t in range(nTrainings)
+            )
         ) for i in range(nJobs)
     ]
 )

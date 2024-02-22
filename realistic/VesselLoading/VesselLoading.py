@@ -55,7 +55,10 @@ satisfy(
     [(r[i], w[i], h[i]) in {(0, width, height), (1, height, width)} for i, (width, height, _) in enumerate(containers)],
 
     # no overlapping between containers
-    NoOverlap(origins=[(x[i], y[i]) for i in range(nContainers)], lengths=[(w[i], h[i]) for i in range(nContainers)]),
+    NoOverlap(
+        origins=[(x[i], y[i]) for i in range(nContainers)],
+        lengths=[(w[i], h[i]) for i in range(nContainers)]
+    ),
 
     # respecting separations between containers according to their types
     [(x[i] + w[i] + sep <= x[j]) | (x[j] + w[j] + sep <= x[i]) | (y[i] + h[i] + sep <= y[j]) | (y[j] + h[j] + sep <= y[i]) for (i, j, sep) in sep_pairs()]

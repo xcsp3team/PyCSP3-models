@@ -72,13 +72,29 @@ satisfy(
     # computing end times of recipes
     [re[i] == rs[i] + durations[i] for i in range(nRecipes)],
 
-    Cumulative(origins=rs, lengths=durations, heights=1) <= nLines,
+    Cumulative(
+        origins=rs,
+        lengths=durations,
+        heights=1
+    ) <= nLines,
 
     # each line has only one product at a time
-    [Cumulative(origins=rs, lengths=durations, heights=[rl[i] == j for i in range(nRecipes)]) <= 1 for j in range(nLines)],
+    [
+        Cumulative(
+            origins=rs,
+            lengths=durations,
+            heights=[rl[i] == j for i in range(nRecipes)]
+        ) <= 1 for j in range(nLines)
+    ],
 
     # respecting flows
-    [Cumulative(origins=rs, lengths=durations, heights=[recipes[i][j] for i in range(nRecipes)]) <= flows[j] for j in range(nMinerals)],
+    [
+        Cumulative(
+            origins=rs,
+            lengths=durations,
+            heights=[recipes[i][j] for i in range(nRecipes)]
+        ) <= flows[j] for j in range(nMinerals)
+    ],
 
     # managing production rules
     [production_rule(i) for i in range(nRules)],

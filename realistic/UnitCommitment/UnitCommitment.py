@@ -65,7 +65,7 @@ satisfy(
     ],
 
     # copper plate one-bus simplified power-flow model
-    [Sum(gl[:, t]) == Sum(demand[l][t] - ll[l][t] for l in range(nLoads)) for t in range(horizon)],
+    [Sum(gl[:, t]) == Sum(demand[k][t] - ll[l][t] for k in range(nLoads)) for t in range(horizon)],
 
     # ramping constraints
     [
