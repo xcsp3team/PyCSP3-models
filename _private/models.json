@@ -421,7 +421,6 @@
     "fullname": "recreational/Blackhole",
     "constraints": [
       "Channel",
-      "Increasing",
       "Slide",
       "Table"
     ],

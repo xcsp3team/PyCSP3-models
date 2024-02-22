@@ -6,7 +6,7 @@ Problem 081 on CSPLib
   example.json
 
 ## Model
-  constraints: [Channel](http://pycsp.org/documentation/constraints/Channel), [Increasing](http://pycsp.org/documentation/constraints/Increasing), [Slide](http://pycsp.org/documentation/constraints/Slide), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Channel](http://pycsp.org/documentation/constraints/Channel), [Slide](http://pycsp.org/documentation/constraints/Slide), [Table](http://pycsp.org/documentation/constraints/Table)
 
 ## Execution:
 ```
