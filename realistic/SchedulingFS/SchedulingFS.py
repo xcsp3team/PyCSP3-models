@@ -4,7 +4,7 @@
   04-04-0.json
 
 ## Model
-  constraints: Increasing, Maximum, NoOverlap
+  constraints: Maximum, NoOverlap
 
 ## Execution
   - python SchedulingFS.py -data=<datafile.json>
