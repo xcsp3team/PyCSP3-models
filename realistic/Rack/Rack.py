@@ -27,7 +27,7 @@ powers, sizes, costs = zip(*models)
 cardPowers, cardDemands = zip(*cardTypes)
 nModels, nTypes = len(models), len(cardTypes)
 
-table = {(i, powers[i], sizes[i], costs[i]) for i in range(nModels)}
+T = {(i, powers[i], sizes[i], costs[i]) for i in range(nModels)}
 
 # m[i] is the model used for the ith rack
 m = VarArray(size=nRacks, dom=range(nModels))
@@ -46,7 +46,7 @@ nc = VarArray(size=[nRacks, nTypes], dom=lambda i, j: range(min(max(sizes), card
 
 satisfy(
     # linking rack models with powers, sizes and costs
-    [(m[i], p[i], s[i], c[i]) in table for i in range(nRacks)],
+    [(m[i], p[i], s[i], c[i]) in T for i in range(nRacks)],
 
     # connector-capacity constraints
     [Sum(nc[i]) <= s[i] for i in range(nRacks)],
@@ -58,7 +58,14 @@ satisfy(
     [Sum(nc[:, j]) == cardDemands[j] for j in range(nTypes)],
 
     # tag(symmetry-breaking)
-    [Decreasing(m), imply(m[0] == m[1], nc[0][0] >= nc[1][0])]
+    [
+        Decreasing(m),
+
+        If(
+            m[0] == m[1],
+            Then=nc[0][0] >= nc[1][0]
+        )
+    ]
 )
 
 minimize(

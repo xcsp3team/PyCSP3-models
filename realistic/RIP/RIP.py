@@ -47,7 +47,13 @@ satisfy(
     [s[i] + durations[i] <= s[j] for i in range(nTasks) for j in successors[i]],
 
     # cumulative resource constraints
-    [Cumulative(origins=s, lengths=durations, heights=requirements[k]) <= u[k] for k in range(nResources)]
+    [
+        Cumulative(
+            origins=s,
+            lengths=durations,
+            heights=requirements[k]
+        ) <= u[k] for k in range(nResources)
+    ]
 )
 
 minimize(

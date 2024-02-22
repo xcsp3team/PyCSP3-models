@@ -81,7 +81,10 @@ satisfy(
     ),
 
     # constraining the container (bounding rectangle)
-    [h <= w, a == h * w],
+    [
+        h <= w,
+        a == h * w
+    ],
 
     # squares must be inside the rectangle
     (

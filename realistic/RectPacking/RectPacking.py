@@ -39,7 +39,10 @@ satisfy(
     [y[i] + boxes[i].height <= height for i in range(nBoxes)],
 
     # no overlap on boxes
-    NoOverlap(origins=[(x[i], y[i]) for i in range(nBoxes)], lengths=boxes),
+    NoOverlap(
+        origins=[(x[i], y[i]) for i in range(nBoxes)],
+        lengths=boxes
+    ),
 
     # tag(symmetry-breaking)
     [x[-1] <= (width - boxes[-1].width) // 2, y[-1] <= x[-1]] if width == height else None

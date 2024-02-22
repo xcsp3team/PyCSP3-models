@@ -36,7 +36,7 @@ satisfy(
     # resource constraints
     [
         Cumulative(
-            Task(origin=s[i], length=durations[i], height=quantities[i][k]) for i in range(nJobs) if quantities[i][k] > 0
+            tasks=[Task(origin=s[i], length=durations[i], height=quantities[i][k]) for i in range(nJobs) if quantities[i][k] > 0]
         ) <= capacity for k, capacity in enumerate(capacities)
     ]
 )

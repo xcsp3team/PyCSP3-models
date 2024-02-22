@@ -88,7 +88,13 @@ satisfy(
     [u[r] - Sum(needs[r][j] * both(s[j] + durations[j] > s[i], s[j] <= s[i]) for j in unrelated[i] if needs[r][j] > 0) >= needs[r][i]
      for i in range(nTasks) for r in range(nResources) if needs[r][i] > 0],
 
-    [Cumulative(origins=s, lengths=durations, heights=needs[r]) <= u[r] for r in range(nResources)],
+    [
+        Cumulative(
+            origins=s,
+            lengths=durations,
+            heights=needs[r]
+        ) <= u[r] for r in range(nResources)
+    ],
 
     # computing the value of the objective
     z == Sum(resourceCosts[r] * u[r] for r in range(nResources))
