@@ -34,8 +34,10 @@ satisfy(
     [d[i][j] == abs(x[i] - x[j]) for (i, j) in edges],
 
     # triangle constraints: distance(i,j) <= distance(i,k) + distance(k,j)  tag(redundant-constraints)
-    [d[i][j] <= d[min(i, k)][max(i, k)] + d[min(j, k)][max(j, k)] for (i, j) in edges
-     for k in range(n) if (min(i, k), max(i, k)) in edges and (min(j, k), max(j, k)) in edges]
+    [
+        d[i][j] <= d[min(i, k)][max(i, k)] + d[min(j, k)][max(j, k)]
+        for (i, j) in edges for k in range(n) if (min(i, k), max(i, k)) in edges and (min(j, k), max(j, k)) in edges
+    ]
 )
 
 minimize(

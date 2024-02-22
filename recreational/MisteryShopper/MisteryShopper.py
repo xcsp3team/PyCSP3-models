@@ -63,7 +63,7 @@ satisfy(
     [
         LexIncreasing(r, matrix=True),
 
-        [Increasing([r[i][w] for i in range(nVisitees, n)], strict=True) for w in range(nWeeks)]
+        [Increasing(r[nVisitees:n, w], strict=True) for w in range(nWeeks)]
     ],
 
     # linking a visitor with its group
@@ -72,3 +72,11 @@ satisfy(
     # linking a visitee with its group
     [(eg[i][w], e[i][w]) in ve_table for i in range(n) for w in range(nWeeks)]
 )
+
+"""
+1) Note that
+ r[nVisitees:n, w]
+   is a shortcut for:
+ [r[i][w] for i in range(nVisitees, n)]
+
+"""

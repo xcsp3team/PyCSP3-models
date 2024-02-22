@@ -39,5 +39,8 @@ satisfy(
     [y[i] + squares[i] <= size for i in range(nSquares)],
 
     # no overlap on boxes
-    NoOverlap(origins=[(x[i], y[i]) for i in range(nSquares)], lengths=[(w, w) for w in squares])
+    NoOverlap(
+        origins=[(x[i], y[i]) for i in range(nSquares)],
+        lengths=[(w, w) for w in squares]
+    )
 )

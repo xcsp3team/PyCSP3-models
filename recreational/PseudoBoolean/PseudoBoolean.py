@@ -30,5 +30,13 @@ satisfy(
 if objective:
     minimize(
         # minimizing the linear objective
-        [x[i] for i in objective.nums] * objective.coeffs
+        x[objective.nums] * objective.coeffs
     )
+
+"""
+1) note that it is a rare case where we need to use the named argument 'condition'.
+2) note that  
+ x[objective.nums]
+   is equivalent to:
+ [x[i] for i in objective.nums]
+"""

@@ -25,14 +25,12 @@ width, height, tiles, dfa = data
 nTiles = len(tiles)
 
 
-def A(tile):
+def automaton_for(tile):
     q = Automaton.q
     nStates = tile[0]
     assert tile[1] == nTiles + 1
-    final = [q(i) for i in range(tile[2], tile[3] + 1)]
-    transitions = [(q(i + 1), j, q(dfa[tile[4] + i * (nTiles + 1) + j])) for i in range(nStates) for j in range(nTiles + 1)
-                   if dfa[tile[4] + i * (nTiles + 1) + j] != 0]
-    return Automaton(start=q(1), final=final, transitions=transitions)
+    trs = [(q(i + 1), j, q(dfa[tile[4] + i * (nTiles + 1) + j])) for i in range(nStates) for j in range(nTiles + 1) if dfa[tile[4] + i * (nTiles + 1) + j] != 0]
+    return Automaton(start=q(1), final=[q(i) for i in range(tile[2], tile[3] + 1)], transitions=trs)
 
 
 # x[k] is the tile number for the kth cell
@@ -46,5 +44,5 @@ satisfy(
     [x[h * width + width - 1] == nTiles for h in range(height)],
 
     # ensuring each tile is present
-    [x in A(tile) for tile in tiles]
+    [x in automaton_for(tile) for tile in tiles]
 )

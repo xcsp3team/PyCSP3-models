@@ -44,14 +44,16 @@ if not variant():
         [
             If(
                 playing[i][p[j]],
-                Then=both(s[i] <= j, j <= e[i])
+                Then=[s[i] <= j, j <= e[i]]
             ) for i in range(nPlayers) for j in range(nPieces)
         ]
     )
 
     minimize(
         # minimizing the waiting time of players (i.e. without playing)
-        Sum(durations[p[j]] * conjunction(playing[i][p[j]] == 0, s[i] <= j, j <= e[i]) for i in range(nPlayers) for j in range(nPieces))
+        Sum(
+            durations[p[j]] * conjunction(playing[i][p[j]] == 0, s[i] <= j, j <= e[i]) for i in range(nPlayers) for j in range(nPieces)
+        )
     )
 
 elif variant("bis"):
@@ -70,14 +72,16 @@ elif variant("bis"):
         [
             If(
                 ep[i][j],
-                Then=(s[i] <= j) & (j <= e[i])
+                Then=[s[i] <= j, j <= e[i]]
             ) for i in range(nPlayers) for j in range(nPieces)
         ]
     )
 
     minimize(
         # minimizing the waiting time of players (i.e. without playing)
-        Sum(durations[p[j]] * conjunction(ep[i][j] == 0, s[i] <= j, j <= e[i]) for i in range(nPlayers) for j in range(nPieces))
+        Sum(
+            durations[p[j]] * conjunction(ep[i][j] == 0, s[i] <= j, j <= e[i]) for i in range(nPlayers) for j in range(nPieces)
+        )
     )
 
 """ Comments
@@ -86,4 +90,11 @@ elif variant("bis"):
    so different for this problem.
 
 2) we cannot currently write: (a[p] <= i <= b[p]) (this is technically not obvious to handle that, and even seems almost impossible)
+
+3) Note that (the output may be slightly different):
+  Then=[s[i] <= j, j <= e[i]]
+can also be written :
+  Then=both(s[i] <= j, j <= e[i])
+or :
+  Then=(s[i] <= j) & (j <= e[i])
 """
