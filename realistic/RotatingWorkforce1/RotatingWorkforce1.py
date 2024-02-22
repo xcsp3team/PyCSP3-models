@@ -24,7 +24,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   - https://www.minizinc.org/challenge2019/results2019.html
 
 ## Tags
-  real, mzn18, mzn19
+  realistic, mzn18, mzn19
 """
 
 from pycsp3 import *

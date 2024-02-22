@@ -20,7 +20,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2012/results2012.html
 
 ## Tags
-  real, mzn12
+  realistic, mzn12
 """
 
 from pycsp3 import *
