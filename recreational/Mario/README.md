@@ -35,7 +35,7 @@ This problem was proposed by maury Ollagnier and Jean-Guillaume Fages.
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### Mario_z.py
  - constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)

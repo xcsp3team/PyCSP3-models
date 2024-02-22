@@ -24,7 +24,7 @@ See problem 076 at CSPLib.
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### CostasArray_z.py
  - constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)

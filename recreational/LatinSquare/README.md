@@ -22,7 +22,7 @@ A Latin square is an n × n array filled with n different symbols, each occurrin
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### LatinSquare2.py
  - constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)

@@ -24,7 +24,7 @@ See also the model in Minizinc
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### PrizeCollecting_z.py
  - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)

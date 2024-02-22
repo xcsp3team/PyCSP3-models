@@ -31,7 +31,7 @@ BACP is to design a balanced academic curriculum by assigning periods to courses
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### BACP_z.py
  - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)

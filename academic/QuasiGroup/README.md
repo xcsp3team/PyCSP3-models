@@ -123,7 +123,7 @@ elif variant("aux"):
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### QuasiGroup_z.py
  - constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element)

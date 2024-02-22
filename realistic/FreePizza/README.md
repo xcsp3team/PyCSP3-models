@@ -29,7 +29,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### FreePizza_z.py
  - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)

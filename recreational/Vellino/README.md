@@ -34,7 +34,7 @@ The compatibility constraints are:
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### Vellino2.py
  - constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)

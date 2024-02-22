@@ -17,4 +17,4 @@ The Square packing problem involves packing all squares with sizes 1 Ã— 1 to n Ã
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  real, xcsp23
+  realistic, xcsp23

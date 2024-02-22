@@ -22,7 +22,7 @@ See "Solving the Wastewater Treatment Plant Problem with SMT", by Miquel Bofill,
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### WWTPP_z.py
  - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)

@@ -28,7 +28,7 @@ An OPD (v,b,r) problem is to find a binary matrix of v rows and b columns such t
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### OPD_z.py
  - constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)

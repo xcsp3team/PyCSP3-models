@@ -23,4 +23,4 @@ this model uses different planning horizons for adjusting the hardness of the pr
   - https://www.minizinc.org/challenge2023/results2023.html
 
 ## Tags
-  real, mzn23
+  realistic, mzn23

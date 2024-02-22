@@ -21,7 +21,7 @@
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### Fastfood_z.py
  - constraints: [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)

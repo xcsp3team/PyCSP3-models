@@ -21,7 +21,7 @@ Problem 081 on CSPLib
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### Blackhole_z.py
  - constraints: [Channel](http://pycsp.org/documentation/constraints/Channel), [Table](http://pycsp.org/documentation/constraints/Table)

@@ -24,7 +24,7 @@ This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### PSP2.py
  - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)

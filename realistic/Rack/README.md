@@ -23,7 +23,7 @@ The rack configuration problem consists of plugging a set of electronic cards in
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### Rack2.py
  - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)

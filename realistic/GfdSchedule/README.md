@@ -32,7 +32,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### GfdSchedule2.py
  - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)

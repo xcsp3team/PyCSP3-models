@@ -34,8 +34,8 @@ This problem has its roots in Bioinformatics and Coding Theory.
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### WordDesign2.py
- - constraints: [Les](http://pycsp.org/documentation/constraints/Les), [MDD](http://pycsp.org/documentation/constraints/MDD)
+ - constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [MDD](http://pycsp.org/documentation/constraints/MDD)
  - tags: realistic, xcsp23

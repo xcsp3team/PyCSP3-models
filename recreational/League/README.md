@@ -23,8 +23,8 @@ Make leagues for some games:
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### League_z.py
  - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
- - tags: real, mzn12
+ - tags: realistic, mzn12

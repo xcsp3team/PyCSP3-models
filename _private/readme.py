@@ -69,7 +69,7 @@ if __name__ == '__main__':
                     outputfile.write(line)
 
             if(len(alternatives) > 0):
-                outputfile.write("\n<br />\n\n## _Alternative Models_\n\n")
+                outputfile.write("\n<br />\n\n## _Alternative Model(s)_\n\n")
                 for k in sorted(alternatives.keys()):
                     outputfile.write("#### " + k + "\n")
                     outputfile.write(" - constraints: ")

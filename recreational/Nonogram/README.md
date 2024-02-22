@@ -24,7 +24,7 @@
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### Nonogram_z.py
  - constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)

@@ -2264,7 +2264,7 @@
     ],
     "type": "COP",
     "tags": [
-      "real",
+      "realistic",
       "mzn12"
     ],
     "links": [
@@ -4056,7 +4056,7 @@
     ],
     "type": "CSP",
     "tags": [
-      "real",
+      "realistic",
       "mzn18",
       "mzn19"
     ],
@@ -4175,7 +4175,6 @@
     "name": "SchedulingFS",
     "fullname": "realistic/SchedulingFS",
     "constraints": [
-      "Increasing",
       "Maximum",
       "NoOverlap"
     ],
@@ -4625,7 +4624,7 @@
     ],
     "type": "CSP",
     "tags": [
-      "real",
+      "realistic",
       "xcsp23"
     ],
     "links": [
@@ -5484,7 +5483,7 @@
     ],
     "type": "COP",
     "tags": [
-      "real",
+      "realistic",
       "mzn23"
     ],
     "links": [
@@ -5698,7 +5697,7 @@
     "name": "WordDesign2",
     "fullname": "realistic/WordDesign",
     "constraints": [
-      "Les",
+      "Lex",
       "MDD"
     ],
     "type": "CSP",

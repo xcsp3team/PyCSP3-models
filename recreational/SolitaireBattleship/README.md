@@ -23,7 +23,7 @@ See Problem 014 on CSPLib
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### SolitaireBattleship_z.py
  - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)

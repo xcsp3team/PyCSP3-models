@@ -22,7 +22,7 @@ Problem 061 on CSPLib
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### RCPSP_z.py
  - constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative)

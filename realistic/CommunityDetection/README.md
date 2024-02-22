@@ -29,7 +29,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### CommunityDetection_z1.py
  - constraints: [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Sum](http://pycsp.org/documentation/constraints/Sum)

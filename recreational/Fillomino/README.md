@@ -25,7 +25,7 @@ The goal is to divide the grid into regions called polyominoes (by filling in th
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### Fillomino_z.py
  - constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)

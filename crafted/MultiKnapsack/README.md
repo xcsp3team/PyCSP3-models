@@ -23,7 +23,7 @@ Here, it is the feasability version, as used, e.g., in (Refalo, CP 2004) and (Pe
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### MultiKnapsack_z1.py
  - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)

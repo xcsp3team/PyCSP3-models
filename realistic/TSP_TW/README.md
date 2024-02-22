@@ -24,7 +24,7 @@ See IJCAI paper below.
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### TSP_TW2.py
  - constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)

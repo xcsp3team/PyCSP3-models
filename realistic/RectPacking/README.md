@@ -23,7 +23,7 @@ to be put in an enclosing rectangle (container) without overlapping of the squar
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### RectPacking_z.py
  - constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)

@@ -24,7 +24,7 @@ See paper whose reference is given below.
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### Radiation_z.py
  - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)

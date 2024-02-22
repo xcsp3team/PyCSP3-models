@@ -30,7 +30,7 @@ See CSPLib.
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### GBACP_z.py
  - constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)

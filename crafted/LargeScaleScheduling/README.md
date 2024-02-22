@@ -20,7 +20,7 @@ Large scale scheduling instances have been built to show the interest of a scala
 
 <br />
 
-## _Alternative Models_
+## _Alternative Model(s)_
 
 #### LargeScaleScheduling_z.py
  - constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum)
