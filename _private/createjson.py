@@ -47,7 +47,7 @@ for thedir in directories:
             if stripped.startswith("minimize(") or stripped.startswith("maximize("):
                 type = "COP"
             if stripped.startswith("- http"):
-                links.append(stripped.split("-")[1].strip())
+                links.append(stripped[2:])
             if stripped.startswith("constraints") or stripped.startswith("Constraints"):
                 constraints = [c.strip() for c in stripped.split(":")[1].split(',')]
             if stripped.startswith("## Tags"):
@@ -67,4 +67,4 @@ for thedir in directories:
              "links": links})
 
 models.sort(key=lambda model: model["name"])
-print(json.dumps(models))
+print(json.dumps(models, indent=2))
