@@ -17,7 +17,7 @@
   - https://en.wikipedia.org/wiki/Nonogram
 
 ## Tags
-  recreational, csplib
+  recreational, notebook, csplib
 """
 
 from pycsp3 import *

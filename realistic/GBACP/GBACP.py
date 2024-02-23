@@ -25,7 +25,7 @@ See CSPLib.
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  realistic, csplib, mzn16, mzn17, mzn20, xcsp23
+  realistic, csplib, xcsp23
 """
 
 from pycsp3 import *

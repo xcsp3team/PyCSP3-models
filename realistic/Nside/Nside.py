@@ -74,7 +74,7 @@ satisfy(
     # not exceeding the capacity of work centers
     [
         Cumulative(
-            Task(origin=d[i] + a, length=g[i], height=workers[i][a]) for i in centerWorksheets[c] for a in range(durations[i])
+            tasks=[Task(origin=d[i] + a, length=g[i], height=workers[i][a]) for i in centerWorksheets[c] for a in range(durations[i])]
         ) <= centerWorkers[c]
         for c in range(nCenters) if len(centerWorksheets[c]) > 0
     ]

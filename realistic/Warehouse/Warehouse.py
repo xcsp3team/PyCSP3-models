@@ -20,7 +20,7 @@ In the Warehouse Location problem (WLP), a company considers opening warehouses 
   - https://www.cril.univ-artois.fr/XCSP22/competitions/cop/cop
 
 ## Tags
-  realistic, csplib, xcsp22
+  realistic, notebook, csplib, xcsp22
 """
 
 from pycsp3 import *

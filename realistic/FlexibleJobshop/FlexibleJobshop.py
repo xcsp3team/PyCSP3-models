@@ -66,7 +66,7 @@ satisfy(
     # cumulative resource constraints
     [
         Cumulative(
-            Task(origin=x[taskForOperation[o]], length=durations[o], height=b[o]) for o in range(nOperations) if machines[o] == m
+            tasks=[Task(origin=x[taskForOperation[o]], length=durations[o], height=b[o]) for o in range(nOperations) if machines[o] == m]
         ) <= 1 for m in range(nMachines)
     ]
 )

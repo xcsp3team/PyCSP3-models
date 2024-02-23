@@ -22,7 +22,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python FreePizza.py -data=<datafile.json>
 
 ## Tags
-  realistic
+  realistic, notebook
 """
 
 from pycsp3 import *

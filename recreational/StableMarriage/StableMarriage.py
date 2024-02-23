@@ -22,7 +22,7 @@ as it shows how a nice and compact model can be written.
   python StableMarriage.py -data=<datafile.json>
 
 ## Tags
-  recreational
+  recreational, notebook
 """
 
 from pycsp3 import *

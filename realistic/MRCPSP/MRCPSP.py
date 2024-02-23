@@ -61,7 +61,7 @@ x = VarArray(size=nTasks, dom=range(UB + 1))
 d = VarArray(size=nTasks, dom=lambda i: {durations[i] for i in modes[i]})
 
 # r[k][i] is the requirement (quantity) of the kth resource for the ith task
-r = VarArray(size=[nResources, nTasks], dom=lambda r, t: {requirements[r, m] for m in modes[t]})
+r = VarArray(size=[nResources, nTasks], dom=lambda k, i: {requirements[k, m] for m in modes[i]})
 
 # tm[i] is the mode of the ith task
 tm = VarArray(size=nTasks, dom=lambda i: modes[i])

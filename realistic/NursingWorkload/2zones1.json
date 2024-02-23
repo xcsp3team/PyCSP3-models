@@ -1,1 +1,41 @@
-{"nNurses": 11, "minPatientsPerNurse": 1, "maxPatientsPerNurse": 3, "maxWorkloadPerNurse": 105, "demands": [[74, 45, 41, 34, 33, 33, 29, 27, 26, 25, 24, 23, 21, 21, 13, 10], [47, 46, 40, 38, 37, 37, 34, 25, 23, 22, 21, 18, 16]]}
+{
+  "nNurses": 11,
+  "minPatientsPerNurse": 1,
+  "maxPatientsPerNurse": 3,
+  "maxWorkloadPerNurse": 105,
+  "demands": [
+    [
+      74,
+      45,
+      41,
+      34,
+      33,
+      33,
+      29,
+      27,
+      26,
+      25,
+      24,
+      23,
+      21,
+      21,
+      13,
+      10
+    ],
+    [
+      47,
+      46,
+      40,
+      38,
+      37,
+      37,
+      34,
+      25,
+      23,
+      22,
+      21,
+      18,
+      16
+    ]
+  ]
+}

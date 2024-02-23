@@ -43,10 +43,16 @@ satisfy(
     [x[i] + d[i] <= x[j] for i in range(nOperations) for j in dependencies[i]],
 
     # no overlap concerning add operations
-    NoOverlap(origins=[(x[i], y[i]) for i in add], lengths=[(del_add, 1) for i in add]),
+    NoOverlap(
+        origins=[(x[i], y[i]) for i in add],
+        lengths=[(del_add, 1) for i in add]
+    ),
 
     # no overlap concerning mul operations
-    NoOverlap(origins=[(x[i], y[i]) for i in mul], lengths=[(del_mul, 1) for i in mul])
+    NoOverlap(
+        origins=[(x[i], y[i]) for i in mul],
+        lengths=[(del_mul, 1) for i in mul]
+    )
 )
 
 minimize(

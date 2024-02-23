@@ -72,7 +72,13 @@ satisfy(
     [facility[group[i]] in facilities[i] for i in range(nItems)],
 
     # groups using the same facility cannot be processed the same day
-    [Cumulative(origins=gpd, lengths=1, heights=[facility[j] == i for j in range(nGroups)]) <= 1 for i in range(nFacilities)],
+    [
+        Cumulative(
+            origins=gpd,
+            lengths=1,
+            heights=[facility[j] == i for j in range(nGroups)]
+        ) <= 1 for i in range(nFacilities)
+    ],
 
     # assigning items to groups that are compatible wrt their processed days
     [producedDays[i] < gpd[group[i]] for i in range(nItems)],

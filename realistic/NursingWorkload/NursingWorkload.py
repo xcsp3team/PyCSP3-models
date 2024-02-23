@@ -35,10 +35,13 @@ p = VarArray(size=nPatients, dom=range(nNurses))
 w = VarArray(size=nNurses, dom=range(lb, maxWorkloadPerNurse + 1))
 
 satisfy(
+    # ensuring that each nurse has a valid number of patients
     Cardinality(p, occurrences={k: range(minPatientsPerNurse, maxPatientsPerNurse + 1) for k in range(nNurses)}),
 
+    # ensuring a nurse stays within a zone
     [p[i] != p[j] for i, j in combinations(nPatients, 2) if patients[i][0] != patients[j][0]],
 
+    # computing the workload of each nurse
     [w[k] == Sum(c * (p[i] == k) for i, (_, c) in enumerate(patients)) for k in range(nNurses)],
 
     # tag(symmetry-breaking)
@@ -48,5 +51,13 @@ satisfy(
 )
 
 minimize(
-    Sum(w[k] * w[k] for k in range(nNurses))
+    w * w
 )
+
+""" Comments
+1) Note that:
+ w * w
+   is equivalent to:
+ Sum(w[k] * w[k] for k in range(nNurses))
+2) is Increasing(w), a kind of symmetry-breaking compatible with the group just above?
+"""

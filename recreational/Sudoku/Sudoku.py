@@ -20,7 +20,7 @@ The famous logic puzzle. See, e.g., "Sudoku as a Constraint Problem" by Helmut S
  - https://www.semanticscholar.org/paper/Sudoku-as-a-Constraint-Problem-Simonis/4f069d85116ab6b4c4e6dd5f4776ad7a6170faaf
 
 ## Tags
-  recreational
+  recreational, notebook
 """
 
 import math

@@ -41,13 +41,24 @@ d = VarArray(size=[nCurricula, nPeriods], dom=range(max_load + 1))
 
 satisfy(
     # course load of all periods for each curriculum
-    [Cardinality(x[curriculum], occurrences={p: range(minCourses, maxCourses + 1) for p in range(nPeriods)}) for curriculum in distinctCurricula],
+    [
+        Cardinality(
+            x[curriculum],
+            occurrences={p: range(minCourses, maxCourses + 1) for p in range(nPeriods)}
+        ) for curriculum in distinctCurricula
+    ],
 
     # respecting prerequisites
     [x[i] < x[j] for i, j in precedences],
 
     # computing loads
-    [BinPacking(x[curricula[c]], sizes=courseLoads[curricula[c]], loads=l[c]) for c in range(nCurricula)],
+    [
+        BinPacking(
+            x[curricula[c]],
+            sizes=courseLoads[curricula[c]],
+            loads=l[c]
+        ) for c in range(nCurricula)
+    ],
 
     # computing deltas
     [d[c][p] == Maximum(l[c][p] - ideal_load_ceil[c], ideal_load_floor[c] - l[c][p]) for c in range(nCurricula) for p in range(nPeriods)]

@@ -16,7 +16,7 @@ each of them having 3 literals.
   python Dubois.py -data=number
 
 ## Tags
-  academic, notebook
+  academic
 """
 from pycsp3 import *
 

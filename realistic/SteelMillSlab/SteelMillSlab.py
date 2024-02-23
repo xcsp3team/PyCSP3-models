@@ -17,7 +17,7 @@ Steel is produced by casting molten iron into slabs.
   - https://www.csplib.org/Problems/prob038/
 
 ## Tags
-  realistic, csplib
+  realistic, notebook, csplib
 """
 
 from pycsp3 import *

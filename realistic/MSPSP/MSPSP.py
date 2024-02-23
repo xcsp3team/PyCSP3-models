@@ -47,7 +47,7 @@ s = VarArray(size=nTasks, dom=range(horizon + 1))
 w = VarArray(size=[nWorkers, nTasks], dom={0, 1})
 
 # z is the project duration
-z = Var(range(horizon + 1))
+z = Var(dom=range(horizon + 1))
 
 satisfy(
     # respecting precedence relations
@@ -62,7 +62,7 @@ satisfy(
     # non-overlapping constraints for the workers  tag(redundant-constraints)
     [
         Cumulative(
-            Task(origin=s[i], length=durations[i], height=w[j][i]) for i in WTasks[j]
+            tasks=[Task(origin=s[i], length=durations[i], height=w[j][i]) for i in WTasks[j]]
         ) <= 1 for j in range(nWorkers) if len(WTasks[j]) > 1
     ],
 
@@ -72,7 +72,7 @@ satisfy(
     # cumulative skill constraints
     [
         Cumulative(
-            Task(origin=s[i], length=durations[i], height=requirements[k][i]) for i in RTasks[k]
+            tasks=[Task(origin=s[i], length=durations[i], height=requirements[k][i]) for i in RTasks[k]]
         ) <= rc[k] for k in range(nSkills) if len(RTasks[k]) > 1 and sum(requirements[k][RTasks[k]]) > rc[k]
     ],
 

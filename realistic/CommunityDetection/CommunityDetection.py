@@ -22,7 +22,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2021/results2021.html
 
 ## Tags
-  realistic, mzn21
+  realistic, notebook, mzn21
 """
 
 from pycsp3 import *

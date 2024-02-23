@@ -27,7 +27,7 @@ The compatibility constraints are:
   - https://link.springer.com/chapter/10.1007/10704567_6
 
 ## Tags
-  recreational, notebook
+  recreational
 """
 
 from pycsp3 import *
