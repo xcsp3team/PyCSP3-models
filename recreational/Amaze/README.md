@@ -33,6 +33,8 @@ while paying attention to not having crossed lines.
  - constraints: [Count](http://pycsp.org/documentation/constraints/Count)
  - tags: recreational, mzn14, mzn19
 
+
+<br />
 <style>
   h1, h2, h3, h4, h5 {
     border-bottom: none;
