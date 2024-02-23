@@ -19,4 +19,4 @@ each of them having 3 literals.
 ```
 
 ## Tags
-  academic, notebook
+  academic

@@ -17,7 +17,7 @@ while paying attention to not having crossed lines.
 ## Links
 
 ## Tags
-  recreational
+  recreational, notebook
 
 <br />
 

@@ -25,7 +25,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ```
 
 ## Tags
-  realistic
+  realistic, notebook
 
 <br />
 

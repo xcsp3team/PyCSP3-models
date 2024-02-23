@@ -18,4 +18,4 @@ Given a grid, we want to place a number of pieces such that every piece is compl
  - https://www.sciencedirect.com/science/article/pii/S0004370201001047
 
 ## Tags
-  recreational, csplib
+  recreational, notebook, csplib

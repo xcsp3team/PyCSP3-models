@@ -45,4 +45,4 @@ A BIBD is therefore specified by its parameters (v,b,r,k,l).
   - python BIBD.py -data=[number,number,number,number,number] -variant=aux
 
 ## Tags
-  academic, csplib
+  academic, notebook, csplib

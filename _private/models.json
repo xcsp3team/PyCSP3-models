@@ -147,7 +147,8 @@
     ],
     "type": "COP",
     "tags": [
-      "recreational"
+      "recreational",
+      "notebook"
     ],
     "links": []
   },
@@ -321,6 +322,7 @@
     "type": "COP",
     "tags": [
       "realistic",
+      "notebook",
       "csplib"
     ],
     "links": [
@@ -354,6 +356,7 @@
     "type": "CSP",
     "tags": [
       "academic",
+      "notebook",
       "csplib"
     ],
     "links": []
@@ -427,6 +430,7 @@
     "type": "CSP",
     "tags": [
       "recreational",
+      "notebook",
       "csplib"
     ],
     "links": [
@@ -861,6 +865,7 @@
     "type": "COP",
     "tags": [
       "realistic",
+      "notebook",
       "mzn21"
     ],
     "links": [
@@ -1187,6 +1192,7 @@
     "type": "COP",
     "tags": [
       "recreational",
+      "notebook",
       "csplib"
     ],
     "links": [
@@ -1274,8 +1280,7 @@
     ],
     "type": "CSP",
     "tags": [
-      "academic",
-      "notebook"
+      "academic"
     ],
     "links": []
   },
@@ -1501,7 +1506,8 @@
     ],
     "type": "COP",
     "tags": [
-      "realistic"
+      "realistic",
+      "notebook"
     ],
     "links": []
   },
@@ -1546,9 +1552,6 @@
     "tags": [
       "realistic",
       "csplib",
-      "mzn16",
-      "mzn17",
-      "mzn20",
       "xcsp23"
     ],
     "links": [
@@ -1585,6 +1588,24 @@
     ]
   },
   {
+    "name": "Gametes",
+    "fullname": "realistic/Gametes",
+    "constraints": [
+      "AllDifferent",
+      "Count",
+      "Element",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn23"
+    ],
+    "links": [
+      "https://www.minizinc.org/challenge2023/results2023.html"
+    ]
+  },
+  {
     "name": "GeneralizedMKP",
     "fullname": "realistic/GeneralizedMKP",
     "constraints": [
@@ -1594,8 +1615,6 @@
     "type": "COP",
     "tags": [
       "realistic",
-      "mzn15",
-      "mzn19",
       "xcsp23"
     ],
     "links": [
@@ -2019,7 +2038,9 @@
     "type": "COP",
     "tags": [
       "realistic",
-      "mzn19"
+      "notebook",
+      "mzn19",
+      "mzn23"
     ],
     "links": [
       "https://en.wikipedia.org/wiki/Optimal_kidney_exchange",
@@ -2084,7 +2105,8 @@
     ],
     "type": "CSP",
     "tags": [
-      "single"
+      "single",
+      "notebook"
     ],
     "links": [
       "http://jimorlin.wordpress.com/2009/02/17/colored-letters-labeled-dice-a-logic-puzzle"
@@ -2191,29 +2213,12 @@
     "type": "CSP",
     "tags": [
       "recreational",
+      "notebook",
       "csplib"
     ],
     "links": [
       "https://www.csplib.org/Problems/prob132/",
       "https://www.sciencedirect.com/science/article/pii/S0004370201001047"
-    ]
-  },
-  {
-    "name": "League",
-    "fullname": "realistic/League",
-    "constraints": [
-      "Count",
-      "Maximum",
-      "Minimum",
-      "Sum"
-    ],
-    "type": "COP",
-    "tags": [
-      "realistic",
-      "mzn12"
-    ],
-    "links": [
-      "https://www.minizinc.org/challenge2012/results2012.html"
     ]
   },
   {
@@ -2236,7 +2241,7 @@
   },
   {
     "name": "League13",
-    "fullname": "realistic/League",
+    "fullname": "recreational/League",
     "constraints": [
       "Count",
       "Maximum",
@@ -2505,7 +2510,8 @@
     ],
     "type": "COP",
     "tags": [
-      "recreational"
+      "recreational",
+      "notebook"
     ],
     "links": [
       "https://www.minizinc.org/challenge2017/results2017.html"
@@ -2825,6 +2831,7 @@
     "type": "CSP",
     "tags": [
       "recreational",
+      "notebook",
       "csplib"
     ],
     "links": [
@@ -2842,6 +2849,7 @@
     "type": "CSP",
     "tags": [
       "recreational",
+      "mzn09",
       "mzn11",
       "mzn12",
       "mzn13"
@@ -3053,7 +3061,8 @@
     ],
     "type": "COP",
     "tags": [
-      "realistic"
+      "realistic",
+      "notebook"
     ],
     "links": [
       "https://ipg.host.cs.st-andrews.ac.uk/challenge/"
@@ -3682,6 +3691,7 @@
     "type": "COP",
     "tags": [
       "realistic",
+      "notebook",
       "csplib",
       "xcsp22"
     ],
@@ -3804,6 +3814,7 @@
     "type": "COP",
     "tags": [
       "realistic",
+      "notebook",
       "csplib"
     ],
     "links": [
@@ -3988,7 +3999,8 @@
     "type": "COP",
     "tags": [
       "realistic",
-      "mzn14"
+      "mzn14",
+      "mzn17"
     ],
     "links": [
       "https://www.minizinc.org/challenge2014/results2014.html"
@@ -4179,7 +4191,8 @@
     ],
     "type": "COP",
     "tags": [
-      "realistic"
+      "realistic",
+      "notebook"
     ],
     "links": [
       "https://en.wikipedia.org/wiki/Flow_shop_scheduling"
@@ -4658,7 +4671,8 @@
     ],
     "type": "CSP",
     "tags": [
-      "recreational"
+      "recreational",
+      "notebook"
     ],
     "links": []
   },
@@ -4690,6 +4704,7 @@
     "type": "COP",
     "tags": [
       "realistic",
+      "notebook",
       "csplib"
     ],
     "links": [
@@ -4868,7 +4883,8 @@
     ],
     "type": "CSP",
     "tags": [
-      "recreational"
+      "recreational",
+      "notebook"
     ],
     "links": [
       "https://www.sciencedirect.com/science/article/pii/S0004370210000718"
@@ -4884,7 +4900,8 @@
     ],
     "type": "COP",
     "tags": [
-      "recreational"
+      "recreational",
+      "notebook"
     ],
     "links": [
       "https://en.wikipedia.org/wiki/Sudoku",
@@ -5096,7 +5113,8 @@
     "type": "COP",
     "tags": [
       "realistic",
-      "mzn11"
+      "mzn11",
+      "mzn23"
     ],
     "links": [
       "https://dl.acm.org/doi/abs/10.1145/2034691.2034697",
@@ -5216,6 +5234,7 @@
     "type": "CSP",
     "tags": [
       "single",
+      "notebook",
       "csplib"
     ],
     "links": [
@@ -5310,7 +5329,8 @@
     ],
     "type": "COP",
     "tags": [
-      "recreational"
+      "recreational",
+      "notebook"
     ],
     "links": [
       "https://www.researchgate.net/publication/220270875_The_Traveling_Tournament_Problem_Description_and_Benchmarks"
@@ -5473,25 +5493,6 @@
     ]
   },
   {
-    "name": "ValveNetwork",
-    "fullname": "recreational/ValveNetwork",
-    "constraints": [
-      "Element",
-      "Sum",
-      "Table"
-    ],
-    "type": "COP",
-    "tags": [
-      "realistic",
-      "mzn23"
-    ],
-    "links": [
-      "https://adventofcode.com/2022",
-      "https://github.com/zayenz/advent-of-code-2022",
-      "https://www.minizinc.org/challenge2023/results2023.html"
-    ]
-  },
-  {
     "name": "Vellino",
     "fullname": "recreational/Vellino",
     "constraints": [
@@ -5500,8 +5501,7 @@
     ],
     "type": "COP",
     "tags": [
-      "recreational",
-      "notebook"
+      "recreational"
     ],
     "links": [
       "https://link.springer.com/chapter/10.1007/10704567_6"
@@ -5532,8 +5532,7 @@
     ],
     "type": "COP",
     "tags": [
-      "recreational",
-      "notebook"
+      "recreational"
     ],
     "links": [
       "https://link.springer.com/chapter/10.1007/10704567_6"
@@ -5628,6 +5627,7 @@
     "type": "COP",
     "tags": [
       "realistic",
+      "notebook",
       "csplib",
       "xcsp22"
     ],

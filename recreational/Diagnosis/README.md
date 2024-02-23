@@ -19,4 +19,4 @@ Model-based diagnosis can be seen as taking as input a partially parameterized s
  - https://www.csplib.org/Problems/prob042/
 
 ## Tags
-  recreational, csplib
+  recreational, notebook, csplib

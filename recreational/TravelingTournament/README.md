@@ -18,4 +18,4 @@ The Traveling Tournament Problem is a sports timetabling problem that abstracts 
   - https://www.researchgate.net/publication/220270875_The_Traveling_Tournament_Problem_Description_and_Benchmarks
 
 ## Tags
-  recreational
+  recreational, notebook

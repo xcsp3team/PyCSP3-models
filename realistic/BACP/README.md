@@ -27,7 +27,7 @@ BACP is to design a balanced academic curriculum by assigning periods to courses
  - https://www.csplib.org/Problems/prob030/
 
 ## Tags
-  realistic, csplib
+  realistic, notebook, csplib
 
 <br />
 

@@ -19,7 +19,7 @@
   - https://ipg.host.cs.st-andrews.ac.uk/challenge/
 
 ## Tags
-  realistic
+  realistic, notebook
 
 <br />
 

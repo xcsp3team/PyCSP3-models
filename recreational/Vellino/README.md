@@ -30,7 +30,7 @@ The compatibility constraints are:
   - https://link.springer.com/chapter/10.1007/10704567_6
 
 ## Tags
-  recreational, notebook
+  recreational
 
 <br />
 
@@ -38,4 +38,4 @@ The compatibility constraints are:
 
 #### Vellino2.py
  - constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
- - tags: recreational, notebook
+ - tags: recreational

@@ -18,4 +18,4 @@ the objective is to determine whether Gp is isomorphic to some subgraph(s) in Gt
   - https://www.sciencedirect.com/science/article/pii/S0004370210000718
 
 ## Tags
-  recreational
+  recreational, notebook

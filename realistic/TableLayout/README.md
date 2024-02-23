@@ -25,4 +25,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2011/results2011.html
 
 ## Tags
-  realistic, mzn11
+  realistic, mzn11, mzn23

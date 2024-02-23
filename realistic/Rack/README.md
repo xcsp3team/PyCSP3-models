@@ -19,7 +19,7 @@ The rack configuration problem consists of plugging a set of electronic cards in
   - https://www.csplib.org/Problems/prob031/
 
 ## Tags
-  realistic, csplib
+  realistic, notebook, csplib
 
 <br />
 

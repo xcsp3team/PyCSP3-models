@@ -17,7 +17,7 @@ Problem 081 on CSPLib
  - https://www.csplib.org/Problems/prob081/
 
 ## Tags
-  recreational, csplib
+  recreational, notebook, csplib
 
 <br />
 

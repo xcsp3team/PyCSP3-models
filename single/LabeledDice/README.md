@@ -22,4 +22,4 @@ The puzzle was created by Humphrey Dudley.
  - http://jimorlin.wordpress.com/2009/02/17/colored-letters-labeled-dice-a-logic-puzzle
 
 ## Tags
-  single
+  single, notebook

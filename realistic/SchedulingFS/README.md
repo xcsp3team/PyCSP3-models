@@ -15,4 +15,4 @@
   - https://en.wikipedia.org/wiki/Flow_shop_scheduling
 
 ## Tags
-  realistic
+  realistic, notebook

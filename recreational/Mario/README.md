@@ -31,7 +31,7 @@ This problem was proposed by maury Ollagnier and Jean-Guillaume Fages.
   - https://www.minizinc.org/challenge2017/results2017.html
 
 ## Tags
-  recreational
+  recreational, notebook
 
 <br />
 

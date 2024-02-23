@@ -20,7 +20,7 @@
   - https://en.wikipedia.org/wiki/Nonogram
 
 ## Tags
-  recreational, csplib
+  recreational, notebook, csplib
 
 <br />
 
@@ -28,4 +28,4 @@
 
 #### Nonogram_z.py
  - constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)
- - tags: recreational, mzn11, mzn12, mzn13
+ - tags: recreational, mzn09, mzn11, mzn12, mzn13

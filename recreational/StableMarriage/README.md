@@ -25,4 +25,4 @@ as it shows how a nice and compact model can be written.
 ```
 
 ## Tags
-  recreational
+  recreational, notebook
