@@ -28,7 +28,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2019/results2019.html
 
 ## Tags
-  realistic, notebook, mzn19
+  realistic, notebook, mzn19, mzn23
 """
 
 from pycsp3 import *
