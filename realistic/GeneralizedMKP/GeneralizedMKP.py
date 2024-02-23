@@ -21,7 +21,7 @@ See Wikipedia.
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  realistic, mzn15, mzn19, xcsp23
+  realistic, xcsp23
 """
 
 from pycsp3 import *
