@@ -39,14 +39,14 @@ x = VarArray(size=[horizon, nJars], dom=range(max(jars) + 1))
 # y[t] is the number of cookies eaten by the monster in a selection of jars at time t
 y = VarArray(size=horizon, dom=range(max(jars) + 1))
 
-# f is the first time when all jars are empty
-f = Var(dom=range(horizon))
+# z is the first time when all jars are empty
+z = Var(dom=range(horizon))
 
 satisfy(
-    # initial state
+    # setting initial state
     x[0] == jars,
 
-    # final state
+    # setting final state
     x[-1] == 0,
 
     # handling the action of the cookie monster at time t (to t+1)
@@ -65,12 +65,12 @@ satisfy(
         ) for t in range(horizon - 1)
     ],
 
-    # at time f, all jars are empty
-    y[f] == 0
+    # ensuring all jars are empty at time z
+    y[z] == 0
 )
 
 minimize(
-    f
+    z
 )
 
 """ Comments

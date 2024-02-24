@@ -12,7 +12,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   Two integers (n,m)
 
 ## Model
-  Constraints: Sum
+  Constraints: AllDifferent, Sum
 
 ## Execution
   python Whirlpool.py -data=[number,number]
@@ -38,21 +38,18 @@ def whirlpool(y):
 
 
 satisfy(
+    # ensuring a permutation
+    AllDifferent(x),
+
     # every 2 x 2 sub matrix is either ordered clockwise or counter-clockwise
     [whirlpool([x[i][j], x[i][j + 1], x[i + 1][j + 1], x[i + 1][j]]) for i in range(n - 1) for j in range(m - 1)],
 
     # every ring is either ordered clockwise or counter-clockwise
-    [whirlpool(ring(x, k)) for k in range(min(n, m) // 2)]
-)
+    [whirlpool(ring(x, k)) for k in range(min(n, m) // 2)],
 
-if n == m:
-    satisfy(
-        # for a perfect diagonal whirlpool permutation, the sum of both diagonals is n*(n+1)*(n+1) div 2
-        (
-            Sum(x[i][i] for i in range(n)) == n * (n + 1) * (n + 1) // 2,
-            Sum(x[i][-i - 1] for i in range(n)) == n * (n + 1) * (n + 1) // 2
-        )
-    )
+    # ensuring, for a perfect diagonal whirlpool permutation, that the sum of both diagonals is n*(n+1)*(n+1) div 2
+    [Sum(diagonal) == n * (n + 1) * (n + 1) // 2 for diagonal in [diagonal_down(x), diagonal_up(x)]] if n == m else None
+)
 
 """
 1) data used in 2020 are: (8,8), (12,12), (21,21), (29,29), (30,30)

@@ -31,13 +31,13 @@ from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry
 n, q = data  # the order (number of rows and columns) of the board and the number of armies
 colors = range(q + 1)  # including 0
 
-symmetries = [sym.apply_on(n) for sym in TypeSquareSymmetry]
+symmetries = [f.apply_on(n) for f in TypeSquareSymmetry]
 
 
 def automaton():
     qs = Automaton.states_for(colors)
-    transitions = [(qs[0], 0, qs[0])] + [(qs[0], v, qs[v]) for v in range(1, q + 1)] + [(qs[v], [0, v], qs[v]) for v in range(1, q + 1)]
-    return Automaton(start=qs[0], final=qs, transitions=transitions)
+    trs = [(qs[0], 0, qs[0])] + [(qs[0], v, qs[v]) for v in range(1, q + 1)] + [(qs[v], [0, v], qs[v]) for v in range(1, q + 1)]
+    return Automaton(start=qs[0], final=qs, transitions=trs)
 
 
 A = automaton()  # the automaton used to impose that queens are at peace
@@ -68,15 +68,10 @@ satisfy(
     AllEqual(z),
 
     # tag(symmetry-breaking)
-    (
-        Precedence(x, values=range(1, q + 1)),
-        [
-            LexIncreasing(
-                x,
-                x[symmetry]
-            ) for symmetry in symmetries
-        ]
-    )
+    Precedence(x, values=range(1, q + 1)),
+
+    # tag(symmetry-breaking)
+    [LexIncreasing(x, x[symmetry]) for symmetry in symmetries]
 )
 
 maximize(

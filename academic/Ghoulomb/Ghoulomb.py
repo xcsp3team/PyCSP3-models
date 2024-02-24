@@ -44,8 +44,11 @@ def ruler(m):
         # ensuring constraints for the ruler 'k'
         [
             [d[k] == x[j] - x[i] for k, (i, j) in enumerate(combinations(m, 2))],
+
             x[0] == 0,
+
             Increasing(x, strict=True),
+
             Cumulative(origins=d, lengths=1, heights=11) <= 15,
 
             # tag(symmetry-breaking)
