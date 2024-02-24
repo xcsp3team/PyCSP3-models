@@ -13,7 +13,7 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist (Licence at https://githu
   constraints: AllDifferent, Channel, Circuit, Lex, Sum
 
 ## Execution
-  python Perfect1Factorization.py -data=[number]
+  python Perfect1Factorization.py -data=number
 
 ## Links
   - https://www.minizinc.org/challenge2021/results2021.html
@@ -24,7 +24,7 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist (Licence at https://githu
 
 from pycsp3 import *
 
-n = data  # number of nodes
+n = data or 10  # number of nodes
 m = n - 1  # number of matchings
 
 # x[i] is the ith complete matching
@@ -44,11 +44,17 @@ satisfy(
     [AllDifferent(x[:, j]) for j in range(n)],
 
     # computing values of y
-    [either(y[i1][i2][j] == x[i1][j], y[i1][i2][j] == x[i2][j]) for i1, i2 in combinations(m, 2) for j in range(1, n)],
+    [
+        either(
+            y[i1][i2][j] == x[i1][j],
+            y[i1][i2][j] == x[i2][j]
+        ) for i1, i2 in combinations(m, 2) for j in range(1, n)
+    ],
 
     # tag(symmetry-breaking)
     (
         [y[i1][i2][0] == x[i1][0] for i1, i2 in combinations(m, 2)],
+
         LexIncreasing(x, strict=True)
     )
 )

@@ -41,20 +41,6 @@ assert 0 < nMoves <= horizon
 
 pairs = [(i, j) for i in range(n) for j in range(m) if init_board[i][j] is not None]
 
-# x[i,j,t] is the value at row i and column j at time t
-x = VarArray(size=[nMoves + 1, n, m], dom=lambda t, i, j: {0, 1} if init_board[i][j] is not None else None)
-
-# y[t] is the move (transition) performed at time t
-y = VarArray(size=nMoves, dom=range(nTransitions))
-
-satisfy(
-    # setting the initial board
-    x[0] == init_board,
-
-    # setting the final board
-    x[-1] == final_board
-)
-
 
 def unchanged(i, j, t):
     valid = [k for k, tr in enumerate(transitions) if (i, j) in (tr[0:2], tr[2:4], tr[4:6])]
@@ -77,13 +63,31 @@ def to1(i, j, t):
     return disjunction(y[t] == k for k in valid) == both(x[t][i][j] == 0, x[t + 1][i][j] == 1)
 
 
+# x[i,j,t] is the value at row i and column j at time t
+x = VarArray(size=[nMoves + 1, n, m], dom=lambda t, i, j: {0, 1} if init_board[i][j] is not None else None)
+
+# y[t] is the move (transition) performed at time t
+y = VarArray(size=nMoves, dom=range(nTransitions))
+
 satisfy(
+    # setting the initial board
+    x[0] == init_board,
+
+    # setting the final board
+    x[-1] == final_board,
+
+    # handling unchanged situations
     [unchanged(i, j, t) for (i, j) in pairs for t in range(nMoves)],
+
+    # handling situations where a peg disappears
     [to0(i, j, t) for (i, j) in pairs for t in range(nMoves)],
+
+    # handling situations where a peg appears
     [to1(i, j, t) for (i, j) in pairs for t in range(nMoves)]
 )
 
 """ Comments
 1) x[0] == init_board is possible because cells with None (either in variables or values) are discarded
    This is equivalent to [x[0][i][j] == init_board[i][j] for (i, j) in pairs]
+2) what about replacing conjunction and disjunction with AllHold and Exist?
 """

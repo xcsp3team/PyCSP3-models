@@ -38,7 +38,12 @@ if not variant():
     satisfy(
         If(
             x[i][j] != PEACE,
-            Then=NotExist(both(x[min(i, k)][max(i, k)] == WAR, x[min(j, k)][max(j, k)] == WAR) for k in range(n) if different_values(i, j, k))
+            Then=NotExist(
+                both(
+                    x[min(i, k)][max(i, k)] == WAR,
+                    x[min(j, k)][max(j, k)] == WAR
+                ) for k in range(n) if different_values(i, j, k)
+            )
         ) for i, j in combinations(n, 2)
     )
 

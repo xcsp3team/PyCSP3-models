@@ -51,6 +51,7 @@ satisfy(
     [Sum(diagonal) == n * (n + 1) * (n + 1) // 2 for diagonal in [diagonal_down(x), diagonal_up(x)]] if n == m else None
 )
 
-"""
+""" Comments
 1) data used in 2020 are: (8,8), (12,12), (21,21), (29,29), (30,30)
+2) diagonal_down, diagonal_up and ring are methods defined as tools in the library
 """

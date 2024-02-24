@@ -26,7 +26,8 @@ For example, in the Pythagorean triple 3, 4 and 5 (32 + 42 = 52 ), if 3 and 4 ar
 from pycsp3 import *
 from math import sqrt
 
-n = data
+n = data or 2000
+RED, BLUE = 0, 1
 
 
 def conflicts():
@@ -44,16 +45,19 @@ def conflicts():
     return t
 
 
-# x[i] is 0 (resp., 1) if integer i is in part/subset 0 (resp., 1)
-x = VarArray(size=n + 1, dom={0, 1})
+def valid_triple(i, j, k):
+    if variant("table"):
+        return (x[i], x[j], x[k]) in [(RED, RED, BLUE), (RED, BLUE, RED), (RED, BLUE, BLUE), (BLUE, RED, RED), (BLUE, RED, BLUE), (BLUE, BLUE, RED)]
+    return NotAllEqual(x[i], x[j], x[k])
+
+
+# x[i] is RED (resp., BLUE) if integer i is in part/subset 0 (resp., 1)
+x = VarArray(size=n + 1, dom={RED, BLUE})
 
 satisfy(
-    # setting an arbitrary value to integer 0
+    # putting 0 in the first setting an arbitrary value to integer 0  tag(symmetry-breaking)
     x[0] == 0,
 
-    # ensuring that no Pythagorean triple is present in the same part
-    [
-        NotAllEqual(x[i], x[j], x[k]) if not variant() else (x[i], x[j], x[k]) in [(0, 0, 1), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0)]
-        for i, j, k in conflicts()
-    ]
+    # ensuring that each Pythagorean triple is valid
+    [valid_triple(i, j, k) for i, j, k in conflicts()]
 )

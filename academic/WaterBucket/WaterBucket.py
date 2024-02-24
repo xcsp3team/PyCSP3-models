@@ -49,12 +49,12 @@ def tables():
         return False  # not related in other cases
 
     states = {(i, j, k) for i in range(c1 + 1) for j in range(c2 + 1) for k in range(c3 + 1) if i + j + k == c1}
-    table_tr = {(*state1, *state2) for state1 in states for state2 in states if nearby_states(*state1, *state2)}
-    table_hr = {(t,) + (ANY,) * (t * 3) + (g1, g2, g3) * (h - t) for t in range(h)}
+    table_tr = {(*state1, *state2) for state1 in states for state2 in states if nearby_states(*state1, *state2)}  # table transitions
+    table_hr = {(t,) + (ANY,) * (t * 3) + (g1, g2, g3) * (h - t) for t in range(h)}  # table horizon
     return table_tr, table_hr
 
 
-table_transitions, table_horizon = tables()
+T1, T2 = tables()
 
 # x[t][i] is the volume of water in bucket i at time (round) t
 x = VarArray(size=[h, 3], dom=lambda t, i: range(c1 + 1) if i == 0 else range(c2 + 1) if i == 1 else range(c3 + 1))
@@ -67,10 +67,10 @@ satisfy(
     x[0] == (c1, 0, 0),
 
     # only some transfers are possible between two successive rounds
-    [(x[t] + x[t + 1]) in table_transitions for t in range(h - 1)],  # or (*x[t], *x[t + 1])
+    [(x[t], x[t + 1]) in T1 for t in range(h - 1)],
 
     # computing the number of transfers
-    (z, *flatten(x)) in table_horizon
+    (z, x) in T2
 )
 
 minimize(
@@ -81,4 +81,12 @@ minimize(
 """ Comments
 1) it is no more possible to write x = VarArray(size=[h, 3], dom=[[range(c1 + 1), range(c2 + 1), range(c3 + 1)]] * h)
 that is to say, a list of lists of domains (one must use a (lambda) function) 
+2) Note that (x[t], x[t + 1])
+ is equivalent to:
+   (x[t] + x[t + 1])
+ or
+   (*x[t], *x[t + 1])
+3) Note that (z, x)
+ is equivalent to:
+   (z, *flatten(x)) 
 """
