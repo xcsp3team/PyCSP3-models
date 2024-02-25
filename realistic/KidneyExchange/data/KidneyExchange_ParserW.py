@@ -1,4 +1,5 @@
 from pycsp3.problems.data.parsing import *
+
 # from random import randrange, seed
 
 k = number_in(line())
@@ -12,7 +13,7 @@ n = t[-1][0] + 1
 m = [[-1] * n for _ in range(n)]
 for i, j, w, p in t:
     assert p == 0
-    m[i-1][j-1] = 0 if i == j else w  #randrange(1, d)
+    m[i - 1][j - 1] = 0 if i == j else w  # randrange(1, d)
 data['weights'] = m
 data["k"] = k
 

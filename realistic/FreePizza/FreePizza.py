@@ -5,7 +5,7 @@ The problem arises in the University College Cork student dorms. There is a larg
 of pizzas for a party, and many of the students have vouchers for acquiring discounts in purchasing
 pizzas. A voucher is a pair of numbers e.g. (2, 4), which means if you pay for 2 pizzas then you can
 obtain for free up to 4 pizzas as long as they each cost no more than the cheapest of the 2 pizzas you
-paid for. Similarly a voucher (3, 2) means that if you pay for 3 pizzas you can get up to 2 pizzas for
+paid for. Similarly, a voucher (3, 2) means that if you pay for 3 pizzas you can get up to 2 pizzas for
 free as long as they each cost no more than the cheapest of the 3 pizzas you paid for. The aim is to
 obtain all the ordered pizzas for the least possible cost. Note that not all vouchers need to be used.
 

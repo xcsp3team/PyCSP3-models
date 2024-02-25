@@ -1,6 +1,6 @@
 """
 Traveling Tournament Problem with Predefined Venues (TTPPV).
-The problem consists of finding an optimal compact single round robin schedule for a sport event.
+The problem consists of finding an optimal compact single round-robin schedule for a sport event.
 Given a set of n teams, each team has to play against every other team exactly once.
 In each round, a team plays either at home or away, however no team can play more than three consecutive times at home or away.
 The sum of the traveling distance of each team has to be minimized.
@@ -52,7 +52,7 @@ o = VarArray(size=[nTeams, nRounds], dom=range(nTeams))
 # h[i][k] is 1 iff the ith team plays at home at the kth round
 h = VarArray(size=[nTeams, nRounds], dom={0, 1})
 
-# t[i][k] is the travelled distance by the ith team at the kth round. An additional round is considered for returning at home.
+# t[i][k] is the travelled distance by the ith team at the kth round. An additional round is considered for returning home.
 t = VarArray(size=[nTeams, nRounds + 1], dom=range(nTeams // 2 + 1))
 
 satisfy(

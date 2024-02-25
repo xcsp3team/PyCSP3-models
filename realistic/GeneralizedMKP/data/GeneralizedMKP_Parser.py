@@ -18,4 +18,4 @@ for tt in data['pmatrix']:
 
 assert e == len(data['wmatrix']) == len(data['capacities'])
 
-# python ppycsp3/pproblems/reserve/GeneralizedMKP.py -data=[0,/home/lecoutre/instances/mknap/chubeas/OR5x100/OR5x100-025-1]  -dataparser=ppycsp3/pproblems/reserve/GeneralizedMKP_Parser.py
+# python GeneralizedMKP.py -data=[0,/home/lecoutre/instances/mknap/chubeas/OR5x100/OR5x100-025-1] -dataparser=ppycsp3/pproblems/reserve/GeneralizedMKP_Parser.py

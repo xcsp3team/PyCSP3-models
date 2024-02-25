@@ -1,6 +1,6 @@
 """
 The goal of the asymmetric travelling purchaser problem is to decide where to buy each of a set of products,
-and in which order to visit the purchase locations, so as to minimize the total travel and purchase costs.
+and in which order to visit the purchase locations, in order to minimize the total travel and purchase costs.
 Travel costs are asymmetric, and cities are laid out on a grid with travel only allowed between horizontally and vertically adjacent cities.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2012/2016 Minizinc challenges.

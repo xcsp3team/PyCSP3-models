@@ -38,7 +38,7 @@ def order_number(item_type, k):
 # x[t] is the order produced at time t (possibly, none with special value nOrders)
 x = VarArray(size=nPeriods, dom=range(nOrders + 1))
 
-# y[i] is the time at which the order is is produced
+# y[i] is the time at which the order is produced
 y = VarArray(size=nOrders, dom=range(nPeriods))
 
 # ip[i] is the inventory period required for order i (i.e. the number of periods the order is completed before its due date)

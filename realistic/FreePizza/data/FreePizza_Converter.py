@@ -7,7 +7,7 @@ from pycsp3.problems.data.parsing import *
 # For example python FreePizza.py -data=<datafile.json> -parser=FreePizza_Converter.py -dataexport
 
 
-name = options.data  # the name of the JSON file whose format must be converted")
+name = options.data  # the name of the JSON file whose format must be converted
 with open(name) as f:
     d = json.load(f)
 

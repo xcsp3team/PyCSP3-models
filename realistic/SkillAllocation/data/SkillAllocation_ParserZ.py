@@ -9,5 +9,5 @@ data['engineerSkills'] = split_with_rows_of_size(numbers_in(line()), nSkills)
 data['engineerLocations'] = numbers_in(next_line())
 jobs = split_with_rows_of_size(numbers_in(next_line()), 5)
 for job in jobs:
-    job[0] -=1
+    job[0] -= 1
 data['jobs'] = jobs

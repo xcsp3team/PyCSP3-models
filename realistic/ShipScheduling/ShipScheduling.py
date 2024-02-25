@@ -1,6 +1,6 @@
 """
 From the ICAPS conference paper (whose reference is given below):
-"Ship scheduling deals with assigning arrival and departure times to a ﬂeet of ships,
+"Ship scheduling deals with assigning arrival and departure times to a fleet of ships,
 as well as the amount and sometimes type of cargo that is carried on each ship.
 One consideration in ship scheduling which does not occur in other transportation problems is that most ports have
 restrictions on the draft of ships that may safely enter the port.

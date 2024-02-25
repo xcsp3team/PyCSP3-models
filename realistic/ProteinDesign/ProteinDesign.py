@@ -28,10 +28,10 @@ e1, e2 = len(c1s), len(c2s)
 # x[i] is the value for the ith variable
 x = VarArray(size=n, dom=range(0, d))
 
-# c1|i] is the cost of the ith unary soft constraint
+# c1[i] is the cost of the ith unary soft constraint
 c1 = VarArray(size=e1, dom=range(maxCosts1 + 1))
 
-# c2|i] is the cost of the ith binary soft constraint
+# c2[i] is the cost of the ith binary soft constraint
 c2 = VarArray(size=e2, dom=range(maxCosts2 + 1))
 
 satisfy(

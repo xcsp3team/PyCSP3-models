@@ -54,7 +54,7 @@ y = VarArray(size=[nLocations, nComponents], dom=range(MAX_INT + 1))
 # total is the total number of deployed components
 total = Var(dom=range(MAX_INT + 1))
 
-# z[j] is 1 if the jth location i used
+# z[j] is 1 if the jth location is used
 z = VarArray(size=nLocations, dom={0, 1})
 
 satisfy(

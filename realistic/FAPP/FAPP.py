@@ -40,7 +40,7 @@ def table_soft(i, j, eq_relaxation, ne_relaxation, short_table=True):
                 return l
         return kl - 1
 
-    table = []  # we use a list instead of a set because is is quite faster to process
+    table = []  # we use a list instead of a set because is quite faster to process
     cache = {}
     for f1 in domains[i]:
         for f2 in domains[j]:

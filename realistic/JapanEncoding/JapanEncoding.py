@@ -71,7 +71,7 @@ A, E1, E2, S11, S21, S22, U21, U22, U31, U32, U33, U41, U42, U43, U44, Ukn = Byt
 # y[i] is the byte status of the ith byte
 y = VarArray(size=n, dom=ByteLabels)
 
-# x{i] is the encoding of the ith byte
+# x[i] is the encoding of the ith byte
 x = VarArray(size=n, dom=Encodings)
 
 # cs[i] is 1 if the ith byte starts a character

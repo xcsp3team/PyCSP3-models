@@ -7,5 +7,4 @@ nInsignificantCells = next_int()
 series = next_int()
 seed = next_int()
 
-
 # TODO to be finished (as in JvSCP3)
