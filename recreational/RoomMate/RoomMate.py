@@ -3,7 +3,7 @@ In mathematics, economics and computer science, the stable-roommate problem is t
 A matching is a separation of the set into disjoint pairs (‘roommates’).
 The matching is stable if there are no two elements which are not roommates and which both prefer each other to their roommate under the matching.
 This is distinct from the stable-marriage problem in that the stable-roommates problem allows matches between any two elements, not just between classes of
-”men” and ”women”.
+'men' and 'women'.
 
 ## Data Example
   sr0006.json

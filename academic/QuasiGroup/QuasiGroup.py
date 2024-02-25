@@ -2,7 +2,7 @@
 This is [Problem 003](https://www.csplib.org/Problems/prob003/) at CSPLib.
 
 An order n quasigroup is a Latin square of size n.
-That is, a n×n multiplication table in which each element occurs once in every row and column.
+That is, an n×n multiplication table in which each element occurs once in every row and column.
 A quasigroup can be specified by a set and a binary multiplication operator, ∗ defined over this set.
 Quasigroup existence problems determine the existence or non-existence of quasigroups of
 a given size with additional properties. For example:
@@ -45,7 +45,7 @@ That is, a ∗ a = a for every element a.
 
 ## Tags
   academic, notebook, csplib, xcsp22
- """
+"""
 
 from pycsp3 import *
 

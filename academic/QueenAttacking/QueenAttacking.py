@@ -38,12 +38,12 @@ primes = all_primes(n * n)
 m = len(primes)
 
 
-def row(var):
-    return var // n
+def row(v):
+    return v // n
 
 
-def col(var):
-    return var % n
+def col(v):
+    return v % n
 
 
 # q is the cell for the queen
@@ -58,17 +58,24 @@ if not variant():
         AllDifferent(x),
 
         # ensuring a knight move between two successive values
-        [(d1 == 1) & (d2 == 2) | (d1 == 2) & (d2 == 1)
-         for d1, d2 in [(abs(row(x[i]) - row(x[i + 1])), abs(col(x[i]) - col(x[i + 1]))) for i in range(n * n - 1)]]
+        [
+            (d1 == 1) & (d2 == 2) | (d1 == 2) & (d2 == 1)
+            for i in range(n * n - 1) if (d1 := abs(row(x[i]) - row(x[i + 1])), d2 := abs(col(x[i]) - col(x[i + 1])))
+        ]
     )
 
     minimize(
         # minimizing the number of free primes
-        Sum((q == x[j]) | (row(q) != row(x[j])) & (col(q) != col(x[j])) & (abs(row(q) - row(x[j])) != abs(col(q) - col(x[j]))) for j in [p - 1 for p in primes])
+        Sum(
+            either(
+                q == x[j],
+                Or=conjunction(row(q) != row(x[j]), col(q) != col(x[j]), abs(row(q) - row(x[j])) != abs(col(q) - col(x[j])))
+            ) for j in [p - 1 for p in primes]
+        )
     )
 
 elif variant("aux"):
-    # p[j] is 1 iff the j+1th prime number is not attacked by a queen
+    # p[k] is 1 iff the k+1th prime number is not attacked by a queen
     p = VarArray(size=m, dom={0, 1})
 
     satisfy(
@@ -76,12 +83,18 @@ elif variant("aux"):
         AllDifferent(x),
 
         # ensuring a knight move between two successive values
-        [(d1 == 1) & (d2 == 2) | (d1 == 2) & (d2 == 1)
-         for d1, d2 in [(abs(row(x[i]) - row(x[i + 1])), abs(col(x[i]) - col(x[i + 1]))) for i in range(n * n - 1)]],
+        [
+            (d1 == 1) & (d2 == 2) | (d1 == 2) & (d2 == 1)
+            for i in range(n * n - 1) if (d1 := abs(row(x[i]) - row(x[i + 1])), d2 := abs(col(x[i]) - col(x[i + 1])))
+        ],
 
         # determining if prime numbers are attacked by the queen
-        [iff(p[j], (q == x[k]) | (row(q) != row(x[k])) & (col(q) != col(x[k])) & (abs(row(q) - row(x[k])) != abs(col(q) - col(x[k]))))
-         for j, k in enumerate(p - 1 for p in primes)]
+        [
+            p[k] == either(
+                q == x[j],
+                Or=conjunction(row(q) != row(x[j]), col(q) != col(x[j]), abs(row(q) - row(x[j])) != abs(col(q) - col(x[j])))
+            ) for k, j in enumerate(p - 1 for p in primes)
+        ]
     )
 
     minimize(
@@ -135,4 +148,7 @@ elif variant("table"):
 
 """ Comments
 1) the variant hybrid involves the automatic introduction of auxiliary variables
+
+2)  Sum((q == x[j]) | ((row(q) != row(x[j])) & (col(q) != col(x[j])) & (abs(row(q) - row(x[j])) != abs(col(q) - col(x[j])))) for j in
+            [p - 1 for p in primes])
 """

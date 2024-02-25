@@ -20,7 +20,7 @@ Using divisibility rules allows us to use less expensive operations (constraints
 
 ## Links
   - https://www.logisch-gedacht.de/logikraetsel/10stellige-zahl
-  - https://en.wikipedia.org/wiki/Divisibility_rule)
+  - https://en.wikipedia.org/wiki/Divisibility_rule
 
 ## Tags
   single

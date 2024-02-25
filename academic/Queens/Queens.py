@@ -1,7 +1,7 @@
 """
 This is [Problem 054](https://www.csplib.org/Problems/prob054/) at CSPLib.
 
-Can n queens (of the same colour) be placed on a n×n chessboard so that none of the queens can attack each other?
+Can n queens (of the same colour) be placed on an n×n chessboard so that none of the queens can attack each other?
 
 ## Example
   A solution for n=8

@@ -16,7 +16,7 @@ The original MZN model was proposed by Peter J. Stuckey, with a Licence that sem
 ## Model
   There are two variants:
     - a main one with intensional constraints,
-    - a 'table" variant with extensional constraints
+    - a 'table' variant with extensional constraints
 
   Constraints: Count, Lex, Sum, Table
 

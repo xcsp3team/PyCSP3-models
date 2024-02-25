@@ -6,7 +6,7 @@ Informally the Domino problem is an undirected constraint graph with a cycle and
   a pair (n,d), where n is the number of variables and d the size of the domain
 
 ## Model
-  There are two variants: a main one and a variant 'table" with constraints in extension.
+  There are two variants: a main one and a variant 'table' with constraints in extension.
 
   constraints: AllEqual, Table
 

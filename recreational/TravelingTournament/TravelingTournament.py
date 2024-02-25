@@ -1,5 +1,6 @@
 """
-The Traveling Tournament Problem is a sports timetabling problem that abstracts two issues in creating timetables: home/away pattern feasibility and team travel (from link below).
+The Traveling Tournament Problem is a sports timetabling problem that abstracts two issues in creating timetables:
+home/away pattern feasibility and team travel (from link below).
 
 ## Data Example
   galaxy04.json
@@ -50,7 +51,7 @@ o = VarArray(size=[nTeams, nRounds], dom=range(nTeams))
 # h[i][k] is 1 iff the ith team plays at home at the kth round
 h = VarArray(size=[nTeams, nRounds], dom={0, 1})
 
-# t[i][k] is the traveled distance by the ith team at the kth round. An additional round is considered for returning at home.
+# t[i][k] is the traveled distance by the ith team at the kth round. An additional round is considered for returning home.
 t = VarArray(size=[nTeams, nRounds + 1], dom=distances)
 
 satisfy(

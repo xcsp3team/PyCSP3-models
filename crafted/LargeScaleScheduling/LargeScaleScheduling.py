@@ -1,5 +1,5 @@
 """
-Large scale scheduling instances have been built to show the interest of a scalable time-table filtering algorithm for the Cumulative Constraint.
+Large scale scheduling instances have been built to show the interest of a scalable timetable filtering algorithm for the Cumulative Constraint.
 
 ## Data (example)
   00100-0.json

@@ -44,7 +44,7 @@ def compatible(t1, t2):
             and len(t2[n1] & t2[n2]) <= 1 < len(t2[n1] | t2[n2]) and len(t2[n1]) != 0 and len(t2[n2]) != 0]
 
 
-# x|i] is the position of the ith node
+# x[i] is the position of the ith node
 x = VarArray(size=n, dom=range(n))
 
 # y[j] is 1 if the jth crossing is effective

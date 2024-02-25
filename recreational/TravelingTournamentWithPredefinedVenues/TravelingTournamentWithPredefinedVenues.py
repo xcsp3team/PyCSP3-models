@@ -53,7 +53,7 @@ o = VarArray(size=[nTeams, nRounds], dom=range(nTeams))
 # h[i][k] is 1 iff the ith team plays at home at the kth round
 h = VarArray(size=[nTeams, nRounds], dom={0, 1})
 
-# t[i][k] is the travelled distance by the ith team at the kth round. An additional round is considered for returning at home.
+# t[i][k] is the travelled distance by the ith team at the kth round. An additional round is considered for returning home.
 t = VarArray(size=[nTeams, nRounds + 1], dom=range(nTeams // 2 + 1))
 
 satisfy(

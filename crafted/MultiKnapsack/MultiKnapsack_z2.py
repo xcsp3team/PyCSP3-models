@@ -26,7 +26,7 @@ from pycsp3 import *
 weightsPerBin, profits, binSizes, z = data
 nItems, nBins = len(profits), len(binSizes)
 
-# x[i] is 1 if the item i is packed
+# x[i] is 1 if the ith item is packed
 x = VarArray(size=nItems, dom={0, 1})
 
 # w[j] si the total weight in the jth bin

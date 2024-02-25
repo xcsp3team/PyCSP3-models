@@ -42,7 +42,7 @@ if not variant():
 
 
     def scope(i, j):
-        return [x[k][l] for k in range(n) for l in range(m) if i - 1 <= k <= i + 1 and j - 1 <= l <= j + 1 and (k, l) != (i, j)]
+        return [x[k][p] for k in range(n) for p in range(m) if i - 1 <= k <= i + 1 and j - 1 <= p <= j + 1 and (k, p) != (i, j)]
 
 
     # x[i][j] is 1 iff the cell at row i and col j is alive

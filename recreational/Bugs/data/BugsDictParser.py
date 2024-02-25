@@ -20,7 +20,8 @@ lst = [False] * nBugs
 for index in range(nBugs):
     bug = {"row": next_int(), "col": next_int(), "type": next_int()}
     data["bugs"].append(bug)
-    if lst[bug["type"]] is False: lst[bug["type"]] = []
+    if lst[bug["type"]] is False:
+        lst[bug["type"]] = []
     lst[bug["type"]].append(index)
 
 for index, length in enumerate(bugTypesLength):
