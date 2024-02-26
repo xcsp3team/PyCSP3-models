@@ -38,7 +38,11 @@ z = Var(dom=range(horizon))
 
 satisfy(
     # resource cumulative constraint
-    Cumulative(origins=x, lengths=durations, heights=heights) <= limit,
+    Cumulative(
+        origins=x,
+        lengths=durations,
+        heights=heights
+    ) <= limit,
 
     # computing the make-span
     z == Maximum(x[i] + durations[i] for i in range(nTasks)),

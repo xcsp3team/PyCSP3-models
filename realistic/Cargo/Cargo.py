@@ -105,16 +105,31 @@ satisfy(
     [ft[j] - eta[j] - vrd[j] <= limits.maxDelay for j in range(nVessels)],
 
     # not overlapping stockpiles in space and time
-    NoOverlap(origins=(r_st, y), lengths=(r_dt, lengths)),
+    NoOverlap(
+        origins=(r_st, y),
+        lengths=(r_dt, lengths)
+    ),
 
     # not exceeding the pad lengths
-    Cumulative(origins=r_st, lengths=r_dt, heights=lengths) <= H // coeffs.meter,
+    Cumulative(
+        origins=r_st,
+        lengths=r_dt,
+        heights=lengths
+    ) <= H // coeffs.meter,
 
     # not exceeding the daily stacking capacity
-    Cumulative(origins=r_st, lengths=r_sd, heights=dailyStackingTonnages) <= limits.dailyStacking,
+    Cumulative(
+        origins=r_st,
+        lengths=r_sd,
+        heights=dailyStackingTonnages
+    ) <= limits.dailyStacking,
 
     # ensuring that there are always enough reclaimers
-    Cumulative(origins=rt, lengths=rd, heights=1) <= limits.nReclaimers
+    Cumulative(
+        origins=rt,
+        lengths=rd,
+        heights=1
+    ) <= limits.nReclaimers
 )
 
 minimize(

@@ -50,7 +50,12 @@ satisfy(
     Cardinality(c, occurrences={i: 1 if i > 0 else n0s for i in range(nNodes)}),
 
     # no holes permitted during tours
-    [If(c[i][j] == 0, Then=c[i][j + 1] == 0) for i in range(nVehicles) for j in range(nSteps - 1)],
+    [
+        If(
+            c[i][j] == 0,
+            Then=c[i][j + 1] == 0
+        ) for i in range(nVehicles) for j in range(nSteps - 1)
+    ],
 
     # computing the collected demands
     [demands[c[i][j]] == d[i][j] for i in range(nVehicles) for j in range(nSteps)],

@@ -38,9 +38,9 @@ tmax = [maxTimes[multtank[i] - 1] for i in range(N + 2)]  # maximum time for job
 def e(i, j):
     ic = nTanks + 1 if i == N + 1 else multtank[i]
     jc = 0 if j == 0 else multtank[j]
-    cyclei = multiplier - 1 if i == N + 1 else (i - 1) // nTanks
-    cyclej = 0 if j == 0 else (j - 1) // nTanks
-    return 5 * abs(cyclei - cyclej) + eTimes[ic - 1, jc]
+    cycle_i = multiplier - 1 if i == N + 1 else (i - 1) // nTanks
+    cycle_j = 0 if j == 0 else (j - 1) // nTanks
+    return 5 * abs(cycle_i - cycle_j) + eTimes[ic - 1, jc]
 
 
 def f(i):
@@ -89,8 +89,14 @@ satisfy(
         If(
             h[i] <= h[j],  # in case higher numbered hoist removes from lower number tank
             Then=[
-                either(r[i] + f(i) + e(i + 1, j) <= r[j], r[j] + f(j) + e(j + 1, i) <= r[i]),  # (1) ensure the times are not overlapping
-                both(r[i] + f(i) + e(i + 1, j) <= r[j] + z, r[j] + f(j) + e(j + 1, i) <= r[i] + z)  # (2) ensure it concludes before the next action
+                either(  # (1) ensure the times are not overlapping
+                    r[i] + f(i) + e(i + 1, j) <= r[j],
+                    r[j] + f(j) + e(j + 1, i) <= r[i]
+                ),
+                both(  # (2) ensure it concludes before the next action
+                    r[i] + f(i) + e(i + 1, j) <= r[j] + z,
+                    r[j] + f(j) + e(j + 1, i) <= r[i] + z
+                )
             ]
         ) for i in range(1, N + 1) for j in range(i)
     ],

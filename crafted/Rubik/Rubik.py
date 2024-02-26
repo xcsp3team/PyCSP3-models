@@ -29,7 +29,10 @@ x = VarArray(size=n, dom={0, 1})
 
 satisfy(
     # respecting all clauses
-    Clause([x[abs(v) - 1] for v in clause], phases=[v > 0 for v in clause]) for clause in clauses
+    Clause(
+        [x[abs(v) - 1] for v in clause],
+        phases=[v > 0 for v in clause]
+    ) for clause in clauses
 )
 
 """

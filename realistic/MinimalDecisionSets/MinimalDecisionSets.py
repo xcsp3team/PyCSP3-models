@@ -27,8 +27,8 @@ n = 5  # max number of nodes
 nFeatures = len(db[0])
 target, dummy = nFeatures - 1, nFeatures  # dummy is a special value
 
-for i, row in enumerate(db):
-    db[i] = cp_array(row + [0])  # adding 0 for the dummy value (simpler for the element constraint later)
+for row in db:
+    row.append(0)  # adding 0 for the dummy value (simpler for the element constraint later)
 
 # sgn[j] is 1 if the corresponding feature is true
 sgn = VarArray(size=n, dom={0, 1})
@@ -64,7 +64,7 @@ satisfy(
     # constraining leaf and unused nodes
     (
         leaf[1] == 0,
-        leaf[-1] | unused[- 1],
+        either(leaf[-1], unused[- 1]),
         [If(unused[i], Then=either(unused[i - 1], leaf[i])) for i in range(1, n)],
         [If(unused[i], Then=unused[i + 1]) for i in range(n - 1)],
         [If(z < i + 1, Then=unused[i]) for i in range(n)],
@@ -74,14 +74,22 @@ satisfy(
     # validity propagation
     (
         [vld[0][i] == 1 for i in range(nItems)],
-        [vld[j + 1][i] == leaf[j + 1] | both(vld[j][i], db[i][ftr[j]] == sgn[j]) for j in range(n - 1) for i in range(nItems)],
+        [
+            vld[j + 1][i] == either(
+                leaf[j + 1],
+                both(vld[j][i], db[i][ftr[j]] == sgn[j])
+            ) for j in range(n - 1) for i in range(nItems)
+        ],
     ),
 
     # correctness of leaves
     [
         If(
             leaf[j + 1], vld[j][i],
-            Then=either(db[i][-2] == sgn[j], mis[i])
+            Then=either(
+                db[i][-2] == sgn[j],
+                mis[i]
+            )
         ) for i in range(nItems) for j in range(n)
     ],
 

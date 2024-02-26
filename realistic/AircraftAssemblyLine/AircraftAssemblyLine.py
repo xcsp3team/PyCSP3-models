@@ -67,14 +67,14 @@ satisfy(
     # respecting limit capacities of areas
     [
         Cumulative(
-            Task(origin=x[t], length=durations[t], height=usedAreaRooms[t][i]) for t in areaTasks[i]
+            tasks=[Task(origin=x[t], length=durations[t], height=usedAreaRooms[t][i]) for t in areaTasks[i]]
         ) <= areaCapacities[i] for i in range(nAreas) if len(areaTasks[i]) > 1
     ],
 
     # computing/restricting the number of operators at each station
     [
         Cumulative(
-            Task(origin=x[t], length=durations[t], height=operators[t] * (x[t] // takt == j)) for t in range(nTasks)
+            tasks=[Task(origin=x[t], length=durations[t], height=operators[t] * (x[t] // takt == j)) for t in range(nTasks)]
         ) <= z[j] for j in range(nStations)
     ],
 

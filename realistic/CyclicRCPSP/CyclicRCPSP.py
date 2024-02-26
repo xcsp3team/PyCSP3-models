@@ -47,10 +47,7 @@ z = Var(dom=range(horizon + 1))
 
 satisfy(
     # computing the make-span
-    z == 1 + (
-            Maximum(s[i] - k[i] * s[-1] for i in range(nTasks - 1))
-            - Minimum(s[i] - k[i] * s[-1] for i in range(nTasks - 1))
-    ),
+    z == 1 + Maximum(s[i] - k[i] * s[-1] for i in range(nTasks - 1)) - Minimum(s[i] - k[i] * s[-1] for i in range(nTasks - 1)),
 
     # generalised precedence constraints
     [

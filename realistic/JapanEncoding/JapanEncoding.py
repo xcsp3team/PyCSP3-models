@@ -167,7 +167,12 @@ satisfy(
 )
 
 minimize(
-    Sum((x[i] == EUCJP) * scoreEUCJP[b] + (x[i] == SJIS) * scoreSJIS[b] + (x[i] == UTF8) * scoreUTF8[b] for i, b in enumerate(stream))
+    Sum(
+        (x[i] == EUCJP) * scoreEUCJP[b]
+        + (x[i] == SJIS) * scoreSJIS[b]
+        + (x[i] == UTF8) * scoreUTF8[b]
+        for i, b in enumerate(stream)
+    )
     + 1000 * z
 )
 

@@ -30,7 +30,11 @@ x = VarArray(size=nTasks, dom=range(horizon))
 
 satisfy(
     # resource cumulative constraint
-    Cumulative(origins=x, lengths=durations, heights=heights) <= limit
+    Cumulative(
+        origins=x,
+        lengths=durations,
+        heights=heights
+    ) <= limit
 )
 
 minimize(

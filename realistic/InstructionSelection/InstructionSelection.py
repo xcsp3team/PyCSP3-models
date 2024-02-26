@@ -132,7 +132,7 @@ satisfy(
     [
         If(
             x[i] == b,
-            Then=Exist((pl[m] == b) if b not in matches[m].spannedBlocks else ((pl[m] == b) | sl[m]) for m in non_dominated)
+            Then=Exist(pl[m] == b if b not in matches[m].spannedBlocks else either(pl[m] == b, sl[m]) for m in non_dominated)
         ) for i in range(nData) for b in range(nBlocks)
     ],
 
@@ -178,17 +178,26 @@ satisfy(
     # tag(redundant-constraints)
     [
         # forbidding two matches to be selected together if they imply conflicting successor blocks
-        [either(sl[mi] == 0, sl[mj] == 0) for i, (mi, pi, qi) in enumerate(inBlockSucc) for j, (mj, pj, qj) in enumerate(inBlockSucc)
-         if i < j and (pi == pj) ^ (qi == qj)],
+        [
+            either(
+                sl[mi] == 0,
+                sl[mj] == 0
+            ) for i, (mi, pi, qi) in enumerate(inBlockSucc) for j, (mj, pj, qj) in enumerate(inBlockSucc) if i < j and (pi == pj) ^ (qi == qj)
+        ],
 
         # forbidding two matches to be selected together if the first implies that two locations are equal
         # and the second implies that the intersection of their domains is empty
-        [either(sl[m] == 0, sl[m2] == 0) for m, p, q in sameLoc for m1, l1, mi1, ma1 in locDomain if l1 == p for m2, l2, mi2, ma2 in locDomain
-         if m1 == m2 and l2 == q and (ma1 < mi2 or ma2 < mi1)]
+        [
+            either(
+                sl[m] == 0,
+                sl[m2] == 0
+            ) for m, p, q in sameLoc for m1, l1, mi1, ma1 in locDomain if l1 == p for m2, l2, mi2, ma2 in locDomain
+            if m1 == m2 and l2 == q and (ma1 < mi2 or ma2 < mi1)
+        ]
     ],
 
     # possible detection of symmetry among location values 1..31
-    [y[i] in {0}.union(set(range(31, nLocations))) for i in range(nData)] if possible_early_symmetry else None,
+    [y[i] not in range(1, 31) for i in range(nData)] if possible_early_symmetry else None,
 
     # dominated matches cannot be selected
     [sl[m] == 0 for m in dominated]
@@ -208,4 +217,5 @@ minimize(
   sl == [1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0,
           1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
           1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+3) {0}.union(set(range(31, nLocations))
 """

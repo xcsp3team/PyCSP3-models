@@ -74,7 +74,10 @@ satisfy(
     ],
 
     # warehouses must be visited first
-    [xa[0] == WA, xb[0] == WB],
+    [
+        xa[0] == WA,
+        xb[0] == WB
+    ],
 
     # coming back to the warehouses is possible from second location  tag(symmetry-breaking)
     [

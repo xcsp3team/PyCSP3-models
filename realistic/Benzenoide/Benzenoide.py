@@ -76,7 +76,7 @@ satisfy(
 
     # tag(symmetry-breaking)
     [
-        [LexDecreasing(x, [x[row] for row in sym]) for sym in symmetries],
+        [LexDecreasing(x, x[symmetry]) for symmetry in symmetries],
 
         [Precedence(y, values=(1, v)) for v in range(2, n + 1)]
 
@@ -110,6 +110,10 @@ minimize(
    is a shortcut for:
  [y[k][l] for k, l in neighbors[i][j]] 
 3) Data for the XCSP23 competition are : [6,7,8,9,10,11,12,13,14,15] 
+4) Note that:
+ x[symmetry] 
+   is equivalent to:
+ [x[row] for row in sym]
 """
 
 # [(y[i][j], y[k][l]) in [(ne(1), ANY), (1, 2)] for i in range(n) for j in range(widths[i])

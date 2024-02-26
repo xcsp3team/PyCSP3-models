@@ -59,11 +59,16 @@ satisfy(
     AllDifferent(line_o),
 
     # ordering of the lines (components use the output of previous lines)
-    [line_i[j] < line_o[r] for r in range(nLines) for j in intervals[r]],
+    [
+        line_i[j] < line_o[r]
+        for r in range(nLines) for j in intervals[r]
+    ],
 
     # computing intermediate variables for examples
-    [x_o[s][r] == (x_i[s][lb] + x_i[s][lb + 1] if r < nPlus else - x_i[s][lb])
-     for s in range(nExamples) for r in range(nLines) if [lb := min(intervals[r])]],
+    [
+        x_o[s][r] == (x_i[s][lb] + x_i[s][lb + 1] if r < nPlus else -x_i[s][lb])
+        for s in range(nExamples) for r in range(nLines) if [lb := min(intervals[r])]
+    ],
 
     # linking the general outputs
     [

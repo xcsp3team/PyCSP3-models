@@ -57,7 +57,10 @@ def duration_limit(i, j, delta):
 
 satisfy(
     # the first operation corresponds to starting the cycle by putting a product in the first tank
-    [t[0] == 0, o[0] == 0],
+    [
+        t[0] == 0,
+        o[0] == 0
+    ],
 
     # taking into account the time of going back to tank 0
     [t[i] <= horizon - ld - (i + 1) * ud for i in range(1, nTanks)],
@@ -77,8 +80,14 @@ satisfy(
     # ensuring a duration limit between any two tanks
     [
         (
-            If(o[j] - o[i] == 1, Then=t[j] - t[i] >= duration_limit(i, j, -1)),
-            If(o[i] - o[j] == 1, Then=t[i] - t[j] >= duration_limit(i, j, +1))
+            If(
+                o[j] - o[i] == 1,
+                Then=t[j] - t[i] >= duration_limit(i, j, -1)
+            ),
+            If(
+                o[i] - o[j] == 1,
+                Then=t[i] - t[j] >= duration_limit(i, j, +1)
+            )
         ) for i, j in combinations(nTanks, 2)
     ]
 )

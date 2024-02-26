@@ -60,11 +60,15 @@ A = automaton()
 x = VarArray(size=[n, n], dom=range(n))
 
 satisfy(
+    # respecting preset tasks
     [x[i][j] == k for (i, j, k) in preset],
 
+    # respecting forbidden assignments
     [x[i][j] != k for (i, j, k) in forbidden],
 
+    # respecting job rules for each employee
     [x[i] in A for i in range(n)],
 
+    # all tasks are different at any time
     [AllDifferent(x[:, j]) for j in range(n)]
 )

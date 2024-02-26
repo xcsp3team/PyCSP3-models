@@ -24,7 +24,7 @@ from pycsp3 import *
 shift, workers = data
 nPeriods = len(workers)
 
-arcs = [(i, (i + 1) % nPeriods) for i in range(nPeriods)] + [(i, (i + nPeriods - shift) % nPeriods) for i in range(nPeriods)]
+A = [(i, (i + 1) % nPeriods) for i in range(nPeriods)] + [(i, (i + nPeriods - shift) % nPeriods) for i in range(nPeriods)]
 
 # w[i] is the number of workers at the ith period
 w = VarArray(size=nPeriods, dom=range(max(workers) + 1))
@@ -39,12 +39,25 @@ satisfy(
     [w[i] >= workers[i] for i in range(nPeriods)],
 
     # computing the cost of the flow
-    Flow(w + f, balance=0, arcs=arcs, weights=[1] * nPeriods + [0] * nPeriods) == z,
+    Flow(
+        w + f,
+        balance=0,
+        arcs=A,
+        weights=[1] * nPeriods + [0] * nPeriods
+    ) == z,
 
-    [w[i] == Sum(f[(i + k) % nPeriods] for k in range(1, shift + 1)) for i in range(nPeriods)]
+    [w[i] == Sum(f[i + 1:i + 1 + shift]) for i in range(nPeriods)]
 )
 
 minimize(
     # minimizing the cost of the flow
     z
 )
+
+""" Comments
+1) Note that:
+ Sum(f[i + 1:i + 1 + shift])
+   is equivalent to:
+ Sum(f[(i + k) % nPeriods] for k in range(1, shift + 1)) 
+Here, automatic index auto-adjustment is used
+"""

@@ -32,7 +32,7 @@ n = len(graph)  # number of nodes
 x = VarArray(size=n, dom=range(m))
 
 # z is the weighted sum of nodes belonging to the same communities
-z = Var(range(sum(W[i][j] for i in range(n) for j in range(i)) + 1))
+z = Var(dom=range(sum(W[i][j] for i in range(n) for j in range(i)) + 1))
 
 satisfy(
     # considering nodes that must belong to the same community
