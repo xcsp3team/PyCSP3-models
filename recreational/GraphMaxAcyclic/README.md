@@ -1,6 +1,6 @@
 # Problem GraphMaxAcyclic
 
-Given a edge-weighted directed graph with possibly many cycles, the task is to find an acyclic sub-graph of maximal weight.
+Given an edge-weighted directed graph with possibly many cycles, the task is to find an acyclic sub-graph of maximal weight.
 
 ## Data Example
   example.json

@@ -1,7 +1,7 @@
 # Problem KMedian
 
 The k-median problem (with respect to the 1-norm) is the problem of finding k centers such that the clusters formed by them are the most compact.
-Formally, given a set of data points, the k centers ci are to be chosen so as to minimize the
+Formally, given a set of data points, the k centers ci are to be chosen in order to minimize the
 sum of the distances from each data point to the nearest ci.
 
 ## Data (example)

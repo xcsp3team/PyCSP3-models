@@ -2,7 +2,8 @@
 
 Problem 30 of the CSPLib.
 
-BACP is to design a balanced academic curriculum by assigning periods to courses in a way that the academic load of each period is balanced, i.e., as similar as possible .
+BACP is to design a balanced academic curriculum by assigning periods to courses in a way that the academic load of each period is balanced,
+i.e., as similar as possible.
 
 ## Data Example
   10.json

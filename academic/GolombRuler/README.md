@@ -2,8 +2,8 @@
 
 This is [Problem 006](https://www.csplib.org/Problems/prob006/) at CSPLib.
 
-A Golomb ruler is defined as a set of n integers a1 < a2 < ... < an such that the n x (n-1)/2 differences aj - ai are distinct.
-Such a ruler is said to contain n marks (or ticks) and to be of length an.
+A Golomb ruler is defined as a set of n integers v1 < v2 < ... < vn such that the n x (n-1)/2 differences vj - vi are distinct.
+Such a ruler is said to contain n marks (or ticks) and to be of length vn.
 The objective is to find optimal rulers (i.e., rulers of minimum length).
 
 An optimal Golomb ruler with 4 ticks.
@@ -26,7 +26,7 @@ This problem (and its variants) is said to have many practical applications incl
 
   Here, there are 3 variants:
     - a main one
-    - a variant "dec" by decompoising the AllDifferent constraint
+    - a variant "dec" by decomposing the AllDifferent constraint
     - a variant "aux" with auxiliary variables
 
   constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Maximum](http://pycsp.org/documentation/constraints/Maximum)

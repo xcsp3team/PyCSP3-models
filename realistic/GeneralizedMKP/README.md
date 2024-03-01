@@ -1,7 +1,7 @@
 # Problem GeneralizedMKP
 
 In this variation of the knapsack problem, the weight of knapsack item i is given by a D-dimensional vector
-wi = (wi1 , . . . , wiD ) and the knapsack has a D-dimensional capacity vector (W1 , . . . , WD ).
+wi = (wi1, ..., wiD ) and the knapsack has a D-dimensional capacity vector (W1, ..., WD).
 The target is to maximize the sum of the values of the items in the knapsack so that
 the sum of weights in each dimension d does not exceed Wd .
 See Wikipedia.

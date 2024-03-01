@@ -1,7 +1,7 @@
 # Problem TTP_PV
 
 Traveling Tournament Problem with Predefined Venues (TTPPV).
-The problem consists of finding an optimal compact single round robin schedule for a sport event.
+The problem consists of finding an optimal compact single round-robin schedule for a sport event.
 Given a set of n teams, each team has to play against every other team exactly once.
 In each round, a team plays either at home or away, however no team can play more than three consecutive times at home or away.
 The sum of the traveling distance of each team has to be minimized.
