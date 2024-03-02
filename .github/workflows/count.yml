@@ -1,0 +1,15 @@
+name: count
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+        
+        COUNT=$(more _private/models.json|grep fullname| wc -l)
+        echo '{"stable": '${COUNT}', "subject": "Models", "color": "cyan", "status": '${COUNT}', "cache": 3600}' > counter.json
