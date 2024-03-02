@@ -20,7 +20,7 @@ jobs:
         set -x
         INPUT_TYPE=application/octet-stream
         AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}";
-        RELEASE_ID=24108259
+        RELEASE_ID=	144490387
         ASSETS_URL=https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets
         for INPUT_FILE in counter.json; do
             FILENAME=${INPUT_FILE}
