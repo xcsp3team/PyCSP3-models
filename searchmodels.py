@@ -62,14 +62,14 @@ class _Options:
 if __name__ == '__main__':
     Options = _Options()
     Options.set_values("constraint", "tag", "name")
-    Options.set_flags("cop", "csp", "reverse", "json", "github", "file", "help", "showtags", "showconstraints")
+    Options.set_flags("cop", "csp", "reverse", "json", "github", "dir", "help", "showtags", "showconstraints")
     Options.parse(sys.argv)
 
     if len(sys.argv) == 1 or (Options.csp and Options.cop) or (Options.json and Options.github):
-        print("usage: python searchmodels.py [-constraint=Sum] [-tag=xcsp23] [-name='Bacp*'] [-cop|csp] [-reverse] [-json|-file] [-showtags] [-showcontraints]")
+        print("usage: python searchmodels.py [-constraint=Sum] [-tag=xcsp23] [-name='Bacp*'] [-cop|csp] [-reverse] [-json|-dir|-github] [-showtags] [-showcontraints]")
         sys.exit(1)
     if Options.help :
-        print("usage: python searchmodels.py [-constraint=Sum] [-tag=xcsp23] [-name='Bacp'] [-cop|csp] [-reverse] [-json|-file] [-showtags] [-showcontraints]")
+        print("usage: python searchmodels.py [-constraint=Sum] [-tag=xcsp23] [-name='Bacp'] [-cop|csp] [-reverse] [-json|-dir] [-showtags] [-showcontraints]")
         print()
         print("Extract problems with respect to a given query. You can mix different queries resulting to all problems that matches all queries. You can also reverse the results.")
         print()
@@ -85,6 +85,8 @@ if __name__ == '__main__':
         print()
         print("  -json display results as a json file")
         print("  -github display results as links to github project\n")
+        print("  -dir display results as directory location\n")
+
         sys.exit(1)
     results = []
     constraints = []
@@ -154,12 +156,12 @@ if __name__ == '__main__':
 
     if Options.json :
         tmp = [model for model in models if model['name'] in results]
-        print(tmp)
+        print(json.dumps(tmp, indent=2))
     elif Options.github:
         for model in models:
             if model['name'] in results:
                 print("https://github.com/xcsp3team/pycsp3-models//tree/main/" + model['fullname'])
-    elif Options.file:
+    elif Options.dir:
         for model in models:
             if model['name'] in results:
                 print(model['fullname'])
