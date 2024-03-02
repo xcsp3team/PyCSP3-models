@@ -1,5 +1,6 @@
 # PyCSP3 Models <sub><sup>(and Data)</sup></sub>
 
+![Models count](https://badgen.net/https/github.com/xcsp3team/pycsp3-models/releases/download/1.1/counter.json)
 
 PyCSP3 is a Python library allowing us to write models of combinatorial constrained problems in a declarative way.
 See [pycsp3.org](https://www.pycsp.org/)
