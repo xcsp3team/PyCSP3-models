@@ -16,6 +16,7 @@ jobs:
     - name: upload
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        permissions: write-all
       run: |
         set -x
         INPUT_TYPE=application/octet-stream
