@@ -17,6 +17,7 @@ These models are classified in five main directories:
 
 These problems/models mainly come from the literature/community, in particular from:
 
+
 - scientific conference papers, typically from top main conferences such as CP, CPAIOR, IJCAI, AAAI, ECAI, ... 
 - scientific jounral papers, typically from top main journals such as Constraints, AIJ, JAIR, ...
 - [XCSP3 Competitions](https://xcsp.org/competitions/)
