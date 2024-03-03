@@ -4898,7 +4898,7 @@
       "Sum",
       "Table"
     ],
-    "type": "COP",
+    "type": "CSP",
     "tags": [
       "recreational",
       "notebook"
@@ -4956,7 +4956,7 @@
     ],
     "links": [
       "https://www.logisch-gedacht.de/logikraetsel/10stellige-zahl",
-      "https://en.wikipedia.org/wiki/Divisibility_rule)"
+      "https://en.wikipedia.org/wiki/Divisibility_rule"
     ]
   },
   {
@@ -5653,6 +5653,7 @@
     "name": "Whirlpool",
     "fullname": "academic/Whirlpool",
     "constraints": [
+      "AllDifferent",
       "Sum"
     ],
     "type": "CSP",

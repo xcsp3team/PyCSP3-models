@@ -15,7 +15,7 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist (Licence at https://githu
 
 ## Execution
 ```
-  python Perfect1Factorization.py -data=[number]
+  python Perfect1Factorization.py -data=number
 ```
 
 ## Links

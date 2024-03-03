@@ -32,4 +32,3 @@ while paying attention to not having crossed lines.
 #### Amaze_z3.py
  - constraints: [Count](http://pycsp.org/documentation/constraints/Count)
  - tags: recreational, mzn14, mzn19
-

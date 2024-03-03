@@ -44,7 +44,7 @@ for thedir in directories:
         start = False
         for line in lines:
             stripped = line.strip()
-            if stripped.startswith("minimize(") or stripped.startswith("maximize("):
+            if (stripped.startswith("minimize(") or stripped.startswith("maximize(")) and p not in ["Sudoku"]:
                 type = "COP"
             if stripped.startswith("- http"):
                 links.append(stripped[2:])

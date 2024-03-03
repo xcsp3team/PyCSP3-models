@@ -1,6 +1,6 @@
 # Problem RotationPuzzle
 
-This problem was called "rotation" at Nokia's web site.
+This problem was called "rotation" at Nokia's website.
 
 The puzzle is a 4x4 grid of numbers. There are four operations, each of
 which involves rotating the numbers in a 3x3 subgrid clockwise.

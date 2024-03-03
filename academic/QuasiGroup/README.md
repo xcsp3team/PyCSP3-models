@@ -3,7 +3,7 @@
 This is [Problem 003](https://www.csplib.org/Problems/prob003/) at CSPLib.
 
 An order n quasigroup is a Latin square of size n.
-That is, a n×n multiplication table in which each element occurs once in every row and column.
+That is, an n×n multiplication table in which each element occurs once in every row and column.
 A quasigroup can be specified by a set and a binary multiplication operator, ∗ defined over this set.
 Quasigroup existence problems determine the existence or non-existence of quasigroups of
 a given size with additional properties. For example:
@@ -46,80 +46,6 @@ That is, a ∗ a = a for every element a.
 
 ## Tags
   academic, notebook, csplib, xcsp22
- """
-
-from pycsp3 import *
-
-n = data or 8
-
-pairs = [(i, j) for i in range(n) for j in range(n)]
-
-# x[i][j] is the value at row i and column j of the quasi-group
-x = VarArray(size=[n, n], dom=range(n))
-
-satisfy(
-    # ensuring a Latin square
-    AllDifferent(x, matrix=True),
-
-    # ensuring idempotence  tag(idempotence)
-    [x[i][i] == i for i in range(n)]
-)
-
-if variant("base"):
-    if subvariant("v3"):
-        satisfy(
-            x[x[i][j], x[j][i]] == i for i, j in pairs
-        )
-    elif subvariant("v4"):
-        satisfy(
-            x[x[j][i], x[i][j]] == i for i, j in pairs
-        )
-    elif subvariant("v5"):
-        satisfy(
-            x[x[x[j][i], j], j] == i for i, j in pairs
-        )
-    elif subvariant("v6"):
-        satisfy(
-            x[x[i][j], j] == x[i, x[i][j]] for i, j in pairs
-        )
-    elif subvariant("v7"):
-        satisfy(
-            x[x[j][i], j] == x[i, x[j][i]] for i, j in pairs
-        )
-elif variant("aux"):
-    if subvariant("v3"):
-        y = VarArray(size=[n, n], dom=range(n * n))
-
-        satisfy(
-            [x[y[i][j]] == i for i, j in pairs if i != j],
-            [y[i][j] == x[i][j] * n + x[j][i] for i, j in pairs if i != j]
-        )
-    elif subvariant("v4"):
-        y = VarArray(size=[n, n], dom=range(n * n))
-
-        satisfy(
-            [x[y[i][j]] == i for i, j in pairs if i != j],
-            [y[i][j] == x[j][i] * n + x[i][j] for i, j in pairs if i != j]
-        )
-    elif subvariant("v5"):
-        y = VarArray(size=[n, n], dom=range(n))
-
-        satisfy(
-            [x[:, i][x[i][j]] == y[i][j] for i, j in pairs if i != j],
-            [x[:, i][y[i][j]] == j for i, j in pairs if i != j]
-        )
-    elif subvariant("v7"):
-        y = VarArray(size=[n, n], dom=range(n))
-
-        satisfy(
-            (
-                x[:, j][x[j][i]] == y[i][j],
-                x[i][x[j][i]] == y[i][j]
-            ) for i, j in pairs if i != j
-        )
-
-""" Comments
-1) note that we can post tuples of constraints instead of individually, as demonstrated in aux-v7
 
 <br />
 

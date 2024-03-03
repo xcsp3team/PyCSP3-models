@@ -1,6 +1,6 @@
 # Problem Purdey
 
-One morning, in 1880, four families (the Boyds, Garveys, Logans and Navarros) stopped by Purdey's general store,.
+One morning, in 1880, four families (the Boyds, Garveys, Logans and Navarros) stopped by Purdey's general store.
 Each family bought a different item: 50 pounds of flour, two gallons of kerosene, ten yards of muslin cloth, ten pounds of sugar.
 One family paid cash, one took the item on credit and the other two traded other items for it (one a cured ham and the other a bushel of peas).
 We know that:

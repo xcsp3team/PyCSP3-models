@@ -2,7 +2,8 @@
 
 Problem 002 on CSPLib.
 
-This problem arises from a colour printing firm which produces a variety of products from thin board, including cartons for human and animal food and magazine inserts.
+This problem arises from a colour printing firm which produces a variety of products from thin board,
+including cartons for human and animal food and magazine inserts.
 
 ## Data Example
   catfood-2.json

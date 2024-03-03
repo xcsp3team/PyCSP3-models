@@ -1,0 +1,42 @@
+name: count
+
+on: [push]
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+        
+        COUNT=$(more _private/models.json|grep fullname| wc -l)
+        echo '{"stable": '${COUNT}', "subject": "Models", "color": "cyan", "status": '${COUNT}', "cache": 3600}' > counter.json
+    - name: upload
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        permissions: write-all
+      run: |
+        set -x
+        INPUT_TYPE=application/octet-stream
+        AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}";
+        RELEASE_ID=144490387
+        ASSETS_URL=https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets
+        for INPUT_FILE in counter.json; do
+            FILENAME=${INPUT_FILE}
+            CONTENT_LENGTH_HEADER="Content-Length: $(stat -c%s "$INPUT_FILE")";
+            CONTENT_TYPE_HEADER="Content-Type: $INPUT_TYPE";
+            ASSET_URL=$(curl -sSL -H "${AUTH_HEADER}" ${ASSETS_URL} | jq -r ".[]|select(.name==\"${INPUT_FILE}\")|.url")
+            [[ "${ASSET_URL}" != "" ]] && curl -sSL -XDELETE -H "${AUTH_HEADER}" "${ASSET_URL}"
+            UPLOAD_URL="https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${RELEASE_ID}/assets?name=${FILENAME}"
+            curl \
+              -sSL \
+              -XPOST \
+              -H "${AUTH_HEADER}" \
+              -H "${CONTENT_LENGTH_HEADER}" \
+              -H "${CONTENT_TYPE_HEADER}" \
+              --upload-file "$INPUT_FILE" \
+              "${UPLOAD_URL}";
+        done

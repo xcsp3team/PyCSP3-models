@@ -1,5 +1,6 @@
 # PyCSP3 Models <sub><sup>(and Data)</sup></sub>
 
+![Models count](https://badgen.net/https/github.com/xcsp3team/pycsp3-models/releases/download/1.1/counter.json)
 
 PyCSP3 is a Python library allowing us to write models of combinatorial constrained problems in a declarative way.
 See [pycsp3.org](https://www.pycsp.org/)
@@ -16,6 +17,7 @@ These models are classified in five main directories:
 
 These problems/models mainly come from the literature/community, in particular from:
 
+
 - scientific conference papers, typically from top main conferences such as CP, CPAIOR, IJCAI, AAAI, ECAI, ... 
 - scientific jounral papers, typically from top main journals such as Constraints, AIJ, JAIR, ...
 - [XCSP3 Competitions](https://xcsp.org/competitions/)
@@ -27,12 +29,12 @@ These problems/models mainly come from the literature/community, in particular f
 
 In order to find specific models from our repository, you can use:
 
-- [this page]() from PySCP3 website
-- use the Python script 'searchmodels.py', at the root of theb main directory, whose usage is:
+- [this page](http://pycsp.org/models/) from PySCP3 website
+- use the Python script 'searchmodels.py', at the root of the main directory, whose usage is:
 
 ```
-usage: python searchmodels.py [-constraint=Sum] [-tag=xcsp23] [-name='Bacp'] [-cop|csp]
-                              [-reverse] [-json|-file] [-showtags] [-showcontraints]
+usage: python searchmodels.py [-constraint=Sum] [-tag=xcsp23] [-name='Bacp'] [-cop|-csp]
+                              [-reverse] [-json|-dir|-gihub] [-showtags] [-showcontraints]
 
 Extract problems with respect to a given query.
 You can mix different queries resulting to all problems that matches all queries.
@@ -48,7 +50,8 @@ You can also reverse the results.
   -cop|-csp extract  cop or csp problems
   -reverse reverse the results
 
-  -json display results as a json file
+  -json display results in json format 
   -github display results as links to github project
+  -dir display results as directory location
 ```
 
