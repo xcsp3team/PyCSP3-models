@@ -25,10 +25,8 @@ What is the minimum number of transfers of water between buckets?
 
 from pycsp3 import *
 
-# ci for capacities of the three buckets
-# gi for goal (which quantities must be present in the three buckets after all transfers)
-# h for horizon (maximal number of rounds/transfers)
-c1, c2, c3, g1, g2, g3, h = data or (8, 5, 3, 4, 4, 0, 8)
+# ci for capacities of the three buckets, gi for goal (which quantities must be present in the three buckets after all transfers)
+c1, c2, c3, g1, g2, g3, horizon = data or (8, 5, 3, 4, 4, 0, 8)  # horizon is the maximal number of rounds/transfers
 
 assert c1 >= c2 >= c3 > 0, "Bucket capacities must be in decreasing order"
 assert g1 + g2 + g3 == c1, "water from bucket 1 must be split into the three buckets to reach the goal"
@@ -50,24 +48,24 @@ def tables():
 
     states = {(i, j, k) for i in range(c1 + 1) for j in range(c2 + 1) for k in range(c3 + 1) if i + j + k == c1}
     table_tr = {(*state1, *state2) for state1 in states for state2 in states if nearby_states(*state1, *state2)}  # table transitions
-    table_hr = {(t,) + (ANY,) * (t * 3) + (g1, g2, g3) * (h - t) for t in range(h)}  # table horizon
+    table_hr = {(t,) + (ANY,) * (t * 3) + (g1, g2, g3) * (horizon - t) for t in range(horizon)}  # table horizon
     return table_tr, table_hr
 
 
 T1, T2 = tables()
 
-# x[t][i] is the volume of water in bucket i at time (round) t
-x = VarArray(size=[h, 3], dom=lambda t, i: range(c1 + 1) if i == 0 else range(c2 + 1) if i == 1 else range(c3 + 1))
+# x[t][i] is the volume of water in the ith bucket at time (round) t
+x = VarArray(size=[horizon, 3], dom=lambda t, i: range(c1 + 1) if i == 0 else range(c2 + 1) if i == 1 else range(c3 + 1))
 
 # z is the number of transfers of water in order to reach the goal
-z = Var(dom=range(h))
+z = Var(dom=range(horizon))
 
 satisfy(
     # Initially, at round 0, the bucket 1 is full of water while the other buckets are empty
     x[0] == (c1, 0, 0),
 
     # only some transfers are possible between two successive rounds
-    [(x[t], x[t + 1]) in T1 for t in range(h - 1)],
+    [(x[t], x[t + 1]) in T1 for t in range(horizon - 1)],
 
     # computing the number of transfers
     (z, x) in T2

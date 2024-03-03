@@ -57,7 +57,12 @@ satisfy(
     [AllDifferent(x[w] + y[w]) for w in range(nWeeks)],
 
     # each team plays at most two times in each period
-    [Cardinality(x[:, p] + y[:, p], occurrences={t: range(1, 3) for t in range(nTeams)}) for p in range(nPeriods)],
+    [
+        Cardinality(
+            x[:, p] + y[:, p],
+            occurrences={t: range(1, 3) for t in range(nTeams)}
+        ) for p in range(nPeriods)
+    ],
 
     # tag(symmetry-breaking)
     [
@@ -83,7 +88,12 @@ if variant("dummy"):
             AllDifferent(xd + yd),
 
             # each team plays two times in each period
-            [Cardinality(x[:, p] + y[:, p] + [xd[p], yd[p]], occurrences={t: 2 for t in range(nTeams)}) for p in range(nPeriods)],
+            [
+                Cardinality(
+                    x[:, p] + y[:, p] + [xd[p], yd[p]],
+                    occurrences={t: 2 for t in range(nTeams)}
+                ) for p in range(nPeriods)
+            ],
 
             # tag(symmetry-breaking)
             [xd[p] < yd[p] for p in range(nPeriods)]

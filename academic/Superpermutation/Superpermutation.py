@@ -71,7 +71,10 @@ elif variant("table"):
         [(y[i], x[i:i + n]) in T for i in range(nPatterns)],
 
         # ensuring that each permutation occurs in the sequence
-        Cardinality(y, occurrences={-1: range(gap + 1)} | {i: range(1, gap + 1) for i in range(nPermutations)})
+        Cardinality(
+            y,
+            occurrences={-1: range(gap + 1)} | {i: range(1, gap + 1) for i in range(nPermutations)}
+        )
     )
 
 satisfy(

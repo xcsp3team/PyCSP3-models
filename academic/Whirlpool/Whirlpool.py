@@ -34,7 +34,7 @@ x = VarArray(size=[n, m], dom=range(n * m))
 
 def whirlpool(y):
     r = len(y)
-    return Sum(y[i] < y[(i + 1) % r] for i in range(r)) in {1, r - 1}
+    return Sum(y[i] < y[i + 1] for i in range(r)) in {1, r - 1}
 
 
 satisfy(
@@ -42,16 +42,21 @@ satisfy(
     AllDifferent(x),
 
     # every 2 x 2 sub matrix is either ordered clockwise or counter-clockwise
-    [whirlpool([x[i][j], x[i][j + 1], x[i + 1][j + 1], x[i + 1][j]]) for i in range(n - 1) for j in range(m - 1)],
+    [whirlpool(ring(x[i:i + 2, j:j + 2])) for i in range(n - 1) for j in range(m - 1)],
 
     # every ring is either ordered clockwise or counter-clockwise
     [whirlpool(ring(x, k)) for k in range(min(n, m) // 2)],
 
     # ensuring, for a perfect diagonal whirlpool permutation, that the sum of both diagonals is n*(n+1)*(n+1) div 2
-    [Sum(diagonal) == n * (n + 1) * (n + 1) // 2 for diagonal in [diagonal_down(x), diagonal_up(x)]] if n == m else None
+    [Sum(dgn) == n * (n + 1) * (n + 1) // 2 for dgn in [diagonal_down(x), diagonal_up(x)]] if n == m else None
 )
 
 """ Comments
 1) data used in 2020 are: (8,8), (12,12), (21,21), (29,29), (30,30)
 2) diagonal_down, diagonal_up and ring are methods defined as tools in the library
+3) automatic index auto-adjustment is used: i+1 is for (i+1)%len(y)
+4) Note that:
+  ring(x[i:i + 2, j:j + 2]
+ is equivalent to:
+   [x[i][j], x[i][j + 1], x[i + 1][j + 1], x[i + 1][j]]
 """

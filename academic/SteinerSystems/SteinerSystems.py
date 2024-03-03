@@ -50,8 +50,7 @@ satisfy(
             both(
                 b[i][v],
                 b[i][v] == b[j][v]
-            )
-            for v in range(n)
+            ) for v in range(n)
         ) < t for i, j in combinations(m, 2)
     ]
 )

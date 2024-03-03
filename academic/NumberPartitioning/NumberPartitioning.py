@@ -23,7 +23,7 @@ This problem consists in finding a partition of the set of numbers {1, 2, ..., n
   - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
 ## Tags
-  academic, recreational, csplib, xcsp22
+  academic, csplib, xcsp22
 """
 
 from pycsp3 import *

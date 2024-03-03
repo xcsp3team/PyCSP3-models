@@ -15,7 +15,7 @@ See Problem 045 on CSPLib.
   - https://www.cril.univ-artois.fr/XCSP23/competitions/csp/csp
 
 ## Tags
-  academic, recreational, csplib, xcsp23
+  academic, csplib, xcsp23
 """
 
 from pycsp3 import *

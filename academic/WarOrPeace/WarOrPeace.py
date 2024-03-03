@@ -53,7 +53,13 @@ elif variant("or"):
             x[i][j] != PEACE,
             Then=[
                 x[i][j] == WAR,
-                conjunction(either(x[k][i] == PEACE, x[k][j] == PEACE) for k in range(i))]
+                conjunction(
+                    either(
+                        x[k][i] == PEACE,
+                        x[k][j] == PEACE
+                    ) for k in range(i)
+                )
+            ]
         ) for i, j in combinations(range(1, n), 2)
     )
 

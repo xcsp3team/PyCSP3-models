@@ -38,7 +38,7 @@ from pycsp3 import *
 n, m = data or (8, 8)
 
 if not variant():
-    table = {(v, 0) for v in range(9) if v != 3} | {(2, 1), (3, 1)}
+    T = {(v, 0) for v in range(9) if v != 3} | {(2, 1), (3, 1)}
 
 
     def scope(i, j):
@@ -56,7 +56,7 @@ if not variant():
         [Sum(scope(i, j)) == a[i][j] for i in range(n) for j in range(m)],
 
         # imposing rules of the game
-        [(a[i][j], x[i][j]) in table for i in range(n) for j in range(m)],
+        [(a[i][j], x[i][j]) in T for i in range(n) for j in range(m)],
 
         # imposing rules for ensuring valid dead cells around the board
         [

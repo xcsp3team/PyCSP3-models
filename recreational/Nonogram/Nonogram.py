@@ -31,19 +31,19 @@ x = VarArray(size=[nRows, nCols], dom={0, 1})
 if not variant():
     def automaton(pattern):
         q = Automaton.q  # for building state names
-        transitions = []
+        trs = []
         if len(pattern) == 0:
             n_states = 1
-            transitions.append((q(0), 0, q(0)))
+            trs.append((q(0), 0, q(0)))
         else:
             n_states = sum(pattern) + len(pattern)
             num = 0
             for i, size in enumerate(pattern):
-                transitions.append((q(num), 0, q(num)))
-                transitions.extend((q(num + j), 1, q(num + j + 1)) for j in range(size))
-                transitions.append((q(num + size), 0, q(num + size + (1 if i < len(pattern) - 1 else 0))))
+                trs.append((q(num), 0, q(num)))
+                trs.extend((q(num + j), 1, q(num + j + 1)) for j in range(size))
+                trs.append((q(num + size), 0, q(num + size + (1 if i < len(pattern) - 1 else 0))))
                 num += size + 1
-        return Automaton(start=q(0), final=q(n_states - 1), transitions=transitions)
+        return Automaton(start=q(0), final=q(n_states - 1), transitions=trs)
 
 
     satisfy(

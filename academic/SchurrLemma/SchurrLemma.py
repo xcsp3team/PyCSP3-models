@@ -36,7 +36,7 @@ x = VarArray(size=n, dom=range(d))
 
 if not variant():
     satisfy(
-        NValues(x[i], x[j], x[k]) > 1 for (i, j, k) in product(range(n), repeat=3) if i < j and i + 1 + j == k
+        NotAllEqual(x[i], x[j], x[k]) for (i, j, k) in product(range(n), repeat=3) if i < j and i + 1 + j == k
     )
 elif variant("mod"):
     satisfy(

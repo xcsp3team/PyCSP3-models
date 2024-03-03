@@ -46,7 +46,12 @@ if not variant():
         ],
 
         # respecting the size of the groups
-        [Cardinality(g[w], occurrences={i: size for i in range(nGroups)}) for w in range(nWeeks)],
+        [
+            Cardinality(
+                g[w],
+                occurrences={i: size for i in range(nGroups)}
+            ) for w in range(nWeeks)
+        ],
 
         # tag(symmetry-breaking)
         [
