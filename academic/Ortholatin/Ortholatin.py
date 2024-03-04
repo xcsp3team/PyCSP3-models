@@ -55,7 +55,7 @@ satisfy(
     AllDifferent(y, matrix=True),
 
     # ensuring that values on diagonals are different  tag(diagonals)
-    [AllDifferent(t) for t in [diagonal_down(x), diagonal_up(x), diagonal_down(y), diagonal_up(y)]],
+    [AllDifferent(dgn) for dgn in [diagonal_down(x), diagonal_up(x), diagonal_down(y), diagonal_up(y)]],
 
     # ensuring orthogonality of x and y through z
     AllDifferent(z),

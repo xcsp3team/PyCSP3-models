@@ -50,7 +50,7 @@ if not variant():
 
     satisfy(
         # two successive knights are at a knight jump apart
-        (d1 == 1) & (d2 == 2) | (d1 == 2) & (d2 == 1) for d1, d2 in [(abs(x[i] // n - x[ii] // n), abs(x[i] % n - x[ii] % n)) for i, ii in pairs]
+        (d1 == 1) & (d2 == 2) | (d1 == 2) & (d2 == 1) for i, j in pairs if (d1 := abs(x[i] // n - x[j] // n), d2 := abs(x[i] % n - x[j] % n))
     )
 
 elif variant("table"):
@@ -102,10 +102,15 @@ elif variant("table"):
 
     satisfy(
         # two successive knights are at a knight jump apart
-        (x[(i + j) % (n * n)] for j in range(r)) in T for i in range(0, n * n, r - 1)
+        x[i:i + r] in T for i in range(0, n * n, r - 1)
     )
 
 """ Comments
 1) it is possible to use extension constraints instead of intension constraints (see, e.g., the problem QueensKnights)
 2) it is faster to use a list than a set for the table T
+3) Note that (notably, by index auto-adjustment):
+ x[i:i + r]
+  is equivalent to:
+ (x[(i + j) % (n * n)] for j in range(r))   
+
 """

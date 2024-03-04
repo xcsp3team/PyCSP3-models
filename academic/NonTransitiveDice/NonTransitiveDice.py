@@ -44,8 +44,10 @@ satisfy(
 
     # computing dominance
     [
-        [y[i][0] == Sum(x[i][r1] > x[i + 1][r2] for r1 in range(m) for r2 in range(m)) for i in range(n)],
-        [y[i][1] == Sum(x[i + 1][r1] > x[i][r2] for r1 in range(m) for r2 in range(m)) for i in range(n)]
+        (
+            y[i][0] == Sum(x[i][r1] > x[i + 1][r2] for r1 in range(m) for r2 in range(m)),
+            y[i][1] == Sum(x[i + 1][r1] > x[i][r2] for r1 in range(m) for r2 in range(m))
+        ) for i in range(n)
     ],
 
     # computing dominance gap

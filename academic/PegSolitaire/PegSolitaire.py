@@ -44,22 +44,16 @@ pairs = [(i, j) for i in range(n) for j in range(m) if init_board[i][j] is not N
 
 def unchanged(i, j, t):
     valid = [k for k, tr in enumerate(transitions) if (i, j) in (tr[0:2], tr[2:4], tr[4:6])]
-    if len(valid) == 0:
-        return None
     return conjunction(y[t] != k for k in valid) == (x[t][i][j] == x[t + 1][i][j])
 
 
 def to0(i, j, t):
     valid = [k for k, tr in enumerate(transitions) if (i, j) in (tr[0:2], tr[2:4])]
-    if len(valid) == 0:
-        return None
     return disjunction(y[t] == k for k in valid) == both(x[t][i][j] == 1, x[t + 1][i][j] == 0)
 
 
 def to1(i, j, t):
     valid = [k for k, tr in enumerate(transitions) if (i, j) == tr[4:6]]
-    if len(valid) == 0:
-        return None
     return disjunction(y[t] == k for k in valid) == both(x[t][i][j] == 0, x[t + 1][i][j] == 1)
 
 

@@ -72,8 +72,10 @@ if variant("m1"):
     )
 
 if variant("m2"):
+    EMPTY, BLACK, WHITE = 0, 1, 2
+
     # x[i][j] is 1 (resp., 2), if a black (resp., white) queen is in the cell at row i and column j. It is 0 otherwise.
-    x = VarArray(size=[n, n], dom={0, 1, 2})
+    x = VarArray(size=[n, n], dom={EMPTY, BLACK, WHITE})
 
     # nb is the number of black queens
     nb = Var(dom=range(n * n // 2))
@@ -89,10 +91,10 @@ if variant("m2"):
         ],
 
         # counting the number of black queens
-        Count(x, value=1) == nb,
+        Count(x, value=BLACK) == nb,
 
         # counting the number of white queens
-        Count(x, value=2) == nw,
+        Count(x, value=WHITE) == nw,
 
         # ensuring equal-sized armies
         nb == nw
