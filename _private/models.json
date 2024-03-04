@@ -972,27 +972,6 @@
     "type": "CSP",
     "tags": [
       "academic",
-      "recreational",
-      "csplib",
-      "xcsp23"
-    ],
-    "links": [
-      "https://www.csplib.org/Problems/prob045/",
-      "https://www.cril.univ-artois.fr/XCSP23/competitions/csp/csp"
-    ]
-  },
-  {
-    "name": "CoveringArray",
-    "fullname": "recreational/CoveringArray",
-    "constraints": [
-      "AllDifferent",
-      "Channel",
-      "Table"
-    ],
-    "type": "CSP",
-    "tags": [
-      "academic",
-      "recreational",
       "csplib",
       "xcsp23"
     ],
@@ -2888,25 +2867,7 @@
     "type": "CSP",
     "tags": [
       "academic",
-      "recreational",
       "csplib",
-      "xcsp22"
-    ],
-    "links": [
-      "https://www.csplib.org/Problems/prob049/",
-      "https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp"
-    ]
-  },
-  {
-    "name": "NumberPartitioning",
-    "fullname": "recreational/NumberPartitioning",
-    "constraints": [
-      "AllDifferent",
-      "Sum"
-    ],
-    "type": "CSP",
-    "tags": [
-      "recreational",
       "xcsp22"
     ],
     "links": [
