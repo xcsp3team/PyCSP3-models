@@ -38,7 +38,7 @@ satisfy(
 if not variant():
     satisfy(
         # computing the distance between any two successive cities in the tour
-        distances[c[i]][c[(i + 1) % nCities]] == d[i] for i in range(nCities)
+        distances[c[i]][c[i + 1]] == d[i] for i in range(nCities)
     )
 
 elif variant("table"):
@@ -46,7 +46,7 @@ elif variant("table"):
 
     satisfy(
         # computing the distance between any two successive cities in the tour
-        (c[i], c[(i + 1) % nCities], d[i]) in T for i in range(nCities)
+        (c[i], c[i + 1], d[i]) in T for i in range(nCities)
     )
 
 minimize(
@@ -56,4 +56,5 @@ minimize(
 
 """ Comments
 1) writing dom=distances is equivalent (and more compact) than writing dom={v for row in distances for v in row}
+2) index auto-adjustment is used with c[i+1] (equivalent to c[(i+1) % nCities)
 """

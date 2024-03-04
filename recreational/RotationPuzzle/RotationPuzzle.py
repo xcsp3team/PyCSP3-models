@@ -48,31 +48,28 @@ mappings = [[v] + [v if v not in t else t[(len(t) + t.index(v) - 1) % len(t)] fo
 scopes = [list(OrderedDict.fromkeys(t)) for t in mappings]
 tables = [{(op, v, *(v if pos == mappings[i][op] else ANY for pos in scopes[i])) for op in range(5) for v in range(16)} for i in
           range(nCells)]  # tables for transitions
-print(tables)
 
 # x[t][i] is the value in the ith cell at time t
 x = VarArray(size=[nPeriods, nCells], dom=range(nCells))
 
-# o[t] is the rotation performed at time t
-o = VarArray(size=nPeriods, dom=range(nRotations + 1))  # +1 for 0 (no rotation)
+# r[t] is the rotation performed at time t
+r = VarArray(size=nPeriods, dom=range(nRotations + 1))  # +1 for 0 (no rotation)
 
 # f is the time at which the final state is reached
-f = Var(range(1, nPeriods))
-
-print(nPeriods)
+f = Var(dom=range(1, nPeriods))
 
 satisfy(
     # setting the initial state (at time 0)
     x[0] == grid,
 
     # ensuring a correct transition between two successive times
-    [(o[t], x[t][i], (x[t - 1][j] for j in scopes[i])) in tables[i] for i in range(nCells) for t in range(1, nPeriods)],
+    [(r[t], x[t][i], x[t - 1][scopes[i]]) in tables[i] for i in range(nCells) for t in range(1, nPeriods)],
 
     # ensuring that the final state is reached at time given by f
     [x[f][i] == i for i in range(nCells)],
 
     # once the final state is reached, there is no more rotation
-    [If(f <= t, Then=o[t] == 0) for t in range(1, nPeriods)],
+    [If(f <= t, Then=r[t] == 0) for t in range(1, nPeriods)],
 
     # tag(redundant-constraints)
     [AllDifferent(x[t]) for t in range(1, nPeriods)]
@@ -87,4 +84,8 @@ minimize(
 2) x[0] == grid is equivalent to [x[0][i] == grid[i] for i in range(nCells)]
 3) (o[t], x[t][i], (x[t - 1][j] for j in scopes[i])) builds a scope. Note that the generator is automatically unpacked.
    one could write: (o[t], x[t][i], *(x[t - 1][j] for j in scopes[i]))
+4) Note that:
+   x[t - 1][scopes[i]]
+ is equivalent to:   
+   (x[t - 1][j] for j in scopes[i]) 
 """

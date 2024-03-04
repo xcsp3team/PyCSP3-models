@@ -52,7 +52,7 @@ satisfy(
     # whenever w prefers another man m to her husband, m prefers his wife to w
     [
         If(
-            w_rankings[w][m] < w_rankings[w, hb[w]],
+            w_rankings[w][m] < w_rankings[w][hb[w]],
             Then=m_rankings[m][wf[m]] < m_rankings[m][w]
         ) for w in Women for m in Men
     ]

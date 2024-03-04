@@ -58,7 +58,7 @@ satisfy(
     ],
 
     # respecting the surface of each room
-    [(r[i] - l[i]) * (b[i] - t[i]) == val for i, (_, _, val) in enumerate(rooms)],
+    [(r[i] - l[i]) * (b[i] - t[i]) == v for i, (_, _, v) in enumerate(rooms)],
 
     # rooms must not overlap
     [no_overlapping(i, j) for i, j in combinations(nRooms, 2)]

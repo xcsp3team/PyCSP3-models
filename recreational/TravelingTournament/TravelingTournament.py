@@ -56,7 +56,12 @@ t = VarArray(size=[nTeams, nRounds + 1], dom=distances)
 
 satisfy(
     # each team must play exactly two times against each other team
-    [Cardinality(o[i], occurrences={j: 2 for j in range(nTeams) if j != i}) for i in range(nTeams)],
+    [
+        Cardinality(
+            o[i],
+            occurrences={j: 2 for j in range(nTeams) if j != i}
+        ) for i in range(nTeams)
+    ],
 
     # ensuring symmetry of games: if team i plays against j at round k, then team j plays against i at round k
     [o[o[i][k]][k] == i for i in range(nTeams) for k in range(nRounds)],

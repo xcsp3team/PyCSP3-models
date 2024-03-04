@@ -28,13 +28,16 @@ magic = n * (n * n + 1) // 2
 x = VarArray(size=[n, n], dom=range(1, n * n + 1))
 
 satisfy(
+    # all values must be different
     AllDifferent(x),
 
+    # ensuring the magic value for each row
     [Sum(row) == magic for row in x],
 
+    # ensuring the magic value for each column
     [Sum(col) == magic for col in columns(x)],
 
-    # tag(diagonals)
+    # ensuring the magic value for each diagonal  tag(diagonals)
     [Sum(dgn) == magic for dgn in [diagonal_down(x), diagonal_up(x)]],
 
     # respecting specified clues (if any)  tag(clues)

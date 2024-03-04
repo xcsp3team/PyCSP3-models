@@ -44,7 +44,10 @@ if not variant():
         [
             If(
                 playing[i][p[j]],
-                Then=[s[i] <= j, j <= e[i]]
+                Then=[
+                    s[i] <= j,
+                    j <= e[i]
+                ]
             ) for i in range(nPlayers) for j in range(nPieces)
         ]
     )
@@ -72,7 +75,10 @@ elif variant("bis"):
         [
             If(
                 ep[i][j],
-                Then=[s[i] <= j, j <= e[i]]
+                Then=[
+                    s[i] <= j,
+                    j <= e[i]
+                ]
             ) for i in range(nPlayers) for j in range(nPieces)
         ]
     )

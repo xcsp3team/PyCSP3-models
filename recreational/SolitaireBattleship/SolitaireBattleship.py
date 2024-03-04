@@ -30,13 +30,13 @@ n, nTypes = len(colSums), len(pos)
 
 def automaton(horizontal):
     q = Automaton.q  # for building state names
-    t = [(q(0), 0, q(0)), (q(0), neg if horizontal else pos, "qq"), ("qq", 0, q(0))]
+    trs = [(q(0), 0, q(0)), (q(0), neg if horizontal else pos, "qq"), ("qq", 0, q(0))]
     for i in pos:
         v = i if horizontal else -i
-        t.append((q(0), v, q(i, 1)))
-        t.extend((q(i, j), v, q(i, j + 1)) for j in range(1, i))
-        t.append((q(i, i), 0, q(0)))
-    return Automaton(start=q(0), final=q(0), transitions=t)
+        trs.append((q(0), v, q(i, 1)))
+        trs.extend((q(i, j), v, q(i, j + 1)) for j in range(1, i))
+        trs.append((q(i, i), 0, q(0)))
+    return Automaton(start=q(0), final=q(0), transitions=trs)
 
 
 Ah, Av = automaton(True), automaton(False)  # automata for ships online
@@ -99,7 +99,10 @@ satisfy(
     [s[i][j] == (t[i][j] != 0) for i in range(n + 2) for j in range(n + 2)],
 
     # counting the number of occurrences of ship segments of each type
-    Cardinality(t[1:n + 1, 1:n + 1], occurrences={pos[i]: cp[i] for i in range(nTypes)} | {neg[i]: cn[i] for i in range(nTypes)}),
+    Cardinality(
+        t[1:n + 1, 1:n + 1],
+        occurrences={pos[i]: cp[i] for i in range(nTypes)} | {neg[i]: cn[i] for i in range(nTypes)}
+    ),
 
     # ensuring the right number of occurrences of ship segments of each type
     [cp[i] + cn[i] == surfaces[i] for i in range(nTypes)],
