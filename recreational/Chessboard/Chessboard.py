@@ -60,17 +60,17 @@ satisfy(
     # a bishop or a queen prevents putting any other piece in the same upward diagonal
     [
         If(
-            Exist(y in {BISHOP, QUEEN} for y in diag),
-            Then=Sum(y != EMPTY for y in diag) <= 1
-        ) for diag in diagonals_up(x)
+            Exist(y in {BISHOP, QUEEN} for y in dgn),
+            Then=Sum(y != EMPTY for y in dgn) <= 1
+        ) for dgn in diagonals_up(x)
     ],
 
     # a bishop or a queen prevents putting any other piece in the same downward diagonal
     [
         If(
-            Exist(y in {BISHOP, QUEEN} for y in diag),
-            Then=Sum(y != EMPTY for y in diag) <= 1
-        ) for diag in diagonals_down(x)
+            Exist(y in {BISHOP, QUEEN} for y in dgn),
+            Then=Sum(y != EMPTY for y in dgn) <= 1
+        ) for dgn in diagonals_down(x)
     ],
 
     # taking care of knights
@@ -95,7 +95,7 @@ satisfy(
     ],
 
     # tag(symmetry-breaking)
-    [LexIncreasing(x, [x[row] for row in symmetry]) for symmetry in symmetries]
+    [LexIncreasing(x, x[symmetry]) for symmetry in symmetries]
 )
 
 maximize(
@@ -111,4 +111,8 @@ maximize(
   Exist(x[i][j] in {ROOK, QUEEN} for j in range(n)),  
   Exist(x[i][j].among(ROOK, QUEEN) for j in range(n)),  
   Exist(belong(x[i][j],{ROOK, QUEEN}) for j in range(n)),  
+5) Not that 
+   x[symmetry]
+ is equivalent to:
+   [x[row] for row in symmetry]
 """

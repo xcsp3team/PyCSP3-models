@@ -14,7 +14,7 @@ Given a grid with imposed black cells (spots) and a dictionary, the problem is t
 ## Execution
   - python Crossword.py -data=<datafile.json>
   - python Crossword.py -data=<datafile.json> -variant=alt
-  - python Crossword.py -data=[vg0405,dict=ogd2008] -parser=Crossword_Parser.py
+  - python Crossword.py -data=[vg0405,dictFileName=ogd2008] -parser=Crossword_Parser.py
 
 ## Links
   - https://www.researchgate.net/publication/221442491_Constraint_Programming_Lessons_Learned_from_Crossword_Puzzles
@@ -32,13 +32,14 @@ for line in open(dict_name):
     code = alphabet_positions(line.strip().lower())
     words.setdefault(len(code), []).append(code)
 
+Hole = namedtuple("Hole", ["i", "j", "r"])  # i and j are indexes (one of them being a slice) and r is the size
+
 
 def find_holes(matrix, transposed):
     def build_hole(row, col, size, horizontal):
         sl = slice(col, col + size)
         return Hole(row, sl, size) if horizontal else Hole(sl, row, size)
 
-    Hole = namedtuple("Hole", "i j r")  # i and j are indexes (one of them being a slice) and r is the size
     p, q = len(matrix), len(matrix[0])
     t = []
     for i in range(p):
@@ -73,7 +74,7 @@ if not variant():
 
 elif variant("alt"):
     def offset(hole1, hole2):
-        if type(hole1.i) == type(hole2.i):  # it means that they are both horizontal or vertical (type is int or slice)
+        if type(hole1.i) is type(hole2.i):  # it means that they are both horizontal or vertical (type is int or slice)
             return None
         if isinstance(hole1.i, int):  # if hole1 is horizontal (and so hole2 is vertical)
             ofs1, ofs2 = hole2.j - hole1.j.start, hole1.i - hole2.i.start

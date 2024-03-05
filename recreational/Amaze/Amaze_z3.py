@@ -43,7 +43,12 @@ satisfy(
     [x[i][j] == k + 1 for k in range(nPoints) for i, j in points[k]],
 
     # each cell with a fixed value has exactly one neighbour with the same value
-    [ExactlyOne(x[neighbours(i, j)], value=k + 1) for k in range(nPoints) for i, j in points[k]],
+    [
+        ExactlyOne(
+            x[neighbours(i, j)],
+            value=k + 1
+        ) for k in range(nPoints) for i, j in points[k]
+    ],
 
     # ensuring interior cells have exactly two neighbours
     [

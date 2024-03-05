@@ -27,8 +27,10 @@ The objective is to pack all the items into the minimum number of bins so that t
 """
 
 from pycsp3 import *
+from itertools import groupby
 
 capacity, weights = data  # bin capacity and item weights
+weights.sort()  # in case weights are not sorted
 nItems = len(weights)
 
 
@@ -50,18 +52,6 @@ def max_items_per_bin():
         if curr > capacity:
             return i
     return -1
-
-
-def occurrences_of_weights():
-    pairs = []
-    cnt = 1
-    for i in range(1, nItems):
-        if weights[i] != weights[i - 1]:
-            pairs.append((weights[i - 1], cnt))
-            cnt = 0
-        cnt += 1
-    pairs.append((weights[-1], cnt))
-    return pairs
 
 
 nBins, maxPerBin = n_bins(), max_items_per_bin()
@@ -107,7 +97,10 @@ elif variant("table"):
 
 satisfy(
     # ensuring that each item is stored in a bin
-    Cardinality(x, occurrences={0: nBins * maxPerBin - nItems} | {wgt: occ for (wgt, occ) in occurrences_of_weights()}),
+    Cardinality(
+        x,
+        occurrences={0: nBins * maxPerBin - nItems} | {wgt: len(list(t)) for wgt, t in groupby(weights)}
+    ),
 
     # tag(symmetry-breaking)
     LexDecreasing(x)

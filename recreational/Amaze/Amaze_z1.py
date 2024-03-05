@@ -38,7 +38,12 @@ satisfy(
     [x[i][j] == v for v in range(1, nValues) for i, j in points[v - 1]],
 
     # each cell with a fixed value has exactly one neighbour with the same value
-    [ExactlyOne(x.beside(i, j), value=v) for v in range(1, nValues) for i, j in points[v - 1]],
+    [
+        ExactlyOne(
+            x.beside(i, j),
+            value=v
+        ) for v in range(1, nValues) for i, j in points[v - 1]
+    ],
 
     # each empty cell either contains 0 or has exactly two neighbours with the same value
     [

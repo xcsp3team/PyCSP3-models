@@ -33,10 +33,10 @@ Region = namedtuple("Region", ["i", "j", "size"])
 regions = [Region(i + 1, j + 1, puzzle[i][j]) for i in range(n) for j in range(m) if puzzle[i][j] != 0]  # +1 because a border is inserted
 nRegions = len(regions)
 
-conflicting_regions = {(k1, k2) for k1 in range(nRegions) for k2 in range(nRegions) if k1 != k2 and regions[k1].size == regions[k2].size}
+T = {(k1, k2) for k1 in range(nRegions) for k2 in range(nRegions) if k1 != k2 and regions[k1].size == regions[k2].size}  # conflicting regions
 
 
-def T(k, v, w):
+def table(k, v, w):
     return [
         (k, k, ANY, ANY, ANY, v, w, ANY, ANY, ANY),
         (k, ANY, k, ANY, ANY, v, ANY, w, ANY, ANY),
@@ -61,20 +61,20 @@ satisfy(
     ],
 
     # respecting the size of each region
-    [Count(x, value=k) == s for k, (_, _, s) in enumerate(regions)],
+    [Count(x, value=k) == sz for k, (_, _, sz) in enumerate(regions)],
 
     # two regions of the same size cannot have neighbouring squares
     [
-        [(x[i][j], x[i][j + 1]) not in conflicting_regions for i in range(1, n + 1) for j in range(1, m)],
-        [(x[i][j], x[i + 1][j]) not in conflicting_regions for j in range(1, m + 1) for i in range(1, n)]
+        [(x[i][j], x[i][j + 1]) not in T for i in range(1, n + 1) for j in range(1, m)],
+        [(x[i][j], x[i + 1][j]) not in T for j in range(1, m + 1) for i in range(1, n)]
     ],
 
     # each starting square of a (non-unit) region must have at least one neighbor at distance 1
-    [(x.cross(i, j), d.cross(i, j)) in T(k, 0, 1) for k, (i, j, s) in enumerate(regions) if s > 1],
+    [(x.cross(i, j), d.cross(i, j)) in table(k, 0, 1) for k, (i, j, sz) in enumerate(regions) if sz > 1],
 
     # each square must be connected to a neighbour at distance 1
     [
-        (x.cross(i, j), d.cross(i, j)) in [t for k in range(nRegions) for v in range(1, regions[k].size) for t in T(k, v, v - 1)]
+        (x.cross(i, j), d.cross(i, j)) in [t for k in range(nRegions) for v in range(1, regions[k].size) for t in table(k, v, v - 1)]
         for i in range(1, n + 1) for j in range(1, m + 1) if puzzle[i - 1][j - 1] == 0
     ]
 )

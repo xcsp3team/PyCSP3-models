@@ -59,7 +59,12 @@ satisfy(
     [mv[t][1] == x[mv[t][0]][t] for t in range(1, horizon)],
 
     # computing the number of times cubes occur in configurations
-    [Cardinality(x[1:, t], occurrences=nb[:, t]) for t in range(horizon)],
+    [
+        Cardinality(
+            x[1:, t],
+            occurrences=nb[:, t]
+        ) for t in range(horizon)
+    ],
 
     # ensuring that we have two phases
     Increasing(done),
@@ -120,7 +125,12 @@ satisfy(
         ],
 
         # objective lower bound
-        [done[t] | (n - Sum(locked[:, t]) + t <= z) for t in range(1, horizon)]
+        [
+            either(
+                done[t],
+                n - Sum(locked[:, t]) + t <= z
+            ) for t in range(1, horizon)
+        ]
     ],
 
     # computing the objective value
