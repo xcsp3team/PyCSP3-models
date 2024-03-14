@@ -39,9 +39,9 @@ distances = cp_array([min(abs(v1 - v2), nTeams - abs(v1 - v2)) for v2 in range(n
 
 def automaton():
     qi, q01, q02, q03, q11, q12, q13 = states = "q", "q01", "q02", "q03", "q11", "q12", "q13"
-    tr2 = [(qi, 0, q01), (qi, 1, q11), (q01, 0, q02), (q01, 1, q11), (q11, 0, q01), (q11, 1, q12), (q02, 1, q11), (q12, 0, q01)]
-    tr3 = [(q02, 0, q03), (q12, 1, q13), (q03, 1, q11), (q13, 0, q01)]
-    return Automaton(start=qi, final={q for q in states if q != qi}, transitions=tr2 + tr3)
+    t2 = [(qi, 0, q01), (qi, 1, q11), (q01, 0, q02), (q01, 1, q11), (q11, 0, q01), (q11, 1, q12), (q02, 1, q11), (q12, 0, q01)]
+    t3 = [(q02, 0, q03), (q12, 1, q13), (q03, 1, q11), (q13, 0, q01)]
+    return Automaton(start=qi, final={q for q in states if q != qi}, transitions=t2 + t3)
 
 
 A = automaton()
@@ -80,31 +80,51 @@ satisfy(
     # computing travelled distances wrt venues of current and next-round games
     [
         [
-            (
-                If(h[i][0] == 1, Then=t[i][0] == 0),
-                If(h[i][0] != 1, Then=t[i][0] == distances[i][o[i][0]])
+
+            If(
+                h[i][0] == 1,
+                Then=t[i][0] == 0,
+                Else=t[i][0] == distances[i][o[i][0]]
             ) for i in range(nTeams)
         ],
 
         [
-            (
-                If(h[i][k] == 1, h[i][k + 1] == 1, Then=t[i][k + 1] == 0),
-                If(h[i][k] != 1, h[i][k + 1] == 1, Then=t[i][k + 1] == distances[o[i][k]][i]),
-                If(h[i][k] == 1, h[i][k + 1] != 1, Then=t[i][k + 1] == distances[i][o[i][k + 1]]),
-                If(h[i][k] != 1, h[i][k + 1] != 1, Then=t[i][k + 1] == distances[o[i][k]][o[i][k + 1]])
+            Match(
+                (h[i][k], h[i][k + 1]),
+                Cases={
+                    (1, 1): t[i][k + 1] == 0,
+                    (0, 1): t[i][k + 1] == distances[o[i][k]][i],
+                    (1, 0): t[i][k + 1] == distances[i][o[i][k + 1]],
+                    (0, 0): t[i][k + 1] == distances[o[i][k]][o[i][k + 1]]
+                }
             ) for i in range(nTeams) for k in range(nRounds - 1)
         ],
 
         [
-            (
-                If(h[i][-1] == 1, Then=t[i][-1] == 0),
-                If(h[i][-1] != 1, Then=t[i][-1] == distances[o[i][-1]][i])
+
+            If(
+                h[i][-1] == 1,
+                Then=t[i][-1] == 0,
+                Else=t[i][-1] == distances[o[i][-1]][i]
             ) for i in range(nTeams)
         ]
-    ]
+    ],
+
 )
 
 minimize(
     # minimizing summed up travelled distance
     Sum(t)
 )
+
+"""
+1) Note how the Match structure is equivalent to:
+  (
+        If(h[i][k] == 1, h[i][k + 1] == 1, Then=t[i][k + 1] == 0),
+        If(h[i][k] != 1, h[i][k + 1] == 1, Then=t[i][k + 1] == distances[o[i][k]][i]),
+        If(h[i][k] == 1, h[i][k + 1] != 1, Then=t[i][k + 1] == distances[i][o[i][k + 1]]),
+        If(h[i][k] != 1, h[i][k + 1] != 1, Then=t[i][k + 1] == distances[o[i][k]][o[i][k + 1]])
+    ) for i in range(nTeams) for k in range(nRounds - 1)
+
+
+"""

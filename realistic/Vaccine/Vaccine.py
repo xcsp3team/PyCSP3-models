@@ -48,7 +48,12 @@ satisfy(
     [Sum(x[i]) <= sizes[i] // min_size for i in range(nGroups)],
 
     # imposing limits wrt vaccines and ages
-    [Cardinality([x[i][j] * ages[i] for i in range(nGroups)], occurrences={a + 1: bounds for a, bounds in enumerate(ageBounds)}) for j in range(nVaccines)],
+    [
+        Cardinality(
+            [x[i][j] * ages[i] for i in range(nGroups)],
+            occurrences={a + 1: bounds for a, bounds in enumerate(ageBounds)}
+        ) for j in range(nVaccines)
+    ],
 
     # computing the total number of vaccinated persons
     [y[v] == Sum(x[g][v] * (sizes[g] // (1 + Sum(x[g][j] for j in range(nVaccines) if j != v))) for g in range(nGroups)) for v in range(nVaccines)],

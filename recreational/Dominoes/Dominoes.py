@@ -55,7 +55,10 @@ if not variant():
         # adjacency constraints
         If(
             d != nCols,  # if not adjacent in the same column
-            Then=both(d == 1, x[i][j] // nCols == y[i][j] // nCols)  # then adjacent in the same line
+            Then=both(  # then adjacent in the same line
+                d == 1,
+                x[i][j] // nCols == y[i][j] // nCols
+            )
         ) for i, j in dominoes if (d := abs(x[i][j] - y[i][j]),)
     )
 

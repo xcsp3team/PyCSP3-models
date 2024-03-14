@@ -23,7 +23,7 @@ from pycsp3 import *
 
 gen_max, dispatch_cost, gen_min, init_commitment, startup_cost, shutdown_cost, max_ramp_rate, demand, shed_cost, min_down, max_num_start = data
 horizon, nGenerators, nLoads = len(gen_max[0]), len(gen_max), len(demand)
-maxg = max(v for row in gen_max for v in row)
+maxg = max(max(row) for row in gen_max)
 
 # x[i][t] is 1 if the ith generator is committed at time t
 x = VarArray(size=[nGenerators, horizon], dom={0, 1})
@@ -32,7 +32,7 @@ x = VarArray(size=[nGenerators, horizon], dom={0, 1})
 gl = VarArray(size=[nGenerators, horizon], dom=range(maxg // 2 + 1))
 
 # ll[j][t] is the loss of the jth load at time t
-ll = VarArray(size=[nLoads, horizon], dom=lambda l, t: range(demand[l][t] + 1))
+ll = VarArray(size=[nLoads, horizon], dom=lambda j, t: range(demand[j][t] + 1))
 
 # up[i][t] is 1 if the ith generator is up at time t
 up = VarArray(size=[nGenerators, horizon], dom={0, 1})

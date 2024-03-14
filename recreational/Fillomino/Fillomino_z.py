@@ -36,7 +36,7 @@ horizon = min(9, n + m) + 1
 
 def join(r, c):
     return [
-        AllHold(  # TODO AllHold vs conjunction
+        AllHold(  # TODO test AllHold vs conjunction
             when[r][c] == 1 + when[rr][cc],
             area[r][c] == area[rr][cc],
             what[r][c] == what[rr][cc]

@@ -27,12 +27,12 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 from pycsp3 import *
 
 horizon, nVehicles, vehicleCapacity, nLocations, locationCapacity, nPickups, times, requests = data
-l, a, b, s, q = zip(*requests)
+rl, ra, rb, rs, rq = zip(*requests)
 nNodes, n = len(times), len(requests)  # n is the number of requests (pickups and deliveries)
 
 MainNodes = range(n + nVehicles)  # request and start nodes
 Depots = range(n, nNodes)  # start and end nodes
-qq = cp_array(list(q) + [0 for i in Depots])
+load_changes = cp_array(list(rq) + [0 for _ in Depots])
 
 # veh[i] is the vehicle visiting the ith node
 veh = VarArray(size=nNodes, dom=range(nVehicles))
@@ -73,9 +73,9 @@ satisfy(
     (
         (
             arr[i] <= ser[i],
-            ser[i] + s[i] <= dep[i],
-            a[i] <= ser[i],
-            ser[i] <= b[i]
+            ser[i] + rs[i] <= dep[i],
+            ra[i] <= ser[i],
+            ser[i] <= rb[i]
         ) for i in range(n)
     ),
 
@@ -89,7 +89,7 @@ satisfy(
     [dep[i] + times[i][succ[i]] == arr[succ[i]] for i in MainNodes],
 
     # accumulating load along route
-    [load[i] + qq[succ[i]] == load[succ[i]] for i in MainNodes],
+    [load[i] + load_changes[succ[i]] == load[succ[i]] for i in MainNodes],
 
     # setting load at start and end nodes
     [load[i] == 0 for i in Depots],
@@ -103,8 +103,8 @@ satisfy(
     # handling service resources
     [
         Cumulative(
-            tasks=[Task(origin=ser[i], length=s[i], height=1) for i in range(n) if l[i] == ll]
-        ) <= locationCapacity for ll in range(nLocations)
+            tasks=[Task(origin=ser[i], length=rs[i], height=1) for i in range(n) if rl[i] == p]
+        ) <= locationCapacity for p in range(nLocations)
     ],
 
     # tag(symmetry-breaking)

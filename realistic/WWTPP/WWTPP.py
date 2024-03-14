@@ -46,13 +46,13 @@ c = VarArray(size=[nIndustries, nPeriods], dom=lambda i, j: {0, sd[i][j]} if sd[
 
 satisfy(
     # not exceeding the Wastewater Treatment Plant
-    [Sum(c[:, j] + d[:, j]) <= plantCapacity for j in range(nPeriods)],
+    [Sum(c[:, j], d[:, j]) <= plantCapacity for j in range(nPeriods)],
 
     # managing scheduled discharge flows at period 0
     [Sum(b[i][0], c[i][0]) == sd[i][0] for i in range(nIndustries) if sd[i][0] != 0],
 
     # managing scheduled discharge flows at all periods except 0
-    [[b[i][j], b[i][j - 1], d[i][j], c[i][j]] * [1, -1, 1, 1 if c[i][j] else None] == sd[i][j] for i in range(nIndustries) for j in range(1, nPeriods)],
+    [Sum(b[i][j], -b[i][j - 1], d[i][j], c[i][j]) == sd[i][j] for i in range(nIndustries) for j in range(1, nPeriods)],
 
     # ensuring compatibility between stored and discharge flows
     [(d[i][j], b[i][j - 1]) in table_compatibility(i, j) for i in range(nIndustries) for j in range(1, nPeriods)],
@@ -64,4 +64,6 @@ satisfy(
 """ Comments
 1) when managing scheduled discharge flows, we have a list with four cells for variables and integers.
  However, when there is the special value None (at the fourth position in both lists), the two lists will be automatically reduced to three cells.
+2) one could also write the more complex expression:
+  [[b[i][j], b[i][j - 1], d[i][j], c[i][j]] * [1, -1, 1, 1 if c[i][j] else None] == sd[i][j] for i in range(nIndustries) for j in range(1, nPeriods)],
 """

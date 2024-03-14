@@ -53,7 +53,12 @@ satisfy(
     [tr[h] == MaximumArg([attenuation_i[h][t] * effective_power[pr[t]] for t in range(nTowers)], rank=rnk) for h in range(nHandsets)],
 
     # ensuring minimum signal strength
-    [If(tr[h] == t, Then=pr[t] >= min_transmit_power(t, h)) for h in range(nHandsets) for t in range(nTowers)],
+    [
+        If(
+            tr[h] == t,
+            Then=pr[t] >= min_transmit_power(t, h)
+        ) for h in range(nHandsets) for t in range(nTowers)
+    ],
 
     # determining which towers are overloaded
     [od[t] == (Sum(demands[h] * (tr[h] == t) for h in range(nHandsets)) > capacities[t]) for t in range(nTowers)],
