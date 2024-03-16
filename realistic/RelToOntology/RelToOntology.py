@@ -89,7 +89,9 @@ satisfy(
     # matching problem
     [
         [match[k] in attributes[k].domain for k in range(nAttributes)],
+
         [x[match[k]] == 1 for k in range(nAttributes)],
+
         AllDifferent(match)
     ],
 
@@ -101,7 +103,10 @@ satisfy(
 )
 
 minimize(
-    y * edgeCosts + Sum(matchCost[match[k]] for k, (_, matchCost) in enumerate(attributes))
+    y * edgeCosts
+    + Sum(
+        matchCost[match[k]] for k, (_, matchCost) in enumerate(attributes)
+    )
 )
 
 """

@@ -23,66 +23,71 @@ from pycsp3 import *
 nVehicles, nCustomers, timeBudget, services, distances, weights = data
 nNodes, nSetups = nCustomers + 2 * nVehicles, len(weights)
 
-distances = cp_array([distances[k * (nNodes * nNodes) + j * nNodes:k * (nNodes * nNodes) + (j + 1) * nNodes] for j in range(nNodes)] for k in range(nSetups))
+distances = cp_array([distances[p + j * nNodes:p + (j + 1) * nNodes] for j in range(nNodes)] for k in range(nSetups) if (p := k * (nNodes * nNodes),))
 
 AllDepots = range(nCustomers, nCustomers + 2 * nVehicles)
 StartDepots = range(nCustomers, nCustomers + nVehicles)
 EndDepots = range(nCustomers + nVehicles, nCustomers + 2 * nVehicles)
 
-# x[k][i] is the successor of the ith node in the kth setup
-x = VarArray(size=[nSetups, nNodes], dom=range(nNodes))
+# nxt[k][i] is the successor of the ith node in the kth setup
+nxt = VarArray(size=[nSetups, nNodes], dom=range(nNodes))
 
-# y[k][i] is the predecessor of the ith node in the kth setup
-y = VarArray(size=[nSetups, nNodes], dom=range(nNodes))
+# prv[k][i] is the predecessor of the ith node in the kth setup
+prv = VarArray(size=[nSetups, nNodes], dom=range(nNodes))
 
-# vh[i] is the vehicle at the ith node
-vh = VarArray(size=nNodes, dom=range(nVehicles))
+# veh[i] is the vehicle at the ith node
+veh = VarArray(size=nNodes, dom=range(nVehicles))
 
-# at[k][i] is the arrival time at the ith node in the kth setup
-at = VarArray(size=[nSetups, nNodes], dom=range(timeBudget + 1))
+# arr[k][i] is the arrival time at the ith node in the kth setup
+arr = VarArray(size=[nSetups, nNodes], dom=range(timeBudget + 1))
 
 satisfy(
     # pre-assigning a few variables
     [
-        [y[k][i] == i + nVehicles - 1 for k in range(nSetups) for i in range(nCustomers + 1, nCustomers + nVehicles)],
-        [y[k][nCustomers] == nCustomers + 2 * nVehicles - 1 for k in range(nSetups)],
+        [prv[k][i] == i + nVehicles - 1 for k in range(nSetups) for i in range(nCustomers + 1, nCustomers + nVehicles)],
+        [prv[k][nCustomers] == nCustomers + 2 * nVehicles - 1 for k in range(nSetups)],
 
-        [x[k][i] == i - nVehicles + 1 for k in range(nSetups) for i in range(nCustomers + nVehicles, nCustomers + 2 * nVehicles - 1)],
-        [x[k][-1] == nCustomers for k in range(nSetups)],
+        [nxt[k][i] == i - nVehicles + 1 for k in range(nSetups) for i in range(nCustomers + nVehicles, nCustomers + 2 * nVehicles - 1)],
+        [nxt[k][-1] == nCustomers for k in range(nSetups)],
 
-        [vh[i] == i - nCustomers for i in StartDepots],
-        [vh[i] == i - nCustomers - nVehicles for i in EndDepots],
+        [veh[i] == i - nCustomers for i in StartDepots],
+        [veh[i] == i - nCustomers - nVehicles for i in EndDepots],
 
-        [at[k][i] == 0 for k in range(nSetups) for i in StartDepots]
+        [arr[k][i] == 0 for k in range(nSetups) for i in StartDepots]
     ],
 
     # ensuring coherence between succeeding and preceding nodes
     [
-        [x[k][y[k][i]] == i for k in range(nSetups) for i in range(nNodes)],
-        [y[k][x[k][i]] == i for k in range(nSetups) for i in range(nNodes)]
+        (
+            nxt[k][prv[k][i]] == i,
+            prv[k][nxt[k][i]] == i
+        ) for k in range(nSetups) for i in range(nNodes)
     ],
 
     # ensuring we have a circuit
     [
-        [Circuit(x[k]) for k in range(nSetups)],
-        [Circuit(y[k]) for k in range(nSetups)]
+        (
+            Circuit(nxt[k]),
+            Circuit(prv[k])
+        ) for k in range(nSetups)
     ],
 
     # ensuring we keep the same vehicle
     [
-        [vh[y[k][i]] == vh[i] for k in range(nSetups) for i in range(nCustomers)],
-        [vh[x[k][i]] == vh[i] for k in range(nSetups) for i in range(nCustomers)]
+        (
+            veh[prv[k][i]] == veh[i],
+            veh[nxt[k][i]] == veh[i]
+        ) for k in range(nSetups) for i in range(nCustomers)
     ],
 
     # restraining arrival times
     [
-        [at[k][i] + services[i] + distances[k][i][x[k][i]] <= at[k][x[k][i]] for k in range(nSetups) for i in range(nCustomers)],
-        [at[k][i] + services[i] + distances[k][i][x[k][i]] <= at[k][x[k][i]] for k in range(nSetups) for i in StartDepots]
+        arr[k][i] + services[i] + distances[k][i][nxt[k][i]] <= arr[k][nxt[k][i]] for k in range(nSetups) for i in range(nCustomers + nVehicles)
     ]
 )
 
 minimize(
-    Sum(weights[i] * Maximum(at[i]) for i in range(nSetups))
+    Sum(weights[i] * Maximum(arr[i]) for i in range(nSetups))
 )
 
 """

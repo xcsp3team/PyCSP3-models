@@ -81,13 +81,18 @@ satisfy(
     # ensuring at most 6 consecutive days without a day off
     [
         [Exist(sh[i][:max(0, 7 - persons[i].histDays)], value=OFF) for i in range(nPersons) if nDays >= 7],
+
         [Exist(sh[i][j:j + 7], value=OFF) for i in range(nPersons) for j in range(1, nDays - 6 + 1)]
     ],
 
     # here, two groups of the original model not posted because indexNight is empty in the 5 available instances
 
     # respecting a maximal number of hours per week
-    [Sum(shiftLengths[sh[i][7 * j + k]] for k in range(7)) <= persons[i].maxHoursPerWeek for i in range(nPersons) for j in range(nWeeks)],
+    [
+        Sum(
+            shiftLengths[sh[i][7 * j + k]] for k in range(7)
+        ) <= persons[i].maxHoursPerWeek for i in range(nPersons) for j in range(nWeeks)
+    ],
 
     # shifts 1 and 2: individual assignments on common stations
     [
@@ -97,8 +102,7 @@ satisfy(
                 sh[i][j] == v2,
                 sk[i][j] == v3
             ) for i in range(nPersons)
-        ) == demands[v1][v2][j][v3]
-        for v1 in range(1, nStations) if commons[v1] == 1 for v2 in (1, 2) for j in range(nDays) for v3 in range(1, nSkills)
+        ) == demands[v1][v2][j][v3] for v1 in range(1, nStations) if commons[v1] == 1 for v2 in (1, 2) for j in range(nDays) for v3 in range(1, nSkills)
     ],
 
     # shift 1 may be subsumed by shift 2 on non-common stations
@@ -109,8 +113,7 @@ satisfy(
                 sh[i][j] in {1, 2},
                 sk[i][j] == v3
             ) for i in range(nPersons)
-        ) == demands[v1][1][j][v3]
-        for v1 in range(1, nStations) if commons[v1] == 0 for j in range(nDays) for v3 in range(1, nSkills)
+        ) == demands[v1][1][j][v3] for v1 in range(1, nStations) if commons[v1] == 0 for j in range(nDays) for v3 in range(1, nSkills)
     ],
 
     # shifts 3+: regular assignments
@@ -121,8 +124,7 @@ satisfy(
                 sh[i][j] == v2,
                 sk[i][j] == v3
             ) for i in range(nPersons)
-        ) == demands[v1][v2][j][v3]
-        for v1 in range(1, nStations) for v2 in range(3, nShifts) for j in range(nDays) for v3 in range(1, nSkills)
+        ) == demands[v1][v2][j][v3] for v1 in range(1, nStations) for v2 in range(3, nShifts) for j in range(nDays) for v3 in range(1, nSkills)
     ],
 
     # tag(redundant-constraints)
@@ -153,10 +155,9 @@ satisfy(
 
     # avoiding forbidden shift sequences
     [
-        (
-            sh[i][0] not in forbiddenSequences[persons[i].histShift],
-            [sh[i][j + 1] not in forbiddenSequences[sh[i][j]] for j in range(nDays - 1)]
-        ) for i in range(nPersons)
+        [sh[i][0] not in forbiddenSequences[persons[i].histShift] for i in range(nPersons)],
+
+        [sh[i][j + 1] not in forbiddenSequences[sh[i][j]] for i in range(nPersons) for j in range(nDays - 1)]
     ],
 
     # handling forbidden days
@@ -177,16 +178,24 @@ satisfy(
     ],
 
     # working at most in two different departments
-    [NValues([departments[persons[i].histStation]] + [departments[st[i][j]] for j in range(nDays)]) <= 2 for i in range(nPersons)],
+    [
+        NValues(
+            [departments[persons[i].histStation]] + [departments[st[i][j]] for j in range(nDays)]
+        ) <= 2 for i in range(nPersons)
+    ],
 
     # computing the number of working persons
     z1 == Sum(w),
 
     # computing the sum of preferences
-    z2 == Sum(persons[i].preferences[st[i][j]][sk[i][j]] for i in range(nPersons) for j in range(nDays)),
+    z2 == Sum(
+        persons[i].preferences[st[i][j]][sk[i][j]] for i in range(nPersons) for j in range(nDays)
+    ),
 
     # computing the weighted persons at risk that are working
-    z3 == Sum(departments[last[i][-1]] * w[i] for i in range(nPersons) if persons[i].atRisk),
+    z3 == Sum(
+        departments[last[i][-1]] * w[i] for i in range(nPersons) if persons[i].atRisk
+    ),
 
     # computing the number of changes
     z4 == Count(
@@ -207,7 +216,10 @@ satisfy(
 )
 
 minimize(
-    z1 * weights.person + z2 * weights.preference + z3 * weights.risk + z4 * weights.station
+    z1 * weights.person
+    + z2 * weights.preference
+    + z3 * weights.risk
+    + z4 * weights.station
 )
 
 """
@@ -252,4 +264,12 @@ minimize(
  is possible instead of:
     [(st[i][j], sk[i][j]) in [[(v, w) for v in range(nStations) for w in range(nSkills) if persons[i].preferences[v][w] < 4]
        for i in range(nPersons) for j in range(nDays)]
+       
+7) IMPORTANT: currently, it is not possible to write:
+   (
+      sh[i][0] not in forbiddenSequences[persons[i].histShift],
+      [sh[i][j + 1] not in forbiddenSequences[sh[i][j]] for j in range(nDays - 1)]
+   ) for i in range(nPersons)
+ because the way of the operator 'in' is interpreted. The tables are currently not used in the right order    
+             
 """

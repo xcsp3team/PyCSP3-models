@@ -47,7 +47,11 @@ z = Var(dom=range(maxErrors + 1))
 
 satisfy(
     # computing the parity of samples
-    [y[j] == xor(x[i] for i in range(n) if sampleInputs[j][i]) for j in range(m)],
+    [
+        y[j] == xor(
+            x[i] for i in range(n) if sampleInputs[j][i]
+        ) for j in range(m)
+    ],
 
     # computing the number of errors
     z == Sum(sampleOutputs[j] != y[j] for j in range(m))

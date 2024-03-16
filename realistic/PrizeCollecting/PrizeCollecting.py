@@ -50,7 +50,10 @@ satisfy(
 if not variant():
     satisfy(
         # linking variables from s and p
-        (s[i] == i) | (s[i] == 0) | (p[s[i]] == p[i] + 1) for i in range(n)
+        If(
+            s[i] != i, s[i] != 0,
+            Then=p[s[i]] == p[i] + 1
+        ) for i in range(n)
     )
 
 elif variant("table"):

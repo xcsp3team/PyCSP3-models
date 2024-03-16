@@ -37,7 +37,11 @@ satisfy(
     [s[i][-1] <= jobs[i].dueDate - durations[i][-1] for i in range(n) if 0 <= jobs[i].dueDate < horizon - 1],
 
     # no overlap on resources
-    [NoOverlap(tasks=[(s[i][indexes[i][j]], durations[i][indexes[i][j]]) for i in range(n)]) for j in range(m)]
+    [
+        NoOverlap(
+            tasks=[(s[i][indexes[i][j]], durations[i][indexes[i][j]]) for i in range(n)]
+        ) for j in range(m)
+    ]
 )
 
 minimize(

@@ -45,15 +45,27 @@ def forbidden_gaps(axis, c, limit, max_value):
 
     return [
         (
-            If(bl[i - 1], Then=c[i - 1] <= 0),
-            If(bl[i - 1] == 0, Then=c[i - 1] > gaps[i - 1]),
-            If(br[i - 1], Then=c[i - 1] >= limit - i),
-            If(br[i - 1] == 0, Then=c[i - 1] < limit - i - gaps[i - 1]),
-            either(bl[i - 1] == 0, br[i - 1] == 0)
+            If(
+                bl[i - 1],
+                Then=c[i - 1] <= 0,
+                Else=c[i - 1] > gaps[i - 1]
+            ),
+            If(
+                br[i - 1],
+                Then=c[i - 1] >= limit - i,
+                Else=c[i - 1] < limit - i - gaps[i - 1]
+            ),
+            either(
+                bl[i - 1] == 0,
+                br[i - 1] == 0
+            )
         ) if 2 * gaps[i - 1] + 2 <= max_value - i else
         (
-            If(bl[i - 1], Then=c[i - 1] <= 0),
-            If(bl[i - 1] == 0, Then=c[i - 1] >= limit - i)
+            If(
+                bl[i - 1],
+                Then=c[i - 1] <= 0,
+                Else=c[i - 1] >= limit - i
+            )
         ) for i in squares
     ]
 
@@ -88,18 +100,27 @@ satisfy(
 
     # squares must be inside the rectangle
     (
-        [x[i - 1] + i <= w for i in squares],
-        [y[i - 1] + i <= h for i in squares]
+        (
+            x[i - 1] + i <= w,
+            y[i - 1] + i <= h
+        ) for i in squares
     ),
 
     # ensuring a non-overload wrt rectangle height
-    Cumulative(tasks=[(x[i - 1], i, i) for i in squares]) <= h,
+    Cumulative(
+        tasks=[Task(origin=x[i - 1], length=i, height=i) for i in squares]
+    ) <= h,
 
     # ensuring a non-overload wrt rectangle width
-    Cumulative(tasks=[(y[i - 1], i, i) for i in squares]) <= w,
+    Cumulative(
+        tasks=[Task(origin=y[i - 1], length=i, height=i) for i in squares]
+    ) <= w,
 
     # when the unit square is not considered, its origin is assigned to (0, 0)
-    [x[0] == 0, y[0] == 0] if including_square1 == 0 else None,
+    [
+        x[0] == 0,
+        y[0] == 0
+    ] if including_square1 == 0 else None,
 
     # tag(symmetry-breaking)
     [

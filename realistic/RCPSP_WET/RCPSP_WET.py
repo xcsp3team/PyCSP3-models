@@ -44,16 +44,29 @@ satisfy(
     # cumulative resource constraints
     [
         Cumulative(
-            tasks=[(s[i], durations[i], requirements[r][i]) for i in relevantTasks[r]]
-        ) <= capacities[r] for r in range(nResources) if sum(requirements[r][i] for i in relevantTasks[r]) > capacities[r]
+            tasks=[Task(origin=s[i], length=durations[i], height=requirements[r][i]) for i in relevantTasks[r]]
+        ) <= capacities[r] for r in range(nResources) if sum(requirements[r][relevantTasks[r]]) > capacities[r]
     ],
 
     # redundant non-overlapping constraints  tag(redundant-constraints)
-    [(s[i] + durations[i] <= s[j]) | (s[j] + durations[j] <= s[i]) for i, j in combinations(nTasks, 2)
-     if any(requirements[r][i] + requirements[r][j] > capacities[r] for r in range(nResources))],
+    [
+        either(
+            s[i] + durations[i] <= s[j],
+            s[j] + durations[j] <= s[i]
+        ) for i, j in combinations(nTasks, 2) if any(requirements[r][i] + requirements[r][j] > capacities[r] for r in range(nResources))
+    ],
 )
 
 minimize(
     # minimizing the weighted earliness/tardiness objective
-    Sum(deadlines[i][1] * max(0, deadlines[i][0] - s[i]) + deadlines[i][2] * max(0, s[i] - deadlines[i][0]) for i in range(nTasks))
+    Sum(
+        deadlines[i][1] * max(0, deadlines[i][0] - s[i]) + deadlines[i][2] * max(0, s[i] - deadlines[i][0]) for i in range(nTasks)
+    )
 )
+
+"""
+1) Note that:
+ sum(requirements[r][relevantTasks[r]]) 
+   is a shortcut for:
+ sum(requirements[r][i] for i in relevantTasks[r])
+"""

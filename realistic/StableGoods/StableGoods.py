@@ -51,7 +51,11 @@ satisfy(
 
 satisfy(
     # computing the distribution of goods
-    [Sum((tg[i] == j) * ng[i] for i in range(nPersons)) + z[j] == quantities[j] for j in range(nGoods)]
+    [
+        Sum(
+            (tg[i] == j) * ng[i] for i in range(nPersons)
+        ) + z[j] == quantities[j] for j in range(nGoods)
+    ]
 )
 
 if not variant():
@@ -90,6 +94,7 @@ elif variant("table"):
         # ensuring the assignment is stable
         (
             [(tg[p1], tg[p2], rmd[p1], rmd[p2]) in T(p1, p2) for p1, p2 in combinations(nPersons, 2)],
+
             [rmd[p] == z[tg[p]] for p in range(nPersons)]
         )
     )

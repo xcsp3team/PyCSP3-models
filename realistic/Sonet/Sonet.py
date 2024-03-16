@@ -40,7 +40,7 @@ x = VarArray(size=[m, n], dom={0, 1})
 T = {tuple(1 if j // 2 == i else ANY for j in range(2 * m)) for i in range(m)}
 
 satisfy(
-    [(x[i][conn] for i in range(m)) in T for conn in connections],
+    [x[:, j] in T for j in connections],
 
     # respecting the capacity of rings
     [Sum(x[i]) <= r for i in range(m)],
@@ -56,8 +56,10 @@ minimize(
 
 """
 1) Note that
-   [(x[i][conn] for i in range(m)) in T for conn in connections]
- is a shortcut for:
+  [x[:, j] in T for j in connections],
+ is a shortcut for; 
+   [(x[i][j] for i in range(m)) in T for j in connections]
+ which, itself is a shortcut for:
    [(x[i][j1 if k == 0 else j2] for i in range(m) for k in range(2)) in T
       for (j1, j2) in connections]
 """

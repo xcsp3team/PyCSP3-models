@@ -78,7 +78,12 @@ satisfy(
     x[0] == x[-1],
 
     # ensuring requirements of shifts are met
-    [Cardinality(x[:-1, d], occurrences={j: needs[j][d] for j in S} | {OFF: nWorkers - sum(needs[:, d])}) for d in D],  # needs Python 3.9
+    [
+        Cardinality(
+            x[:-1, d],
+            occurrences={j: needs[j][d] for j in S} | {OFF: nWorkers - sum(needs[:, d])}  # needs Python 3.9
+        ) for d in D
+    ],
 
     # ensuring legal rules are respected
     x in automaton(),
@@ -86,6 +91,7 @@ satisfy(
     # tag(symmetry-breaking)
     (
         x[-2][-1] == OFF if sum(needs[:, -1]) < nWorkers else None,
+
         x[0][0] != OFF if all(needs[j][d] == needs[j][d + 1] for j in S for d in range(nDays - 1)) or sum(needs[:, -1]) < sum(needs[:, 0]) else None
     )
 )

@@ -51,8 +51,15 @@ satisfy(
     # redundant non-overlapping constraints
     (
         [s[i] + durations[i] <= s[j] for i, j in t1],
+
         [s[j] + durations[j] <= s[i] for i, j in t2],
-        [(s[i] + durations[i] <= s[j]) | (s[j] + durations[j] <= s[i]) for i, j in t3]
+
+        [
+            either(
+                s[i] + durations[i] <= s[j],
+                s[j] + durations[j] <= s[i]
+            ) for i, j in t3
+        ]
     ),
 
     # cumulative resource constraints

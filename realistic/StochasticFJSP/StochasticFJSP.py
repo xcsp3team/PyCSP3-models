@@ -43,7 +43,10 @@ satisfy(
     [
         If(
             m[i1] == m[i2],
-            Then=either(s[k][i1] + durations[i1] <= s[k][i2], s[k][i2] + durations[i2] <= s[k][i1])
+            Then=either(
+                s[k][i1] + durations[i1] <= s[k][i2],
+                s[k][i2] + durations[i2] <= s[k][i1]
+            )
         ) for k in range(nSetups) for i1 in range(nTasks) for i2 in range(nTasks) if i1 != i2 and any(v in machines[i2] for v in machines[i1])
     ],
 
@@ -54,7 +57,10 @@ satisfy(
     [
         If(
             m[i] == add_machines[k],
-            Then=either(s[k][i] + durations[i] < add_starts[k], s[k][i] > add_ends[k])
+            Then=either(
+                s[k][i] + durations[i] < add_starts[k],
+                s[k][i] > add_ends[k]
+            )
         ) for k in range(nSetups) for i in range(nTasks)
     ],
 

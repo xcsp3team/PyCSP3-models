@@ -57,8 +57,12 @@ satisfy(
     [p[i][j] == 0 for i in range(nServices) for j in range(nStations) if schedules[i][j] == 0],
 
     # computing the number of passengers onboard each service departing every station
-    [Count([x[k] for k in range(nPassengers) if trips[k][1] <= j < trips[k][2]], value=i) == p[i][j]
-     for i in range(nServices) for j in range(nStations) if schedules[i][j] != 0]
+    [
+        p[i][j] == Count(
+            [x[k] for k in range(nPassengers) if trips[k][1] <= j < trips[k][2]],
+            value=i
+        ) for i in range(nServices) for j in range(nStations) if schedules[i][j] != 0
+    ]
 )
 
 minimize(

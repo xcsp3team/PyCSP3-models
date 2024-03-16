@@ -80,13 +80,22 @@ satisfy(
     [
         If(
             u[r] < needs[r][i] + needs[r][j],
-            Then=(s[i] + durations[i] <= s[j]) | (s[j] + durations[j] <= s[i])
+            Then=either(
+                s[i] + durations[i] <= s[j],
+                s[j] + durations[j] <= s[i]
+            )
         ) for i in range(nTasks) for j in unrelated[i] for r in range(nResources) if needs[r][i] + needs[r][j] > lb_usage[r]
     ],
 
     # redundant constraints on the lower bound of the resource capacities  tag(redundant-constraints)
-    [u[r] - Sum(needs[r][j] * both(s[j] + durations[j] > s[i], s[j] <= s[i]) for j in unrelated[i] if needs[r][j] > 0) >= needs[r][i]
-     for i in range(nTasks) for r in range(nResources) if needs[r][i] > 0],
+    [
+        u[r] - Sum(
+            needs[r][j] * both(
+                s[j] + durations[j] > s[i],
+                s[j] <= s[i]
+            ) for j in unrelated[i] if needs[r][j] > 0
+        ) >= needs[r][i] for i in range(nTasks) for r in range(nResources) if needs[r][i] > 0
+    ],
 
     [
         Cumulative(
@@ -97,9 +106,16 @@ satisfy(
     ],
 
     # computing the value of the objective
-    z == Sum(resourceCosts[r] * u[r] for r in range(nResources))
+    z == resourceCosts * u
 )
 
 minimize(
     z
 )
+
+"""
+1) Note that:
+ z == resourceCosts * u
+   is equivalent to: 
+ z == Sum(resourceCosts[r] * u[r] for r in range(nResources))
+"""

@@ -37,14 +37,21 @@ y = VarArray(size=[n, n], dom=lambda i, j: {0, 1} if i < j else None)
 
 satisfy(
     # initially computing the smallest distance between pairs of nodes
-    [(x[i][j][0], y[i][j]) in {(M, 0), (distances[i][j], 1)} for i, j in combinations(n, 2)],
+    [
+        (x[i][j][0], y[i][j]) in {(M, 0), (distances[i][j], 1)} for i, j in combinations(n, 2)
+    ],
 
     # iteratively computing the smallest distance between pairs of nodes
-    [x[i][j][s + 1] == Minimum([x[i][j][s]] + [x[i][k][s] + x[min(j, k)][max(j, k)][s] for k in range(i + 1, n) if j != k])
-     for i, j in combinations(n, 2) for s in range(n - 1)],
+    [
+        x[i][j][s + 1] == Minimum(
+            x[i][j][s], [x[i][k][s] + x[min(j, k)][max(j, k)][s] for k in range(i + 1, n) if j != k]
+        ) for i, j in combinations(n, 2) for s in range(n - 1)
+    ],
 
     # not exceeding the budget
-    Sum(costs[i][j] * y[i][j] for i, j in combinations(n, 2)) <= budget
+    Sum(
+        costs[i][j] * y[i][j] for i, j in combinations(n, 2)
+    ) <= budget
 )
 
 minimize(

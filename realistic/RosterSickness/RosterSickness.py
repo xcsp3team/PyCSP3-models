@@ -30,13 +30,13 @@ W = 1 + max(max(contracts), max(stops[s] - starts[s] for s in range(nShifts)))  
 
 ES = [(e, s) for e in range(nEmployees) for s in range(nShifts)]
 
-ovlp1, ovlp2 = [], [[] for _ in range(nShifts)]
+O1, O2 = [], [[] for _ in range(nShifts)]
 for s1 in range(nShifts):
     for s2 in range(s1 + 1, nShifts):
         if starts[s1] < stops[s2] and starts[s2] < stops[s1]:
-            ovlp1.append((s1, s2))
-            ovlp2[s1].append(s2)
-            ovlp2[s2].append(s1)
+            O1.append((s1, s2))
+            O2[s1].append(s2)
+            O2[s2].append(s1)
 
 # x[i][j] is 1 if the ith employee works in the jth shift
 x = VarArray(size=[nEmployees, nShifts], dom={0, 1})
@@ -55,13 +55,13 @@ satisfy(
     [Sum(x[:, s]) <= 1 for s in range(nShifts)],
 
     # no overlapping assignments (a)
-    [x[e][s1] + x[e][s2] <= 1 for e in range(nEmployees) for s1, s2 in ovlp1 if not assigned[e][s1] and not assigned[e][s2]],
+    [x[e][s1] + x[e][s2] <= 1 for e in range(nEmployees) for s1, s2 in O1 if not assigned[e][s1] and not assigned[e][s2]],
 
     # appropriate expertise required
     [x[e][s] == 0 for e, s in ES if not (assigned[e][s] or required[s] in expertises[e])],
 
     # no overlapping assignments (b)
-    [Sum(x[e][t] for t in ovlp2[s]) <= max(1, sum(assigned[e][t] for t in ovlp2[s])) for e, s in ES],
+    [Sum(x[e][t] for t in O2[s]) <= max(1, sum(assigned[e][t] for t in O2[s])) for e, s in ES],
 
     # computing the differences between working times and the contracts
     [y[e] == Sum(x[e][s] * (stops[s] - starts[s]) for s in range(nShifts)) - contracts[e] for e in range(nEmployees)]

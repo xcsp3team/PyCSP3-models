@@ -41,7 +41,11 @@ satisfy(
     k == Sum(x),
 
     # respecting the specified intensity in each cell
-    [Sum(b * q[i][j][b] for b in range(1, nIntensities)) == intensity[i][j] for i in range(nRows) for j in range(nCols)],
+    [
+        Sum(
+            b * q[i][j][b] for b in range(1, nIntensities)
+        ) == intensity[i][j] for i in range(nRows) for j in range(nCols)
+    ],
 
     # settings upper bounds on increments
     [x[b] >= q[i][0][b] + Sum(max(q[i][j][b] - q[i][j - 1][b], 0) for j in range(1, nCols)) for i in range(nRows) for b in range(1, nIntensities)]

@@ -36,13 +36,17 @@ satisfy(
     [x[i] + durations[i] <= x[j] for i in range(nTasks) for j in successors[i]],
 
     # redundant non-overlapping constraints  tag(redundant-constraints)
-    [(x[i] + durations[i] <= x[j]) | (x[j] + durations[j] <= x[i]) for i, j in combinations(nTasks, 2)
-     if any(requirements[r, i] + requirements[r, j] > capacities[r] for r in range(nResources))],
+    [
+        either(
+            x[i] + durations[i] <= x[j],
+            x[j] + durations[j] <= x[i]
+        ) for i, j in combinations(nTasks, 2) if any(requirements[r, i] + requirements[r, j] > capacities[r] for r in range(nResources))
+    ],
 
     # cumulative resource constraints
     [
         Cumulative(
-            tasks=[(x[i], durations[i], requirements[r][i]) for i in range(nTasks)]
+            tasks=[Task(origin=x[i], length=durations[i], height=requirements[r][i]) for i in range(nTasks)]
         ) <= capacities[r] for r in range(nResources)
     ],
 

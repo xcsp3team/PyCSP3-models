@@ -77,7 +77,10 @@ satisfy(
         ],
     ),
 
-    NoOverlap(origins=(xk + xr, yk + yr), lengths=(plankWidths + pillarWidths, [1] * nPlanks + pillarHeights)),
+    NoOverlap(
+        origins=(xk + xr, yk + yr),
+        lengths=(plankWidths + pillarWidths, [1] * nPlanks + pillarHeights)
+    ),
 
     # each plank is supported at both ends by a pillar
     (

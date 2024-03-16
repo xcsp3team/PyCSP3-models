@@ -31,7 +31,12 @@ satisfy(
     [Increasing(s[i], lengths=durations[i]) for i in range(n)],
 
     # no overlap on resources
-    [NoOverlap(origins=s[:, j], lengths=durations[:, j]) for j in range(m)]
+    [
+        NoOverlap(
+            origins=s[:, j],
+            lengths=durations[:, j]
+        ) for j in range(m)
+    ]
 )
 
 minimize(

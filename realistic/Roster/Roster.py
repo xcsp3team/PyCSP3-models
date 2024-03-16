@@ -26,15 +26,17 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 from pycsp3 import *
 
 nWeeks, requirements, lb = data
-Rest, Morn, Day, Eve, Joker = shifts = range(5)
+REST, MORN, DAY, EVE, JOKER = shifts = range(5)
 nDays, nShifts, horizon = 7, len(shifts), 7 * nWeeks
-
-evemorn = Var(range(horizon + 1))
-
-isolated = Var(range(horizon + 1))
 
 # x[w][d] is the shift for day d in week w
 x = VarArray(size=[nWeeks, nDays], dom=range(nShifts))
+
+# z1 is the number of evenings before mornings
+z1 = Var(range(horizon + 1))
+
+# z2 is the number of isolated rest days
+z2 = Var(range(horizon + 1))
 
 # the objective to be minimized
 z = Var(dom=range(lb, 2 * horizon + 1))
@@ -46,19 +48,30 @@ satisfy(
     [Count(x[:, day], value=shift) == requirements[shift, day] for shift in range(nShifts) for day in range(nDays)],
 
     # ensuring that in any sequence of 7 days, at least one of them is a Rest day
-    [Count(x_flat[d:d + 7], value=Rest) >= 1 for d in range(horizon)],
+    [Count(x_flat[d:d + 7], value=REST) >= 1 for d in range(horizon)],
 
     # ensuring there is no sequence of three Rest days in a row
-    [Count(x_flat[d:d + 4], value=Rest) <= 3 for d in range(horizon)],
+    [Count(x_flat[d:d + 4], value=REST) <= 3 for d in range(horizon)],
 
     # counting Evenings before Mornings
-    evemorn == Sum(both(x_flat[d] == Eve, x_flat[d + 1] == Morn) for d in range(horizon)),
+    z1 == Sum(
+        both(
+            x_flat[d] == EVE,
+            x_flat[d + 1] == MORN
+        ) for d in range(horizon)
+    ),
 
     # counting isolated Rest days
-    isolated == Sum((x_flat[d + 1] == Rest) & ~((x_flat[d] == Rest) | (x_flat[d + 2] == Rest)) for d in range(horizon)),
+    z2 == Sum(
+        conjunction(
+            x_flat[d] != REST,
+            x_flat[d + 1] == REST,
+            x_flat[d + 2] != REST
+        ) for d in range(horizon)
+    ),
 
     # computing the objective value
-    z == evemorn + isolated
+    z == z1 + z2
 )
 
 minimize(

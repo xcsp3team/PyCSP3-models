@@ -94,8 +94,7 @@ satisfy(
                     both(
                         dy[e],
                         dfr[e] == prt[i]
-                    )
-                    for e in range(2 * m) if dto[e] == i
+                    ) for e in range(2 * m) if dto[e] == i
                 )
             ]
         ) for i in range(n)

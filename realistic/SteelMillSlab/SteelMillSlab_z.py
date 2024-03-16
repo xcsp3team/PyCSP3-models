@@ -38,14 +38,24 @@ y = VarArray(size=nSlabs, dom=range(slabSizeLimit))
 
 satisfy(
     # each slab can contain at most 2 colors
-    [Sum(Exist(x[k] == i for k in range(nOrders) if colors[k] == c) for c in range(nColors)) <= 2 for i in range(nSlabs)],
+    [
+        Sum(
+            Exist(x[k] == i for k in range(nOrders) if colors[k] == c) for c in range(nColors)
+        ) <= 2 for i in range(nSlabs)
+    ],
 
     # computing loads of slabs
     BinPacking(x, sizes=sizes, loads=y),
 
     # tag(symmetry-breaking)
     (
-        [If(y[i] == 0, Then=y[i + 1] == 0) for i in range(nSlabs - 1)],
+        [
+            If(
+                y[i] == 0,
+                Then=y[i + 1] == 0
+            ) for i in range(nSlabs - 1)
+        ],
+
         [x[k] <= x[l] for k, l in combinations(nOrders, 2) if sizes[k] == sizes[l] or colors[k] == colors[l]]
     )
 )
