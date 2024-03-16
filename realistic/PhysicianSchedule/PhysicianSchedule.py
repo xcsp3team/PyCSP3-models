@@ -34,9 +34,10 @@ nWeeks = nDays // 7  # assumes starting on Monday and numDays divisible by 7
 OFF = 0
 
 sf = lambda t: sum(flatten(t))  # summing after flattening the argument array
-sums0, sumsub = [nPersons - sf(demands[1:, 1:, d, 1:]) for d in range(nDays)], [sum(subDemand[:, d]) for d in range(nDays)]
+sums0 = [nPersons - sf(demands[1:, 1:, d, 1:]) for d in range(nDays)]
 # below, expected number of occurrences
-Osh = [[sums0[d]] + [sf(demands[1:, s, d, 1:]) + sumsub[d] * (-1 if s == 1 else 1 if s == 2 else 0) for s in range(1, nShifts)] for d in range(nDays)]
+Osh = [[sums0[d]] + [sf(demands[1:, s, d, 1:]) + sum(subDemand[:, d]) * (-1 if s == 1 else 1 if s == 2 else 0) for s in range(1, nShifts)] for d in
+       range(nDays)]
 Ost = [[sums0[d]] + [sf(demands[s, 1:, d, 1:]) for s in range(1, nStations)] for d in range(nDays)]
 Osk = [[sums0[d]] + [sf(demands[1:, 1:, d, s]) for s in range(1, nSkills)] for d in range(nDays)]
 assert all(len(t) == nShifts for t in Osh) and all(len(t) == nStations for t in Ost) and all(len(t) == nSkills for t in Osk)
@@ -96,35 +97,35 @@ satisfy(
 
     # shifts 1 and 2: individual assignments on common stations
     [
-        Sum(
+        demands[v1][v2][j][v3] == Sum(
             conjunction(
                 st[i][j] == v1,
                 sh[i][j] == v2,
                 sk[i][j] == v3
             ) for i in range(nPersons)
-        ) == demands[v1][v2][j][v3] for v1 in range(1, nStations) if commons[v1] == 1 for v2 in (1, 2) for j in range(nDays) for v3 in range(1, nSkills)
+        ) for v1 in range(1, nStations) if commons[v1] == 1 for v2 in (1, 2) for j in range(nDays) for v3 in range(1, nSkills)
     ],
 
     # shift 1 may be subsumed by shift 2 on non-common stations
     [
-        Sum(
+        demands[v1][1][j][v3] == Sum(
             conjunction(
                 st[i][j] == v1,
                 sh[i][j] in {1, 2},
                 sk[i][j] == v3
             ) for i in range(nPersons)
-        ) == demands[v1][1][j][v3] for v1 in range(1, nStations) if commons[v1] == 0 for j in range(nDays) for v3 in range(1, nSkills)
+        ) for v1 in range(1, nStations) if commons[v1] == 0 for j in range(nDays) for v3 in range(1, nSkills)
     ],
 
     # shifts 3+: regular assignments
     [
-        Sum(
+        demands[v1][v2][j][v3] == Sum(
             conjunction(
                 st[i][j] == v1,
                 sh[i][j] == v2,
                 sk[i][j] == v3
             ) for i in range(nPersons)
-        ) == demands[v1][v2][j][v3] for v1 in range(1, nStations) for v2 in range(3, nShifts) for j in range(nDays) for v3 in range(1, nSkills)
+        ) for v1 in range(1, nStations) for v2 in range(3, nShifts) for j in range(nDays) for v3 in range(1, nSkills)
     ],
 
     # tag(redundant-constraints)

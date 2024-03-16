@@ -64,14 +64,14 @@ satisfy(
     # tasks on the same job cannot overlap
     [
         Cumulative(
-            tasks=[(x[i][j], durations[i][j], 1) for j in range(nMachines)]
+            tasks=[Task(origin=x[i][j], length=durations[i][j], height=1) for j in range(nMachines)]
         ) <= 1 for i in range(nJobs)
     ],
 
     # tasks on the same machine cannot overlap
     [
         Cumulative(
-            tasks=[(x[i][j], durations[i][j], 1) for i in range(nJobs)]
+            tasks=[Task(origin=x[i][j], length=durations[i][j], height=1) for i in range(nJobs)]
         ) <= 1 for j in range(nMachines)
     ],
 

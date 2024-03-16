@@ -46,9 +46,11 @@ satisfy(
 
 minimize(
     Maximum(
-        Sum(both(
-            y[i][j - 1] < quantities[i],
-            y[i][j] > 0
-        ) for i in range(nCustomers)) for j in range(1, nProducts + 1)
+        Sum(
+            both(
+                y[i][j - 1] < quantities[i],
+                y[i][j] > 0
+            ) for i in range(nCustomers)
+        ) for j in range(1, nProducts + 1)
     )
 )
