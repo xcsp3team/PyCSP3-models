@@ -52,7 +52,10 @@ po = VarArray(size=nPeriods, dom=range(nOrders + 1))
 
 satisfy(
     # each order must be produced (only once)
-    Cardinality(x, occurrences={i: 1 for i in range(nOrders)} | {nOrders: nPeriods - nOrders}),  # needs Python 3.9
+    Cardinality(
+        within=x,
+        occurrences={i: 1 for i in range(nOrders)} | {nOrders: nPeriods - nOrders}  # needs Python 3.9
+    ),
 
     # any order must be produced before its due date
     [x[t] != i for i in range(nOrders) for t in range(nPeriods) if duePeriods[i] < t],

@@ -72,7 +72,7 @@ elif variant("table"):
 
         # ensuring that each permutation occurs in the sequence
         Cardinality(
-            y,
+            within=y,
             occurrences={-1: range(gap + 1)} | {i: range(1, gap + 1) for i in range(nPermutations)}
         )
     )

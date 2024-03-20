@@ -36,7 +36,7 @@ x = VarArray(size=n, dom=range(n))
 satisfy(
     # each value i occurs exactly x[i] times in the sequence
     Cardinality(
-        x,
+        within=x,
         occurrences={i: x[i] for i in range(n)}
     ),
 

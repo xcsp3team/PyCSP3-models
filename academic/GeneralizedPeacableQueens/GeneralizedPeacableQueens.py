@@ -62,16 +62,22 @@ satisfy(
     [[x[i][j] for i in range(n) for j in range(n) if i - j == k] in A for k in range(-n + 2, n - 1)],
 
     # counting the number of queens of each color
-    Cardinality(x, occurrences={i: z[i - 1] for i in range(1, q + 1)}),
+    Cardinality(
+        within=x,
+        occurrences={i: z[i - 1] for i in range(1, q + 1)}
+    ),
 
     # ensuring the same number of queens of each color
     AllEqual(z),
 
     # tag(symmetry-breaking)
-    Precedence(x, values=range(1, q + 1)),
+    Precedence(
+        within=x,
+        values=range(1, q + 1)
+    ),
 
     # tag(symmetry-breaking)
-    [LexIncreasing(x, x[symmetry]) for symmetry in symmetries]
+    [x <= x[symmetry] for symmetry in symmetries]
 )
 
 maximize(
@@ -87,4 +93,8 @@ maximize(
  [x[row] for row in symmetry]
    which, itself, is a shortcut for:
  [[x[k][l] for k, l in row] for row in symmetry]
+3) Note that:
+[x <= x[symmetry] for symmetry in symmetries]
+  is equivalent to:
+[LexIncreasing(x, x[symmetry]) for symmetry in symmetries]  
 """

@@ -48,7 +48,9 @@ satisfy(
 
 if not variant():
     satisfy(
-        NValues(x[i] + x[j]) == 2 * n - 1 for i, j in combinations(nCards, 2)
+        NumberDistinctValues(
+            within=x[i] + x[j]
+        ) == 2 * n - 1 for i, j in combinations(nCards, 2)
     )
 
 
@@ -56,7 +58,9 @@ elif variant("01"):
     b = VarArray(size=[nCards, nSymbols], dom={0, 1})
 
     satisfy(
-        [b[i][j] == ExactlyOne(x[i], value=j) for i in range(nCards) for j in range(nSymbols)],
+        [
+            b[i][j] == ExactlyOne(x[i], value=j) for i in range(nCards) for j in range(nSymbols)
+        ],
 
         [
             Sum(
@@ -71,4 +75,5 @@ elif variant("01"):
 """
 1) the model with NValues is not very efficient (at least, with ACE) 
 2) data used in 2021 are: (3,97) (4,75) (4,97) (5,50) (6,50)
+3) DistinctValues is an alias for NVAlues
 """

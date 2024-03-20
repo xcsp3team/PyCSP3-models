@@ -48,7 +48,7 @@ if not variant():
         # respecting the size of the groups
         [
             Cardinality(
-                g[w],
+                within=g[w],
                 occurrences={i: size for i in range(nGroups)}
             ) for w in range(nWeeks)
         ],

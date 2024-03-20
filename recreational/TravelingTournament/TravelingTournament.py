@@ -58,7 +58,7 @@ satisfy(
     # each team must play exactly two times against each other team
     [
         Cardinality(
-            o[i],
+            within=o[i],
             occurrences={j: 2 for j in range(nTeams) if j != i}
         ) for i in range(nTeams)
     ],

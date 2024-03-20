@@ -55,7 +55,7 @@ satisfy(
     # ensuring shift requirements are met for each day
     [
         Cardinality(
-            x[:, j],
+            within=x[:, j],
             occurrences={i: requirements[j][i - 1] for i in range(1, nShifts)}
         ) for j in range(nDays)
     ],

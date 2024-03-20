@@ -50,7 +50,7 @@ satisfy(
     # imposing limits wrt vaccines and ages
     [
         Cardinality(
-            [x[i][j] * ages[i] for i in range(nGroups)],
+            within=[x[i][j] * ages[i] for i in range(nGroups)],
             occurrences={a + 1: bounds for a, bounds in enumerate(ageBounds)}
         ) for j in range(nVaccines)
     ],

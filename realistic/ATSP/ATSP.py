@@ -101,9 +101,8 @@ satisfy(
     # checking the number of colors and lines per job
     [
         Sum(
-            jm[i][k][l] > 0 for k in range(nMoulds) if moulds[k].line in range(1, nLines + 1) for l in range(nColors)
-        ) <= maxColors
-        for i in range(nJobs)
+            jm[i][k][j] > 0 for k in range(nMoulds) if moulds[k].line in range(1, nLines + 1) for j in range(nColors)
+        ) <= maxColors for i in range(nJobs)
     ],
 
     # checking that demands are fulfilled

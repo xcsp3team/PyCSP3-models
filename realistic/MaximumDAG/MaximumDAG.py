@@ -38,7 +38,11 @@ satisfy(
     d[0] == 0,
 
     # computing other distances
-    [d[i] == Maximum((d[tails[j]] + 1) * x[j] for j in range(m) if incident[i][j] == 1) for i in range(1, n)]
+    [
+        d[i] == Maximum(
+            (d[tails[j]] + 1) * x[j] for j in range(m) if incident[i][j] == 1
+        ) for i in range(1, n)
+    ]
 )
 
 maximize(

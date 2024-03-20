@@ -34,7 +34,7 @@ w = VarArray(size=nBins, dom=lambda j: range(binSizes[j] + 1))
 
 satisfy(
     Knapsack(
-        x,
+        selection=x,
         weights=weights,
         wlimit=w[j],
         profits=profits

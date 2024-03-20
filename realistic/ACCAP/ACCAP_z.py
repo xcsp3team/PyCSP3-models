@@ -12,22 +12,24 @@ Simultaneously, the goal is to cluster flights from the same airline together
 in the same check-in area, achieving this by minimizing the sum of the total distances (d)
 between the counters of each pair of flights from the same airline.
 
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019/2022 Minizinc challenges.
+No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
   03.json
 
 ## Model
-  constraints: Maximum, NoOverlap, Sum
+  constraints: NoOverlap, Sum
 
 ## Execution
-  - python ACCAP.py -data=<datafile.json>
-  - python ACCAP.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
+  - python ACCAP_z.py -data=<datafile.json>
+  - python ACCAP_z.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-  realistic
+  realistic, mzn19, mzn22
 """
 
 from pycsp3 import *
@@ -39,24 +41,38 @@ nFlights, nAirlines, nCounters = len(flights), len(airlines), sum(requirements)
 # y[i] is the first counter (index) of the series required by the ith flight
 y = VarArray(size=nFlights, dom=range(nCounters))
 
+# d[a] is the maximal distance between two flights of the airline a
+d = VarArray(size=nAirlines, dom=range(nCounters))
+
+# z is the number of used counters
+z = Var(dom=range(max(requirements), nCounters + 1))
+
 satisfy(
     # ensuring no counter is shared
     NoOverlap(
         origins=(x, y),
         lengths=(durations, requirements)
-    )
+    ),
+
+    # computing the number of used counters
+    [y[i] + requirements[i] <= z for i in range(nFlights)],
+
+    # computing the maximal distance between two flights of the same airline
+    [
+        Sum(
+            y[i], -y[j], -d[a]
+        ) <= 1 - requirements[i] for a in range(nAirlines) for i in airlines[a] for j in airlines[a] if i != j
+    ]
 )
 
 minimize(
-    Sum(
-        [Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airlines[a] for j in airlines[a] if i != j) for a in range(nAirlines)],
-        Maximum(y[i] + requirements[i] for i in range(nFlights))
-    )
+    Sum(d) + z
 )
 
-# minimize(
-#     Sum(
-#         Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airlines[a] for j in airlines[a] if i != j) for a in range(nAirlines)
-#     )
-#     + Maximum(y[i] + requirements[i] for i in range(nFlights))
-# )
+"""
+1) Note that:
+ Sum(y[i], -y[j], -d[a]) <= 1 - requirements[i] 
+  is equivalent to:
+ y[i] + (requirements[i] - 1) - y[j] <= d[a]
+ (but the form of the posted constraint is different) 
+"""

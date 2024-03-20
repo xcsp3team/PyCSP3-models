@@ -62,13 +62,13 @@ satisfy(
 
     # counting working (regular) days by each worker
     Cardinality(
-        [x[i] for i in range(nDays) if i not in weekends],
+        within=[x[i] for i in range(nDays) if i not in weekends],
         occurrences=do
     ),
 
     # counting working weekends by each worker
     Cardinality(
-        x[weekends],
+        within=x[weekends],
         occurrences=wo
     ),
 

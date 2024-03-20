@@ -100,7 +100,7 @@ satisfy(
 
     # counting the number of occurrences of ship segments of each type
     Cardinality(
-        t[1:n + 1, 1:n + 1],
+        within=t[1:n + 1, 1:n + 1],
         occurrences={pos[i]: cp[i] for i in range(nTypes)} | {neg[i]: cn[i] for i in range(nTypes)}
     ),
 

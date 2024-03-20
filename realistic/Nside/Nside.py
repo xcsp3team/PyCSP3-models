@@ -66,7 +66,7 @@ satisfy(
     # maximal number of roads simultaneously blocked
     [
         Cardinality(
-            [(d[i] + a + 1) * g[i] for i in W for a in range(durations[i]) if roads[i][a] in blocked_roads],
+            within=[(d[i] + a + 1) * g[i] for i in W for a in range(durations[i]) if roads[i][a] in blocked_roads],
             occurrences={v + 1: range(limit + 1) for v in D}
         ) for (limit, blocked_roads) in blocks
     ],

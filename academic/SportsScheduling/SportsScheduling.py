@@ -59,7 +59,7 @@ satisfy(
     # each team plays at most two times in each period
     [
         Cardinality(
-            x[:, p] + y[:, p],
+            within=x[:, p] + y[:, p],
             occurrences={t: range(1, 3) for t in range(nTeams)}
         ) for p in range(nPeriods)
     ],
@@ -90,7 +90,7 @@ if variant("dummy"):
             # each team plays two times in each period
             [
                 Cardinality(
-                    x[:, p] + y[:, p] + [xd[p], yd[p]],
+                    within=x[:, p] + y[:, p] + [xd[p], yd[p]],
                     occurrences={t: 2 for t in range(nTeams)}
                 ) for p in range(nPeriods)
             ],

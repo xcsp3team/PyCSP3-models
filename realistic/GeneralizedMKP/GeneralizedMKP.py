@@ -38,7 +38,14 @@ w = VarArray(size=nBins, dom=lambda j: range(capacities[j] + 1))
 z = Var(range(sum(profits) + 1))
 
 satisfy(
-    [Knapsack(x, weights=weights, wlimit=w[j], profits=pmatrix[j]) >= z for j, weights in enumerate(wmatrix)],
+    [
+        Knapsack(
+            selection=x,
+            weights=weights,
+            wlimit=w[j],
+            profits=pmatrix[j]
+        ) >= z for j, weights in enumerate(wmatrix)
+    ],
 
     # computing the objective value
     z == profits * x

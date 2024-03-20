@@ -35,7 +35,7 @@ x = VarArray(size=nBids, dom={0, 1})
 
 satisfy(
     # avoiding intersection of bids
-    Count(scp, value=1) <= 1 for scp in [[x[i] for i, bid in enumerate(bids) if item in bid.items] for item in items]
+    Count(within=scp, value=1) <= 1 for scp in [[x[i] for i, bid in enumerate(bids) if item in bid.items] for item in items]
 )
 
 maximize(

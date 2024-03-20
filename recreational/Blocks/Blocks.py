@@ -61,7 +61,7 @@ satisfy(
     # computing the number of times cubes occur in configurations
     [
         Cardinality(
-            x[1:, t],
+            within=x[1:, t],
             occurrences=nb[:, t]
         ) for t in range(horizon)
     ],

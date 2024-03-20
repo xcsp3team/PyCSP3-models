@@ -78,7 +78,12 @@ satisfy(
     [
         [LexDecreasing(x, x[symmetry]) for symmetry in symmetries],
 
-        [Precedence(y, values=(1, v)) for v in range(2, n + 1)]
+        [
+            Precedence(
+                within=y,
+                values=(1, v)
+            ) for v in range(2, n + 1)
+        ]
 
         # # at least one hexagon on the left
         # Sum(x[:, 0]) > 0,  # x[0][0] == 1

@@ -80,7 +80,7 @@ satisfy(
     # ensuring requirements of shifts are met
     [
         Cardinality(
-            x[:-1, d],
+            within=x[:-1, d],
             occurrences={j: needs[j][d] for j in S} | {OFF: nWorkers - sum(needs[:, d])}  # needs Python 3.9
         ) for d in D
     ],

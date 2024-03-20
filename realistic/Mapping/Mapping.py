@@ -82,7 +82,9 @@ satisfy(
     # computing flows
     [
         [Flow(y[i], balance=balance[i], arcs=arcs, weights=unit) == flow_cost[i] for i in range(nFlows)],
+
         Flow(total_flow, balance=total_balance, arcs=all_connections, weights=total_unit) == comm_cost,
+
         [lf[i] >= Sum(y[:, i + nProcessors]) for i in range(nLinks)]
     ],
 

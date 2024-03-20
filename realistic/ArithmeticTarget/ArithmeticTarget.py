@@ -66,13 +66,13 @@ z2 = Var(range(1, n + 1))
 
 satisfy(
     # ensuring that the special value 0 appears n-1 times
-    Count(index, value=0) == n - 1,
+    Count(within=index, value=0) == n - 1,
 
     # ensuring all indexes of numbers are different (except for the special value 0)
     AllDifferent(index, excepting=0),
 
     # ensuring that the tree has n leaves
-    Count(x, value=VAL) == n,
+    Count(within=x, value=VAL) == n,
 
     # computing the tree depth
     depth == highest[1],

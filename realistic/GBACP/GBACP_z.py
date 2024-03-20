@@ -43,7 +43,7 @@ satisfy(
     # course load of all periods for each curriculum
     [
         Cardinality(
-            x[curriculum],
+            within=x[curriculum],
             occurrences={p: range(minCourses, maxCourses + 1) for p in range(nPeriods)}
         ) for curriculum in distinctCurricula
     ],

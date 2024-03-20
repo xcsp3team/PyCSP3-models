@@ -51,13 +51,24 @@ d = VarArray(size=[nCurricula, nPeriods], dom=range(max_load + 1))
 
 satisfy(
     # respecting authorized loads of courses for all periods and curricula
-    [Cardinality(x[crm], occurrences={p: loadRange for p in range(nPeriods)}) for crm in distinctCurricula],
+    [
+        Cardinality(
+            within=x[crm],
+            occurrences={p: loadRange for p in range(nPeriods)}
+        ) for crm in distinctCurricula
+    ],
 
     # respecting prerequisites
     [x[i] < x[j] for i, j in precedences],
 
     # computing loads
-    [BinPacking(x[crm], sizes=courseLoads[crm], loads=y[c]) for c, crm in enumerate(curricula)]
+    [
+        BinPacking(
+            partition=x[crm],
+            sizes=courseLoads[crm],
+            loads=y[c]
+        ) for c, crm in enumerate(curricula)
+    ]
 )
 
 if not variant():

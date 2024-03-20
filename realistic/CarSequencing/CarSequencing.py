@@ -56,7 +56,10 @@ o = VarArray(size=[nCars, nOptions], dom={0, 1})
 
 satisfy(
     # building the right numbers of cars per class
-    Cardinality(c, occurrences=demands)
+    Cardinality(
+        within=c,
+        occurrences=demands
+    )
 )
 
 if not variant():

@@ -53,7 +53,7 @@ satisfy(
     # putting each value on each row, and also the special value 0
     [
         Cardinality(
-            x[i],
+            within=x[i],
             occurrences={0: n - m} | {v: 1 for v in range(1, m + 1)}
         ) for i in range(n)
     ],
@@ -61,7 +61,7 @@ satisfy(
     # putting each value on each column, and also the special value 0
     [
         Cardinality(
-            x[:, j],
+            within=x[:, j],
             occurrences={0: n - m} | {v: 1 for v in range(1, m + 1)}
         ) for j in range(n)
     ],

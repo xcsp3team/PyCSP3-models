@@ -71,7 +71,10 @@ satisfy(
     ],
 
     # tag(symmetry-breaking)
-    Precedence(x, values=symmetricalMachines),
+    Precedence(
+        within=x,
+        values=symmetricalMachines
+    ),
 
     # tag(redundant-constraint)
     Minimum(s) == 0,

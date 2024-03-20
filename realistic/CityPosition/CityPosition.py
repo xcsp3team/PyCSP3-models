@@ -47,7 +47,9 @@ satisfy(
 )
 
 minimize(
-    Sum(abs(distance * 1024 - approx_distance(x[src], y[src], x[dst], y[dst])) for (src, dst, distance) in roads)
+    Sum(
+        abs(distance * 1024 - approx_distance(x[src], y[src], x[dst], y[dst])) for (src, dst, distance) in roads
+    )
 )
 
 """

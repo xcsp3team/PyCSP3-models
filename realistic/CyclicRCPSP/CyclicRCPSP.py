@@ -75,7 +75,10 @@ satisfy(
     [s[i] + d[i] <= s[-1] for i in range(nTasks - 1)],
 
     # tag(symmetry-breaking)
-    [s[0] == 0, k[0] == 0]
+    [
+        s[0] == 0,
+        k[0] == 0
+    ]
 )
 
 minimize(

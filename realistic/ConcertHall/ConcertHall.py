@@ -50,7 +50,12 @@ satisfy(
     [AllDifferent(x[clique], excepting=-1) for clique in cliques],
 
     # tag(symmetry-breaking)
-    [Precedence(x, values=t) for t in classes if len(t) > 1]
+    [
+        Precedence(
+            within=x,
+            values=t
+        ) for t in classes if len(t) > 1
+    ]
 )
 
 maximize(

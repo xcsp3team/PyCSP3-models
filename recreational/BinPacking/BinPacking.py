@@ -98,7 +98,7 @@ elif variant("table"):
 satisfy(
     # ensuring that each item is stored in a bin
     Cardinality(
-        x,
+        within=x,
         occurrences={0: nBins * maxPerBin - nItems} | {wgt: len(list(t)) for wgt, t in groupby(weights)}
     ),
 

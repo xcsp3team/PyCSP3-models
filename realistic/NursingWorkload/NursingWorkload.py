@@ -36,7 +36,10 @@ w = VarArray(size=nNurses, dom=range(lb, maxWorkloadPerNurse + 1))
 
 satisfy(
     # ensuring that each nurse has a valid number of patients
-    Cardinality(p, occurrences={k: range(minPatientsPerNurse, maxPatientsPerNurse + 1) for k in range(nNurses)}),
+    Cardinality(
+        within=p,
+        occurrences={k: range(minPatientsPerNurse, maxPatientsPerNurse + 1) for k in range(nNurses)}
+    ),
 
     # ensuring a nurse stays within a zone
     [p[i] != p[j] for i, j in combinations(nPatients, 2) if patients[i][0] != patients[j][0]],
