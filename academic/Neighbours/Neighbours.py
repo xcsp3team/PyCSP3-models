@@ -80,7 +80,7 @@ elif variant("table"):
 
 satisfy(
     # tag(symmetry-breaking)
-    LexIncreasing(x, x[symmetry]) for symmetry in symmetries
+    x <= x[symmetry] for symmetry in symmetries
 )
 
 maximize(
@@ -95,4 +95,9 @@ maximize(
  Exist(y == k - 1 for y in x.beside(i, j))
   is an alternative to:
  Exist(x.beside(i, j), value= k - 1)
+3) Note that:
+ x <= x[symmetry]
+is equivalent to:
+ LexIncreasing(x, x[symmetry]) 
+
 """

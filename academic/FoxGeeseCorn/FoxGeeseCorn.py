@@ -40,8 +40,8 @@ mzn19 = [(6, 7, 8, 4, 15, 8, 12, 9), (50, 50, 50, 7, 35, 9, 10, 8), (6, 7, 8, 1,
 
 nFoxes, nGeese, nCorns, boatCapacity, horizon, pf, pg, pc = mzn19[data] if isinstance(data, int) else data
 
-East = [i for i in range(1, horizon + 1) if i % 2 == 1]
-West = [i for i in range(1, horizon + 1) if i % 2 != 1]
+EAST = [i for i in range(1, horizon + 1) if i % 2 == 1]
+WEST = [i for i in range(1, horizon + 1) if i % 2 != 1]
 
 # tf[i] is the number of foxes traversing at time i (to time i+1)
 tf = VarArray(size=horizon, dom=range(boatCapacity + 1))
@@ -78,7 +78,7 @@ aux = VarArray(size=horizon, dom=range(4))  # auxiliary variables
 
 def alone(i):
     tmp = aux[i - 1]  # Var(dom=range(4), id="tmp" + str(i))
-    f, g, c = (wf, wg, wc) if i in East else (ef, eg, ec)
+    f, g, c = (wf, wg, wc) if i in EAST else (ef, eg, ec)
     fox0, fox1, geese0, geese1, corn0, corn1 = f[i - 1] - tf[i - 1], f[i], g[i - 1] - tg[i - 1], g[i], c[i - 1] - tc[i - 1], c[i]
     return (
         tmp == cp_array(0, 0, 0, 1, 0, 2, 3, 3)[4 * (fox0 > 0) + 2 * (geese0 > 0) + (corn0 > 0)],
@@ -96,10 +96,10 @@ satisfy(
     ],
 
     # updating goods on west side when unsupervised
-    [alone(i) for i in East],
+    [alone(i) for i in EAST],
 
     # updating goods on east side when unsupervised
-    [alone(i) for i in West],
+    [alone(i) for i in WEST],
 
     # updating goods on east side when landing
     [
@@ -110,7 +110,7 @@ satisfy(
                 eg[i] == eg[i - 1] + tg[i - 1],
                 ec[i] == ec[i - 1] + tc[i - 1]
             ]
-        ) for i in East
+        ) for i in EAST
     ],
 
     # updating goods on west side when landing
@@ -122,7 +122,7 @@ satisfy(
                 wg[i] == wg[i - 1] + tg[i - 1],
                 wc[i] == wc[i - 1] + tc[i - 1]
             ]
-        ) for i in West
+        ) for i in WEST
     ],
 
     # respecting the capacity of the boat

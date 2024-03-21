@@ -91,10 +91,10 @@ if variant("m2"):
         ],
 
         # counting the number of black queens
-        Count(x, value=BLACK) == nb,
+        Count(within=x, value=BLACK) == nb,
 
         # counting the number of white queens
-        Count(x, value=WHITE) == nw,
+        Count(within=x, value=WHITE) == nw,
 
         # ensuring equal-sized armies
         nb == nw

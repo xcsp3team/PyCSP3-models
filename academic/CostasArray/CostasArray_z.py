@@ -49,6 +49,7 @@ satisfy(
     #  tag(redundant-constraints)
     [
         [y[i][j] != 0 for i, j in combinations(n, 2)],  # not possible to have 0
+
         [y[k - 2][l - 1] + y[k][l] == y[k - 1][l - 1] + y[k - 1][l] for k, l in combinations(range(2, n), 2)]
     ]
 )

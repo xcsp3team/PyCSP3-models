@@ -46,7 +46,7 @@ assert len(word2) == n and len(word3) in {n, n + 1}
 x = VarArray(size=26, dom=lambda i: range(10) if i in alphabet_positions(words) else None)
 
 # auxiliary lists of variables associated with the three words
-x1, x2, x3 = [[x[i] for i in reversed(alphabet_positions(word))] for word in words]
+x1, x2, x3 = [x[reversed(alphabet_positions(word))] for word in words]
 
 satisfy(
     # all letters must be assigned different values
@@ -63,7 +63,9 @@ satisfy(
 if not variant():
     satisfy(
         # ensuring the crypto-arithmetic sum
-        Sum((x1[i] + x2[i]) * 10 ** i for i in range(n)) == Sum(x3[i] * 10 ** i for i in range(len(x3)))
+        Sum((x1[i] + x2[i]) * 10 ** i for i in range(n))
+        ==
+        Sum(x3[i] * 10 ** i for i in range(len(x3)))
     )
 
 elif variant("carry"):
@@ -86,4 +88,8 @@ elif variant("carry"):
 
 """
 1) Example of data: (no,no,yes) (two,two,four) (send,more,money) (cross,road,danger) (donald,gerald,robert)
+2) Note that:
+ x[reversed(alphabet_positions(word))]
+   is equivalent to: 
+ [x[i] for i in reversed(alphabet_positions(word))]
 """

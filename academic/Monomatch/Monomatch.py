@@ -37,7 +37,7 @@ n, percentage = data
 nSymbols = n * n + n + 1
 nCards = math.floor((nSymbols * percentage) / 100)
 
-# x[i,j] is the jth symbol on the ith card
+# x[i][j] is the jth symbol on the ith card
 x = VarArray(size=[nCards, n], dom=range(nSymbols))
 
 satisfy(

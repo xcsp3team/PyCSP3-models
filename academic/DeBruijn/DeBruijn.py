@@ -53,7 +53,10 @@ satisfy(
     [d[i - 1][j] == d[i % m][j - 1] for i in range(1, m + 1) for j in range(1, n)],
 
     # computing occurrences
-    Cardinality(d[:, 0], occurrences=g),
+    Cardinality(
+        within=d[:, 0],
+        occurrences=g
+    ),
 
     # imposing the first element as the smallest element
     # tag(symmetry-breaking)

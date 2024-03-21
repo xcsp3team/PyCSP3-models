@@ -48,11 +48,9 @@ satisfy(
     AllDifferent(x),
 
     # any subsequence of size r must be less than or equal to z
-    [
-        Slide(
-            Sum(x[j] for j in [(i + k) % n for k in range(r)]) <= z for i in range(n)
-        )
-    ],
+    Slide(
+        Sum(x[i:i + r]) <= z for i in range(n)
+    ),
 
     # tag(symmetry-breaking)
     [
@@ -69,4 +67,8 @@ minimize(
 1) the call to Slide can be avoided (it was the case in the 2022 competition), but the interest is two-fold:
   - getting a more compact XCSP3 file
   - letting solvers the possibility of exploiting the meta-constraint Slide (possibly, stronger filtering)
+2) Note that, by benefiting from automatic index auto-adjustment, we have:
+ Sum(x[i:i+r]) 
+   equivalent to:
+ Sum(x[j] for j in [(i + k) % n for k in range(r)])
 """

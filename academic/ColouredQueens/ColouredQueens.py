@@ -40,12 +40,12 @@ n = data or 8
 x = VarArray(size=[n, n], dom=range(n))
 
 satisfy(
-    # different colors on rows and columns
+    # ensuring different colors on rows and columns
     AllDifferent(x, matrix=True),
 
-    # different colors on downward diagonals
+    # ensuring different colors on downward diagonals
     [AllDifferent(dgn) for dgn in diagonals_down(x)],
 
-    # different colors on upward diagonals
+    # ensuring different colors on upward diagonals
     [AllDifferent(dgn) for dgn in diagonals_up(x)]
 )

@@ -34,9 +34,10 @@ p = VarArray(size=[n, d], dom=range(b))
 v = VarArray(size=[n, b], dom=range(d))
 
 satisfy(
-    # all values must be present in each 't'-combination
+    # ensuring all values are present in each 't'-combination
     [AllDifferent(p[i]) for i in range(n)],
 
+    # connecting variables from both arrays
     [Channel(p[i], v[i]) for i in range(n)],
 
     # computing values

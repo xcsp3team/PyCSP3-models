@@ -67,7 +67,10 @@ if not variant():
         ],
 
         # tag(symmetry-breaking)
-        (x[0][0] >= x[n - 1][n - 1], x[0][n - 1] >= x[n - 1][0]) if n == m else None
+        (
+            x[0][0] >= x[n - 1][n - 1],
+            x[0][n - 1] >= x[n - 1][0]
+        ) if n == m else None
     )
 
     maximize(

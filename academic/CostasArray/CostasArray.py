@@ -34,7 +34,11 @@ satisfy(
     AllDifferent(x),
 
     # all displacement vectors between the marks must be different
-    [AllDifferent(x[i] - x[i + d] for i in range(n - d)) for d in range(1, n - 1)]
+    [
+        AllDifferent(
+            x[i] - x[i + d] for i in range(n - d)
+        ) for d in range(1, n - 1)
+    ]
 )
 
 """ Comments

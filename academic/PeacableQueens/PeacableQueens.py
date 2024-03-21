@@ -48,10 +48,10 @@ z = Var(dom=range(n * n // 2))
 
 satisfy(
     # counting the number of black queens
-    Count(x, value=BLACK) == z,
+    Count(within=x, value=BLACK) == z,
 
     # counting the number of white queens
-    Count(x, value=WHITE) == z,
+    Count(within=x, value=WHITE) == z,
 
     # at peace on every row
     [x[i] in A for i in range(n)],
@@ -72,7 +72,7 @@ satisfy(
             values=[BLACK, WHITE]
         ),
 
-        [LexIncreasing(x, x[symmetry]) for symmetry in symmetries]
+        [x <= x[symmetry] for symmetry in symmetries]
     )
 )
 
@@ -85,7 +85,14 @@ maximize(
 1) note that (q2, [0,2], q2) is a shortcut for {(q2, 0, q2), (q2, 2, q2)} 
    It is also possible to save the automatas in this compact form with the option -keepSmartTransitions
 2) data used in 2021 are:  8, 11, 25, 40, 50
-3) [x[row] for row in symmetry]
- is equivalent to:
- [[x[k][l] for k, l in row] for row in symmetry]
+3) Note that
+  x[symmetry])
+ is equivalent o:
+  [x[row] for row in symmetry]
+ which is is equivalent to:
+  [[x[k][l] for k, l in row] for row in symmetry]
+4) Note that:
+   x <= x[symmetry]
+ is equivalent to;
+  LexIncreasing(x, x[symmetry])
 """

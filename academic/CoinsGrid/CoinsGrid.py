@@ -26,13 +26,17 @@ n, c = data or (8, 4)
 x = VarArray(size=[n, n], dom={0, 1})
 
 satisfy(
+    # ensuring each row sums to c
     [Sum(x[i]) == c for i in range(n)],
 
+    # ensuring each column sums to c
     [Sum(x[:, j]) == c for j in range(n)]
 )
 
 minimize(
-    Sum(x[i][j] * abs(i - j) ** 2 for i in range(n) for j in range(n))
+    Sum(
+        x[i][j] * abs(i - j) ** 2 for i in range(n) for j in range(n)
+    )
 )
 
 """ Comments
