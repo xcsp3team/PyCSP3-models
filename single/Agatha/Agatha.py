@@ -48,19 +48,39 @@ satisfy(
     richer[killer][agatha] == 0,
 
     # Charles hates no one that Agatha hates
-    [If(hating[agatha][p], Then=~hating[charles][p]) for p in persons],
+    [
+        If(
+            hating[agatha][p],
+            Then=~hating[charles][p]
+        ) for p in persons
+    ],
 
     # Agatha hates everybody except the butler
     [hating[agatha][p] == 1 for p in persons if p != butler],
 
     # the butler hates everyone not richer than Aunt Agatha
-    [If(~richer[p][agatha], Then=hating[butler][p]) for p in persons],
+    [
+        If(
+            ~richer[p][agatha],
+            Then=hating[butler][p]
+        ) for p in persons
+    ],
 
     # the butler hates everyone Agatha hates
-    [If(hating[agatha][p], Then=hating[butler][p]) for p in persons],
+    [
+        If(
+            hating[agatha][p],
+            Then=hating[butler][p]
+        ) for p in persons
+    ],
 
     # no one hates everyone
-    [Count(hating[p], value=0) > 0 for p in persons]
+    [
+        Count(
+            within=hating[p],
+            value=0
+        ) > 0 for p in persons
+    ]
 )
 
 """ Comments

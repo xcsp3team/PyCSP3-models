@@ -68,7 +68,13 @@ s = VarArray(size=nRegions, dom=range(nValues))
 
 satisfy(
     # setting starting squares of pre-assigned regions
-    [(x[i][j] == k, d[i][j] == 0, s[k] == sz) for k, (sz, (i, j)) in enumerate(preassigned.items())],
+    [
+        (
+            x[i][j] == k,
+            d[i][j] == 0,
+            s[k] == sz
+        ) for k, (sz, (i, j)) in enumerate(preassigned.items())
+    ],
 
     # setting values according to the size of the regions
     [y[i][j] == s[x[i][j]] for i in range(1, n + 1) for j in range(1, m + 1) if puzzle[i - 1][j - 1] == 0 or (i, j) not in preassigned.values()],

@@ -69,7 +69,12 @@ satisfy(
     [x[f][i] == i for i in range(nCells)],
 
     # once the final state is reached, there is no more rotation
-    [If(f <= t, Then=r[t] == 0) for t in range(1, nPeriods)],
+    [
+        If(
+            f <= t,
+            Then=r[t] == 0
+        ) for t in range(1, nPeriods)
+    ],
 
     # tag(redundant-constraints)
     [AllDifferent(x[t]) for t in range(1, nPeriods)]

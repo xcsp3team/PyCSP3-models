@@ -57,7 +57,10 @@ elif variant("rules"):
         x[4] in {0, 5},
 
         # divisibility by 6
-        [x[5] in {0, 2, 4, 6, 8}, Sum(x[0:6]) % 3 == 0],
+        [
+            x[5] in {0, 2, 4, 6, 8},
+            Sum(x[0:6]) % 3 == 0
+        ],
 
         # divisibility by 7
         (x[0] - x[1:4] * [100, 10, 1] + x[4:7] * [100, 10, 1]) % 7 == 0,

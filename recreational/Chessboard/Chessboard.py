@@ -95,7 +95,7 @@ satisfy(
     ],
 
     # tag(symmetry-breaking)
-    [LexIncreasing(x, x[symmetry]) for symmetry in symmetries]
+    [x <= x[symmetry] for symmetry in symmetries]
 )
 
 maximize(
@@ -114,5 +114,9 @@ maximize(
 5) Not that 
    x[symmetry]
  is equivalent to:
-   [x[row] for row in symmetry]
+   [x[row] for row in symmetry]Chessboard-03.xml
+6) Note that:
+ x <= x[symmetry]
+   is equivalent to:
+ LexIncreasing(x, x[symmetry]) 
 """

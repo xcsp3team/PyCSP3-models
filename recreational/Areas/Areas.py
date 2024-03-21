@@ -61,7 +61,12 @@ satisfy(
     ],
 
     # respecting the size of each region
-    [Count(x, value=k) == sz for k, (_, _, sz) in enumerate(regions)],
+    [
+        Count(
+            within=x,
+            value=k
+        ) == sz for k, (_, _, sz) in enumerate(regions)
+    ],
 
     # two regions of the same size cannot have neighbouring squares
     [

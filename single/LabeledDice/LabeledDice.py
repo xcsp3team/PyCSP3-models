@@ -36,5 +36,8 @@ satisfy(
     [AllDifferent(x[i] for i in alphabet_positions(w)) for w in words],
 
     # each cube is assigned 6 letters
-    Cardinality(x, occurrences={i: 6 for i in cubes})
+    Cardinality(
+        within=x,
+        occurrences={i: 6 for i in cubes}
+    )
 )

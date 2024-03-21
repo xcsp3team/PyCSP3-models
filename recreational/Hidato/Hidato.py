@@ -46,7 +46,10 @@ if not variant():
         # ensuring adjacent consecutive numbers
         If(
             x[i][j] != n * m,
-            Then=ExactlyOne(x.around(i, j), value=x[i][j] + 1)
+            Then=ExactlyOne(
+                within=x.around(i, j),
+                value=x[i][j] + 1
+            )
         ) for i in range(n) for j in range(m)
     )
 

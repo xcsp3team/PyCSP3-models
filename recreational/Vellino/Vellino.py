@@ -27,7 +27,7 @@ The compatibility constraints are:
   - https://link.springer.com/chapter/10.1007/10704567_6
 
 ## Tags
-  recreational
+  recreational, notebook
 """
 
 from pycsp3 import *
@@ -56,32 +56,55 @@ satisfy(
     # the capacity of each bin is not exceeded
     [Sum(p[i]) <= capacities[c[i]] for i in range(nBins)],
 
-    # red bins cannot contain plastic or steel
-    [(c[i] != Red) | ((p[i][Plastic] == 0) & (p[i][Steel] == 0)) for i in range(nBins)],
-
-    # blue bins cannot contain wood or plastic
-    [(c[i] != Blue) | ((p[i][Wood] == 0) & (p[i][Plastic] == 0)) for i in range(nBins)],
-
-    # green bins cannot contain steel or glass
-    [(c[i] != Green) | ((p[i][Steel] == 0) & (p[i][Glass] == 0)) for i in range(nBins)],
-
-    # red bins contain at most one wooden component
-    [(c[i] != Red) | (p[i][Wood] <= 1) for i in range(nBins)],
-
-    # green bins contain at most two wooden components
-    [(c[i] != Green) | (p[i][Wood] <= 2) for i in range(nBins)],
+    # handling compatibility of materials
+    [
+        Match(
+            c[i],
+            Cases={
+                Red: [
+                    p[i][Plastic] == 0,
+                    p[i][Steel] == 0,
+                    p[i][Wood] <= 1
+                ],
+                Blue: [
+                    p[i][Wood] == 0,
+                    p[i][Plastic] == 0
+                ],
+                Green: [
+                    p[i][Steel] == 0,
+                    p[i][Glass] == 0,
+                    p[i][Wood] <= 2
+                ]
+            }
+        ) for i in range(nBins)
+    ],
 
     # wood requires plastic
-    [(p[i][Wood] == 0) | (p[i][Plastic] > 0) for i in range(nBins)],
+    [
+        If(
+            p[i][Wood] > 0,
+            Then=p[i][Plastic] > 0
+        ) for i in range(nBins)
+    ],
 
     # glass excludes copper
-    [(p[i][Glass] == 0) | (p[i][Copper] == 0) for i in range(nBins)],
+    [
+        If(
+            p[i][Glass] > 0,
+            Then=p[i][Copper] == 0
+        ) for i in range(nBins)
+    ],
 
     # copper excludes plastic
-    [(p[i][Copper] == 0) | (p[i][Plastic] == 0) for i in range(nBins)],
+    [
+        If(
+            p[i][Copper] > 0,
+            Then=p[i][Plastic] == 0
+        ) for i in range(nBins)
+    ],
 
     # tag(symmetry-breaking)
-    [LexIncreasing(p[i], p[i + 1]) for i in range(nBins - 1)]
+    [p[i] <= p[i + 1] for i in range(nBins - 1)]
 )
 
 minimize(

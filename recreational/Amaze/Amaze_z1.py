@@ -40,7 +40,7 @@ satisfy(
     # each cell with a fixed value has exactly one neighbour with the same value
     [
         ExactlyOne(
-            x.beside(i, j),
+            within=x.beside(i, j),
             value=v
         ) for v in range(1, nValues) for i, j in points[v - 1]
     ],
@@ -49,7 +49,10 @@ satisfy(
     [
         If(
             x[i][j] != 0,
-            Then=Count(x.beside(i, j), value=x[i][j]) == 2
+            Then=Count(
+                within=x.beside(i, j),
+                value=x[i][j]
+            ) == 2
         ) for i, j in free_cells
     ]
 )

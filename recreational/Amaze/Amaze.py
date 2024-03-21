@@ -33,7 +33,7 @@ satisfy(
     # each cell with a fixed value has exactly one neighbour with the same value
     [
         ExactlyOne(
-            x.beside(i, j),
+            within=x.beside(i, j),
             value=v
         ) for v in range(1, nValues) for i, j in points[v - 1]
     ],

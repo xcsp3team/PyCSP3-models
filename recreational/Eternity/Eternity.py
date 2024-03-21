@@ -41,7 +41,10 @@ satisfy(
     AllDifferent(x),
 
     # all pieces must be valid (i.e., must correspond to those given initially, possibly after applying some rotation)
-    [(x[i][j], top[i][j], lft[i][j + 1], top[i + 1][j], lft[i][j]) in T for i in range(n) for j in range(m)],
+    [
+        (x[i][j], top[i][j], lft[i][j + 1], top[i + 1][j], lft[i][j]) in T
+        for i in range(n) for j in range(m)
+    ],
 
     # putting special value 0 on borders
     [

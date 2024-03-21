@@ -38,5 +38,7 @@ satisfy(
 )
 
 minimize(
-    Maximum(x[i] + durations[i] for i in range(nTasks))
+    Maximum(
+        x[i] + durations[i] for i in range(nTasks)
+    )
 )

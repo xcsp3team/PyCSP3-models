@@ -52,7 +52,12 @@ nn = VarArray(size=nLeagues, dom=range(leagueSize + 1))
 
 satisfy(
     # computing the size of leagues
-    [Count(x, value=i) == sl[i] for i in range(nLeagues)],
+    [
+        Count(
+            within=x,
+            value=i
+        ) == sl[i] for i in range(nLeagues)
+    ],
 
     # managing ranks
     [

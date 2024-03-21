@@ -51,7 +51,12 @@ elif variant("cnt"):
             ) for (i, j) in valid_arcs
         ],
 
-        [Count(a[:, j], value=1) <= 3 for j in range(n) if valid_numbers[j] > 3]
+        [
+            Count(
+                within=a[:, j],
+                value=1
+            ) <= 3 for j in range(n) if valid_numbers[j] > 3
+        ]
     )
 
 maximize(

@@ -45,7 +45,7 @@ satisfy(
     # each cell with a fixed value has exactly one neighbour with the same value
     [
         ExactlyOne(
-            x[neighbours(i, j)],
+            within=x[neighbours(i, j)],
             value=k + 1
         ) for k in range(nPoints) for i, j in points[k]
     ],
@@ -54,19 +54,26 @@ satisfy(
     [
         If(
             x[i][j] != 0,
-            Then=Count(x[neighbours(i, j)], value=x[i][j]) == 2
+            Then=Count(
+                within=x[neighbours(i, j)],
+                value=x[i][j]
+            ) == 2
         ) for i, j in free_cells
     ],
 
     # tag(redundant-constraints)
     [
         [
-            Exist(x[i], value=k + 1)
-            for k, ((u, _), (v, _)) in enumerate(points) for i in range(min(u, v) + 1, max(u, v))
+            Exist(
+                within=x[i],
+                value=k + 1
+            ) for k, ((u, _), (v, _)) in enumerate(points) for i in range(min(u, v) + 1, max(u, v))
         ],
         [
-            Exist(x[:, j], value=k + 1)
-            for k, ((_, u), (_, v)) in enumerate(points) for j in range(min(u, v) + 1, max(u, v))
+            Exist(
+                within=x[:, j],
+                value=k + 1
+            ) for k, ((_, u), (_, v)) in enumerate(points) for j in range(min(u, v) + 1, max(u, v))
         ]
     ]
 )

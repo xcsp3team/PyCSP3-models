@@ -29,7 +29,10 @@ x = VarArray(size=m, dom={0, 1})
 
 satisfy(
     # ensuring the presence of each value
-    Count(scp, value=1) >= 1 for scp in [[x[i] for i, subset in enumerate(subsets) if v in subset] for v in vals]
+    Count(
+        within=scp,
+        value=1
+    ) >= 1 for scp in [[x[i] for i, subset in enumerate(subsets) if v in subset] for v in vals]
 )
 
 minimize(
