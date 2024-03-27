@@ -75,5 +75,5 @@ elif variant("01"):
 """
 1) the model with NValues is not very efficient (at least, with ACE) 
 2) data used in 2021 are: (3,97) (4,75) (4,97) (5,50) (6,50)
-3) DistinctValues is an alias for NVAlues
+3) DistinctValues is an alias for NValues
 """

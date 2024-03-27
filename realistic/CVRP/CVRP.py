@@ -47,7 +47,10 @@ satisfy(
     AllDifferent(c, excepting=0),
 
     # ensuring that all demands are satisfied
-    Cardinality(c, occurrences={i: 1 if i > 0 else n0s for i in range(nNodes)}),
+    Cardinality(
+        within=c,
+        occurrences={0: n0s} | {i: 1 for i in range(1, nNodes)}
+    ),
 
     # no holes permitted during tours
     [

@@ -54,9 +54,12 @@ minimize(
     )
 )
 
-# minimize(
-#     Sum(
-#         Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airlines[a] for j in airlines[a] if i != j) for a in range(nAirlines)
-#     )
-#     + Maximum(y[i] + requirements[i] for i in range(nFlights))
-# )
+"""
+1) one can also write:
+minimize(
+     Sum(
+         Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airlines[a] for j in airlines[a] if i != j) for a in range(nAirlines)
+     )
+     + Maximum(y[i] + requirements[i] for i in range(nFlights))
+)
+"""

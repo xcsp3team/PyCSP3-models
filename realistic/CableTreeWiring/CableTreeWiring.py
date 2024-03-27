@@ -36,13 +36,33 @@ satisfy(
 
     [x[i] < x[j] for i, j in atomic],
 
-    [either(x[i] < x[j], x[k] < x[l]) for i, j, k, l in disjunctive],
+    [
+        either(
+            x[i] < x[j],
+            x[k] < x[l]
+        ) for i, j, k, l in disjunctive
+    ],
 
-    [If(x[j] < x[j + b], Then=x[j] + 1 == x[j + b]) for j in direct if j < b],
+    [
+        If(
+            x[j] < x[j + b],
+            Then=x[j] + 1 == x[j + b]
+        ) for j in direct if j < b
+    ],
 
-    [If(x[j] < x[j - b], Then=x[j] + 1 == x[j - b]) for j in direct if j >= b],
+    [
+        If(
+            x[j] < x[j - b],
+            Then=x[j] + 1 == x[j - b]
+        ) for j in direct if j >= b
+    ],
 
-    [either(x[i] < x[j], x[i] < x[l]) for i, j, k, l in disjunctive if i == k]
+    [
+        either(
+            x[i] < x[j],
+            x[i] < x[l]
+        ) for i, j, k, l in disjunctive if i == k
+    ]
 )
 
 tmp = [[both(x[j] < x[i], x[i] < x[j + g]) for j in range(2 * b) for g in [b if j < b else -b] if i not in {j, j + g}] for i in range(2 * b)]
@@ -50,7 +70,7 @@ tmp = [[both(x[j] < x[i], x[i] < x[j + g]) for j in range(2 * b) for g in [b if 
 minimize(
     Sum(abs(x[i] - x[i + b]) > 1 for i in range(b)) * k ** 3
     +
-    Maximum((Sum(t) for t in tmp)) * k ** 2
+    Maximum(Sum(t) for t in tmp) * k ** 2
     +
     Maximum(abs(x[i] - x[i + b]) - 1 for i in range(b)) * k
     +
@@ -74,3 +94,12 @@ minimize(
          AllDifferent(y)
      )
 """
+
+# minimize(
+#     Sum(
+#         [k ** 3 * (abs(x[i] - x[i + b]) > 1) for i in range(b)],
+#         Maximum((Sum(t) for t in tmp)) * k ** 2,
+#         [Maximum(abs(x[i] - x[i + b]) - 1 for i in range(b)) * k],
+#         [x[i] > x[j] for i, j in soft]
+#     )
+# )

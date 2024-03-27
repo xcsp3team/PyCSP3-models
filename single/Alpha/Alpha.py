@@ -19,7 +19,7 @@ from pycsp3 import *
 
 if not variant():
     def of(word):
-        return [x[i] for i in alphabet_positions(word)]
+        return x[alphabet_positions(word)]
 
 
     # x[i] is the value for the ith letter of the alphabet
@@ -92,4 +92,8 @@ elif variant("var"):
    you must add at the top of the file:
       from pycsp3.dashboard import options
       options.groupsumcoeffs=True
+2) Note that:
+ x[alphabet_positions(word)]
+   is equivalent to:
+ [x[i] for i in alphabet_positions(word)]
 """
