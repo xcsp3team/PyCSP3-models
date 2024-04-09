@@ -58,7 +58,7 @@ if not variant():
 elif variant("table"):
 
     nPatterns = m - n + 1  # a pattern is a possible subsequence of length n
-    gap = nPatterns - nPermutations  # the gap corresponds to the flexibility we have
+    gap = nPatterns - nPermutations + 1  # the gap corresponds to the flexibility we have
 
     T = [(i, *t) for i, t in enumerate(permutations)]
     T.extend((-1, *(v if k in (i, j) else ANY for k in range(n))) for v in range(n) for i, j in combinations(n, 2))

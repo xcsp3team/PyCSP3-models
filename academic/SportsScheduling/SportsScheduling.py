@@ -15,7 +15,7 @@ indicating the two involved teams (for example, one playing at home, and the oth
 
 ## Execution
   - python SportsScheduling.py -data=number
-  - python SportsScheduling.py -data=number -variant=table
+  - python SportsScheduling.py -data=number -variant=dummy
 
 ## Links
   - https://www.csplib.org/Problems/prob026/
