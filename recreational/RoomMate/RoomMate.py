@@ -70,10 +70,19 @@ elif variant('table'):
 
 elif variant('hybrid'):
 
-    satisfy(
-        [(x[i], x[k]) in {(le(rank[i][k]), ANY), (ANY, lt(rank[k][i]))} for i in range(n) for k in pref[i] if k != i],
-        [(x[i], x[k]) in {(ne(rank[i][k]), ANY), (ANY, rank[k][i])} for i in range(n) for k in pref[i] if k != i]
-    )
+    for i in range(n):
+        print(i)
+        for k in pref[i]:
+            if k != i:
+                satisfy((x[i], x[k]) in [(lt(rank[i][k]), ANY), (rank[i][k], rank[k][i]), (gt(rank[i][k]), lt(rank[k][i]))])
+
+    # satisfy(
+    #     (x[i], x[k]) in [(lt(rank[i][k]), ANY), (rank[i][k], rank[k][i]), (gt(rank[i][k]), lt(rank[k][i]))] for i in range(n) for k in pref[i] if k != i
+    # )
+    # satisfy(
+    #     [(x[i], x[k]) in [(le(rank[i][k]), ANY), (ANY, lt(rank[k][i]))] for i in range(n) for k in pref[i] if k != i],
+    #     [(x[i], x[k]) in [(ne(rank[i][k]), ANY), (ANY, rank[k][i])] for i in range(n) for k in pref[i] if k != i]
+    # )
 
 """ Comments
 1) It is very expensive to build starred tables for large instances.

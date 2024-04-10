@@ -57,7 +57,7 @@ def to1(i, j, t):
     return disjunction(y[t] == k for k in valid) == both(x[t][i][j] == 0, x[t + 1][i][j] == 1)
 
 
-# x[i,j,t] is the value at row i and column j at time t
+# x[i][j][t] is the value at row i and column j at time t
 x = VarArray(size=[nMoves + 1, n, m], dom=lambda t, i, j: {0, 1} if init_board[i][j] is not None else None)
 
 # y[t] is the move (transition) performed at time t
