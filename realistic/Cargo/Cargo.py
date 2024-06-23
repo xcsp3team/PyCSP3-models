@@ -61,8 +61,7 @@ dt = VarArray(size=nPiles, dom=range(T + 1))
 # ft[i] is the finishing time, when the ith vessel is ready to leave
 ft = VarArray(size=nVessels, dom=range(T + 1))
 
-# sum_delay is the sum of vessel delays (waiting times)
-sum_delay = Var(range(limits.sumMaxDelay + 1))
+# y2 = VarArray(size=nPiles, dom=lambda i: {lengths[i]})  # introduced for respecting the perimeter of the 2024 competition
 
 satisfy(
     # linking precise and rounded stacking start times
@@ -99,7 +98,8 @@ satisfy(
     [rt[i] + rd[i] <= rt[i + 1] for i in range(nPiles - 1) if vessels[i] == vessels[i + 1]],
 
     # computing the sum of vessel delays
-    sum_delay == Sum(ft[j] - eta[j] - vrd[j] for j in range(nVessels)),
+    Sum(ft[j] - eta[j] - vrd[j] for j in range(nVessels)) <= limits.sumMaxDelay,
+    # sum_delay == Sum(ft[j] - eta[j] - vrd[j] for j in range(nVessels)),
 
     # not exceeding a maximum delay
     [ft[j] - eta[j] - vrd[j] <= limits.maxDelay for j in range(nVessels)],
@@ -107,7 +107,7 @@ satisfy(
     # not overlapping stockpiles in space and time
     NoOverlap(
         origins=(r_st, y),
-        lengths=(r_dt, lengths)
+        lengths=(r_dt, lengths)  # y2 used instead of lengths for the competition
     ),
 
     # not exceeding the pad lengths
@@ -139,4 +139,7 @@ minimize(
 """
 1) comb that seems to be used to guide search is not inserted above
  comb = flatten([[tR[i], tS__[i], h__[i]][k] for i in range(nPiles) for k in range(3)])
+2) the following variable is not computed (because non necessary)
+# sum_delay is the sum of vessel delays (waiting times)
+# sum_delay = Var(range(limits.sumMaxDelay + 1))
 """

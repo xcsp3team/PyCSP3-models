@@ -28,6 +28,7 @@ The objective is to pack all the items into the minimum number of bins so that t
 
 from pycsp3 import *
 from itertools import groupby
+from math import ceil
 
 capacity, weights = data  # bin capacity and item weights
 weights.sort()  # in case weights are not sorted
@@ -54,10 +55,26 @@ def max_items_per_bin():
     return -1
 
 
+def w(a, b, *, bar=False):
+    if bar:
+        return [i for i, weight in enumerate(weights) if a <= weight <= b]
+    return [i for i, weight in enumerate(weights) if a < weight <= b]
+
+
+def lb2(v=None):
+    half = len(w(capacity // 2, capacity))
+    if v is None:
+        return max(lb2(vv) for vv in range(capacity // 2 + 1))
+    return half + max(0, ceil(sum(weights[i] for i in w(v, capacity - v, bar=True)) / capacity - len(w(capacity // 2, capacity - v))))
+
+
 nBins, maxPerBin = n_bins(), max_items_per_bin()
 
 # x[i][j] is the weight of the jth object put in the ith bin. It is 0 if less than j objects are present in the bin.
 x = VarArray(size=[nBins, maxPerBin], dom={0, *weights})
+
+# z is the number of used bins
+z = Var(range(lb2(), nBins + 1))
 
 if not variant():
     satisfy(
@@ -75,7 +92,7 @@ elif variant("table"):
             assert curr + weights[i] <= capacity
             tmp[n_stored] = weights[i]
             curr += weights[i]
-            tuples.add(tuple(tmp[j] if j < n_stored + 1 else 0 for j in range(maxPerBin)))
+            tuples.append(tuple(tmp[j] if j < n_stored + 1 else 0 for j in range(maxPerBin)))
             for j in range(i):
                 if curr + weights[j] > capacity:
                     break
@@ -83,7 +100,7 @@ elif variant("table"):
                     table_recursive(n_stored + 1, j, curr)
 
         tmp = [0] * maxPerBin
-        tuples = {tuple(tmp)}
+        tuples = [tuple(tmp)]
         for i in range(nItems):
             if i == nItems - 1 or weights[i] != weights[i + 1]:
                 table_recursive(0, i, 0)
@@ -96,6 +113,9 @@ elif variant("table"):
     )
 
 satisfy(
+    # computing the number of used bins
+    z == Sum(x[i][0] != 0 for i in range(nBins)),
+
     # ensuring that each item is stored in a bin
     Cardinality(
         within=x,
@@ -106,7 +126,11 @@ satisfy(
     LexDecreasing(x)
 )
 
-maximize(
-    # maximizing the number of unused bins
-    Sum(x[i][0] == 0 for i in range(nBins))
+minimize(
+    # minimizing the number of used bins
+    z  # Sum(x[i][0] != 0 for i in range(nBins))
 )
+
+# maximize(
+#     Sum(x[i][0] == 0 for i in range(nBins))
+# )

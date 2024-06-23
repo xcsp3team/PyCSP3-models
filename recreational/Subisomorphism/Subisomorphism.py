@@ -10,6 +10,7 @@ the objective is to determine whether Gp is isomorphic to some subgraph(s) in Gt
 
 ## Execution:
   python Subisomorphism.py -data=<datafile.json>
+  python Subisomorphism.py -parser=Subisomorphism_Parser.py -data=[filename1,filename2]
 
 ## Links
   - https://www.sciencedirect.com/science/article/pii/S0004370210000718

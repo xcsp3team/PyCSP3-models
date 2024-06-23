@@ -35,6 +35,8 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 from pycsp3 import *
 
 nMachines, capacities, tests = data
+if isinstance(capacities, int):
+    capacities = [1] * capacities
 durations, machines, resources = zip(*tests)
 nResources, nTests = len(capacities), len(tests)
 

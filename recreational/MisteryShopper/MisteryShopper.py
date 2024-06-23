@@ -5,7 +5,7 @@ See description on CSPLib.
   04.json
 
 ## Model
-  constraints: AllDifferent, Channel, Lex, Channel
+  constraints: AllDifferent, Channel, Lex, Table
 
 ## Execution:
   python MisteryShopper.py -data=<datafile.json>
@@ -78,5 +78,5 @@ satisfy(
  r[nVisitees:n, w]
    is a shortcut for:
  [r[i][w] for i in range(nVisitees, n)]
-
+2) The symmetr-breaking constraints are discarded for the mini-tracks of the competition
 """

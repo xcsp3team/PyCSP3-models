@@ -26,6 +26,7 @@ This is distinct from the stable-marriage problem in that the stable-roommates p
 """
 
 from pycsp3 import *
+from pycsp3.dashboard import options
 
 preferences = data
 n = len(preferences)
@@ -50,6 +51,7 @@ pref, rank = pref_rank()
 x = VarArray(size=n, dom=lambda i: range(len(preferences[i])))
 
 if not variant():
+    options.dontbuildsimilarconstraints = True
     satisfy(
         (
             If(x[i] > rank[i][k], Then=x[k] < rank[k][i]),
@@ -58,6 +60,8 @@ if not variant():
     )
 
 elif variant('table'):
+    options.dontbuildsimilarconstraints = True
+
 
     def T(i, k):
         return [(a, ANY) for a in x[i].dom if a < rank[i][k]] + [(rank[i][k], rank[k][i])] + \
@@ -69,21 +73,23 @@ elif variant('table'):
     )
 
 elif variant('hybrid'):
+    options.dontbuildsimilarconstraints = True
 
-    for i in range(n):
-        print(i)
-        for k in pref[i]:
-            if k != i:
-                satisfy((x[i], x[k]) in [(lt(rank[i][k]), ANY), (rank[i][k], rank[k][i]), (gt(rank[i][k]), lt(rank[k][i]))])
-
-    # satisfy(
-    #     (x[i], x[k]) in [(lt(rank[i][k]), ANY), (rank[i][k], rank[k][i]), (gt(rank[i][k]), lt(rank[k][i]))] for i in range(n) for k in pref[i] if k != i
-    # )
-    # satisfy(
-    #     [(x[i], x[k]) in [(le(rank[i][k]), ANY), (ANY, lt(rank[k][i]))] for i in range(n) for k in pref[i] if k != i],
-    #     [(x[i], x[k]) in [(ne(rank[i][k]), ANY), (ANY, rank[k][i])] for i in range(n) for k in pref[i] if k != i]
-    # )
+    satisfy(
+        Extension(
+            scope=(x[i], x[k]),
+            table=[(lt(rank[i][k]), ANY), (rank[i][k], rank[k][i]), (gt(rank[i][k]), lt(rank[k][i]))]
+        ) for i in range(n) for k in pref[i] if k != i
+    )
 
 """ Comments
 1) It is very expensive to build starred tables for large instances.
 """
+
+# satisfy(
+#     (x[i], x[k]) in [(lt(rank[i][k]), ANY), (rank[i][k], rank[k][i]), (gt(rank[i][k]), lt(rank[k][i]))] for i in range(n) for k in pref[i] if k != i
+# )
+# satisfy(
+#     [(x[i], x[k]) in [(le(rank[i][k]), ANY), (ANY, lt(rank[k][i]))] for i in range(n) for k in pref[i] if k != i],
+#     [(x[i], x[k]) in [(ne(rank[i][k]), ANY), (ANY, rank[k][i])] for i in range(n) for k in pref[i] if k != i]
+# )

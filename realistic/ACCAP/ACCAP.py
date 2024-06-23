@@ -24,6 +24,7 @@ between the counters of each pair of flights from the same airline.
   - python ACCAP.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
 
 ## Links
+  - https://www.researchgate.net/publication/281979436_Optimizing_the_Airport_Check-In_Counter_Allocation_Problem
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags

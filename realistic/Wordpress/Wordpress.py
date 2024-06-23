@@ -22,6 +22,8 @@ The MZN model was proposed by Bogdan David, under the MIT Licence.
 
 from pycsp3 import *
 
+print(data)
+
 lbWP, nVMs, requirements, types, prices = data  # requirements per components, type and price of possible VMs
 nComponents, nFeatures = 5, len(requirements[0])  # features are hardware settings (CPU, Memory, Storage)
 nTypes = len(types)  # note that a dummy type has been added at last position by the parser

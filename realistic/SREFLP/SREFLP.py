@@ -75,3 +75,8 @@ elif variant("mini"):
         # minimizing weighted end-to-start distances
         Sum(w)
     )
+
+"""
+1) an alternative for computing distance is:
+ [d[i][j] == (y[i + 1] if i + 2 == j else (y[i + 1] + y[i + 2]) if i + 3 == j else (d[i][j - 1] + y[j - 1])) for i, j in pairs]
+"""
