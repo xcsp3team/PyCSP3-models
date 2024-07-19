@@ -10,7 +10,7 @@ of 2n + 2 consecutive integers.
   constraints: AllDifferent, Sum, Maximum, Minimum
 
 ## Execution
-  - python AntimagicSquare.py -data=[number]
+  python AntimagicSquare.py -data=number
 
 ## Links
   - https://en.wikipedia.org/wiki/Antimagic_square
@@ -60,9 +60,11 @@ satisfy(
     ]
 )
 
-"""
+""" Comments
+
 1)  it is possible to relax so as to have a COP.
     minimizing the expression: Maximum(x) - Minimum(y)
+    
 2) for being compatible with the competition mini-track, we use:
   z = VarArray(size=2*n+2, dom=range(2*n+2))
   

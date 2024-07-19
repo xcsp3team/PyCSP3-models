@@ -12,14 +12,14 @@ A CP model is interesting as one can easily add side constraints to form Aztec d
   constraints: Table
 
 ## Execution
-  - python AztecDiamond.py -data=number
+  python AztecDiamond.py -data=number
 
 ## Links
   - https://en.wikipedia.org/wiki/Aztec_diamond
   - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
 ## Tags
-  recreational, xcsp22
+  academic, recreational, xcsp22
 """
 
 from pycsp3 import *

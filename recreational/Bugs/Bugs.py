@@ -1,6 +1,6 @@
 """
 
-## Data
+## Data Example
   example.json
 
 ## Model
@@ -41,7 +41,7 @@ satisfy(
     # a bug cell value is smaller or equal to the bug index  tag(symmetry-breaking)
     [x[i][j] <= k for k, (i, j, _) in enumerate(bugs)],
 
-    [n1[group[j]] <= (len(group) - j) * lengths[i] for i, group in enumerate(groups) for j in range(len(group))],
+    [n1[group[j]] <= (k - j) * lengths[i] for i, group in enumerate(groups) if (k := len(group),) for j in range(k)],
 
     # computing values of n1
     Cardinality(

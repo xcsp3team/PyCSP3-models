@@ -78,9 +78,10 @@ satisfy(
     ]
 )
 
-"""
+""" Comments
+
 1) Note that:
-  x[neighbours(i, j)]
-is a shortcut for:
-  [x[k][l] for k, l in neighbours(i, j)]
+   x[neighbours(i, j)]
+ is a shortcut for:
+   [x[k][l] for k, l in neighbours(i, j)]
 """

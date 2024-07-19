@@ -15,10 +15,11 @@ Important: we assume in the model below that each specified integer delimits its
  constraints: Count, Table
 
 ## Execution:
-  python3 Areas.py -data=<datafile.json>
+  python Areas.py -data=<datafile.json>
 
 ## Links
- - https://www.comp.nus.edu.sg/~henz/projects/puzzles/arith/index.html
+  - https://link.springer.com/chapter/10.1007/978-3-540-24662-6_11
+  - https://www.comp.nus.edu.sg/~henz/projects/puzzles/arith/index.html
 
 ## Tags
   recreational
@@ -85,9 +86,11 @@ satisfy(
 )
 
 """ Comments 
+
 1) (x.cross(i, j), d.cross(i, j)) is a tuple containing two sub-tuples of variables.
    This is automatically flattened (i.e., transformed into a single tuple). Of course, it is also possible to write:
    (*x.cross(i, j), *d.cross(i, j))
+   
 2) cross is a method that can be called on 2-dimensional arrays/lists of variables (ListVar).
    For an array t, and indexes i,j, it returns [t[i][j], t[i][j - 1], t[i][j + 1], t[i - 1][j], t[i + 1][j]]
 """

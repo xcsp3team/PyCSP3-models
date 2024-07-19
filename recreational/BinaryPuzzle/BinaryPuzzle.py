@@ -13,8 +13,8 @@ One has to fill the remaining empty cells with either 0 or 1 according to the fo
   constraints: AllDifferentList, Regular, Sum
 
 ## Execution
-  - python BinaryPuzzle.py -data=number
-  - python BinaryPuzzle.py -data=number -variant=regular
+  python BinaryPuzzle.py -data=number
+  python BinaryPuzzle.py -data=number -variant=regular
 
 ## Links
   - https://www.researchgate.net/publication/243972408_Binary_Puzzle_is_NP-complete
@@ -73,13 +73,18 @@ satisfy(
     AllDifferentList(x[:, j] for j in range(n))  # .to_table()
 )
 
-"""
-1) For XCSP competitions, we need to allow AllDifferentList, discard these constraints, or translate them in tables
+""" Comments
+
+1) For XCSP competitions, before 2024, we needed to discard or translate in tables (calling .to_table())
+   the AllDifferentList constraints
+
 2) for finding a first solution, the regular model is far more efficient (at least with default heuristics)
   (a few seconds for n=50, 60 or 70)
+  
 3) for being compatible with the competition mini-track, we use for the main variant:
    [Sum(x[i, j:j + 3]) >= 1 for i in range(n) for j in range(n - 2)],
    [Sum(x[i, j:j + 3]) <= 2 for i in range(n) for j in range(n - 2)],
+   
 4) we can write:
    [Sum(x[i, j:j + 3]) in {1,2} for i in range(n) for j in range(n - 2)], 
 """

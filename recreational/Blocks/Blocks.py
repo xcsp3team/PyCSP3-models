@@ -142,9 +142,6 @@ minimize(
     z
 )
 
-# # when finished, no more move
-# [done[t - 1] == (mv[t][0] == 0) for t in range(1, horizon)],
-#
 # # when finished, the configuration remains the same
 # [(done[t - 1] == 0) | (x[i][t - 1] == x[i][t]) for t in range(1, horizon) for i in range(1, nCubes)],
 #
@@ -159,9 +156,10 @@ minimize(
 
 
 """ Comments
-1) [done[i] == (x[1:, i] == goal) for i in range(horizon)]
-   is equivalent to:
-   [done[i] == conjunction(x[j, i] == goal[j - 1] for j in range(1, n + 1)) for i in range(horizon)]
-2) the constraints about objective lower bound  seems penalizing
 
+1) [done[i] == (x[1:, i] == goal) for i in range(horizon)]
+  is equivalent to:
+   [done[i] == conjunction(x[j, i] == goal[j - 1] for j in range(1, n + 1)) for i in range(horizon)]
+   
+2) the constraints about objective lower bound  seems penalizing
 """

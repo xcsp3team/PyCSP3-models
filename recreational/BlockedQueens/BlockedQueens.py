@@ -5,15 +5,15 @@ A solution to the problem is a solution to the n-queens problem containing no qu
 
 See problem 080 at CSPLib.
 
-## Data (example)
+## Data Example
   28-1449787798.json
 
 ## Model
   constraints: AllDifferent
 
 ## Execution
-  - python BlockedQueens.py -data=<datafile.json>
-  - python BlockedQueens.py -data=<datafile.txt> -parser=BlockedQueens_Parser.py
+  python BlockedQueens.py -data=<datafile.json>
+  python BlockedQueens.py -data=<datafile.txt> -parser=BlockedQueens_Parser.py
 
 ## Links
   - https://www.csplib.org/Problems/prob080/
@@ -42,6 +42,7 @@ satisfy(
 )
 
 """ Comments
+
 1) one could also post:
   # controlling no two queens on the same upward diagonal
   AllDifferent(q[i] + i for i in range(n)),

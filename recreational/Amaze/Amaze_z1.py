@@ -62,5 +62,6 @@ minimize(
 )
 
 """ Comments
+
 1) Note that x.beside(i,j) is equivalent to [x[i - 1][j], x[i + 1][j], x[i][j - 1], x[i][j + 1]]
 """

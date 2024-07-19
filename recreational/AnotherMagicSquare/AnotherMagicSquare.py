@@ -8,7 +8,7 @@ On a square grid of size n × n, all numbers ranging from 1 to n*n must be put s
   constraints: AllDifferent, Sum
 
 ## Execution
-  - python AnotherMagicSquare.py -data=[number]
+  python AnotherMagicSquare.py -data=number
 
 ## Links
   - http://benvitale-funwithnum3ers.blogspot.com/2010/12/another-kind-of-magic-square.html
@@ -33,7 +33,9 @@ satisfy(
 )
 
 """ Comments
+
 1) there are 0, 8 and 0 solutions for n = 2, 3 and 4
+
 2) for being compatible with the competition mini-track, we use:
    # y[i,j] is the multiple used for the cell at row i and column j
    y = VarArray(size=[n, n], dom=range(1, 8*(n * n) + 1))
