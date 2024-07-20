@@ -9,7 +9,7 @@ All adjacent tiles on the board must have matching colors along their common edg
   constraints: AllDifferent, Table
 
 ## Execution
-  - python Eternity.py -data=<datafile.json>
+  python Eternity.py -data=<datafile.json>
 
 ## Links
   - https://hal-lirmm.ccsd.cnrs.fr/lirmm-00364330/document

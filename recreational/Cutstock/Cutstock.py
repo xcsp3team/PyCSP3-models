@@ -11,6 +11,7 @@ Related papers:
 
 ## Execution
   python Cutstock.py -data=<datafile.json>
+  python Cutstock.py -data=<datafile.dzn> -parser=Cutstock_ParserZ.py
 
 ## Tags
   recreational

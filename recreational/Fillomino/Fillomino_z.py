@@ -98,7 +98,8 @@ satisfy(
     ]
 )
 
-"""
+""" Comments
+
 1) Note that:
   [(x != y) == (size[x] != size[y]) for i in range(n) for j in range(1, m) if (x := area[i][j - 1]) and (y := area[i][j])]
 is equivalent to:

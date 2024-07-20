@@ -116,19 +116,22 @@ satisfy(
 )
 
 """ Comments
+
 1) cross() is a predefined method on matrices of variables (of type ListVar).
    Hence, x.cross(i, j) is equivalent to :
    [t[i][j], t[i][j - 1], t[i][j + 1], t[i - 1][j], t[i + 1][j]] 
+   
 2) gt(1) when building a tuple allows to handle all tuples with a value > 1
    Later, it will be possible to generate smart tables instead of starred tables 
+   
 3) For the mini-track of the competition, we replace the group "controlling the size of each region") by:
     [(a[i][j][k], x[i + 1][j + 1]) in [(1, k)] + [(0, v) for v in range(nRegions) if v != k] for i in range(n) for j in range(n) for k in range(nRegions)],
 
     # controlling the size of each region
     [s[k] == Sum(a[:, :, k]) for k in range(nRegions)],
 
-after introducing: 
-  a = VarArray(size=[n, n, nRegions], dom={0, 1})
-and commenting out the symmetry-breaking constraints
-while using -mini when compiling
+ after introducing: 
+    a = VarArray(size=[n, n, nRegions], dom={0, 1})
+ and commenting out the symmetry-breaking constraints
+ while using -mini when compiling
 """

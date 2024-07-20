@@ -60,16 +60,16 @@ satisfy(
     # a bishop or a queen prevents putting any other piece in the same upward diagonal
     [
         If(
-            Exist(y in {BISHOP, QUEEN} for y in dgn),
-            Then=Sum(y != EMPTY for y in dgn) <= 1
+            Exist(v in {BISHOP, QUEEN} for v in dgn),
+            Then=Sum(v != EMPTY for v in dgn) <= 1
         ) for dgn in diagonals_up(x)
     ],
 
     # a bishop or a queen prevents putting any other piece in the same downward diagonal
     [
         If(
-            Exist(y in {BISHOP, QUEEN} for y in dgn),
-            Then=Sum(y != EMPTY for y in dgn) <= 1
+            Exist(v in {BISHOP, QUEEN} for v in dgn),
+            Then=Sum(v != EMPTY for v in dgn) <= 1
         ) for dgn in diagonals_down(x)
     ],
 
@@ -103,18 +103,24 @@ maximize(
     Sum(values[x[i][j]] for i in range(n) for j in range(n))
 )
 
-"""
-1) bounds on y are enforced when declaring domains
-2) is it interesting to only post binary constraints instead of the complex imply expressions?
-3)  the reverse array from the Minizinc model not introduced here (useful for output?)
-4) we can choose among the following statements:
+""" Comments
+
+1) Bounds on y are enforced when declaring domains
+
+2) Is it interesting to only post binary constraints instead of the complex imply expressions?
+
+3) The reverse array from the Minizinc model not introduced here (useful for output?)
+
+4) We can choose among the following statements:
   Exist(x[i][j] in {ROOK, QUEEN} for j in range(n)),  
   Exist(x[i][j].among(ROOK, QUEEN) for j in range(n)),  
   Exist(belong(x[i][j],{ROOK, QUEEN}) for j in range(n)),  
-5) Not that 
+
+5) Note that 
    x[symmetry]
  is equivalent to:
-   [x[row] for row in symmetry]Chessboard-03.xml
+   [x[row] for row in symmetry]
+
 6) Note that:
  x <= x[symmetry]
    is equivalent to:

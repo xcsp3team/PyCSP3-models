@@ -10,8 +10,8 @@ One has to find the position (and rotation) of each domino.
   constraints: AllDifferent, Table
 
 ## Execution
-  - python Dominoes.py -data=<datafile.json>
-  - python Dominoes.py -data=<datafile.json> -variant=table
+  python Dominoes.py -data=<datafile.json>
+  python Dominoes.py -data=<datafile.json> -variant=table
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-540-24662-6_11
@@ -71,7 +71,8 @@ elif variant("table"):
     )
 
 """ Comments
-1) one could use the If structure as follows:
+
+1) One could use the If structure as follows:
    If(
       abs(x[i][j] - y[i][j]) != nCols,  # if not adjacent values in the same column
       Then=(abs(x[i][j] - y[i][j]) == 1) & (x[i][j] // nCols == y[i][j] // nCols)  # then adjacent values in the same line

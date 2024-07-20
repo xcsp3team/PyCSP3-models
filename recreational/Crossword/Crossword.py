@@ -12,9 +12,9 @@ Given a grid with imposed black cells (spots) and a dictionary, the problem is t
   constraints: AllDifferentList, Table
 
 ## Execution
-  - python Crossword.py -data=<datafile.json>
-  - python Crossword.py -data=<datafile.json> -variant=alt
-  - python Crossword.py -data=[vg0405,dictFileName=ogd2008] -parser=Crossword_Parser.py
+  python Crossword.py -data=<datafile.json>
+  python Crossword.py -data=<datafile.json> -variant=alt
+  python Crossword.py -data=[vg0405,dictFileName=ogd2008] -parser=Crossword_Parser.py
 
 ## Links
   - https://www.researchgate.net/publication/221442491_Constraint_Programming_Lessons_Learned_from_Crossword_Puzzles
@@ -84,7 +84,7 @@ elif variant("alt"):
             return (ofs1, ofs2) if 0 <= ofs1 < hole2.r and 0 <= ofs2 < hole1.r else None
 
 
-    def table_compatible_words(hole1, hole2):
+    def table(hole1, hole2):  # table of pairs of (indices) of words compatible with the two specified holes
         ofs1, ofs2 = offset(hole1, hole2)
         return [(i1, i2) for i1, word1 in enumerate(words[hole1.r]) for i2, word2 in enumerate(words[hole2.r]) if word1[ofs1] == word2[ofs2]]
 
@@ -94,14 +94,15 @@ elif variant("alt"):
 
     satisfy(
         # words must intersect correctly
-        [(w[i], w[j]) in table_compatible_words(holes[i], holes[j]) for i, j in combinations(nHoles, 2) if offset(holes[i], holes[j])],
+        [(w[i], w[j]) in table(holes[i], holes[j]) for i, j in combinations(nHoles, 2) if offset(holes[i], holes[j])],
 
         # tag(distinct-words)
         [w[i] != w[j] for i, j in combinations(nHoles, 2) if holes[i].r == holes[j].r]
     )
 
 """ Comments
-1) we use lists instead of sets for tables ([(i1, i2)  ... instead of  {(i1, i2) ..) because it is quite faster to process
 
-2) it is not possible to write x[i][j] when i is a slice; this must be x[i, j]
+1) We use lists instead of sets for tables ([(i1, i2)  ... instead of  {(i1, i2) ..) because it is quite faster to process
+
+2) It is not possible to write x[i][j] when i is a slice; this must be x[i, j]
 """
