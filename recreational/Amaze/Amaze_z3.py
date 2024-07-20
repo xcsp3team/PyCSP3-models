@@ -28,8 +28,6 @@ n, m, points = data  # points[v] gives the pair of points for value v+1
 points = decrement(points)  # to make things easier
 nPoints, nCells = len(points), n * m
 
-free_cells = [(i, j) for i in range(n) for j in range(m) if [i, j] not in [p for pair in points for p in pair]]
-
 
 def neighbours(i, j):
     return [(k, l) for (k, l) in [(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)] if 0 <= k < n and 0 <= l < m]
@@ -58,7 +56,7 @@ satisfy(
                 within=x[neighbours(i, j)],
                 value=x[i][j]
             ) == 2
-        ) for i, j in free_cells
+        ) for i in range(n) for j in range(m) if [i, j] not in [p for pair in points for p in pair]
     ],
 
     # tag(redundant-constraints)

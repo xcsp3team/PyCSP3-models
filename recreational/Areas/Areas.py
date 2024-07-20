@@ -47,10 +47,10 @@ def table(k, v, w):
 
 
 # x[i][j] is the region (number) where the square at row i and column j belongs (borders are inserted for simplicity)
-x = VarArray(size=[n + 2, m + 2], dom=lambda i, j: {-1} if i in {0, n + 1} or j in {0, m + 1} else range(nRegions))
+x = VarArray(size=[n + 2, m + 2], dom=range(nRegions), dom_border={-1})
 
 # d[i][j] is the distance of the square at row i and column j wrt the starting square of the (same) region
-d = VarArray(size=[n + 2, m + 2], dom=lambda i, j: {-1} if i in {0, n + 1} or j in {0, m + 1} else range(max(r.size for r in regions)))
+d = VarArray(size=[n + 2, m + 2], dom=range(max(r.size for r in regions)), dom_border={-1})
 
 satisfy(
     # setting starting squares of regions
@@ -80,8 +80,10 @@ satisfy(
 
     # each square must be connected to a neighbour at distance 1
     [
-        (x.cross(i, j), d.cross(i, j)) in [t for k in range(nRegions) for v in range(1, regions[k].size) for t in table(k, v, v - 1)]
-        for i in range(1, n + 1) for j in range(1, m + 1) if puzzle[i - 1][j - 1] == 0
+        Table(
+            scope=(x.cross(i, j), d.cross(i, j)),
+            supports=[t for k in range(nRegions) for v in range(1, regions[k].size) for t in table(k, v, v - 1)]
+        ) for i in range(1, n + 1) for j in range(1, m + 1) if puzzle[i - 1][j - 1] == 0
     ]
 )
 

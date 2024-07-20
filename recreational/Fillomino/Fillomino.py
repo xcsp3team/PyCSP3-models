@@ -58,17 +58,16 @@ def tables():
     return t, {(v, v, k, k) for v in Values for k in range(nRegions)} | {(v, ne(v), k, ne(k)) for v in Values for k in range(nRegions)}
 
 
-table_connection, table_region = tables()
+Tc, Tr = tables()  # tables for connections and regions
 
 # x[i][j] is the region (number) where the square at row i and column j belongs (borders are inserted for simplicity)
-x = VarArray(size=[n + 2, m + 2], dom=lambda i, j: {-1} if i in {0, n + 1} or j in {0, m + 1} else range(nRegions))
+x = VarArray(size=[n + 2, m + 2], dom=range(nRegions), dom_border={-1})
 
 # y[i][j] is the value of the square at row i and column j
-y = VarArray(size=[n + 2, m + 2],
-             dom=lambda i, j: {-1} if i in {0, n + 1} or j in {0, m + 1} else {puzzle[i - 1][j - 1]} if puzzle[i - 1][j - 1] != 0 else Values)
+y = VarArray(size=[n + 2, m + 2], dom=lambda i, j: {puzzle[i - 1][j - 1]} if puzzle[i - 1][j - 1] != 0 else Values, dom_border={-1})
 
 # d[i][j] is the distance of the square at row i and column j wrt the starting square of the (same) region
-d = VarArray(size=[n + 2, m + 2], dom=lambda i, j: {-1} if i in {0, n + 1} or j in {0, m + 1} else range(maxDistance))
+d = VarArray(size=[n + 2, m + 2], dom=range(maxDistance), dom_border={-1})
 
 # s[k] is the size of the kth region
 s = VarArray(size=nRegions, dom={0} | Values)  # it is important to have 0
@@ -90,12 +89,12 @@ satisfy(
     [s[k] == Sum(x[i][j] == k for i, j in Points) for k in range(nRegions)],
 
     # ensuring connection
-    [(y[i][j], x.cross(i, j), d.cross(i, j)) in table_connection for i, j in Points],
+    [(y[i][j], x.cross(i, j), d.cross(i, j)) in Tc for i, j in Points],
 
     # two regions of the same size cannot have neighbouring squares
     [
-        [(y[i][j], y[i][j + 1], x[i][j], x[i][j + 1]) in table_region for i in range(1, n + 1) for j in range(1, m)],
-        [(y[i][j], y[i + 1][j], x[i][j], x[i + 1][j]) in table_region for j in range(1, m + 1) for i in range(1, n)]
+        [(y[i][j], y[i][j + 1], x[i][j], x[i][j + 1]) in Tr for i in range(1, n + 1) for j in range(1, m)],
+        [(y[i][j], y[i + 1][j], x[i][j], x[i + 1][j]) in Tr for j in range(1, m + 1) for i in range(1, n)]
     ],
 
     # ensuring a single root for each region  tag(symmetry-breaking)
