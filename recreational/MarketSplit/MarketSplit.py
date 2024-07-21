@@ -25,5 +25,5 @@ n, constraints = data
 x = VarArray(size=n, dom={0, 1})
 
 satisfy(
-    x * coeffs == k for (coeffs, k) in constraints
+    x * coefficients == k for (coefficients, k) in constraints
 )

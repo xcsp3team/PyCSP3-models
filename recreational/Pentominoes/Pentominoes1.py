@@ -23,8 +23,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 from pycsp3.problems.data.parsing import split_with_rows_of_size
 
-width, height, tiles, dfa = data
+m, n, tiles, dfa = data
 nTiles = len(tiles)
+SEP = nTiles + 1
 
 
 def automaton_for(tile):
@@ -36,14 +37,14 @@ def automaton_for(tile):
 
 
 # x[i][j] is the index of the tile in the cell with coordinates (i,j)
-x = VarArray(size=[height, width], dom=range(1, nTiles + 2))
+x = VarArray(size=[n, m], dom=range(1, nTiles + 2))
 
 satisfy(
     # forbidding the special symbol if not at the end of a row
-    [x[h][w] != nTiles + 1 for h in range(height) for w in range(width - 1)],
+    [x[i][j] != SEP for i in range(n) for j in range(m - 1)],
 
     # setting the special symbol at the end of each row
-    [x[h][-1] == nTiles + 1 for h in range(height)],
+    [x[i][-1] == SEP for i in range(n)],
 
     # ensuring each tile is present
     [x in automaton_for(tile) for tile in tiles]

@@ -52,5 +52,6 @@ satisfy(
 )
 
 """ Comments
+
 1) (y[k], x) is a shortcut for (y[k], *flatten(x))
 """

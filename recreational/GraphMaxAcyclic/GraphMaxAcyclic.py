@@ -12,7 +12,6 @@ Given an edge-weighted directed graph with possibly many cycles, the task is to 
   python GraphMaxAcyclic.py -data=<datafile.json> -variant=cnt
   python GraphMaxAcyclic.py -data=<datafile.txt> -dataparser=GraphMaxAcyclic_Parser.py
 
-
 ## Tags
   recreational
 """
@@ -65,7 +64,8 @@ maximize(
 )
 
 """ Comments
-1) a possible variant "smart ?
+
+1) A possible variant "smart ?
    elif variant("smart"):
       # c[i][j] is the cost of the link between i and j (whatever the direction)
       c = varArray(size=[n, n], dom=lambda i, j: {arcs[i][j], arcs[j][i]}, when=lambda i, j: (arcs[i][j] != 0 or arcs[j][i] != 0) and i < j)

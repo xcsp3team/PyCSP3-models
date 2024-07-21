@@ -1,6 +1,6 @@
 """
 
-## Data
+## Data Example
   1-fullins-3.json
 
 ## Model
@@ -49,5 +49,6 @@ elif variant("sum"):
     )
 
 """ Comments
-1) when d is 1, abs(x - y) >= d is automatically simplified into x != y
+
+1) When d is 1, abs(x - y) >= d is automatically simplified into x != y
 """

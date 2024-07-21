@@ -25,10 +25,10 @@ from pycsp3 import *
 from pycsp3.problems.data.parsing import split_with_rows_of_size
 
 rows, cols = data  # patterns for row and columns
-nRows, nCols = len(rows), len(cols)
+n, m = len(rows), len(cols)
 
 # x[i][j] is 1 iff the cell at row i and col j is colored in black
-x = VarArray(size=[nRows, nCols], dom={0, 1})
+x = VarArray(size=[n, m], dom={0, 1})
 
 if not variant():
     def automaton_for(clue):
@@ -44,9 +44,9 @@ if not variant():
 
 
     satisfy(
-        [x[i] in automaton_for(rows[i]) for i in range(nRows)],
+        [x[i] in automaton_for(rows[i]) for i in range(n)],
 
-        [x[:, j] in automaton_for(cols[j]) for j in range(nCols)]
+        [x[:, j] in automaton_for(cols[j]) for j in range(m)]
     )
 
 elif variant("table"):
@@ -75,12 +75,12 @@ elif variant("table"):
 
         key = str("R" if row else "C") + "".join(str(pattern))
         if key not in cache:
-            cache[key] = build_from([], [0] * (nCols if row else nRows), 0, 0)
+            cache[key] = build_from([], [0] * (m if row else n), 0, 0)
         return cache[key]
 
 
     satisfy(
-        [x[i] in table(rows[i], row=True) for i in range(nRows)],
+        [x[i] in table(rows[i], row=True) for i in range(n)],
 
-        [x[:, j] in table(cols[j], row=False) for j in range(nCols)]
+        [x[:, j] in table(cols[j], row=False) for j in range(m)]
     )

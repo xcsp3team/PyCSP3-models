@@ -7,8 +7,9 @@ It is a kind of logic puzzle. See "Kakuro as a Constraint Problem" by Helmut Sim
 ## Model
  constraints: AllDifferent, Sum, Table
 
-## Execution:
+## Execution
   python Kakuro.py -data=<datafile.jon>
+  python Kakuro.py -data=<datafile.jon> -variant=table
 
 ## Links
  - https://en.wikipedia.org/wiki/Kakuro
@@ -20,45 +21,24 @@ It is a kind of logic puzzle. See "Kakuro as a Constraint Problem" by Helmut Sim
 
 from pycsp3 import *
 
-nRows, nCols, clues = data
+n, m, clues = data
+
+Cells = [(i, j) for i in range(n) for j in range(m)]
 
 # x[i][j] is the value put at row i and column j
-x = VarArray(size=[nRows, nCols], dom=lambda i, j: range(1, 10) if clues[i][j].x == clues[i][j].y == 0 else None)
+x = VarArray(size=[n, m], dom=lambda i, j: range(1, 10) if clues[i][j].x == clues[i][j].y == 0 else None)
 
-
-def structures():
-    def h_scope(i, j):
-        assert clues[i][j].x > 0
-        t = []
-        for k in range(j + 1, nCols):
-            if clues[i][k].x != 0:
-                break
-            t.append(x[i][k])
-        return t
-
-    def v_scope(i, j):
-        assert clues[i][j].y > 0
-        t = []
-        for k in range(i + 1, nRows):
-            if clues[k][j].y != 0:
-                break
-            t.append(x[k][j])
-        return t
-
-    h = [(h_scope(i, j), clues[i][j].x) for i in range(nRows) for j in range(nCols) if clues[i][j].x > 0]
-    v = [(v_scope(i, j), clues[i][j].y) for i in range(nRows) for j in range(nCols) if clues[i][j].y > 0]
-    return h, v
-
-
-horizontal, vertical = structures()
+# Two useful arrays for posting easily constraints
+horizontal = [(x[i][j + 1:next((k for k in range(j + 1, m) if clues[i][k].x != 0), m)], v) for i, j in Cells if (v := clues[i][j].x) > 0]
+vertical = [(x[i + 1:next((k for k in range(i + 1, n) if clues[k][j].y != 0), n), j], v) for i, j in Cells if (v := clues[i][j].y) > 0]
 
 if not variant():
     satisfy(
-        [Sum(scp) == clue for (scp, clue) in horizontal],
+        [Sum(scp) == v for (scp, v) in horizontal],
 
         [AllDifferent(scp) for (scp, _) in horizontal],
 
-        [Sum(scp) == clue for (scp, clue) in vertical],
+        [Sum(scp) == v for (scp, v) in vertical],
 
         [AllDifferent(scp) for (scp, _) in vertical]
     )
@@ -84,7 +64,7 @@ elif variant("table"):
 
 
     satisfy(
-        [scp in table(clue, len(scp)) for (scp, clue) in horizontal],
+        [scp in table(v, len(scp)) for (scp, v) in horizontal],
 
-        [scp in table(clue, len(scp)) for (scp, clue) in vertical]
+        [scp in table(v, len(scp)) for (scp, v) in vertical]
     )

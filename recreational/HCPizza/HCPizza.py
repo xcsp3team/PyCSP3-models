@@ -16,9 +16,9 @@ The goal is to cut correct slices out of the pizza maximizing the total number o
   constraints: Sum, Table
 
 ## Execution
-  - python HCPizza.py -data=<datafile.json>
-  - python HCPizza.py -parser=HCPizza_Random.py 20 20 2 8 2 (-dataExport)
-  - python HCPizza.py -data=<datafile.txt> -parser=HCPizza_Parser.py
+  python HCPizza.py -data=<datafile.json>
+  python HCPizza.py -parser=HCPizza_Random.py 20 20 2 8 2 (-export)
+  python HCPizza.py -data=<datafile.txt> -parser=HCPizza_Parser.py
 
 ## Links
   - https://www.academia.edu/31537057/Pizza_Practice_Problem_for_Hash_Code_2017
@@ -86,8 +86,9 @@ maximize(
 )
 
 """ Comments
-1) note that:
-  Sum(x[overlaps[i][j]])
+
+1) Note that:
+   Sum(x[overlaps[i][j]])
  is a shortcut for:
-  Sum([x[t[0]][t[1]][t[2]] for t in overlaps[i][j]])
+   Sum([x[t[0]][t[1]][t[2]] for t in overlaps[i][j]])
 """

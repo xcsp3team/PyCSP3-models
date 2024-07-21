@@ -76,9 +76,13 @@ elif variant('hybrid'):
     options.dontbuildsimilarconstraints = True
 
     satisfy(
-        Extension(
+        Table(
             scope=(x[i], x[k]),
-            table=[(lt(rank[i][k]), ANY), (rank[i][k], rank[k][i]), (gt(rank[i][k]), lt(rank[k][i]))]
+            supports=[
+                (lt(rank[i][k]), ANY),
+                (rank[i][k], rank[k][i]),
+                (gt(rank[i][k]), lt(rank[k][i]))
+            ]
         ) for i in range(n) for k in pref[i] if k != i
     )
 

@@ -10,14 +10,14 @@ the tour is closed (or re-entrant); otherwise, it is open.
   constraints: Circuit
 
 ## Execution
-  - python KnightTour2.py -data=number
+  python KnightTour2.py -data=number
 
 ## Links
   - https://en.wikipedia.org/wiki/Knight%27s_tour
   - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
 ## Tags
-  recreational, xcsp22
+  academic, recreational, xcsp22
 """
 
 from pycsp3 import *

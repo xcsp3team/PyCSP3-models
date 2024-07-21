@@ -18,25 +18,26 @@ in such a way to minimize the sum of distances between adjacent nodes (in G).
 from pycsp3 import *
 
 n, edges = data
-edges = [(i, j) for i, j in edges]  # to be sure to have tuples
+Edges = [(i, j) for i, j in edges]  # to be sure to have tuples
 
 # x[i] denotes the position (in the line) of the ith node
 x = VarArray(size=n, dom=range(n))
 
 # d[i][j] denotes the distance in the line between the ith and jth nodes (if they are adjacent in the graph)
-d = VarArray(size=[n, n], dom=lambda i, j: range(1, n) if (i, j) in edges else None)
+d = VarArray(size=[n, n], dom=lambda i, j: range(1, n) if (i, j) in Edges else None)
 
 satisfy(
     # putting nodes at different positions
     AllDifferent(x),
 
     # computing distances
-    [d[i][j] == abs(x[i] - x[j]) for (i, j) in edges],
+    [d[i][j] == abs(x[i] - x[j]) for (i, j) in Edges],
 
     # triangle constraints: distance(i,j) <= distance(i,k) + distance(k,j)  tag(redundant-constraints)
     [
-        d[i][j] <= d[min(i, k)][max(i, k)] + d[min(j, k)][max(j, k)]
-        for (i, j) in edges for k in range(n) if (min(i, k), max(i, k)) in edges and (min(j, k), max(j, k)) in edges
+        (
+                d[i][j] <= d[min(i, k)][max(i, k)] + d[min(j, k)][max(j, k)]
+        ) for (i, j) in Edges for k in range(n) if (min(i, k), max(i, k)) in Edges and (min(j, k), max(j, k)) in Edges
     ]
 )
 

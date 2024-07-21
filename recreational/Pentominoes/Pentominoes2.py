@@ -21,8 +21,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-width, height, tiles, dfa = data
-nTiles = len(tiles)
+m, n, tiles, dfa = data
+SPECIAL = nTiles = len(tiles)
 
 
 def automaton_for(tile):
@@ -34,14 +34,14 @@ def automaton_for(tile):
 
 
 # x[k] is the tile number for the kth cell
-x = VarArray(size=width * height, dom=range(nTiles + 1))
+x = VarArray(size=m * n, dom=range(nTiles + 1))
 
 satisfy(
     # avoiding the special tile if not on the right border
-    [x[h * width + w] != nTiles for h in range(height) for w in range(width - 1)],
+    [x[i * m + j] != SPECIAL for i in range(n) for j in range(m - 1)],
 
     # putting the special tile on the right border
-    [x[h * width + width - 1] == nTiles for h in range(height)],
+    [x[i * m + m - 1] == SPECIAL for i in range(n)],
 
     # ensuring each tile is present
     [x in automaton_for(tile) for tile in tiles]

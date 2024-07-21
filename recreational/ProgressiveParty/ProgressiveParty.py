@@ -18,9 +18,9 @@ The problem facing the rally organizer is that of minimizing the number of host 
   constraints: AllDifferent, Channel, Element, Sum
 
 ## Execution
-  - python ProgressiveParty.py -data=<datafile.json>
-  - python ProgressiveParty.py -data=<datafile.txt> -parser=ProgressiveParty_Parser.py
-  - python ProgressiveParty.py -parser=ProgressiveParty_rally-red.py <number> <number>
+  python ProgressiveParty.py -data=<datafile.json>
+  python ProgressiveParty.py -data=<datafile.txt> -parser=ProgressiveParty_Parser.py
+  python ProgressiveParty.py -parser=ProgressiveParty_rally-red.py <number> <number>
 
 ## Links
   - https://www.csplib.org/Problems/prob013/
@@ -86,12 +86,12 @@ minimize(
 )
 
 """ Comments
-1) here is an alternative way of posting the 2nd group:
+1) Here is an alternative way of posting the 2nd group:
  [If(s[b1][p] == b2, Then=h[b2]) for b1 in range(nBoats) for b2 in range(nBoats) if b1 != b2 for p in range(nPeriods)],
 
-2) here is a less compact way of posting the 4th group:
+2) Here is a less compact way of posting the 4th group:
  [[g[i][p][b] for i in range(nBoats)] * crews <= capacities[b] for b in range(nBoats) for p in range(nPeriods)],
 
-3) in the Constraints paper cited above, additional constraints (not taken into account here) on host boats allow us 
+3) In the Constraints paper cited above, additional constraints (not taken into account here) on host boats allow us 
    to prove easily optimality for the instance red42.
 """

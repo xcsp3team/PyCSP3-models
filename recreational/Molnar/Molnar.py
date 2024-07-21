@@ -11,7 +11,7 @@ See Problem 035 on CSPLib.
   constraints: Lex, Sum
 
 ## Execution
-  - python Molnar.py -data=[number,number]
+  python Molnar.py -data=[number,number]
 
 ## Links
   - https://www.csplib.org/Problems/prob035/
@@ -19,7 +19,7 @@ See Problem 035 on CSPLib.
   - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
 ## Tags
-  recreational, xcsp22
+  academic, recreational, xcsp22
 """
 
 from pycsp3 import *
@@ -61,8 +61,8 @@ satisfy(
     LexIncreasing(x, matrix=True)
 )
 
-"""
-1) we could use 
+""" Comments
+1) We could use 
  return Sum(t * c for t, c in terms)
    instead of 
   return [t for t, _ in terms] * [c for _, c in terms]

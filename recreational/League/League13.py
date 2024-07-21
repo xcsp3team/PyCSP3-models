@@ -3,7 +3,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  020-3-5.json
+  020-03-05.json
 
 ## Model
   constraints: Count, Sum, Maximum, Minimum
@@ -74,9 +74,10 @@ minimize(
     100 * Sum(diff_rank) - Sum(nn)
 )
 
-"""
+""" Comments
 1) Simplifying code with Ordered constraints (compared to Minizinc):
   [max_rank[i] <= max_rank[i + 1] for i in range(nLeagues - 1)],
   [min_rank[i] <= min_rank[i + 1] for i in range(nLeagues - 1)]
+  
 2) This is a model in Minizinc 2013, after fixing some issues of 2012
 """

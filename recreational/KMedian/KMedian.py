@@ -3,19 +3,19 @@ The k-median problem (with respect to the 1-norm) is the problem of finding k ce
 Formally, given a set of data points, the k centers ci are to be chosen in order to minimize the
 sum of the distances from each data point to the nearest ci.
 
-## Data (example)
+## Data Example
   pmed01.json
 
 ## Model
   constraints: AllDifferent, Minimum, Sum
 
 ## Execution
-  - python KMedian.py -data=<datafile.json>
-  - python KMedian.py -data=<datafile.json> -variant=aux
-  - python KMedian.py -data=<datafile.txt> -parser=KMedian_Parser.py
+  python KMedian.py -data=<datafile.json>
+  python KMedian.py -data=<datafile.json> -variant=aux
+  python KMedian.py -data=<datafile.txt> -parser=KMedian_Parser.py
 
 ## Links
-  -https://en.wikipedia.org/wiki/K-medians_clustering
+  - https://en.wikipedia.org/wiki/K-medians_clustering
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
@@ -60,7 +60,8 @@ elif variant("aux"):
     )
 
 """ Comments
-1) generating the first variant may be very time expensive
 
-2) the two-dimensional array called distances used as domain is automatically transformed into a set of integers
+1) Generating the first variant may be very time expensive
+
+2) The two-dimensional array called distances used as domain is automatically transformed into a set of integers
 """

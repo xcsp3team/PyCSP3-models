@@ -23,33 +23,33 @@
 from pycsp3 import *
 
 rows, cols = data  # patterns for row and columns
-nRows, nCols = len(rows), len(cols)
+n, m = len(rows), len(cols)
 
 # x[i][j] is 1 iff the cell at row i and col j is colored in black
-x = VarArray(size=[nRows, nCols], dom={0, 1})
+x = VarArray(size=[n, m], dom={0, 1})
 
 if not variant():
     def automaton(pattern):
         q = Automaton.q  # for building state names
-        trs = []
+        t = []
         if len(pattern) == 0:
             n_states = 1
-            trs.append((q(0), 0, q(0)))
+            t.append((q(0), 0, q(0)))
         else:
             n_states = sum(pattern) + len(pattern)
             num = 0
             for i, size in enumerate(pattern):
-                trs.append((q(num), 0, q(num)))
-                trs.extend((q(num + j), 1, q(num + j + 1)) for j in range(size))
-                trs.append((q(num + size), 0, q(num + size + (1 if i < len(pattern) - 1 else 0))))
+                t.append((q(num), 0, q(num)))
+                t.extend((q(num + j), 1, q(num + j + 1)) for j in range(size))
+                t.append((q(num + size), 0, q(num + size + (1 if i < len(pattern) - 1 else 0))))
                 num += size + 1
-        return Automaton(start=q(0), final=q(n_states - 1), transitions=trs)
+        return Automaton(start=q(0), final=q(n_states - 1), transitions=t)
 
 
     satisfy(
-        [x[i] in automaton(rows[i]) for i in range(nRows)],
+        [x[i] in automaton(rows[i]) for i in range(n)],
 
-        [x[:, j] in automaton(cols[j]) for j in range(nCols)]
+        [x[:, j] in automaton(cols[j]) for j in range(m)]
     )
 
 elif variant("table"):
@@ -78,12 +78,12 @@ elif variant("table"):
 
         key = str("R" if row else "C") + "".join(str(pattern))
         if key not in cache:
-            cache[key] = build_from([], [0] * (nCols if row else nRows), 0, 0)
+            cache[key] = build_from([], [0] * (m if row else n), 0, 0)
         return cache[key]
 
 
     satisfy(
-        [x[i] in table(rows[i], row=True) for i in range(nRows)],
+        [x[i] in table(rows[i], row=True) for i in range(n)],
 
-        [x[:, j] in table(cols[j], row=False) for j in range(nCols)]
+        [x[:, j] in table(cols[j], row=False) for j in range(m)]
     )

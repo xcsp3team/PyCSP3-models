@@ -12,10 +12,10 @@ The goal of Hidato is to fill the grid with consecutive numbers that connect hor
 
   constraints: AllDifferent, Count, Table
 
-## Execution (example)
-  - python Hidato.py -data=<datafile.json>
-  - python Hidato.py -variant=table -data=<datafile.json>
-  - python Hidato.py -variant=table -data=[10,10,null]
+## Execution
+  python Hidato.py -data=<datafile.json>
+  python Hidato.py -data=<datafile.json> -variant=table
+  python Hidato.py -data=[number,number,null] -variant=table
 
 ## Links
   - https://en.wikipedia.org/wiki/Hidato
@@ -30,6 +30,8 @@ from pycsp3 import *
 
 n, m, clues = data  # clues are given by strictly positive values
 
+Cells = [(i, j) for i in range(n) for j in range(m)]
+
 # x[i][j] is the value in the grid at row i and column j
 x = VarArray(size=[n, m], dom=range(1, n * m + 1))
 
@@ -38,7 +40,7 @@ satisfy(
     AllDifferent(x),
 
     # respecting clues
-    [x[i][j] == clues[i][j] for i in range(n) for j in range(m) if clues and clues[i][j] > 0]
+    [x[i][j] == clues[i][j] for i, j in Cells if clues and clues[i][j] > 0]
 )
 
 if not variant():
@@ -50,7 +52,7 @@ if not variant():
                 within=x.around(i, j),
                 value=x[i][j] + 1
             )
-        ) for i in range(n) for j in range(m)
+        ) for i, j in Cells
     )
 
 elif variant('table'):
@@ -62,5 +64,5 @@ elif variant('table'):
 
     satisfy(
         # ensuring adjacent consecutive numbers
-        (x[i][j], x.around(i, j)) in T(i, j) for i in range(n) for j in range(m)
+        (x[i][j], x.around(i, j)) in T(i, j) for i, j in Cells
     )

@@ -1,7 +1,7 @@
 """
 The Quadratic Assignment Problem (QAP) has remained one of the great challenges in combinatorial optimization (from QAPLIB).
 
-## Data
+## Data Example
   example.json
 
 ## Model
@@ -50,11 +50,11 @@ minimize(
 
 2) weights * d is also possible because weights is of type 'ListInt' and because None values (and associated coeffs) will be discarded
 
-3) one can also write of course:
+3) One can also write of course:
  Sum(d[i][j] * weights[i][j] for i, j in combinations(range(n), 2) if weights[i][j] != 0)
 
-4) the model is only valid for symmetric instances (the obtained bound must then be multiplied by two)   
+4) The model is only valid for symmetric instances (the obtained bound must then be multiplied by two)   
    TODO a more general model (for non systematically symmetric instances)
    
-5) note that when distances is given for domain, a set is automatically built (after flattening the twi-dimensional list)
+5) Note that when distances is given for domain, a set is automatically built (after flattening the twi-dimensional list)
 """

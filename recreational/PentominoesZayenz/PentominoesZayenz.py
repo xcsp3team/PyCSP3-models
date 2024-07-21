@@ -27,7 +27,7 @@ The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Lice
 
 from pycsp3 import *
 
-size, tiles = data
+n, tiles = data
 nTiles = len(tiles)
 
 
@@ -66,20 +66,20 @@ def automaton(i):
 
 
 # x[i][j] is the index of the tile in the cell with coordinates (i,j)
-x = VarArray(size=[size, size + 1], dom=range(nTiles + 1))
+x = VarArray(size=[n, n + 1], dom=range(nTiles + 1))
 
 satisfy(
     # forbidding the special symbol 0 if not at the end of a row
-    [x[i][j] != 0 for i in range(size) for j in range(size)],
+    [x[i][j] != 0 for i in range(n) for j in range(n)],
 
     # setting the special symbol 0 at the end of each row
-    [x[i][size] == 0 for i in range(size)],
+    [x[i][n] == 0 for i in range(n)],
 
     # ensuring each tile is present
     [x in (A.deterministic_copy(x) if variant("det") else A) for i in range(nTiles) if (A := automaton(i))]
 )
 
-"""
+""" Comments
 1) The automatas may be non-deterministic. This is why we have two variants.
 2) generating the deterministic automatas may be very long
 3) TODO: there is a problem with the function that makes a deterministic copy. To be fixed!

@@ -32,5 +32,8 @@ satisfy(
     [x[i][j] == k for (i, j, k) in nbHints],
 
     # respecting operator hints
-    [y < z if lt else y > z for (y, z, lt) in [(x[i][j], x[i][j + 1] if hr else x[i + 1][j], lt) for (i, j, lt, hr) in opHints]]
+    [
+        (
+            y < z if lt else y > z
+        ) for (y, z, lt) in [(x[i][j], x[i][j + 1] if hr else x[i + 1][j], lt) for (i, j, lt, hr) in opHints]]
 )
