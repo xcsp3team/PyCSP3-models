@@ -118,7 +118,7 @@ satisfy(
     ]
 )
 
-"""
+""" Comments
 0) WARNING : do not use in with Match, because it becomes difficult to handle the stuff posted for the 'in' operator
    Currently, we don't handle it.
 1) Some equivalent ways to write groups of constraints above is : 

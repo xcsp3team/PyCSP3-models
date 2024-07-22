@@ -59,16 +59,16 @@ satisfy(
 )
 
 """ Comments
-1) one could add two redundant constraints AllDifferent on wf and hb
+1) One could add two redundant constraints AllDifferent on wf and hb
 
-2) one could replace Channel(wf, hb) with:
+2) One could replace Channel(wf, hb) with:
  # each man is the husband of his wife
  [hb[wf[m]] == m for m in Men],
 
  # each woman is the wife of her husband
  [wf[hb[w]] == w for w in Women],
 
-3) global constraints involved in general expressions are externalized by introducing
+3) Global constraints involved in general expressions are externalized by introducing
    auxiliary variables. By using the compiler option, -useMeta, this is no more the case
    but the generated instance is no more in the perimeter of XCSP3-core
 """

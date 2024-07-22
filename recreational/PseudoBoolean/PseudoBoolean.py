@@ -7,7 +7,7 @@ See "The First Evaluation of Pseudo-Boolean Solvers (PB'05)" by Vasco M. Manquin
   constraints: Sum
 
 ## Execution
-  python PseudoBoolean.py -data=<datafile.opb> -dataparser=PseudoBoolean_Parser.py
+  python PseudoBoolean.py -data=<datafile.opb> -parser=PseudoBoolean_Parser.py
 
 ## Links
   - http://www.cril.univ-artois.fr/PB16/

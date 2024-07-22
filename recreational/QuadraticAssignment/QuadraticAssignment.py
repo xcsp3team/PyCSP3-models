@@ -9,7 +9,7 @@ The Quadratic Assignment Problem (QAP) has remained one of the great challenges 
 
 ## Execution
   python QuadraticAssignment.py -data=<datafile.json>
-  python QuadraticAssignment.py -data=<datafile.txt> -dataparser=QuadraticAssignment_Parser.py
+  python QuadraticAssignment.py -data=<datafile.txt> -parser=QuadraticAssignment_Parser.py
 
 ## Links
   - https://en.wikipedia.org/wiki/Quadratic_assignment_problem

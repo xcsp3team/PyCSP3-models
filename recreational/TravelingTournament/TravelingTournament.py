@@ -102,8 +102,8 @@ minimize(
 )
 
 """ Comments
-1) with a cache, we could avoid building systematically similar automata (and tables)
-2) note that when playing at home (whatever the opponent), the travel distance is 0
-3) one can specify 'closed=True' as a parameter of Cardinality constraints, but this is
+1) With a cache, we could avoid building systematically similar automata (and tables)
+2) Note that when playing at home (whatever the opponent), the travel distance is 0
+3) One can specify 'closed=True' as a parameter of Cardinality constraints, but this is
    not a requirement 
 """

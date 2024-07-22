@@ -12,7 +12,7 @@ A logic puzzle. See "Teaching Constraints through Logic Puzzles" by Peter Szered
   python Spiral.py -data=[number,number]
 
 ## Tags
-  recreational
+  academic, recreational
 """
 
 from pycsp3 import *

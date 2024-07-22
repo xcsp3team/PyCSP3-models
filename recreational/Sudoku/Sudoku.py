@@ -13,7 +13,7 @@ The famous logic puzzle. See, e.g., "Sudoku as a Constraint Problem" by Helmut S
   python Sudoku.py -data=[number,None]
   python Sudoku.py -data=<datafile.json>
   python Sudoku.py -data=<datafile.json> -variant=table
-  python Sudoku.py -data=<datafile.txt> -dataparser=Sudoku_Parser.py
+  python Sudoku.py -data=<datafile.txt> -parser=Sudoku_Parser.py
 
 ## Links
  - https://en.wikipedia.org/wiki/Sudoku
@@ -65,7 +65,7 @@ if variant("opt"):
     )
 
 """ Comments
-1) using set(permutations(range(1, n + 1))) instead of list(permutations(range(1, n + 1))) is far less time-efficient
+1) Using set(permutations(range(1, n + 1))) instead of list(permutations(range(1, n + 1))) is far less time-efficient
 
 2) opt is used in the 2022 Minizinc Challenge
 """

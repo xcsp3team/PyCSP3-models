@@ -92,8 +92,12 @@ satisfy(
     [Sum(s[:, j + 1]) == k for j, k in enumerate(colSums)],
 
     # being careful about cells on diagonals
-    [(s[i][j], s[i - 1][j - 1], s[i - 1][j + 1], s[i + 1][j - 1], s[i + 1][j + 1]) in {(0, ANY, ANY, ANY, ANY), (1, 0, 0, 0, 0)}
-     for i in range(1, n + 1) for j in range(1, n + 1)],
+    [
+        Table(
+            scope=(s[i][j], s[i - 1][j - 1], s[i - 1][j + 1], s[i + 1][j - 1], s[i + 1][j + 1]),
+            supports={(0, ANY, ANY, ANY, ANY), (1, 0, 0, 0, 0)}
+        ) for i in range(1, n + 1) for j in range(1, n + 1)
+    ],
 
     # tag(channeling)
     [s[i][j] == (t[i][j] != 0) for i in range(n + 2) for j in range(n + 2)],
@@ -118,6 +122,6 @@ satisfy(
 )
 
 """ Comments
-1) another way of setting border values to 0 is :
+1) Another way of setting border values to 0 is :
   [s[0] == 0, s[-1] == 0, s[:, 0] == 0, s[:, -1] == 0]
 """

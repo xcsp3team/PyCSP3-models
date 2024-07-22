@@ -55,6 +55,7 @@ minimize(
 )
 
 """ Comments
-1) writing dom=distances is equivalent (and more compact) than writing dom={v for row in distances for v in row}
-2) index auto-adjustment is used with c[i+1] (equivalent to c[(i+1) % nCities)
+1) Writing dom=distances is equivalent (and more compact) than writing dom={v for row in distances for v in row}
+
+2) Index auto-adjustment is used with c[i+1] (equivalent to c[(i+1) % nCities)
 """

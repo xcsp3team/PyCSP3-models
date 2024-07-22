@@ -14,7 +14,7 @@ The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Lice
 
 ## Execution
   python PentominoesZayenz.py -data=<datafile.json>
-  python PentominoesZayenz.py -data=<datafile.dzn> -dataparser=PentominoesZayenz_ParserZ.py
+  python PentominoesZayenz.py -data=<datafile.dzn> -parser=PentominoesZayenz_ParserZ.py
 
 ## Links
   - https://www.researchgate.net/publication/228523019_Modeling_irregular_shape_placement_problems_with_regular_constraints

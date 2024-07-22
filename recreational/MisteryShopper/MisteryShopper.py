@@ -9,6 +9,7 @@ See description on CSPLib.
 
 ## Execution:
   python MisteryShopper.py -data=<datafile.json>
+  python MisteryShopper.py -parser=MisteryShopper_Random.py <number> <number> <number> <number> <number>
 
 ## Links
  - https://www.csplib.org/Problems/prob004

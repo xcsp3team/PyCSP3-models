@@ -12,9 +12,9 @@ This is distinct from the stable-marriage problem in that the stable-roommates p
   constraints: Element, Table
 
 ## Execution
-  - python RoomMate.py -data=<datafile.json>
-  - python RoomMate.py -data=<datafile.json> -variant=table
-  - python RoomMate.py -data=<datafile.txt> -parser=RoomMate_Parser.py
+  python RoomMate.py -data=<datafile.json>
+  python RoomMate.py -data=<datafile.json> -variant=table
+  python RoomMate.py -data=<datafile.txt> -parser=RoomMate_Parser.py
 
 ## Links
   - https://en.wikipedia.org/wiki/Stable_roommates_problem
@@ -27,6 +27,8 @@ This is distinct from the stable-marriage problem in that the stable-roommates p
 
 from pycsp3 import *
 from pycsp3.dashboard import options
+
+options.dontbuildsimilarconstraints = True
 
 preferences = data
 n = len(preferences)
@@ -51,7 +53,7 @@ pref, rank = pref_rank()
 x = VarArray(size=n, dom=lambda i: range(len(preferences[i])))
 
 if not variant():
-    options.dontbuildsimilarconstraints = True
+
     satisfy(
         (
             If(x[i] > rank[i][k], Then=x[k] < rank[k][i]),
@@ -60,8 +62,6 @@ if not variant():
     )
 
 elif variant('table'):
-    options.dontbuildsimilarconstraints = True
-
 
     def T(i, k):
         return [(a, ANY) for a in x[i].dom if a < rank[i][k]] + [(rank[i][k], rank[k][i])] + \
@@ -73,7 +73,6 @@ elif variant('table'):
     )
 
 elif variant('hybrid'):
-    options.dontbuildsimilarconstraints = True
 
     satisfy(
         Table(
