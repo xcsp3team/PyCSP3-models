@@ -13,7 +13,7 @@ over the alphabet W = { A,C,G,T } with the following properties:
 
 This problem has its roots in Bioinformatics and Coding Theory.
 
-## Data
+## Data Example
   words.json, and a number n
 
 ## Model
