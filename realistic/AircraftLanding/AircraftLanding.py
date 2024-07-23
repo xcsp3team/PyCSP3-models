@@ -11,9 +11,9 @@ Each plane has to land on one of the runways within its predetermined time windo
   constraints: AllDifferent, NoOverlap, Sum, Table
 
 ## Execution
-  - python AircraftLanding.py -data=<datafile.json>
-  - python AircraftLanding.py -data=<datafile.json> -variant=table
-  - python AircraftLanding.py -data=<datafile.txt> -parser=AircraftLanding_Parser.py
+  python AircraftLanding.py -data=<datafile.json>
+  python AircraftLanding.py -data=<datafile.json> -variant=table
+  python AircraftLanding.py -data=<datafile.txt> -parser=AircraftLanding_Parser.py
 
 ## Links
   - http://people.brunel.ac.uk/~mastjjb/jeb/orlib/airlandinfo.html
@@ -34,11 +34,11 @@ early_penalties, late_penalties = zip(*costs)
 # x[i] is the landing time of the ith plane
 x = VarArray(size=nPlanes, dom=lambda i: range(earliest[i], latest[i] + 1))
 
-# e[i] is the earliness of the ith plane
-e = VarArray(size=nPlanes, dom=lambda i: range(target[i] - earliest[i] + 1))
+# erl[i] is the earliness of the ith plane
+erl = VarArray(size=nPlanes, dom=lambda i: range(target[i] - earliest[i] + 1))
 
-# t[i] is the tardiness of the ith plane
-t = VarArray(size=nPlanes, dom=lambda i: range(latest[i] - target[i] + 1))
+# trd[i] is the tardiness of the ith plane
+trd = VarArray(size=nPlanes, dom=lambda i: range(latest[i] - target[i] + 1))
 
 satisfy(
     # planes must land at different times
@@ -56,34 +56,35 @@ satisfy(
 if not variant():
     satisfy(
         # computing earliness of planes
-        [e[i] == max(0, target[i] - x[i]) for i in range(nPlanes)],
+        [erl[i] == max(0, target[i] - x[i]) for i in range(nPlanes)],
 
         # computing tardiness of planes
-        [t[i] == max(0, x[i] - target[i]) for i in range(nPlanes)]
+        [trd[i] == max(0, x[i] - target[i]) for i in range(nPlanes)]
     )
 
 elif variant("table"):
     satisfy(
         # computing earliness and tardiness of planes
-        (x[i], e[i], t[i]) in {(v, max(0, target[i] - v), max(0, v - target[i])) for v in x[i].dom} for i in range(nPlanes)
+        (x[i], erl[i], trd[i]) in {(v, max(0, target[i] - v), max(0, v - target[i])) for v in x[i].dom} for i in range(nPlanes)
     )
 
 minimize(
     # minimizing the deviation cost
-    e * early_penalties + t * late_penalties
+    erl * early_penalties + trd * late_penalties
 )
 
 """ Comments
-1) we could extend the model for handling several runways. 
+1) We could extend the model for handling several runways. 
    For example, by introducing a new array r where r[i] is the runway ; 
    a new array s where s[i] is x[i]*k+r[i] where k is the number of runways
    and posting new constraints (AllDifferent(s), ...). 
    This is something to do.
    
-2) for the 2022 competition, we used as objective for the mini-track:
-   Sum(e) + Sum(t)
+2) For the 2022 competition, we used as objective for the mini-track:
+   Sum(erl) + Sum(trd)
    
-3) for v in x[i].dom
- is equivalent to:
-   for v in range(earliest[i], latest[i] + 1)
+3) Note that
+ for v in x[i].dom
+   is equivalent to:
+ for v in range(earliest[i], latest[i] + 1)
 """

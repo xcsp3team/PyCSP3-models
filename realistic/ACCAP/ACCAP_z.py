@@ -15,15 +15,15 @@ between the counters of each pair of flights from the same airline.
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019/2022 Minizinc challenges.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
-## Data
+## Data Example
   03.json
 
 ## Model
   constraints: NoOverlap, Sum
 
 ## Execution
-  - python ACCAP_z.py -data=<datafile.json>
-  - python ACCAP_z.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
+  python ACCAP_z.py -data=<datafile.json>
+  python ACCAP_z.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html
@@ -72,7 +72,7 @@ minimize(
 """
 1) Note that:
  Sum(y[i], -y[j], -d[a]) <= 1 - requirements[i] 
-  is equivalent to:
+   is equivalent to:
  y[i] + (requirements[i] - 1) - y[j] <= d[a]
- (but the form of the posted constraint is different) 
+   (but the form of the posted constraint is different) 
 """

@@ -219,7 +219,7 @@ minimize(
     x[i] in (ADD, SUB)
   Instead, one should write the safer expression: 
     x[i].among(ADD,SUB)
- This is because the operator 'in' cannot be redefined (and is is then quite technical to manage it for side-effects statements)
+ This is because the operator 'in' cannot be redefined (and it is then quite technical to manage it for side-effects statements)
  Currently, if we write:
     [If(x[i].among(ADD, MUL), Then=x[left[i]] <= x[right[i]]) for i in M],
   instead of:
@@ -259,7 +259,7 @@ minimize(
         [(x[i] != NO) | (z1[i] == 0) for i in M]
     ],
     
-3) for the instance 814, one solution (chuffed) is: 
+3) For the instance 814, one solution (chuffed) is: 
     x == [-1, MUL, ADD, VAL, MUL, VAL, VAL, ADD, VAL, VAL, NO, NO, NO, VAL, VAL, VAL],
     left == [-1, 2, 3, 0, 5, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0],
     right == [-1, 7, 4, 0, 6, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -268,8 +268,7 @@ minimize(
     #  indexes == [-1, 0, 0, 2, 0, 7, 8, 0, 3, 6, 0, 0, 0, 1, 4, 5],
     z2 == 5,
     z1 == [-1, 814, 74, 2, 72, 8, 9, 11, 4, 7, 0, 0, 0, 1, 6, 6],
-  but indexes is not valid in the PyCSP3 model (there is an offset by 1)
-  
+  but indexes is not valid in the PyCSP3 model (there is an offset by 1)  
 
 4)  ACE is slow when decomposing (so, needs -di=0)
 """

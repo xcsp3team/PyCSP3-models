@@ -13,15 +13,15 @@ in the same check-in area, achieving this by minimizing the sum of the total dis
 between the counters of each pair of flights from the same airline.
 
 
-## Data
+## Data Example
   03.json
 
 ## Model
   constraints: Maximum, NoOverlap, Sum
 
 ## Execution
-  - python ACCAP.py -data=<datafile.json>
-  - python ACCAP.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
+  python ACCAP.py -data=<datafile.json>
+  python ACCAP.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
 
 ## Links
   - https://www.researchgate.net/publication/281979436_Optimizing_the_Airport_Check-In_Counter_Allocation_Problem
@@ -35,10 +35,10 @@ from pycsp3 import *
 
 flights, airlines = data
 durations, requirements, x = zip(*flights)  # requirements in terms of numbers of counters; x stands for starts
-nFlights, nAirlines, nCounters = len(flights), len(airlines), sum(requirements)
+nFlights, Counters = len(flights), range(sum(requirements))
 
 # y[i] is the first counter (index) of the series required by the ith flight
-y = VarArray(size=nFlights, dom=range(nCounters))
+y = VarArray(size=nFlights, dom=Counters)
 
 satisfy(
     # ensuring no counter is shared
@@ -50,16 +50,16 @@ satisfy(
 
 minimize(
     Sum(
-        [Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airlines[a] for j in airlines[a] if i != j) for a in range(nAirlines)],
+        [Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airline for j in airline if i != j) for airline in airlines],
         Maximum(y[i] + requirements[i] for i in range(nFlights))
     )
 )
 
-"""
-1) one can also write:
+"""  Comments
+1) One can also write:
 minimize(
      Sum(
-         Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airlines[a] for j in airlines[a] if i != j) for a in range(nAirlines)
+         Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airline for j in airline if i != j) for airline in airlines)
      )
      + Maximum(y[i] + requirements[i] for i in range(nFlights))
 )

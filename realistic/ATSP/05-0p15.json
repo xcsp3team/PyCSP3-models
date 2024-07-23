@@ -1,1 +1,14 @@
-{"program_setup_time": 600, "sequence_setup_time": 300, "max_colors_per_job": 2, "min_cycles_per_job": 2, "max_cycles_per_job": 30, "max_jobs": 15, "nColors": 1, "nLines": 1, "color_compatibility": [[1]], "programs": [{"slots": 7, "cycle_time": 3060}], "moulds": [{"available": 12, "program": 1, "line": 1}], "demands": [{"quantity": 52, "due": -636079, "color": 1, "mould": 1}]}
+{
+  "program_setup_time": 600,
+  "sequence_setup_time": 300,
+  "max_colors_per_job": 2,
+  "min_cycles_per_job": 2,
+  "max_cycles_per_job": 30,
+  "max_jobs": 15,
+  "nColors": 1,
+  "nLines": 1,
+  "color_compatibility": [[1]],
+  "programs": [{"slots": 7, "cycle_time": 3060}],
+  "moulds": [{"available": 12, "program": 1, "line": 1}],
+  "demands": [{"quantity": 52, "due": -636079, "color": 1, "mould": 1}]
+}

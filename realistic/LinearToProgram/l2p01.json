@@ -1,1 +1,7 @@
-{"nParams": 1, "nMaxLines": 13, "nPlus": 11, "coeffs": [22], "RP": [[-3], [18], [-9], [13], [-7]]}
+{
+  "nParams": 1,
+  "nMaxLines": 13,
+  "nPlus": 11,
+  "coeffs": [22],
+  "RP": [[-3], [18], [-9], [13], [-7]]
+}

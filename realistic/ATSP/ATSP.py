@@ -68,13 +68,13 @@ de = VarArray(size=nDemands, dom=timeline)
 dfj = VarArray(size=nDemands, dom=range(nJobs))
 
 # the make-span of the schedule
-makespan = Var(dom=timeline)
+mks = Var(dom=timeline)
 
 # the waste (number of produced moulds that are not consumed)
-waste = Var(dom=range(maxMoulds * maxCycles * nJobs))
+wst = Var(dom=range(maxMoulds * maxCycles * nJobs))
 
 # the tardiness of all demands
-tardiness = Var(dom=range(sum(max(0, ub - ddue[d]) for d in range(nDemands))))
+trd = Var(dom=range(sum(max(0, ub - ddue[d]) for d in range(nDemands))))
 
 satisfy(
     # breaking symmetries  tag(symmetry-breaking)
@@ -163,23 +163,23 @@ satisfy(
 
     # computing objective components
     [
-        makespan == Maximum(je),
-        Sum(jmp) - waste == sum(dqty),
-        tardiness == Sum((de[d] > ddue[d]) * (de[d] - ddue[d]) for d in range(nDemands))
+        mks == Maximum(je),
+        wst == Sum(jmp) - sum(dqty),
+        trd == Sum((de[d] > ddue[d]) * (de[d] - ddue[d]) for d in range(nDemands))
     ]
 )
 
 minimize(
-    makespan + tardiness + waste
+    mks + trd + wst
 )
 
-"""
-1)  waste == Sum(jmp) - sum(dqty) compiles badly (how to recognize a possible Sum?)
-2) one could write:
+""" Comments
+1) One could write:
    [If(jp[i] == 0, Then=jp[i + 1] == 0) for i in range(nJobs - 1)],
    [If(jp[i] == 0, Then=jl[i] == minCycles) for i in range(nJobs)]
   for symmetry breaking
-3) don't use (K := sum(dqty[d2] for d2 in compatibleDemands[d])) because it may be o and bool((0)) is False.
+
+2) Don't use (K := sum(dqty[d2] for d2 in compatibleDemands[d])) because it may be o and bool((0)) is False.
  instead, use [K := sum(dqty[d2] for d2 in compatibleDemands[d])]
 """
 

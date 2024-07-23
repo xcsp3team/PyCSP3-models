@@ -1,132 +1,29 @@
 {
   "flights": [
-    {
-      "opDur": 4,
-      "cNum": 2,
-      "xCoor": 4
-    },
-    {
-      "opDur": 2,
-      "cNum": 5,
-      "xCoor": 7
-    },
-    {
-      "opDur": 2,
-      "cNum": 1,
-      "xCoor": 8
-    },
-    {
-      "opDur": 2,
-      "cNum": 2,
-      "xCoor": 8
-    },
-    {
-      "opDur": 5,
-      "cNum": 2,
-      "xCoor": 3
-    },
-    {
-      "opDur": 6,
-      "cNum": 1,
-      "xCoor": 1
-    },
-    {
-      "opDur": 3,
-      "cNum": 4,
-      "xCoor": 4
-    },
-    {
-      "opDur": 2,
-      "cNum": 5,
-      "xCoor": 6
-    },
-    {
-      "opDur": 2,
-      "cNum": 4,
-      "xCoor": 4
-    },
-    {
-      "opDur": 5,
-      "cNum": 5,
-      "xCoor": 2
-    },
-    {
-      "opDur": 4,
-      "cNum": 1,
-      "xCoor": 3
-    },
-    {
-      "opDur": 2,
-      "cNum": 5,
-      "xCoor": 7
-    },
-    {
-      "opDur": 5,
-      "cNum": 2,
-      "xCoor": 4
-    },
-    {
-      "opDur": 6,
-      "cNum": 3,
-      "xCoor": 2
-    },
-    {
-      "opDur": 4,
-      "cNum": 3,
-      "xCoor": 3
-    },
-    {
-      "opDur": 2,
-      "cNum": 5,
-      "xCoor": 6
-    },
-    {
-      "opDur": 4,
-      "cNum": 3,
-      "xCoor": 1
-    },
-    {
-      "opDur": 2,
-      "cNum": 3,
-      "xCoor": 3
-    },
-    {
-      "opDur": 6,
-      "cNum": 5,
-      "xCoor": 3
-    },
-    {
-      "opDur": 5,
-      "cNum": 4,
-      "xCoor": 2
-    }
+    {"opDur": 4, "cNum": 2, "xCoor": 4},
+    {"opDur": 2, "cNum": 5, "xCoor": 7},
+    {"opDur": 2, "cNum": 1, "xCoor": 8},
+    {"opDur": 2, "cNum": 2, "xCoor": 8},
+    {"opDur": 5, "cNum": 2, "xCoor": 3},
+    {"opDur": 6, "cNum": 1, "xCoor": 1},
+    {"opDur": 3, "cNum": 4, "xCoor": 4},
+    {"opDur": 2, "cNum": 5, "xCoor": 6},
+    {"opDur": 2, "cNum": 4, "xCoor": 4},
+    {"opDur": 5, "cNum": 5, "xCoor": 2},
+    {"opDur": 4, "cNum": 1, "xCoor": 3},
+    {"opDur": 2, "cNum": 5, "xCoor": 7},
+    {"opDur": 5, "cNum": 2, "xCoor": 4},
+    {"opDur": 6, "cNum": 3, "xCoor": 2},
+    {"opDur": 4, "cNum": 3, "xCoor": 3},
+    {"opDur": 2, "cNum": 5, "xCoor": 6},
+    {"opDur": 4, "cNum": 3, "xCoor": 1},
+    {"opDur": 2, "cNum": 3, "xCoor": 3},
+    {"opDur": 6, "cNum": 5, "xCoor": 3},
+    {"opDur": 5, "cNum": 4, "xCoor": 2}
   ],
   "airlines": [
-    [
-      2,
-      3,
-      5,
-      8,
-      11,
-      13
-    ],
-    [
-      1,
-      4,
-      6,
-      7,
-      9,
-      10,
-      12,
-      14,
-      16,
-      19
-    ],
-    [
-      0,
-      15,
-      17,
-      18
-    ]
+    [2, 3, 5, 8, 11, 13],
+    [1, 4, 6, 7, 9, 10, 12, 14, 16, 19],
+    [0, 15, 17, 18]
   ]
 }

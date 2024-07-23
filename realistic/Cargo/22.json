@@ -1,1 +1,30 @@
-{"H": 1700, "T": 42000, "stackBefore": 30, "limits": {"dailyStacking": 950, "nReclaimers": 2, "maxReclaimingGap": 300, "maxDelay": 14200, "sumMaxDelay": 330000}, "factors": {"meter": 1, "time": 1440, "tonnage": 1000, "length": 17, "hour": 60}, "etas": [14189, 15462, 17624, 20735, 21526, 22067, 23385, 23583, 25238, 26889, 27555, 28271, 31443, 32993], "piles": [{"whichV": 0, "dS_": 3, "dR": 545}, {"whichV": 1, "dS_": 7, "dR": 561}, {"whichV": 2, "dS_": 3, "dR": 952}, {"whichV": 3, "dS_": 5, "dR": 700}, {"whichV": 4, "dS_": 5, "dR": 352}, {"whichV": 4, "dS_": 7, "dR": 546}, {"whichV": 5, "dS_": 5, "dR": 519}, {"whichV": 5, "dS_": 7, "dR": 771}, {"whichV": 6, "dS_": 5, "dR": 861}, {"whichV": 6, "dS_": 5, "dR": 622}, {"whichV": 7, "dS_": 5, "dR": 867}, {"whichV": 8, "dS_": 5, "dR": 1238}, {"whichV": 8, "dS_": 3, "dR": 1066}, {"whichV": 9, "dS_": 5, "dR": 1241}, {"whichV": 9, "dS_": 3, "dR": 589}, {"whichV": 10, "dS_": 5, "dR": 856}, {"whichV": 11, "dS_": 5, "dR": 535}, {"whichV": 12, "dS_": 5, "dR": 193}, {"whichV": 12, "dS_": 7, "dR": 895}, {"whichV": 13, "dS_": 5, "dR": 821}]}
+{
+  "H": 1700,
+  "T": 42000,
+  "stackBefore": 30,
+  "limits": {"dailyStacking": 950, "nReclaimers": 2, "maxReclaimingGap": 300, "maxDelay": 14200, "sumMaxDelay": 330000},
+  "factors": {"meter": 1, "time": 1440, "tonnage": 1000, "length": 17, "hour": 60},
+  "etas": [14189, 15462, 17624, 20735, 21526, 22067, 23385, 23583, 25238, 26889, 27555, 28271, 31443, 32993],
+  "piles": [
+    {"whichV": 0, "dS_": 3, "dR": 545},
+    {"whichV": 1, "dS_": 7, "dR": 561},
+    {"whichV": 2, "dS_": 3, "dR": 952},
+    {"whichV": 3, "dS_": 5, "dR": 700},
+    {"whichV": 4, "dS_": 5, "dR": 352},
+    {"whichV": 4, "dS_": 7, "dR": 546},
+    {"whichV": 5, "dS_": 5, "dR": 519},
+    {"whichV": 5, "dS_": 7, "dR": 771},
+    {"whichV": 6, "dS_": 5, "dR": 861},
+    {"whichV": 6, "dS_": 5, "dR": 622},
+    {"whichV": 7, "dS_": 5, "dR": 867},
+    {"whichV": 8, "dS_": 5, "dR": 1238},
+    {"whichV": 8, "dS_": 3, "dR": 1066},
+    {"whichV": 9, "dS_": 5, "dR": 1241},
+    {"whichV": 9, "dS_": 3, "dR": 589},
+    {"whichV": 10, "dS_": 5, "dR": 856},
+    {"whichV": 11, "dS_": 5, "dR": 535},
+    {"whichV": 12, "dS_": 5, "dR": 193},
+    {"whichV": 12, "dS_": 7, "dR": 895},
+    {"whichV": 13, "dS_": 5, "dR": 821}
+  ]
+}

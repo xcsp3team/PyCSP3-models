@@ -1,1 +1,27 @@
-{"roll_wid": 315, "max_roll_len": 20000, "roomCarpets": [{"rectangleIds": [0], "possibleRotations": [0, 1], "maxLength": 181, "mawWidth": 131}, {"rectangleIds": [1], "possibleRotations": [0], "maxLength": 170, "mawWidth": 231}, {"rectangleIds": [2, 3, 4], "possibleRotations": [0, 1, 2, 3], "maxLength": 343, "mawWidth": 204}, {"rectangleIds": [5], "possibleRotations": [0], "maxLength": 127, "mawWidth": 29}, {"rectangleIds": [6], "possibleRotations": [0], "maxLength": 56, "mawWidth": 100}, {"rectangleIds": [7], "possibleRotations": [0], "maxLength": 65, "mawWidth": 121}, {"rectangleIds": [8], "possibleRotations": [0, 1], "maxLength": 213, "mawWidth": 75}, {"rectangleIds": [9], "possibleRotations": [0], "maxLength": 72, "mawWidth": 145}], "rectangles": [{"length": 181, "width": 131, "xOffsets": [0, 0, -1, -1], "yOffsets": [0, 0, -1, -1]}, {"length": 170, "width": 231, "xOffsets": [0, -1, -1, -1], "yOffsets": [0, -1, -1, -1]}, {"length": 74, "width": 147, "xOffsets": [0, 0, 269, 57], "yOffsets": [57, 0, 0, 269]}, {"length": 197, "width": 204, "xOffsets": [74, 0, 72, 0], "yOffsets": [0, 74, 0, 72]}, {"length": 72, "width": 138, "xOffsets": [271, 0, 0, 66], "yOffsets": [66, 271, 0, 0]}, {"length": 127, "width": 29, "xOffsets": [0, -1, -1, -1], "yOffsets": [0, -1, -1, -1]}, {"length": 56, "width": 100, "xOffsets": [0, -1, -1, -1], "yOffsets": [0, -1, -1, -1]}, {"length": 65, "width": 121, "xOffsets": [0, -1, -1, -1], "yOffsets": [0, -1, -1, -1]}, {"length": 213, "width": 75, "xOffsets": [0, 0, -1, -1], "yOffsets": [0, 0, -1, -1]}, {"length": 72, "width": 145, "xOffsets": [0, -1, -1, -1], "yOffsets": [0, -1, -1, -1]}], "stairCarpets": []}
+{
+  "roll_wid": 315,
+  "max_roll_len": 20000,
+  "roomCarpets": [
+    {"rectangleIds": [0], "possibleRotations": [0, 1], "maxLength": 181, "mawWidth": 131},
+    {"rectangleIds": [1], "possibleRotations": [0], "maxLength": 170, "mawWidth": 231},
+    {"rectangleIds": [2, 3, 4], "possibleRotations": [0, 1, 2, 3], "maxLength": 343, "mawWidth": 204},
+    {"rectangleIds": [5], "possibleRotations": [0], "maxLength": 127, "mawWidth": 29},
+    {"rectangleIds": [6], "possibleRotations": [0], "maxLength": 56, "mawWidth": 100},
+    {"rectangleIds": [7], "possibleRotations": [0], "maxLength": 65, "mawWidth": 121},
+    {"rectangleIds": [8], "possibleRotations": [0, 1], "maxLength": 213, "mawWidth": 75},
+    {"rectangleIds": [9], "possibleRotations": [0], "maxLength": 72, "mawWidth": 145}
+  ],
+  "rectangles": [
+    {"length": 181, "width": 131, "xOffsets": [0, 0, -1, -1], "yOffsets": [0, 0, -1, -1]},
+    {"length": 170, "width": 231, "xOffsets": [0, -1, -1, -1], "yOffsets": [0, -1, -1, -1]},
+    {"length": 74, "width": 147, "xOffsets": [0, 0, 269, 57], "yOffsets": [57, 0, 0, 269]},
+    {"length": 197, "width": 204, "xOffsets": [74, 0, 72, 0], "yOffsets": [0, 74, 0, 72]},
+    {"length": 72, "width": 138, "xOffsets": [271, 0, 0, 66], "yOffsets": [66, 271, 0, 0]},
+    {"length": 127, "width": 29, "xOffsets": [0, -1, -1, -1], "yOffsets": [0, -1, -1, -1]},
+    {"length": 56, "width": 100, "xOffsets": [0, -1, -1, -1], "yOffsets": [0, -1, -1, -1]},
+    {"length": 65, "width": 121, "xOffsets": [0, -1, -1, -1], "yOffsets": [0, -1, -1, -1]},
+    {"length": 213, "width": 75, "xOffsets": [0, 0, -1, -1], "yOffsets": [0, 0, -1, -1]},
+    {"length": 72, "width": 145, "xOffsets": [0, -1, -1, -1], "yOffsets": [0, -1, -1, -1]}
+  ],
+  "stairCarpets": []
+}

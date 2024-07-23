@@ -1,1 +1,31 @@
-{"capacities": [516, 516, 842, 842, 842, 842, 367, 693, 693, 693], "concerts": [{"start": 52, "end": 89, "price": 1748, "requirement": 519}, {"start": 52, "end": 89, "price": 1748, "requirement": 519}, {"start": 52, "end": 89, "price": 1748, "requirement": 519}, {"start": 52, "end": 89, "price": 1748, "requirement": 519}, {"start": 52, "end": 89, "price": 1748, "requirement": 519}, {"start": 52, "end": 89, "price": 1748, "requirement": 844}, {"start": 52, "end": 89, "price": 1748, "requirement": 844}, {"start": 15, "end": 84, "price": 5880, "requirement": 370}, {"start": 15, "end": 84, "price": 5880, "requirement": 370}, {"start": 15, "end": 84, "price": 5880, "requirement": 370}, {"start": 15, "end": 84, "price": 5880, "requirement": 370}, {"start": 15, "end": 84, "price": 5880, "requirement": 370}, {"start": 15, "end": 84, "price": 5880, "requirement": 370}, {"start": 15, "end": 84, "price": 5880, "requirement": 370}, {"start": 28, "end": 38, "price": 1056, "requirement": 370}, {"start": 28, "end": 38, "price": 1056, "requirement": 728}, {"start": 28, "end": 38, "price": 1056, "requirement": 728}, {"start": 28, "end": 38, "price": 1056, "requirement": 728}, {"start": 28, "end": 38, "price": 1056, "requirement": 728}, {"start": 28, "end": 38, "price": 1056, "requirement": 728}, {"start": 28, "end": 38, "price": 1056, "requirement": 728}, {"start": 17, "end": 26, "price": 910, "requirement": 254}, {"start": 7, "end": 30, "price": 600, "requirement": 254}, {"start": 7, "end": 30, "price": 600, "requirement": 254}, {"start": 7, "end": 30, "price": 600, "requirement": 254}, {"start": 28, "end": 83, "price": 2072, "requirement": 580}]}
+{
+  "capacities": [516, 516, 842, 842, 842, 842, 367, 693, 693, 693],
+  "concerts": [
+    {"start": 52, "end": 89, "price": 1748, "requirement": 519},
+    {"start": 52, "end": 89, "price": 1748, "requirement": 519},
+    {"start": 52, "end": 89, "price": 1748, "requirement": 519},
+    {"start": 52, "end": 89, "price": 1748, "requirement": 519},
+    {"start": 52, "end": 89, "price": 1748, "requirement": 519},
+    {"start": 52, "end": 89, "price": 1748, "requirement": 844},
+    {"start": 52, "end": 89, "price": 1748, "requirement": 844},
+    {"start": 15, "end": 84, "price": 5880, "requirement": 370},
+    {"start": 15, "end": 84, "price": 5880, "requirement": 370},
+    {"start": 15, "end": 84, "price": 5880, "requirement": 370},
+    {"start": 15, "end": 84, "price": 5880, "requirement": 370},
+    {"start": 15, "end": 84, "price": 5880, "requirement": 370},
+    {"start": 15, "end": 84, "price": 5880, "requirement": 370},
+    {"start": 15, "end": 84, "price": 5880, "requirement": 370},
+    {"start": 28, "end": 38, "price": 1056, "requirement": 370},
+    {"start": 28, "end": 38, "price": 1056, "requirement": 728},
+    {"start": 28, "end": 38, "price": 1056, "requirement": 728},
+    {"start": 28, "end": 38, "price": 1056, "requirement": 728},
+    {"start": 28, "end": 38, "price": 1056, "requirement": 728},
+    {"start": 28, "end": 38, "price": 1056, "requirement": 728},
+    {"start": 28, "end": 38, "price": 1056, "requirement": 728},
+    {"start": 17, "end": 26, "price": 910, "requirement": 254},
+    {"start": 7, "end": 30, "price": 600, "requirement": 254},
+    {"start": 7, "end": 30, "price": 600, "requirement": 254},
+    {"start": 7, "end": 30, "price": 600, "requirement": 254},
+    {"start": 28, "end": 83, "price": 2072, "requirement": 580}
+  ]
+}

@@ -1,1 +1,43 @@
-{"resources": [{"requirements": [0, 10, 9, 1, 1, 0, 0, 3, 2, 3, 0, 4, 8, 0, 6, 0, 3, 7, 2, 2, 0, 1, 7, 0, 0, 1, 6, 10, 0, 6, 0, 0], "capacity": 19}, {"requirements": [0, 10, 3, 0, 0, 9, 9, 5, 0, 5, 4, 4, 3, 3, 10, 9, 0, 6, 3, 3, 8, 1, 6, 8, 4, 0, 0, 8, 7, 8, 4, 0], "capacity": 29}, {"requirements": [0, 4, 0, 2, 8, 5, 6, 2, 4, 0, 8, 4, 5, 9, 0, 10, 3, 7, 2, 4, 0, 5, 7, 5, 6, 7, 7, 10, 4, 1, 0, 0], "capacity": 24}, {"requirements": [0, 0, 0, 2, 6, 4, 0, 0, 10, 2, 0, 8, 5, 9, 4, 0, 0, 0, 8, 7, 3, 3, 8, 8, 4, 3, 4, 1, 3, 6, 2, 0], "capacity": 27}], "tasks": [{"duration": 0, "successors": [1, 2, 3], "deadline": [1, 5, 4]}, {"duration": 6, "successors": [22, 28], "deadline": [30, 2, 2]}, {"duration": 6, "successors": [9, 12, 25], "deadline": [7, 4, 0]}, {"duration": 9, "successors": [4, 5, 6], "deadline": [0, 5, 2]}, {"duration": 1, "successors": [17, 19, 23], "deadline": [17, 0, 2]}, {"duration": 5, "successors": [10, 13, 22], "deadline": [16, 1, 5]}, {"duration": 10, "successors": [7, 8, 16], "deadline": [18, 0, 0]}, {"duration": 2, "successors": [11, 19], "deadline": [24, 5, 2]}, {"duration": 6, "successors": [15], "deadline": [21, 2, 0]}, {"duration": 7, "successors": [11, 14, 16], "deadline": [8, 2, 2]}, {"duration": 1, "successors": [14], "deadline": [16, 1, 1]}, {"duration": 6, "successors": [20], "deadline": [30, 1, 0]}, {"duration": 1, "successors": [21], "deadline": [15, 3, 3]}, {"duration": 10, "successors": [18, 26], "deadline": [16, 5, 5]}, {"duration": 8, "successors": [18, 19], "deadline": [18, 1, 4]}, {"duration": 5, "successors": [20, 24], "deadline": [32, 5, 2]}, {"duration": 7, "successors": [20, 26], "deadline": [30, 4, 1]}, {"duration": 9, "successors": [18], "deadline": [21, 5, 5]}, {"duration": 5, "successors": [21, 27, 30], "deadline": [32, 3, 0]}, {"duration": 10, "successors": [27, 29], "deadline": [30, 4, 2]}, {"duration": 3, "successors": [21, 22, 27], "deadline": [32, 3, 4]}, {"duration": 5, "successors": [29], "deadline": [41, 2, 2]}, {"duration": 2, "successors": [30], "deadline": [41, 4, 3]}, {"duration": 4, "successors": [25], "deadline": [28, 2, 0]}, {"duration": 8, "successors": [25, 26, 29], "deadline": [30, 4, 5]}, {"duration": 2, "successors": [30], "deadline": [44, 2, 1]}, {"duration": 2, "successors": [28], "deadline": [49, 5, 4]}, {"duration": 6, "successors": [28], "deadline": [43, 5, 1]}, {"duration": 2, "successors": [31], "deadline": [51, 5, 3]}, {"duration": 10, "successors": [31], "deadline": [44, 1, 3]}, {"duration": 9, "successors": [31], "deadline": [50, 0, 4]}, {"duration": 0, "successors": [], "deadline": [58, 5, 4]}], "horizon": 59}
+{
+  "resources": [
+    {"requirements": [0, 10, 9, 1, 1, 0, 0, 3, 2, 3, 0, 4, 8, 0, 6, 0, 3, 7, 2, 2, 0, 1, 7, 0, 0, 1, 6, 10, 0, 6, 0, 0], "capacity": 19},
+    {"requirements": [0, 10, 3, 0, 0, 9, 9, 5, 0, 5, 4, 4, 3, 3, 10, 9, 0, 6, 3, 3, 8, 1, 6, 8, 4, 0, 0, 8, 7, 8, 4, 0], "capacity": 29},
+    {"requirements": [0, 4, 0, 2, 8, 5, 6, 2, 4, 0, 8, 4, 5, 9, 0, 10, 3, 7, 2, 4, 0, 5, 7, 5, 6, 7, 7, 10, 4, 1, 0, 0], "capacity": 24},
+    {"requirements": [0, 0, 0, 2, 6, 4, 0, 0, 10, 2, 0, 8, 5, 9, 4, 0, 0, 0, 8, 7, 3, 3, 8, 8, 4, 3, 4, 1, 3, 6, 2, 0], "capacity": 27}
+  ],
+  "tasks": [
+    {"duration": 0, "successors": [1, 2, 3], "deadline": [1, 5, 4]},
+    {"duration": 6, "successors": [22, 28], "deadline": [30, 2, 2]},
+    {"duration": 6, "successors": [9, 12, 25], "deadline": [7, 4, 0]},
+    {"duration": 9, "successors": [4, 5, 6], "deadline": [0, 5, 2]},
+    {"duration": 1, "successors": [17, 19, 23], "deadline": [17, 0, 2]},
+    {"duration": 5, "successors": [10, 13, 22], "deadline": [16, 1, 5]},
+    {"duration": 10, "successors": [7, 8, 16], "deadline": [18, 0, 0]},
+    {"duration": 2, "successors": [11, 19], "deadline": [24, 5, 2]},
+    {"duration": 6, "successors": [15], "deadline": [21, 2, 0]},
+    {"duration": 7, "successors": [11, 14, 16], "deadline": [8, 2, 2]},
+    {"duration": 1, "successors": [14], "deadline": [16, 1, 1]},
+    {"duration": 6, "successors": [20], "deadline": [30, 1, 0]},
+    {"duration": 1, "successors": [21], "deadline": [15, 3, 3]},
+    {"duration": 10, "successors": [18, 26], "deadline": [16, 5, 5]},
+    {"duration": 8, "successors": [18, 19], "deadline": [18, 1, 4]},
+    {"duration": 5, "successors": [20, 24], "deadline": [32, 5, 2]},
+    {"duration": 7, "successors": [20, 26], "deadline": [30, 4, 1]},
+    {"duration": 9, "successors": [18], "deadline": [21, 5, 5]},
+    {"duration": 5, "successors": [21, 27, 30], "deadline": [32, 3, 0]},
+    {"duration": 10, "successors": [27, 29], "deadline": [30, 4, 2]},
+    {"duration": 3, "successors": [21, 22, 27], "deadline": [32, 3, 4]},
+    {"duration": 5, "successors": [29], "deadline": [41, 2, 2]},
+    {"duration": 2, "successors": [30], "deadline": [41, 4, 3]},
+    {"duration": 4, "successors": [25], "deadline": [28, 2, 0]},
+    {"duration": 8, "successors": [25, 26, 29], "deadline": [30, 4, 5]},
+    {"duration": 2, "successors": [30], "deadline": [44, 2, 1]},
+    {"duration": 2, "successors": [28], "deadline": [49, 5, 4]},
+    {"duration": 6, "successors": [28], "deadline": [43, 5, 1]},
+    {"duration": 2, "successors": [31], "deadline": [51, 5, 3]},
+    {"duration": 10, "successors": [31], "deadline": [44, 1, 3]},
+    {"duration": 9, "successors": [31], "deadline": [50, 0, 4]},
+    {"duration": 0, "successors": [], "deadline": [58, 5, 4]}
+  ],
+  "horizon": 59
+}

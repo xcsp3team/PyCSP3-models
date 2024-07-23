@@ -17,7 +17,7 @@ This model has been co-developed by teams of ONERA and CRIL.
 
 ## Execution
   python AircraftAssemblyLine.py -data=<datafile.json>
-  python AircraftAssemblyLine.py -data=<xcsp23/datafile.json> -dataParser=AircraftAssemblyLine_Converter.py
+  python AircraftAssemblyLine.py -data=<xcsp23/datafile.json> -parser=AircraftAssemblyLine_Converter.py
 
 ## Links
   - https://drops.dagstuhl.de/opus/frontdoor.php?source_opus=19069
