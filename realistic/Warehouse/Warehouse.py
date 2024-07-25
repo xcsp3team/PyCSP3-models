@@ -66,9 +66,9 @@ elif variant("compact"):
     )
 
 """ Comments
-1) when compiling the 'compact' variant, some auxiliary variables are automatically introduced
+1) When compiling the 'compact' variant, some auxiliary variables are automatically introduced
    in order to remain in the perimeter of XCSP3-core   
-2) it is possible to replace the first group of constraints Count by:
+2) It is possible to replace the first group of constraints Count by:
       Cardinality(w, occurrences={j: range(capacities[j]+1) for j in range(nWarehouses)})
     or
       BinPacking(w, sizes=1, limits=capacities)

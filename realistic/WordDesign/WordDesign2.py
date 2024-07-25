@@ -49,9 +49,10 @@ satisfy(
     [x[i] + x[j] in M for i, j in combinations(n, 2)]
 )
 
-# Note that:
+""" Comments
+1) For computing the Watson-Crick complement of words, we could have written:
+    [(x[i][k], y[i][k]) in {(0, 3), (1, 2), (2, 1), (3, 0)} for i in range(n) for k in range(8)],
 
-# a) for computing the Watson-Crick complement of words, we could have written:
-#    [(x[i][k], y[i][k]) in {(0, 3), (1, 2), (2, 1), (3, 0)} for i in range(n) for k in range(8)],
-# b) is-it possible to reasoning with Cardinality constraints?
-#    something like [Cardinality(x[:,k], occurrences={v:range(n//4 +3) for v in range(4)}) for k in range(8)],
+2) Is-it possible to reasoning with Cardinality constraints?
+   something like [Cardinality(x[:,k], occurrences={v:range(n//4 +3) for v in range(4)}) for k in range(8)],
+"""

@@ -35,10 +35,10 @@ u = VarArray(size=n, dom=lambda i: {0} if i == 0 else range(capacity + 1))
 
 satisfy(
     # exactly one incoming arc for each node j other than the depot
-    [Count(x[:, j], value=1) == 1 for j in range(1, n)],
+    [ExactlyOne(x[:, j]) for j in range(1, n)],
 
     # exactly one outgoing arc for each node i other than the depot
-    [Count(x[i], value=1) == 1 for i in range(1, n)],
+    [ExactlyOne(x[i]) for i in range(1, n)],
 
     # no more than 'k' vehicles leaving the depot
     Sum(x[:, 0]) <= k,
@@ -47,7 +47,13 @@ satisfy(
     Sum(x[0]) <= k,
 
     # Miller-Tucker-Zemlin subtour elimination
-    [Sum(u[i], -u[j], capacity * x[i][j]) <= capacity - demands[j] for i in range(1, n) for j in range(1, n) if i != j],
+    [
+        Sum(
+            u[i],
+            -u[j],
+            capacity * x[i][j]
+        ) <= capacity - demands[j] for i in range(1, n) for j in range(1, n) if i != j
+    ],
 
     # satisfying demand at each node
     [u[i] >= demands[i] for i in range(1, n)]
@@ -57,10 +63,14 @@ minimize(
     x * distances
 )
 
-"""
+""" Comments
 1) Compared to the minizinc model, we avoid handling the trivial cases of x[i][i]
 2) Note that:
   Sum(u[i], -u[j], capacity * x[i][j])
 is equivalent to:
   [u[i], u[j], x[i][j]] * [1, -1, capacity] 
+3) Note that:
+ ExactlyOne(x[:, j]) 
+  is equivalent to:
+ Count(x[:, j], value=1) == 1
 """

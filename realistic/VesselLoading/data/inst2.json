@@ -14,8 +14,6 @@
     {"width": 4, "height": 6, "type": 2}
   ],
   "separations": [
-    {
-      "type1": 1, "type2": 2, "distance": 2
-    }
+    {"type1": 1, "type2": 2, "distance": 2}
   ]
 }

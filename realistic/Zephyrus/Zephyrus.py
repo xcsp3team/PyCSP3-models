@@ -146,18 +146,18 @@ minimize(
     z * costs
 )
 
-"""
-1) note that:
+""" Comments
+1) Note that:
    [bindings[m, :, i, :] == 0 for m in MP for i in C if providing[i][m] == 0],
  is shorter to write than:
    [bindings[m, p, i, j] == 0 for m in MP for i in C if providing[i][m] == 0 for p in P for j in C],
 
-2) we must try if there is a difference in term of efficiency when combining 
+2) We must try if there is a difference in term of efficiency when combining 
     [(comps_num[i] < max_req[m][i]) | (Sum(bindings[m, :, i, i]) <= max_req[m][i] * comps_num[i] - max_req[m][i]) for m in MP for i in
      C if max_req[m][i] != 0],
 
     [Sum(bindings[m, :, i, i]) == 0 for m in MP for i in C if max_req[m][i] == 0],
 as in the original model
 
-3) in 2015, instances were given in flat format
+3) In 2015, instances were given in flat format
 """

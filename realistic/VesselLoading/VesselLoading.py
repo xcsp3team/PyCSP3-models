@@ -52,7 +52,12 @@ satisfy(
     [y[i] + h[i] <= deckHeight for i in range(nContainers)],
 
     # managing rotation
-    [(r[i], w[i], h[i]) in {(0, width, height), (1, height, width)} for i, (width, height, _) in enumerate(containers)],
+    [
+        (r[i], w[i], h[i]) in {
+            (0, width, height),
+            (1, height, width)
+        } for i, (width, height, _) in enumerate(containers)
+    ],
 
     # no overlapping between containers
     NoOverlap(
@@ -61,5 +66,17 @@ satisfy(
     ),
 
     # respecting separations between containers according to their types
-    [(x[i] + w[i] + sep <= x[j]) | (x[j] + w[j] + sep <= x[i]) | (y[i] + h[i] + sep <= y[j]) | (y[j] + h[j] + sep <= y[i]) for (i, j, sep) in sep_pairs()]
+    [
+        AtLeastOne(
+            x[i] + w[i] + sep <= x[j],
+            x[j] + w[j] + sep <= x[i],
+            y[i] + h[i] + sep <= y[j],
+            y[j] + h[j] + sep <= y[i]
+        ) for (i, j, sep) in sep_pairs()
+    ]
 )
+
+""" Comments
+1) is AtleastOne/Exist preferable to disjunction?
+
+"""

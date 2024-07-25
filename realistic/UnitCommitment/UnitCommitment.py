@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Execution
   python UnitCommitment.py -data=sm-10-13-00.json
-  python UnitCommitment.py -data=sm-10-13-00.dzn -dataparser=UnitCommitment_ParserZ.py
+  python UnitCommitment.py -data=sm-10-13-00.dzn -parser=UnitCommitment_ParserZ.py
 
 ## Links
   - https://www.minizinc.org/challenge2023/results2023.html
@@ -94,8 +94,8 @@ minimize(
     Sum(shed_cost[j] * Sum(ll[j]) for j in range(nLoads))
 )
 
-"""
- 1) domains are very large if we define domains with maxg and post:
+""" Comments
+1) Domains are very large if we define domains with maxg and post:
      # Loss of load max
     [ll[j][t] <= demand[j][t] for j in range(nLoads) for t in range(horizon)],
 """

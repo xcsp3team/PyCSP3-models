@@ -11,7 +11,7 @@ Compared to the Minizinc model, we do not use set variables.
 
 ## Execution
   python Vaccine.py -data=sm-10-13-00.json
-  python Vaccine.py -data=sm-10-13-00.dzn -dataparser=Vaccine_ParserZ.py
+  python Vaccine.py -data=sm-10-13-00.dzn -parser=Vaccine_ParserZ.py
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html
@@ -56,33 +56,52 @@ satisfy(
     ],
 
     # computing the total number of vaccinated persons
-    [y[v] == Sum(x[g][v] * (sizes[g] // (1 + Sum(x[g][j] for j in range(nVaccines) if j != v))) for g in range(nGroups)) for v in range(nVaccines)],
+    [
+        y[v] == Sum(
+            x[g][v] * (sizes[g] // (1 + Sum(x[g][j] for j in range(nVaccines) if j != v))) for g in range(nGroups)
+        ) for v in range(nVaccines)
+    ],
 
     # ensuring no too large difference between sizes of persons with different vaccines
     [abs(y[v1] - y[v2]) <= max_diff for v1, v2 in combinations(nVaccines, 2)],
 
     # computing numbers of vaccinated groups wrt gender
-    [ng[k][j] == Sum(x[i][j] for i in range(nGroups) if genders[i] == k) for k in range(nGenders) for j in range(nVaccines)],
+    [
+        ng[k][j] == Sum(
+            x[i][j] for i in range(nGroups) if genders[i] == k
+        ) for k in range(nGenders) for j in range(nVaccines)
+    ],
 
     # imposing balance between numbers of vaccinated groups wrt gender
     [ng[k][j1] == ng[k][j2] for k in range(nGenders) for j1, j2 in combinations(nVaccines, 2)],
 
     # imposing limits on common vaccines
-    [Sum(both(x[i1][j] == x[i2][j], x[i1][j]) for j in range(nVaccines)) <= max_share for i1, i2 in combinations(nGroups, 2)],
+    [
+        Sum(
+            both(
+                x[i1][j] == x[i2][j],
+                x[i1][j]
+            ) for j in range(nVaccines)
+        ) <= max_share for i1, i2 in combinations(nGroups, 2)
+    ],
 
     # computing costs (information) of vaccines
-    [z[j] == Sum(x[i][j] * ift(Exist(x[ii][j] for ii in similar_groups[i]), Then=1, Else=infos[i]) for i in range(nGroups)) for j in range(nVaccines)],
+    [
+        z[j] == Sum(
+            x[i][j] * ift(Exist(x[ii][j] for ii in similar_groups[i]), Then=1, Else=infos[i]) for i in range(nGroups)
+        ) for j in range(nVaccines)
+    ],
 
     # tag(symmetry-breaking)
-    [LexIncreasing(x[:, j], x[:, j + 1]) for j in range(nVaccines - 1)]
+    [x[:, j] <= x[:, j + 1] for j in range(nVaccines - 1)]
 )
 
 maximize(
     Minimum(z)
 )
 
-"""
-1) solution for 857:
+""" Comments
+1) Solution for 857:
   x == [[0, 0, 0, 0, 1, 1], [0, 0, 1, 1, 1, 1], [1, 1, 0, 0, 1, 1], [1, 1, 0, 0, 1, 1], [1, 1, 0, 0, 0, 0], [1, 1, 1, 1, 0, 0], [1, 1, 1, 1, 1, 1],
        [1, 1, 1, 1, 0, 0], [1, 1, 0, 0, 1, 1], [1, 1, 0, 0, 1, 1], [0, 0, 1, 1, 0, 0], [0, 0, 1, 1, 1, 1], [0, 0, 1, 1, 1, 1], [1, 1, 1, 1, 0, 0],
        [1, 1, 1, 1, 0, 0], [0, 0, 1, 1, 1, 1]],

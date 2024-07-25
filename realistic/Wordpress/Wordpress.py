@@ -10,7 +10,7 @@ The MZN model was proposed by Bogdan David, under the MIT Licence.
 
 ## Execution
   python Wordpress.py -data=sm-10-13-00.json
-  python Wordpress.py -data=sm-10-13-00.dzn -dataparser=Wordpress_ParserZ.py
+  python Wordpress.py -data=sm-10-13-00.dzn -parser=Wordpress_ParserZ.py
 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S2352220821000274
@@ -21,8 +21,6 @@ The MZN model was proposed by Bogdan David, under the MIT Licence.
 """
 
 from pycsp3 import *
-
-print(data)
 
 lbWP, nVMs, requirements, types, prices = data  # requirements per components, type and price of possible VMs
 nComponents, nFeatures = 5, len(requirements[0])  # features are hardware settings (CPU, Memory, Storage)
@@ -90,10 +88,10 @@ minimize(
 )
 
 """ Comments
-1) the array oc is useful only if we post:
+1) The array oc is useful only if we post:
      Decreasing(oc)
    to avoid symmetries
-2) when computing prices of chosen VMS, the array oc is useless because of the dummy VM (with price 0)
+2) When computing prices of chosen VMS, the array oc is useless because of the dummy VM (with price 0)
 3) [Sum(x[i]) >= 1 for i in (WP, SQL, VS)], 
    is useless as subsumed by constraints in the first posted group
 """

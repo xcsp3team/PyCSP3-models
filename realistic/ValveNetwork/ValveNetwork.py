@@ -101,25 +101,19 @@ maximize(
     Sum(cf)
 )
 
-# # test
-# [op[i][t] == (cp_array((ac[t][ME], x[t][ME])) == (OPEN, i)) | ((ac[t][ELEPHANT] == OPEN) & (x[t][ELEPHANT] == i)) | op[i][t - 1]
-#  for t in range(1, nSteps) for i in Nodes],
-
-#     [imply(i not in x[1], op[i][1] == op[i][0]) for i in Nodes],
-
 """ Comments
-1) the form of the posted group above for computing open nodes is simpler than:
+1) The form of the posted group above for computing open nodes is simpler than:
   [op[i][t] == ift(((ac[t][Me] == Open) & (x[t][Me] == i)) | ((ac[t][Elephant] == Open) & (x[t][Elephant] == i)), 1, op[i][t - 1])
       for t in range(1, nSteps) for i in Nodes],
-2) note that:
+2) Note that:
     position[t][j] in connections[position[t - 1][j]]
   is equivalent to:
     (position[t - 1][j], position[t][j]) in sorted([(i, v) for i, t in enumerate(connections) for v in t])
-3) note that:
+3) Note that:
     op[x[t][j], t],
   in the Then part is equivalent to:
     op[x[t][j], t] == 1,
-4) note that:
+4) Note that:
     [belong(i, x[t]) | (op[i][t] == op[i][t - 1]) for i in Nodes],
   is equivalent to:    
     [imply((i != x[t][ME]) & (i != x[t][ELEPHANT]), op[i][t] == op[i][t - 1]) for i in Nodes],
@@ -127,3 +121,9 @@ maximize(
      [imply(not_belong(i, x[t]), op[i][t] == op[i][t - 1]) for i in Nodes]
 5) data for challenge 2023 are: 6, 12, 19, 20, 28
 """
+
+# # test
+# [op[i][t] == (cp_array((ac[t][ME], x[t][ME])) == (OPEN, i)) | ((ac[t][ELEPHANT] == OPEN) & (x[t][ELEPHANT] == i)) | op[i][t - 1]
+#  for t in range(1, nSteps) for i in Nodes],
+
+#     [imply(i not in x[1], op[i][1] == op[i][0]) for i in Nodes],

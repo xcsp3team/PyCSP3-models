@@ -1,1 +1,12 @@
-{"products": [{"size": 2, "number": 12}, {"size": 3, "number": 8}, {"size": 7, "number": 11}, {"size": 8, "number": 30}, {"size": 12, "number": 2}], "stackLimit": 2, "stockSize": 25, "k": 4}
+{
+  "products": [
+    {"size": 2, "number": 12},
+    {"size": 3, "number": 8},
+    {"size": 7, "number": 11},
+    {"size": 8, "number": 30},
+    {"size": 12, "number": 2}
+  ],
+  "stackLimit": 2,
+  "stockSize": 25,
+  "k": 4
+}
