@@ -50,7 +50,13 @@ wp = VarArray(size=nTeams, dom=range(1, nTeams + 1))
 
 satisfy(
     # assigning rights points for each game
-    [(points[j][0], points[j][1]) in {(0, 3), (1, 1), (3, 0)} for j in range(nGames)],
+    [
+        (points[j][0], points[j][1]) in {
+            (0, 3),
+            (1, 1),
+            (3, 0)
+        } for j in range(nGames)
+    ],
 
     # computing final points
     [score[i] - Sum(points[j][0 if i == games[j][0] else 1] for j in range(nGames) if i in games[j]) == iPoints[i] for i in range(nTeams)],
@@ -83,7 +89,7 @@ satisfy(
 )
 
 """ Comments
-1) we can now write iPoints[i] + Sum(...) but it introduces auxiliary variables 
+1) We can now write iPoints[i] + Sum(...) but it introduces auxiliary variables 
  [iPoints[i] + Sum(points[j][0] if i == games[j][0] else points[j][1] for j in range(numberOfGames) if i in games[j]) == score[i] for i in range(n)]
 2) Warning: length(games) in Minizinc returns the number of elements in the array and not the number of rows.
 """

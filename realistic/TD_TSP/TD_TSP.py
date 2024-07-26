@@ -63,7 +63,7 @@ satisfy(
 
     # taking into account travel time constraints
     [
-        [at[i] >= at[j] + durations[j] + times[:, i, :][j][at[j] // granularity] for i in range(1, nVisits + 1) if (j := prv[i])],
+        [at[i] >= at[j] + durations[j] + times[:, i, :][j][at[j] // granularity] for i in range(1, nVisits + 1) if (j := prv[i],)],
         [at[nxt[i]] >= at[i] + durations[i] + times[i][nxt[i]][at[i] // granularity] for i in range(nVisits)]
     ],
 
@@ -92,6 +92,6 @@ minimize(
     at[-1]
 )
 
-"""
-1) note that constraints about prec and forbid are not posted because there are not present in the data (2015 and 2017)
+""" Comments
+1) Note that constraints about prec and forbid are not posted because there are not present in the data (2015 and 2017)
 """

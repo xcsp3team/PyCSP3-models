@@ -3,7 +3,7 @@ Problem 038 on CSPLib.
 
 Steel is produced by casting molten iron into slabs.
 
-## Data
+## Data Example
   bench-2-0.json
 
 ## Model
@@ -41,13 +41,17 @@ ls = VarArray(size=nSlabs, dom=possibleLosses)
 if not variant():
     satisfy(
         # computing (and checking) the load of each slab
-        [[sb[i] == j for i in range(nOrders)] * sizes == ld[j] for j in range(nSlabs)],
+        [ld[j] == sizes * [sb[i] == j for i in range(nOrders)] for j in range(nSlabs)],
 
         # computing the loss of each slab
         [(ld[j], ls[j]) in enumerate(possibleLosses) for j in range(nSlabs)],
 
         # no more than two colors for each slab
-        [Sum(disjunction(sb[i] == j for i in g) for g in colorGroups) <= 2 for j in range(nSlabs)]
+        [
+            Sum(
+                disjunction(sb[i] == j for i in g) for g in colorGroups
+            ) <= 2 for j in range(nSlabs)
+        ]
     )
 
 elif variant("01"):
@@ -59,18 +63,18 @@ elif variant("01"):
 
     satisfy(
         # linking variables sb and y
-        [iff(sb[i] == j, y[j][i]) for j in range(nSlabs) for i in range(nOrders)],
+        [y[j][i] == (sb[i] == j) for j in range(nSlabs) for i in range(nOrders)],
 
         # linking variables sb and z
         [
             If(
                 sb[i] == j,
-                Then=z[j][allColors.index(orders[i].color)]
-            ) for j in range(nSlabs) for i in range(nOrders)
+                Then=z[j][c]
+            ) for j in range(nSlabs) for i in range(nOrders) if (c := allColors.index(orders[i].color),)
         ],
 
         # computing (and checking) the load of each slab
-        [y[j] * sizes == ld[j] for j in range(nSlabs)],
+        [ld[j] == y[j] * sizes for j in range(nSlabs)],
 
         # computing the loss of each slab
         [(ld[j], ls[j]) in enumerate(possibleLosses) for j in range(nSlabs)],
@@ -97,6 +101,6 @@ minimize(
 )
 
 """ Comments
-1) for computing (and checking) the load of each slab
+1) For computing (and checking) the load of each slab
    the reverse side ? eq(z[s]{c] = 1 => or(...) is not really necessary but could it be helpful?
 """

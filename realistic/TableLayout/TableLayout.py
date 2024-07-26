@@ -29,11 +29,9 @@ from pycsp3 import *
 
 pixelWidth, nConfigurations, n, m, widths, heights = data
 
-minWidth, maxWidth = max(0, min(flatten(widths))), max(flatten(widths))
-minHeight, maxHeight = max(0, min(flatten(heights))), max(flatten(heights))
-
-rangeWidth, rangeHeight = range(minWidth, maxWidth + 1), range(minHeight, maxHeight + 1)
-indexes = [(i, j) for i in range(n) for j in range(m)]
+W, H = flatten(widths), flatten(heights)
+rangeWidth, rangeHeight = range(max(0, min(W)), max(W) + 1), range(max(0, min(H)), max(H) + 1)
+Cells = [(i, j) for i in range(n) for j in range(m)]
 
 # x[i][j] is the configuration used for the pixel at coordinates (i,j)
 x = VarArray(size=[n, m], dom=range(nConfigurations))
@@ -44,26 +42,26 @@ cw = VarArray(size=[n, m], dom=rangeWidth)
 # ch[i,j] is the height of cell at i,j
 ch = VarArray(size=[n, m], dom=rangeHeight)
 
-# h[i] is the height of row i
-h = VarArray(size=n, dom=rangeHeight)
-
 # w[j] is the width of column j
 w = VarArray(size=m, dom=rangeWidth)
+
+# h[i] is the height of row i
+h = VarArray(size=n, dom=rangeHeight)
 
 satisfy(
     pixelWidth >= Sum(w),
 
     # ensuring that the heights of rows are sufficiently large
-    [h[i] >= ch[i][j] for i, j in indexes],
+    [h[i] >= ch[i][j] for i, j in Cells],
 
     # ensuring that the widths of columns are sufficiently large
-    [w[j] >= cw[i][j] for i, j in indexes],
+    [w[j] >= cw[i][j] for i, j in Cells],
 
     # computing the widths of cells
-    [cw[i][j] == widths[i][j][x[i][j]] for i, j in indexes],
+    [cw[i][j] == widths[i][j][x[i][j]] for i, j in Cells],
 
     # computing the heights of cells
-    [ch[i][j] == heights[i][j][x[i][j]] for i, j in indexes]
+    [ch[i][j] == heights[i][j][x[i][j]] for i, j in Cells]
 )
 
 minimize(

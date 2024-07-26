@@ -90,6 +90,6 @@ satisfy(
 )
 
 """ Comments
-1) it is better to precisely define initial domains (rather than posting unary constraints)
-so as to let informed the global constraints NoOverlap (and Cumulative)
+1) It is better to precisely define initial domains (rather than posting unary constraints)
+   so as to let informed the global constraints NoOverlap (and Cumulative)
 """

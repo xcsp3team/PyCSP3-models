@@ -45,10 +45,18 @@ dur = VarArray(size=nProducts, dom=range(nProducts + 1))
 
 satisfy(
     # computing first used cutting pieces
-    [fst[j] == Minimum((i + 1) + nProducts * (1 - (x[i][j] > 0)) for i in range(nCuts)) for j in range(nProducts)],
+    [
+        fst[j] == Minimum(
+            (i + 1) + nProducts * (1 - (x[i][j] > 0)) for i in range(nCuts)
+        ) for j in range(nProducts)
+    ],
 
     # computing last used cutting pieces
-    [lst[j] == Maximum((x[i][j] > 0) * (i + 1) for i in range(nCuts)) for j in range(nProducts)],
+    [
+        lst[j] == Maximum(
+            (x[i][j] > 0) * (i + 1) for i in range(nCuts)
+        ) for j in range(nProducts)
+    ],
 
     # computing durations for each product
     [dur[j] == lst[j] - fst[j] for j in range(nProducts)],
@@ -60,7 +68,11 @@ satisfy(
     [x[i] * sizes <= stockPieceSize for i in range(nCuts)],
 
     # respecting the maximum number of open stacks
-    Cumulative(origins=fst, lengths=dur, heights=1) <= stackLimit,
+    Cumulative(
+        origins=fst,
+        lengths=dur,
+        heights=1
+    ) <= stackLimit,
 
     # symmetry elimination: unused cuts are at the beginning
     (
@@ -76,8 +88,8 @@ minimize(
     Sum(z)
 )
 
-"""
-1) compared to the MZN model, we don't use the array patterns:
+""" Comments
+1) Compared to the MZN model, we don't use the array patterns:
    patterns = Var(range(nCuts + 1))
    patterns == Sum(used)
 """

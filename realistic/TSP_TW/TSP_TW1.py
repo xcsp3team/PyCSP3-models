@@ -3,7 +3,7 @@ The Traveling Salesman Problem with Time Windows (TSPTW) is a popular variant of
 must be visited within given time windows.
 See IJCAI paper below.
 
-## Data (example)
+## Data Example
   n020w020-1.json
 
 ## Model

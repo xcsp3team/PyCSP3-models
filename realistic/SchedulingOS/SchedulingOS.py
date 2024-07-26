@@ -1,6 +1,6 @@
 """
 
-## Data
+## Data Example
   GP-os-01.json
 
 ## Model
@@ -47,7 +47,12 @@ satisfy(
     [sd[i][mc[i][j]] == s[i][j] for j in range(m) for i in range(n)],
 
     # no overlap on resources
-    [NoOverlap(origins=sd[:, j], lengths=durations[:, j]) for j in range(m)],
+    [
+        NoOverlap(
+            origins=sd[:, j],
+            lengths=durations[:, j]
+        ) for j in range(m)
+    ],
 
     # tag(redundant-constraints)
     [s[i][-1] + d[i][-1] >= sum(durations[i]) for i in range(n)]

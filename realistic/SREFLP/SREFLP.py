@@ -4,7 +4,7 @@ with given lengths and pairwise traffic intensities.
 Its goal is to find a linear ordering of the departments minimizing the weighted sum of the distances between department pairs.
 See CP paper below.
 
-## Data (example)
+## Data Example
   Cl07.json
 
 ## Model
@@ -46,7 +46,11 @@ satisfy(
     AllDifferent(x),
 
     # computing lengths
-    [(x[i], y[i]) in [(j, lengths[j]) for j in range(n)] for i in range(n)],
+    [
+        (x[i], y[i]) in [
+            (j, lengths[j]) for j in range(n)
+        ] for i in range(n)
+    ],
 
     # computing distances
     [d[i][j] == Sum(y[i + 1:j]) for i, j in pairs]
@@ -76,7 +80,7 @@ elif variant("mini"):
         Sum(w)
     )
 
-"""
-1) an alternative for computing distance is:
+""" Comments
+1) An alternative for computing distance is:
  [d[i][j] == (y[i + 1] if i + 2 == j else (y[i + 1] + y[i + 2]) if i + 3 == j else (d[i][j - 1] + y[j - 1])) for i, j in pairs]
 """

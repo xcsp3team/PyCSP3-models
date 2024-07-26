@@ -128,7 +128,7 @@ minimize(
     weights * y
 )
 
-"""
+"""  Comments
 1) It is better to write Sum(x) - Sum(y) == 1 than Sum(x) == Sum(y) + 1 because it avoids the introduction of auxiliary variables
-In the future, we may avoid that (when compiling).
+   In the future, we may avoid that (when compiling).
 """

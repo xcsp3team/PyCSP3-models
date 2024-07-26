@@ -72,7 +72,7 @@ maximize(
     Sum(quality)
 )
 
-"""
+""" Comments
 1) For the moment, we cannot write:
     [[pr[t] >= min_transmit_power(t, h) for t in range(nTowers)][tr[h]] == 1 for h in range(nHandsets)],
    It needs to redefine __get_item__ on list? is-it worthwhile?
@@ -80,8 +80,8 @@ maximize(
 
 2) valh Occs is very efficient
 
-3) with rank=ANY, we got better solutions (because this is less constraining)
-   For example, python Tower.py -data=tower_070_070_15_070-09.dzn -dataparser=Tower_ParserZ.py
+3) With rank=ANY, we got better solutions (because this is less constraining)
+   For example, python Tower.py -data=tower_070_070_15_070-09.dzn -parser=Tower_ParserZ.py
    generates an instance where java ace Tower-tower_070_070_15_070-09.xml -valh=Occs has a greater bound than the MZN optimum
    
 4) For the group 'minimum signal strength', two alternatives are:

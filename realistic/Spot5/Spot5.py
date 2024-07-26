@@ -62,6 +62,6 @@ elif variant("mini"):
         y * costs
     )
 
-"""
-1) structuring data in the associated parser makes the generation far more speeder
+""" Comments
+1) Structuring data in the associated parser makes the generation far more speeder
 """

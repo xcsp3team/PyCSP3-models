@@ -73,6 +73,6 @@ minimize(
     weights * z
 )
 
-"""
-1) note that data have been converted to JSON, because the model/instances were half flat
+""" Comments
+1) Note that data have been converted to JSON, because the original model/instances were half flat
 """

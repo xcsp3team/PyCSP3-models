@@ -54,7 +54,7 @@ minimize(
     Sum(x)
 )
 
-"""
+""" Comments
 1) Note that
   [x[:, j] in T for j in connections],
  is a shortcut for; 

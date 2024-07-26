@@ -117,7 +117,7 @@ minimize(
     Sum(t)
 )
 
-"""
+""" Comments
 1) Note how the Match structure is equivalent to:
   (
         If(h[i][k] == 1, h[i][k + 1] == 1, Then=t[i][k + 1] == 0),
@@ -125,6 +125,4 @@ minimize(
         If(h[i][k] == 1, h[i][k + 1] != 1, Then=t[i][k + 1] == distances[i][o[i][k + 1]]),
         If(h[i][k] != 1, h[i][k + 1] != 1, Then=t[i][k + 1] == distances[o[i][k]][o[i][k + 1]])
     ) for i in range(nTeams) for k in range(nRounds - 1)
-
-
 """

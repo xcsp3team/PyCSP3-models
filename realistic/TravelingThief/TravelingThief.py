@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Execution
   python TravelingThief.py -data=sm-10-13-00.json
-  python TravelingThief.py -data=sm-10-13-00.dzn -dataparser=TravelingThief_ParserZ.py
+  python TravelingThief.py -data=sm-10-13-00.dzn -parser=TravelingThief_ParserZ.py
 
 ## Links
   - https://sites.google.com/view/ttp-gecco2023/home
@@ -78,9 +78,9 @@ maximize(
     renting_ratio * Sum(distances[y[t]][y[t + 1]] // vel[t] for t in range(nCities))
 )
 
-"""
+""" Comments
 1) distances[y[t]][y[t + 1]]
  is a shortcut for 
- distances[y[t]][y[(t + 1) % nCities]]
- as by default, there is auto-adjustment of array idnexing
+   distances[y[t]][y[(t + 1) % nCities]]
+ as by default, there is auto-adjustment of array indexing
 """

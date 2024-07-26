@@ -1,6 +1,6 @@
 """
 
-## Data
+## Data Example
   Sadeh-js-e0ddr1-0.json
 
 ## Model
@@ -50,6 +50,6 @@ minimize(
 )
 
 """ Comments
-1) the group of overlap constraints could be equivalently written:
+1) The group of overlap constraints could be equivalently written:
  [NoOverlap(origins=[s[i][indexes[i][j]] for i in range(n)], lengths=[durations[i][indexes[i][j]] for i in range(n)]) for j in range(m)]
 """

@@ -63,11 +63,11 @@ minimize(
     (k * nSteps + 1) * (z + 1) + Sum(Hamming(x[t], x[t + 1]) for t in range(nSteps - 1))
 )
 
-"""
+""" Comments
 1) Sum(Hamming(x[t], x[t + 1]) for t in range(nSteps - 1)
-is equivalent to:
- Sum(x[t][i] != x[t + 1][i] for t in range(nSteps - 1) for i in range(n))
-2) with a good assumption, as in:
+ is equivalent to:
+  Sum(x[t][i] != x[t + 1][i] for t in range(nSteps - 1) for i in range(n))
+2) >ith a good assumption, as in:
   java ace TimeChangingGraphColoring-k10_34.xml -ub=434
  the instance is closed in a few seconds
 """

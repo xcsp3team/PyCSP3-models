@@ -108,8 +108,16 @@ satisfy(
 
     # checking that we have enough tugs at any time
     [
-        [Sum(tb[i][t] for i in inShips) <= nTugs for t in range(horizon)] if len(inShips) > 0 else None,
-        [Sum(Sum(tb[i][t]) + tbe[i] * (t == x[i]) for i in outShips) <= nTugs for t in range(horizon)] if len(outShips) > 0 else None
+        [
+            Sum(
+                tb[i][t] for i in inShips
+            ) <= nTugs for t in range(horizon)] if len(inShips) > 0 else None,
+
+        [
+            Sum(
+                Sum(tb[i][t]) + tbe[i] * (t == x[i]) for i in outShips
+            ) <= nTugs for t in range(horizon)
+        ] if len(outShips) > 0 else None
     ],
 
     # adding an extra tug allowance to ensure that incoming tugs have time to move to the next ship
