@@ -158,7 +158,7 @@ def post_redundant_constraints():
 post_redundant_constraints()
 
 """
-1) this solution from MZN (chuffed) for 1479 is ok:
+1) This solution from MZN (chuffed) for 1479 is ok:
    flatten(x) == decrement(
         [1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2,
          4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1,
@@ -167,5 +167,5 @@ post_redundant_constraints()
          1, 1, 1, 1, 1, 4, 4, 2, 2, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 1, 1, 1, 3, 3, 3, 4, 4, 3, 3, 3, 3, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3,
          3, 3, 3, 4, 4, 4, 1, 1, 1, 3, 3, 3, 4, 4, 1, 1, 1, 3, 3, 3, 4, 4, 3, 3, 3, 3, 4, 4, 2, 2, 2, 3, 3, 3, 4, 4, 1, 1, 1, 1, 1, 4, 4, 1, 1, 1,
          1, 2, 2, 4]),
-2) need python 3.9 (for handling the union of dictionaries)
+2) Need python 3.9 (for handling the union of dictionaries)
 """

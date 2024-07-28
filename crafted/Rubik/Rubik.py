@@ -36,7 +36,7 @@ satisfy(
 )
 
 """
-1) ten solutions for 4-cube
-2) one could also write:
+1) Ten solutions for 4-cube
+2) One could also write:
   Clause(x[i] if b else ~x[i] for v in clause if (i := abs(v) - 1, b := v > 0)) for clause in clauses
 """

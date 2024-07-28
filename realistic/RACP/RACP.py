@@ -113,7 +113,7 @@ minimize(
     z
 )
 
-"""
+""" Comments
 1) Note that:
  z == resourceCosts * u
    is equivalent to: 

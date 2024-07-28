@@ -9,8 +9,8 @@ See Problem 069 at CSPLib.
   constraints: Cardinality, Sum
 
 ## Execution
-  - python NursingWorkload.py -data=<datafile.json>
-  - python NursingWorkload.py -data=<datafile.txt> -parser=NursingWorkload_Parser.py
+  python NursingWorkload.py -data=<datafile.json>
+  python NursingWorkload.py -data=<datafile.txt> -parser=NursingWorkload_Parser.py
 
 ## Links
   - https://www.csplib.org/Problems/prob069/
@@ -45,7 +45,11 @@ satisfy(
     [p[i] != p[j] for i, j in combinations(nPatients, 2) if patients[i][0] != patients[j][0]],
 
     # computing the workload of each nurse
-    [w[k] == Sum(c * (p[i] == k) for i, (_, c) in enumerate(patients)) for k in range(nNurses)],
+    [
+        w[k] == Sum(
+            c * (p[i] == k) for i, (_, c) in enumerate(patients)
+        ) for k in range(nNurses)
+    ],
 
     # tag(symmetry-breaking)
     [p[z] == z for z in range(nZones)],

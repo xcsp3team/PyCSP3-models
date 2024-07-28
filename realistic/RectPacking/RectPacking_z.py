@@ -135,11 +135,11 @@ satisfy(
     forbidden_gaps("y", y, h, max_height)
 )
 
-"""
-1) data used in challenges are:
+""" Comments
+1) Data used in challenges are:
   (5,1),(9,0),(12,1),(14,0),(15,1),(19,0),(22,1),(24,0) for 2009
   (18,1), (21,0), (22,0), (23,0), (26,0) for 2014
-2) note that in 2009, the NoOverlap constraints (diffn) were decomposed
-3) note that we need to specify the id of the arrays defined locally to a function.
+2) Note that in 2009, the NoOverlap constraints (diffn) were decomposed
+3) Note that we need to specify the id of the arrays defined locally to a function.
  Otherwise, this would be the same ids.
 """

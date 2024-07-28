@@ -36,13 +36,13 @@ from pycsp3 import *
 
 nMachines, durations = data
 nJobs = len(durations)
-maxDuration = sum(sum(row) for row in durations)
+Time = range(sum(sum(row) for row in durations) + 1)
 
 # x[i][j] is the starting time of the ith job on the jth machine (task)
-x = VarArray(size=[nJobs, nMachines], dom=range(maxDuration + 1))
+x = VarArray(size=[nJobs, nMachines], dom=Time)
 
 # z is the make-span
-z = Var(dom=range(maxDuration + 1))
+z = Var(dom=Time)
 
 satisfy(
     # tasks on the same job cannot overlap
@@ -76,7 +76,9 @@ satisfy(
     ],
 
     # the finishing time must be no earlier than the finishing time of any task
-    [x[i][j] + durations[i][j] <= z for i in range(nJobs) for j in range(nMachines)]
+    [
+        x[i][j] + durations[i][j] <= z for i in range(nJobs) for j in range(nMachines)
+    ]
 )
 
 minimize(

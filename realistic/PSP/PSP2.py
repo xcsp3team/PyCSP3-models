@@ -8,8 +8,8 @@ This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem
   constraints: Count, Element, Sum
 
 ## Execution
-  - python PSP2.py -data=<datafile.json>
-  - python PSP2.py -data=<datafile.txt> -parser=PSP_Parser.py
+  python PSP2.py -data=<datafile.json>
+  python PSP2.py -data=<datafile.txt> -parser=PSP_Parser.py
 
 ## Links
   - https://www.csplib.org/Problems/prob058/
@@ -53,13 +53,16 @@ satisfy(
 )
 
 minimize(
-    Sum(stockingCosts[i] * (Sum(p[i][:t + 1]) - required[i][t]) for i in range(nItems) for t in range(horizon))
+    Sum(
+        stockingCosts[i] * (Sum(p[i][:t + 1]) - required[i][t]) for i in range(nItems) for t in range(horizon)
+    )
     + Sum(z)
 )
 
-"""
-1) we post a subset of constraints about deadlines only when a skip
-2) should we compute Sum(p[i][:t + 1]) - required[i][t] with variables?
+""" Comments
+1) We post a subset of constraints about deadlines only when a skip
+2) Should we compute Sum(p[i][:t + 1]) - required[i][t] with variables?
+3) -rr -ale=5 : interesting to convert into extension (how to decide this?)
 """
 
 # [ift(x[t] != x[t + 1], z[t] == changeCosts[x[t], x[t + 1]], z[t] == 0) for t in range(horizon - 1)],

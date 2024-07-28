@@ -74,12 +74,12 @@ minimize(
 )
 
 """ Comments
-1) the introduced dummy model is not saved when using the option -dataexport because here we don't modify data.rackModels
+1) The introduced dummy model is not saved when using the option -dataexport because here we don't modify data.rackModels
 
-2) one could write (to be ckecked)
+2) One could write (to be ckecked)
  models = [{'power': 0, 'nConnectors': 0, 'price': 0}] + models
 
-3) using zip allows a more compact statement, compared to:
+3) Using zip allows a more compact statement, compared to:
  powers, sizes, costs = [model.power for model in models], [model.nConnectors for model in models], [model.price for model in models]
  cardPowers, cardDemands = [cardType.power for cardType in cardTypes], [cardType.demand for cardType in cardTypes]
 """

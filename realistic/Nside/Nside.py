@@ -75,8 +75,7 @@ satisfy(
     [
         Cumulative(
             tasks=[Task(origin=d[i] + a, length=g[i], height=workers[i][a]) for i in centerWorksheets[c] for a in range(durations[i])]
-        ) <= centerWorkers[c]
-        for c in range(nCenters) if len(centerWorksheets[c]) > 0
+        ) <= centerWorkers[c] for c in range(nCenters) if len(centerWorksheets[c]) > 0
     ]
 )
 
@@ -97,11 +96,11 @@ elif variant('test'):
         g * importance - Maximum(Sum(tmp[k]) for k in D)
     )
 
-"""
-1) this part of the MZn model is not useful : Fits in schedule
+""" Comments
+1) This part of the MZn model is not useful : Fits in schedule
     [e[i] <= nDays  for i in W]
-2) the test variant does not seem efficient
-3) for ACE, -di=0 -valh=Last
+2) The variant 'test' does not seem efficient
+3) For ACE, -di=0 -valh=Last 
 """
 
 # perterb_obj_ub = max(max(row) for row in perterb) * nDays

@@ -54,7 +54,9 @@ satisfy(
     ],
 
     # computing the number of errors
-    z == Sum(sampleOutputs[j] != y[j] for j in range(m))
+    z == Sum(
+        sampleOutputs[j] != y[j] for j in range(m)
+    )
 )
 
 minimize(

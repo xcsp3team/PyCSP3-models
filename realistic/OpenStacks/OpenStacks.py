@@ -6,7 +6,7 @@
 ## Model
   There are two variants of this model.
 
-  constraints: Alldifferent, Maximum, Minimum, Sum, Table
+  constraints: AllDifferent, Maximum, Minimum, Sum, Table
 
 ## Execution
   python OpenStacks.py -data=<datafile.json> -variant=m1
@@ -103,7 +103,7 @@ elif variant("m2"):
     )
 
 """ Comments
-1) to have ordinary tables, we have to use: to_ordinary_table(tab, [v + 1, 2, 2]) and to_ordinary_table(tab, [m, m, 2])
+1) To have ordinary tables, we have to use: to_ordinary_table(tab, [v + 1, 2, 2]) and to_ordinary_table(tab, [m, m, 2])
 
 2) If we want explicitly the number of open stacks at time t, we write instead:
  # ns[t] is the number of open stacks at time t

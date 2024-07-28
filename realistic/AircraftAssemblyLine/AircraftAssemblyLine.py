@@ -81,7 +81,10 @@ satisfy(
     # no overlap (is there a better way to handle that?)
     [
         NoOverlap(
-            tasks=[(x[i], durations[i]), (x[j], durations[j])]
+            tasks=[
+                (x[i], durations[i]),
+                (x[j], durations[j])
+            ]
         ) for i in range(nTasks) for j in range(nTasks) if i != j and len(usedAreas[i].intersection(neutralizedAreas[j])) > 0
     ],
 

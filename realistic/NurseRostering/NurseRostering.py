@@ -8,7 +8,7 @@ Realistic employee shift scheduling Problem.
   constraints: Count, Regular, Sum, Table
 
 ## Execution
-  - python NurseRostering.py -data=<datafile.json>
+  python NurseRostering.py -data=<datafile.json>
 
 ## Links
   - http://www.schedulingbenchmarks.org/nurseinstances1_24.html

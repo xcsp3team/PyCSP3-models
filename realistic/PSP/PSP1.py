@@ -8,8 +8,8 @@ This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem
   constraints: Sum
 
 ## Execution
-  - python PSP1.py -data=<datafile.json>
-  - python PSP1.py -data=<datafile.txt> -parser=PSP_Parser.py
+  python PSP1.py -data=<datafile.json>
+  python PSP1.py -data=<datafile.txt> -parser=PSP_Parser.py
 
 ## Links
   - https://www.csplib.org/Problems/prob058/

@@ -1,14 +1,14 @@
 """
 Large scale scheduling instances have been built to show the interest of a scalable timetable filtering algorithm for the Cumulative Constraint.
 
-## Data (example)
+## Data Example
   00100-0.json
 
 ## Model
   constraints: Cumulative, Maximum
 
 ## Execution
-  - python LargeScaleScheduling.py -data=<datafile.json>
+  python LargeScaleScheduling.py -data=<datafile.json>
 
 ## Links
   - http://becool.info.ucl.ac.be/pub/resources/large-scale-scheduling-instances.zip

@@ -28,7 +28,7 @@ nIntensities = max(v for t in intensity for v in t) + 1  # +1 because we also ha
 nCells = nRows * nCols + 1  # +1 to avoid systematically adding 1 in the model
 
 # k is the number of shape matrices
-k = Var(range(nCells))
+k = Var(dom=range(nCells))
 
 # x[b] is the number of shape matrices with associated beam-on time b
 x = VarArray(size=nIntensities, dom=lambda b: range(nCells) if b > 0 else {0})

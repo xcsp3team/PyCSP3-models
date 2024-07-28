@@ -114,7 +114,7 @@ maximize(
 )
 
 """
-1) we can post (as in Minizinc):
+1) We can post (as in Minizinc):
   a) 
   dmt = VarArray(size=[emax - emin + 1, tmax - tmin + 1], dom={0, 1})  
   dmt[e][t] == Exist((z[T, k] <= earlinessMin + e) & (z[E, k] <= tardinessMin + t) for j in range(nSolutions)) ...

@@ -13,7 +13,7 @@ The licence seems to be like a MIT Licence.
 
 ## Execution
   python PhysicianSchedule.py -data=sm-10-13-00.json
-  python PhysicianSchedule.py -data=sm-10-13-00.dzn -dataparser=PhysicianSchedule_ParserZ.py
+  python PhysicianSchedule.py -data=sm-10-13-00.dzn -parser=PhysicianSchedule_ParserZ.py
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-030-78230-6_29
@@ -223,10 +223,10 @@ minimize(
     + z4 * weights.station
 )
 
-"""
+""" Comments
 1) Sometimes, Sum is used instead of Count (not sure it makes a big difference for the solvers)
  
-2) we can replace:
+2) We can replace:
  sh[i][j] in {1,2}
   by 
   (sh[i][j] == 1) | (sh[i][j] == 2)

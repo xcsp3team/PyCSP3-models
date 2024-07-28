@@ -77,5 +77,5 @@ maximize(
 )
 
 """ Comments
-1) the short table is used to code the element constraints under condition
+1) The short table is used to code the element constraints under condition
 """

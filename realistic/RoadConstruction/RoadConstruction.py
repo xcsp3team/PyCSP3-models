@@ -38,7 +38,10 @@ y = VarArray(size=[n, n], dom=lambda i, j: {0, 1} if i < j else None)
 satisfy(
     # initially computing the smallest distance between pairs of nodes
     [
-        (x[i][j][0], y[i][j]) in {(M, 0), (distances[i][j], 1)} for i, j in combinations(n, 2)
+        (x[i][j][0], y[i][j]) in {
+            (M, 0),
+            (distances[i][j], 1)
+        } for i, j in combinations(n, 2)
     ],
 
     # iteratively computing the smallest distance between pairs of nodes

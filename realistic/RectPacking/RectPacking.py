@@ -3,7 +3,7 @@ The rectangle (square) packing problem consists of squares (bowes)
 to be put in an enclosing rectangle (container) without overlapping of the squares.
 
 
-## Data
+## Data Example
   perfect-001.json
 
 ## Model
@@ -52,6 +52,6 @@ satisfy(
 )
 
 """ Comments
-1) even if elements of boxes are named tuples, one can write length=boxes instead of lengths=[(w, h) for (w, h) in boxes]
-2) see also CP papers on short supports
+1) Even if elements of boxes are named tuples, one can write length=boxes instead of lengths=[(w, h) for (w, h) in boxes]
+2) See also CP papers on short supports
 """

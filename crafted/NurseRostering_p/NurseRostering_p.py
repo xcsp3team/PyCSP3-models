@@ -20,8 +20,8 @@ The model/automaton below is made stricter so as (hopefully) to generate harder 
   constraints: AllDifferent, Regular
 
 ## Execution
-  - python NurseRostering_p.py -data=<datafile.json>
-  - python NurseRostering_p.py -data=<datafile.dat> -parser=NurseRostering_Parser.py
+  python NurseRostering_p.py -data=<datafile.json>
+  python NurseRostering_p.py -data=<datafile.dat> -parser=NurseRostering_Parser.py
 
 ## Links
   - https://dl.acm.org/doi/abs/10.5555/2387915.2387920

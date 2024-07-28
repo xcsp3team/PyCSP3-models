@@ -29,7 +29,7 @@ horizon = sum(durations) + 1
 x = VarArray(size=nTasks, dom=range(horizon))
 
 # z is the total end time (makespan)
-z = Var(range(horizon))
+z = Var(dom=range(horizon))
 
 satisfy(
     # precedence relations

@@ -33,10 +33,10 @@ nDays, nShifts, horizon = 7, len(shifts), 7 * nWeeks
 x = VarArray(size=[nWeeks, nDays], dom=range(nShifts))
 
 # z1 is the number of evenings before mornings
-z1 = Var(range(horizon + 1))
+z1 = Var(dom=range(horizon + 1))
 
 # z2 is the number of isolated rest days
-z2 = Var(range(horizon + 1))
+z2 = Var(dom=range(horizon + 1))
 
 # the objective to be minimized
 z = Var(dom=range(lb, 2 * horizon + 1))
@@ -79,6 +79,6 @@ minimize(
 )
 
 """
-1) no need for x_flat_ext (longflatroster) because there is an auto-adjustment of array indexing
+1) No need for x_flat_ext (longflatroster) because there is an auto-adjustment of array indexing
   x_flat_ext = x_flat + x_flat[:6]
 """

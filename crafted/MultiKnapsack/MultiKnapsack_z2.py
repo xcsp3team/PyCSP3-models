@@ -46,8 +46,8 @@ maximize(
     profits * x
 )
 
-"""
+""" Comments
 1) Wrt the minizinc model, must we write  >= z or == z ?
 
-2) one can write wcondition=eq(w[j]) or wcondition=le(w[j]) or wlimit=w[j]
+2) One can write wcondition=eq(w[j]) or wcondition=le(w[j]) or wlimit=w[j]
 """

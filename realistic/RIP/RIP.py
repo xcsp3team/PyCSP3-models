@@ -4,15 +4,15 @@ The RIP assumes that the level of renewable resources can be varied at a certain
 of the (unlimited) renewable resources required to complete the project by a pre-specified project deadline.
 
 
-## Data (example)
+## Data Example
   25-0-j060-01-01.json
 
 ## Model
   constraints: Cumulative, Sum
 
 ## Execution
-  - python RIP.py -data=<datafile.json>
-  - python RIP.py -data=<datafile.txt> -parser=RIP_Parser.py
+  python RIP.py -data=<datafile.json>
+  python RIP.py -data=<datafile.txt> -parser=RIP_Parser.py
 
 ## Links
   - https://www.projectmanagement.ugent.be/research/project_scheduling/racp
@@ -61,7 +61,7 @@ minimize(
     costs * u
 )
 
-"""
+""" Comments
 1) costs * u
    is a shortcut for 
  Sum(costs[r] * u[r] for r in range(nResources))

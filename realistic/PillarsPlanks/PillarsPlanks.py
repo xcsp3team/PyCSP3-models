@@ -110,6 +110,6 @@ minimize(
 )
 
 """
-(support[p] == -1) | (yr[p] == ykx[support[p]]) est ok 
- mais (support[p] == -1) | (yr[p] == ykx[support[p]] + 1) non. Why?
+1) (support[p] == -1) | (yr[p] == ykx[support[p]]) is ok 
+   but (support[p] == -1) | (yr[p] == ykx[support[p]] + 1) no. Why?
 """

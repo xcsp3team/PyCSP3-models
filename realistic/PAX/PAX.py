@@ -29,8 +29,8 @@ nStations, nServices, nPassengers = len(stationLines), len(services), len(trips)
 def compatible_services(k):
     # for passenger k, these are the compatible services within the defined TW, or to the next available service reaching its destination
     time, src, dst = trips[k]
-    t = [s for s in range(nServices) if
-         schedules[s][src] > 0 and schedules[s][dst] > 0 and serviceLines[s] in set(stationLines[src]).intersection(set(stationLines[dst]))]
+    S = set(stationLines[src]).intersection(set(stationLines[dst]))
+    t = [s for s in range(nServices) if schedules[s][src] > 0 and schedules[s][dst] > 0 and serviceLines[s] in S]
     t1 = [s for s in t if time - forwardTW <= schedules[s][src] <= time + backwardTW]
     t2 = [s for s in t if schedules[s][src] >= time]
     return set(t1 + ([t2[0]] if len(t2) > 0 else []))
@@ -59,7 +59,7 @@ satisfy(
     # computing the number of passengers onboard each service departing every station
     [
         p[i][j] == Count(
-            [x[k] for k in range(nPassengers) if trips[k][1] <= j < trips[k][2]],
+            within=[x[k] for k in range(nPassengers) if trips[k][1] <= j < trips[k][2]],
             value=i
         ) for i in range(nServices) for j in range(nStations) if schedules[i][j] != 0
     ]
@@ -69,7 +69,7 @@ minimize(
     Sum(cost(p[i][j]) for i in range(nServices) for j in range(nStations))
 )
 
-"""
-1) hybrid tables possible for the cost computation
-2) in data, we replaced 1..3 by {1,2,3} for simplifying parsing
+""" Comments
+1) Hybrid tables possible for the cost computation
+2) In data, we replaced 1..3 by {1,2,3} for simplifying parsing
 """

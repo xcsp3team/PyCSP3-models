@@ -74,11 +74,11 @@ minimize(
 )
 
 """ Comments
-1) using zip is compacter than writing:
+1) Using zip is compacter than writing:
  powers, sizes, costs = [row[0] for row in models], [row[1] for row in models], [row[2] for row in models]
  cardPowers, cardDemands =[row[0] for row in cardTypes], [row[1] for row in cardTypes]
 
-2) using a quaternary table constraint is simpler than using three binary table constraints, as below:
+2) Using a quaternary table constraint is simpler than using three binary table constraints, as below:
  # linking model and power of the ith rack
  [(m[i], p[i]) in enumerate(powers) for i in range(nRacks)],
  

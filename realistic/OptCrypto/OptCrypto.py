@@ -9,7 +9,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: Sum, Table
 
 ## Execution
-  python OptCrypto.py -data=[integer]
+  python OptCrypto.py -data=number
 
 ## Links
   - https://www.minizinc.org/challenge2021/results2021.html
@@ -64,7 +64,12 @@ satisfy(
     [xp[i][P[j]] == x[i][j] for i in range(nRounds) for j in range(nBits)],
 
     # SB
-    [(xp[i, 4 * j:4 * j + 4], x[i + 1, 4 * j:4 * j + 4], prb[16 * i + j]) in DDT for i in range(nRounds) for j in range(16)],
+    [
+        Table(
+            scope=[xp[i, 4 * j:4 * j + 4], x[i + 1, 4 * j:4 * j + 4], prb[16 * i + j]],
+            supports=DDT
+        ) for i in range(nRounds) for j in range(16)
+    ],
 
     # computing the objective value
     z == Sum(prb),
@@ -80,8 +85,8 @@ minimize(
     z
 )
 
-"""
-1) data used in challenges are:
+""" Comments
+1) Data used in challenges are:
   2017: 5, 7, 9, 11, 15
   2018: 6, 8, 10, 12, 14
   2021: 1, 2, 3, 4, 13

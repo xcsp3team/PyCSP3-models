@@ -33,10 +33,10 @@ nResources, nTasks = len(capacities), len(durations)
 # trivial upper bound for the project duration
 horizon = sum(max([durations[i]] + [d for (j, d, _) in precedences if j == i]) for i in range(nTasks)) + 1
 
-t = [(i, j) for i, j in combinations(nTasks, 2) if any(requirements[r][i] + requirements[r][j] > capacities[r] for r in range(nResources))]
-t1 = [(i, j) for i, j in t if any(k == i and l == j and -durations[j] < d < durations[i] for (k, d, l) in precedences)] if len(t) > 0 else []
-t2 = [(i, j) for i, j in t if any(k == j and l == i and -durations[i] < d < durations[j] for (k, d, l) in precedences)] if len(t) > 0 else []
-t3 = [(i, j) for i, j in t if (i, j) not in t1 and (i, j) not in t2] if len(t) > 0 else []
+P = [(i, j) for i, j in combinations(nTasks, 2) if any(requirements[r][i] + requirements[r][j] > capacities[r] for r in range(nResources))]
+P1 = [(i, j) for i, j in P if any(k == i and l == j and -durations[j] < d < durations[i] for (k, d, l) in precedences)]
+P2 = [(i, j) for i, j in P if any(k == j and l == i and -durations[i] < d < durations[j] for (k, d, l) in precedences)]
+P3 = [(i, j) for i, j in P if (i, j) not in P1 and (i, j) not in P2]
 
 # s[i] is the starting time of the ith task
 s = VarArray(size=nTasks, dom=range(horizon))
@@ -50,15 +50,15 @@ satisfy(
 
     # redundant non-overlapping constraints
     (
-        [s[i] + durations[i] <= s[j] for i, j in t1],
+        [s[i] + durations[i] <= s[j] for i, j in P1],
 
-        [s[j] + durations[j] <= s[i] for i, j in t2],
+        [s[j] + durations[j] <= s[i] for i, j in P2],
 
         [
             either(
                 s[i] + durations[i] <= s[j],
                 s[j] + durations[j] <= s[i]
-            ) for i, j in t3
+            ) for i, j in P3
         ]
     ),
 
