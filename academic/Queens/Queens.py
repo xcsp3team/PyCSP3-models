@@ -18,9 +18,9 @@ Can n queens (of the same colour) be placed on an n×n chessboard so that none o
   constraints: AllDifferent
 
 ## Execution
-  - python Queens.py -data=number
-  - python Queens.py -data=number -variant=v1
-  - python Queens.py -data=number -variant=v2
+  python Queens.py -data=number
+  python Queens.py -data=number -variant=v1
+  python Queens.py -data=number -variant=v2
 
 ## Tags
   academic, notebook, csplib

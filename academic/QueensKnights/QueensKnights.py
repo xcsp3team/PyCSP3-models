@@ -9,7 +9,7 @@ all knights form a cycle. Note that the size of the board si n.
   constraints: AllDifferent
 
 ## Execution
-  - python QueensKnights.py -data=[number,number]
+  python QueensKnights.py -data=[number,number]
 
 ## Links
   - https://dblp.org/rec/conf/ecai/BoussemartHLS04.html

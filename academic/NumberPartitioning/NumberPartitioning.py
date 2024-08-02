@@ -16,7 +16,7 @@ This problem consists in finding a partition of the set of numbers {1, 2, ..., n
   constraints: AllDifferent, Sum
 
 ## Execution
-  - python NumberPartitioning.py -data=number
+  python NumberPartitioning.py -data=number
 
 ## Links
   - https://www.csplib.org/Problems/prob049/

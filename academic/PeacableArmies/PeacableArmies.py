@@ -27,8 +27,8 @@ so that the white queens do not attack the black queens (and necessarily vice ve
   constraints: Count, Sum
 
 ## Execution
-  - python PeacableArmies.py -data=number -variant=m1
-  - python PeacableArmies.py -data=number -variant=m2
+  python PeacableArmies.py -data=number -variant=m1
+  python PeacableArmies.py -data=number -variant=m2
 
 ## Tags
   academic, csplib

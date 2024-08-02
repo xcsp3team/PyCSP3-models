@@ -12,7 +12,7 @@ In the classic ‘central’ Solitaire, the goal is to reverse the starting posi
   Here, the model is for the English style (standard), with 33 holes.
 
 ## Execution
-  - python PegSolitaire.py -data=[number,number,number] -variant=english
+  python PegSolitaire.py -data=[number,number,number] -variant=english
 
 ## Links
   - https://www.cs.york.ac.uk/aig/projects/implied/docs/CPAIOR03.pdf

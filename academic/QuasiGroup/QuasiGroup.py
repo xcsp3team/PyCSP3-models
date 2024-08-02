@@ -29,15 +29,15 @@ That is, a ∗ a = a for every element a.
   constraints: Element
 
 ## Execution
-  - python QuasiGroup.py -variant=base-v3 -data=number
-  - python QuasiGroup.py -variant=base-v4 -data=number
-  - python QuasiGroup.py -variant=base-v5 -data=number
-  - python QuasiGroup.py -variant=base-v6 -data=number
-  - python QuasiGroup.py -variant=base-v7 -data=number
-  - python QuasiGroup.py -variant=aux-v3 -data=number
-  - python QuasiGroup.py -variant=aux-v4 -data=number
-  - python QuasiGroup.py -variant=aux-v5 -data=number
-  - python QuasiGroup.py -variant=aux-v7 -data=number
+  python QuasiGroup.py -variant=base-v3 -data=number
+  python QuasiGroup.py -variant=base-v4 -data=number
+  python QuasiGroup.py -variant=base-v5 -data=number
+  python QuasiGroup.py -variant=base-v6 -data=number
+  python QuasiGroup.py -variant=base-v7 -data=number
+  python QuasiGroup.py -variant=aux-v3 -data=number
+  python QuasiGroup.py -variant=aux-v4 -data=number
+  python QuasiGroup.py -variant=aux-v5 -data=number
+  python QuasiGroup.py -variant=aux-v7 -data=number
 
 ## Links
   - https://www.csplib.org/Problems/prob003/

@@ -15,7 +15,7 @@ and when each edge (x,y) is labelled with |f(x)−f(y)|, the edge labels are all
   constraints: AllDifferent
 
 ## Execution
-  - python GracefulGraph.py -data=[number,number]
+  python GracefulGraph.py -data=[number,number]
 
 ### Links
   - https://www.csplib.org/Problems/prob053

@@ -20,8 +20,8 @@ For the original problem, the values of and are respectively 8 and 4.
   constraints: Cardinality, Lex, Sum
 
 ## Execution
-  - python SocialGolfers.py -data=[number,number,number]
-  - python SocialGolfers.py -data=[number,number,number] -variant=cnt
+  python SocialGolfers.py -data=[number,number,number]
+  python SocialGolfers.py -data=[number,number,number] -variant=cnt
 
 ## Links
   - https://en.wikipedia.org/wiki/Social_golfer_problem

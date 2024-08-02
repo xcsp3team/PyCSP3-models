@@ -8,7 +8,7 @@ See Problem 045 on CSPLib.
   constraints: AllDifferent, Channel, Table
 
 ## Execution
-  - python CoveringArray.py -data=[number,number,number,number]
+  python CoveringArray.py -data=[number,number,number,number]
 
 ## Links
   - https://www.csplib.org/Problems/prob045/

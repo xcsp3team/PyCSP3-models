@@ -33,8 +33,8 @@ the problem of finding such a series is the all-interval series problem of order
   constraints: AllDifferent
 
 ## Execution
-  - python AllInterval.py -data=number [-solve]
-  - python AllInterval.py -data=number -variant=aux [-solve]
+  python AllInterval.py -data=number [-solve]
+  python AllInterval.py -data=number -variant=aux [-solve]
 
 ## Tags
   academic, notebook

@@ -12,7 +12,7 @@ Each bit in the sequence takes the value +1 or -1.
   constraints: Sum
 
 ## Execution
-  - python LowAutocorrelation.py -data=number
+  python LowAutocorrelation.py -data=number
 
 ## Tags
   academic, csplib

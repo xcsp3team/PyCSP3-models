@@ -31,9 +31,9 @@ This problem (and its variants) is said to have many practical applications incl
  constraints: AllDifferent, Maximum
 
 ## Execution
-  - python GolombRuler.py -data=number
-  - python GolombRuler.py -data=number -variant=dec
-  - python GolombRuler.py -data=number -variant=aux
+  python GolombRuler.py -data=number
+  python GolombRuler.py -data=number -variant=dec
+  python GolombRuler.py -data=number -variant=aux
 
 ## Links
   - https://www.csplib.org/Problems/prob006/

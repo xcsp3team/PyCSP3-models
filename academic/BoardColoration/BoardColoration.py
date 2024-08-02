@@ -22,7 +22,7 @@ The four corners of any rectangle inside the board must not be assigned the same
   constraints: Maximum, NValues, Lex
 
 ## Execution
-  - python BoardColoration.py -data=[number,number]
+  python BoardColoration.py -data=[number,number]
 
 ## Tags
   academic, notebook

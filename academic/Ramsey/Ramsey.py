@@ -12,7 +12,7 @@ With 3 colours, the problem has a solution if n < 17.
   constraints: Maximum, NValues
 
 ## Execution
-  - python Ramsey.py -data=number
+  python Ramsey.py -data=number
 
 ## Tags
   academic, csplib

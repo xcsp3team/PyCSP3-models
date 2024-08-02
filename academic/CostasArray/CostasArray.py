@@ -11,7 +11,7 @@ See problem 076 at CSPLib.
   constraints: AllDifferent
 
 ## Execution
-  - python CostasArray.py -data=number
+  python CostasArray.py -data=number
 
 ## Links
   - https://en.wikipedia.org/wiki/Costas_array

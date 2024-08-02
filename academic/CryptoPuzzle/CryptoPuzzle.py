@@ -26,8 +26,8 @@ consisting of a mathematical equation among unknown numbers, whose digits are re
   constraints: AllDifferent, Sum
 
 ## Execution
-  - python CryptoPuzzle.py -data=[string,string,string]
-  - python CryptoPuzzle.py -data=[string,string,string] -variant=carry
+  python CryptoPuzzle.py -data=[string,string,string]
+  python CryptoPuzzle.py -data=[string,string,string] -variant=carry
 
 ## Links
   - https://en.wikipedia.org/wiki/Verbal_arithmetic

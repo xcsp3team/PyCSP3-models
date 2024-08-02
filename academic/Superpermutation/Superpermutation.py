@@ -17,8 +17,8 @@ However, for n = 5, there are several smallest superpermutations having the leng
   constraints: AllDifferent, Cardinality, Table
 
 ## Execution
-  - python Superpermutation.py -data=number
-  - python Superpermutation.py -data=number -variant=table
+  python Superpermutation.py -data=number
+  python Superpermutation.py -data=number -variant=table
 
 ## Links
   - https://en.wikipedia.org/wiki/Superpermutation

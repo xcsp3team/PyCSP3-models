@@ -14,8 +14,8 @@ indicating the two involved teams (for example, one playing at home, and the oth
   constraints: AllDifferent, Cardinality, Count, Table
 
 ## Execution
-  - python SportsScheduling.py -data=number
-  - python SportsScheduling.py -data=number -variant=dummy
+  python SportsScheduling.py -data=number
+  python SportsScheduling.py -data=number -variant=dummy
 
 ## Links
   - https://www.csplib.org/Problems/prob026/

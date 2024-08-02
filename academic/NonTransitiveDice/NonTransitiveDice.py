@@ -10,8 +10,8 @@ The problem is to exhibit such a set of dice.
   constraints: Maximum, Sum
 
 ## Execution
-  - python NonTransitiveDice.py -data=[number,number,number]
-  - python NonTransitiveDice.py -data=[number,number,number] -variant=opt
+  python NonTransitiveDice.py -data=[number,number,number]
+  python NonTransitiveDice.py -data=[number,number,number] -variant=opt
 
 ## Links
   - https://en.wikipedia.org/wiki/Intransitive_dice

@@ -116,5 +116,5 @@ minimize(
 )
 
 """
-1) symmetry-breaking constraint are very long to generate. What to do?
+1) Symmetry-breaking constraint are very long to generate. What to do?
 """

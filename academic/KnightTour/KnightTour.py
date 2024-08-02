@@ -16,9 +16,9 @@ following the same path), the tour is closed; otherwise, it is open.
   constraints: AllDifferent, Table
 
 ## Execution
-  - python KnightTour.py -data=number
-  - python KnightTour.py -data=number -variant=table-2
-  - python KnightTour.py -data=number -variant=table-3
+  python KnightTour.py -data=number
+  python KnightTour.py -data=number -variant=table-2
+  python KnightTour.py -data=number -variant=table-3
 
 ## Links
   - https://en.wikipedia.org/wiki/Knight%27s_tour

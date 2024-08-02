@@ -22,7 +22,7 @@ There are orthogonal latin squares of any size except 1, 2, and 6.
   constraints: AllDifferent, Table
 
 ## Execution
-  - python Ortholatin.py -data=number
+  python Ortholatin.py -data=number
 
 ## Links
   - https://en.wikipedia.org/wiki/Mutually_orthogonal_Latin_squares

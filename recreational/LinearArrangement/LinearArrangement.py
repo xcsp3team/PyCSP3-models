@@ -9,7 +9,7 @@ in such a way to minimize the sum of distances between adjacent nodes (in G).
   constraints: AllDifferent, Sum
 
 ## Execution
-  python3 LinearArrangement.py -data=<datafile.json>
+  python LinearArrangement.py -data=<datafile.json>
 
 ## Tags
   recreational

@@ -14,8 +14,8 @@ Hence, it is 0, 1, 2, 4, 6, 9, 12, 16, 20, 25, 30, 36, 42, 49, 56, 64, 72, 81, .
   constraints: Sum
 
 ## Execution
-  - python WarOrPeace.py -data=number
-  - python WarOrPeace.py -data=number -variant=or
+  python WarOrPeace.py -data=number
+  python WarOrPeace.py -data=number -variant=or
 
 ## Links
   - https://oeis.org/A002620

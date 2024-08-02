@@ -20,8 +20,8 @@ The variant 'mod' has been proposed by Bessiere Meseguer Freuder Larrosa, "On fo
   constraints: AllDifferent, NValues
 
 ## Execution
-  - python SchurrLemma.py -data=[number,number]
-  - python SchurrLemma.py -data=[number,number] -variant=mod
+  python SchurrLemma.py -data=[number,number]
+  python SchurrLemma.py -data=[number,number] -variant=mod
 
 ## Tags
   academic, csplib

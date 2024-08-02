@@ -22,7 +22,7 @@ due to the number of permutations.
   constraints: AllDifferent, Slide, Sum
 
 ## Execution
-  - python ClockTriplet.py -data=[number,number]
+  python ClockTriplet.py -data=[number,number]
 
 ## Links
   - http://www.f1compiler.com/samples/Dean%20Clark%27s%20Problem.f1.html

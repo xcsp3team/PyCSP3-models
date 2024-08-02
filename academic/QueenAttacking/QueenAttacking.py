@@ -21,11 +21,11 @@ Note that 1 is not prime, and that the queen does not attack its own cell.
   constraints: AllDifferent, Sum, Table
 
 ## Execution
-  - python QueenAttacking.py
-  - python QueenAttacking.py -data=number
-  - python QueenAttacking.py -data=number -variant=aux
-  - python QueenAttacking.py -data=number -variant=hybrid
-  - python QueenAttacking.py -data=number -variant=table
+  python QueenAttacking.py
+  python QueenAttacking.py -data=number
+  python QueenAttacking.py -data=number -variant=aux
+  python QueenAttacking.py -data=number -variant=hybrid
+  python QueenAttacking.py -data=number -variant=table
 
 ## Tags
   academic, csplib

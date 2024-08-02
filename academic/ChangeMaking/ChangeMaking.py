@@ -19,8 +19,8 @@ of making a change for a specific amount of money, without considering the order
   constraints: Sum
 
 ## Execution
-  - python ChangeMaking.py -data=number
-  - python ChangeMaking.py -data=number -variant=compact
+  python ChangeMaking.py -data=number
+  python ChangeMaking.py -data=number -variant=compact
 
 ## Links
   - https://en.wikipedia.org/wiki/Change-making_problem

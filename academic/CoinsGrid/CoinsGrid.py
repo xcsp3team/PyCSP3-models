@@ -8,7 +8,7 @@ From Tony Hurlimann, A coin puzzle, SVOR-contest 2007.
   constraints: Sum
 
 ## Execution
-  - python CoinsGrid.py -data=[number,number]
+  python CoinsGrid.py -data=[number,number]
 
 ## Links
   - https://link.springer.com/book/10.1007/978-3-319-25883-6

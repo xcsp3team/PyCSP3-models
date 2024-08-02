@@ -23,7 +23,7 @@ See paper cited below.
   constraints: AllDifferent
 
 ## Execution
-  - python ColouredQueens.py -data=number
+  python ColouredQueens.py -data=number
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-540-30210-0_17
