@@ -14,8 +14,8 @@ See CSPLib.
   constraints:  BinPacking, Cardinality, Maximum, Sum, Table
 
 ## Execution
-  - python GBACP.py -data=<datafile.json>
-  - python GBACP.py -data=<datafile.json> -variant=table
+  python GBACP.py -data=<datafile.json>
+  python GBACP.py -data=<datafile.json> -variant=table
 
 ## Links
   - https://opthub.uniud.it/problem/timetabling/gbac
@@ -91,6 +91,6 @@ minimize(
     + Sum(x[i] == v + k * nPeriodsPerYear for (i, v) in undesiredPeriods for k in range(nPeriodsPerYear))
 )
 
-"""
-1) options for ACE: -varh=PickOnDom -pm=3 -valh=Vals -ale=4
+""" Comments
+1) Options for ACE: -varh=PickOnDom -pm=3 -valh=Vals -ale=4
 """

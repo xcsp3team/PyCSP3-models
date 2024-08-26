@@ -86,15 +86,15 @@ maximize(
 )
 
 """
-1) data used in 2022 are:  (8,3), (9,5), (11,5), (13,5), (25,4)
-2) note that:
+1) Data used in 2022 are:  (8,3), (9,5), (11,5), (13,5), (25,4)
+2) Note that:
  x[symmetry]
    is a shortcut for
  [x[row] for row in symmetry]
    which, itself, is a shortcut for:
  [[x[k][l] for k, l in row] for row in symmetry]
 3) Note that:
-[x <= x[symmetry] for symmetry in symmetries]
-  is equivalent to:
-[LexIncreasing(x, x[symmetry]) for symmetry in symmetries]  
+ [x <= x[symmetry] for symmetry in symmetries]
+   is equivalent to:
+ [LexIncreasing(x, x[symmetry]) for symmetry in symmetries]  
 """

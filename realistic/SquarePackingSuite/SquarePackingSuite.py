@@ -65,7 +65,7 @@ satisfy(
         lengths=[(i + 1, i + 1) for i in range(n)]
     ),
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [
         Cumulative(
             Task(origin=x[i], length=i + 1, height=i + 1) for i in range(n)

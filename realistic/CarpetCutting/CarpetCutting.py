@@ -198,8 +198,8 @@ minimize(
     z
 )
 
-"""
-1) don't use if (k := j + offset) instead of  if (k:=j+ offset)]
+""" Comments
+1) Don't use if (k := j + offset) instead of  if (k:=j+ offset)]
   because 0 is interpreted as False, as (0) is 0 and, bool(0) is False
 2) Note that:
   lp = VarArray(size=[nStairCarpets, max(nCoveredSteps)], dom=lambda i, j: {0, 1} if j < nCoveredSteps[i] else None)

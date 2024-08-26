@@ -37,6 +37,9 @@ stationMachines, stationMaxOperators = zip(*stations)
 durations, operators, usedAreaRooms, neutralizedAreas = zip(*tasks)
 usedAreas = [set(j for j in range(nAreas) if usedAreaRooms[i][j] > 0) for i in range(nTasks)]
 
+ss = sum(durations[i] * operators[i] for i in range(nTasks))
+lb = ss // takt + (1 if ss % takt != 0 else 0)
+
 
 def station_of_task(i):
     r = next((j for j in range(nMachines) if i in tasksPerMachine[j]), -1)
@@ -48,7 +51,7 @@ stationOfTasks = [station_of_task(i) for i in range(nTasks)]  # station of the i
 # x[i] is the starting time of the ith task
 x = VarArray(size=nTasks, dom=range(takt * nStations + 1))
 
-# z[j] is the number of operators at the jth station
+# z[k] is the number of operators at the kth station
 z = VarArray(size=nStations, dom=lambda i: range(stationMaxOperators[i] + 1))
 
 satisfy(
@@ -56,7 +59,7 @@ satisfy(
     [x[i] + durations[i] <= takt * nStations for i in range(nTasks)],
 
     # ensuring that tasks start and finish in the same station
-    [x[i] // takt == (x[i] + max(0, durations[i] - 1)) // takt for i in range(nTasks) if durations[i] != 0],
+    [x[i] // takt == (x[i] + durations[i] - 1) // takt for i in range(nTasks) if durations[i] > 1],
 
     # ensuring that tasks are put on the right stations (wrt needed machines)
     [x[i] // takt == stationOfTasks[i] for i in range(nTasks) if stationOfTasks[i] != -1],
@@ -67,15 +70,27 @@ satisfy(
     # respecting limit capacities of areas
     [
         Cumulative(
-            tasks=[Task(origin=x[t], length=durations[t], height=usedAreaRooms[t][i]) for t in areaTasks[i]]
-        ) <= areaCapacities[i] for i in range(nAreas) if len(areaTasks[i]) > 1
+            tasks=[
+                Task(
+                    origin=x[i],
+                    length=durations[i],
+                    height=usedAreaRooms[i][q]
+                ) for i in areaTasks[q]
+            ]
+        ) <= areaCapacities[q] for q in range(nAreas) if len(areaTasks[q]) > 1
     ],
 
     # computing/restricting the number of operators at each station
     [
         Cumulative(
-            tasks=[Task(origin=x[t], length=durations[t], height=operators[t] * (x[t] // takt == j)) for t in range(nTasks)]
-        ) <= z[j] for j in range(nStations)
+            tasks=[
+                Task(
+                    origin=x[i],
+                    length=durations[i],
+                    height=operators[i] * (x[i] // takt == k)
+                ) for i in range(nTasks)
+            ]
+        ) <= z[k] for k in range(nStations)
     ],
 
     # no overlap (is there a better way to handle that?)
@@ -91,9 +106,11 @@ satisfy(
     # avoiding tasks using the same machine to overlap
     [
         NoOverlap(
-            tasks=[(x[j], durations[j]) for j in tasksPerMachine[i]]
-        ) for i in range(nMachines)
-    ]
+            tasks=[(x[i], durations[i]) for i in tasksPerMachine[q]]
+        ) for q in range(nMachines)
+    ],
+
+    # Sum(z) >= lb
 )
 
 minimize(

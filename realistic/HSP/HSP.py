@@ -17,9 +17,9 @@ time of a set of jobs (i.e., the makespan), while, at the same time, satisfying 
   constraints: AllDifferent, Maximum, NoOverlap, Table
 
 ## Execution
-  - python HSP.py -data=<datafile.json>
-  - python HSP.py -data=<datafile.json> -variant=aux
-  - python HSP.py -data=<datafile.json> -variant=table
+  python HSP.py -data=<datafile.json>
+  python HSP.py -data=<datafile.json> -variant=aux
+  python HSP.py -data=<datafile.json> -variant=table
 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S0305054815002373
@@ -139,11 +139,11 @@ minimize(
     z
 )
 
-"""
-1) it is possible to compute a lower bound when defining the objective variable z
-2) it is possible to reduce the domain of variables g at construction time. useful?
+""" Comments
+1) It is possible to compute a lower bound when defining the objective variable z
+2) It is possible to reduce the domain of variables g at construction time. useful?
    For example:  g = VarArray(size=nTanks - 1,
                        dom=range(-horizon + ld + 2 * ud, horizon - ld - 2 * ud))  
    It is even possible to do better     
-3) the basic variant is not efficient
+3) The basic variant is not efficient
 """

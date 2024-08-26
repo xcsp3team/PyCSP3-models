@@ -140,7 +140,7 @@ satisfy(
         ) for i in range(1, horizon + 1)
     ],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [
         (
             wf[i - 1] + ef[i - 1] >= wf[i] + ef[i],
@@ -156,6 +156,6 @@ maximize(
 )
 
 """
-1) it is possible to avoid declaring the array aux, and declare a variable when calling 'alone(i)' as follows:
+1) It is possible to avoid declaring the array aux, and declare a variable when calling 'alone(i)' as follows:
   tmp = Var(dom=range(4), id="tmp" + str(i))
 """

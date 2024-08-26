@@ -99,6 +99,6 @@ else:
 annotate(decision=s)
 
 """ Comments
-1) the way we build the table could also be written as:
+1) The way we build the table could also be written as:
  return {tuple(credits[c] if j == p else p if j == nPeriods else 0 for j in range(nPeriods + 1)) for p in range(nPeriods)}
 """

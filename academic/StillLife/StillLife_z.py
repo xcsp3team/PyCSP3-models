@@ -76,6 +76,6 @@ maximize(
     Sum(x)
 )
 
-"""
-1) data used in 2009 are: 5, 6, 7, 8, 9
+""" Comments
+1) Data used in 2009 are: 5, 6, 7, 8, 9
 """

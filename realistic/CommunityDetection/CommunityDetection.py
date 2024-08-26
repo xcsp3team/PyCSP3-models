@@ -61,8 +61,8 @@ maximize(
 """ Comments
 1) Precedence(x) is equivalent to Precedence(x, values=range(m))
 
-2) the Cardinality constraint (not posted here) is not useful at all:
+2) The Cardinality constraint (not posted here) is not useful at all:
    Cardinality(x, occurrences={v: range(n + 1) for v in range(maxCommunities)})
 
-3) chs is efficient with symmetry-breaking 
+3) The heuristic chs is efficient with symmetry-breaking 
 """

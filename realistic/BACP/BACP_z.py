@@ -63,7 +63,7 @@ satisfy(
     # enforcing prerequisites between courses
     [x[j] < x[i] for (i, j) in prerequisites],
 
-    # implied linear constraints  tag(redundant-constraints)
+    # implied linear constraints  tag(redundant)
     [
         (
             prod >= K * l_lb,
@@ -82,9 +82,9 @@ minimize(
  and 
     [Sum((x[i] > k) * loads[i] for i in C) >= (nPeriods - k - 1) * l_lb for k in P], 
 
-2) prerequisites do not seem to be posted in the Minizinc model
+2) Prerequisites do not seem to be posted in the Minizinc model
 
-3) the last group can be written as:
+3) The last group can be written as:
  [
    [loads * [x[i] > k for i in C] >= (nPeriods - k - 1) * l_lb for k in P],
    [loads * [x[i] > k for i in C] <= (nPeriods - k - 1) * z for k in P]

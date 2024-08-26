@@ -46,9 +46,7 @@ satisfy(
 )
 
 """ Comments
-0) index auto-adjustment is active: k[i + 1] is the same as k[(i + 1) % nKnights]
-
-1) adding  (q[i] != k[j] % n) | (i != k[j] // n) for i in range(n) for j in range(nKnights) does not seem to filter more values.
-
-2) expressing a table constraint where the scope does not list simple variables entails automatically introducing auxiliary variables at compilation time
+0) Index auto-adjustment is active: k[i + 1] is the same as k[(i + 1) % nKnights]
+1) Adding  (q[i] != k[j] % n) | (i != k[j] // n) for i in range(n) for j in range(nKnights) does not seem to filter more values.
+2) Expressing a table constraint where the scope does not list simple variables entails automatically introducing auxiliary variables at compilation time
 """

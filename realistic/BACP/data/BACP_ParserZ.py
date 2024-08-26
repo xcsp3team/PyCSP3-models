@@ -1,6 +1,7 @@
 from pycsp3.problems.data.parsing import *
 
 nCourses = number_in(next_line())
+# data['nCourses'] = nCourses
 data['nPeriods'] = number_in(next_line())
 data['loadLB'] = number_in(next_line())
 data['loadUB'] = number_in(next_line())

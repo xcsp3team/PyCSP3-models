@@ -42,6 +42,6 @@ satisfy(
     [x[i][-1] + 2 >= i for i in range(n)]
 )
 
-"""
-1) data used in 2008 are: 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+""" Comments
+1) Data used in 2008 are: 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 """

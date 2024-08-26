@@ -63,7 +63,7 @@ satisfy(
     # linking variables of arrays x and y
     [x[y[i]] == i for i in range(nOrders)],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     AllDifferent(y),
 
     # sets the number of periods that inventory is necessary for each order
@@ -81,7 +81,7 @@ satisfy(
         ]
     ],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [Count(po, value=i) in range(1, 2 + (nPeriods - nOrders)) for i in range(nOrders)],
 
     # computing change costs (the change cost is applied when changing from one item type to another)

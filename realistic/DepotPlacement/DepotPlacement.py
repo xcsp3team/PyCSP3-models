@@ -85,7 +85,7 @@ satisfy(
         [xb[i] != WB for i in range(2, tourSize)]
     ],
 
-    # warehouses cannot be visited by different trucks  tag(redundant-constraint)
+    # warehouses cannot be visited by different trucks  tag(redundant)
     [
         [xa[i] != WB for i in range(tourSize)],
         [xb[i] != WA for i in range(tourSize)]
@@ -111,8 +111,8 @@ minimize(
     Maximum(Sum(da), Sum(db))
 )
 
-"""
-1) there is auto-adjusting of indexing, so:
+""" Comments
+1) There is auto-adjusting of indexing, so:
   distances[xa[i]][xa[i + 1]]
 is 
   distances[xa[i]][xa[(i + 1]) % tourSize]

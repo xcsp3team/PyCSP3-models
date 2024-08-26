@@ -61,7 +61,7 @@ def post_for(s):
             ) <= capacities[r] for r in range(nResources) if sum(requirements[r][i] for i in relevantTasks[r]) > capacities[r]
         ],
 
-        # redundant non-overlapping constraints  tag(redundant-constraints)
+        # redundant non-overlapping constraints  tag(redundant)
         [
             either(
                 s[i] + durations[i] <= s[j],

@@ -56,6 +56,6 @@ maximize(
 """ Comments
 1) Precedence(x) is equivalent to Precedence(x, values=range(maxCommunities))
 
-2) the Cardinality constraint is not useful at all (at least, as expressed in the original MZN model)
+2) The Cardinality constraint is not useful at all (at least, as expressed in the original MZN model)
    Cardinality(x, occurrences={v: range(n + 1) for v in range(maxCommunities)})
 """

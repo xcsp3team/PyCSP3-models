@@ -68,7 +68,7 @@ satisfy(
     # each team plays once against all other teams
     [AllDifferent(row) for row in o],
 
-    # at each round, opponents are all different  tag(redundant-constraints)
+    # at each round, opponents are all different  tag(redundant)
     [AllDifferent(col) for col in columns(o)],
 
     # at most 3 consecutive games at home, or consecutive games away

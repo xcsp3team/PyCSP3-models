@@ -45,7 +45,7 @@ satisfy(
 )
 
 """ Comments
-1) for being compatible with the competition mini-track, we use:
+1) For being compatible with the competition mini-track, we use:
    [v[i][p[i][j]] == j for i in range(n) for j in range(b)]
 2) It is possible to get the covering array from v (the array of variables in the model below).
  For example, v[0][0] gives the t most significant bits of the first column (because the first t-combination is for the first t lines).

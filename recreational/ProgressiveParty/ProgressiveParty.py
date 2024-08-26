@@ -76,7 +76,7 @@ satisfy(
     # guest crews cannot meet more than once
     [Sum(s[b1][p] == s[b2][p] for p in range(nPeriods)) <= 1 for b1, b2 in combinations(nBoats, 2)],
 
-    # ensuring a minimum number of hosts  tag(redundant-constraint)
+    # ensuring a minimum number of hosts  tag(redundant)
     Sum(h) >= minimal_number_of_hosts()
 )
 

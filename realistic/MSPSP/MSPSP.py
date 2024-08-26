@@ -59,7 +59,7 @@ satisfy(
     # discarding some workers
     [w[j][i] == 0 for i in range(nTasks) for j in range(nWorkers) if j not in possibleWorkers[i]],
 
-    # non-overlapping constraints for the workers  tag(redundant-constraints)
+    # non-overlapping constraints for the workers  tag(redundant)
     [
         Cumulative(
             tasks=[Task(origin=s[i], length=durations[i], height=w[j][i]) for i in WTasks[j]]

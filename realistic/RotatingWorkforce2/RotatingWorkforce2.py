@@ -85,7 +85,7 @@ satisfy(
     x[:nWeeks + 2] in A2
 )
 
-"""
+""" Comments
 1) Note that index auto-adjustment is used, meaning that
    Sum(fw[j]) == 1
  is equivalent to:

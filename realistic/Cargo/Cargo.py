@@ -136,10 +136,10 @@ minimize(
     Sum(ft[j] - eta[j] - vrd[j] for j in range(4, nVessels - 5))
 )
 
-"""
+""" Comments
 1) comb that seems to be used to guide search is not inserted above
  comb = flatten([[tR[i], tS__[i], h__[i]][k] for i in range(nPiles) for k in range(3)])
-2) the following variable is not computed (because non necessary)
+2) The following variable is not computed (because non necessary)
 # sum_delay is the sum of vessel delays (waiting times)
 # sum_delay = Var(range(limits.sumMaxDelay + 1))
 """

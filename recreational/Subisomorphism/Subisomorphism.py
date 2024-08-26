@@ -47,6 +47,6 @@ satisfy(
     # being careful of self-loops
     [x[i] in t_loops for i in p_loops],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [x[i] not in C for i, C in enumerate(conflicts)]
 )

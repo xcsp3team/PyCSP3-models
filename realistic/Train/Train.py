@@ -144,7 +144,7 @@ satisfy(
 
     [collect[i][0] <= (dep[i][0] - arr[i][0]) * 50 for i in range(nTrains)],
 
-    # tag(redundant-constraint)
+    # tag(redundant)
     [collect[i][j] <= (dep[i][j] - arr[i][j]) * 50 for i in range(nTrains) for j in range(1, nStations)],
 
     # computing dwelling times of trains in stations

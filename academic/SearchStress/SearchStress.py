@@ -30,6 +30,6 @@ satisfy(
     x[0] != x[-1]
 )
 
-"""
-1) data used in 2008 are: (4,4), (8,4), (8,8)
+""" Comments
+1) Data used in 2008 are: (4,4), (8,4), (8,8)
 """

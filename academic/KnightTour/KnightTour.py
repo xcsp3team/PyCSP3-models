@@ -106,8 +106,8 @@ elif variant("table"):
     )
 
 """ Comments
-1) it is possible to use extension constraints instead of intension constraints (see, e.g., the problem QueensKnights)
-2) it is faster to use a list than a set for the table T
+1) It is possible to use extension constraints instead of intension constraints (see, e.g., the problem QueensKnights)
+2) It is faster to use a list than a set for the table T
 3) Note that (notably, by index auto-adjustment):
  x[i:i + r]
   is equivalent to:

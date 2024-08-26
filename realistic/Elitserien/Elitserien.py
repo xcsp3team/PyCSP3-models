@@ -160,7 +160,7 @@ satisfy(
     # alternative venue requirements (1) (8)
     [AllDifferent(3 * opp[t][p] + whr[t][p] for p in range(nPeriods)) for t in range(nTeams)],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [
         # considering the consequence of Bye (3)
         [(opp[t][p] == t) == (whr[t][p] == BYE) for t in range(nTeams) for p in range(nPeriods)],
@@ -210,14 +210,14 @@ minimize(
     + Sum(whr[row[t]][39 - p] == AWAY for t in range(nTeams) for p in range(20, 33) if noHome[t][p] == 1)
 )
 
-"""
+""" Comments
 1) Groups of constraints (9), (11), (13) and (14) are in comments in the original model (so, not introduced here)
 
 2) [AllDifferent(opp[t][tour2]) for t in range(nTeams)]
  is more compact to write than:
    [AllDifferent(opp[t][p] for p in tour2) for t in range(nTeams)]
    
-3) the array teams is not really useful, and so isd put in comments:
+3) The array teams is not really useful, and so isd put in comments:
    teams = VarArray(size=nTeams, dom=range(nTeams))  # the inverse of row
    Channel(row, teams),
 

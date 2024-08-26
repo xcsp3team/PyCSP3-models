@@ -3,7 +3,7 @@ The classical "Pigeon-hole" problem.
 It can be useful to test the efficiency of filtering/reasoning algorithms.
 
 ## Data
-  An integers n
+  An integer n
 
 ## Model
   There are two variants: a main one, and a variant "dec"

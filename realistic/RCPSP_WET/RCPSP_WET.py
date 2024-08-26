@@ -48,7 +48,7 @@ satisfy(
         ) <= capacities[r] for r in range(nResources) if sum(requirements[r][relevantTasks[r]]) > capacities[r]
     ],
 
-    # redundant non-overlapping constraints  tag(redundant-constraints)
+    # redundant non-overlapping constraints  tag(redundant)
     [
         either(
             s[i] + durations[i] <= s[j],

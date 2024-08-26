@@ -77,7 +77,7 @@ satisfy(
         ) for i in range(nTeams) for k1, k2 in combinations(nRounds, 2)
     ],
 
-    # at each round, opponents are all different  tag(redundant-constraints)
+    # at each round, opponents are all different  tag(redundant)
     [AllDifferent(o[:, k]) for k in range(nRounds)],
 
     # tag(symmetry-breaking)

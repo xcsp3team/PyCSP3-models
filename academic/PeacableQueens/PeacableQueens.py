@@ -12,7 +12,7 @@ The model was created by Hendrik 'Henk' Bierlee, with a licence that seems to be
   constraints: Count, Lex, Precedence, Regular
 
 ## Execution
-  python PeacableQueens.py -data=[integer]
+  python PeacableQueens.py -data=number
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-540-24664-0_19
@@ -82,9 +82,9 @@ maximize(
 )
 
 """ Comments
-1) note that (q2, [0,2], q2) is a shortcut for {(q2, 0, q2), (q2, 2, q2)} 
+1) Note that (q2, [0,2], q2) is a shortcut for {(q2, 0, q2), (q2, 2, q2)} 
    It is also possible to save the automatas in this compact form with the option -keepSmartTransitions
-2) data used in 2021 are:  8, 11, 25, 40, 50
+2) Data used in 2021 are:  8, 11, 25, 40, 50
 3) Note that
   x[symmetry])
  is equivalent o:

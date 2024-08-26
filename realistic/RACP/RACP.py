@@ -76,7 +76,7 @@ satisfy(
     # respecting precedence relations
     [s[i] + durations[i] <= s[j] for i in range(nTasks) for j in successors[i]],
 
-    # redundant non-overlapping constraints   tag(redundant-constraints)
+    # redundant non-overlapping constraints   tag(redundant)
     [
         If(
             u[r] < needs[r][i] + needs[r][j],
@@ -87,7 +87,7 @@ satisfy(
         ) for i in range(nTasks) for j in unrelated[i] for r in range(nResources) if needs[r][i] + needs[r][j] > lb_usage[r]
     ],
 
-    # redundant constraints on the lower bound of the resource capacities  tag(redundant-constraints)
+    # redundant constraints on the lower bound of the resource capacities  tag(redundant)
     [
         u[r] - Sum(
             needs[r][j] * both(

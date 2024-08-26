@@ -48,7 +48,7 @@ if not variant():
     p = VarArray(size=nPermutations, dom=range(m))
 
     satisfy(
-        # all permutations start at different indexes  tag(redundant-constraints)
+        # all permutations start at different indexes  tag(redundant)
         AllDifferent(p),
 
         # ensuring that each permutation occurs in the sequence

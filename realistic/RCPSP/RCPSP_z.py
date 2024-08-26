@@ -35,7 +35,7 @@ satisfy(
     # precedence relations
     [x[i] + durations[i] <= x[j] for i in range(nTasks) for j in successors[i]],
 
-    # redundant non-overlapping constraints  tag(redundant-constraints)
+    # redundant non-overlapping constraints  tag(redundant)
     [
         either(
             x[i] + durations[i] <= x[j],

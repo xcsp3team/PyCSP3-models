@@ -83,5 +83,5 @@ satisfy(
 """ Comments
 1) x[0] == init_board is possible because cells with None (either in variables or values) are discarded
    This is equivalent to [x[0][i][j] == init_board[i][j] for (i, j) in pairs]
-2) what about replacing conjunction and disjunction with AllHold and Exist?
+2) What about replacing conjunction and disjunction with AllHold and Exist?
 """

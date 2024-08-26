@@ -78,7 +78,7 @@ satisfy(
         values=symmetricalMachines
     ),
 
-    # tag(redundant-constraint)
+    # tag(redundant)
     Minimum(s) == 0,
 
     # computing the objective value

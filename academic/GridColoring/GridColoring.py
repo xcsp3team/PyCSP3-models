@@ -45,7 +45,7 @@ minimize(
 )
 
 """
-1) data used in challenges are:
+1) Data used in challenges are:
   (5,6) (7,8) (10,10) (12,13) (15,16) in 2010 and 2011
   (4,8) (4,11) (10,5) (13,11) (19,17) in 2015
 """

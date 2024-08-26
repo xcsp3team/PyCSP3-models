@@ -68,6 +68,6 @@ minimize(
     w1 * Sum(d[c][p] * d[c][p] for c in range(nCurricula) for p in range(nPeriods)) + w2 * Sum(x[i] == j for i, j in undesirables)
 )
 
-"""
-1) note that x[curriculum] is equivalent to  [x[i] fort i in curriculum]
+""" Comments
+1) Note that x[curriculum] is equivalent to  [x[i] fort i in curriculum]
 """

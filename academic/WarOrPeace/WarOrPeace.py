@@ -69,5 +69,5 @@ minimize(
 )
 
 """ Comments
-1) the model variant 'or' seems to be far more efficient
+1) The model variant 'or' seems to be far more efficient
 """

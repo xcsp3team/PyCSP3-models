@@ -84,11 +84,11 @@ minimize(
     Sum((j + 1) * (x[0][j] + 1) for j in range(n))
 )
 
-"""
-1) data used in challenges are:
+""" Comments
+1) Data used in challenges are:
   2009: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
   2015: 12, 13, 14, 15, 17
   2020: 10, 16, 17, 20, 21
   2021: 12, 14, 17, 18, 22
-2) note that  the dec variant is used in 2009, 2020, and 2021
+2) Note that  the dec variant is used in 2009, 2020, and 2021
 """

@@ -46,7 +46,7 @@ satisfy(
     # tag(symmetry-breaking)
     x[0] < x[-1],
 
-    #  tag(redundant-constraints)
+    #  tag(redundant)
     [
         [y[i][j] != 0 for i, j in combinations(n, 2)],  # not possible to have 0
 

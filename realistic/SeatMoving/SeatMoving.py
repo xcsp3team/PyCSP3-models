@@ -60,7 +60,7 @@ satisfy(
     # ensuring different persons at any time
     [AllDifferent(x[t], excepting=-1) for t in range(horizon)],
 
-    # tag(redundant-constraint)
+    # tag(redundant)
     [AllDifferent(y[t]) for t in range(horizon)],
 
     # computing overall moving cost

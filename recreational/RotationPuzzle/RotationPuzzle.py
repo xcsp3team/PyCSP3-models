@@ -81,7 +81,7 @@ satisfy(
         ) for t in range(1, nPeriods)
     ],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [AllDifferent(x[t]) for t in range(1, nPeriods)]
 )
 

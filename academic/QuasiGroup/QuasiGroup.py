@@ -118,5 +118,5 @@ elif variant("aux"):
         )
 
 """ Comments
-1) note that we can post tuples of constraints instead of individually, as demonstrated in aux-v7
+1) Note that we can post tuples of constraints instead of individually, as demonstrated in aux-v7
 """

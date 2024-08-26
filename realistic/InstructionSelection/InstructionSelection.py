@@ -102,7 +102,7 @@ satisfy(
     [(sl[t[0]] ^ sl[t[1]]) if len(t) == 2 else ExactlyOne(sl[t])
      for t in [[m for m in non_dominated if e in matches[m].dataDefined] for e in range(nData)]],
 
-    # the total number of data defined by the selected matches must be equal to the number of data in the function graph  tag(redundant-constraints)
+    # the total number of data defined by the selected matches must be equal to the number of data in the function graph  tag(redundant)
     Sum(len(matches[m].dataDefined) * sl[m] for m in non_dominated) == nData,
 
     # selected matches must not be placed in the null bloc
@@ -175,7 +175,7 @@ satisfy(
         [y[i] in range(mi, ma + 1) for i, mi, ma in funLocDomain]
     ],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [
         # forbidding two matches to be selected together if they imply conflicting successor blocks
         [

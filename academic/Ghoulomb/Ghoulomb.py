@@ -49,7 +49,11 @@ def ruler(m):
 
             Increasing(x, strict=True),
 
-            Cumulative(origins=d, lengths=1, heights=11) <= 15,
+            Cumulative(
+                origins=d,
+                lengths=1,
+                heights=11)
+            <= 15,
 
             # tag(symmetry-breaking)
             d[0] < d[-1]

@@ -43,5 +43,5 @@ minimize(
 )
 
 """ Comments 
-1) for the objective, c * c is possible, but parsers must be updated
+1) For the objective, c * c is possible, but parsers must be updated
 """

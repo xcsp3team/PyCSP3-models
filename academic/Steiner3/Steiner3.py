@@ -40,6 +40,6 @@ satisfy(
     [(triple1 + triple2) in T for (triple1, triple2) in combinations(x, 2)]
 )
 
-"""
-1) it is faster to use a list than a set for the table T
+""" Comments
+1) It is faster to use a list than a set for the table T
 """

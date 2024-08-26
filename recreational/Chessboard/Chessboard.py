@@ -81,7 +81,7 @@ satisfy(
         ) for i in range(n) for j in range(n) for (k, l) in knight_neighbors[i][j]
     ],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [
         y[ROOK] + y[QUEEN] <= n,
         y[BISHOP] + y[QUEEN] <= 2 * n - 1,

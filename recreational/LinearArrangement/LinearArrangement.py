@@ -33,7 +33,7 @@ satisfy(
     # computing distances
     [d[i][j] == abs(x[i] - x[j]) for (i, j) in Edges],
 
-    # triangle constraints: distance(i,j) <= distance(i,k) + distance(k,j)  tag(redundant-constraints)
+    # triangle constraints: distance(i,j) <= distance(i,k) + distance(k,j)  tag(redundant)
     [
         (
                 d[i][j] <= d[min(i, k)][max(i, k)] + d[min(j, k)][max(j, k)]

@@ -11,8 +11,8 @@ See CP paper below.
   constraints: AllDifferent, Element, Sum, Table
 
 ## Execution
-  - python SREFLP.py -data=<datafile.json>
-  - python SREFLP.py -data=<datafile.txt> -parser=SREFLP_Parser.py
+  python SREFLP.py -data=<datafile.json>
+  python SREFLP.py -data=<datafile.txt> -parser=SREFLP_Parser.py
 
 ## Links
   - https://drops.dagstuhl.de/storage/00lipics/lipics-vol235-cp2022/LIPIcs.CP.2022.14/LIPIcs.CP.2022.14.pdf

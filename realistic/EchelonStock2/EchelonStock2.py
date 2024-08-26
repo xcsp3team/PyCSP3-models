@@ -8,8 +8,8 @@ See Problem 040 on CSPLib.
   constraints: Sum
 
 ## Execution
-  - python EchelonStock2.py -data=<datafile.json>
-  - python EchelonStock2.py -data=<datafile.txt> -parser=EchelonStock_Parser.py
+  python EchelonStock2.py -data=<datafile.json>
+  python EchelonStock2.py -data=<datafile.txt> -parser=EchelonStock_Parser.py
 
 ## Links
   - https://www.csplib.org/Problems/prob040/
@@ -80,7 +80,7 @@ satisfy(
     # IC5
     [(y[i][t - 1] == 0) | (x[i][t] == 0) for i in range(n) for t in range(1, nPeriods)],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [Sum(x[i]) == sum_dmds[i] for i in range(n)],
 
     [y[i][t - 1] + Sum(x[i][t:]) == all_dmds[i][t] for i in range(nLeaves) for t in range(1, nPeriods)]
@@ -93,5 +93,5 @@ minimize(
 
 """ Comments
 1) IC4, simple version is: [x[i][t] <= demands[i][t] + ratio(i) for i in range(nLeaves) for t in range(nPeriods)],
-2) using only one Sum when posting the objective generates a complex XCSP3 expression
+2) Using only one Sum when posting the objective generates a complex XCSP3 expression
 """

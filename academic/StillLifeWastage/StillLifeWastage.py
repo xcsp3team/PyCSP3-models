@@ -102,7 +102,7 @@ satisfy(
         [ws[i] == ws[i - 1] + Sum(w[i]) for i in range(1, n + 2)]
     ],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [ws[n + 1] - ws[i] >= 2 * ((n - i) // 3) + n // 3 for i in range(n + 1)]
 )
 
@@ -111,6 +111,6 @@ maximize(
     (2 * n * n + 4 * n - ws[-1]) // 4
 )
 
-"""
-1) data used in 2012 are: 9, 10, 11, 12 and 13
+""" Comments
+1) Data used in 2012 are: 9, 10, 11, 12 and 13
 """

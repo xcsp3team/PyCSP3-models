@@ -128,7 +128,7 @@ satisfy(
         ) for v1 in range(1, nStations) for v2 in range(3, nShifts) for j in range(nDays) for v3 in range(1, nSkills)
     ],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [
         Count(
             both(

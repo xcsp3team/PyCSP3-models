@@ -57,7 +57,7 @@ satisfy(
         ) for p, (i, j, latency, distance) in enumerate(precedences)
     ],
 
-    # redundant non-overlapping constraints  tag(redundant-constraints)
+    # redundant non-overlapping constraints  tag(redundant)
     [(s[i] + d[i] <= s[j]) | (s[j] + d[j] <= s[i]) for i, j in combinations(nTasks, 2)
      if any(requirements[i][r] + requirements[j][r] > capacities[r] for r in range(nResources))],
 

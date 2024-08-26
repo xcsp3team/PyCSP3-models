@@ -54,7 +54,7 @@ satisfy(
         ) for j in range(m)
     ],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [s[i][-1] + d[i][-1] >= sum(durations[i]) for i in range(n)]
 )
 

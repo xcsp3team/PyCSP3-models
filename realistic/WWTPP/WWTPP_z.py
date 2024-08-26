@@ -77,7 +77,7 @@ satisfy(
         ]
     ],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [
         [df[i][j] <= flows[i] for i in range(nIndustries) for j in range(nSteps)],
         [df[i][j] <= sf[i][j - 1] for i in range(nIndustries) for j in range(1, nSteps)]

@@ -60,10 +60,10 @@ minimize(
     Sum(q[i] > 0 for i in range(n))
 )
 
-"""
-1) for symmetry-breaking, i != j should be i < j ?
-2) data used in 2014 are: 11, 12, 13, 20, 31
-3) it is also possible to write:
+""" Comments
+1) For symmetry-breaking, i != j should be i < j ?
+2) Data used in 2014 are: 11, 12, 13, 20, 31
+3) It is also possible to write:
   [x[i][j] == NotExist(x[i][k] for k in range(n) if k != j) & NotExist(x[k][j] for k in range(n) if k != i)
   & NotExist(disjunction(scope(i, j, k)) for k in range(1, n) if len(scope(i, j, k)) > 0) for i in range(n) for j in range(n)],
 """

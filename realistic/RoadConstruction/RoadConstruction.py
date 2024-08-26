@@ -47,7 +47,8 @@ satisfy(
     # iteratively computing the smallest distance between pairs of nodes
     [
         x[i][j][s + 1] == Minimum(
-            x[i][j][s], [x[i][k][s] + x[min(j, k)][max(j, k)][s] for k in range(i + 1, n) if j != k]
+            x[i][j][s],
+            [x[i][k][s] + x[min(j, k)][max(j, k)][s] for k in range(i + 1, n) if j != k]
         ) for i, j in combinations(n, 2) for s in range(n - 1)
     ],
 
@@ -62,6 +63,6 @@ minimize(
     Sum(x[i][j][-1] for i, j in combinations(n, 2))
 )
 
-"""
+""" Comments
 1) One should be able to compute M from data instead of the arbitrary value of M
 """

@@ -67,7 +67,7 @@ satisfy(
         [at[nxt[i]] >= at[i] + durations[i] + times[i][nxt[i]][at[i] // granularity] for i in range(nVisits)]
     ],
 
-    # imposing some conditions on last visit time  tag(redundant-constraints)
+    # imposing some conditions on last visit time  tag(redundant)
     [
         at[-1] - Sum(times[i][nxt[i]][at[i] // granularity] for i in range(nVisits)) >= sum(durations),
         at[-1] - Sum(times[:, i, :][prv[i]][at[prv[i]] // granularity] for i in range(1, nVisits + 1)) >= sum(durations)

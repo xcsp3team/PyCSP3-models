@@ -42,5 +42,5 @@ satisfy(
 )
 
 """ Comments
-1) how to break all symmetries?  x[0] <= math.ceil(n / 2), x[0] < x[-1], ... ? TODO
+1) How to break all symmetries?  x[0] <= math.ceil(n / 2), x[0] < x[-1], ... ? TODO
 """

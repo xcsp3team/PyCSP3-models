@@ -64,12 +64,12 @@ if variant("opt"):
     )
 
 """ Comments
-0) index auto-indexing is active by default:  x[i + 1] is equal to x[(i + 1) % n]
-1) no need for posting:
+0) Index auto-indexing is active by default:  x[i + 1] is equal to x[(i + 1) % n]
+1) No need for posting:
    # ensuring non-transitivity
    [y[i][0] > y[i][1] for i in range(n)],
    as the domain of gap variables start at 1
-2) for being compatible with the competition CSP mini-track, we:
+2) For being compatible with the competition CSP mini-track, we:
    discard z
    [x[i][j] <= x[i][j + 1] for i in range(n) for j in range(m - 1)],
    #[Increasing(x[i]) for i in range(n)],

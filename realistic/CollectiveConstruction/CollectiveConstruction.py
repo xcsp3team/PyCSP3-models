@@ -80,13 +80,28 @@ satisfy(
     [abs(hgt[t + 1][i] - hgt[t][i]) <= 1 for t in range(horizon - 2) for i in range(n * n)],
 
     # agents stay at the same position when doing a block operation
-    [If(act[t][i] == BLOCK, Then=nxt[t][i] == i) for t, i in pairs],
+    [
+        If(
+            act[t][i] == BLOCK,
+            Then=nxt[t][i] == i
+        ) for t, i in pairs
+    ],
 
     # when moving, the carrying status remains the same
-    [If(act[t][i] == MOVE, Then=car[t + 1][nxt[t][i]] == car[t][i]) for t, i in pairs],
+    [
+        If(
+            act[t][i] == MOVE,
+            Then=car[t + 1][nxt[t][i]] == car[t][i]
+        ) for t, i in pairs
+    ],
 
     # when blocking, the carrying status is inverted
-    [If(act[t][i] == BLOCK, Then=car[t + 1][i] != car[t][i]) for t, i in pairs],
+    [
+        If(
+            act[t][i] == BLOCK,
+            Then=car[t + 1][i] != car[t][i]
+        ) for t, i in pairs
+    ],
 
     # carrying status - pickup
     [pik[t][i] == both(act[t][i] == BLOCK, car[t][i] == 0) for t, i in pairs],
@@ -95,7 +110,12 @@ satisfy(
     [dlv[t][i] == both(act[t][i] == BLOCK, car[t][i] == 1) for t, i in pairs],
 
     # flow out
-    [either(act[t][i] == UNUSED, act[t + 1][nxt[t][i]] != UNUSED) for t, i in pairs],
+    [
+        either(
+            act[t][i] == UNUSED,
+            act[t + 1][nxt[t][i]] != UNUSED
+        ) for t, i in pairs
+    ],
 
     # flow in
     [
@@ -179,7 +199,7 @@ minimize(
     Sum(act[t][i] != UNUSED for t, i in pairs)
 )
 
-"""
-1) not sure that the model is exactly the same as the Minizinc one. 
-2) use -dontuseauxcache when compiling (otherwise, too long)
+""" Comments
+1) Not sure that the model is exactly the same as the Minizinc one. 
+2) Use -dontuseauxcache when compiling (otherwise, too long)
 """

@@ -34,7 +34,7 @@ satisfy(
 )
 
 """
-1) data used in challenges are:
+1) Data used in challenges are:
   20, 40, 60, 80, 100, 150, 200, 300, 400, 500 for 2008
   99, 143, 202, 395, 478 for 2013
   83, 176, 207, 269, 396 for 2015

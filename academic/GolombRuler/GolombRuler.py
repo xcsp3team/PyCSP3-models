@@ -87,5 +87,5 @@ minimize(
 )
 
 """ Comments
-1) one can minimize(x[-1]) provided that symmetry-breaking constraints are not discarded
+1) One can minimize(x[-1]) provided that symmetry-breaking constraints are not discarded
 """

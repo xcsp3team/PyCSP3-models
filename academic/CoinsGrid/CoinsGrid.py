@@ -40,6 +40,6 @@ minimize(
 )
 
 """ Comments
-1) there are other variants in Hurlimann's paper (TODO)
-2) some data: (8,4) (8,5) (9,4) (10,4) (31,14)
+1) There are other variants in Hurlimann's paper (TODO)
+2) Some data: (8,4) (8,5) (9,4) (10,4) (31,14)
 """

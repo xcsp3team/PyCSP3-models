@@ -81,7 +81,7 @@ satisfy(
     # handling travelling for two successive games
     [(h[i][k], h[i][k + 1], o[i][k], o[i][k + 1], t[i][k + 1]) in table(i) for i in range(nTeams) for k in range(nRounds - 1)],
 
-    # at each round, opponents are all different  tag(redundant-constraints)
+    # at each round, opponents are all different  tag(redundant)
     [AllDifferent(col) for col in columns(o)],
 
     # tag(symmetry-breaking)

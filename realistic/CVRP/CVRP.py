@@ -8,7 +8,7 @@ See Problem 086 on CSPLib, and VVRLib.
   constraints: AllDifferent, Cardinality, Element, Sum
 
 ## Execution
-  - python CVRP.py -data=<datafile.json>
+  python CVRP.py -data=<datafile.json>
 
 ## Links
   - https://www.csplib.org/Problems/prob086/

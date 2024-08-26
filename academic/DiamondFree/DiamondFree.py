@@ -31,7 +31,7 @@ See Problem 050 on CSPLib
   constraints: Lex, Sum
 
 ## Execution
-  python DiamondFree.py -data=[number]
+  python DiamondFree.py -data=number
 
 ## Links
   - https://www.csplib.org/Problems/prob050/

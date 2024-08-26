@@ -50,7 +50,7 @@ satisfy(
     # teams are different on each board
     [AllDifferent(t[b * nTeams: (b + 1) * nTeams]) for b in range(nBoards)],
 
-    # tag(redundant-constraint)
+    # tag(redundant)
     BinPacking(t, sizes=1) <= nBoards,
 
     # tag(symmetry-breaking)

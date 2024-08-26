@@ -147,8 +147,7 @@ elif variant("table"):
     )
 
 """ Comments
-1) the variant hybrid involves the automatic introduction of auxiliary variables
-
+1) The variant hybrid involves the automatic introduction of auxiliary variables
 2)  Sum((q == x[j]) | ((row(q) != row(x[j])) & (col(q) != col(x[j])) & (abs(row(q) - row(x[j])) != abs(col(q) - col(x[j])))) for j in
             [p - 1 for p in primes])
 """

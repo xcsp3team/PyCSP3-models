@@ -20,9 +20,9 @@ See problem 001 at CSPLib.
   constraints: Cardinality, Sum, Table
 
 ## Execution
-  - python CarSequencing.py -data=<datafile.json>
-  - python CarSequencing.py -data=<datafile.json> -variant=table
-  - python CarSequencing.py -data=<datafile.txt> -parser=CarSequencing_Parser.py
+  python CarSequencing.py -data=<datafile.json>
+  python CarSequencing.py -data=<datafile.json> -variant=table
+  python CarSequencing.py -data=<datafile.txt> -parser=CarSequencing_Parser.py
 
 ## Links
   - https://www.csplib.org/Problems/prob001/
@@ -81,7 +81,7 @@ satisfy(
     # respecting option frequencies
     [Sum(o[i:i + den, k]) <= num for k, (num, den) in enumerate(limits) for i in range(nCars) if i <= nCars - den],
 
-    # additional constraints by reasoning from consecutive blocks  tag(redundant-constraints)
+    # additional constraints by reasoning from consecutive blocks  tag(redundant)
     [sum_from_full_consecutive_blocks(k, nb) for k in range(nOptions) for nb in range(ceil(nCars // limits[k].den) + 1)]
 )
 

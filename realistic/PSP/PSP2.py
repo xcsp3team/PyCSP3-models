@@ -48,7 +48,7 @@ satisfy(
     # computing changeover costs
     [z[t] == changeCosts[x[t], x[t + 1]] for t in range(horizon - 1)],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [Count(x, value=i) >= required[i][-1] for i in range(nItems)]
 )
 

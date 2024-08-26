@@ -84,7 +84,7 @@ satisfy(
     # handling non-renewable resources
     [Sum(r[k]) <= capacities[k] for k in non_renewable],
 
-    # redundant non-overlapping constraints  tag(redundant-constraints)
+    # redundant non-overlapping constraints  tag(redundant)
     (
         [(x[i] + d[i] <= x[j]) | (x[j] + d[j] <= x[i]) for i, j in pairs if activities_in_disjunction_in_all_modes(i, j)],
 

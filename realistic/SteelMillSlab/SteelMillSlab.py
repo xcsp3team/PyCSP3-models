@@ -84,7 +84,7 @@ elif variant("01"):
     )
 
 satisfy(
-    # tag(redundant-constraints)
+    # tag(redundant)
     Sum(ld) == sum(sizes),
 
     # tag(symmetry-breaking)

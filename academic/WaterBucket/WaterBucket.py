@@ -77,7 +77,7 @@ minimize(
 )
 
 """ Comments
-1) it is no more possible to write x = VarArray(size=[h, 3], dom=[[range(c1 + 1), range(c2 + 1), range(c3 + 1)]] * h)
+1) It is no more possible to write x = VarArray(size=[h, 3], dom=[[range(c1 + 1), range(c2 + 1), range(c3 + 1)]] * h)
 that is to say, a list of lists of domains (one must use a (lambda) function) 
 2) Note that (x[t], x[t + 1])
  is equivalent to:

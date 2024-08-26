@@ -117,14 +117,14 @@ else:
 pairs = [(a1, b1, a2, b2) for j1, (a1, b1) in enumerate(edges) for j2, (a2, b2) in enumerate(edges) if weights[j1] < weights[j2]]
 
 satisfy(
-    # edge e1 dominated by edge e2 in all the following situations  tag(redundant-constraint)
+    # edge e1 dominated by edge e2 in all the following situations  tag(redundant)
     [
         [If(h[b1] <= h[b2], Then=p[a1] != b2) for a1, b1, a2, b2 in pairs if a1 == a2],
         [If(h[a1] <= h[a2], Then=p[b1] != a2) for a1, b1, a2, b2 in pairs if b1 == b2],
         [If(h[b1] <= h[a2], Then=p[a1] != a2) for a1, b1, a2, b2 in pairs if a1 == b2]
     ],
 
-    # linking parenthood and edges  tag(redundant-constraint)
+    # linking parenthood and edges  tag(redundant)
     [
         (
             If(p[a] == b, Then=x[j] == 1),

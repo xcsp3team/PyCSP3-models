@@ -19,8 +19,8 @@ satisfying all demands.
   constraints: Lex, Sum, Table
 
 ## Execution
-  - python Sonet.py -data=<datafile.json>
-  - python Sonet.py -data=<datafile.txt> -parser=Sonet_Parser.py
+  python Sonet.py -data=<datafile.json>
+  python Sonet.py -data=<datafile.txt> -parser=Sonet_Parser.py
 
 ## Links
   - https://www.csplib.org/Problems/prob056/

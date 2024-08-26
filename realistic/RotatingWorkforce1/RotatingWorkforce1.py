@@ -157,7 +157,7 @@ def post_redundant_constraints():
 
 post_redundant_constraints()
 
-"""
+""" Comments
 1) This solution from MZN (chuffed) for 1479 is ok:
    flatten(x) == decrement(
         [1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2,

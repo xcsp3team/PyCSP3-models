@@ -47,7 +47,7 @@ satisfy(
     # computing the make-span
     z == Maximum(x[i] + durations[i] for i in range(nTasks)),
 
-    # tag(redundant-constraint)
+    # tag(redundant)
     [x[i] + durations[i] <= z for i in range(nTasks)]
 )
 

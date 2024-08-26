@@ -59,7 +59,7 @@ satisfy(
         ) for i in range(n) for j in range(m) if [i, j] not in [p for pair in points for p in pair]
     ],
 
-    # tag(redundant-constraints)
+    # tag(redundant)
     [
         [
             Exist(

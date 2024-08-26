@@ -57,7 +57,7 @@ satisfy(
     # all terminal nodes must be part of the tree
     [x[i] == 1 for i in terminals],
 
-    # the number of edges in the tree is one less than the number of nodes (ensuring that all nodes are connected to each other)  tag(redundant-constraint)
+    # the number of edges in the tree is one less than the number of nodes (ensuring that all nodes are connected to each other)  tag(redundant)
     Sum(x) - Sum(y) == 1,
 
     # ensuring that the selected directed edges agree with undirected edges

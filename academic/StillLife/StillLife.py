@@ -122,7 +122,7 @@ elif variant("wastage"):
         # summing wastage
         [Sum(w[0] if i == 0 else [ws[i - 1], w[i]]) == ws[i] for i in range(n + 2)],
 
-        # tag(redundant-constraints)
+        # tag(redundant)
         [ws[n + 1] - ws[i] >= 2 * ((n - i) // 3) + n // 3 for i in range(n + 1)]
     )
 
@@ -132,21 +132,21 @@ elif variant("wastage"):
     )
 
 """ Comments
-1) we could have posted unary constraints instead of identifying specific cells
+1) We could have posted unary constraints instead of identifying specific cells
    at the border assumed to be dead, when creating arrays of variables, like:
  [
    [(x[0][j] == 0, x[-1][j] == 0) for j in range(n + 2)],
    [(x[i][0] == 0, x[i][-1] == 0) for i in range(n + 2)],
  ],
 
-2) in order to generate automatically slide constraints when handling rules for the boarder, we could
+2) In order to generate automatically slide constraints when handling rules for the boarder, we could
    post groups of constraints separately, i.e., write:
 
  # imposing rules for ensuring valid dead cells around the board
  [x[0][i:i + 3] != (1, 1, 1) for i in range(m - 2)],
  ... (while using the option -recognizeSlides)
 
-3) we could use extension constraints instead of intension constraints, which would give:
+3) We could use extension constraints instead of intension constraints, which would give:
   [x[0][i:i + 3] not in {(1, 1, 1)} for i in range(m - 2)],
   By the way, note that expressing such intension constraints are possible here because x[0][i:i + 3] has type 'ListVar'
   If it was not the case, as for example in: (x[0][0], x[0][1], x[0][2]) != (1,1,1), we would have to call cp_array

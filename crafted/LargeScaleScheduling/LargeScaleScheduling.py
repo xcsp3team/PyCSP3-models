@@ -23,7 +23,7 @@ from pycsp3 import *
 limit, durations, heights = data
 nTasks = len(durations)
 
-horizon = sum(durations) + 1  # Trivial upper bound on the horizon
+horizon = sum(durations) + 1  # trivial upper bound on the horizon
 
 # x[i] is the starting time of the ith task
 x = VarArray(size=nTasks, dom=range(horizon))

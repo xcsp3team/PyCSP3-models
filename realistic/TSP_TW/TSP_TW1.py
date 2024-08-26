@@ -10,8 +10,8 @@ See IJCAI paper below.
   constraints: AllDifferent, Element, Sum
 
 ## Execution
-  - python TSP_TW1.py -data=<datafile.json>
-  - python TSP_TW1.py -data=<datafile.txt> -parser=TSP_TW_Parser.py
+  python TSP_TW1.py -data=<datafile.json>
+  python TSP_TW1.py -data=<datafile.txt> -parser=TSP_TW_Parser.py
 
 ## Links
   - https://www.ijcai.org/proceedings/2022/0659.pdf

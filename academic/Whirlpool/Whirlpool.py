@@ -52,9 +52,9 @@ satisfy(
 )
 
 """ Comments
-1) data used in 2020 are: (8,8), (12,12), (21,21), (29,29), (30,30)
+1) Data used in 2020 are: (8,8), (12,12), (21,21), (29,29), (30,30)
 2) diagonal_down, diagonal_up and ring are methods defined as tools in the library
-3) automatic index auto-adjustment is used: i+1 is for (i+1)%len(y)
+3) Automatic index auto-adjustment is used: i+1 is for (i+1)%len(y)
 4) Note that:
   ring(x[i:i + 2, j:j + 2]
  is equivalent to:

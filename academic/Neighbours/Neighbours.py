@@ -88,10 +88,10 @@ maximize(
 )
 
 """ Comments
-1) data used in challenges are:
+1) Data used in challenges are:
  2018: (5,5), (4,7), (7,8), (6,6), (9,4)
  2021: (9,14), (40,50), (20,19), (4,4), (4,9)
-2) note that:
+2) Note that:
  Exist(y == k - 1 for y in x.beside(i, j))
   is an alternative to:
  Exist(x.beside(i, j), value= k - 1)
