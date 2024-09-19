@@ -4,7 +4,7 @@ from pycsp3.compiler import Compilation
 from pycsp3.problems.data.parsing import *
 
 # illustrating how to convert from a JSON format to another one.
-# For example python AircraftAssemblyLine.py -data=test.json -dataparser=AircraftAssemblyLine_Converter.py -dataexport
+# For example python AircraftAssemblyLine.py -data=test.json -parser=AircraftAssemblyLine_Converter.py [-export]
 
 
 name = options.data  # the name of the JSON file whose format must be converted

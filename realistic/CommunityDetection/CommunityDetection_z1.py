@@ -28,11 +28,16 @@ from pycsp3 import *
 m, together, separate, graph, W = data  # m is the maximum number of searched communities
 n = len(graph)  # number of nodes
 
+if not variant():
+    rng = range(sum(W[i][j] for i, j in combinations(n, 2)) + 1)
+elif variant("mzn24"):
+    rng = range(sum(W[i][j] for i, j in combinations(n, 2) if W[i][j] < 0), sum(W[i][j] for i, j in combinations(n, 2) if W[i][j] > 0) + 1)
+
 # x[i] is the community of the ith node
 x = VarArray(size=n, dom=range(m))
 
 # z is the weighted sum of nodes belonging to the same communities
-z = Var(dom=range(sum(W[i][j] for i in range(n) for j in range(i)) + 1))
+z = Var(dom=rng)
 
 satisfy(
     # considering nodes that must belong to the same community
