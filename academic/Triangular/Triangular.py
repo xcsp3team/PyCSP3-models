@@ -27,7 +27,7 @@ from pycsp3 import *
 
 n = data
 
-# x[i,j] is 1 iff the jth node in the ith row is selected
+# x[i][j] is 1 iff the jth node in the ith row is selected
 x = VarArray(size=[n, n], dom=lambda i, j: {0, 1} if i >= j else None)
 
 satisfy(
@@ -45,8 +45,15 @@ maximize(
 )
 
 """ Comments
-1) Data used in challenges are:
+1) Data used in Minizinc challenges are:
    10, 16, 22, 28, 37 in 2015
    10, 17, 23, 29, 37 in 2019
    10, 18, 24, 30, 39 in 2022
+   09, 11, 14, 20, 31 in 2024
+2)
+  AtLeastOne(
+        within=[x[i + m][j], x[i + k][j + m], x[i + k - m][j + k - m]],
+        value=0
+    ) for i in range(n) for j in range(i + 1) for k in range(1, n - i) for m in range(k)
+  seems to be less efficient
 """

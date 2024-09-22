@@ -35,10 +35,13 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-# data from Minizinc challenge 2019
-mzn19 = [(6, 7, 8, 4, 15, 8, 12, 9), (50, 50, 50, 7, 35, 9, 10, 8), (6, 7, 8, 1, 31, 0, 6, 3), (118, 213, 124, 178, 3, 7, 5, 3), (10, 10, 12, 5, 19, 1, 1, 1)]
+# data from Minizinc challenge 2019 (indexes from 0 to 4) and 2024 (indexes from 5 to 0)
+mzn = (
+        [(6, 7, 8, 4, 15, 8, 12, 9), (50, 50, 50, 7, 35, 9, 10, 8), (6, 7, 8, 1, 31, 0, 6, 3), (118, 213, 124, 178, 3, 7, 5, 3), (10, 10, 12, 5, 19, 1, 1, 1)]
+        + [(6, 26, 8, 2, 25, 4, 4, 3), (20, 20, 22, 6, 15, 6, 5, 4), (36, 37, 40, 3, 35, 9, 9, 9), (36, 37, 40, 6, 35, 9, 10, 8), (35, 27, 52, 6, 22, 1, 0, 0)]
+)
 
-nFoxes, nGeese, nCorns, boatCapacity, horizon, pf, pg, pc = mzn19[data] if isinstance(data, int) else data
+nFoxes, nGeese, nCorns, boatCapacity, horizon, pf, pg, pc = mzn[data] if isinstance(data, int) else data
 
 EAST = [i for i in range(1, horizon + 1) if i % 2 == 1]
 WEST = [i for i in range(1, horizon + 1) if i % 2 != 1]
@@ -155,7 +158,7 @@ maximize(
     ef[z] * pf + eg[z] * pg + ec[z] * pc
 )
 
-"""
+""" Comments
 1) It is possible to avoid declaring the array aux, and declare a variable when calling 'alone(i)' as follows:
   tmp = Var(dom=range(4), id="tmp" + str(i))
 """

@@ -84,7 +84,9 @@ maximize(
 """ Comments
 1) Note that (q2, [0,2], q2) is a shortcut for {(q2, 0, q2), (q2, 2, q2)} 
    It is also possible to save the automatas in this compact form with the option -keepSmartTransitions
-2) Data used in 2021 are:  8, 11, 25, 40, 50
+2) Data used 
+   in 2021 are: 8, 11, 25, 40, 50
+   in 2024 are: 7, 9, 12, 19, 35 
 3) Note that
   x[symmetry])
  is equivalent o:
