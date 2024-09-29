@@ -71,21 +71,16 @@ elif variant("display2"):
     )
 
 """ Comments
-
-1) the main model variant is sufficient to compute solutions.
+1) The main model variant is sufficient to compute solutions.
    It is the fastest model. Hence, in a complex-world application, 
-   adding constraints for pure presentational issue should be carefully thought. 
-   
-2) the variant 'display1' allows us to display the values (and not only the chaining).
-
+   adding constraints for pure presentational issue should be carefully thought.    
+2) The variant 'display1' allows us to display the values (and not only the chaining).
    From this variant, to really get a matrix being printed, on can add:
      b = VarArray(size=[n, n], dom=range(n2))
      satisfy(
        b[i // n][i % n] == y[i] for i in range(n2)
-     )
-     
-3) the variant 'display2' allows us to directly print the values in a matrix.
+     )     
+3) The variant 'display2' allows us to directly print the values in a matrix.
    This involves a constraint 'ElementMatrix' whose computed value must be equal to a variable.    
-   
-4) we obtain 96 solutions for n=5 with the three variants.
+4) We obtain 96 solutions for n=5 with the three variants.
 """

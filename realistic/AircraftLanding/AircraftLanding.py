@@ -78,11 +78,9 @@ minimize(
    For example, by introducing a new array r where r[i] is the runway ; 
    a new array s where s[i] is x[i]*k+r[i] where k is the number of runways
    and posting new constraints (AllDifferent(s), ...). 
-   This is something to do.
-   
+   This is something to do.   
 2) For the 2022 competition, we used as objective for the mini-track:
    Sum(erl) + Sum(trd)
-   
 3) Note that
  for v in x[i].dom
    is equivalent to:

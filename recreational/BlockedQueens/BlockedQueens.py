@@ -42,8 +42,7 @@ satisfy(
 )
 
 """ Comments
-
-1) one could also post:
+1) One could also post:
   # controlling no two queens on the same upward diagonal
   AllDifferent(q[i] + i for i in range(n)),
 

@@ -88,11 +88,9 @@ satisfy(
 )
 
 """ Comments 
-
 1) (x.cross(i, j), d.cross(i, j)) is a tuple containing two sub-tuples of variables.
    This is automatically flattened (i.e., transformed into a single tuple). Of course, it is also possible to write:
    (*x.cross(i, j), *d.cross(i, j))
-   
 2) cross is a method that can be called on 2-dimensional arrays/lists of variables (ListVar).
    For an array t, and indexes i,j, it returns [t[i][j], t[i][j - 1], t[i][j + 1], t[i - 1][j], t[i + 1][j]]
 """

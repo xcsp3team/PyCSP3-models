@@ -39,8 +39,8 @@ nb = VarArray(size=[nCubes, horizon], dom=lambda i, t: {0, 1} if i > 0 else rang
 # done[t] is 1 if the goal configuration is present at time t
 done = VarArray(size=horizon, dom={0, 1})
 
-# mv[t] is a pair (v,w) indicating that w becomes the successor of v at time t
-mv = VarArray(size=[horizon, 2], dom=lambda t, j: None if t == 0 else range(nCubes))
+# move[t] is a pair (v,w) indicating that w becomes the successor of v at time t
+move = VarArrayMultiple(size=horizon, fields={"src": lambda t: None if t == 0 else range(nCubes), "dst": lambda t: None if t == 0 else range(nCubes)})
 
 # locked[i][t] is 1 if the ith cube is locked at time t
 locked = VarArray(size=[nCubes, horizon], dom=lambda i, t: {0} if i == 0 else {0, 1})
@@ -56,7 +56,7 @@ satisfy(
     x[:, -1] == goal,
 
     # recording new states when moving
-    [mv[t][1] == x[mv[t][0]][t] for t in range(1, horizon)],
+    [move[t].dst == x[move[t].src][t] for t in range(1, horizon)],
 
     # computing the number of times cubes occur in configurations
     [
@@ -70,16 +70,16 @@ satisfy(
     Increasing(done),
 
     # when finished, no more move
-    [done[t - 1] == (mv[t][0] == 0) for t in range(1, horizon)],
+    [done[t - 1] == (move[t].src == 0) for t in range(1, horizon)],
 
     # handling how cubes move
     [
         If(
             done[t - 1],
-            Then=[(x[i][t - 1] == x[i][t]) for i in range(1, nCubes)],
+            Then=x[1:, t - 1] == x[1:, t],
             Else=[
-                [(x[i][t - 1] != x[i][t]) == (i == mv[t][0]) for i in range(nCubes)],
-                nb[mv[t][0]][t - 1] == 0
+                [(x[i][t - 1] != x[i][t]) == (i == move[t].src) for i in range(nCubes)],
+                nb[move[t].src][t - 1] == 0
             ]
         ) for t in range(1, horizon)
     ],
@@ -88,8 +88,8 @@ satisfy(
     [
         # bounding the number of moves per cube
         [
-            [Sum(x[i][t - 1] != x[i][t] for t in range(1, horizon)) >= 1 for i in range(1, nCubes) if start[i] != goal[i]],
-            [Sum(x[i][t - 1] != x[i][t] for t in range(1, horizon)) <= nPiles for i in range(1, nCubes)]
+            [Hamming(x[i][:-1], x[i][1:]) >= 1 for i in range(1, nCubes) if start[i] != goal[i]],
+            [Hamming(x[i][:-1], x[i][1:]) <= nPiles for i in range(1, nCubes)]
         ],
 
         # preventing do-undo moves
@@ -97,19 +97,19 @@ satisfy(
             If(
                 ~done[t],
                 Then=[
-                    mv[t][0] != mv[t + 1][0],
-                    mv[t][1] != mv[t + 1][0],
-                    mv[t][1] != mv[t + 1][1],
-                    mv[t][0] != mv[t][1]
+                    move[t].src != move[t + 1].src,
+                    move[t].dst != move[t + 1].src,
+                    move[t].dst != move[t + 1].dst,
+                    move[t].src != move[t].dst
                 ]
             ) for t in range(1, horizon - 1)
         ],
 
         # computing locked cubes
         [
-            locked[i][t] == (
-                x[i][t] == 0 if goal[i] == 0
-                else both(x[i][t] == goal[i], locked[goal[i]][t])
+            locked[i][t] == both(
+                x[i][t] == goal[i],
+                locked[goal[i]][t] if goal[i] != 0 else None
             ) for i in range(1, nCubes) for t in range(horizon)
         ],
 
@@ -119,7 +119,7 @@ satisfy(
                 locked[i][t],
                 Then=[
                     x[i][t + 1] == goal[i],
-                    mv[t + 1][0] != i
+                    move[t + 1].src != i
                 ]
             ) for i in range(1, nCubes) for t in range(horizon - 1)
         ],
@@ -134,13 +134,25 @@ satisfy(
     ],
 
     # computing the objective value
-    z == horizon - Sum(done)
+    z == horizon - Sum(done),
 )
 
 minimize(
     # minimizing the number of steps to achieve the goal
     z
 )
+
+""" Comments
+1) [done[i] == (x[1:, i] == goal) for i in range(horizon)]
+  is equivalent to:
+   [done[i] == conjunction(x[j, i] == goal[j - 1] for j in range(1, n + 1)) for i in range(horizon)]  
+2) The constraints about objective lower bound  seems penalizing
+3) x[1:, t - 1] == x[1:, t]
+ is equivalent to  [(x[i][t - 1] == x[i][t]) for i in range(1, nCubes)]
+4) Hamming(x[i][:-1], x[i][1:]) >= 1
+ is equivalent to
+   [Sum(x[i][t - 1] != x[i][t] for t in range(1, horizon)) >= 1
+"""
 
 # # when finished, the configuration remains the same
 # [(done[t - 1] == 0) | (x[i][t - 1] == x[i][t]) for t in range(1, horizon) for i in range(1, nCubes)],
@@ -154,12 +166,21 @@ minimize(
 # # when finished, the state remains equal to the goal configuration
 # [done[t] == (x[1:, t] == goal) for t in range(horizon)],
 
+# locked[i][t] == (
+#     x[i][t] == 0 if goal[i] == 0
+#     else both(x[i][t] == goal[i], locked[goal[i]][t])
+# ) for i in range(1, nCubes) for t in range(horizon)
 
-""" Comments
+# testing with tables as below?
 
-1) [done[i] == (x[1:, i] == goal) for i in range(horizon)]
-  is equivalent to:
-   [done[i] == conjunction(x[j, i] == goal[j - 1] for j in range(1, n + 1)) for i in range(horizon)]
-   
-2) the constraints about objective lower bound  seems penalizing
-"""
+# def table(i):
+#     tbl = []
+#     tbl.extend([(1, v, v, ANY) for v in range(nCubes)])
+#     for j in range(nCubes):
+#         if j != i:
+#             tbl.extend([(0, v, v, j) for v in range(nCubes)])
+#         else:
+#             tbl.extend([(0, v, w, j) for v in range(nCubes) for w in range(nCubes) if v != w])
+#     return tbl
+
+# [(done[t - 1], x[i][t - 1], x[i][t], move[t].src) in table(i) for t in range(1, horizon) for i in range(nCubes)],

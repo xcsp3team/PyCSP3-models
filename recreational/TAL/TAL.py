@@ -15,6 +15,7 @@ from pycsp3 import *
 import math
 
 maxArity, maxHeight, sentence, grammar, tokens, costs = data
+grammar = [{} if row is None else {tuple(ANY if v == 2147483646 else v for v in t) for t in row} for row in grammar]  # to be used as supports
 nWords, nLevels, nTokens = len(sentence), len(sentence) * 2, len(tokens)
 lengths = [nWords] + [nWords - math.floor((i + 1) / 2) + 1 for i in range(1, nLevels)]
 
@@ -46,27 +47,22 @@ def table_for(vector_length):
     return table
 
 
-def table_for_grammar(n):
-    return {tuple(ANY if v == 2147483646 else v for v in t) for t in grammar[n]}
-
-
-def predicate(i, j):
-    r = range(1 if i != 0 and j == lengths[i] - 1 else 0, min(j + 1, maxArity))
-    return xor(*([l[i][j] == 0] + [a[i + 1][j - k] >= k + 1 for k in r]))
-
-
 satisfy(
-    [Count(l[i][:lengths[i]], value=0) == s[i - 1] for i in range(1, nLevels - 1)],
+    [
+        s[i - 1] == Count(
+            within=l[i][:lengths[i]],
+            value=0
+        ) for i in range(1, nLevels - 1)
+    ],
 
     [s[i - 1] == s[i] for i in range(1, nLevels - 1, 2)],
 
     # on row 0, costs are 0
-    [c[0][j] == 0 for j in range(nWords)],
+    c[0] == 0,
 
-    # on row 0, the jth label is the jth word of the sentence
-    [l[0][j] == sentence[j] for j in range(nWords)],
+    # on row 0, labels are those of the given sentence
+    l[0] == sentence,
 
-    # on column 0, labels are 0
     [l[i][0] > 0 for i in range(1, nLevels)],
 
     [a[p][0] > 0 for p in range(1, nLevels, 2)],
@@ -80,7 +76,12 @@ satisfy(
         ) for i in range(2, nLevels, 2)
     ],
 
-    [(x[i][j], l[i - 1][:lengths[i - 1]], l[i][j]) in table_for(lengths[i - 1]) for i in range(2, nLevels, 2) for j in range(1, lengths[i])],
+    [
+        Table(
+            scope=(x[i][j], l[i - 1][:lengths[i - 1]], l[i][j]),
+            supports=table_for(lengths[i - 1])
+        ) for i in range(2, nLevels, 2) for j in range(1, lengths[i])
+    ],
 
     [
         (
@@ -95,11 +96,19 @@ satisfy(
     [
         (
             (l[i][j] == 0) == (a[i][j] == 0),
-            (a[i][j], l[i][j], l[i - 1][j: j + k], c[i][j]) in table_for_grammar(k)
+            Table(
+                scope=(a[i][j], l[i][j], l[i - 1][j: j + k], c[i][j]),
+                supports=grammar[k]
+            )
         ) for i in range(1, nLevels, 2) for j in range(lengths[i]) if (k := min(lengths[i - 1] - j, maxArity),)
     ],
 
-    [predicate(i, j) for i in range(0, nLevels, 2) for j in range(nWords) if j < lengths[i]],
+    [
+        xor(
+            l[i][j] == 0,
+            *[a[i + 1][j - k] >= k + 1 for k in range(1 if i != 0 and j == lengths[i] - 1 else 0, min(j + 1, maxArity))]
+        ) for i in range(0, nLevels, 2) for j in range(nWords) if j < lengths[i]
+    ],
 
     l[2 * maxHeight][1] == 0 if 0 < maxHeight and 2 * maxHeight < len(l) else None
 )

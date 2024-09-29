@@ -45,10 +45,8 @@ satisfy(
 )
 
 """ Comments
-
 1) Slide is only used to have more compact XCSP3 instances
-   we could have written: [(x[i], x[i + 1]) in table for i in range(nCards - 1)]
-   
+   we could have written: [(x[i], x[i + 1]) in table for i in range(nCards - 1)]  
 2) Increasing(y[pile], strict=True)
  is equivalent to:
    Increasing([y[j] for j in pile], strict=True)

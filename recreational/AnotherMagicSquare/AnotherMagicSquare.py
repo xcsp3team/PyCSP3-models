@@ -33,10 +33,8 @@ satisfy(
 )
 
 """ Comments
-
-1) there are 0, 8 and 0 solutions for n = 2, 3 and 4
-
-2) for being compatible with the competition mini-track, we use:
+1) There are 0, 8 and 0 solutions for n = 2, 3 and 4
+2) For being compatible with the competition mini-track, we use:
    # y[i,j] is the multiple used for the cell at row i and column j
    y = VarArray(size=[n, n], dom=range(1, 8*(n * n) + 1))
 
