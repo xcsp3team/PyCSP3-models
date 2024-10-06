@@ -30,17 +30,12 @@ options.keepsum = True  # to get a better formed XCSP instance (to be rechecked!
 domains, routes, hard_constraints, soft_constraints = data
 domains = [domains[route.domain] for route in routes]  # we skip the indirection
 polarizations = [route.polarization for route in routes]
-n, nSofts = len(routes), len(data.softs)
+n, nSofts = len(routes), len(soft_constraints)
 
 
-def table_soft(i, j, eq_relaxation, ne_relaxation, short_table=True):
-    def calculate_size():
-        for l in range(kl - 1):
-            if distance >= t[l]:
-                return l
-        return kl - 1
-
-    table = []  # we use a list instead of a set because is quite faster to process
+def table(i, j, eqr, ner, short_table=True):  # table for a soft constraint
+    eq_relaxation, ne_relaxation = tuple(eqr), tuple(ner)
+    T = []  # we use a list instead of a set because is quite faster to process
     cache = {}
     for f1 in domains[i]:
         for f2 in domains[j]:
@@ -56,13 +51,15 @@ def table_soft(i, j, eq_relaxation, ne_relaxation, short_table=True):
                     t = eq_relaxation if p1 == p2 else ne_relaxation  # eqRelaxations or neRelaxations
                     for kl in range(12):
                         if kl == 11 or distance >= t[kl]:  # for kl=11, we suppose t[kl] = 0
-                            suffixes.append((p1, p2, kl, 0 if kl == 0 or distance >= t[kl - 1] else 1, 0 if kl <= 1 else calculate_size()))
+                            w1 = 0 if kl == 0 or distance >= t[kl - 1] else 1
+                            w2 = 0 if kl <= 1 else next((l for l in range(kl - 1) if distance >= t[l]), kl - 1)
+                            suffixes.append((p1, p2, kl, w1, w2))
                 cache[key] = suffixes
             elif short_table:
                 continue
             for suffix in cache[key]:
-                table.append((distance, *suffix) if short_table else (f1, f2, *suffix))
-    return table
+                T.append((distance, *suffix) if short_table else (f1, f2, *suffix))
+    return T
 
 
 # f[i] is the frequency of the ith radio-link
@@ -82,18 +79,18 @@ v2 = VarArray(size=nSofts, dom=range(11))
 
 satisfy(
     # imperative constraints
-    dst == gap if eq else dst != gap for (dst, eq, gap) in [(abs(f[i] - f[j] if fq else p[i] - p[j]), eq, gap) for (i, j, fq, eq, gap) in hard_constraints]
+    dst == gap if eq else dst != gap for (i, j, fq, eq, gap) in hard_constraints if (dst := abs(f[i] - f[j] if fq else p[i] - p[j]),)
 )
 
 if not variant():
     satisfy(
         # soft radio-electric compatibility constraints
-        (f[i], f[j], p[i], p[j], k, v1[l], v2[l]) in table_soft(i, j, tuple(eqr), tuple(ner), False) for l, (i, j, eqr, ner) in enumerate(soft_constraints)
+        (f[i], f[j], p[i], p[j], k, v1[q], v2[q]) in table(i, j, eqr, ner, False) for q, (i, j, eqr, ner) in enumerate(soft_constraints)
     )
 
 elif variant("short"):
     soft_links = [[False] * n for _ in range(n)]
-    for c in data.softs:
+    for c in soft_constraints:
         soft_links[c.route1][c.route2] = soft_links[c.route2][c.route1] = True
 
     # d[i][j] is the distance between the ith and the jth frequencies (for i < j when a soft link exists)
@@ -101,10 +98,10 @@ elif variant("short"):
 
     satisfy(
         # computing intermediary distances
-        [d[i][j] == abs(f[i] - f[j]) for i, j in combinations(n, 2) if d[i][j]],
+        [d[i][j] == abs(f[i] - f[j]) for i, j in combinations(n, 2) if soft_links[i][j]],
 
         # soft radio-electric compatibility constraints
-        [(d[min(i, j)][max(i, j)], p[i], p[j], k, v1[l], v2[l]) in table_soft(i, j, tuple(er), tuple(nr)) for l, (i, j, er, nr) in enumerate(soft_constraints)]
+        [(d[min(i, j)][max(i, j)], p[i], p[j], k, v1[q], v2[q]) in table(i, j, eqr, ner) for q, (i, j, eqr, ner) in enumerate(soft_constraints)]
     )
 
 minimize(

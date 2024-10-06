@@ -101,8 +101,6 @@ elif variant("alt"):
     )
 
 """ Comments
-
 1) We use lists instead of sets for tables ([(i1, i2)  ... instead of  {(i1, i2) ..) because it is quite faster to process
-
 2) It is not possible to write x[i][j] when i is a slice; this must be x[i, j]
 """

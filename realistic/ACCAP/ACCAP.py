@@ -55,7 +55,7 @@ minimize(
     )
 )
 
-"""  Comments
+""" Comments
 1) One can also write:
 minimize(
      Sum(

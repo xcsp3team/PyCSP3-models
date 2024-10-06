@@ -60,8 +60,6 @@ maximize(
 )
 
 """ Comments
-
 1) TODO: if  range(max_words + 1) it seems that posted element constraints are not valid (tuple with * although it seems that they should not be present)
-
 2) It seems that it would be more efficient to use table constraints (to be tried) 
 """

@@ -24,12 +24,6 @@ from pycsp3 import *
 n, roads = data
 maxDistance = max(road.distance for road in roads)
 
-
-def approx_distance(x1, y1, x2, y2):
-    dx, dy = abs(x1 - x2), abs(y1 - y2)
-    return 1007 * max(dx, dy) + 441 * min(dx, dy)
-
-
 # x[i] is the x-coordinate of the ith city
 x = VarArray(size=n, dom=range(maxDistance + 1))
 
@@ -47,11 +41,9 @@ satisfy(
 )
 
 minimize(
-    Sum(
-        abs(distance * 1024 - approx_distance(x[src], y[src], x[dst], y[dst])) for (src, dst, distance) in roads
-    )
+    Sum(abs(distance * 1024 - (1007 * max(dx, dy) + 441 * min(dx, dy))) for (i, j, distance) in roads if (dx := abs(x[i] - x[j]), dy := abs(y[i] - y[j])))
 )
 
-"""
+""" Comments
 needs -di=2 with ACE
 """

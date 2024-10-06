@@ -63,7 +63,7 @@ maximize(
     Sum(prices[i] * (x[i] >= 0) for i in range(nConcerts))
 )
 
-"""
+""" Comments
 1) Note that:
   x[clique]
 is a shortcut for: 

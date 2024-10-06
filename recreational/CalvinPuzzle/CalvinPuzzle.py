@@ -66,8 +66,6 @@ elif variant("table"):
     )
 
 """ Comments
-
 1) Using an hybrid table is possible
-
-) 552 solutions for n=5 (with the symmetry-breaking constraint)
+2) 552 solutions for n=5 (with the symmetry-breaking constraint)
 """

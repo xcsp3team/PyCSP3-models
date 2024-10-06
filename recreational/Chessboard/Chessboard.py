@@ -29,8 +29,7 @@ KNIGHT, BISHOP, ROOK, QUEEN, EMPTY = range(nPieces)
 
 symmetries = [sym.apply_on(n) for sym in TypeSquareSymmetry]
 
-skips = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
-knight_neighbors = [[[(i + oi, j + oj) for (oi, oj) in skips if 0 <= i + oi < n and 0 <= j + oj < n] for j in range(n)] for i in range(n)]
+knight_skips = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
 
 # x[i][j] is the piece in the cell of coordinates s(i,j)
 x = VarArray(size=[n, n], dom=range(nPieces))
@@ -77,8 +76,8 @@ satisfy(
     [
         If(
             x[i][j] == KNIGHT,
-            Then=x[k][l] == EMPTY
-        ) for i in range(n) for j in range(n) for (k, l) in knight_neighbors[i][j]
+            Then=x[k][q] == EMPTY
+        ) for i in range(n) for j in range(n) for (k, q) in [(i + oi, j + oj) for (oi, oj) in knight_skips if 0 <= i + oi < n and 0 <= j + oj < n]
     ],
 
     # tag(redundant)
@@ -104,23 +103,17 @@ maximize(
 )
 
 """ Comments
-
 1) Bounds on y are enforced when declaring domains
-
 2) Is it interesting to only post binary constraints instead of the complex imply expressions?
-
 3) The reverse array from the Minizinc model not introduced here (useful for output?)
-
 4) We can choose among the following statements:
   Exist(x[i][j] in {ROOK, QUEEN} for j in range(n)),  
   Exist(x[i][j].among(ROOK, QUEEN) for j in range(n)),  
   Exist(belong(x[i][j],{ROOK, QUEEN}) for j in range(n)),  
-
 5) Note that 
    x[symmetry]
  is equivalent to:
    [x[row] for row in symmetry]
-
 6) Note that:
  x <= x[symmetry]
    is equivalent to:
