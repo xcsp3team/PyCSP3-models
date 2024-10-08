@@ -76,9 +76,7 @@ satisfy(
     ],
 
     # the finishing time must be no earlier than the finishing time of any task
-    [
-        x[i][j] + durations[i][j] <= z for i in range(nJobs) for j in range(nMachines)
-    ]
+    [x[i][j] + durations[i][j] <= z for i in range(nJobs) for j in range(nMachines)]
 )
 
 minimize(

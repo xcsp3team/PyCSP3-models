@@ -60,7 +60,7 @@ satisfy(
             Else=ift(
                 x[k - 1] == 0,
                 Then=t[i][j][k - 1],
-                Else=(t[i][j - 1][k] if strings[i][j - 1] == 0 else min(t[i][j - 1][k] + 1, t[i][j][k - 1] + 1))
+                Else=t[i][j - 1][k] if strings[i][j - 1] == 0 else min(t[i][j - 1][k] + 1, t[i][j][k - 1] + 1)
             )
         ) for i, j in pairs for k in range(1, maxLength + 1)
     ],
@@ -74,11 +74,10 @@ minimize(
     Sum(z)
 )
 
-"""
-1) using hybrid tables?
-2) note that:
+""" Comments
+1) Using hybrid tables?
+2) Note that:
  t[:, -1, -1] == z
    is a shortcut for:
  [t[i][-1][-1] == z[i] for i in range(nStrings)]
-
 """

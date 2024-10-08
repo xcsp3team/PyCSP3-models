@@ -26,15 +26,16 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 
 attributes, adjacency, dnodes, anodes, edges = data
+domains, matchCosts = zip(*attributes)
 tails, heads, edgeCosts = zip(*edges)
 nAttributes, n, m = len(attributes), len(adjacency), len(edges)
 
-match_lb, match_ub = min(min(domain) for (domain, _) in attributes), max(max(domain) for (domain, _) in attributes)
-matrix = cp_array([next((e for e in range(m) if adjacency[i][e] == 1 and adjacency[j][e] == 1), -1) for j in range(n)] for i in range(n))
+match_lb, match_ub = min(min(domain) for domain in domains), max(max(domain) for domain in domains)
+matrix = cp_array([next((e for e in range(m) if adjacency[i][e] == adjacency[j][e] == 1), -1) for j in range(n)] for i in range(n))
 
 
 def possible_parents(i):
-    return sorted(list({heads[j] if tails[j] == i else tails[j] for j in range(m) if adjacency[i][j] == 1}))
+    return {heads[j] if tails[j] == i else tails[j] for j in range(m) if adjacency[i][j] == 1}
 
 
 # x[i] is 1 if the ith node is selected in the tree
@@ -88,7 +89,7 @@ satisfy(
 
     # matching problem
     [
-        [match[k] in attributes[k].domain for k in range(nAttributes)],
+        [match[k] in domain for k, domain in enumerate(domains)],
 
         [x[match[k]] == 1 for k in range(nAttributes)],
 
@@ -104,9 +105,7 @@ satisfy(
 
 minimize(
     y * edgeCosts
-    + Sum(
-        matchCost[match[k]] for k, (_, matchCost) in enumerate(attributes)
-    )
+    + Sum(matchCost[match[k]] for k, matchCost in enumerate(matchCosts))
 )
 
 """

@@ -29,10 +29,8 @@ from pycsp3 import *
 horizon, resourceCosts, durations, successors, needs = data
 nResources, nTasks = len(resourceCosts), len(durations)
 
-lb_usage = [max(needs[r]) for r in range(nResources)]
-ub_usage = [sum(needs[r]) for r in range(nResources)]
-lb_cost = [resourceCosts[r] * lb_usage[r] for r in range(nResources)]
-ub_cost = [resourceCosts[r] * ub_usage[r] for r in range(nResources)]
+lb_usage, ub_usage = [max(needs[r]) for r in range(nResources)], [sum(needs[r]) for r in range(nResources)]
+lb_costs, ub_costs = resourceCosts * lb_usage, resourceCosts * ub_usage
 
 
 def unrelated_tasks():
@@ -67,7 +65,7 @@ s = VarArray(size=nTasks, dom=range(horizon + 1))
 u = VarArray(size=nResources, dom=lambda r: range(lb_usage[r], ub_usage[r] + 1))
 
 # z is the objective
-z = Var(dom=range(sum(lb_cost), min(sum(ub_cost), compute_ub() + 1)))
+z = Var(dom=range(lb_costs, min(ub_costs, compute_ub()) + 1))
 
 satisfy(
     # ending tasks before the given horizon

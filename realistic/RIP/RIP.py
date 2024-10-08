@@ -30,14 +30,11 @@ durations, successors, requirements = zip(*tasks)
 nResources, nTasks = len(costs), len(tasks)
 requirements = [[r[k] for r in requirements] for k in range(nResources)]
 
-lb_usage = [max(row) for row in requirements]
-ub_usage = [sum(row) for row in requirements]
-
 # s[i] is the starting time of the ith task
 s = VarArray(size=nTasks, dom=range(horizon + 1))
 
 # u[k] is the maximal usage (at any time) of the kth resource
-u = VarArray(size=nResources, dom=lambda k: range(lb_usage[k], ub_usage[k] + 1))
+u = VarArray(size=nResources, dom=lambda k: range(max(requirements[k]), sum(requirements[k]) + 1))
 
 satisfy(
     # ending tasks before the given horizon

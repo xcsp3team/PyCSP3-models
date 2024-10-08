@@ -107,6 +107,6 @@ minimize(
     Sum(mis) + (nItems // 20) * z
 )
 
-"""
-1) note that we have added a column (with 0) to db to simplify some element constraints
+""" Comments
+1) Note that we have added a column (with 0) to db to simplify some element constraints
 """

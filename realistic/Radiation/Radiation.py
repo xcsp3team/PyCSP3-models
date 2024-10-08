@@ -41,11 +41,7 @@ satisfy(
     k == Sum(x),
 
     # respecting the specified intensity in each cell
-    [
-        Sum(
-            b * q[i][j][b] for b in range(1, nIntensities)
-        ) == intensity[i][j] for i in range(nRows) for j in range(nCols)
-    ],
+    [q[i][j] * range(nIntensities) == intensity[i][j] for i in range(nRows) for j in range(nCols)],
 
     # settings upper bounds on increments
     [x[b] >= q[i][0][b] + Sum(max(q[i][j][b] - q[i][j - 1][b], 0) for j in range(1, nCols)) for i in range(nRows) for b in range(1, nIntensities)]
@@ -53,11 +49,15 @@ satisfy(
 
 minimize(
     # minimizing (beam-time,k)
-    nCells * Sum(b * x[b] for b in range(1, nIntensities)) + k
+    nCells * Sum(b * x[b] for b in range(nIntensities)) + k
 )
 
 """ Comments
 1) using nCells as coefficient for the beam-time (i.e., the sum in the objective) allows us to simulate
    a lexicographic order
 2) ACE is fairly competitive: on a fast laptop, e.g., the bound 4356 is found in 174 seconds for the instance i9-23  
+3) Note that:
+ q[i][j] * range(nIntensities) 
+  is equivalent to:
+ Sum(b * q[i][j][b] for b in range(1, nIntensities)) 
 """

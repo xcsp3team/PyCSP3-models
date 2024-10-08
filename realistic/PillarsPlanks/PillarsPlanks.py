@@ -109,7 +109,7 @@ minimize(
     Maximum([yk[p] + 1 for p in range(nPlanks)] + [yr[p] + pillarHeights[p] for p in range(nPillars)])
 )
 
-"""
+""" Comments
 1) (support[p] == -1) | (yr[p] == ykx[support[p]]) is ok 
    but (support[p] == -1) | (yr[p] == ykx[support[p]] + 1) no. Why?
 """

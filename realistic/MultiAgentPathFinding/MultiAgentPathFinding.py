@@ -47,7 +47,7 @@ if not variant():
 
     satisfy(
         # computing the status at any time
-        [(s[t][a][i] == 1) == (x[t][a] == i) for t in range(horizon + 1) for a in range(nAgents) for i in range(nNodes)],
+        [s[t][a][i] == (x[t][a] == i) for t in range(horizon + 1) for a in range(nAgents) for i in range(nNodes)],
 
         # setting positions of agents
         (
@@ -95,13 +95,16 @@ if not variant():
         ],
 
         # source node of agent
-        [x[0] == src],
+        x[0] == src,
 
         # target node of agent
-        [x[-1] == dst],
+        x[-1] == dst,
 
         # end times of the agent
-        [e[a] == Sum((t + 1) * both(s[t][a][dst[a]] == 0, s[t + 1][a][dst[a]] == 1) for t in range(1, horizon)) + s[0][a][dst[a]] for a in range(nAgents)]
+        [
+            e[a] == Sum((t + 1) * both(s[t][a][dst[a]] == 0, s[t + 1][a][dst[a]] == 1) for t in range(1, horizon)) + s[0][a][dst[a]]
+            for a in range(nAgents)
+        ]
     )
 
     minimize(
@@ -123,16 +126,21 @@ elif variant("table"):
         [AllDifferent(x[t]) for t in range(horizon + 1)],
 
         # agents at their destinations stays there
-        [If(x[t][a] == dst[a], Then=x[t + 1][a] == dst[a]) for t in range(horizon) for a in range(nAgents)],
+        [
+            If(
+                x[t][a] == dst[a],
+                Then=x[t + 1][a] == dst[a]
+            ) for t in range(horizon) for a in range(nAgents)
+        ],
 
         # agents can only move to connected nodes
         [(x[t][a], x[t + 1][a]) in T for t in range(horizon) for a in range(nAgents)],
 
         # setting agents at their initial positions
-        [x[0] == src],
+        x[0] == src,
 
         # setting agents at their final positions
-        [x[-1] == dst],
+        x[-1] == dst,
 
         # computing end times of agents
         [(e[a] == t + 1) == both(x[t][a] != dst[a], x[t + 1][a] == dst[a]) for t in range(horizon) for a in range(nAgents)]
@@ -147,6 +155,6 @@ elif variant("table"):
             Sum(e) + nAgents
         )
 
-"""
-1) using SAC3 as preprocessing allows us to solve efficiently the 5 minizinc instances for variant 'table'
+""" Comments
+1) Using SAC3 as preprocessing allows us to solve efficiently the 5 minizinc instances for variant 'table'
 """

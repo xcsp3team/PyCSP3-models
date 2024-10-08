@@ -37,10 +37,6 @@ def activities_in_disjunction(i, j, k):
     return any(requirements[k, mi] + requirements[k, mj] > capacities[k] for mi in modes[i] for mj in modes[j])
 
 
-def activities_in_disjunction_renew(i, j):
-    return any(activities_in_disjunction(i, j, k) for k in renewable)
-
-
 def modes_in_disjunction(mi, mj):
     return any(requirements[k, mi] + requirements[k, mj] > capacities[k] for k in renewable)
 
@@ -49,7 +45,7 @@ def activities_in_disjunction_in_all_modes(i, j):
     return all(modes_in_disjunction(mi, mj) for mi in modes[i] for mj in modes[j])
 
 
-pairs = [(i, j) for i, j in combinations(nTasks, 2) if activities_in_disjunction_renew(i, j)]
+pairs = [(i, j) for i, j in combinations(nTasks, 2) if any(activities_in_disjunction(i, j, k) for k in renewable)]
 
 # am[i] is 1 if the ith mode (optional activity) is activated
 am = VarArray(size=nModes, dom={0, 1})
@@ -79,7 +75,13 @@ satisfy(
     [x[i] + d[i] <= x[j] for i in range(nTasks) for j in successors[i]],
 
     # handling renewable resources
-    [Cumulative(origins=x, lengths=d, heights=r[k]) <= capacities[k] for k in renewable],
+    [
+        Cumulative(
+            origins=x,
+            lengths=d,
+            heights=r[k]
+        ) <= capacities[k] for k in renewable
+    ],
 
     # handling non-renewable resources
     [Sum(r[k]) <= capacities[k] for k in non_renewable],

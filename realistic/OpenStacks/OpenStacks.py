@@ -104,7 +104,6 @@ elif variant("m2"):
 
 """ Comments
 1) To have ordinary tables, we have to use: to_ordinary_table(tab, [v + 1, 2, 2]) and to_ordinary_table(tab, [m, m, 2])
-
 2) If we want explicitly the number of open stacks at time t, we write instead:
  # ns[t] is the number of open stacks at time t
  ns = VarArray(size=m, dom=range(m + 1))

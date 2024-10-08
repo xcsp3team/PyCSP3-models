@@ -114,7 +114,7 @@ minimize(
     Maximum(x[i] + Sum((p[src_dst[j][0] - 1] == i) * flow_cost[j] for j in range(nFlows)) for i in range(nProcessors))
 )
 
-"""
+""" Comments
 1) Variables inFlow, outFlow and commFlow of the initial model are not connected (and so, not introduced here)
  inFlow = VarArray(size=[nFlows, k], dom=lambda i, j: {0, inStream[i]})  
  outFlow = VarArray(size=[nFlows, k], dom=lambda i, j: {0, inStream[i]})  

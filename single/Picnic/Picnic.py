@@ -64,3 +64,7 @@ satisfy(
     sailboat not in {soda, cookies},
     soda != cookies
 )
+
+""" Comments
+1) One can write equivalently: either(beer == Mindy, soda == Mindy)
+"""
