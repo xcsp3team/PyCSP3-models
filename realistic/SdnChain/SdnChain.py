@@ -37,22 +37,16 @@ from pycsp3 import *
 weights, links, nodes, start_domain, target_domain, vnflist, vnf_arcs, proximity_to_source, proximity_to_destination, domain_constraints = data
 nDomains, nLinks, nNodes, nVnfs = len(weights), len(links), len(nodes), len(vnflist)
 
-TYPE = 1
-DOMAIN = 7
-GATEWAY = 8
-ENDPOINT = 9
+TYPE, DOMAIN, GATEWAY, ENDPOINT = 1, 7, 8, 9
 
-inds = [i for i in range(nLinks) if nodes[links[i][0], TYPE] == nodes[links[i][1], TYPE] == GATEWAY]
-
-
-def sel(i, j, s, equal):
-    a, b = links[s]
-    return nodes[a][TYPE] == nodes[b][TYPE] == GATEWAY and nodes[b][DOMAIN] == i and equal == (nodes[a][DOMAIN] == j)
+L = [(i, (nodes[links[i][0]], nodes[links[i][1]])) for i in range(nLinks)]
+G = [(i, (a, b)) for i, (a, b) in L if a[TYPE] == b[TYPE] == GATEWAY]
+Gr = [i for i, _ in G]
 
 
 def dp(i, j):
-    l1 = [sl[s] for s in range(nLinks) if sel(i, j, s, True)]
-    l2 = [sl[s] & pth[k][j] for s in range(nLinks) if sel(i, j, s, False) and [k := nodes[links[s][0]][DOMAIN]]]
+    l1 = [sl[k] for k, (a, b) in G if b[DOMAIN] == i and a[DOMAIN] == j]
+    l2 = [sl[k] & pth[a[DOMAIN]][j] for k, (a, b) in G if b[DOMAIN] == i and a[DOMAIN] != j]
     if len(l1) == 0 and len(l2) == 0:
         return 0
     if len(l1) == 0:
@@ -88,8 +82,8 @@ satisfy(
             sd[i] == 1,
             Then=Sum(
                 both(
-                    nodes[vnf[j], DOMAIN] == i,
-                    nodes[vnf[j], TYPE] == t
+                    nodes[vnf[j]][DOMAIN] == i,
+                    nodes[vnf[j]][TYPE] == t
                 ) for j in range(nVnfs)
             ) in range(mi, ma + 1)
         ) for i, t, mi, ma in domain_constraints
@@ -102,38 +96,53 @@ satisfy(
     [pth[i][j] == dp(i, j) for i, j in combinations(nDomains, 2)],
 
     # first element in matching (start ENDPOINT)
-    [vnf[0] == i for i in range(nNodes) if nodes[i][DOMAIN] == start_domain and nodes[i][TYPE] == ENDPOINT],
+    [vnf[0] == i for i, a in enumerate(nodes) if a[DOMAIN] == start_domain and a[TYPE] == ENDPOINT],
 
     # final element in matching (target ENDPOINT)
-    [vnf[-1] == i for i in range(nNodes) if nodes[i][DOMAIN] == target_domain and nodes[i][TYPE] == ENDPOINT],
+    [vnf[-1] == i for i, a in enumerate(nodes) if a[DOMAIN] == target_domain and a[TYPE] == ENDPOINT],
 
     # node type in matching observes vnflist
-    [Exist(vnf[i] == j for j in range(nNodes) if nodes[j][TYPE] == vnflist[i]) for i in range(1, nVnfs)],
+    [
+        Exist(
+            vnf[i] == j for j, b in enumerate(nodes) if b[TYPE] == vnflist[i]
+        ) for i in range(1, nVnfs)
+    ],
 
     # bound vnf to selected nodes (arcs)
-    [Exist(both(sl[j] == 1, vnf[i] == links[j][1]) for j in range(nLinks)) for i in range(1, nVnfs)],
+    [
+        Exist(
+            both(sl[j] == 1, vnf[i] == links[j][1]) for j in range(nLinks)
+        ) for i in range(1, nVnfs)
+    ],
 
     # bound vnf to path
-    [pth[nodes[vnf[a]][DOMAIN], nodes[vnf[b]][DOMAIN]] == 1 for a, b in vnf_arcs],
+    [pth[nodes[vnf[i]][DOMAIN], nodes[vnf[j]][DOMAIN]] == 1 for i, j in vnf_arcs],
 
     # proximity constraints
     (
-        [Exist(both(sn[j] == 1, vnf[i] == j) for j in range(nNodes) if nodes[j][DOMAIN] == target_domain)
-         for i in range(nVnfs) if proximity_to_destination[i] == 1],
-        [Exist(both(sn[j] == 1, vnf[i] == j) for j in range(nNodes) if nodes[j][DOMAIN] == start_domain)
-         for i in range(nVnfs) if proximity_to_source[i] == 1]
+        [
+            Exist(
+                both(sn[j] == 1, vnf[i] == j) for j, b in enumerate(nodes) if b[DOMAIN] == target_domain
+            ) for i in range(nVnfs) if proximity_to_destination[i] == 1
+        ],
+        [
+            Exist(
+                both(sn[j] == 1, vnf[i] == j) for j, b in enumerate(nodes) if b[DOMAIN] == start_domain
+            ) for i in range(nVnfs) if proximity_to_source[i] == 1
+        ]
     ),
 
     # node with incoming arc means node domain is selected
     [
         If(
-            sl[i], Then=[
-                sd[nodes[a][DOMAIN]],
-                sd[nodes[b][DOMAIN]],
-                sn[a],
-                sn[b]
+            sl[i],
+            Then=[
+                sd[a[DOMAIN]],
+                sd[b[DOMAIN]],
+                sn[links[i][0]],
+                sn[links[i][1]]
             ]
-        ) for i, (a, b) in enumerate(links)
+        ) for i, (a, b) in L
     ],
 
     # getting the number of fun nodes by filtering selected_nodes
@@ -143,45 +152,51 @@ satisfy(
     nf == nVnfs,
 
     # ENDPOINT arcs must be selected in start and target domains
-    [sl[i] == 1 for i, (a, b) in enumerate(links) if
-     (nodes[b][TYPE] == GATEWAY and nodes[a][TYPE] == ENDPOINT and nodes[a][DOMAIN] == start_domain)
-     or (nodes[a][TYPE] == GATEWAY and nodes[b][TYPE] == ENDPOINT and nodes[b][DOMAIN] == target_domain)],
+    [sl[i] == 1 for i, (a, b) in L if
+     (b[TYPE] == GATEWAY and a[TYPE] == ENDPOINT and a[DOMAIN] == start_domain) or (a[TYPE] == GATEWAY and b[TYPE] == ENDPOINT and b[DOMAIN] == target_domain)],
 
     # no arcs to ENDPOINT if they are not start target domains
-    [sl[i] == 0 for i, (a, b) in enumerate(links) if
-     (nodes[a][TYPE] == ENDPOINT and nodes[a][DOMAIN] != start_domain)
-     or (nodes[b][TYPE] == ENDPOINT and nodes[b][DOMAIN] != target_domain)],
+    [sl[i] == 0 for i, (a, b) in L if (a[TYPE] == ENDPOINT and a[DOMAIN] != start_domain) or (b[TYPE] == ENDPOINT and b[DOMAIN] != target_domain)],
 
     # ENDPOINT in start and target domains are selected, others no
-    [sn[i] == (1 if nodes[i][DOMAIN] in (start_domain, target_domain) else 0) for i in range(nNodes) if nodes[i][TYPE] == ENDPOINT],
+    [sn[i] == (1 if a[DOMAIN] in (start_domain, target_domain) else 0) for i, a in enumerate(nodes) if a[TYPE] == ENDPOINT],
 
     # no loop between neighbor domains
-    [(sl[i] != 1) | (sl[j] != 1) for i, j in combinations(inds, 2) if links[i][0] == links[j][1] and links[i][1] == links[j][0]],
+    [
+        either(
+            sl[i] != 1,
+            sl[j] != 1
+        ) for i, j, in combinations(Gr, 2) if links[i][0] == links[j][1] and links[i][1] == links[j][0]
+    ],
 
     # start domain has no incoming arc from other domain
-    [sl[i] == 0 for i, (a, b) in enumerate(links) if nodes[a][TYPE] == nodes[b][TYPE] == GATEWAY and nodes[b][DOMAIN] == start_domain],
+    [sl[i] == 0 for i, (a, b) in L if a[TYPE] == b[TYPE] == GATEWAY and b[DOMAIN] == start_domain],
 
     #  no domains allow 2 incoming arcs from different domains
-    [(sl[i] != 1) | (sl[j] != 1) for i, j in combinations(inds, 2)
-     if nodes[links[i][1], DOMAIN] == nodes[links[j][1], DOMAIN] and nodes[links[i][0], DOMAIN] != nodes[links[j][0], DOMAIN]],
+    [
+        either(
+            sl[i] != 1,
+            sl[j] != 1
+        ) for (i, (a, b)), (j, (c, d)) in combinations(G, 2) if b[DOMAIN] == d[DOMAIN] and a[DOMAIN] != c[DOMAIN]
+    ],
 
     # each selected domain must have an incoming arc from other domain
     [
         If(
             sd[i] == 1,
-            Then=Exist(sl[j] for j in inds if nodes[links[j][1], DOMAIN] == i and nodes[links[j][0], DOMAIN] != i)
+            Then=Exist(sl[j] for j, (a, b) in G if b[DOMAIN] == i and a[DOMAIN] != i)
         ) for i in range(nDomains) if i != start_domain
     ],
 
     # no outgoing arcs from unselected domains
     [
         If(
-            sd[nodes[links[i][0], DOMAIN]] == 0,
+            sd[a[DOMAIN]] == 0,
             Then=sl[i] == 0
-        ) for i in range(nLinks)
+        ) for i, (a, b) in L
     ],
 )
 
 minimize(
-    Sum(weights[nodes[a][DOMAIN], nodes[b][DOMAIN]] * sl[i] for i, (a, b) in enumerate(links) if nodes[a][TYPE] == nodes[b][TYPE] == GATEWAY)
+    Sum(weights[a[DOMAIN]][b[DOMAIN]] * sl[i] for i, (a, b) in G)
 )
