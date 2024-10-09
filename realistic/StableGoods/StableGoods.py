@@ -52,9 +52,9 @@ satisfy(
 satisfy(
     # computing the distribution of goods
     [
-        Sum(
+        quantities[j] == Sum(
             (tg[i] == j) * ng[i] for i in range(nPersons)
-        ) + z[j] == quantities[j] for j in range(nGoods)
+        ) + z[j] for j in range(nGoods)
     ]
 )
 
@@ -105,6 +105,5 @@ maximize(
 
 """ Comments
 1) z * values is a shortcut for Sum(z[g] * values[g] for g in range(nGoods)) 
-
 2) the table variant is more efficient
 """

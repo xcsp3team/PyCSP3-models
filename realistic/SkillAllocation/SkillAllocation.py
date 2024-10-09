@@ -23,8 +23,9 @@ from pycsp3 import *
 
 nTrainings, nMaxJobs, engineerSkills, engineerLocations, jobs = data
 nEngineers, nSkills, nJobs, nOverseasCap = len(engineerSkills), len(engineerSkills[0]), len(jobs), 5
+E, T, J = range(nEngineers), range(nTrainings), range(nJobs)
 
-qualifiedEngineers = [[e for e in range(nEngineers) if engineerSkills[e][job[0]] == 1] for job in jobs]
+qualifiedEngineers = [[e for e in E if engineerSkills[e][job[0]] == 1] for job in jobs]
 
 # x[i] is the engineer assigned to the ith job
 x = VarArray(size=nJobs, dom=range(nEngineers))
@@ -34,13 +35,13 @@ y = VarArray(size=[nEngineers, nTrainings], dom=range(-1, nSkills))
 
 satisfy(
     # computing new skills
-    [y[e][t] in {-1}.union(s for s in range(nSkills) if engineerSkills[e][s] == 0) for e in range(nEngineers) for t in range(nTrainings)],
+    [y[e][t] in {-1}.union(s for s in range(nSkills) if engineerSkills[e][s] == 0) for e in E for t in T],
 
     # not exceeding the maximum number of jobs per engineer
-    [Sum(x[i] == e for i in range(nJobs)) <= nMaxJobs for e in range(nEngineers)],
+    [Sum(x[i] == e for i in J) <= nMaxJobs for e in E],
 
     # not exceeding the maximum number of oversea jobs per engineer
-    [Sum(x[i] == e for i in range(nJobs) if jobs[i][4] == 1) <= nOverseasCap for e in range(nEngineers)],
+    [Sum(x[i] == e for i in J if jobs[i][4] == 1) <= nOverseasCap for e in E],
 
     # ensuring that a qualified engineer is assigned to each job
     [
@@ -50,13 +51,13 @@ satisfy(
                 both(
                     y[e][t] == jobs[i][0],
                     x[i] == e
-                ) for e in range(nEngineers) for t in range(nTrainings)
+                ) for e in E for t in T
             )
-        ) for i in range(nJobs)
+        ) for i in J
     ]
 )
 
 minimize(
     # minimizing the number of new skills
-    Sum(y[e][t] >= 0 for e in range(nEngineers) for t in range(nTrainings))
+    Sum(y[e][t] >= 0 for e in E for t in T)
 )

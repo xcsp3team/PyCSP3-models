@@ -29,7 +29,7 @@ start, goal = zip(*seats)
 nSeats = len(seats)
 horizon = (2 * nSeats) // (nSeats - nPersons + 1) + 1  # maximum number of steps
 
-# x[t][i] is the person at the ith seat at time t i (-1 means 'empty seat')
+# x[t][i] is the person at the ith seat at time t (-1 means 'empty seat')
 x = VarArray(size=[horizon, nSeats], dom=range(-1, nPersons))
 
 # y[t][j] is the seat for the jth person at time t

@@ -44,11 +44,8 @@ arr = VarArray(size=[nSetups, nNodes], dom=range(timeBudget + 1))
 satisfy(
     # pre-assigning a few variables
     [
-        [prv[k][i] == i + nVehicles - 1 for k in range(nSetups) for i in range(nCustomers + 1, nCustomers + nVehicles)],
-        [prv[k][nCustomers] == nCustomers + 2 * nVehicles - 1 for k in range(nSetups)],
-
-        [nxt[k][i] == i - nVehicles + 1 for k in range(nSetups) for i in range(nCustomers + nVehicles, nCustomers + 2 * nVehicles - 1)],
-        [nxt[k][-1] == nCustomers for k in range(nSetups)],
+        [prv[k][i] == v for k in range(nSetups) for i in StartDepots if (v := i + nVehicles - 1 + (nVehicles if i == nCustomers else 0),)],
+        [nxt[k][i] == v for k in range(nSetups) for i in EndDepots if (v := i - nVehicles + 1 - (nVehicles if i == nNodes - 1 else 0),)],
 
         [veh[i] == i - nCustomers for i in StartDepots],
         [veh[i] == i - nCustomers - nVehicles for i in EndDepots],
@@ -90,6 +87,6 @@ minimize(
     Sum(weights[i] * Maximum(arr[i]) for i in range(nSetups))
 )
 
-"""
+""" Comments
 1) note that data have been transferred in JSON
 """

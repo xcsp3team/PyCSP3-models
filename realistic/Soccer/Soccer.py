@@ -25,16 +25,17 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
+print(data)
 games, iPoints, positions = data
 nGames, nTeams, nPositions = len(games), len(iPoints), len(positions)
 
-pt = [0, 1, 3]
+P = [0, 1, 3]
 
-lb_score = min(iPoints[i] + sum(min(pt) for j in range(nGames) if i in games[j]) for i in range(nTeams))
-ub_score = max(iPoints[i] + sum(max(pt) for j in range(nGames) if i in games[j]) for i in range(nTeams))
+lb_score = min(iPoints[i] + sum(min(P) for j in range(nGames) if i in games[j]) for i in range(nTeams))
+ub_score = max(iPoints[i] + sum(max(P) for j in range(nGames) if i in games[j]) for i in range(nTeams))
 
 # points[j][0] and points[j][1] are the points for the two teams (indexes 0 and 1) of the jth game
-points = VarArray(size=[nGames, 2], dom=pt)
+points = VarArray(size=[nGames, 2], dom=P)
 
 # score[i] is the final score of the ith team
 score = VarArray(size=nTeams, dom=range(lb_score, ub_score + 1))
@@ -51,15 +52,14 @@ wp = VarArray(size=nTeams, dom=range(1, nTeams + 1))
 satisfy(
     # assigning rights points for each game
     [
-        (points[j][0], points[j][1]) in {
-            (0, 3),
-            (1, 1),
-            (3, 0)
-        } for j in range(nGames)
+        Table(
+            scope=(points[j][0], points[j][1]),
+            supports={(0, 3), (1, 1), (3, 0)}
+        ) for j in range(nGames)
     ],
 
     # computing final points
-    [score[i] - Sum(points[j][0 if i == games[j][0] else 1] for j in range(nGames) if i in games[j]) == iPoints[i] for i in range(nTeams)],
+    [score[i] - Sum(points[j][0 if i == game[0] else 1] for j, game in enumerate(games) if i in game) == iPoints[i] for i in range(nTeams)],
 
     # computing worst positions (the number of teams with greater total points)
     [wp[i] == Sum(score[j] >= score[i] for j in range(nTeams)) for i in range(nTeams)],

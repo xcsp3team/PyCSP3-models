@@ -75,5 +75,5 @@ elif variant("dual"):  # dual construction [Bacchus, Extending forward checking,
     x = VarArray(size=e, dom=lambda i: range(1, 2 ** len(clauses[i])))
 
     satisfy(
-        (x[i], x[j]) in T for i, j in combinations(e, 2) if (T := dual_table(i, j),) is not None
+        (x[i], x[j]) in T for i, j in combinations(e, 2) if (T := dual_table(i, j)) is not None
     )

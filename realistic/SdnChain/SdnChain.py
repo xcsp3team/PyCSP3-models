@@ -47,12 +47,7 @@ Gr = [i for i, _ in G]
 def dp(i, j):
     l1 = [sl[k] for k, (a, b) in G if b[DOMAIN] == i and a[DOMAIN] == j]
     l2 = [sl[k] & pth[a[DOMAIN]][j] for k, (a, b) in G if b[DOMAIN] == i and a[DOMAIN] != j]
-    if len(l1) == 0 and len(l2) == 0:
-        return 0
-    if len(l1) == 0:
-        return Count(l2) >= 1
-    if len(l2) == 0:
-        return Count(l1) >= 1
+    assert len(l1) > 0 and len(l2) > 0
     return (Count(l1) >= 1) | (Count(l2) >= 1)
 
 
@@ -193,7 +188,7 @@ satisfy(
         If(
             sd[a[DOMAIN]] == 0,
             Then=sl[i] == 0
-        ) for i, (a, b) in L
+        ) for i, (a, _) in L
     ],
 )
 

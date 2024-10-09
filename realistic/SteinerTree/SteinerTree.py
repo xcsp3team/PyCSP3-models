@@ -78,7 +78,10 @@ satisfy(
                 prt[i] == NO,
                 dst[i] == 0
             ],
-            Else=If(i != root, Then=prt[i] != NO)
+            Else=If(
+                i != root,
+                Then=prt[i] != NO
+            )
         ) for i in range(n)
     ],
 

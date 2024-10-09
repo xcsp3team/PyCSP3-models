@@ -53,13 +53,13 @@ m = Var(dom=range(H + 1))
 def production_rule(i):
     assert rt[i] in range(4)
     if rt[i] == 0:
-        return If(f[i], Then=re[rk1[i]] + rd[i] <= rs[rk2[i]])
+        return re[rk1[i]] + rd[i] <= rs[rk2[i]]
     if rt[i] == 1:
-        return If(f[i], Then=re[rk1[i]] + rd[i] >= rs[rk2[i]])
+        return re[rk1[i]] + rd[i] >= rs[rk2[i]]
     if rt[i] == 2:
-        return If(f[i], Then=rs[rk1[i]] - rd[i] <= rs[rk2[i]])
+        return rs[rk1[i]] - rd[i] <= rs[rk2[i]]
     if rt[i] == 3:
-        return If(f[i], Then=re[rk1[i]] - rd[i] <= re[rk2[i]])
+        return re[rk1[i]] - rd[i] <= re[rk2[i]]
 
 
 satisfy(
@@ -97,7 +97,12 @@ satisfy(
     ],
 
     # managing production rules
-    [production_rule(i) for i in range(nRules)],
+    [
+        If(
+            f[i],
+            Then=production_rule(i)
+        ) for i in range(nRules)
+    ],
 
     # computing the make-span
     [re[i] <= m for i in range(nRecipes)]
@@ -107,7 +112,7 @@ minimize(
     Sum(f[i] == 0 for i in range(nRules)) * H + m
 )
 
-"""
+""" Comments
 1) It seems that it would be simpler to change 0 and 1 for f
 """
 

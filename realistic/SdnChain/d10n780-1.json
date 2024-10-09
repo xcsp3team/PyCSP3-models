@@ -20,8 +20,17 @@
   "start_domain": 9,
   "target_domain": 4,
   "vnflist": [9, 2, 0, 4, 9],
-  "vnf_arcs": [[0, 1], [1, 2], [1, 3], [3, 4]],
+  "vnf_arcs": [
+    [0, 1],
+    [1, 2],
+    [1, 3],
+    [3, 4]
+  ],
   "proximity_to_source": [0, 0, 0, 0, 0],
   "proximity_to_destination": [0, 0, 0, 0, 0],
-  "domain_constraints": [[8, 0, 0, 0], [8, 2, 0, 0], [0, 2, 0, 0]]
+  "domain_constraints": [
+    [8, 0, 0, 0],
+    [8, 2, 0, 0],
+    [0, 2, 0, 0]
+  ]
 }
