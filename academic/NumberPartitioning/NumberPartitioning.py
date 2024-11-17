@@ -10,7 +10,9 @@ This problem consists in finding a partition of the set of numbers {1, 2, ..., n
   An integer n
 
 ## Example
-  A solution for n=8 : A = {1, 4, 6, 7} and B = {2,3,5,7}
+  A solution for n = 8:
+    - A = {1,4,6,7}
+    - B = {2,3,5,7}
 
 ## Model
   constraints: AllDifferent, Sum

@@ -17,6 +17,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - https://www.aimsciences.org/article/doi/10.3934/jimo.2018109
+  - https://link.springer.com/chapter/10.1007/978-3-319-44953-1_36
   - https://www.minizinc.org/challenge2020/results2020.html
 
 ## Tags
@@ -25,7 +26,6 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-print(data)
 games, iPoints, positions = data
 nGames, nTeams, nPositions = len(games), len(iPoints), len(positions)
 
@@ -51,41 +51,42 @@ wp = VarArray(size=nTeams, dom=range(1, nTeams + 1))
 
 satisfy(
     # assigning rights points for each game
-    [
-        Table(
-            scope=(points[j][0], points[j][1]),
-            supports={(0, 3), (1, 1), (3, 0)}
-        ) for j in range(nGames)
-    ],
+    [points[j] in {(0, 3), (1, 1), (3, 0)} for j in range(nGames)],
 
     # computing final points
-    [score[i] - Sum(points[j][0 if i == game[0] else 1] for j, game in enumerate(games) if i in game) == iPoints[i] for i in range(nTeams)],
+    [
+        iPoints[i] == score[i] - restScore for i in range(nTeams)
+        if (restScore := Sum(points[j][game.index(i)] for j, game in enumerate(games) if i in game),)
+    ],
 
     # computing worst positions (the number of teams with greater total points)
     [wp[i] == Sum(score[j] >= score[i] for j in range(nTeams)) for i in range(nTeams)],
 
     # computing best positions (from worst positions and the number of teams with equal points)
-    [bp[i] == wp[i] - Sum(score[j] == score[i] for j in range(nTeams) if i != j) for i in range(nTeams)],
+    [
+        bp[i] == wp[i] - nEquallyScored for i in range(nTeams)
+        if (nEquallyScored := Sum(score[j] == score[i] for j in range(nTeams) if i != j),)
+    ],
 
     # bounding final positions
-    (
+    [
         (
             fp[i] >= bp[i],
             fp[i] <= wp[i]
         ) for i in range(nTeams)
-    ),
+    ],
 
     # ensuring different positions
     AllDifferent(fp),
 
     # applying rules from specified positions
-    (
+    [
         (
             fp[i] == p,
             Sum(score[j] > score[i] for j in range(nTeams) if j != i) < p,
             Sum(score[j] < score[i] for j in range(nTeams) if j != i) <= nTeams + 1 - p
         ) for i, p in positions
-    )
+    ]
 )
 
 """ Comments
@@ -93,3 +94,5 @@ satisfy(
  [iPoints[i] + Sum(points[j][0] if i == games[j][0] else points[j][1] for j in range(numberOfGames) if i in games[j]) == score[i] for i in range(n)]
 2) Warning: length(games) in Minizinc returns the number of elements in the array and not the number of rows.
 """
+
+# score[i] == iPoints[i] + restScore for i in range(nTeams)

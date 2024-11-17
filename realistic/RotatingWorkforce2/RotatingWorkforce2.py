@@ -13,10 +13,11 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist, under the MIT Licence.
 
 ## Execution
   python RotatingWorkforce2.py -data=<datafile.json>
-  python RotatingWorkforce2.py -data=<datafile.dzn> -dataparser=RotatingWorkforce2_ParserZ.py
+  python RotatingWorkforce2.py -parser=RotatingWorkforce_Random.py <number> <number>
+  python RotatingWorkforce2.py -data=<datafile.dzn> -parser=RotatingWorkforce2_ParserZ.py
 
 ## Links
-  - https://www.semanticscholar.org/paper/2-The-Rotating-Workforce-Scheduling-Problem-Musliu-Schutt/4048daa6fe7917009174dab7f3fe84e84fdc36dd
+  - https://link.springer.com/chapter/10.1007/978-3-319-93031-2_31
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
@@ -31,17 +32,14 @@ nWeeks, nDays = nEmployees, 7
 SATURDAY, SUNDAY = (5, 6)  # weekend
 OFF, DAY, EVENING, NIGHT = Shifts = range(4)
 nShifts = len(Shifts)
-Not_off = range(1, nShifts)
+NOT_OFF = range(1, nShifts)
 
-q = Automaton.q
+q0, q1, q2, q3, q4 = states = Automaton.states_for(range(5))
 
-trs = [(q(0), Not_off, q(0)), (q(0), OFF, q(1)), (q(1), Not_off, q(0)), (q(1), OFF, q(2)), (q(2), Shifts, q(2))]
-A1 = Automaton(start=q(0), final=q(2), transitions=trs)
+A1 = Automaton(start=q0, final=q2, transitions=[(q0, NOT_OFF, q0), (q0, OFF, q1), (q1, NOT_OFF, q0), (q1, OFF, q2), (q2, Shifts, q2)])
 
-trs = [(q(0), OFF, q(0)), (q(0), (DAY, EVENING), q(4)), (q(0), NIGHT, q(1))] \
-      + [(q(1), OFF, q(0)), (q(1), NIGHT, q(2)), (q(2), OFF, q(0)), (q(2), NIGHT, q(3)), (q(3), OFF, q(0))] \
-      + [(q(4), OFF, q(0)), (q(4), (DAY, EVENING), q(4))]
-A2 = Automaton(start=q(0), final=[q(i) for i in range(5)], transitions=trs)
+A2 = Automaton(start=q0, final=states, transitions=[(q0, OFF, q0), (q0, (DAY, EVENING), q4), (q0, NIGHT, q1), (q1, OFF, q0), (q1, NIGHT, q2), (q2, OFF, q0),
+                                                    (q2, NIGHT, q3), (q3, OFF, q0), (q4, OFF, q0), (q4, (DAY, EVENING), q4)])
 
 # x[i][j] is the shift for the jth day of the ith week
 x = VarArray(size=[nWeeks, nDays], dom=range(nShifts))

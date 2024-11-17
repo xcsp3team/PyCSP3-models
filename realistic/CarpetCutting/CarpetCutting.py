@@ -161,8 +161,12 @@ satisfy(
     [
         [lp[i][nCoveredSteps[i] - 1] == 1 for i in SC],
 
-        [lp[i][j] == (ys[k] < ys[k + 1]) | (xs[k] + stepLengths[j] < xs[k + 1])
-         for i, offset in enumerate(stairOffsets) for j in range(nCoveredSteps[i] - 1) if [k := j + offset]],
+        [
+            lp[i][j] == either(
+                ys[k] < ys[k + 1],
+                xs[k] + stepLengths[j] < xs[k + 1]
+            ) for i, offset in enumerate(stairOffsets) for j in range(nCoveredSteps[i] - 1) if [k := j + offset]
+        ],
 
         [
             If(
@@ -199,7 +203,7 @@ minimize(
 )
 
 """ Comments
-1) Don't use if (k := j + offset) instead of  if (k:=j+ offset)]
+1) Don't use if (k := j + offset) instead of  if [k:=j+ offset)]
   because 0 is interpreted as False, as (0) is 0 and, bool(0) is False
 2) Note that:
   lp = VarArray(size=[nStairCarpets, max(nCoveredSteps)], dom=lambda i, j: {0, 1} if j < nCoveredSteps[i] else None)

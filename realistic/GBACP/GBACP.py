@@ -88,9 +88,6 @@ elif variant("table"):
 minimize(
     # minimizing preference violations and unbalanced loads
     Sum(d[c][p] * d[c][p] for c in range(nCurricula) for p in range(nPeriods))
-    + Sum(x[i] == v + k * nPeriodsPerYear for (i, v) in undesiredPeriods for k in range(nPeriodsPerYear))
+    + Sum(belong(x[i], {v + k * nPeriodsPerYear for k in range(nPeriodsPerYear)}) for (i, v) in undesiredPeriods)
+    # + Sum(x[i] == v + k * nPeriodsPerYear for (i, v) in undesiredPeriods for k in range(nPeriodsPerYear))
 )
-
-""" Comments
-1) Options for ACE: -varh=PickOnDom -pm=3 -valh=Vals -ale=4
-"""

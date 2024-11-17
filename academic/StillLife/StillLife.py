@@ -40,11 +40,6 @@ n, m = data or (8, 8)
 if not variant():
     T = {(v, 0) for v in range(9) if v != 3} | {(2, 1), (3, 1)}
 
-
-    def scope(i, j):
-        return [x[k][p] for k in range(n) for p in range(m) if i - 1 <= k <= i + 1 and j - 1 <= p <= j + 1 and (k, p) != (i, j)]
-
-
     # x[i][j] is 1 iff the cell at row i and col j is alive
     x = VarArray(size=[n, m], dom={0, 1})
 
@@ -53,7 +48,7 @@ if not variant():
 
     satisfy(
         # computing the numbers of alive neighbours
-        [Sum(scope(i, j)) == a[i][j] for i in range(n) for j in range(m)],
+        [Sum(x.around(i, j)) == a[i][j] for i in range(n) for j in range(m)],
 
         # imposing rules of the game
         [(a[i][j], x[i][j]) in T for i in range(n) for j in range(m)],

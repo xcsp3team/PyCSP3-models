@@ -32,18 +32,18 @@ satisfying all demands.
 
 from pycsp3 import *
 
-n, m, r, connections = data
+nNodes, nRings, r, connections = data
 
-# x[i][j] is 1 if the ith ring contains the jth node
-x = VarArray(size=[m, n], dom={0, 1})
+# x[i][k] is 1 if the ith ring contains the kth node
+x = VarArray(size=[nRings, nNodes], dom={0, 1})
 
-T = {tuple(1 if j // 2 == i else ANY for j in range(2 * m)) for i in range(m)}
+T = {tuple(1 if j // 2 == i else ANY for j in range(2 * nRings)) for i in range(nRings)}
 
 satisfy(
-    [x[:, j] in T for j in connections],
+    [x[:, kq] in T for kq in connections],  # kq is a pair of nodes
 
     # respecting the capacity of rings
-    [Sum(x[i]) <= r for i in range(m)],
+    [Sum(x[i]) <= r for i in range(nRings)],
 
     # tag(symmetry-breaking)
     LexIncreasing(x)
@@ -56,10 +56,10 @@ minimize(
 
 """ Comments
 1) Note that
-  [x[:, j] in T for j in connections],
+  [x[:, kq] in T for j in connections],
  is a shortcut for; 
-   [(x[i][j] for i in range(m)) in T for j in connections]
+   [(x[i][kq] for i in range(m)) in T for kq in connections]
  which, itself is a shortcut for:
-   [(x[i][j1 if k == 0 else j2] for i in range(m) for k in range(2)) in T
-      for (j1, j2) in connections]
+   [(x[i][k if p == 0 else q] for i in range(m) for p in range(2)) in T
+      for (k, q) in connections]
 """

@@ -49,8 +49,18 @@ satisfy(
     # putting special value 0 on borders
     [
         top[0] == 0,
-        top[-1] == 0,
+        top[-1] == 0,  # meaning that we have 0 at the bottom border of the grid
         lft[:, 0] == 0,
-        lft[:, -1] == 0
-    ]
+        lft[:, -1] == 0  # meaning that we have 0 at the right border of the grid
+    ],
+
+    # tag(redundant)
+    Cardinality(
+        within=top[1:-1] + lft[:, 1:-1],
+        occurrences={v: len([1 for piece in pieces for w in piece if w == v]) // 2 for v in range(1, max_value + 1)}
+    )
 )
+
+""" Comments
+1) Not sure that the redundant constraints are very useful
+"""

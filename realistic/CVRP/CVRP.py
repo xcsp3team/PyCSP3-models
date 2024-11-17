@@ -77,7 +77,7 @@ minimize(
     + Sum(distances[c[i][-1]][0] for i in range(nVehicles))
 )
 
-"""
+""" Comments
 1) We can check the solution for the instance A-n32-k5 with:
  [c[2][k] == v for k, v in enumerate([21, 31, 19, 17, 13, 7, 26])],
  [c[4][k] == v for k, v in enumerate([12, 1, 16, 30])],

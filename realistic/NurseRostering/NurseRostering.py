@@ -140,3 +140,6 @@ minimize(
 1) Note that we could have written:
  [iff(x[d][p] == s, cn[p][d] == 0) for (p,d,s) in [(p,d, sp[on_r[p][d].shift]) for p in range(nStaffs) for d in range(nDays) if on_r[p][d]]],
 """
+
+# [Cardinality(x[:, p], occurrences=nd[p]) for p in range(nStaffs)],
+# [Cardinality(x[d], occurrences=np[d]) for d in range(nDays)],
