@@ -22,14 +22,16 @@ See Problem 069 at CSPLib.
 
 from pycsp3 import *
 
-nNurses, minPatientsPerNurse, maxPatientsPerNurse, maxWorkloadPerNurse, demands = data
-patients = [(i, demand) for i, t in enumerate(demands) for demand in t]
-nPatients, nZones = len(patients), len(demands)
+nNurses, minPatientsPerNurse, maxPatientsPerNurse, maxWorkloadPerNurse, demandsPerZone = data
 
-lb = sum(sorted(demand for i, t in enumerate(demands) for demand in t)[:minPatientsPerNurse])
+Patient = namedtuple("Patient", ["zone", "demand"])
+patients = [Patient(i, demand) for i, t in enumerate(demandsPerZone) for demand in t]
+nPatients, nZones = len(patients), len(demandsPerZone)
 
-# p[i] is the nurse assigned to the ith patient
-p = VarArray(size=nPatients, dom=range(nNurses))
+lb = sum(sorted(demand for i, t in enumerate(demandsPerZone) for demand in t)[:minPatientsPerNurse])
+
+# x[i] is the nurse assigned to the ith patient
+x = VarArray(size=nPatients, dom=range(nNurses))
 
 # w[k] is the workload of the kth nurse
 w = VarArray(size=nNurses, dom=range(lb, maxWorkloadPerNurse + 1))
@@ -37,22 +39,22 @@ w = VarArray(size=nNurses, dom=range(lb, maxWorkloadPerNurse + 1))
 satisfy(
     # ensuring that each nurse has a valid number of patients
     Cardinality(
-        within=p,
+        within=x,
         occurrences={k: range(minPatientsPerNurse, maxPatientsPerNurse + 1) for k in range(nNurses)}
     ),
 
     # ensuring a nurse stays within a zone
-    [p[i] != p[j] for i, j in combinations(nPatients, 2) if patients[i][0] != patients[j][0]],
+    [x[i] != x[j] for i, j in combinations(nPatients, 2) if patients[i].zone != patients[j].zone],
 
     # computing the workload of each nurse
     [
         w[k] == Sum(
-            c * (p[i] == k) for i, (_, c) in enumerate(patients)
+            patients[i].demand * (x[i] == k) for i in range(nPatients)
         ) for k in range(nNurses)
     ],
 
     # tag(symmetry-breaking)
-    [p[z] == z for z in range(nZones)],
+    [x[k] == k for k in range(nZones)],
 
     Increasing(w)
 )

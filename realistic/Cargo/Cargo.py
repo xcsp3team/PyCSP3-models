@@ -65,6 +65,7 @@ ft = VarArray(size=nVessels, dom=range(T + 1))
 
 # y2 = VarArray(size=nPiles, dom=lambda i: {lengths[i]})  # introduced for respecting the perimeter of the 2024 competition
 
+
 satisfy(
     # linking precise and rounded stacking start times
     [st[i] == r_st[i] * coeffs.time for i in P],
@@ -145,3 +146,5 @@ minimize(
 # sum_delay is the sum of vessel delays (waiting times)
 # sum_delay = Var(range(limits.sumMaxDelay + 1))
 """
+
+# [(r_st[i], rt[i]) in [(v, ge((v + r_sd[i]) * coeffs.time)) for v in r_st[i].dom] for i in P],

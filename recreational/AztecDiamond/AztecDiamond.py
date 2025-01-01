@@ -41,32 +41,27 @@ def inner(i, j):
     return valid(i, j - 1) and valid(i, j + 1) and valid(i - 1, j) and valid(i + 1, j)
 
 
-# all valid cells
-valid_cells = [(i, j) for i in range(2 * n) for j in range(2 * n) if valid(i, j)]
-
-# all inner cells, i.e., valid cells that are not situated on the border of the diamond
-inners = [(i, j) for i, j in valid_cells if inner(i, j)]
-
-# all border cells, i.e., valid cells that are situated on the border of the diamond
-borders = [(i, j) for i, j in valid_cells if not inner(i, j)]
+V = [(i, j) for i in range(2 * n) for j in range(2 * n) if valid(i, j)]  # all valid cells
+I = [(i, j) for i, j in V if inner(i, j)]  # all inner cells, i.e., valid cells that are not situated on the border of the diamond
+B = [(i, j) for i, j in V if not inner(i, j)]  # all border cells, i.e., valid cells that are situated on the border of the diamond
 
 # x[i][j] is the position (0: left, 1: right, 2:top, 3: bottom) of the second part of the domino whose first part occupies the cell ar row i and column j
 x = VarArray(size=[2 * n, 2 * n], dom=lambda i, j: range(4) if valid(i, j) else None)
 
 satisfy(
     # constraining cells situated on the top left border
-    [(x[i][j], x[i][j + 1], x[i + 1][j]) in {(1, 0, ANY), (3, ANY, 2)} for i, j in borders if not valid(i, j - 1) and not valid(i - 1, j)],
+    [(x[i][j], x[i][j + 1], x[i + 1][j]) in {(1, 0, ANY), (3, ANY, 2)} for i, j in B if not valid(i, j - 1) and not valid(i - 1, j)],
 
     # constraining cells situated on the top right border
-    [(x[i][j], x[i][j - 1], x[i + 1][j]) in {(0, 1, ANY), (3, ANY, 2)} for i, j in borders if not valid(i, j + 1) and not valid(i - 1, j)],
+    [(x[i][j], x[i][j - 1], x[i + 1][j]) in {(0, 1, ANY), (3, ANY, 2)} for i, j in B if not valid(i, j + 1) and not valid(i - 1, j)],
 
     # constraining cells situated on the bottom left border
-    [(x[i][j], x[i][j + 1], x[i - 1][j]) in {(1, 0, ANY), (2, ANY, 3)} for i, j in borders if not valid(i, j - 1) and not valid(i + 1, j)],
+    [(x[i][j], x[i][j + 1], x[i - 1][j]) in {(1, 0, ANY), (2, ANY, 3)} for i, j in B if not valid(i, j - 1) and not valid(i + 1, j)],
 
     # constraining cells situated on the bottom right border
-    [(x[i][j], x[i][j - 1], x[i - 1][j]) in {(0, 1, ANY), (2, ANY, 3)} for i, j in borders if not valid(i, j + 1) and not valid(i + 1, j)],
+    [(x[i][j], x[i][j - 1], x[i - 1][j]) in {(0, 1, ANY), (2, ANY, 3)} for i, j in B if not valid(i, j + 1) and not valid(i + 1, j)],
 
     # constraining inner cells
     [(x[i][j], x[i][j - 1], x[i][j + 1], x[i - 1][j], x[i + 1][j])
-     in {(0, 1, ANY, ANY, ANY), (1, ANY, 0, ANY, ANY), (2, ANY, ANY, 3, ANY), (3, ANY, ANY, ANY, 2)} for i, j in inners]
+     in {(0, 1, ANY, ANY, ANY), (1, ANY, 0, ANY, ANY), (2, ANY, ANY, 3, ANY), (3, ANY, ANY, ANY, 2)} for i, j in I]
 )

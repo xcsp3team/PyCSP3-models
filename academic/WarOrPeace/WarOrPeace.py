@@ -52,7 +52,7 @@ elif variant("or"):
         If(
             x[i][j] != PEACE,
             Then=[
-                x[i][j] == WAR,
+                # x[i][j] == WAR,  # was present when generating instances of the 2022 competition, but totally useless
                 conjunction(
                     either(
                         x[k][i] == PEACE,
