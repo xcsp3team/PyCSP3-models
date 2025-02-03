@@ -49,6 +49,5 @@ elif variant("sum"):
     )
 
 """ Comments
-
 1) When d is 1, abs(x - y) >= d is automatically simplified into x != y
 """
