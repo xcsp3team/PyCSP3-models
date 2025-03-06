@@ -1,7 +1,7 @@
 """
 Problem 022 of csplib.
 
-Bus driver scheduling can be formulated as a set paritioning problem.
+Bus driver scheduling can be formulated as a set partitioning problem.
 These consist of a given set of tasks (pieces of work) to cover and a large set of possible shifts, where each shift covers a subset of the tasks
 and has an associated cost. We must select a subset of possible shifts that covers each piece of work once and only once: this is called a partition.
 

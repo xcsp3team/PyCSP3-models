@@ -27,9 +27,12 @@ nItems = len(data.items)
 p = VarArray(size=nPieces, dom={0, 1})
 
 # r[i][j] is the number of items of type j built using stock piece i
-r = VarArray(size=[nPieces, nItems], dom=lambda i, j: range(demands[j] + 1))
+r = VarArray(size=[nPieces, nItems], dom=lambda i, j: range(max(demands) + 1))
 
 satisfy(
+    # not exceeding possible demands
+    [r[i][j] <= demands[j] for i in range(nPieces) for j in range(nItems)],
+
     # each item demand must be exactly satisfied
     [Sum(r[:, j]) == demand for j, demand in enumerate(demands)],
 
