@@ -37,6 +37,8 @@ balance = Var(dom=range(nBoards * max(rating) + 1))
 # the global happiness wrt requests
 happiness = Var(dom=range(requests + 1))
 
+print(Sum([]))
+
 satisfy(
     # computing team ratings
     BinPacking(t, sizes=rating, loads=tr),
@@ -45,7 +47,7 @@ satisfy(
     balance == Maximum(tr) - Minimum(tr),
 
     # computing the happiness
-    happiness == 2 * Sum(t[i] == t[j] for i, j in doubleRequests) + Sum(t[i] == t[j] for i, j in singleRequests),
+    happiness == Sum(t[i] == t[j] for i, j in doubleRequests) * 2 + Sum(t[i] == t[j] for i, j in singleRequests),
 
     # teams are different on each board
     [AllDifferent(t[b * nTeams: (b + 1) * nTeams]) for b in range(nBoards)],
@@ -60,3 +62,11 @@ satisfy(
 maximize(
     1000 * happiness - balance
 )
+
+""" Comments
+1) Currently, we need to write
+ Sum(t[i] == t[j] for i, j in doubleRequests) * 2
+  instead of 
+ 2 * um(t[i] == t[j] for i, j in doubleRequests) 
+ in case the Sum generated the DummyConstraint 0 (when doubleRequests is empty)
+"""

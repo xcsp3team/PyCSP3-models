@@ -81,7 +81,7 @@ satisfy(
 
 if not variant():
     maximize(
-        g * importance - Maximum(Sum(g[i] * costs[roads[i][a] + 1][k] * (k == d[i] + a) for i in W for a in range(durations[i])) for k in D)
+        (g * importance) - Maximum(Sum(g[i] * costs[roads[i][a] + 1][k] * (k == d[i] + a) for i in W for a in range(durations[i])) for k in D)
     )
 
 elif variant('test'):

@@ -29,7 +29,7 @@ agents, horizon, neighbors, = data
 src, dst = zip(*agents)
 nAgents, nNodes = len(agents), len(neighbors)
 
-assert all(agent[0] != agent[1] for agent in agents)
+# assert all(agent[0] != agent[1] for agent in agents)  # not necessarily true (as seen in one instance in mzn 22)
 
 if not variant():
 
