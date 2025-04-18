@@ -19,7 +19,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2016/results2016.html
 
 ## Tags
-  realistic, mzn16
+  realistic, mzn16, xcsp25
 """
 
 from pycsp3 import *
@@ -31,29 +31,39 @@ KC = KEY_BITS // 32  # Number of columns per round of key schedule
 BC = BLOCK_BITS // 32  # Number of columns per round
 NBK = KC + n * BC // KC  # Number of variables to represent the components of the key (cf. paper)
 
-deltaY = VarArray(size=[n - 1, BC, 4], dom={0, 1})  # State before ARK
+# dX[r][j][i] is 0 if the differential byte for X at round r, column j and row i is equal to 0^8
+dX = VarArray(size=[n, BC, 4], dom={0, 1})  # state after ARK
 
-deltaX = VarArray(size=[n, BC, 4], dom={0, 1})  # State after ARK
+# dY[r][j][i] is 0 if the differential byte for Y at round r, column j and row i is equal to 0^8
+dY = VarArray(size=[n - 1, BC, 4], dom={0, 1})  # state before ARK
 
-deltaSR = VarArray(size=[n, BC, 4], dom={0, 1})  # State after ShiftRows
+# dK[r][j][i] is 0 if the differential byte for K at round r, column j and row i is equal to 0^8
+dK = VarArray(size=[n, BC, 4], dom={0, 1})
 
-deltaK = VarArray(size=[n, BC, 4], dom={0, 1})  # Key
+dSR = VarArray(size=[n, BC, 4], dom={0, 1})  # State after ShiftRows
 
-Kcomp = VarArray(size=[n, BC, 4, NBK], dom={0, 1})  # The components of the key
+# Kcomp[r][j][i][k] is the kth component of the key for round r, column j and row i
+Kcomp = VarArray(size=[n, BC, 4, NBK], dom={0, 1})
 
-eqK = VarArray(size=[4, n, BC, n, BC], dom={0, 1})  # eqK[i][r1][j1][r2][j2] => The byte values of DeltaK[r1,i,j1] and [r2,i,j2] are equal.
+# cX[r][j] is the sum of dX[r][][j]
+cX = VarArray(size=[n, BC], dom=range(5))
 
-colX = VarArray(size=[n, BC], dom=range(5))  # colX[r][j] = The sum for i in 0..3 of DeltaY[r][i][j]
+# cK[r][j] is the sum of dK[r][][j]
+cK = VarArray(size=[n, BC], dom=range(5))
 
-colSRX = VarArray(size=[n, BC], dom=range(5))  # colSRX; % colSRX[r][j] = The sum for i in 0..3 of SR(DeltaY)[r][i][j]
+# cSR[r][j] is the sum of dSR[r][][j]
+cSR = VarArray(size=[n, BC], dom=range(5))
 
-colK = VarArray(size=[n, BC], dom=range(5))  # colK[r][j] = The sum for i in 0..3 of DeltaK[r][i][j]
+# eqK[r1][j1][r2][j2][i] is 1 if the byte values of dK[r1][j1][i] and dK[r2][j2][i] are equal
+eqK = VarArray(size=[n, BC, n, BC, 4], dom={0, 1})
 
-DIFF_SX = VarArray(size=[n * BC, n * BC], dom=lambda i, j: {0, 1} if i < j else None)
+# eqY[J1][j2] is a lower bound on the equalities between MC(SB(A)) and MC(SB(B))
+eqY = VarArray(size=[n * BC, n * BC], dom=lambda i, j: range(5) if i < j else None)
 
-EQ_SRX = VarArray(size=[n * BC, n * BC], dom=lambda i, j: range(5) if i < j else None)
+# eqSR[J1][j2] is a lower bound on the equalities between SR(SB(A)) and SR(SB(B))
+eqSR = VarArray(size=[n * BC, n * BC], dom=lambda i, j: range(5) if i < j else None)
 
-EQ_Y = VarArray(size=[n * BC, n * BC], dom=lambda i, j: range(5) if i < j else None)
+dff = VarArray(size=[n * BC, n * BC], dom=lambda i, j: {0, 1} if i < j else None)
 
 XOR = lambda a, b, c: a + b + c != 1  # regular xor, except 1 xor 1 can be either 0 or 1
 XOR2 = lambda a, b, c, eqab, eqac, eqbc: [a + b + c != 1, eqab == 1 - c, eqac == 1 - b, eqbc == 1 - a]  # xor with equivalence propagation
@@ -64,113 +74,110 @@ idxa2 = [v for v in idxa1 if v[0] >= KC]
 
 def initKS(J, r1, j1, r2, j2, r3, j3, i, k):
     if J < KC:  # for the first key schedule round
-        return Kcomp[r1][j1][i][k] == (deltaK[r1][j1][i] if k == J else 0)
-    if J % KC == 0:  # else, for SB positions (for AES 128, corresponds to the first column of DK for each round)
-        return Kcomp[r1][j1][i][k] == (deltaK[r3][j3][i + 1] if k == (J // KC) * BC + j1 else Kcomp[r2][j2][i][k])
+        return Kcomp[r1][j1][i][k] == (dK[r1][j1][i] if k == J else 0)
+    if J % KC == 0:  # else, for SB positions (for AES 128, corresponds to the first column of dK for each round)
+        return Kcomp[r1][j1][i][k] == (dK[r3][j3][i + 1] if k == (J // KC) * BC + j1 else Kcomp[r2][j2][i][k])
 
 
 def auxKS(J, r1, j1, r2, j2, r3, j3, i):
     if J % KC == 0:
-        return XOR(deltaK[r2][j2][i], deltaK[r3][j3][(i + 1) % 4], deltaK[r1][j1][i])
+        return XOR(dK[r2][j2][i], dK[r3][j3][(i + 1) % 4], dK[r1][j1][i])
     return [
-        XOR2(deltaK[r2][j2][i], deltaK[r3][j3][i], deltaK[r1][j1][i], eqK[i][r3][j3][r2][j2], eqK[i][r1][j1][r2][j2], eqK[i][r1][j1][r3][j3]),
-        [Kcomp[r1][j1][i][k] == (Kcomp[r2][j2][i][k] * deltaK[r2][j2][i] != Kcomp[r3][j3][i][k] * deltaK[r3][j3][i]) for k in range(NBK)]
+        XOR2(dK[r2][j2][i], dK[r3][j3][i], dK[r1][j1][i], eqK[r3][j3][r2][j2][i], eqK[r1][j1][r2][j2][i], eqK[r1][j1][r3][j3][i]),
+        [Kcomp[r1][j1][i][k] == (Kcomp[r2][j2][i][k] * dK[r2][j2][i] != Kcomp[r3][j3][i][k] * dK[r3][j3][i]) for k in range(NBK)]
     ]
 
 
 satisfy(
-    # the sum to minimize
-    Sum(colSRX) + Sum(colK[J // BC][J % BC] for J in range(BC * n) if J % KC == KC - 1) == z,
+    # ensuring the goal is reached
+    Sum(cSR) + Sum(cK[J // BC][J % BC] for J in range(BC * n) if J % KC == KC - 1) == z,
 
     # initialisation of the redundant variables
     [
         (
-            colX[r][j] == Sum(deltaX[r][j]),
-            colK[r][j] == Sum(deltaK[r][j]),
-            colSRX[r][j] == Sum(deltaSR[r][j])
+            cX[r][j] == Sum(dX[r][j]),
+            cK[r][j] == Sum(dK[r][j]),
+            cSR[r][j] == Sum(dSR[r][j])
         ) for r in range(n) for j in range(BC)
     ],
 
     # ARK (Add Round Key)
-    [XOR(deltaY[r - 1][j][i], deltaK[r][j][i], deltaX[r][j][i]) for r in range(1, n) for j in range(BC) for i in range(4)],
+    [XOR(dY[r - 1][j][i], dK[r][j][i], dX[r][j][i]) for r in range(1, n) for j in range(BC) for i in range(4)],
 
-    # MDS property SR (Shift Rows)
-    [deltaSR[r][j][i] == deltaX[r][j + i][i] for r in range(n) for j in range(BC) for i in range(4)],
-
-    # MDS property MC (Mix Columns)
-    [colSRX[r][j] + Sum(deltaY[r][j]) in {0, 5, 6, 7, 8} for r in range(n - 1) for j in range(BC)],
-
-    # init KS
-    [initKS(*v, i, k) for v in idxa1 for i in range(4) for k in range(NBK)],
-
-    # KS (Key Schedule)
+    # ensuring Maximum Distance Separable (MDS) property of Mix Columns (MC)
     [
-        [auxKS(*v, i) for v in idxa2 for i in range(4)],
-        [Sum(Kcomp[J // BC][J % BC][i]) + deltaK[J // BC][J % BC][i] != 1 for J in range(KC, n * BC) for i in range(4)]
+        [dSR[r][j][i] == dX[r][j + i][i] for r in range(n) for j in range(BC) for i in range(4)],
+        [cSR[r][j] + Sum(dY[r][j]) in {0, 5, 6, 7, 8} for r in range(n - 1) for j in range(BC)]
     ],
 
-    # EQ relations; if (in byte values) DK[r1][i][j1] == DK[r2][i][j2] and DK[r2][i][j2] == DK[r3][i][j3] then DK[r1][i][j1] == DK[r3][i][j3]
+    # KS (key Schedule)
+    [
+        [initKS(*v, i, k) for v in idxa1 for i in range(4) for k in range(NBK)],
+        [auxKS(*v, i) for v in idxa2 for i in range(4)],
+        [Sum(Kcomp[J // BC][J % BC][i]) + dK[J // BC][J % BC][i] != 1 for J in range(KC, n * BC) for i in range(4)]
+    ],
+
+    # equality relations: if (in byte values) dK[r1][j1][i] == dK[r2][j2][i] and dK[r2][j2][i] == dK[r3][j3][i] then dK[r1][j1][i] == dK[r3][j3][i]
     [
         (
             If(  # EQ(a,b) => A=B
-                eqK[i][r1][j1][r2][j2],
-                Then=deltaK[r1][j1][i] == deltaK[r2][j2][i]
+                eqK[r1][j1][r2][j2][i],
+                Then=dK[r1][j1][i] == dK[r2][j2][i]
             ),
 
-            eqK[i][r1][j1][r2][j2] == eqK[i][r2][j2][r1][j1],  # symmetry
+            eqK[r1][j1][r2][j2][i] == eqK[r2][j2][r1][j1][i],  # symmetry
 
             If(  # Va=Vb => EQ(a,b)
                 [Kcomp[r1][j1][i][k] == Kcomp[r2][j2][i][k] for k in range(NBK)],
-                Then=eqK[i][r1][j1][r2][j2] == 1
+                Then=eqK[r1][j1][r2][j2][i] == 1
             ),
 
-            Sum(deltaK[r1][j1][i], deltaK[r2][j2][i], eqK[i][r1][j1][r2][j2]) != 0,  # a+b+EQ(a,b) !=0
+            Sum(dK[r1][j1][i], dK[r2][j2][i], eqK[r1][j1][r2][j2][i]) != 0,  # a+b+EQ(a,b) !=0
 
-            [  # transitivity
-                Sum(eqK[i][r1][j1][r3][j3], eqK[i][r1][j1][r2][j2], eqK[i][r2][j2][r3][j3]) != 2 for r3 in range(n) for j3 in range(BC)
-            ]
+            [Sum(eqK[r1][j1][r3][j3][i], eqK[r1][j1][r2][j2][i], eqK[r2][j2][r3][j3][i]) != 2 for r3 in range(n) for j3 in range(BC)]  # transitivity
+
         ) for J1, J2 in combinations(n * BC, 2) if (r1 := J1 // BC, j1 := J1 % BC, r2 := J2 // BC, j2 := J2 % BC) for i in range(4)
     ],
 
-    # Linear MC
+    # linear Mix Columns
     [
         (
-            DIFF_SX[J1][J2] == Exist(
+            dff[J1][J2] == Exist(
                 disjunction(
-                    deltaSR[r1 - 1][j1][i] != deltaSR[r2 - 1][j2][i],  # different bit values
-                    deltaY[r1 - 1][j1][i] != deltaY[r2 - 1][j2][i],  # different after MC (since A==b => MC(A) == MC(B))
-                    eqK[i][r1][j1][r2][j2] + deltaX[r1][j1][i] + deltaX[r2][j2][i] == 0,  # MC(SB(A)) xor K1 + MC(SB(B)) xor K2 = 0 and not(EQ(K1, K2))
-                    (eqK[i][r1][j1][r2][j2] + deltaK[r1][j1][i] == 2) & (deltaX[r1][j1][i] != deltaX[r2][j2][i])  # MC(SB(A)) xor K != MC(SB(B)) xor K
+                    dSR[r1 - 1][j1][i] != dSR[r2 - 1][j2][i],  # different bit values
+                    dY[r1 - 1][j1][i] != dY[r2 - 1][j2][i],  # different after MC (since A==b => MC(A) == MC(B))
+                    eqK[r1][j1][r2][j2][i] + dX[r1][j1][i] + dX[r2][j2][i] == 0,  # MC(SB(A)) xor K1 + MC(SB(B)) xor K2 = 0 and not(EQ(K1, K2))
+                    (eqK[r1][j1][r2][j2][i] + dK[r1][j1][i] == 2) & (dX[r1][j1][i] != dX[r2][j2][i])  # MC(SB(A)) xor K != MC(SB(B)) xor K
                 ) for i in range(4)
             ),
 
-            EQ_SRX[J1][J2] == Sum(  # Lower bound on the equalities between SR(SB(A)) and SR(SB(B))
-                deltaSR[r1 - 1][j1][i] + deltaSR[r2 - 1][j2][i] == 0 for i in range(4)
+            eqSR[J1][J2] == Sum(  # lower bound on the equalities between SR(SB(A)) and SR(SB(B))
+                dSR[r1 - 1][j1][i] + dSR[r2 - 1][j2][i] == 0 for i in range(4)
             ),
 
-            EQ_Y[J1][J2] == Sum(  # Lower bound on the equalities between MC(SB(A)) and MC(SB(B))
+            eqY[J1][J2] == Sum(  # lower bound on the equalities between MC(SB(A)) and MC(SB(B))
                 either(
-                    both(eqK[i][r1][j1][r2][j2], deltaX[r1][j1][i] + deltaX[r2][j2][i] == 0),
-                    deltaY[r1 - 1][j1][i] + deltaY[r2 - 1][j2][i] == 0
+                    both(eqK[r1][j1][r2][j2][i], dX[r1][j1][i] + dX[r2][j2][i] == 0),
+                    dY[r1 - 1][j1][i] + dY[r2 - 1][j2][i] == 0
                 ) for i in range(4)
             )
-        ) for J1 in range(BC, n * BC) for J2 in range(J1 + 1, n * BC) if (r1 := J1 // BC, j1 := J1 % BC, r2 := J2 // BC, j2 := J2 % BC)
+        ) for J1, J2 in combinations(range(BC, n * BC), 2) if (r1 := J1 // BC, j1 := J1 % BC, r2 := J2 // BC, j2 := J2 % BC)
     ],
 
     [  # If S(A) != S(B) (in bytes) then MDS Property
         If(
-            DIFF_SX[J1][J2],
-            Then=EQ_SRX[J1][J2] + EQ_Y[J1][J2] <= 3
-        ) for J1 in range(BC, n * BC) for J2 in range(J1 + 1, n * BC)
+            dff[J1][J2],
+            Then=eqSR[J1][J2] + eqY[J1][J2] <= 3
+        ) for J1, J2 in combinations(range(BC, n * BC), 2)
     ]
 )
 
 """
 1) data used in 2016 are : (5,11,128) (5,14,128) (5,16,128) (5,17,128) (7,10,192)
 2) auto-adjustment of array indexing is used:
- For example, deltaX[r][j + i][i] is equivalent to deltaX[r][(j + i) % BC][i]
+ For example, deX[r][j + i][i] is equivalent to dX[r][(j + i) % BC][i]
 """
 
 # maximize(
-#      Sum(colSRX) + Sum(colK[J // BC, J % BC] for J in range(BC * n) if J % KC == KC - 1)
+#      Sum(cSR) + Sum(cK[J // BC, J % BC] for J in range(BC * n) if J % KC == KC - 1)
 # )

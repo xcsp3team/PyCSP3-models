@@ -20,21 +20,20 @@ The model/automaton below is made stricter so as (hopefully) to generate harder 
   constraints: AllDifferent, Regular
 
 ## Execution
-  python NurseRostering_p.py -data=<datafile.json>
-  python NurseRostering_p.py -data=<datafile.dat> -parser=NurseRostering_Parser.py
+  python Rostering.py -data=<datafile.json>
+  python Rostering.py -data=<datafile.dat,10> -parser=Rostering_Parser.py
 
 ## Links
   - https://dl.acm.org/doi/abs/10.5555/2387915.2387920
   - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
 ## Tags
-  crafted, xcsp22
+  crafted, xcsp22, xcsp25
 """
 
 from pycsp3 import *
 
-n = 10
-preset, forbidden = data
+preset, forbidden, n = data
 
 
 def automaton():

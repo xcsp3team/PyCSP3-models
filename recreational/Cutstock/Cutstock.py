@@ -14,7 +14,7 @@ Related papers:
   python Cutstock.py -data=<datafile.dzn> -parser=Cutstock_ParserZ.py
 
 ## Tags
-  recreational
+  recreational, xcsp25
 """
 
 from pycsp3 import *

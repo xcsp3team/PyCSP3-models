@@ -18,7 +18,7 @@ and has an associated cost. We must select a subset of possible shifts that cove
  - https://www.csplib.org/Problems/prob022/
 
 ## Tags
-  realistic, csplib
+  realistic, csplib, xcsp25
 """
 
 from pycsp3 import *

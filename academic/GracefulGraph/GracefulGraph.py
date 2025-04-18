@@ -1,5 +1,5 @@
 """
-This is [Problem 053](https://www.csplib.org/Problems/prob053/) at CSPLib.
+This is Problem 053 at CSPLib.
 
 A labelling f of the nodes of a graph with q edges is graceful if f assigns each node a unique label from 0, 1...,q
 and when each edge (x,y) is labelled with |f(x)−f(y)|, the edge labels are all different.

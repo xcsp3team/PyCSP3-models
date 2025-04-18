@@ -1,10 +1,11 @@
 """
+Open-shop Scheduling Problem.
 
 ## Data Example
   GP-os-01.json
 
 ## Model
-  constraints: Maximum, NoOverlap
+  constraints: AllDifferent, Element, Maximum, NoOverlap
 
 ## Execution
   python SchedulingOS.py -data=<datafile.json>
@@ -13,7 +14,7 @@
   - https://en.wikipedia.org/wiki/Open-shop_scheduling
 
 ## Tags
-  realistic
+  realistic, xcsp25
 """
 
 from pycsp3 import *

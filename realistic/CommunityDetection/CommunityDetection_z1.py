@@ -20,7 +20,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2017/results2017.html
 
 ## Tags
-  realistic, mzn17
+  realistic, mzn17, mzn24
 """
 
 from pycsp3 import *
@@ -50,7 +50,7 @@ satisfy(
     Precedence(x),
 
     # computing z
-    z == Sum((x[i] == x[j]) * W[i][j] for i in range(n) for j in range(i))
+    z == Sum((x[i] == x[j]) * W[i][j] for i, j in combinations(n, 2))
 )
 
 maximize(

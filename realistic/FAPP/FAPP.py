@@ -20,7 +20,7 @@ See Challenge ROADEF 2001 (FAPP: Problème d'affectation de fréquences avec pol
   - https://www.roadef.org/challenge/2001/fr/
 
 ## Tags
-  realistic
+  realistic, xcsp25
 """
 
 from pycsp3 import *
@@ -35,15 +35,22 @@ frequencies = [domains[f] for f in frequencies]  # we skip the indirection
 n, nSofts = len(frequencies), len(soft_constraints)
 
 
+# cacheT = {}
+
+
 def table(i, j, eqr, ner, short_table=True):  # table for a soft constraint
     OpOverrider.disable()
+    # keyT = str(frequencies[i]) + "-" + str(frequencies[j]) + "-" + str(polarizations[i]) + "-" + str(polarizations[j]) + "-" + str(eqr) + "-" + str(ner)
+
     eq_relaxation, ne_relaxation = tuple(eqr), tuple(ner)
     T = []  # we use a list instead of a set because is quite faster to process
     cache = {}
+    # cacheF = set()
     for f1 in frequencies[i]:
         for f2 in frequencies[j]:
             distance = absPython(f1 - f2)
-            key = str(distance) + " " + str(polarizations[i]) + " " + str(polarizations[j])
+            key = str(distance) + "-" + str(polarizations[i]) + "-" + str(polarizations[j])  # + "-" + str(eq_relaxation) + "-" + str(ne_relaxation)
+
             if key not in cache:
                 suffixes = []
                 for pol in range(4):
@@ -59,10 +66,14 @@ def table(i, j, eqr, ner, short_table=True):  # table for a soft constraint
                             suffixes.append((p1, p2, kl, w1, w2))
                 cache[key] = suffixes
             elif short_table:
+                # if key in cacheF:
                 continue
+                # else:
+                #     cacheF.add(key)
             for suffix in cache[key]:
                 T.append((distance, *suffix) if short_table else (f1, f2, *suffix))
     OpOverrider.enable()
+    # cacheT[keyT] = T
     return T
 
 

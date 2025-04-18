@@ -48,7 +48,7 @@ satisfy(
 
 if not variant():
     satisfy(
-        NumberDistinctValues(
+        NValues(
             within=x[i] + x[j]
         ) == 2 * n - 1 for i, j in combinations(nCards, 2)
     )

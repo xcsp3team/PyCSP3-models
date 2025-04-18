@@ -35,7 +35,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-# data from Minizinc challenge 2019 (indexes from 0 to 4) and 2024 (indexes from 5 to 0)
+# data from Minizinc challenge 2019 (indexes from 0 to 4) and 2024 (indexes from 5 to 9)
 mzn = (
         [(6, 7, 8, 4, 15, 8, 12, 9), (50, 50, 50, 7, 35, 9, 10, 8), (6, 7, 8, 1, 31, 0, 6, 3), (118, 213, 124, 178, 3, 7, 5, 3), (10, 10, 12, 5, 19, 1, 1, 1)]
         + [(6, 26, 8, 2, 25, 4, 4, 3), (20, 20, 22, 6, 15, 6, 5, 4), (36, 37, 40, 3, 35, 9, 9, 9), (36, 37, 40, 6, 35, 9, 10, 8), (35, 27, 52, 6, 22, 1, 0, 0)]
