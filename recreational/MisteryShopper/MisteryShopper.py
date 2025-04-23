@@ -13,9 +13,10 @@ See description on CSPLib.
 
 ## Links
  - https://www.csplib.org/Problems/prob004
+ - https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp
 
 ## Tags
-  recreational, csplib
+  recreational, csplib, xcsp24
 """
 
 from pycsp3 import *

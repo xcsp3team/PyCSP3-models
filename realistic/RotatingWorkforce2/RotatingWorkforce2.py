@@ -19,9 +19,10 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist, under the MIT Licence.
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-93031-2_31
   - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp
 
 ## Tags
-  realistic, mzn22
+  realistic, mzn22, xcsp24
 """
 
 from pycsp3 import *

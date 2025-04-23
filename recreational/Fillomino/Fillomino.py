@@ -1,7 +1,6 @@
 """
 Fillomino is played on a rectangular grid, with some cells containing numbers.
-The goal is to divide the grid into regions called polyominoes (by filling in their boundaries)
-such that each given number n in the grid satisfies the following constraints:
+The goal is to divide the grid into regions called polyominoes (by filling in their boundaries) such that each given number n in the grid satisfies the following constraints:
   - each clue n is part of a polyomino of size n
   - no two polyominoes of matching size (number of cells) are orthogonally adjacent (share a side)
 
@@ -16,9 +15,10 @@ such that each given number n in the grid satisfies the following constraints:
 
 ## Links
   - https://en.wikipedia.org/wiki/Fillomino
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp
 
 ## Tags
-  recreational
+  recreational, xcsp24
 """
 
 from pycsp3 import *

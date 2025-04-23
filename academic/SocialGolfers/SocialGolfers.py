@@ -27,9 +27,10 @@ For the original problem, the values of and are respectively 8 and 4.
   - https://en.wikipedia.org/wiki/Social_golfer_problem
   - https://en.wikipedia.org/wiki/Kirkman%27s_schoolgirl_problem
   - https://www.csplib.org/Problems/prob010/
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp
 
 ## Tags
-  academic, notebook, csplib
+  academic, notebook, csplib, xcsp24
 """
 
 from pycsp3 import *
@@ -96,6 +97,7 @@ else:
 
 """ Comments
 1) Some redundant constraints are only valid because the way the first line is preset
+2) Data used for the 2024 competition are: [(5,5,6), (6,6,7), (7,7,8), (8,8,9), (9,9,10), (8,4,7), (8,4,8), (8,4,9), (8,4,10), (8,4,11)]
 """
 
 # 8-4-5 to 8-4-11

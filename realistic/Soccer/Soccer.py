@@ -19,9 +19,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.aimsciences.org/article/doi/10.3934/jimo.2018109
   - https://link.springer.com/chapter/10.1007/978-3-319-44953-1_36
   - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp
 
 ## Tags
-  realistic, mzn18, mzn20
+  realistic, mzn18, mzn20, xcsp24
 """
 
 from pycsp3 import *

@@ -14,9 +14,10 @@ the objective is to determine whether Gp is isomorphic to some subgraph(s) in Gt
 
 ## Links
   - https://www.sciencedirect.com/science/article/pii/S0004370210000718
+   - https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp
 
 ## Tags
-  recreational, notebook
+  recreational, notebook, xcsp24
 """
 
 from pycsp3 import *

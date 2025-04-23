@@ -22,9 +22,10 @@ This model has been co-developed by teams of ONERA and CRIL.
 ## Links
   - https://drops.dagstuhl.de/opus/frontdoor.php?source_opus=19069
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
-  realistic, xcsp23
+  realistic, xcsp23, xcsp24
 """
 
 from pycsp3 import *

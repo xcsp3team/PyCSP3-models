@@ -61,8 +61,8 @@ scoreUTF8 = [
 ]
 
 
-def notin(v, ranges):
-    return all(v not in range(a, b) for a, b in ranges)
+def not_in(d):
+    return any(all(stream[i] not in range(a, b) for a, b in t) for i, k in d.items() if (t := k if isinstance(k, list) else [k]))
 
 
 ASCII, EUCJP, SJIS, UTF8, UNKNOWN = Encodings = range(5)
@@ -84,82 +84,81 @@ satisfy(
 
     # ensuring correspondence between encodings and byte labels
     (
-        [(x[i] == ASCII) == (y[i] == A) for i in range(n)],
+        [Iff(x[i] == ASCII, y[i] == A) for i in range(n)],
         [If(x[i] == EUCJP, Then=y[i] in (E1, E2)) for i in range(n)],
         [If(x[i] == SJIS, Then=y[i] in (S11, S21, S22)) for i in range(n)],
         [If(x[i] == UTF8, Then=y[i] in (U21, U22, U31, U32, U33, U41, U42, U43, U44)) for i in range(n)],
-        [(x[i] == UNKNOWN) == (y[i] == Ukn) for i in range(n)]
+        [Iff(x[i] == UNKNOWN, y[i] == Ukn) for i in range(n)]
     ),
 
-    # ASCII
+    # about ASCII (1 byte)
     (
         [y[i] != A for i in range(n) if stream[i] >= 128],
         [If(y[i] == A, Then=cs[i] == 1) for i in range(n)]
     ),
 
-    # UTF8: C2-DF, 80-BF
+    # about UTF8 (2 bytes) while paying attention to ranges C2-DF, 80-BF
     (
         y[-1] != U21,
-        [y[i] != U21 for i in range(n - 1) if stream[i] not in range(194, 224) or stream[i + 1] not in range(128, 192)],
+        [y[i] != U21 for i in range(n - 1) if not_in({i: (194, 224), i + 1: (128, 192)})],
         y[0] != U22,
-        [(y[i] == U22) == (y[i - 1] == U21) for i in range(1, n)],
+        [Iff(y[i] == U21, y[i + 1] == U22) for i in range(n - 1)],
         [If(y[i] == U21, Then=cs[i] == 1) for i in range(n)],
         [If(y[i] == U22, Then=cs[i] == 0) for i in range(n)]
     ),
 
-    # UTF8: E0-EF, 80-BF, 80-BF
+    # about UTF8 (3 bytes) while paying attention to ranges E0-EF, 80-BF, 80-BF
     (
         [y[-1] != U31, y[-2] != U31],
-        [y[i] != U31 for i in range(n - 2) if stream[i] not in range(224, 240) or stream[i + 1] not in range(128, 192) or stream[i + 2] not in range(128, 192)],
+        [y[i] != U31 for i in range(n - 2) if not_in({i: (224, 240), i + 1: (128, 192), i + 2: (128, 192)})],
         y[0] != U32,
-        [(y[i] == U32) == (y[i - 1] == U31) for i in range(1, n)],
+        [(y[i] == U31) == (y[i + 1] == U32) for i in range(n - 1)],
         [y[0] != U33, y[1] != U33],
-        [(y[i] == U33) == (y[i - 2] == U31) for i in range(2, n)],
+        [Iff(y[i] == U31, y[i + 2] == U33) for i in range(n - 2)],
         [If(y[i] == U31, Then=cs[i] == 1) for i in range(n)],
         [If(y[i] in (U32, U33), Then=cs[i] == 0) for i in range(n)]
     ),
 
-    # UTF8: F0-F7, 80-BF, 80-BF, 80-BF
+    # about UTF8 (4 bytes) while paying attention to ranges F0-F7, 80-BF, 80-BF, 80-BF
     (
         [y[-1] != U41, y[-2] != U41, y[-3] != U41],
-        [y[i] != U41 for i in range(n - 3) if stream[i] not in range(240, 248) or stream[i + 1] not in range(128, 192)
-         or stream[i + 2] not in range(128, 192) or stream[i + 3] not in range(128, 192)],
+        [y[i] != U41 for i in range(n - 3) if not_in({i: (240, 248), i + 1: (128, 192), i + 2: (128, 192), i + 3: (128, 192)})],
         y[0] != U42,
-        [(y[i] == U42) == (y[i - 1] == U41) for i in range(1, n)],
+        [Iff(y[i] == U41, y[i + 1] == U42) for i in range(n - 1)],
         [y[0] != U43, y[1] != U43],
-        [(y[i] == U43) == (y[i - 2] == U41) for i in range(2, n)],
+        [Iff(y[i] == U41, y[i + 2] == U43) for i in range(n - 2)],
         [y[0] != U44, y[1] != U44, y[2] != U44],
-        [(y[i] == U44) == (y[i - 3] == U41) for i in range(3, n)],
+        [iff(y[i] == U41, y[i + 3] == U44) for i in range(n - 3)],
         [If(y[i] == U41, Then=cs[i] == 1) for i in range(n)],
         [If(y[i] in (U42, U43, U44), Then=cs[i] == 0) for i in range(n)]
     ),
 
-    # EUC-JP (CP51932): (A1-A8, AD, B0-F4, F9-FC), (A1-FE)
+    # about EUC-JP (2 bytes) while paying attention to ranges (A1-A8, AD, B0-F4, F9-FC), (A1-FE)
     (
-        [y[i] != E1 for i in range(n) if notin(stream[i], [(161, 169), (173, 174), (176, 245), (249, 253)]) or stream[i + 1] not in range(161, 255)],
+        [y[i] != E1 for i in range(n) if not_in({i: [(161, 169), (173, 174), (176, 245), (249, 253)], i + 1: (161, 255)})],
         y[0] != E2,
-        [(y[i] == E2) == (y[i - 1] == E1) for i in range(1, n)],
+        [Iff(y[i] == E1, y[i + 1] == E2) for i in range(n - 1)],
         [If(y[i] == E1, Then=cs[i] == 1) for i in range(n)],
         [If(y[i] == E2, Then=cs[i] == 0) for i in range(n)]
     ),
 
-    # SJIS: A1-DF)
+    # about SJIS (1 byte) while paying attention to range A1-DF
     (
         [y[i] != S11 for i in range(n) if stream[i] not in range(161, 224)],
         [If(y[i] == S11, Then=cs[i] == 1) for i in range(n)]
     ),
 
-    # SJIS: (81-9F, E0-FC), (40-7E, 80-FC)
+    # about SJIS (2 bytes) while paying attention to ranges (81-9F, E0-FC), (40-7E, 80-FC)
     (
         y[-1] != S21,
-        [y[i] != S21 for i in range(n - 1) if notin(stream[i], [(129, 160), (224, 253)]) or notin(stream[i + 1], [(64, 127), (128, 253)])],
+        [y[i] != S21 for i in range(n - 1) if not_in({i: [(129, 160), (224, 253)], i + 1: [(64, 127), (128, 253)]})],
         y[0] != S22,
-        [(y[i] == S22) == (y[i - 1] == S21) for i in range(1, n)],
+        [iff(y[i] == S21, y[i + 1] == S22) for i in range(n - 1)],
         [If(y[i] == S21, Then=cs[i] == 1) for i in range(n)],
         [If(y[i] == S22, Then=cs[i] == 0) for i in range(n)]
     ),
 
-    # UNKNOWN
+    # about unknown characters
     (
         [If(y[i] == Ukn, Then=cs[i]) for i in range(n)],
         Count(x, value=UNKNOWN) == z

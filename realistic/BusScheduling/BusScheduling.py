@@ -42,4 +42,6 @@ minimize(
 """ Comments
 1) Note that the default value for Count is 1. We can equivalently write:
  Count([x[i] for i, shift in enumerate(shifts) if t in shift], value=1) == 1 for t in range(nTasks)
+2) We can also write:
+  ExactlyOne((x[i] for i, shift in enumerate(shifts) if t in shift) for t in range(nTasks)
 """

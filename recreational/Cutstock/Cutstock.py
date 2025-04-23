@@ -42,7 +42,7 @@ satisfy(
     # tag(symmetry-breaking)
     [
         Decreasing(p),
-        LexDecreasing(r)
+        LexDecreasing(r)  # to be removed for MiniCOP track
     ]
 )
 
