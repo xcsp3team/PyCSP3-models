@@ -14,9 +14,10 @@ home/away pattern feasibility and team travel (from link below).
 
 ## Links
   - https://www.researchgate.net/publication/220270875_The_Traveling_Tournament_Problem_Description_and_Benchmarks
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
-  recreational, notebook
+  recreational, notebook, xcsp24
 """
 
 from pycsp3 import *

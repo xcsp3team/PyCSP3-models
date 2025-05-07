@@ -27,10 +27,11 @@ The configuration of live and dead cells at time t leads to a new configuration 
 
 ## Links
   - https://www.csplib.org/Problems/prob032/
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 
 ## Tags
-  academic, csplib
+  academic, csplib, xcsp24
 """
 
 from pycsp3 import *
@@ -146,4 +147,7 @@ elif variant("wastage"):
   By the way, note that expressing such intension constraints are possible here because x[0][i:i + 3] has type 'ListVar'
   If it was not the case, as for example in: (x[0][0], x[0][1], x[0][2]) != (1,1,1), we would have to call cp_array
   which would give : cp_array(x[0][0], x[0][1], x[0][2]) != (1,1,1)
+  
+4) Data used for the 2024 Competition: [(5,5), (8,8), (8,10), (9,9), (9,12), (10,10), (10,14),(12,12), (12,18)]
+                    variant "wastage": [(5,5), (10,10), (15,15), (20,20), (30,30), (40,40), (50,50)]
 """

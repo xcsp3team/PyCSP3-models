@@ -24,9 +24,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.sciencedirect.com/science/article/pii/S2192437620301217
   - https://link.springer.com/chapter/10.1007/978-3-319-07046-9_12
   - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
-  realistic, mzn13, mzn17, mzn18
+  realistic, mzn13, mzn17, mzn18, xcsp24
 """
 
 from pycsp3 import *

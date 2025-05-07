@@ -15,9 +15,10 @@ The MZN model was proposed by Bogdan David, under the MIT Licence.
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S2352220821000274
   - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
-  realistic, mzn22
+  realistic, mzn22, xcsp24
 """
 
 from pycsp3 import *

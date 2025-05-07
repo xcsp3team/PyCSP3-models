@@ -21,9 +21,10 @@ The objective is to pack all the items into the minimum number of bins so that t
 
 ## Links
   - https://site.unibo.it/operations-research/en/research/bpplib-a-bin-packing-problem-library
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
-  recreational
+  recreational, xcsp24
 """
 
 from pycsp3 import *
