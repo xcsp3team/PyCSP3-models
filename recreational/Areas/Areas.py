@@ -1,5 +1,5 @@
 """
-See "Teaching Constraints through Logic Puzzles" by Peter Szeredi
+See "Teaching Constraints through Logic Puzzles" by Peter Szeredi.
 
 A rectangular board is given with some squares specified as positive integers.
 Fill in all squares of the board with positive integers so that any maximal contiguous set of squares containing the same integer

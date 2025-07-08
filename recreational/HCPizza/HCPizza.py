@@ -86,7 +86,6 @@ maximize(
 )
 
 """ Comments
-
 1) Note that:
    Sum(x[overlaps[i][j]])
  is a shortcut for:

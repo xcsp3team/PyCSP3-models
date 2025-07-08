@@ -50,7 +50,6 @@ def table(i, j, eqr, ner, short_table=True):  # table for a soft constraint
         for f2 in frequencies[j]:
             distance = absPython(f1 - f2)
             key = str(distance) + "-" + str(polarizations[i]) + "-" + str(polarizations[j])  # + "-" + str(eq_relaxation) + "-" + str(ne_relaxation)
-
             if key not in cache:
                 suffixes = []
                 for pol in range(4):

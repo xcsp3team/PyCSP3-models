@@ -71,3 +71,9 @@ satisfy(
     # all tasks are different at any time
     [AllDifferent(x[:, j]) for j in range(n)]
 )
+
+""" Comments
+1) one could try:
+  [x[i] in A.to_table([range(n) for _ in range(n)]) for i in range(n)]
+ but tables are too large
+"""

@@ -1,5 +1,5 @@
 """
-Given a grid containing some pairs of identical numbers, connect each pair of similar numbers by drawing a line sith horizontal or vertical segments,
+Given a grid containing some pairs of identical numbers, connect each pair of similar numbers by drawing a line with horizontal or vertical segments,
 while paying attention to not having crossed lines.
 
 ## Data Example
