@@ -1,4 +1,4 @@
-# Problem : __AllInterval__
+# Problem: *AllInterval*
 
 Given the twelve standard pitch-classes (c, c#, d, ...), represented by numbers 0,1,...,11,
 find a series in which each pitch-class occurs exactly once and in which the musical intervals
