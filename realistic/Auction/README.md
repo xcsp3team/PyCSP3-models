@@ -1,4 +1,4 @@
-# Problem Auction
+# Problem: Auction
 
 Problem 063 on CSPLib.
 
@@ -11,7 +11,7 @@ The problem then is to accept compatible bids such that we maximise the sum of t
   example.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Command Line
 ```

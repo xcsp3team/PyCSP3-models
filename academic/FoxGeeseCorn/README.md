@@ -1,4 +1,4 @@
-# Problem FoxGeeseCorn
+# Problem: FoxGeeseCorn
 
 This is a generalization of the famous Fox-Goose-Corn puzzle. In this version, a farmer
 wants to transport some foxes, geese and bags of corn from the west to the east side of a
@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   a sequence of 8 integers
 
 ## Model
-  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Element](https://pycsp.org/documentation/constraints/Element), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

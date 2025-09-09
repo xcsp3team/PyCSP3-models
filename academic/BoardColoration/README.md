@@ -1,4 +1,4 @@
-# Problem BoardColoration
+# Problem: BoardColoration
 
 All squares of a board of a specified size (specified numbers of rows and columns) must be colored with the minimum number of colors.
 The four corners of any rectangle inside the board must not be assigned the same color.
@@ -20,10 +20,12 @@ The four corners of any rectangle inside the board must not be assigned the same
 ## Model
   You can find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/COP/BoardColoration/).
 
-  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NValues](http://pycsp.org/documentation/constraints/NValues)
+  constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [NValues](https://pycsp.org/documentation/constraints/NValues)
 
 ## Execution
-  - python BoardColoration.py -data=[number,number]
+```
+  python BoardColoration.py -data=[number,number]
+```
 
 ## Tags
   academic, notebook

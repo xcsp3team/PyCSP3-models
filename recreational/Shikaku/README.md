@@ -1,4 +1,4 @@
-# Problem Shikaku
+# Problem: Shikaku
 
 A logic puzzle. See "Shikaku as a Constraint Problem" by Helmut Simonis.
 
@@ -6,11 +6,11 @@ A logic puzzle. See "Shikaku as a Constraint Problem" by Helmut Simonis.
   grid01.json
 
 ## Model
-  constraints: [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution:
 ```
-  python3 Shikaku.py -data=<datafile.json>
+  python Shikaku.py -data=<datafile.json>
 ```
 
 ## Links

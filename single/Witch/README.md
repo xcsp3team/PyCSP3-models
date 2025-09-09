@@ -1,4 +1,4 @@
-# Problem Witch
+# Problem: Witch
 
 A toy problem from my course about CP.
 

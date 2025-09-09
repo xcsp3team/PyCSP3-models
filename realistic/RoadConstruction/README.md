@@ -1,4 +1,4 @@
-# Problem RoadConstruction
+# Problem: RoadConstruction
 
 Road construction problem.
 
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   09.json
 
 ## Model
-  constraints: [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Minimum](https://pycsp.org/documentation/constraints/Minimum), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

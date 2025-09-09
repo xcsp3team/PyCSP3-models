@@ -1,4 +1,4 @@
-# Problem ClockTriplet
+# Problem: ClockTriplet
 
 The problem was originally posed by Dean Clark and then presented to a larger audience by Martin Gardner.
 The problem was discussed in Dr. Dobbs's Journal, May 2004 in an article  by Timothy Rolfe.
@@ -20,10 +20,12 @@ due to the number of permutations.
 ## Model
   The model here is given in a general form.
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Slide](http://pycsp.org/documentation/constraints/Slide), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Slide](https://pycsp.org/documentation/constraints/Slide), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python ClockTriplet.py -data=[number,number]
+```
+  python ClockTriplet.py -data=[number,number]
+```
 
 ## Links
   - http://www.f1compiler.com/samples/Dean%20Clark%27s%20Problem.f1.html

@@ -1,4 +1,4 @@
-# Problem Ramsey
+# Problem: Ramsey
 
 This is [Problem 017](https://www.csplib.org/Problems/prob017/) at CSPLib.
 
@@ -10,10 +10,12 @@ With 3 colours, the problem has a solution if n < 17.
   A number n, the number of nodes of the graph.
 
 ## Model
-  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NValues](http://pycsp.org/documentation/constraints/NValues)
+  constraints: [Maximum](https://pycsp.org/documentation/constraints/Maximum), [NValues](https://pycsp.org/documentation/constraints/NValues)
 
 ## Execution
-  - python Ramsey.py -data=number
+```
+  python Ramsey.py -data=number
+```
 
 ## Tags
   academic, csplib

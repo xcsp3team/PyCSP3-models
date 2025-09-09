@@ -1,4 +1,4 @@
-# Problem PythagoreanTriples
+# Problem: PythagoreanTriples
 
 The Boolean Pythagorean triples problem is a problem from Ramsey theory about whether the positive integers can be colored red and blue
 so that no Pythagorean triples consist of all red or all blue members.
@@ -11,10 +11,12 @@ For example, in the Pythagorean triple 3, 4 and 5 (32 + 42 = 52 ), if 3 and 4 ar
   A unique integer n
 
 ## Model
-  constraints: [NValues](http://pycsp.org/documentation/constraints/NValues)
+  constraints: [NValues](https://pycsp.org/documentation/constraints/NValues)
 
 ## Execution
-  - python PythagoreanTriples.py -data=number
+```
+  python PythagoreanTriples.py -data=number
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Boolean_Pythagorean_triples_problem

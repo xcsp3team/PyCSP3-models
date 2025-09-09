@@ -1,14 +1,14 @@
-# Problem RectPacking
+# Problem: RectPacking
 
 The rectangle (square) packing problem consists of squares (bowes)
 to be put in an enclosing rectangle (container) without overlapping of the squares.
 
 
-## Data
+## Data Example
   perfect-001.json
 
 ## Model
-  constraints: [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
+  constraints: [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
 
 ## Execution
 ```
@@ -26,5 +26,5 @@ to be put in an enclosing rectangle (container) without overlapping of the squar
 ## _Alternative Model(s)_
 
 #### RectPacking_z.py
- - constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
+ - constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
  - tags: academic, mzn09, mzn14

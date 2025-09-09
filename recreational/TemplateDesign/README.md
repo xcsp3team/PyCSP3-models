@@ -1,4 +1,4 @@
-# Problem TemplateDesign
+# Problem: TemplateDesign
 
 Problem 002 on CSPLib.
 
@@ -9,7 +9,7 @@ including cartons for human and animal food and magazine inserts.
   catfood-2.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

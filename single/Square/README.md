@@ -1,4 +1,4 @@
-# Problem Square
+# Problem: Square
 
 There is one four-digit whole number x, such that the last four digits of x^2
 are in fact the original number x. What is it?

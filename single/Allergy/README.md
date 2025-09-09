@@ -1,4 +1,4 @@
-# Problem Allergy
+# Problem: Allergy
 
 Four friends are two women named Debra and Janet, and two men named Hugh and Rick.
 They found that each of them is allergic to something different: eggs, mold, nuts and ragweed.
@@ -14,7 +14,7 @@ We know that:
   all integrated (single problem)
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem League
+# Problem: League
 
 Make leagues for some games:
  - ranking should be close in each league
@@ -8,7 +8,7 @@ Make leagues for some games:
   010-03-04.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Minimum](https://pycsp.org/documentation/constraints/Minimum), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -26,8 +26,8 @@ Make leagues for some games:
 ## _Alternative Model(s)_
 
 #### League13.py
- - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Minimum](https://pycsp.org/documentation/constraints/Minimum), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, mzn13
 #### League_z.py
- - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Minimum](https://pycsp.org/documentation/constraints/Minimum), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, mzn12

@@ -1,4 +1,4 @@
-# Problem Radiation
+# Problem: Radiation
 
 The problem of decomposing an integer matrix into a weighted sum of binary matrices has received much attention in recent years,
 largely due to its application in radiation treatment for cancer.
@@ -8,7 +8,7 @@ See paper whose reference is given below.
   01.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -27,5 +27,5 @@ See paper whose reference is given below.
 ## _Alternative Model(s)_
 
 #### Radiation_z.py
- - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, mzn08, mzn12, mzn13, mzn15, mzn20

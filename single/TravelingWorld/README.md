@@ -1,4 +1,4 @@
-# Problem TravelingWorld
+# Problem: TravelingWorld
 
 Illustrative problem used in the PyCSP3 guide (See Chapter 1)
 
@@ -13,7 +13,7 @@ the three friends be satisfied?
   all integrated (single problem)
 
 ## Model
-  constraints: [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

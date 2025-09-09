@@ -1,4 +1,4 @@
-# Problem DeBruijn
+# Problem: DeBruijn
 
 In combinatorial mathematics, a de Bruijn sequence of order n on an alphabet A of size b is a cyclic sequence
 in which every possible length-n string on A occurs exactly once as a substring.
@@ -13,7 +13,7 @@ in which every possible length-n string on A occurs exactly once as a substring.
   ```
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Minimum](https://pycsp.org/documentation/constraints/Minimum), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

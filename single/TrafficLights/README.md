@@ -1,4 +1,4 @@
-# Problem TrafficLights
+# Problem: TrafficLights
 
 Problem 016 on CSPLib
 

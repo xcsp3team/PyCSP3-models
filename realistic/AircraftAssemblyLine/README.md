@@ -1,4 +1,4 @@
-# Problem AircraftAssemblyLine
+# Problem: AircraftAssemblyLine
 
 This problem has been proposed by Stéphanie Roussel from ONERA (Toulouse), and comes from an aircraft manufacturer.
 The objective is to schedule tasks on an aircraft assembly line in order to minimize the overall number of operators required on the line.
@@ -14,17 +14,18 @@ This model has been co-developed by teams of ONERA and CRIL.
   2-178-70-2.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
   python AircraftAssemblyLine.py -data=<datafile.json>
-  python AircraftAssemblyLine.py -data=<xcsp23/datafile.json> -dataParser=AircraftAssemblyLine_Converter.py
+  python AircraftAssemblyLine.py -data=<xcsp23/datafile.json> -parser=AircraftAssemblyLine_Converter.py
 ```
 
 ## Links
   - https://drops.dagstuhl.de/opus/frontdoor.php?source_opus=19069
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
-  realistic, xcsp23
+  realistic, xcsp23, xcsp24

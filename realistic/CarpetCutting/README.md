@@ -1,4 +1,4 @@
-# Problem CarpetCutting
+# Problem: CarpetCutting
 
 The carpet cutting problem is a two-dimensional cutting and packing problem in which carpet shapes are cut
 from a rectangular carpet roll with a fixed roll width and a sufficiently long roll length.
@@ -11,7 +11,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   test01.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

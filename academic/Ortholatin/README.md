@@ -1,4 +1,4 @@
-# Problem Ortholatin
+# Problem: Ortholatin
 
 A Latin square of order n is an n by n array filled with n different symbols (for example, values between 1 and n),
 each occurring exactly once in each row and exactly once in each column.
@@ -20,10 +20,12 @@ There are orthogonal latin squares of any size except 1, 2, and 6.
   ```
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python Ortholatin.py -data=number
+```
+  python Ortholatin.py -data=number
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Mutually_orthogonal_Latin_squares

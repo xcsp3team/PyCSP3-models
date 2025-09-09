@@ -1,13 +1,13 @@
-# Problem GraphColoring
+# Problem: GraphColoring
 
 
-## Data
+## Data Example
   1-fullins-3.json
 
 ## Model
   There are two variants wrt the objective function.
 
-  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

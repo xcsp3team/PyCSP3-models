@@ -1,4 +1,4 @@
-# Problem TravelingTournament
+# Problem: TravelingTournament
 
 The Traveling Tournament Problem is a sports timetabling problem that abstracts two issues in creating timetables:
 home/away pattern feasibility and team travel (from link below).
@@ -7,7 +7,7 @@ home/away pattern feasibility and team travel (from link below).
   galaxy04.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Regular](http://pycsp.org/documentation/constraints/Regular), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Regular](https://pycsp.org/documentation/constraints/Regular), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -17,6 +17,7 @@ home/away pattern feasibility and team travel (from link below).
 
 ## Links
   - https://www.researchgate.net/publication/220270875_The_Traveling_Tournament_Problem_Description_and_Benchmarks
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
-  recreational, notebook
+  recreational, notebook, xcsp24

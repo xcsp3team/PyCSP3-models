@@ -1,4 +1,4 @@
-# Problem BinPacking
+# Problem: BinPacking
 
 A Bin Packing Problem.
 
@@ -14,7 +14,7 @@ The objective is to pack all the items into the minimum number of bins so that t
    - one with extension constraints
    - one with sum and decreasing constraints.
 
-  constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [BinPacking](https://pycsp.org/documentation/constraints/BinPacking), [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -24,6 +24,7 @@ The objective is to pack all the items into the minimum number of bins so that t
 
 ## Links
   - https://site.unibo.it/operations-research/en/research/bpplib-a-bin-packing-problem-library
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
-  recreational
+  recreational, xcsp24

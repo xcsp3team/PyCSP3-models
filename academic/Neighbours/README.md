@@ -1,4 +1,4 @@
-# Problem Neighbours
+# Problem: Neighbours
 
 From the IBM Challenge "Ponder This".
 

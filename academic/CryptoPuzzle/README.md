@@ -1,4 +1,4 @@
-# Problem CryptoPuzzle
+# Problem: CryptoPuzzle
 
 Verbal arithmetic, also known as alphametics, cryptarithmetic, cryptarithm or word addition, is a type of mathematical game
 consisting of a mathematical equation among unknown numbers, whose digits are represented by letters of the alphabet.
@@ -24,11 +24,13 @@ consisting of a mathematical equation among unknown numbers, whose digits are re
   There are a main variant and a variant involving carry variables.
   You can also find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/CryptoPuzzle/).
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python CryptoPuzzle.py -data=[string,string,string]
-  - python CryptoPuzzle.py -data=[string,string,string] -variant=carry
+```
+  python CryptoPuzzle.py -data=[string,string,string]
+  python CryptoPuzzle.py -data=[string,string,string] -variant=carry
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Verbal_arithmetic

@@ -1,4 +1,4 @@
-# Problem RCPSP_WET
+# Problem: RCPSP_WET
 
 Resource-Constrained Project Scheduling Problems with Weighted Earliness/Tardiness objective (RCPSP/WET).
 
@@ -13,7 +13,7 @@ The MZN model was proposed by University of Melbourne and NICTA (seems to be a M
   j30-27-5.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

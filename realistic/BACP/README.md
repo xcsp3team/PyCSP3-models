@@ -1,4 +1,4 @@
-# Problem BACP
+# Problem: BACP
 
 Problem 30 of the CSPLib.
 
@@ -14,7 +14,7 @@ i.e., as similar as possible.
    - one with intension constraints
   and one subvariant "d"
 
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Minimum](https://pycsp.org/documentation/constraints/Minimum), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -35,5 +35,5 @@ i.e., as similar as possible.
 ## _Alternative Model(s)_
 
 #### BACP_z.py
- - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, csplib, mzn10, mzn11

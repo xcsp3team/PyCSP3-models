@@ -1,4 +1,4 @@
-# Problem Elitserien
+# Problem: Elitserien
 
 In a 14-team league, form 2 divisions which hold a SRRT (Single Round-Robin Tournament):
   - each 7-team division must hold a SRRT to start the season
@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   handball01.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Channel](http://pycsp.org/documentation/constraints/Channel), [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Regular](http://pycsp.org/documentation/constraints/Regular), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Channel](https://pycsp.org/documentation/constraints/Channel), [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element), [Regular](https://pycsp.org/documentation/constraints/Regular), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem MaximumDAG
+# Problem: MaximumDAG
 
 Maximum Directed Acyclic Graph.
 Given a directed graph G=(V,E) find the subgraph of G that is a DAG, while maximizing the number of edges.
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   25-01.json
 
 ## Model
-  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

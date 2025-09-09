@@ -1,4 +1,4 @@
-# Problem NFractions
+# Problem: NFractions
 
 Problem 041 on CSPLib
 
@@ -6,7 +6,7 @@ Problem 041 on CSPLib
   all integrated (single problem)
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem CoveringArray
+# Problem: CoveringArray
 
 See Problem 045 on CSPLib.
 
@@ -6,14 +6,16 @@ See Problem 045 on CSPLib.
   Four integers: t, k, g and b
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Channel](http://pycsp.org/documentation/constraints/Channel), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Channel](https://pycsp.org/documentation/constraints/Channel), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python CoveringArray.py -data=[number,number,number,number]
+```
+  python CoveringArray.py -data=[number,number,number,number]
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob045/
   - https://www.cril.univ-artois.fr/XCSP23/competitions/csp/csp
 
 ## Tags
-  academic, recreational, csplib, xcsp23
+  academic, csplib, xcsp23

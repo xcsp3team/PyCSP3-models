@@ -1,4 +1,4 @@
-# Problem Hidato
+# Problem: Hidato
 
 Hidato, also known as Hidoku is a logic puzzle game invented by Gyora M. Benedek, an Israeli mathematician.
 The goal of Hidato is to fill the grid with consecutive numbers that connect horizontally, vertically, or diagonally.
@@ -11,12 +11,14 @@ The goal of Hidato is to fill the grid with consecutive numbers that connect hor
   - a main variant involving logical (and Count) constraints
   - a variant 'table' involving table constraints
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Count](http://pycsp.org/documentation/constraints/Count), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Count](https://pycsp.org/documentation/constraints/Count), [Table](https://pycsp.org/documentation/constraints/Table)
 
-## Execution (example)
-  - python Hidato.py -data=<datafile.json>
-  - python Hidato.py -variant=table -data=<datafile.json>
-  - python Hidato.py -variant=table -data=[10,10,null]
+## Execution
+```
+  python Hidato.py -data=<datafile.json>
+  python Hidato.py -data=<datafile.json> -variant=table
+  python Hidato.py -data=[number,number,null] -variant=table
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Hidato

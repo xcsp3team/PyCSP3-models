@@ -1,4 +1,4 @@
-# Problem RLFAP
+# Problem: RLFAP
 
 Radio Link Frequency Assignment.
 
@@ -6,12 +6,14 @@ Radio Link Frequency Assignment.
   graph-01.json
 
 ## Model
-  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NValues](http://pycsp.org/documentation/constraints/NValues), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Maximum](https://pycsp.org/documentation/constraints/Maximum), [NValues](https://pycsp.org/documentation/constraints/NValues), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python RLFAP.py -data=<datafile.json> -variant=card
-  - python RLFAP.py -data=<datafile.json> -variant=span
-  - python RLFAP.py -data=<datafile.json> -variant=max
+```
+  python RLFAP.py -data=<datafile.json> -variant=card
+  python RLFAP.py -data=<datafile.json> -variant=span
+  python RLFAP.py -data=<datafile.json> -variant=max
+```
 
 ## Links
   - https://link.springer.com/article/10.1023/A:1009812409930

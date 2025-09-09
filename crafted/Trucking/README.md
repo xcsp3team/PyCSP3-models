@@ -1,4 +1,4 @@
-# Problem Trucking
+# Problem: Trucking
 
 There are some trucks.
 Each truck can transport a given Load of material, and has an associated cost.
@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   01.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

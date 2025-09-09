@@ -1,4 +1,4 @@
-# Problem ShortestPath
+# Problem: ShortestPath
 
 Shortest Path Problem.
 
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   00.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem TravelingSalesman
+# Problem: TravelingSalesman
 
 The travelling salesman problem (TSP) asks the following question: "Given a list of cities and the distances between each pair of cities,
 what is the shortest possible route that visits each city exactly once and returns to the origin city?" (from wikipedia).
@@ -7,7 +7,7 @@ what is the shortest possible route that visits each city exactly once and retur
   10-20-0.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

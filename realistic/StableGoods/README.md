@@ -1,4 +1,4 @@
-# Problem StableGoods
+# Problem: StableGoods
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
 No Licence was explicitly mentioned (MIT Licence is assumed).
@@ -7,7 +7,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   s-d06.json
 
 ## Model
-  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

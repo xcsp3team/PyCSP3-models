@@ -1,4 +1,4 @@
-# Problem WaterBucket
+# Problem: WaterBucket
 
 This is [Problem 018](https://www.csplib.org/Problems/prob018/) at CSPLib:
 
@@ -15,7 +15,7 @@ What is the minimum number of transfers of water between buckets?
   - h for horizon (maximal number of rounds/transfers)
 
 ## Model
-  constraints: [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem Roster
+# Problem: Roster
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
 Instances (and the model) wre developed in the context of the ESPRIT PROJECT 22165 CHIC-2, with contributions from:
@@ -11,7 +11,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   05.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

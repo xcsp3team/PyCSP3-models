@@ -1,4 +1,4 @@
-# Problem TD_TSP
+# Problem: TD_TSP
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015/2017 Minizinc challenges.
 No Licence was explicitly mentioned (MIT Licence is assumed).
@@ -7,7 +7,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   10-24-10.json
 
 ## Model
-  constraints: [Channel](http://pycsp.org/documentation/constraints/Channel), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Channel](https://pycsp.org/documentation/constraints/Channel), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

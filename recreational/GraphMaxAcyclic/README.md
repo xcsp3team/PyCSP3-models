@@ -1,4 +1,4 @@
-# Problem GraphMaxAcyclic
+# Problem: GraphMaxAcyclic
 
 Given an edge-weighted directed graph with possibly many cycles, the task is to find an acyclic sub-graph of maximal weight.
 
@@ -6,7 +6,7 @@ Given an edge-weighted directed graph with possibly many cycles, the task is to 
   example.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -14,7 +14,6 @@ Given an edge-weighted directed graph with possibly many cycles, the task is to 
   python GraphMaxAcyclic.py -data=<datafile.json> -variant=cnt
   python GraphMaxAcyclic.py -data=<datafile.txt> -dataparser=GraphMaxAcyclic_Parser.py
 ```
-
 
 ## Tags
   recreational

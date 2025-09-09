@@ -1,4 +1,4 @@
-# Problem Audrey
+# Problem: Audrey
 
 Little Problem given by Audrey at n-Side (see problem in OscaR).
 
@@ -17,7 +17,7 @@ The problem can be generalized for any order n.
   An integer n, the number of cells
 
 ## Model
-  constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit)
+  constraints: [Circuit](https://pycsp.org/documentation/constraints/Circuit)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem Whirlpool
+# Problem: Whirlpool
 
 Perfect diagonal extended whirlpool permutation
 

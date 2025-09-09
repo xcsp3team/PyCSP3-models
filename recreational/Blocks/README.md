@@ -1,4 +1,4 @@
-# Problem Blocks
+# Problem: Blocks
 
 Blocks World Puzzle
 
@@ -9,24 +9,19 @@ The model, below, is close to (can be seen as the close translation of) the one 
 The MZN model was proposed by Mats Carlsson, under the MIT Licence.
 
 ## Data Example
-
-16-4-05.json
+  16-4-05.json
 
 ## Model
-
-constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Element](http://pycsp.org/documentation/constraints/Element)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Element](https://pycsp.org/documentation/constraints/Element)
 
 ## Execution
-
 ```
   python Blocks.py -data=<datafile.json>
   python Blocks.py -data=<datafile.dzn> -parser=Blocks_ParserZ.py
 ```
 
 ## Links
-
-- https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-
-recreational, mzn22
+  recreational, mzn22

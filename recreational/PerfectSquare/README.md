@@ -1,4 +1,4 @@
-# Problem PerfectSquare
+# Problem: PerfectSquare
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2021 Minizinc challenge.
 The original MZN model was proposed by Krzysztof Kuchcinski, and data come from the paper cited below.
@@ -8,7 +8,7 @@ The licence seems to be like a MIT Licence.
   057.json
 
 ## Model
-  constraints: [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
+  constraints: [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
 
 ## Execution
 ```

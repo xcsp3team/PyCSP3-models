@@ -1,4 +1,4 @@
-# Problem LatinSquare
+# Problem: LatinSquare
 
 A Latin square is an n × n array filled with n different symbols, each occurring exactly once in each row and exactly once in each column.
 
@@ -6,7 +6,7 @@ A Latin square is an n × n array filled with n different symbols, each occurrin
   qwh-030-h320.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution:
 ```
@@ -25,5 +25,5 @@ A Latin square is an n × n array filled with n different symbols, each occurrin
 ## _Alternative Model(s)_
 
 #### LatinSquare2.py
- - constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+ - constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
  - tags: recreational

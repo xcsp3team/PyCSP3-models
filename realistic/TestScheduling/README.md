@@ -1,4 +1,4 @@
-# Problem TestScheduling
+# Problem: TestScheduling
 
 This problem was presented as the Industrial Modelling Challenge at the conference CP2015.
 
@@ -19,7 +19,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   t020m10r10-17.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Minimum](https://pycsp.org/documentation/constraints/Minimum), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap), [Precedence](https://pycsp.org/documentation/constraints/Precedence), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem Triangular
+# Problem: Triangular
 
 This problem is taken from Daily Telegraph and Sunday Times.
 The problem is to find, for an equilateral triangular grid of size n (length of a side),
@@ -12,7 +12,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   An integer n
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

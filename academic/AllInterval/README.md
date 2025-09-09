@@ -1,4 +1,4 @@
-# Problem: *AllInterval*
+# Problem: AllInterval
 
 Given the twelve standard pitch-classes (c, c#, d, ...), represented by numbers 0,1,...,11,
 find a series in which each pitch-class occurs exactly once and in which the musical intervals
@@ -31,11 +31,13 @@ the problem of finding such a series is the all-interval series problem of order
 
   You can also find a step-by-step modeling process in this [Jupyter notebook](http://pycsp.org/documentation/models/CSP/AllInterval/).
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
-  - python AllInterval.py -data=number [-solve]
-  - python AllInterval.py -data=number -variant=aux [-solve]
+```
+  python AllInterval.py -data=number [-solve]
+  python AllInterval.py -data=number -variant=aux [-solve]
+```
 
 ## Tags
   academic, notebook

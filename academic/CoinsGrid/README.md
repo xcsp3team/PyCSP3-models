@@ -1,4 +1,4 @@
-# Problem CoinsGrid
+# Problem: CoinsGrid
 
 From Tony Hurlimann, A coin puzzle, SVOR-contest 2007.
 
@@ -6,10 +6,12 @@ From Tony Hurlimann, A coin puzzle, SVOR-contest 2007.
   Two integers n and c
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python CoinsGrid.py -data=[number,number]
+```
+  python CoinsGrid.py -data=[number,number]
+```
 
 ## Links
   - https://link.springer.com/book/10.1007/978-3-319-25883-6

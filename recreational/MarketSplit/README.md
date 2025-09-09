@@ -1,4 +1,4 @@
-# Problem MarketSplit
+# Problem: MarketSplit
 
 The feasibility problem consists of m 0-1 equality knapsack constraints defined on the same set of 10(m−1) variables.
 
@@ -6,7 +6,7 @@ The feasibility problem consists of m 0-1 equality knapsack constraints defined 
   04.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution:
 ```

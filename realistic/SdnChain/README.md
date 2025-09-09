@@ -1,4 +1,4 @@
-# Problem SdnChain
+# Problem: SdnChain
 
 Service Function Chain.
 
@@ -19,7 +19,7 @@ TODO : problem with an instance (bound)
   d10n780-1.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem ParityLearning
+# Problem: ParityLearning
 
 Optimization variant of the minimal disagreement parity (MDP) problem.
 
@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   44-22-5-2.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

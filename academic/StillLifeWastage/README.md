@@ -1,4 +1,4 @@
-# Problem StillLifeWastage
+# Problem: StillLifeWastage
 
 The Maximum Density Sill-Life Problem is to fill an n ×n board of cells with the maximum number of live cells
 so that the board is stable under the rules of Conway’s Game of Life.
@@ -11,7 +11,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   An integer n, the order of the problem instance
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

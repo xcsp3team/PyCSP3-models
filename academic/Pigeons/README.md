@@ -1,15 +1,15 @@
-# Problem Pigeons
+# Problem: Pigeons
 
 The classical "Pigeon-hole" problem.
 It can be useful to test the efficiency of filtering/reasoning algorithms.
 
 ## Data
-  An integers n
+  An integer n
 
 ## Model
   There are two variants: a main one, and a variant "dec"
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution:
 ```

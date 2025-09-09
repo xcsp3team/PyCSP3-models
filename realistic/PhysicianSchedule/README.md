@@ -1,4 +1,4 @@
-# Problem PhysicianSchedule
+# Problem: PhysicianSchedule
 
 Physician Scheduling During a Pandemic (see link to CPAIOR paper).
 
@@ -10,12 +10,12 @@ The licence seems to be like a MIT Licence.
   03-0-34.json
 
 ## Model
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Count](http://pycsp.org/documentation/constraints/Count), [NValues](http://pycsp.org/documentation/constraints/NValues), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Count](https://pycsp.org/documentation/constraints/Count), [NValues](https://pycsp.org/documentation/constraints/NValues), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
   python PhysicianSchedule.py -data=sm-10-13-00.json
-  python PhysicianSchedule.py -data=sm-10-13-00.dzn -dataparser=PhysicianSchedule_ParserZ.py
+  python PhysicianSchedule.py -data=sm-10-13-00.dzn -parser=PhysicianSchedule_ParserZ.py
 ```
 
 ## Links

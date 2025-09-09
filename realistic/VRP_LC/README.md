@@ -1,4 +1,4 @@
-# Problem VRP_LC
+# Problem: VRP_LC
 
 The Vehicle Routing Problem with Location Congestion (VRPLC) adds cumulative scheduling constraints
 on to the standard Pickup and Delivery Problem with Time Windows (PDPTW).
@@ -11,7 +11,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   09-5-10-s1.json
 
 ## Model
-  constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Circuit](https://pycsp.org/documentation/constraints/Circuit), [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -22,6 +22,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ## Links
   - https://link.springer.com/article/10.1007/s10601-016-9241-2
   - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
-  realistic, mzn18, mzn23
+  realistic, mzn18, mzn23, xcsp24

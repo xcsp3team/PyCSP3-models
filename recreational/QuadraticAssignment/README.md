@@ -1,17 +1,17 @@
-# Problem QuadraticAssignment
+# Problem: QuadraticAssignment
 
 The Quadratic Assignment Problem (QAP) has remained one of the great challenges in combinatorial optimization (from QAPLIB).
 
-## Data
+## Data Example
   example.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
   python QuadraticAssignment.py -data=<datafile.json>
-  python QuadraticAssignment.py -data=<datafile.txt> -dataparser=QuadraticAssignment_Parser.py
+  python QuadraticAssignment.py -data=<datafile.txt> -parser=QuadraticAssignment_Parser.py
 ```
 
 ## Links

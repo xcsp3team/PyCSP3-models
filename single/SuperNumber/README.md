@@ -1,4 +1,4 @@
-# Problem SuperNumber
+# Problem: SuperNumber
 
 We are looking for the 10-digit number which satisfies the following conditions:
   - all digits from 0-9 occur exactly once
@@ -13,7 +13,7 @@ Using divisibility rules allows us to use less expensive operations (constraints
   all integrated (single problem)
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

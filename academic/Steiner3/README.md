@@ -1,4 +1,4 @@
-# Problem Steiner3
+# Problem: Steiner3
 
 This is [Problem 044](https://www.csplib.org/Problems/prob044/) at CSPLib:
 
@@ -13,7 +13,7 @@ elements in {1...n} such that any two triples have at most one common element.
   A number n, the number of integers.
 
 ## Model
-  constraints: [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

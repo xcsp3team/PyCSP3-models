@@ -1,4 +1,4 @@
-# Problem Pennies
+# Problem: Pennies
 
 Put n pennies on a chessboard, so that all distances between pennies are distinct.
 
@@ -10,7 +10,7 @@ The original model involves an option type while we use the special value -1.
   An integer n
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

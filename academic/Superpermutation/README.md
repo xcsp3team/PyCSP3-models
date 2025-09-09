@@ -1,4 +1,4 @@
-# Problem Superpermutation
+# Problem: Superpermutation
 
 In combinatorial mathematics, a superpermutation on n symbols is a string that contains each permutation of n symbols
 as a substring. While trivial superpermutations can simply be made up of every permutation listed together,
@@ -15,11 +15,13 @@ However, for n = 5, there are several smallest superpermutations having the leng
   An integer n
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python Superpermutation.py -data=number
-  - python Superpermutation.py -data=number -variant=table
+```
+  python Superpermutation.py -data=number
+  python Superpermutation.py -data=number -variant=table
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Superpermutation

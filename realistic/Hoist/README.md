@@ -1,4 +1,4 @@
-# Problem Hoist
+# Problem: Hoist
 
 Hoist Scheduling (M hoists, 1 track).
 
@@ -10,7 +10,7 @@ and released under CC BY-NC-SA license (https://creativecommons.org/licenses/by-
   PU-1-2-2.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem LinearToProgram
+# Problem: LinearToProgram
 
 This model finds a shortest program to compute a linear combination of variables.
 The difficulty is that the program can only use the binary plus and the unary minus.
@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   l2p01.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

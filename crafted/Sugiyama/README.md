@@ -1,4 +1,4 @@
-# Problem Sugiyama
+# Problem: Sugiyama
 
 Optimal ordering layout for a Sugiyami style graph.
 
@@ -9,7 +9,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   g3-8-8-2.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

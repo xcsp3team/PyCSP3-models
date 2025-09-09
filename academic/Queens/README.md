@@ -1,4 +1,4 @@
-# Problem Queens
+# Problem: Queens
 
 This is [Problem 054](https://www.csplib.org/Problems/prob054/) at CSPLib.
 
@@ -16,12 +16,14 @@ Can n queens (of the same colour) be placed on an n×n chessboard so that none o
 
   There are 3 variants of this problem, one with AllDifferent constraints, the other ones with constraint in intension.
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
-  - python Queens.py -data=number
-  - python Queens.py -data=number -variant=v1
-  - python Queens.py -data=number -variant=v2
+```
+  python Queens.py -data=number
+  python Queens.py -data=number -variant=v1
+  python Queens.py -data=number -variant=v2
+```
 
 ## Tags
   academic, notebook, csplib

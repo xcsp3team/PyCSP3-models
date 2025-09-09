@@ -1,4 +1,4 @@
-# Problem KidneyExchange
+# Problem: KidneyExchange
 
 Cardinality-constrained Multi-cycle Problem (CCMCP).
 
@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   3-20-025-2.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [BinPacking](https://pycsp.org/documentation/constraints/BinPacking), [Precedence](https://pycsp.org/documentation/constraints/Precedence), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

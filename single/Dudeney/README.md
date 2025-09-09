@@ -1,4 +1,4 @@
-# Problem Dudeney
+# Problem: Dudeney
 
 In number theory, a Dudeney number in a given number base b is a natural number
 equal to the perfect cube of another natural number such that the digit sum
@@ -12,7 +12,7 @@ Below, the model is given for base 10.
   all integrated (single problem)
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

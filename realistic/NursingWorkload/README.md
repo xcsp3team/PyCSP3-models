@@ -1,4 +1,4 @@
-# Problem NursingWorkload
+# Problem: NursingWorkload
 
 Balanced Nursing Workload Problem.
 See Problem 069 at CSPLib.
@@ -7,11 +7,13 @@ See Problem 069 at CSPLib.
   2zones1.json
 
 ## Model
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python NursingWorkload.py -data=<datafile.json>
-  - python NursingWorkload.py -data=<datafile.txt> -parser=NursingWorkload_Parser.py
+```
+  python NursingWorkload.py -data=<datafile.json>
+  python NursingWorkload.py -data=<datafile.txt> -parser=NursingWorkload_Parser.py
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob069/

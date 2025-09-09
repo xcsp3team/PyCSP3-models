@@ -1,4 +1,4 @@
-# Problem NaiveMagicSequence
+# Problem: NaiveMagicSequence
 
 This naive model for the magic sequence allows us to test the ability of solvers to handle many simple constraints at the same time.
 For a problem of size 50, roughly 5000 propagators are needed.
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   An integer n
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

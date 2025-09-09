@@ -1,4 +1,4 @@
-# Problem PeacableQueens
+# Problem: PeacableQueens
 
 On a board, put the maximal number of black and white queens while having no attack from opposing sides.
 The number of black queens must be equal to the number of white queens.
@@ -10,11 +10,11 @@ The model was created by Hendrik 'Henk' Bierlee, with a licence that seems to be
   An integer n
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Lex](http://pycsp.org/documentation/constraints/Lex), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Regular](http://pycsp.org/documentation/constraints/Regular)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Lex](https://pycsp.org/documentation/constraints/Lex), [Precedence](https://pycsp.org/documentation/constraints/Precedence), [Regular](https://pycsp.org/documentation/constraints/Regular)
 
 ## Execution
 ```
-  python PeacableQueens.py -data=[integer]
+  python PeacableQueens.py -data=number
 ```
 
 ## Links

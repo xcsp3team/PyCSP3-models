@@ -1,4 +1,4 @@
-# Problem TravelingThief
+# Problem: TravelingThief
 
 Travelling Thief Problem
 
@@ -14,12 +14,12 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   n10-k03-c5000-l10000-u10100-r46.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
   python TravelingThief.py -data=sm-10-13-00.json
-  python TravelingThief.py -data=sm-10-13-00.dzn -dataparser=TravelingThief_ParserZ.py
+  python TravelingThief.py -data=sm-10-13-00.dzn -parser=TravelingThief_ParserZ.py
 ```
 
 ## Links

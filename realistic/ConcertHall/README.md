@@ -1,4 +1,4 @@
-# Problem ConcertHall
+# Problem: ConcertHall
 
 The concert hall scheduling problem considers a set of identical halls,
 and a set of concerts each having a start time, end time and profit.
@@ -12,7 +12,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   002.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Precedence](https://pycsp.org/documentation/constraints/Precedence), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

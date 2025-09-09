@@ -1,4 +1,4 @@
-# Problem ItemsetMining
+# Problem: ItemsetMining
 
 A traditional task in machine learning is the task of concept learning.
 Given a dataset of positive and negative examples, the aim is here to find a
@@ -18,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   hepatitis-k2.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

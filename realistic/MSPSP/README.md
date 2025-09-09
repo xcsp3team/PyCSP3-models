@@ -1,4 +1,4 @@
-# Problem MSPSP
+# Problem: MSPSP
 
 Multi-Skilled Project Scheduling Problem
 
@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   easy-01.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

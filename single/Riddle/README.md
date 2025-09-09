@@ -1,4 +1,4 @@
-# Problem Riddle
+# Problem: Riddle
 
 Illustrative problem used in the PyCSP3 guide (See Chapter 1)
 

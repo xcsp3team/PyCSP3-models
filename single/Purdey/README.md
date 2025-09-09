@@ -1,4 +1,4 @@
-# Problem Purdey
+# Problem: Purdey
 
 One morning, in 1880, four families (the Boyds, Garveys, Logans and Navarros) stopped by Purdey's general store.
 Each family bought a different item: 50 pounds of flour, two gallons of kerosene, ten yards of muslin cloth, ten pounds of sugar.
@@ -14,7 +14,7 @@ We know that:
   all integrated (single problem)
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
 ```

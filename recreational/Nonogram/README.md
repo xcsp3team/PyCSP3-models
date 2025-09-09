@@ -1,11 +1,11 @@
-# Problem Nonogram
+# Problem: Nonogram
 
 
 ## Data Example
   dom-06.json
 
 ## Model
-  constraints: [Regular](http://pycsp.org/documentation/constraints/Regular), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Regular](https://pycsp.org/documentation/constraints/Regular), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -27,5 +27,5 @@
 ## _Alternative Model(s)_
 
 #### Nonogram_z.py
- - constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)
+ - constraints: [Regular](https://pycsp.org/documentation/constraints/Regular)
  - tags: recreational, mzn09, mzn11, mzn12, mzn13

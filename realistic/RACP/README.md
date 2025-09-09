@@ -1,4 +1,4 @@
-# Problem RACP
+# Problem: RACP
 
 Resource Availability Cost Problem (also known as Resource Investment Problem).
 See EJOR paper cited below.
@@ -11,7 +11,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   j30-13-6-1-25.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

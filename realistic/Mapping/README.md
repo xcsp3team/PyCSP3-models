@@ -1,4 +1,4 @@
-# Problem Mapping
+# Problem: Mapping
 
 Mapping an H263 encoder on a system with a network on chip/
 This is a simplified version of the model presented in the paper cited below.
@@ -11,7 +11,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   mesh2x2-2.json
 
 ## Model
-  constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Count](http://pycsp.org/documentation/constraints/Count), [Flow](http://pycsp.org/documentation/constraints/Flow), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [BinPacking](https://pycsp.org/documentation/constraints/BinPacking), [Count](https://pycsp.org/documentation/constraints/Count), [Flow](https://pycsp.org/documentation/constraints/Flow), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

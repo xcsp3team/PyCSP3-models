@@ -1,4 +1,4 @@
-# Problem Sonet
+# Problem: Sonet
 
 This is Problem 064 on CSPLib, called Synchronous Optical Networking Problem (SONET).
 
@@ -17,11 +17,13 @@ satisfying all demands.
   s2ring02.json
 
 ## Model
-  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python Sonet.py -data=<datafile.json>
-  - python Sonet.py -data=<datafile.txt> -parser=Sonet_Parser.py
+```
+  python Sonet.py -data=<datafile.json>
+  python Sonet.py -data=<datafile.txt> -parser=Sonet_Parser.py
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob056/

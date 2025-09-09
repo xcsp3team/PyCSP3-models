@@ -1,4 +1,4 @@
-# Problem Talisman
+# Problem: Talisman
 
 An n x n array  of the integers from 1 to n^2 such that the difference between any integer
 and its neighbor (horizontally, vertically, or diagonally, without wrapping around)
@@ -17,7 +17,7 @@ is greater than or equal to some value k is called a (n,k)-talisman square.
   A pair (n,k).
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
 ```

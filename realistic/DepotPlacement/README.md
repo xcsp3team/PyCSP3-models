@@ -1,4 +1,4 @@
-# Problem DepotPlacement
+# Problem: DepotPlacement
 
 Taken from the original Minizinc model:
 "There are two warehouses, A and B. Each warehouse has a fixed set of customers.
@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   ratt-99-5.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Maximum](http://pycsp.org/documentation/constraints/Maximum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element), [Maximum](https://pycsp.org/documentation/constraints/Maximum)
 
 ## Execution
 ```

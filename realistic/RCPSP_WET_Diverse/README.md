@@ -1,4 +1,4 @@
-# Problem RCPSP_WET_Diverse
+# Problem: RCPSP_WET_Diverse
 
 Resource-Constrained Project Scheduling Problems with Weighted Earliness/Tardiness objective (RCPSP/WET).
 The objective is to find an optimal schedule so that tasks start as close as possible to the given start time for each task,
@@ -12,7 +12,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   j30-27-5-3.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

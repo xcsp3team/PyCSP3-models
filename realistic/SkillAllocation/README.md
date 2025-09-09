@@ -1,4 +1,4 @@
-# Problem SkillAllocation
+# Problem: SkillAllocation
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
 No Licence was explicitly mentioned (MIT Licence is assumed).
@@ -7,7 +7,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   2w-1.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

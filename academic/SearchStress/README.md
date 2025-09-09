@@ -1,4 +1,4 @@
-# Problem SearchStress
+# Problem: SearchStress
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2008 Minizinc challenge.
 No Licence was explicitly mentioned (MIT Licence assumed).
@@ -22,5 +22,5 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## _Alternative Model(s)_
 
 #### SearchStress2.py
- - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: academic, mzn09

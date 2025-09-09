@@ -1,4 +1,4 @@
-# Problem Picnic
+# Problem: Picnic
 
 Five friends (three women named Mindy, Sabrina and Tanya and two men named Anton and Chet) agreed to meet on an island
 in the middle of the bay for a picnic lunch on Sunday.
@@ -17,7 +17,7 @@ We know that:
   all integrated (single problem)
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
 ```

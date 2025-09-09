@@ -1,4 +1,4 @@
-# Problem SteinerTree
+# Problem: SteinerTree
 
 Steiner Tree Problem: find a tree in a graph containing all the "terminal" nodes while minimizing its weight.
 
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   es10fst03.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

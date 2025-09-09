@@ -1,4 +1,4 @@
-# Problem ATSP
+# Problem: ATSP
 
 Artificial Teeth Scheduling Problem.
 See ICAPS paper link below.
@@ -11,7 +11,7 @@ Accompanying instances are based on real-life instances.
   05-0p15.json
 
 ## Model
-  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

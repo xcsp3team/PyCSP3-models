@@ -1,4 +1,4 @@
-# Problem SAT
+# Problem: SAT
 
 The SATisfiability problem.
 
@@ -8,7 +8,7 @@ The SATisfiability problem.
 ## Model
   There are three variants.
 
-  constraints: [Clause](http://pycsp.org/documentation/constraints/Clause), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Clause](https://pycsp.org/documentation/constraints/Clause), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution:
 ```

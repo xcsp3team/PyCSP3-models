@@ -1,4 +1,4 @@
-# Problem TrainSchedule
+# Problem: TrainSchedule
 
 The Brussels Central Problem (Fom course at UCL -- Louvain La Neuve)
 
@@ -14,7 +14,7 @@ of its fleet at Brussels central. The problem to be solved is the following:
   Brussels.json
 
 ## Model
-  constraints: [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

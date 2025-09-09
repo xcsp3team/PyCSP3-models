@@ -1,4 +1,4 @@
-# Problem PillarsPlanks
+# Problem: PillarsPlanks
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
 No Licence was explicitly mentioned (MIT Licence is assumed).
@@ -7,7 +7,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   p-d02.json
 
 ## Model
-  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
+  constraints: [Element](https://pycsp.org/documentation/constraints/Element), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
 
 ## Execution
 ```

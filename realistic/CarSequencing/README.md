@@ -1,4 +1,4 @@
-# Problem CarSequencing
+# Problem: CarSequencing
 
 A number of cars are to be produced; they are not identical, because different options are available as variants on the basic model.
 The assembly line has different stations which install the various options (air-conditioning, sunroof, etc.).
@@ -18,12 +18,14 @@ See problem 001 at CSPLib.
   - a main variant involving logical constraints
   - a variant 'table' involving table constraints
 
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python CarSequencing.py -data=<datafile.json>
-  - python CarSequencing.py -data=<datafile.json> -variant=table
-  - python CarSequencing.py -data=<datafile.txt> -parser=CarSequencing_Parser.py
+```
+  python CarSequencing.py -data=<datafile.json>
+  python CarSequencing.py -data=<datafile.json> -variant=table
+  python CarSequencing.py -data=<datafile.txt> -parser=CarSequencing_Parser.py
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob001/

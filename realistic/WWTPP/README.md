@@ -1,4 +1,4 @@
-# Problem WWTPP
+# Problem: WWTPP
 
 See "Solving the Wastewater Treatment Plant Problem with SMT", by Miquel Bofill, Víctor Muñoz, Javier Murillo. CoRR abs/1609.05367 (2016)
 
@@ -6,7 +6,7 @@ See "Solving the Wastewater Treatment Plant Problem with SMT", by Miquel Bofill,
   ex04400.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution:
 ```
@@ -25,5 +25,5 @@ See "Solving the Wastewater Treatment Plant Problem with SMT", by Miquel Bofill,
 ## _Alternative Model(s)_
 
 #### WWTPP_z.py
- - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, mzn10, mzn11

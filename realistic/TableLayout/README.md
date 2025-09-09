@@ -1,4 +1,4 @@
-# Problem TableLayout
+# Problem: TableLayout
 
 Automatic layout of tables is useful in word processing applications.
 When the table contains text, minimizing the height of the table for a fixed maximum width is a difficult combinatorial optimization problem.
@@ -11,7 +11,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   1000-1615-479.json
 
 ## Model
-  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

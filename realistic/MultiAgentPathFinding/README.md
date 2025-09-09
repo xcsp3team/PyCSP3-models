@@ -1,4 +1,4 @@
-# Problem MultiAgentPathFinding
+# Problem: MultiAgentPathFinding
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017/2022 Minizinc challenges.
 The MZN model was proposed by Hakan Kjellerstrand, after translating the one by Neng-Fa Zhou in Picat.
@@ -8,7 +8,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   g16-p20-a20.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

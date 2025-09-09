@@ -1,4 +1,4 @@
-# Problem Vellino
+# Problem: Vellino
 
 From "Constraint Programming in OPL", P. Van Hentenryck, L. Michel, L. Perron, and J.-C. Régin, CP'99
 
@@ -19,7 +19,7 @@ The compatibility constraints are:
   05.json
 
 ## Model
-  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -30,12 +30,15 @@ The compatibility constraints are:
   - https://link.springer.com/chapter/10.1007/10704567_6
 
 ## Tags
-  recreational
+  recreational, notebook
 
 <br />
 
 ## _Alternative Model(s)_
 
-#### Vellino2.py
- - constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+#### Vellino_b.py
+ - constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
+ - tags: recreational
+#### Vellino_c.py
+ - constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: recreational

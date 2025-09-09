@@ -1,4 +1,4 @@
-# Problem RoomMate
+# Problem: RoomMate
 
 In mathematics, economics and computer science, the stable-roommate problem is the problem of finding a stable matching for an even-sized set.
 A matching is a separation of the set into disjoint pairs (‘roommates’).
@@ -10,12 +10,14 @@ This is distinct from the stable-marriage problem in that the stable-roommates p
   sr0006.json
 
 ## Model
-  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Element](https://pycsp.org/documentation/constraints/Element), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python RoomMate.py -data=<datafile.json>
-  - python RoomMate.py -data=<datafile.json> -variant=table
-  - python RoomMate.py -data=<datafile.txt> -parser=RoomMate_Parser.py
+```
+  python RoomMate.py -data=<datafile.json>
+  python RoomMate.py -data=<datafile.json> -variant=table
+  python RoomMate.py -data=<datafile.txt> -parser=RoomMate_Parser.py
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Stable_roommates_problem

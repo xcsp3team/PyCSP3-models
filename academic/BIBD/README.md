@@ -1,4 +1,4 @@
-# Problem BIBD
+# Problem: BIBD
 
 This is [Problem 28](http://www.csplib.org/Problems/prob028) at CSPLib:
 
@@ -7,7 +7,7 @@ originally used in the design of statistical experiments but since finding other
 It is a special case of Block Design, which also includes Latin Square problems.
 BIBD generation is described in most standard textbooks on combinatorics.
 A BIBD is defined as an arrangement of v distinct objects into b blocks such that each block contains exactly k distinct objects,
-each object occurs in exactly r different blocks, and every two distinct objects occur together in exactly l blocks.
+each object occurs in exactly r different blocks, and every two distinct objects occur together in exactly ld blocks.
 Another way of defining a BIBD is in terms of its incidence matrix, which is a v by b binary matrix with exactly r ones per row, k ones per column,
 and with a scalar product of l between any pair of distinct rows.
 A BIBD is therefore specified by its parameters (v,b,r,k,l).
@@ -30,20 +30,22 @@ A BIBD is therefore specified by its parameters (v,b,r,k,l).
     - b: the number of blocks
     - k: the number of distinct objects per block
     - r: each object occurs in exactly r different blocks
-    - l: every two distinct objects occur together in exactly l blocks
+    - ld: every two distinct objects occur together in exactly ld blocks
 
 ## Model(s)
   There are two variants:
-    - a main variant
-    - another one (called aux) involving auxiliary variables.
+  - a main variant
+  - another one (called aux) involving auxiliary variables.
 
   You can also find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/Bibd/).
 
-  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python BIBD.py -data=[number,number,number,number,number]
-  - python BIBD.py -data=[number,number,number,number,number] -variant=aux
+```
+  python BIBD.py -data=[number,number,number,number,number]
+  python BIBD.py -data=[number,number,number,number,number] -variant=aux
+```
 
 ## Tags
   academic, notebook, csplib

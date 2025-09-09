@@ -1,4 +1,4 @@
-# Problem ChangeMaking
+# Problem: ChangeMaking
 
 The change-making problem addresses the question of finding the minimum number of coins (of certain denominations) that
 add up to a given amount of money. It is a special case of the integer knapsack problem, and has applications wider than
@@ -17,11 +17,13 @@ of making a change for a specific amount of money, without considering the order
 ## Model
   There are two variants: a main one and a compact one (with fewer variables).
 
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python ChangeMaking.py -data=number
-  - python ChangeMaking.py -data=number -variant=compact
+```
+  python ChangeMaking.py -data=number
+  python ChangeMaking.py -data=number -variant=compact
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Change-making_problem

@@ -1,4 +1,4 @@
-# Problem Perfect1Factorization
+# Problem: Perfect1Factorization
 
 A 1-factorization is a partition of the edges of a graph into m-1 complete matchings.
 For the 1-factorization to be perfect, every pair of matchings must form a Hamiltonian circuit of the graph.
@@ -11,7 +11,7 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist (Licence at https://githu
   An integer n
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Channel](http://pycsp.org/documentation/constraints/Channel), [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Channel](https://pycsp.org/documentation/constraints/Channel), [Circuit](https://pycsp.org/documentation/constraints/Circuit), [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

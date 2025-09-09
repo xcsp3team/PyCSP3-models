@@ -1,4 +1,4 @@
-# Problem CookieMonster
+# Problem: CookieMonster
 
 Cookie Monster Problem (by Richard Green)
 
@@ -16,11 +16,13 @@ meaning that there are six jars, containing 1, 2, 4, 12, 13 and 15 cookies each.
   cookies_example.json
 
 ## Model
-  constraints: [Element](http://pycsp.org/documentation/constraints/Element)
+  constraints: [Element](https://pycsp.org/documentation/constraints/Element)
 
 ## Execution
-  - python CookieMonster.py
-  - python CookieMonster.py -data=cookies_example.json
+```
+  python CookieMonster.py
+  python CookieMonster.py -data=cookies_example.json
+```
 
 ## Links
   - https://bitbucket.org/oscarlib/oscar/src/dev/oscar-cp-examples/src/main/scala/oscar/cp/examples/CookieMonster.scala

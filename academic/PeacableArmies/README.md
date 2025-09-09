@@ -1,4 +1,4 @@
-# Problem PeacableArmies
+# Problem: PeacableArmies
 
 This is [Problem 110](https://www.csplib.org/Problems/prob110/) at CSPLib.
 
@@ -25,11 +25,13 @@ so that the white queens do not attack the black queens (and necessarily vice ve
 ## Model
   There are two variants "m1" and "m2"
 
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python PeacableArmies.py -data=number -variant=m1
-  - python PeacableArmies.py -data=number -variant=m2
+```
+  python PeacableArmies.py -data=number -variant=m1
+  python PeacableArmies.py -data=number -variant=m2
+```
 
 ## Tags
   academic, csplib

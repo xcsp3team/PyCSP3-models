@@ -1,4 +1,4 @@
-# Problem DakotaFurniture
+# Problem: DakotaFurniture
 
 The Dakota Furniture Company manufactures desks, tables, and chairs.
 The manufacture of each type of furniture requires lumber and two types of skilled labor: finishing and carpentry.

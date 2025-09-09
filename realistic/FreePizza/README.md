@@ -1,4 +1,4 @@
-# Problem FreePizza
+# Problem: FreePizza
 
 Taken from the Intelligent Systems course at Simon Fraser University.
 
@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   pizza06.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -32,5 +32,5 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## _Alternative Model(s)_
 
 #### FreePizza_z.py
- - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, mzn15

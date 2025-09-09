@@ -1,17 +1,16 @@
-# Problem Zephyrus
+# Problem: Zephyrus
 
 The deployment optimization problem is the problem of how to correctly deploy all the software components
 needed by a cloud application on suitable VMs on the cloud at minimal cost.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2016/2019 challenges.
 The MZN model was proposed by Jacopo Mauro (under the terms of the ISC License)
-No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   12-06-8-3.json
 
 ## Model
-  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

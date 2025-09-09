@@ -1,4 +1,4 @@
-# Problem Mario
+# Problem: Mario
 
 This models a routing problem based on a little example of Mario's day.
 Mario is an Italian Plumber and his work is mainly to find gold in the plumbing of all the houses of the neighborhood.
@@ -17,7 +17,7 @@ This problem was proposed by maury Ollagnier and Jean-Guillaume Fages.
   easy-2.json
 
 ## Model
-  constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Circuit](https://pycsp.org/documentation/constraints/Circuit), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -38,5 +38,5 @@ This problem was proposed by maury Ollagnier and Jean-Guillaume Fages.
 ## _Alternative Model(s)_
 
 #### Mario_z.py
- - constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Circuit](https://pycsp.org/documentation/constraints/Circuit), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: recreational, mzn13, mzn14, mzn17

@@ -1,4 +1,4 @@
-# Problem RotationPuzzle
+# Problem: RotationPuzzle
 
 This problem was called "rotation" at Nokia's website.
 
@@ -21,7 +21,7 @@ of rotations on the final state is given by the following cycles:
   - (5, 6, 7, 11, 15, 14, 13, 9)
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem NFC
+# Problem: NFC
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2016/2022 challenges.
 No Licence was explicitly mentioned (MIT Licence assumed).
@@ -7,7 +7,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   12-2-05.json
 
 ## Model
-  constraints: [Flow](http://pycsp.org/documentation/constraints/Flow), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Flow](https://pycsp.org/documentation/constraints/Flow), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

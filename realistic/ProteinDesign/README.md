@@ -1,4 +1,4 @@
-# Problem ProteinDesign
+# Problem: ProteinDesign
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2013/2018 Minizinc challenges.
 The MZN model was proposed by Simon de Givry.
@@ -8,7 +8,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   execute 'python ProteinDesign.py -data=<datafile.dzn> -parser=ProteinDesign_ParserZ.py -export' to get a JSON file
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem Cargo
+# Problem: Cargo
 
 This is a real-world cargo assembly planning problem arising in a coal supply chain.
 The cargoes are built on the stockyard at a port terminal from coal delivered by trains.
@@ -14,7 +14,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   22.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Element](http://pycsp.org/documentation/constraints/Element), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Element](https://pycsp.org/documentation/constraints/Element), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -27,6 +27,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.sciencedirect.com/science/article/pii/S2192437620301217
   - https://link.springer.com/chapter/10.1007/978-3-319-07046-9_12
   - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
-  realistic, mzn13, mzn17, mzn18
+  realistic, mzn13, mzn17, mzn18, xcsp24

@@ -1,4 +1,4 @@
-# Problem SchurrLemma
+# Problem: SchurrLemma
 
 This is [Problem 015](https://www.csplib.org/Problems/prob015/) at CSPLib.
 
@@ -18,11 +18,13 @@ The variant 'mod' has been proposed by Bessiere Meseguer Freuder Larrosa, "On fo
 ## Model
   There are two variants of this problem, one with NValues, the other one with AllDifferent
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [NValues](http://pycsp.org/documentation/constraints/NValues)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [NValues](https://pycsp.org/documentation/constraints/NValues)
 
 ## Execution
-  - python SchurrLemma.py -data=[number,number]
-  - python SchurrLemma.py -data=[number,number] -variant=mod
+```
+  python SchurrLemma.py -data=[number,number]
+  python SchurrLemma.py -data=[number,number] -variant=mod
+```
 
 ## Tags
   academic, csplib

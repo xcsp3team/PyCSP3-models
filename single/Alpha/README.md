@@ -1,4 +1,4 @@
-# Problem Alpha
+# Problem: Alpha
 
 Well-known crypto-arithmetic puzzle of unknown origin (e.g., a model is present in Gecode)
 
@@ -6,7 +6,7 @@ Well-known crypto-arithmetic puzzle of unknown origin (e.g., a model is present 
   all integrated (single problem)
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

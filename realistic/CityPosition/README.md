@@ -1,4 +1,4 @@
-# Problem CityPosition
+# Problem: CityPosition
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017 challenge.
 No Licence was explicitly mentioned (MIT Licence assumed).
@@ -7,7 +7,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   5-05.json
 
 ## Model
-  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

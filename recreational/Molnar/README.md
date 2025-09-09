@@ -1,4 +1,4 @@
-# Problem Molnar
+# Problem: Molnar
 
 See Problem 035 on CSPLib.
 
@@ -9,10 +9,12 @@ See Problem 035 on CSPLib.
 
   This model is for Guy's variant (only values > 1, and both determinants must be equal to 1)
 
-  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python Molnar.py -data=[number,number]
+```
+  python Molnar.py -data=[number,number]
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob035/
@@ -20,4 +22,4 @@ See Problem 035 on CSPLib.
   - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
 ## Tags
-  recreational, xcsp22
+  academic, recreational, xcsp22

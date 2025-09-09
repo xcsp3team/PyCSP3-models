@@ -1,4 +1,4 @@
-# Problem OpenShop
+# Problem: OpenShop
 
 An open shop problem is identical to a job-shop problem with the exception that there is no ordering on the tasks of a job.
 A job is a sequence of tasks.
@@ -16,7 +16,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   gp10-4.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
 
 ## Execution
 ```

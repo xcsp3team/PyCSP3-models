@@ -1,4 +1,4 @@
-# Problem Langford
+# Problem: Langford
 
 This is [Problem 024](https://www.csplib.org/Problems/prob024/) at CSPLib.
 
@@ -17,7 +17,7 @@ The problem is to arrange the eight numbers in the two sets into a single sequen
   A pair (k,n), where n is the number of values and k the number of occurrences for a value
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
 ```

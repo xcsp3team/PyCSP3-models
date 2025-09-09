@@ -1,4 +1,4 @@
-# Problem Dinner
+# Problem: Dinner
 
 My son came to me the other day and said, "Dad, I need help with a math problem."
 The problem went like this:

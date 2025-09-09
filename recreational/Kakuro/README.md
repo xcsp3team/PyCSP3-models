@@ -1,4 +1,4 @@
-# Problem Kakuro
+# Problem: Kakuro
 
 It is a kind of logic puzzle. See "Kakuro as a Constraint Problem" by Helmut Simonis.
 
@@ -6,11 +6,12 @@ It is a kind of logic puzzle. See "Kakuro as a Constraint Problem" by Helmut Sim
   easy-000.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
-## Execution:
+## Execution
 ```
   python Kakuro.py -data=<datafile.jon>
+  python Kakuro.py -data=<datafile.jon> -variant=table
 ```
 
 ## Links

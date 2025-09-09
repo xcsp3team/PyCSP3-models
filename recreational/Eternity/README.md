@@ -1,4 +1,4 @@
-# Problem Eternity
+# Problem: Eternity
 
 On a board of size n×m, you have to put square tiles (pieces) that are described by four colors (one for each direction : top, right, bottom and left).
 All adjacent tiles on the board must have matching colors along their common edge. All edges must have color ’0’ on the border of the board.
@@ -7,10 +7,12 @@ All adjacent tiles on the board must have matching colors along their common edg
   06-06.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python Eternity.py -data=<datafile.json>
+```
+  python Eternity.py -data=<datafile.json>
+```
 
 ## Links
   - https://hal-lirmm.ccsd.cnrs.fr/lirmm-00364330/document

@@ -1,4 +1,4 @@
-# Problem HRC
+# Problem: HRC
 
 The Hospitals/Residents problem with Couples (HRC) models the allocation of intending junior doctors to hospitals
 where couples are allowed to submit joint preference lists over pairs of (typically geographically close) hospitals.
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   exp1-1-5460.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

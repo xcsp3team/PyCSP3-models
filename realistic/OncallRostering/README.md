@@ -1,4 +1,4 @@
-# Problem OncallRostering
+# Problem: OncallRostering
 
 A staff member must be assigned to each "day" in a rostering period.
 A "day", means either one of Monday through to Thursday or all of Friday through Sunday; the latter is considered to be the weekend.
@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   04s-10d.json
 
 ## Model
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem HSP
+# Problem: HSP
 
 We consider a facility with a single handling resource (a hoist).
 The hoist has to perform a sequence of moves in order to accomplish a set of jobs, with varying
@@ -15,12 +15,14 @@ time of a set of jobs (i.e., the makespan), while, at the same time, satisfying 
   - a variant 'aux' involving auxiliary variables and logical constraints
   - a variant 'table' involving auxiliary variables and table constraints
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python HSP.py -data=<datafile.json>
-  - python HSP.py -data=<datafile.json> -variant=aux
-  - python HSP.py -data=<datafile.json> -variant=table
+```
+  python HSP.py -data=<datafile.json>
+  python HSP.py -data=<datafile.json> -variant=aux
+  python HSP.py -data=<datafile.json> -variant=table
+```
 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S0305054815002373

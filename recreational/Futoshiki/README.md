@@ -1,4 +1,4 @@
-# Problem Futoshiki
+# Problem: Futoshiki
 
 It is a logic puzzle game from Japan.
 
@@ -6,7 +6,7 @@ It is a logic puzzle game from Japan.
   futo3-0.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution:
 ```

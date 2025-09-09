@@ -1,4 +1,4 @@
-# Problem CELAR
+# Problem: CELAR
 
 CELAR radio link frequency assignment problem.
 
@@ -18,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   celar06-sub0.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

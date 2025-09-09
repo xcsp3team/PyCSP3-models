@@ -1,6 +1,6 @@
-# Problem Areas
+# Problem: Areas
 
-See "Teaching Constraints through Logic Puzzles" by Peter Szeredi
+See "Teaching Constraints through Logic Puzzles" by Peter Szeredi.
 
 A rectangular board is given with some squares specified as positive integers.
 Fill in all squares of the board with positive integers so that any maximal contiguous set of squares containing the same integer
@@ -13,15 +13,16 @@ Important: we assume in the model below that each specified integer delimits its
   3-3-3.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution:
 ```
-  python3 Areas.py -data=<datafile.json>
+  python Areas.py -data=<datafile.json>
 ```
 
 ## Links
- - https://www.comp.nus.edu.sg/~henz/projects/puzzles/arith/index.html
+  - https://link.springer.com/chapter/10.1007/978-3-540-24662-6_11
+  - https://www.comp.nus.edu.sg/~henz/projects/puzzles/arith/index.html
 
 ## Tags
   recreational

@@ -1,11 +1,11 @@
-# Problem Bugs
+# Problem: Bugs
 
 
-## Data
+## Data Example
   example.json
 
 ## Model
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Command Line
 ```

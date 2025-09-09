@@ -1,4 +1,4 @@
-# Problem Soccer
+# Problem: Soccer
 
 Soccer Computational Problem (Position in Ranking Problem).
 
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   22-12-22-5.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -20,7 +20,9 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - https://www.aimsciences.org/article/doi/10.3934/jimo.2018109
+  - https://link.springer.com/chapter/10.1007/978-3-319-44953-1_36
   - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp
 
 ## Tags
-  realistic, mzn18, mzn20
+  realistic, mzn18, mzn20, xcsp24

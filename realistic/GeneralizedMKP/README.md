@@ -1,4 +1,4 @@
-# Problem GeneralizedMKP
+# Problem: GeneralizedMKP
 
 In this variation of the knapsack problem, the weight of knapsack item i is given by a D-dimensional vector
 wi = (wi1, ..., wiD ) and the knapsack has a D-dimensional capacity vector (W1, ..., WD).
@@ -10,10 +10,12 @@ See Wikipedia.
   OR05x100-25-1.json
 
 ## Model
-  constraints: [Knapsack](http://pycsp.org/documentation/constraints/Knapsack), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Knapsack](https://pycsp.org/documentation/constraints/Knapsack), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python GeneralizedMKP.py -data=<datafile.json>
+```
+  python GeneralizedMKP.py -data=<datafile.json>
+```
 
 ## Links
   - https://en.wikipedia.org/wiki/Knapsack_problem

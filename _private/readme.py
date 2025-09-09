@@ -28,7 +28,7 @@ def create_alternative_models(name, directory):
 
 
 if __name__ == '__main__':
-    constraints_path = "http://pycsp.org/documentation/constraints/"
+    constraints_path = "https://pycsp.org/documentation/constraints/"
     directories = ["academic", "single", "realistic", "crafted", "recreational"]
     for thedir in directories:
         problems = sorted([ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ])
@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
             inputlines = open(model, "r").readlines()
             outputfile = open(f"{dir}/README.md", "w")
-            outputfile.write(f"# Problem {p}\n")
+            outputfile.write(f"# Problem: {p}\n")
             outputfile.write("\n")
             start = False
             python = False

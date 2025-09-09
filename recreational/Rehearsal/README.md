@@ -1,14 +1,14 @@
-# Problem Rehearsal
+# Problem: Rehearsal
 
 Problem 039 on CSPLib.
 
 A concert is to consist of nine pieces of music of different durations each involving a different combination of the five members of the orchestra.
 
-## Data
+## Data Example
   rs.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

@@ -1,10 +1,10 @@
-# Problem Fastfood
+# Problem: Fastfood
 
 ## Data Example
   02.json
 
 ## Model
-  constraints: [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Minimum](https://pycsp.org/documentation/constraints/Minimum), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -24,5 +24,5 @@
 ## _Alternative Model(s)_
 
 #### Fastfood_z.py
- - constraints: [Minimum](http://pycsp.org/documentation/constraints/Minimum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Minimum](https://pycsp.org/documentation/constraints/Minimum), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, mzn11, mzn12

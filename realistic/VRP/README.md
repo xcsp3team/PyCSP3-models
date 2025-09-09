@@ -1,4 +1,4 @@
-# Problem VRP
+# Problem: VRP
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
 The MZN model was proposed by Jakob Puchinger.
@@ -8,7 +8,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   P-n20-k2.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem VesselLoading
+# Problem: VesselLoading
 
 Supply vessels transport containers from site to site.
 See Problem 008 on CSPLib
@@ -7,7 +7,7 @@ See Problem 008 on CSPLib
   inst1.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution:
 ```

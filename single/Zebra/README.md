@@ -1,4 +1,4 @@
-# Problem Zebra
+# Problem: Zebra
 
 The Zebra puzzle (sometimes referred to as Einstein's puzzle) is defined as follows.
 There are five houses in a row, numbered from left to right.
@@ -29,7 +29,7 @@ We know that:
   all integrated (single problem)
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
 ```

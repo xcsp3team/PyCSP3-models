@@ -1,6 +1,6 @@
-# Problem GracefulGraph
+# Problem: GracefulGraph
 
-This is [Problem 053](https://www.csplib.org/Problems/prob053/) at CSPLib.
+This is Problem 053 at CSPLib.
 
 A labelling f of the nodes of a graph with q edges is graceful if f assigns each node a unique label from 0, 1...,q
 and when each edge (x,y) is labelled with |f(x)−f(y)|, the edge labels are all different.
@@ -13,10 +13,12 @@ and when each edge (x,y) is labelled with |f(x)−f(y)|, the edge labels are all
   ![Graceful Graph](/assets/figures/gracefulgraph.png).
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
-  - python GracefulGraph.py -data=[number,number]
+```
+  python GracefulGraph.py -data=[number,number]
+```
 
 ### Links
   - https://www.csplib.org/Problems/prob053

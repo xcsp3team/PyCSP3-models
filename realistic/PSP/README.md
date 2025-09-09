@@ -1,4 +1,4 @@
-# Problem PSP
+# Problem: PSP
 
 This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem 058 on CSPLib.
 
@@ -6,11 +6,13 @@ This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem
   001.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python PSP1.py -data=<datafile.json>
-  - python PSP1.py -data=<datafile.txt> -parser=PSP_Parser.py
+```
+  python PSP1.py -data=<datafile.json>
+  python PSP1.py -data=<datafile.txt> -parser=PSP_Parser.py
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob058/
@@ -27,5 +29,5 @@ This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem
 ## _Alternative Model(s)_
 
 #### PSP2.py
- - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, csplib, xcsp23

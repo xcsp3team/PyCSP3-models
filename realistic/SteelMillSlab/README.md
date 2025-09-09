@@ -1,14 +1,14 @@
-# Problem SteelMillSlab
+# Problem: SteelMillSlab
 
 Problem 038 on CSPLib.
 
 Steel is produced by casting molten iron into slabs.
 
-## Data
+## Data Example
   bench-2-0.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -27,5 +27,5 @@ Steel is produced by casting molten iron into slabs.
 ## _Alternative Model(s)_
 
 #### SteelMillSlab_z.py
- - constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [BinPacking](https://pycsp.org/documentation/constraints/BinPacking), [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, csplib, mzn17, mzn19

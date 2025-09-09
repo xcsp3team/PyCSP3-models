@@ -1,4 +1,4 @@
-# Problem ProgressiveParty
+# Problem: ProgressiveParty
 
 See Problem 013 on CSPLib.
 
@@ -16,12 +16,14 @@ The problem facing the rally organizer is that of minimizing the number of host 
   12-05.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Channel](http://pycsp.org/documentation/constraints/Channel), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Channel](https://pycsp.org/documentation/constraints/Channel), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python ProgressiveParty.py -data=<datafile.json>
-  - python ProgressiveParty.py -data=<datafile.txt> -parser=ProgressiveParty_Parser.py
-  - python ProgressiveParty.py -parser=ProgressiveParty_rally-red.py <number> <number>
+```
+  python ProgressiveParty.py -data=<datafile.json>
+  python ProgressiveParty.py -data=<datafile.txt> -parser=ProgressiveParty_Parser.py
+  python ProgressiveParty.py -parser=ProgressiveParty_rally-red.py <number> <number>
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob013/

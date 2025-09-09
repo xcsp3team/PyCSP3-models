@@ -1,4 +1,4 @@
-# Problem Survo
+# Problem: Survo
 
 In a Survo puzzle, the task is to fill an m × n table with integers 1, 2, ..., m·n
 so that each of these numbers appears only once and their row and column sums
@@ -10,7 +10,7 @@ uniqueness of the solution and/or for making the task easier.
   01.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution:
 ```

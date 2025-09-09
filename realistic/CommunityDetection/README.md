@@ -1,4 +1,4 @@
-# Problem CommunityDetection
+# Problem: CommunityDetection
 
 Constrained Community Detection Problem
 
@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   n050-e2500-s10-d5-c4-p90.json
 
 ## Model
-  constraints: [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Precedence](https://pycsp.org/documentation/constraints/Precedence), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -32,5 +32,5 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ## _Alternative Model(s)_
 
 #### CommunityDetection_z1.py
- - constraints: [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Sum](http://pycsp.org/documentation/constraints/Sum)
- - tags: realistic, mzn17
+ - constraints: [Precedence](https://pycsp.org/documentation/constraints/Precedence), [Sum](https://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn17, mzn24

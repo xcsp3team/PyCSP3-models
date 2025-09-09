@@ -1,4 +1,4 @@
-# Problem QueenAttacking
+# Problem: QueenAttacking
 
 This is [Problem 029](https://www.csplib.org/Problems/prob029/) at CSPLib.
 
@@ -19,14 +19,16 @@ Note that 1 is not prime, and that the queen does not attack its own cell.
 ## Model
   There are several variants
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python QueenAttacking.py
-  - python QueenAttacking.py -data=number
-  - python QueenAttacking.py -data=number -variant=aux
-  - python QueenAttacking.py -data=number -variant=hybrid
-  - python QueenAttacking.py -data=number -variant=table
+```
+  python QueenAttacking.py
+  python QueenAttacking.py -data=number
+  python QueenAttacking.py -data=number -variant=aux
+  python QueenAttacking.py -data=number -variant=hybrid
+  python QueenAttacking.py -data=number -variant=table
+```
 
 ## Tags
   academic, csplib

@@ -1,4 +1,4 @@
-# Problem Pentominoes
+# Problem: Pentominoes
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2008/2011/2013 Minizinc challenges.
 No Licence was explicitly mentioned (MIT Licence assumed).
@@ -7,7 +7,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   02.json
 
 ## Model
-  constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)
+  constraints: [Regular](https://pycsp.org/documentation/constraints/Regular)
 
 ## Execution
 ```
@@ -27,5 +27,5 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## _Alternative Model(s)_
 
 #### Pentominoes2.py
- - constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)
+ - constraints: [Regular](https://pycsp.org/documentation/constraints/Regular)
  - tags: recreational, mzn20

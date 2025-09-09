@@ -1,4 +1,4 @@
-# Problem PAX
+# Problem: PAX
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
 No Licence was explicitly mentioned (MIT Licence is assumed).
@@ -7,7 +7,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   pp-20-1c.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

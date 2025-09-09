@@ -1,4 +1,4 @@
-# Problem StableMarriage
+# Problem: StableMarriage
 
 Consider two groups of men and women who must marry.
 Consider that each person has indicated a ranking for her/his possible spouses.
@@ -17,7 +17,7 @@ as it shows how a nice and compact model can be written.
   example.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution:
 ```

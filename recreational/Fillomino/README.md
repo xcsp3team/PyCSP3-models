@@ -1,8 +1,7 @@
-# Problem Fillomino
+# Problem: Fillomino
 
 Fillomino is played on a rectangular grid, with some cells containing numbers.
-The goal is to divide the grid into regions called polyominoes (by filling in their boundaries)
-  constraints: [](http://pycsp.org/documentation/constraints/)
+  constraints: [](https://pycsp.org/documentation/constraints/)
   - each clue n is part of a polyomino of size n
   - no two polyominoes of matching size (number of cells) are orthogonally adjacent (share a side)
 
@@ -10,7 +9,7 @@ The goal is to divide the grid into regions called polyominoes (by filling in th
   08.json
 
 ## Model
-  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -19,14 +18,15 @@ The goal is to divide the grid into regions called polyominoes (by filling in th
 
 ## Links
   - https://en.wikipedia.org/wiki/Fillomino
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp
 
 ## Tags
-  recreational
+  recreational, xcsp24
 
 <br />
 
 ## _Alternative Model(s)_
 
 #### Fillomino_z.py
- - constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: recreational, mzn09, mzn11, mzn14

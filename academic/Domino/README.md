@@ -1,4 +1,4 @@
-# Problem Domino
+# Problem: Domino
 
 This problem is described in the paper cited below.
 Informally the Domino problem is an undirected constraint graph with a cycle and a trigger constraint.
@@ -9,7 +9,7 @@ Informally the Domino problem is an undirected constraint graph with a cycle and
 ## Model
   There are two variants: a main one and a variant 'table' with constraints in extension.
 
-  constraints: [AllEqual](http://pycsp.org/documentation/constraints/AllEqual), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllEqual](https://pycsp.org/documentation/constraints/AllEqual), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

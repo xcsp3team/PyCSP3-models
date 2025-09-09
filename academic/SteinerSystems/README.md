@@ -1,4 +1,4 @@
-# Problem SteinerSystems
+# Problem: SteinerSystems
 
 From WikiPedia: "A Steiner system with parameters t, k, n, written S(t,k,n), is an n-element set S
 together with a set of k-element subsets of S (called blocks) with the property
@@ -9,7 +9,7 @@ In an alternate notation for block designs, an S(t,k,n) would be a t-(n,k,1) des
   Three integers (t,k,n)
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

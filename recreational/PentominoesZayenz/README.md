@@ -1,4 +1,4 @@
-# Problem PentominoesZayenz
+# Problem: PentominoesZayenz
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2021 Minizinc challenge.
 The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Licence.
@@ -11,12 +11,12 @@ The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Lice
     - a main one
     - a variant called "det"
 
-  constraints: [Regular](http://pycsp.org/documentation/constraints/Regular)
+  constraints: [Regular](https://pycsp.org/documentation/constraints/Regular)
 
 ## Execution
 ```
   python PentominoesZayenz.py -data=<datafile.json>
-  python PentominoesZayenz.py -data=<datafile.dzn> -dataparser=PentominoesZayenz_ParserZ.py
+  python PentominoesZayenz.py -data=<datafile.dzn> -parser=PentominoesZayenz_ParserZ.py
 ```
 
 ## Links

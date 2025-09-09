@@ -1,4 +1,4 @@
-# Problem TimeChangingGraphColoring
+# Problem: TimeChangingGraphColoring
 
 Time-changing Graph Coloring Problem.
 
@@ -12,7 +12,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   k05-05.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

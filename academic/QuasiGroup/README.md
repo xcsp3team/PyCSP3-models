@@ -1,4 +1,4 @@
-# Problem QuasiGroup
+# Problem: QuasiGroup
 
 This is [Problem 003](https://www.csplib.org/Problems/prob003/) at CSPLib.
 
@@ -27,18 +27,20 @@ That is, a ∗ a = a for every element a.
 ## Model
   You can find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/Quasigroup/).
 
-  constraints: [Element](http://pycsp.org/documentation/constraints/Element)
+  constraints: [Element](https://pycsp.org/documentation/constraints/Element)
 
 ## Execution
-  - python QuasiGroup.py -variant=base-v3 -data=number
-  - python QuasiGroup.py -variant=base-v4 -data=number
-  - python QuasiGroup.py -variant=base-v5 -data=number
-  - python QuasiGroup.py -variant=base-v6 -data=number
-  - python QuasiGroup.py -variant=base-v7 -data=number
-  - python QuasiGroup.py -variant=aux-v3 -data=number
-  - python QuasiGroup.py -variant=aux-v4 -data=number
-  - python QuasiGroup.py -variant=aux-v5 -data=number
-  - python QuasiGroup.py -variant=aux-v7 -data=number
+```
+  python QuasiGroup.py -variant=base-v3 -data=number
+  python QuasiGroup.py -variant=base-v4 -data=number
+  python QuasiGroup.py -variant=base-v5 -data=number
+  python QuasiGroup.py -variant=base-v6 -data=number
+  python QuasiGroup.py -variant=base-v7 -data=number
+  python QuasiGroup.py -variant=aux-v3 -data=number
+  python QuasiGroup.py -variant=aux-v4 -data=number
+  python QuasiGroup.py -variant=aux-v5 -data=number
+  python QuasiGroup.py -variant=aux-v7 -data=number
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob003/
@@ -52,5 +54,5 @@ That is, a ∗ a = a for every element a.
 ## _Alternative Model(s)_
 
 #### QuasiGroup_z.py
- - constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element)
+ - constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Element](https://pycsp.org/documentation/constraints/Element)
  - tags: academic, csplib, mzn08

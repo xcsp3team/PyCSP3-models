@@ -1,4 +1,4 @@
-# Problem OPD
+# Problem: OPD
 
 An OPD (v,b,r) problem is to find a binary matrix of v rows and b columns such that:
    - each row sums to r,
@@ -8,7 +8,7 @@ An OPD (v,b,r) problem is to find a binary matrix of v rows and b columns such t
   Three integers (v,b,r)
 
 ## Model
-  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -31,5 +31,5 @@ An OPD (v,b,r) problem is to find a binary matrix of v rows and b columns such t
 ## _Alternative Model(s)_
 
 #### OPD_z.py
- - constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: academic, csplib, mzn15, mzn17

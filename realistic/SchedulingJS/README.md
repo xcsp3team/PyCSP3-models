@@ -1,11 +1,11 @@
-# Problem SchedulingJS
+# Problem: SchedulingJS
 
 
-## Data
+## Data Example
   Sadeh-js-e0ddr1-0.json
 
 ## Model
-  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
+  constraints: [Maximum](https://pycsp.org/documentation/constraints/Maximum), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
 
 ## Execution
 ```

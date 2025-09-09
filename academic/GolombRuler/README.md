@@ -1,4 +1,4 @@
-# Problem GolombRuler
+# Problem: GolombRuler
 
 This is [Problem 006](https://www.csplib.org/Problems/prob006/) at CSPLib.
 
@@ -29,12 +29,14 @@ This problem (and its variants) is said to have many practical applications incl
     - a variant "dec" by decomposing the AllDifferent constraint
     - a variant "aux" with auxiliary variables
 
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Maximum](http://pycsp.org/documentation/constraints/Maximum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Maximum](https://pycsp.org/documentation/constraints/Maximum)
 
 ## Execution
-  - python GolombRuler.py -data=number
-  - python GolombRuler.py -data=number -variant=dec
-  - python GolombRuler.py -data=number -variant=aux
+```
+  python GolombRuler.py -data=number
+  python GolombRuler.py -data=number -variant=dec
+  python GolombRuler.py -data=number -variant=aux
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob006/

@@ -1,4 +1,4 @@
-# Problem SeatMoving
+# Problem: SeatMoving
 
 The problem is to move a person from a start position to a goal position.
 
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   sm-10-12-00.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

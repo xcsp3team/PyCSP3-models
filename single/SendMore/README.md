@@ -1,4 +1,4 @@
-# Problem SendMore
+# Problem: SendMore
 
 A model for a general form of this problem is in CryptoPuzzle.py
 

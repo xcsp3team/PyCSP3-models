@@ -1,4 +1,4 @@
-# Problem Sandwich
+# Problem: Sandwich
 
 Someone in the university ate Alice’s sandwich at the cafeteria. We want to find out who the culprit is.
 The witnesses are unanimous about the following facts:
@@ -16,7 +16,7 @@ The witnesses are unanimous about the following facts:
   all integrated (single problem)
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element)
 
 ## Execution
 ```

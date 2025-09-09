@@ -1,4 +1,4 @@
-# Problem Rack
+# Problem: Rack
 
 See Problem 031 at csplib.
 
@@ -8,7 +8,7 @@ The rack configuration problem consists of plugging a set of electronic cards in
   r2.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -26,5 +26,5 @@ The rack configuration problem consists of plugging a set of electronic cards in
 ## _Alternative Model(s)_
 
 #### Rack2.py
- - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+ - constraints: [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
  - tags: realistic, csplib

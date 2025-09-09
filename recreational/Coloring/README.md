@@ -1,4 +1,4 @@
-# Problem Coloring
+# Problem: Coloring
 
 In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices are of the same color.
 

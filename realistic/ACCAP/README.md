@@ -1,4 +1,4 @@
-# Problem ACCAP
+# Problem: ACCAP
 
 Airport Check-in Counter Allocation Problem (ACCAP) with fixed opening/closing times.
 
@@ -13,26 +13,30 @@ Simultaneously, the goal is to cluster flights from the same airline together
 in the same check-in area, achieving this by minimizing the sum of the total distances (d)
 between the counters of each pair of flights from the same airline.
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019/2022 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
 
-## Data
+## Data Example
   03.json
 
 ## Model
- Two variants manage in a slightly different manner the way distances are computed:
-  - a main variant involving logical constraints
-  - a variant 'sum' forcing the presence of Sum constraints
-
-  constraints: [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Maximum](https://pycsp.org/documentation/constraints/Maximum), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python ACCAP.py -data=<datafile.json>
-  - python ACCAP.py -data=<datafile.json> -variant=sum
-  - python ACCAP.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
+```
+  python ACCAP.py -data=<datafile.json>
+  python ACCAP.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
+```
 
 ## Links
+  - https://www.researchgate.net/publication/281979436_Optimizing_the_Airport_Check-In_Counter_Allocation_Problem
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-  realistic, mzn19, mzn22
+  realistic
+
+<br />
+
+## _Alternative Model(s)_
+
+#### ACCAP_z.py
+ - constraints: [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap), [Sum](https://pycsp.org/documentation/constraints/Sum)
+ - tags: realistic, mzn19, mzn22

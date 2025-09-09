@@ -1,4 +1,4 @@
-# Problem RelToOntology
+# Problem: RelToOntology
 
 The Relational-To-Ontology Mapping Problem is viewed here as a Steiner Tree Problem with side constraints.
 See IJCAI paper below.
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   3-09.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem MagicSequence
+# Problem: MagicSequence
 
 This is [Problem 019](https://www.csplib.org/Problems/prob019/) at CSPLib.
 
@@ -18,7 +18,7 @@ the number i occurs exactly x[i] times in the sequence.
 ## Model
   You can find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/MagicSequence/).
 
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

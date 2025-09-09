@@ -1,4 +1,4 @@
-# Problem SimpleColoring
+# Problem: SimpleColoring
 
 A simple coloring problem
 

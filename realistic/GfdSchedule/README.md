@@ -1,4 +1,4 @@
-# Problem GfdSchedule
+# Problem: GfdSchedule
 
 A Scheduling problem, such that:
  - items are grouped by kinds
@@ -16,7 +16,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   n025f5d20m10k3.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [NValues](http://pycsp.org/documentation/constraints/NValues), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element), [NValues](https://pycsp.org/documentation/constraints/NValues), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -35,5 +35,5 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ## _Alternative Model(s)_
 
 #### GfdSchedule2.py
- - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, mzn16, mzn18, mzn22

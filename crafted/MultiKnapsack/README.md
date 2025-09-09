@@ -1,4 +1,4 @@
-# Problem MultiKnapsack
+# Problem: MultiKnapsack
 
 The Multi dimensional knapsack problem was originally proposed as an optimization problem by the OR community.
 Here, it is the feasibility version, as used, e.g., in (Refalo, CP 2004) and (Pesant et al., JAIR 2012).
@@ -7,7 +7,7 @@ Here, it is the feasibility version, as used, e.g., in (Refalo, CP 2004) and (Pe
   OR05x100-25-1.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -26,8 +26,8 @@ Here, it is the feasibility version, as used, e.g., in (Refalo, CP 2004) and (Pe
 ## _Alternative Model(s)_
 
 #### MultiKnapsack_z1.py
- - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: crafted, mzn14
 #### MultiKnapsack_z2.py
- - constraints: [Knapsack](http://pycsp.org/documentation/constraints/Knapsack), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Knapsack](https://pycsp.org/documentation/constraints/Knapsack), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: crafted, mzn15, mzn19

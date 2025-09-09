@@ -1,4 +1,4 @@
-# Problem GroupSplitter
+# Problem: GroupSplitter
 
 A group of people want to do activities (Cinema then Restaurant) in subgroups
 where the activities for subgroups are supposed to  match better members' preferences.
@@ -12,7 +12,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   execute 'python GroupSplitter.py -data=<datafile.dzn> -parser=GroupSplitter_ParserZ.py -export' to get a JSON file
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

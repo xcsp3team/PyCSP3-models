@@ -1,16 +1,16 @@
-# Problem Blackhole
+# Problem: Blackhole
 
 Problem 081 on CSPLib
 
-## Data
+## Data Example
   example.json
 
 ## Model
-  constraints: [Channel](http://pycsp.org/documentation/constraints/Channel), [Slide](http://pycsp.org/documentation/constraints/Slide), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Channel](https://pycsp.org/documentation/constraints/Channel), [Slide](https://pycsp.org/documentation/constraints/Slide), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution:
 ```
-  python Blackhole.py -data=<datafile.json>>
+  python Blackhole.py -data=<datafile.json>
 ```
 
 ## Links
@@ -24,5 +24,5 @@ Problem 081 on CSPLib
 ## _Alternative Model(s)_
 
 #### Blackhole_z.py
- - constraints: [Channel](http://pycsp.org/documentation/constraints/Channel), [Table](http://pycsp.org/documentation/constraints/Table)
+ - constraints: [Channel](https://pycsp.org/documentation/constraints/Channel), [Table](https://pycsp.org/documentation/constraints/Table)
  - tags: recreational, csplib, mzn09, mzn11, mzn13

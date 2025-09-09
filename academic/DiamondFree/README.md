@@ -1,4 +1,4 @@
-# Problem DiamondFree
+# Problem: DiamondFree
 
 A diamond is a set of four vertices in a graph such that there are at least five edges between those vertices.
 Conversely, a graph is diamond-free if it has no diamond as an induced subgraph, i.e. for every set of four vertices
@@ -29,10 +29,12 @@ See Problem 050 on CSPLib
     ![diamondfree](https://pycsp.org/assets/figures/diamondfree.png)
 
 ## Model
-  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python DiamondFree.py -data=[number]
+```
+  python DiamondFree.py -data=number
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob050/

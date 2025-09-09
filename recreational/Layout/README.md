@@ -1,4 +1,4 @@
-# Problem Layout
+# Problem: Layout
 
 Given a grid, we want to place a number of pieces such that every piece is completely included in the grid and no overlapping occurs between pieces.
 
@@ -6,7 +6,7 @@ Given a grid, we want to place a number of pieces such that every piece is compl
   example.json
 
 ## Model
-  constraints: [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution:
 ```

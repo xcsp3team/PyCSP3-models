@@ -1,4 +1,4 @@
-# Problem Recipe
+# Problem: Recipe
 
 From the Minizinc tutorial
 

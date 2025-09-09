@@ -1,4 +1,4 @@
-# Problem StillLife
+# Problem: StillLife
 
 This is [Problem 032](https://www.csplib.org/Problems/prob032/) at CSPLib:
 
@@ -20,7 +20,7 @@ The configuration of live and dead cells at time t leads to a new configuration 
 ## Model
   There are two variants, a classical one and a "wastage" one.
 
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -30,15 +30,16 @@ The configuration of live and dead cells at time t leads to a new configuration 
 
 ## Links
   - https://www.csplib.org/Problems/prob032/
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 
 ## Tags
-  academic, csplib
+  academic, csplib, xcsp24
 
 <br />
 
 ## _Alternative Model(s)_
 
 #### StillLife_z.py
- - constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+ - constraints: [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
  - tags: academic, mzn09

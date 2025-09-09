@@ -1,4 +1,4 @@
-# Problem DC_MST
+# Problem: DC_MST
 
 Diameter Constrained Minimum Spanning Tree.
 Given an undirected graph G=(V,E) and an integer k find a spanning tree of G of minimum cost such that its diameter is not greater than k.
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   s-v20-a50-d4.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

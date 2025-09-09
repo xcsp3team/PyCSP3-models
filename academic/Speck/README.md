@@ -1,4 +1,4 @@
-# Problem Speck
+# Problem: Speck
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2023 Minizinc challenge.
 The MZN model was proposed by David Gerault, under the MIT Licence.
@@ -7,7 +7,7 @@ The MZN model was proposed by David Gerault, under the MIT Licence.
   Two integers (n,nr)
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

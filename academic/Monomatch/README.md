@@ -1,4 +1,4 @@
-# Problem Monomatch
+# Problem: Monomatch
 
 Construction of a mono-matching game.
 

@@ -1,4 +1,4 @@
-# Problem GBACP
+# Problem: GBACP
 
 This is a generalisation of the Balanced Academic Curriculum Problem (BACP) proposed by
 Marco Chiarandini, Luca Di Gaspero, Stefano Gualandi, and Andrea Schaerf at University of Udine.
@@ -12,11 +12,13 @@ See CSPLib.
   - a main variant involving the constraint Maximum
   - a variant 'table' involving binary table constraints
 
-  constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [BinPacking](https://pycsp.org/documentation/constraints/BinPacking), [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python GBACP.py -data=<datafile.json>
-  - python GBACP.py -data=<datafile.json> -variant=table
+```
+  python GBACP.py -data=<datafile.json>
+  python GBACP.py -data=<datafile.json> -variant=table
+```
 
 ## Links
   - https://opthub.uniud.it/problem/timetabling/gbac
@@ -33,5 +35,5 @@ See CSPLib.
 ## _Alternative Model(s)_
 
 #### GBACP_z.py
- - constraints: [BinPacking](http://pycsp.org/documentation/constraints/BinPacking), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [BinPacking](https://pycsp.org/documentation/constraints/BinPacking), [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, csplib, mzn16, mzn17, mzn20

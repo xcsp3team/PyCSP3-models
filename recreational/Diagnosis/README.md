@@ -1,4 +1,4 @@
-# Problem Diagnosis
+# Problem: Diagnosis
 
 See Problem 042 on csplib.
 
@@ -10,7 +10,7 @@ or that are consistent with the observations.
   example.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

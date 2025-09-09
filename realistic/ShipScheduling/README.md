@@ -1,4 +1,4 @@
-# Problem ShipScheduling
+# Problem: ShipScheduling
 
 From the ICAPS conference paper (whose reference is given below):
 "Ship scheduling deals with assigning arrival and departure times to a fleet of ships,
@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   3-Ships.json
 
 ## Model
-  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem ValveNetwork
+# Problem: ValveNetwork
 
 This is a model for the Valve network planning for Advent of Code 2022 Day 16.
 The original model has been written by Mikael Zayenz Lagerkvist for the Minizinc challenge 2023.
@@ -10,7 +10,7 @@ this model uses different planning horizons for adjusting the hardness of the pr
   An integer (as the network is included in the model below)
 
 ## Model
-  constraints: [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

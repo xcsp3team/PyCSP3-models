@@ -1,4 +1,4 @@
-# Problem PrimeLooking
+# Problem: PrimeLooking
 
 Martin Gardner Problem:
   - Call a number "prime-looking" if it is composite but not divisible by 2,3 or 5.

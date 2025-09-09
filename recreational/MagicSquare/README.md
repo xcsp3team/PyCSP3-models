@@ -1,4 +1,4 @@
-# Problem MagicSquare
+# Problem: MagicSquare
 
 A mathematical puzzle.
 
@@ -6,7 +6,7 @@ A mathematical puzzle.
   example01.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution:
 ```

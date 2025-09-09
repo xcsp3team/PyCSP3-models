@@ -1,4 +1,4 @@
-# Problem Chessboard
+# Problem: Chessboard
 
 Place knights, rooks, queens, bishops on an n*n chessboard so that none takes each other.
 
@@ -9,7 +9,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   03.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem NurseRostering
+# Problem: NurseRostering
 
 Realistic employee shift scheduling Problem.
 
@@ -6,10 +6,12 @@ Realistic employee shift scheduling Problem.
   00.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Regular](http://pycsp.org/documentation/constraints/Regular), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Regular](https://pycsp.org/documentation/constraints/Regular), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
-  - python NurseRostering.py -data=<datafile.json>
+```
+  python NurseRostering.py -data=<datafile.json>
+```
 
 ## Links
   - http://www.schedulingbenchmarks.org/nurseinstances1_24.html

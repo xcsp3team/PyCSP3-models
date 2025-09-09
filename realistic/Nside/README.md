@@ -1,4 +1,4 @@
-# Problem Nside
+# Problem: Nside
 
 Road Network Maintenance Problem.
 
@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   easy-0200-50.json
 
 ## Model
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

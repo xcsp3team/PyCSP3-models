@@ -1,4 +1,4 @@
-# Problem CollectiveConstruction
+# Problem: CollectiveConstruction
 
 Multi-agent Collective Construction (MACC).
 
@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   037.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

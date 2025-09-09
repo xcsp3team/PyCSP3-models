@@ -1,4 +1,4 @@
-# Problem Tower
+# Problem: Tower
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020/2022 Minizinc challenges.
 The MZN model was proposed by Greame Gange, with a Licence that seems to be like the MIT Licence.
@@ -7,7 +7,7 @@ The MZN model was proposed by Greame Gange, with a Licence that seems to be like
   070-070-15-070-04.json
 
 ## Model
-  constraints: [MaximumArg](http://pycsp.org/documentation/constraints/MaximumArg), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [MaximumArg](https://pycsp.org/documentation/constraints/MaximumArg), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

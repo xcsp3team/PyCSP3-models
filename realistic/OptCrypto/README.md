@@ -1,4 +1,4 @@
-# Problem OptCrypto
+# Problem: OptCrypto
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
 No Licence was explicitly mentioned (MIT Licence is assumed).
@@ -7,11 +7,11 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   an integer n
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
-  python OptCrypto.py -data=[integer]
+  python OptCrypto.py -data=number
 ```
 
 ## Links

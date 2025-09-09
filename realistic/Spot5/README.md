@@ -1,11 +1,11 @@
-# Problem Spot5
+# Problem: Spot5
 
 SPOT5 earth observation satellite management problem.
 
 The  management problems  to  be solved  can  be roughly  described as follows:
   - given a set S of photographs which can be taken the next day from at least one of the three instruments, wrt the satellite trajectory;
   - given, for each photograph, a weight expressing its importance;
-  constraints: [](http://pycsp.org/documentation/constraints/), [non overlapping and minimal transition time between two successive photographs on the same instrument](http://pycsp.org/documentation/constraints/non overlapping and minimal transition time between two successive photographs on the same instrument)
+  constraints: [](https://pycsp.org/documentation/constraints/), [non overlapping and minimal transition time between two successive photographs on the same instrument](https://pycsp.org/documentation/constraints/non overlapping and minimal transition time between two successive photographs on the same instrument)
    limitation on the instantaneous data flow through the satellite telemetry and on the recording capacity on board;
   - find an admissible subset S' of S (imperative  constraints set) which maximizes the sum of the weights of the photographs in S'.
 
@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   not shown because large data files
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

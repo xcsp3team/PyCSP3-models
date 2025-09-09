@@ -1,4 +1,4 @@
-# Problem Abbots
+# Problem: Abbots
 
 The Abbot's Puzzle, from "Amusements in Mathematics, Dudeney" (number 110).
 

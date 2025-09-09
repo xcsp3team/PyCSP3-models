@@ -1,4 +1,4 @@
-# Problem UnitCommitment
+# Problem: UnitCommitment
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2023 Minizinc challenge.
 No Licence was explicitly mentioned (MIT Licence is assumed).
@@ -7,12 +7,12 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   L03-T6G5L5.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
   python UnitCommitment.py -data=sm-10-13-00.json
-  python UnitCommitment.py -data=sm-10-13-00.dzn -dataparser=UnitCommitment_ParserZ.py
+  python UnitCommitment.py -data=sm-10-13-00.dzn -parser=UnitCommitment_ParserZ.py
 ```
 
 ## Links

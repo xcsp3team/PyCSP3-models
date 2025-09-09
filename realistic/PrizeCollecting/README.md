@@ -1,4 +1,4 @@
-# Problem PrizeCollecting
+# Problem: PrizeCollecting
 
 Variant of the prize collecting travelling salesman problem.
 Here, a subtour is authorized (because there are negative costs).
@@ -8,7 +8,7 @@ See also the model in Minizinc
   25-5-5-9.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -27,5 +27,5 @@ See also the model in Minizinc
 ## _Alternative Model(s)_
 
 #### PrizeCollecting_z.py
- - constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, mzn11, mzn16

@@ -1,4 +1,4 @@
-# Problem BnnPlanner
+# Problem: BnnPlanner
 
 Planning with Learned Binarized Neural Networks.
 See AIJ paper cited below.
@@ -11,7 +11,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   sysadmin-4-2S.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

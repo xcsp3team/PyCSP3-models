@@ -1,4 +1,4 @@
-# Problem Grocery
+# Problem: Grocery
 
 A kid goes into a grocery store and buys four items.
 The cashier charges $7.11, the kid pays and is about to leave when the cashier calls the kid back, and says:
@@ -12,7 +12,7 @@ What were the prices of the four items?
   all integrated (single problem)
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

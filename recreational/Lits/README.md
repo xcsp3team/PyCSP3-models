@@ -1,4 +1,4 @@
-# Problem Lits
+# Problem: Lits
 
 A binary determination puzzle.
 
@@ -6,7 +6,7 @@ A binary determination puzzle.
   example.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution:
 ```

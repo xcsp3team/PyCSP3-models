@@ -1,4 +1,4 @@
-# Problem RotatingWorkforce1
+# Problem: RotatingWorkforce1
 
 Rotating Workforce Scheduling.
 
@@ -14,7 +14,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   0103.json
 
 ## Model
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Regular](http://pycsp.org/documentation/constraints/Regular)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Regular](https://pycsp.org/documentation/constraints/Regular)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem Cryptanalysis
+# Problem: Cryptanalysis
 
 Chosen Key Differential Cryptanalysis.
 
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   three integers
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -22,4 +22,4 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.minizinc.org/challenge2016/results2016.html
 
 ## Tags
-  realistic, mzn16
+  realistic, mzn16, xcsp25

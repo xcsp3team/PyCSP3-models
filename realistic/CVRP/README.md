@@ -1,4 +1,4 @@
-# Problem CVRP
+# Problem: CVRP
 
 See Problem 086 on CSPLib, and VVRLib.
 
@@ -6,10 +6,12 @@ See Problem 086 on CSPLib, and VVRLib.
   A-n32-k5.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python CVRP.py -data=<datafile.json>
+```
+  python CVRP.py -data=<datafile.json>
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob086/
@@ -24,5 +26,5 @@ See Problem 086 on CSPLib, and VVRLib.
 ## _Alternative Model(s)_
 
 #### CVRP_z.py
- - constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+ - constraints: [Circuit](https://pycsp.org/documentation/constraints/Circuit), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
  - tags: realistic, mzn15

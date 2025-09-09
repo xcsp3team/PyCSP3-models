@@ -1,4 +1,4 @@
-# Problem Benzenoide
+# Problem: Benzenoide
 
 The benzenoid generation problem is defined as follows: given a set of structural properties P,
 generate all the benzenoids which satisfy each property of P.
@@ -12,7 +12,7 @@ See the PhD thesis by Adrien Varet (2022, Aix Marseille University).
   an integer, the order of the coronenoide
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Lex](http://pycsp.org/documentation/constraints/Lex), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Lex](https://pycsp.org/documentation/constraints/Lex), [Precedence](https://pycsp.org/documentation/constraints/Precedence), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

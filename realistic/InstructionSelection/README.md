@@ -1,4 +1,4 @@
-# Problem InstructionSelection
+# Problem: InstructionSelection
 
 Universal Instruction Selection.
 
@@ -14,7 +14,7 @@ The MZN model was proposed by Gabriel Hjort Blindell (Copyright (c) 2013-2015)
   A3PZaPjnUz.json
 
 ## Model
-  constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Count](http://pycsp.org/documentation/constraints/Count), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Circuit](https://pycsp.org/documentation/constraints/Circuit), [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

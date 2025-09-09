@@ -1,4 +1,4 @@
-# Problem RCPSP_MAX
+# Problem: RCPSP_MAX
 
 Resource-constrained Project Scheduling Problems with minimal and maximal time lags (RCPSP-max).
 We have resources, activities, and precedence constraints.
@@ -13,7 +13,7 @@ The Licence seems to be like a MIT Licence.
   psp-j20-34.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative)
 
 ## Execution
 ```

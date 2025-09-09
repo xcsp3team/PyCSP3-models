@@ -1,4 +1,4 @@
-# Problem Train
+# Problem: Train
 
 We have n trains moving along a single track with m stations.
 There is a non-zero constant flow of passengers arriving at all but the first and last station who wish to travel to the final station.
@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   01.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

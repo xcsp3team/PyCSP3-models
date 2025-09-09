@@ -1,4 +1,4 @@
-# Problem Filters
+# Problem: Filters
 
 This problem is about optimizing the scheduling of filter operations, commonly used in High-Level Synthesis.
 
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   ar1-3.json
 
 ## Model
-  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
+  constraints: [Maximum](https://pycsp.org/documentation/constraints/Maximum), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
 
 ## Execution
 ```

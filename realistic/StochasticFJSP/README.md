@@ -1,4 +1,4 @@
-# Problem StochasticFJSP
+# Problem: StochasticFJSP
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014 Minizinc challenge.
 No Licence was explicitly mentioned (MIT Licence assumed).
@@ -7,7 +7,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   a1-s2-t15-j3-m3.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

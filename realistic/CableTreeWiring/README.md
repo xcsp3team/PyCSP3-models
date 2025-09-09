@@ -1,4 +1,4 @@
-# Problem CableTreeWiring
+# Problem: CableTreeWiring
 
 Deriving the optimal wiring sequence for a given layout of a cable tree.
 See paper cited below.
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   A031.json
 
 ## Model
-  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

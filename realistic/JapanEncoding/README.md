@@ -1,4 +1,4 @@
-# Problem JapanEncoding
+# Problem: JapanEncoding
 
 There are several popular character encodings in Japan: EUC-JP, SJIS, UTF-8.
 If they are mixed into one text file, text information is lost.
@@ -11,7 +11,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   0100.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

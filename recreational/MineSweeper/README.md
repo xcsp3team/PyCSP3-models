@@ -1,4 +1,4 @@
-# Problem MineSweeper
+# Problem: MineSweeper
 
 A logic puzzle video game.
 
@@ -6,7 +6,7 @@ A logic puzzle video game.
   no JSON file for the moment
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution:
 ```

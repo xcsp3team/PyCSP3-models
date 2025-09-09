@@ -1,4 +1,4 @@
-# Problem LabeledDice
+# Problem: LabeledDice
 
 There are 13 words as follows:
 ``buoy, cave, celt, flub, fork, hemp, judy, junk, limn, quip, swag, visa, wish ``
@@ -11,7 +11,7 @@ The puzzle was created by Humphrey Dudley.
   all integrated (single problem)
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](http://pycsp.org/documentation/constraints/Cardinality)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](https://pycsp.org/documentation/constraints/Cardinality)
 
 ## Execution
 ```

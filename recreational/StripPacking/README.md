@@ -1,4 +1,4 @@
-# Problem StripPacking
+# Problem: StripPacking
 
 A a 2-dimensional geometric minimization problem.
 
@@ -6,7 +6,7 @@ A a 2-dimensional geometric minimization problem.
   C1P1.json
 
 ## Model
-  constraints: [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution:
 ```

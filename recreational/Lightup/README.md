@@ -1,4 +1,4 @@
-# Problem Lightup
+# Problem: Lightup
 
 It is a logic puzzle.
 
@@ -6,12 +6,12 @@ It is a logic puzzle.
   example.json
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count)
 
 ## Execution:
 ```
   python Lightup.py -data=<datafile.json>
-  python Lightup.py -data=<datafile.txt> -dataparser=Lightup_Parser.py
+  python Lightup.py -data=<datafile.txt> -parser=Lightup_Parser.py
 ```
 
 ## Links

@@ -1,4 +1,4 @@
-# Problem Spiral
+# Problem: Spiral
 
 A logic puzzle. See "Teaching Constraints through Logic Puzzles" by Peter Szeredi.
 
@@ -6,7 +6,7 @@ A logic puzzle. See "Teaching Constraints through Logic Puzzles" by Peter Szered
   Two integers n and m.
 
 ## Model
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality)
 
 ## Execution
 ```
@@ -15,4 +15,4 @@ A logic puzzle. See "Teaching Constraints through Logic Puzzles" by Peter Szered
 ```
 
 ## Tags
-  recreational
+  academic, recreational

@@ -1,4 +1,4 @@
-# Problem TTP_PV
+# Problem: TTP_PV
 
 Traveling Tournament Problem with Predefined Venues (TTPPV).
 The problem consists of finding an optimal compact single round-robin schedule for a sport event.
@@ -14,7 +14,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   circ08bbal.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Element](http://pycsp.org/documentation/constraints/Element), [Regular](http://pycsp.org/documentation/constraints/Regular), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Element](https://pycsp.org/documentation/constraints/Element), [Regular](https://pycsp.org/documentation/constraints/Regular), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

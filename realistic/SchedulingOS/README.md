@@ -1,11 +1,12 @@
-# Problem SchedulingOS
+# Problem: SchedulingOS
 
+Open-shop Scheduling Problem.
 
-## Data
+## Data Example
   GP-os-01.json
 
 ## Model
-  constraints: [Maximum](http://pycsp.org/documentation/constraints/Maximum), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Element](https://pycsp.org/documentation/constraints/Element), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
 
 ## Execution
 ```
@@ -16,4 +17,4 @@
   - https://en.wikipedia.org/wiki/Open-shop_scheduling
 
 ## Tags
-  realistic
+  realistic, xcsp25

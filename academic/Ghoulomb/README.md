@@ -1,4 +1,4 @@
-# Problem Ghoulomb
+# Problem: Ghoulomb
 
 This is a variation of the classic Golomb ruler problem, proposed for Minizinc challenges:
   - three Golomb rulers are constructed, but only the second one has to be minimized
@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   three integer values (m1,m2,m3)
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative)
 
 ## Execution
 ```

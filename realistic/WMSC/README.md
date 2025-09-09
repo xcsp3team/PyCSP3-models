@@ -1,4 +1,4 @@
-# Problem WMSC
+# Problem: WMSC
 
 Weighted multi-set cover.
 
@@ -11,7 +11,7 @@ MIT License.
   b0-c253-i6-small-cost-e4-sr472-cd16.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

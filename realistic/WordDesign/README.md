@@ -1,4 +1,4 @@
-# Problem WordDesign
+# Problem: WordDesign
 
 See Problem 033 on CSPLib.
 
@@ -14,11 +14,11 @@ over the alphabet W = { A,C,G,T } with the following properties:
 
 This problem has its roots in Bioinformatics and Coding Theory.
 
-## Data
+## Data Example
   words.json, and a number n
 
 ## Model
-  constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum), [Table](http://pycsp.org/documentation/constraints/Table)
+  constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
@@ -37,5 +37,5 @@ This problem has its roots in Bioinformatics and Coding Theory.
 ## _Alternative Model(s)_
 
 #### WordDesign2.py
- - constraints: [Lex](http://pycsp.org/documentation/constraints/Lex), [MDD](http://pycsp.org/documentation/constraints/MDD)
+ - constraints: [Lex](https://pycsp.org/documentation/constraints/Lex), [MDD](https://pycsp.org/documentation/constraints/MDD)
  - tags: realistic, xcsp23

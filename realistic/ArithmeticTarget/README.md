@@ -1,4 +1,4 @@
-# Problem ArithmeticTarget
+# Problem: ArithmeticTarget
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2022 Minizinc challenge.
 The MZN model was proposed by Kelvin Davis, under the MIT Licence.
@@ -7,7 +7,7 @@ The MZN model was proposed by Kelvin Davis, under the MIT Licence.
   0814.json
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element)
 
 ## Execution
 ```

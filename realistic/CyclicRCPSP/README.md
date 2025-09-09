@@ -1,4 +1,4 @@
-# Problem CyclicRCPSP
+# Problem: CyclicRCPSP
 
 This is a cyclic resource-constrained project scheduling problem with generalised precedence relations
 constrained to scarce cumulative resources and tasks which are repeated infinitely.
@@ -10,7 +10,7 @@ The original model has: Copyright (C) 2011 The University of Melbourne and NICTA
   easy-4.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Maximum](http://pycsp.org/documentation/constraints/Maximum), [Minimum](http://pycsp.org/documentation/constraints/Minimum)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [Minimum](https://pycsp.org/documentation/constraints/Minimum)
 
 ## Execution
 ```

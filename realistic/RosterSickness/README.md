@@ -1,4 +1,4 @@
-# Problem RosterSickness
+# Problem: RosterSickness
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2022 Minizinc challenge.
 The MZN model was proposed by Ties Westendorp, under the MIT Licence.
@@ -7,7 +7,7 @@ The MZN model was proposed by Ties Westendorp, under the MIT Licence.
   small-4.json
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

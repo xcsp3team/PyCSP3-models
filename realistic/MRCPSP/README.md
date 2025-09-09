@@ -1,4 +1,4 @@
-# Problem MRCPSP
+# Problem: MRCPSP
 
 Multi-mode Resource-constrained Project Scheduling (MRCPSP)
 
@@ -10,7 +10,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   j30-15-5.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Element](http://pycsp.org/documentation/constraints/Element), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

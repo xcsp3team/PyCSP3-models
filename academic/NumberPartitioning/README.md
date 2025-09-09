@@ -1,4 +1,4 @@
-# Problem NumberPartitioning
+# Problem: NumberPartitioning
 
 This is [Problem 049](https://www.csplib.org/Problems/prob049/) at CSPLib.
 
@@ -11,17 +11,21 @@ This problem consists in finding a partition of the set of numbers {1, 2, ..., n
   An integer n
 
 ## Example
-  A solution for n=8 : A = {1, 4, 6, 7} and B = {2,3,5,7}
+  A solution for n = 8:
+    - A = {1,4,6,7}
+    - B = {2,3,5,7}
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python NumberPartitioning.py -data=number
+```
+  python NumberPartitioning.py -data=number
+```
 
 ## Links
   - https://www.csplib.org/Problems/prob049/
   - https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp
 
 ## Tags
-  academic, recreational, csplib, xcsp22
+  academic, csplib, xcsp22

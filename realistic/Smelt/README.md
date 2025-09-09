@@ -1,4 +1,4 @@
-# Problem Smelt
+# Problem: Smelt
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014 Minizinc challenge.
 No Licence was explicitly mentioned (MIT Licence assumed).
@@ -7,7 +7,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   02.json
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem TPP
+# Problem: TPP
 
 The goal of the asymmetric travelling purchaser problem is to decide where to buy each of a set of products,
 and in which order to visit the purchase locations, in order to minimize the total travel and purchase costs.
@@ -12,7 +12,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   3-3-30-1.json
 
 ## Model
-  constraints: [Circuit](http://pycsp.org/documentation/constraints/Circuit), [Element](http://pycsp.org/documentation/constraints/Element)
+  constraints: [Circuit](https://pycsp.org/documentation/constraints/Circuit), [Element](https://pycsp.org/documentation/constraints/Element)
 
 ## Execution
 ```

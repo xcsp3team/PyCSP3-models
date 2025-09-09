@@ -1,4 +1,4 @@
-# Problem Dimes
+# Problem: Dimes
 
 Dad wants one-cent, two-cent, three-cent, five-cent, and ten-cent stamps.
 He said to get four each of two sorts and three each of the others, but I've forgotten which.
@@ -11,7 +11,7 @@ A dime is worth ten cents.
   all integrated (single problem)
 
 ## Model
-  constraints: [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```

@@ -1,4 +1,4 @@
-# Problem SafeCracking
+# Problem: SafeCracking
 
 From the Oz Primer.
 
@@ -18,7 +18,7 @@ Can you find the correct combination?
   all integrated (single problem)
 
 ## Model
-  constraints: [AllDifferent](http://pycsp.org/documentation/constraints/AllDifferent)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)
 
 ## Execution
 ```

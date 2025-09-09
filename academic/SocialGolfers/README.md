@@ -1,4 +1,4 @@
-# Problem SocialGolfers
+# Problem: SocialGolfers
 
 This is [Problem 010](https://www.csplib.org/Problems/prob010/) at CSPLib.
 
@@ -18,11 +18,27 @@ For the original problem, the values of and are respectively 8 and 4.
 
   There are 2 variants: a main one, and a variant '01' with additional variables
 
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Lex](http://pycsp.org/documentation/constraints/Lex), [Sum](http://pycsp.org/documentation/constraints/Sum)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
-  - python SocialGolfers.py -data=[number,number,number]
-  - python SocialGolfers.py -data=[number,number,number] -variant=01
+```
+  python SocialGolfers.py -data=[number,number,number]
+  python SocialGolfers.py -data=[number,number,number] -variant=cnt
+```
+
+## Links
+  - https://en.wikipedia.org/wiki/Social_golfer_problem
+  - https://en.wikipedia.org/wiki/Kirkman%27s_schoolgirl_problem
+  - https://www.csplib.org/Problems/prob010/
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp
 
 ## Tags
-  academic, notebook, csplib
+  academic, notebook, csplib, xcsp24
+
+<br />
+
+## _Alternative Model(s)_
+
+#### SocialGolfers01.py
+ - constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum)
+ - tags: academic, csplib

@@ -1,4 +1,4 @@
-# Problem GeneralizedPeacableQueens
+# Problem: GeneralizedPeacableQueens
 
 Generalized Peaceable Queens.
 
@@ -12,7 +12,7 @@ The MZN model was proposed by Hendrik 'Henk' Bierlee, under the MIT Licence.
   two integers (n,q)
 
 ## Model
-  constraints: [Cardinality](http://pycsp.org/documentation/constraints/Cardinality), [Lex](http://pycsp.org/documentation/constraints/Lex), [Precedence](http://pycsp.org/documentation/constraints/Precedence), [Regular](http://pycsp.org/documentation/constraints/Regular)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Lex](https://pycsp.org/documentation/constraints/Lex), [Precedence](https://pycsp.org/documentation/constraints/Precedence), [Regular](https://pycsp.org/documentation/constraints/Regular)
 
 ## Execution
 ```

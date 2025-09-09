@@ -1,4 +1,4 @@
-# Problem Agatha
+# Problem: Agatha
 
 The Dreadsbury Mansion Mystery.
 
@@ -16,7 +16,7 @@ We know that:
   all integrated (single problem)
 
 ## Model
-  constraints: [Count](http://pycsp.org/documentation/constraints/Count), [Element](http://pycsp.org/documentation/constraints/Element)
+  constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element)
 
 ## Execution
 ```

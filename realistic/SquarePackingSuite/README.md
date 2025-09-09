@@ -1,4 +1,4 @@
-# Problem SquarePackingSuite
+# Problem: SquarePackingSuite
 
 The Square packing problem involves packing all squares with sizes 1 × 1 to n × n into an enclosing container.
 
@@ -6,7 +6,7 @@ The Square packing problem involves packing all squares with sizes 1 × 1 to n �
   An integer
 
 ## Model
-  constraints: [Cumulative](http://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](http://pycsp.org/documentation/constraints/NoOverlap)
+  constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
 
 ## Execution
   - python SquarePackingSuite.py -data=[number]

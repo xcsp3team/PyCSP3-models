@@ -20,8 +20,8 @@ The model/automaton below is made stricter so as (hopefully) to generate harder 
   constraints: AllDifferent, Regular
 
 ## Execution
-  python Rostering.py -data=<datafile.json>
-  python Rostering.py -data=<datafile.dat,10> -parser=Rostering_Parser.py
+  python Rostering_p.py -data=<datafile.json>
+  python Rostering_p.py -data=<datafile.dat,10> -parser=Rostering_Parser.py
 
 ## Links
   - https://dl.acm.org/doi/abs/10.5555/2387915.2387920
