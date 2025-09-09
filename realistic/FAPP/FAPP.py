@@ -9,7 +9,7 @@ See Challenge ROADEF 2001 (FAPP: Problème d'affectation de fréquences avec pol
   - a main variant involving logical constraints
   - a variant 'aux' introducing auxiliary variubles
 
-  constraints: NoOverlap, Sum
+  constraints: Table
 
 ## Execution
   python FAPP.py -data=<datafile.json>

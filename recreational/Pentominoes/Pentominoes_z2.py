@@ -9,8 +9,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   constraints: Regular
 
 ## Execution
-  python Pentominoes2.py -data=<datafile.json>
-  python Pentominoes2.py -data=<datafile.dzn> -parser=Pentominoes_ParserZ.py
+  python Pentominoes_z2.py -data=<datafile.json>
+  python Pentominoes_z2.py -data=<datafile.dzn> -parser=Pentominoes_ParserZ.py
 
 ## Links
   - https://www.minizinc.org/challenge2020/results2020.html

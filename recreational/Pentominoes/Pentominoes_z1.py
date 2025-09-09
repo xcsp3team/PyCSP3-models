@@ -9,8 +9,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   constraints: Regular
 
 ## Execution
-  python Pentominoes1.py -data=<datafile.json>
-  python Pentominoes1.py -data=<datafile.dzn> -parser=Pentominoes_ParserZ.py
+  python Pentominoes_z1.py -data=<datafile.json>
+  python Pentominoes_z1.py -data=<datafile.dzn> -parser=Pentominoes_ParserZ.py
 
 ## Links
   - https://fr.wikipedia.org/wiki/Pentomino

@@ -1,5 +1,5 @@
 """
-Little Problem given by Audrey at n-Side (see problem in OscaR).
+Problem proposed by Audrey at n-Side (see problem in OscaR).
 
 Based on a little game I used to play in high school when I was getting bored in the classroom...
 Draw a ten cells by ten cells board.
@@ -13,7 +13,7 @@ Then, starting from the 1, you need to write the 2 using the same permitted move
 The problem can be generalized for any order n.
 
 ## Data
-  An integer n, the number of cells
+  An integer n, the order of the board
 
 ## Model
   constraints: Circuit
@@ -33,13 +33,14 @@ n = data or 10
 n2 = n * n
 
 
-def reachable(i, j):
+def domain_x(k):
+    i, j = k // n, k % n
     possible_cells = [(i - 3, j), (i + 3, j), (i, j - 3), (i, j + 3), (i - 2, j - 2), (i - 2, j + 2), (i + 2, j - 2), (i + 2, j + 2)]
-    return {k * n + l for k, l in possible_cells if 0 <= k < n and 0 <= l < n}
+    return {p * n + q for p, q in possible_cells if 0 <= p < n and 0 <= q < n}
 
 
 # x[i] is the index of the cell of the board following the ith cell in the circuit
-x = VarArray(size=n2, dom=lambda i: reachable(i // n, i % n))
+x = VarArray(size=n2, dom=domain_x)
 
 satisfy(
     # ensuring that we build a circuit
@@ -52,7 +53,7 @@ if variant("display1"):
 
     satisfy(
         # linking values of the board
-        [y[x[i]] == (y[i] + 1) % n2 for i in range(n2)],
+        [y[x[k]] == (y[k] + 1) % n2 for k in range(n2)],
 
         # putting 0 in the first cell  tag(symmetry-breaking)
         y[0] == 0
@@ -64,7 +65,7 @@ elif variant("display2"):
 
     satisfy(
         # linking values of the board
-        [b[x[i] // n][x[i] % n] == (b[i // n][i % n] + 1) % n2 for i in range(n2)],
+        [b[x[k] // n][x[k] % n] == (b[k // n][k % n] + 1) % n2 for k in range(n2)],
 
         # putting 0 in the first cell  tag(symmetry-breaking)
         b[0][0] == 0
@@ -78,7 +79,7 @@ elif variant("display2"):
    From this variant, to really get a matrix being printed, on can add:
      b = VarArray(size=[n, n], dom=range(n2))
      satisfy(
-       b[i // n][i % n] == y[i] for i in range(n2)
+       b[k // n][k % n] == y[k] for k in range(n2)
      )     
 3) The variant 'display2' allows us to directly print the values in a matrix.
    This involves a constraint 'ElementMatrix' whose computed value must be equal to a variable.    
