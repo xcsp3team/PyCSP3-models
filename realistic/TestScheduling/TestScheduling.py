@@ -10,81 +10,89 @@ For some tests, additional, possibly more than one, global resources are needed.
 While those resources are used for a test, no other test can use the resource.
 The objective is to finish the set of all tests as quickly as possible."
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2018 Minizinc challenge.
-The MZN model was proposed by Gustav Björdal (in 2018).
-No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
-
-## Data Example
-  t020m10r10-17.json
-
 ## Model
-  constraints: Cumulative, Maximum, Minimum, NoOverlap, Precedence, Table
+  constraints: Cumulative, Maximum, NoOverlap
 
 ## Execution
   python TestScheduling.py -data=<datafile.json>
-  python TestScheduling.py -data=<datafile.dzn> -parser=TestScheduling_ParserZ.py
+  python TestScheduling.py -data=<datafile.pl> -parser=TestScheduling_Parser.py
 
 ## Links
   - https://www.csplib.org/Problems/prob073/
   - https://www.minizinc.org/challenge2018/results2018.html
 
 ## Tags
-  realistic, csplib, mzn18, mzn23
+  realistic, csplib, xcsp24
 """
 
 from pycsp3 import *
 
-nMachines, capacities, tests = data
-if isinstance(capacities, int):
-    capacities = [1] * capacities
-durations, machines, resources = zip(*tests)
-nResources, nTests = len(capacities), len(tests)
+nMachines, nResources, tests = data
+durations, machines, resources = zip(*tests)  # information split over the tests
+nTests = len(tests)
 
-# lb and ub are minimal and maximal values for the make-span
-lb = max(sum(durations[t] for t in range(nTests) if r in resources[t]) for r in range(nResources))
-ub = max(sum(durations[t] for t in range(nTests) if m in machines[t]) for m in range(nMachines))
-symmetricalMachines = [j for j in range(nMachines) if len([i for i in range(nTests) if j in machines[i] and len(machines[i]) < nMachines]) == 0]
+horizon = sum(durations) + 1  # computing a better upper bound?
 
-# x[i] is the machine used for the ith test
-x = VarArray(size=nTests, dom=range(nMachines))
+tests_by_single_machines = [t for t in [[i for i in range(nTests) if len(machines[i]) == 1 and m in machines[i]] for m in range(nMachines)] if len(t) > 1]
+tests_by_resources = [t for t in [[i for i in range(nTests) if r in resources[i]] for r in range(nResources)] if len(t) > 1]
+
+
+def conflicting_tests():
+    def possibly_conflicting(i, j):
+        return len(machines[i]) == 0 or len(machines[j]) == 0 or len(set(machines[i] + machines[j])) != len(machines[i]) + len(machines[j])
+
+    pairs = [(i, j) for i, j in combinations(range(nTests), 2) if possibly_conflicting(i, j)]
+    for t in tests_by_single_machines + tests_by_resources:
+        for i, j in combinations(t, 2):
+            if (i, j) in pairs:
+                pairs.remove((i, j))  # because will be considered in another posted constraint
+    return pairs
+
 
 # s[i] is the starting time of the ith test
-s = VarArray(size=nTests, dom=range(ub - max(durations) + 1))
+s = VarArray(size=nTests, dom=range(horizon))
 
-# z is the make-span
-z = Var(dom=range(lb, ub + 1))
+# m[i] is the machine used for the ith test
+m = VarArray(size=nTests, dom=lambda i: range(nMachines) if len(machines[i]) == 0 else machines[i])
 
 satisfy(
-    # executing tests on valid machines
-    [x[i] in machines[i] for i in range(nTests)],
-
-    # avoiding tests to overlap when run on the same machine
+    # no overlapping on machines
     [
-        Cumulative(
-            tasks=[Task(origin=s[i], length=durations[i], height=x[i] == m) for i in range(nTests)]
-        ) <= 1 for m in range(nMachines)
+        If(
+            m[i] == m[j],
+            Then=either(s[i] + durations[i] <= s[j], s[j] + durations[j] <= s[i])
+        ) for i, j in conflicting_tests()
     ],
 
-    # avoiding tests to overlap when using the same resource
+    # no overlapping on single pre-assigned machines
     [
         NoOverlap(
-            tasks=[Task(origin=s[i], length=durations[i]) for i in range(nTests) if r in resources[i]]
-        ) for r in range(nResources)
+            tasks=[Task(origin=s[i], length=durations[i]) for i in t]
+        ) for t in tests_by_single_machines
     ],
 
-    # tag(symmetry-breaking)
-    Precedence(
-        within=x,
-        values=symmetricalMachines
-    ),
+    # no overlapping on resources
+    [
+        NoOverlap(
+            tasks=[Task(origin=s[i], length=durations[i]) for i in t]
+        ) for t in tests_by_resources
+    ],
 
-    # tag(redundant)
-    Minimum(s) == 0,
-
-    # computing the objective value
-    z == Maximum(s[i] + durations[i] for i in range(nTests))
+    # no more than the available number of machines used at any time  tag(redundant-constraints)
+    Cumulative(
+        origins=s,
+        lengths=durations,
+        heights=[1] * nTests
+    ) <= nMachines
 )
 
 minimize(
-    z
+    # minimizing the makespan
+    Maximum(s[i] + durations[i] for i in range(nTests))
 )
+
+""" Comments
+1) The first group of NoOverlap constraints could be alternatively written:
+  [NoOverlap((s[i], durations[i]) for i in t) for t in tests_by_single_machines],
+  or [NoOverlap(origins=[s[i] for i in t], lengths=[durations[i] for i in t]) for t in tests_by_single_machines],
+"""
