@@ -1,31 +1,34 @@
 # Problem: Pentominoes
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2008/2011/2013 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The goal is to fill a grid of size n by m with different pentominoes.
 
-## Data Example
-  02.json
+## Data
+  two integers n, and m
 
 ## Model
-  constraints: [Regular](https://pycsp.org/documentation/constraints/Regular)
+  constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```
-  python Pentominoes1.py -data=<datafile.json>
-  python Pentominoes1.py -data=<datafile.dzn> -parser=Pentominoes_ParserZ.py
+  python Pentominoes.py -data=[number,number]
 ```
 
 ## Links
-  - https://fr.wikipedia.org/wiki/Pentomino
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://en.wikipedia.org/wiki/Polyomino
+  - https://www.researchgate.net/publication/333296614_Polyominoes
+  - https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp
 
 ## Tags
-  recreational, mzn08, mzn11, mzn13
+  academic, recreational, xcsp24
 
 <br />
 
 ## _Alternative Model(s)_
 
-#### Pentominoes2.py
+#### Pentominoes_z1.py
+ - constraints: [Regular](https://pycsp.org/documentation/constraints/Regular)
+ - tags: recreational, mzn08, mzn11, mzn13
+#### Pentominoes_z2.py
  - constraints: [Regular](https://pycsp.org/documentation/constraints/Regular)
  - tags: recreational, mzn20

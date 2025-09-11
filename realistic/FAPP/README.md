@@ -10,7 +10,7 @@ See Challenge ROADEF 2001 (FAPP: Problème d'affectation de fréquences avec pol
   - a main variant involving logical constraints
   - a variant 'aux' introducing auxiliary variubles
 
-  constraints: [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap), [Sum](https://pycsp.org/documentation/constraints/Sum)
+  constraints: [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

@@ -1,6 +1,6 @@
 # Problem: Audrey
 
-Little Problem given by Audrey at n-Side (see problem in OscaR).
+Problem proposed by Audrey at n-Side (see problem in OscaR).
 
 Based on a little game I used to play in high school when I was getting bored in the classroom...
 Draw a ten cells by ten cells board.
@@ -14,7 +14,7 @@ Then, starting from the 1, you need to write the 2 using the same permitted move
 The problem can be generalized for any order n.
 
 ## Data
-  An integer n, the number of cells
+  An integer n, the order of the board
 
 ## Model
   constraints: [Circuit](https://pycsp.org/documentation/constraints/Circuit)

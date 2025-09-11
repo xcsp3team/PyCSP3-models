@@ -23,3 +23,11 @@ A CP model is interesting as one can easily add side constraints to form Aztec d
 
 ## Tags
   academic, recreational, xcsp22
+
+<br />
+
+## _Alternative Model(s)_
+
+#### AztecDiamondSym.py
+ - constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
+ - tags: academic, recreational, xcsp24

@@ -28,3 +28,11 @@ The objective is to pack all the items into the minimum number of bins so that t
 
 ## Tags
   recreational, xcsp24
+
+<br />
+
+## _Alternative Model(s)_
+
+#### BinPacking2.py
+ - constraints: [BinPacking](https://pycsp.org/documentation/constraints/BinPacking), [NValues](https://pycsp.org/documentation/constraints/NValues)
+ - tags: recreational, xcsp24

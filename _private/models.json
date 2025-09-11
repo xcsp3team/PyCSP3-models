@@ -3,6 +3,23 @@
     "name": "ACCAP",
     "fullname": "realistic/ACCAP",
     "constraints": [
+      "Maximum",
+      "NoOverlap",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic"
+    ],
+    "links": [
+      "https://www.researchgate.net/publication/281979436_Optimizing_the_Airport_Check-In_Counter_Allocation_Problem",
+      "https://www.minizinc.org/challenge2022/results2022.html"
+    ]
+  },
+  {
+    "name": "ACCAP_z",
+    "fullname": "realistic/ACCAP",
+    "constraints": [
       "NoOverlap",
       "Sum"
     ],
@@ -13,6 +30,7 @@
       "mzn22"
     ],
     "links": [
+      "https://www.researchgate.net/publication/281979436_Optimizing_the_Airport_Check-In_Counter_Allocation_Problem",
       "https://www.minizinc.org/challenge2022/results2022.html"
     ]
   },
@@ -72,11 +90,13 @@
     "type": "COP",
     "tags": [
       "realistic",
-      "xcsp23"
+      "xcsp23",
+      "xcsp24"
     ],
     "links": [
       "https://drops.dagstuhl.de/opus/frontdoor.php?source_opus=19069",
-      "https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop"
+      "https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
     ]
   },
   {
@@ -244,6 +264,7 @@
       "recreational"
     ],
     "links": [
+      "https://link.springer.com/chapter/10.1007/978-3-540-24662-6_11",
       "https://www.comp.nus.edu.sg/~henz/projects/puzzles/arith/index.html"
     ]
   },
@@ -294,6 +315,22 @@
     "links": []
   },
   {
+    "name": "AverageAvoiding",
+    "fullname": "academic/AverageAvoiding",
+    "constraints": [
+      "AllDifferent",
+      "Minimum"
+    ],
+    "type": "CSP",
+    "tags": [
+      "academic",
+      "xcsp24"
+    ],
+    "links": [
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
+    ]
+  },
+  {
     "name": "AztecDiamond",
     "fullname": "recreational/AztecDiamond",
     "constraints": [
@@ -301,8 +338,28 @@
     ],
     "type": "CSP",
     "tags": [
+      "academic",
       "recreational",
       "xcsp22"
+    ],
+    "links": [
+      "https://en.wikipedia.org/wiki/Aztec_diamond",
+      "https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp"
+    ]
+  },
+  {
+    "name": "AztecDiamondSym",
+    "fullname": "recreational/AztecDiamond",
+    "constraints": [
+      "Cardinality",
+      "Sum",
+      "Table"
+    ],
+    "type": "CSP",
+    "tags": [
+      "academic",
+      "recreational",
+      "xcsp24"
     ],
     "links": [
       "https://en.wikipedia.org/wiki/Aztec_diamond",
@@ -394,10 +451,29 @@
     ],
     "type": "COP",
     "tags": [
-      "recreational"
+      "recreational",
+      "xcsp24"
     ],
     "links": [
-      "https://site.unibo.it/operations-research/en/research/bpplib-a-bin-packing-problem-library"
+      "https://site.unibo.it/operations-research/en/research/bpplib-a-bin-packing-problem-library",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
+    ]
+  },
+  {
+    "name": "BinPacking2",
+    "fullname": "recreational/BinPacking",
+    "constraints": [
+      "BinPacking",
+      "NValues"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "xcsp24"
+    ],
+    "links": [
+      "https://site.unibo.it/operations-research/en/research/bpplib-a-bin-packing-problem-library",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
     ]
   },
   {
@@ -544,7 +620,8 @@
     "type": "COP",
     "tags": [
       "realistic",
-      "csplib"
+      "csplib",
+      "xcsp25"
     ],
     "links": [
       "https://www.csplib.org/Problems/prob022/"
@@ -694,13 +771,15 @@
       "realistic",
       "mzn13",
       "mzn17",
-      "mzn18"
+      "mzn18",
+      "xcsp24"
     ],
     "links": [
       "https://optimization-online.org/wp-content/uploads/2013/02/3755.pdf",
       "https://www.sciencedirect.com/science/article/pii/S2192437620301217",
       "https://link.springer.com/chapter/10.1007/978-3-319-07046-9_12",
-      "https://www.minizinc.org/challenge2018/results2018.html"
+      "https://www.minizinc.org/challenge2018/results2018.html",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
     ]
   },
   {
@@ -739,6 +818,25 @@
     ],
     "links": [
       "https://en.wikipedia.org/wiki/Change-making_problem"
+    ]
+  },
+  {
+    "name": "Charlotte",
+    "fullname": "academic/Charlotte",
+    "constraints": [
+      "AllDifferent",
+      "Count",
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "academic",
+      "recreational",
+      "xcsp24"
+    ],
+    "links": [
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
     ]
   },
   {
@@ -883,7 +981,8 @@
     "type": "COP",
     "tags": [
       "realistic",
-      "mzn17"
+      "mzn17",
+      "mzn24"
     ],
     "links": [
       "https://link.springer.com/chapter/10.1007/978-3-319-66158-2_31",
@@ -1023,7 +1122,8 @@
     "type": "CSP",
     "tags": [
       "realistic",
-      "mzn16"
+      "mzn16",
+      "xcsp25"
     ],
     "links": [
       "https://link.springer.com/chapter/10.1007/978-3-319-44953-1_37",
@@ -1055,7 +1155,8 @@
     ],
     "type": "COP",
     "tags": [
-      "recreational"
+      "recreational",
+      "xcsp25"
     ],
     "links": []
   },
@@ -1252,6 +1353,23 @@
     ]
   },
   {
+    "name": "Drinking",
+    "fullname": "academic/Drinking",
+    "constraints": [
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "academic",
+      "xcsp24"
+    ],
+    "links": [
+      "https://www.hakank.org/common_cp_models/",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
+    ]
+  },
+  {
     "name": "Dubois",
     "fullname": "academic/Dubois",
     "constraints": [
@@ -1342,15 +1460,34 @@
     "name": "FAPP",
     "fullname": "realistic/FAPP",
     "constraints": [
-      "NoOverlap",
-      "Sum"
+      "Table"
     ],
     "type": "COP",
     "tags": [
-      "realistic"
+      "realistic",
+      "xcsp25"
     ],
     "links": [
       "https://www.roadef.org/challenge/2001/fr/"
+    ]
+  },
+  {
+    "name": "FastMatrixMultiplication",
+    "fullname": "academic/FastMatrixMultiplication",
+    "constraints": [
+      "Lex",
+      "Precedence",
+      "Sum",
+      "Table"
+    ],
+    "type": "CSP",
+    "tags": [
+      "academic",
+      "xcsp24"
+    ],
+    "links": [
+      "https://drops.dagstuhl.de/storage/00lipics/lipics-vol280-cp2023/LIPIcs.CP.2023.14/LIPIcs.CP.2023.14.pdf",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -1396,10 +1533,12 @@
     ],
     "type": "CSP",
     "tags": [
-      "recreational"
+      "recreational",
+      "xcsp24"
     ],
     "links": [
-      "https://en.wikipedia.org/wiki/Fillomino"
+      "https://en.wikipedia.org/wiki/Fillomino",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -1417,7 +1556,8 @@
       "mzn14"
     ],
     "links": [
-      "https://en.wikipedia.org/wiki/Fillomino"
+      "https://en.wikipedia.org/wiki/Fillomino",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -1457,6 +1597,25 @@
     ],
     "links": [
       "https://www.minizinc.org/challenge2013/results2013.html"
+    ]
+  },
+  {
+    "name": "FoolSolitaire",
+    "fullname": "recreational/FoolSolitaire",
+    "constraints": [
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "academic",
+      "recreational",
+      "xcsp24"
+    ],
+    "links": [
+      "https://www.sciencedirect.com/science/article/abs/pii/S0305054805000195",
+      "https://www.routledge.com/Winning-Ways-for-Your-Mathematical-Plays-Volume-2/Berlekamp-Conway-Guy/p/book/9781568811420",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
     ]
   },
   {
@@ -1859,6 +2018,23 @@
     ]
   },
   {
+    "name": "Hamming",
+    "fullname": "academic/Hamming",
+    "constraints": [
+      "Count",
+      "Lex"
+    ],
+    "type": "CSP",
+    "tags": [
+      "academic",
+      "xcsp24"
+    ],
+    "links": [
+      "https://en.wikipedia.org/wiki/Hamming_distance",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
+    ]
+  },
+  {
     "name": "Hidato",
     "fullname": "recreational/Hidato",
     "constraints": [
@@ -1892,6 +2068,23 @@
       "https://data.4tu.nl/articles/_/12682700/1",
       "https://link.springer.com/article/10.1007/s10601-020-09316-z",
       "https://www.minizinc.org/challenge2020/results2020.html"
+    ]
+  },
+  {
+    "name": "HyperSudoku",
+    "fullname": "recreational/HyperSudoku",
+    "constraints": [
+      "AllDifferent"
+    ],
+    "type": "CSP",
+    "tags": [
+      "academic",
+      "recreational",
+      "xcsp24"
+    ],
+    "links": [
+      "https://en.wikipedia.org/wiki/Sudoku",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -1985,6 +2178,7 @@
       "xcsp23"
     ],
     "links": [
+      "https://en.wikipedia.org/wiki/K-medians_clustering",
       "https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop"
     ]
   },
@@ -2067,6 +2261,7 @@
     ],
     "type": "CSP",
     "tags": [
+      "academic",
       "recreational",
       "xcsp22"
     ],
@@ -2114,10 +2309,13 @@
     ],
     "type": "CSP",
     "tags": [
-      "academic"
+      "academic",
+      "csplib",
+      "xcsp25"
     ],
     "links": [
-      "https://link.springer.com/chapter/10.1007/11889205_15"
+      "https://link.springer.com/chapter/10.1007/11889205_15",
+      "https://www.csplib.org/Problems/prob024/"
     ]
   },
   {
@@ -2296,6 +2494,24 @@
     ],
     "links": [
       "https://www.minizinc.org/challenge2013/results2013.html"
+    ]
+  },
+  {
+    "name": "LitPuzzle",
+    "fullname": "academic/LitPuzzle",
+    "constraints": [
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "academic",
+      "recreational",
+      "xcsp24"
+    ],
+    "links": [
+      "https://www.hakank.org/webblogg/archives/001229.html",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
     ]
   },
   {
@@ -2547,6 +2763,24 @@
     ]
   },
   {
+    "name": "MaximumDensityOscillatingLife",
+    "fullname": "academic/MaximumDensityOscillatingLife",
+    "constraints": [
+      "AllDifferentList",
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "academic",
+      "xcsp24"
+    ],
+    "links": [
+      "https://link.springer.com/chapter/10.1007/978-3-642-15396-9_19",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
+    ]
+  },
+  {
     "name": "MedianString",
     "fullname": "realistic/MedianString",
     "constraints": [
@@ -2599,15 +2833,17 @@
       "AllDifferent",
       "Channel",
       "Lex",
-      "Channel"
+      "Table"
     ],
     "type": "CSP",
     "tags": [
       "recreational",
-      "csplib"
+      "csplib",
+      "xcsp24"
     ],
     "links": [
-      "https://www.csplib.org/Problems/prob004"
+      "https://www.csplib.org/Problems/prob004",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -2619,6 +2855,7 @@
     ],
     "type": "CSP",
     "tags": [
+      "academic",
       "recreational",
       "xcsp22"
     ],
@@ -2896,23 +3133,6 @@
     ]
   },
   {
-    "name": "NurseRostering_p",
-    "fullname": "crafted/NurseRostering_p",
-    "constraints": [
-      "AllDifferent",
-      "Regular"
-    ],
-    "type": "CSP",
-    "tags": [
-      "crafted",
-      "xcsp22"
-    ],
-    "links": [
-      "https://dl.acm.org/doi/abs/10.5555/2387915.2387920",
-      "https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp"
-    ]
-  },
-  {
     "name": "NursingWorkload",
     "fullname": "realistic/NursingWorkload",
     "constraints": [
@@ -3014,7 +3234,7 @@
     "name": "OpenStacks",
     "fullname": "realistic/OpenStacks",
     "constraints": [
-      "Alldifferent",
+      "AllDifferent",
       "Maximum",
       "Minimum",
       "Sum",
@@ -3226,37 +3446,23 @@
     ]
   },
   {
-    "name": "Pentominoes1",
+    "name": "Pentominoes",
     "fullname": "recreational/Pentominoes",
     "constraints": [
-      "Regular"
+      "AllDifferent",
+      "Table"
     ],
     "type": "CSP",
     "tags": [
+      "academic",
       "recreational",
-      "mzn08",
-      "mzn11",
-      "mzn13"
+      "xcsp24"
     ],
     "links": [
-      "https://fr.wikipedia.org/wiki/Pentomino",
-      "https://www.minizinc.org/challenge2013/results2013.html"
-    ]
-  },
-  {
-    "name": "Pentominoes2",
-    "fullname": "recreational/Pentominoes",
-    "constraints": [
-      "Regular"
-    ],
-    "type": "CSP",
-    "tags": [
-      "recreational",
-      "mzn20"
-    ],
-    "links": [
-      "https://fr.wikipedia.org/wiki/Pentomino",
-      "https://www.minizinc.org/challenge2013/results2013.html"
+      "https://en.wikipedia.org/wiki/Polyomino",
+      "https://www.researchgate.net/publication/333296614_Polyominoes",
+      "https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -3274,6 +3480,44 @@
       "https://www.researchgate.net/publication/228523019_Modeling_irregular_shape_placement_problems_with_regular_constraints",
       "https://github.com/zayenz/minizinc-pentominoes-generator",
       "https://www.minizinc.org/challenge2021/results2021.html"
+    ]
+  },
+  {
+    "name": "Pentominoes_z1",
+    "fullname": "recreational/Pentominoes",
+    "constraints": [
+      "Regular"
+    ],
+    "type": "CSP",
+    "tags": [
+      "recreational",
+      "mzn08",
+      "mzn11",
+      "mzn13"
+    ],
+    "links": [
+      "https://en.wikipedia.org/wiki/Polyomino",
+      "https://www.researchgate.net/publication/333296614_Polyominoes",
+      "https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
+    ]
+  },
+  {
+    "name": "Pentominoes_z2",
+    "fullname": "recreational/Pentominoes",
+    "constraints": [
+      "Regular"
+    ],
+    "type": "CSP",
+    "tags": [
+      "recreational",
+      "mzn20"
+    ],
+    "links": [
+      "https://en.wikipedia.org/wiki/Polyomino",
+      "https://www.researchgate.net/publication/333296614_Polyominoes",
+      "https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -3388,6 +3632,22 @@
     ],
     "links": [
       "https://www.minizinc.org/challenge2020/results2020.html"
+    ]
+  },
+  {
+    "name": "PoolBallTriangle",
+    "fullname": "academic/PoolBallTriangle",
+    "constraints": [
+      "AllDifferent"
+    ],
+    "type": "CSP",
+    "tags": [
+      "academic",
+      "xcsp24"
+    ],
+    "links": [
+      "https://archive.org/details/penrose-tiles-to-trapdoor-ciphers/mode/2up",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -3511,6 +3771,22 @@
       "single"
     ],
     "links": []
+  },
+  {
+    "name": "Pyramid",
+    "fullname": "academic/Pyramid",
+    "constraints": [
+      "AllDifferent"
+    ],
+    "type": "COP",
+    "tags": [
+      "academic",
+      "xcsp24"
+    ],
+    "links": [
+      "http://www.rosettacode.org/wiki/Pyramid_of_numbers",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
+    ]
   },
   {
     "name": "PythagoreanTriples",
@@ -4020,6 +4296,24 @@
     ]
   },
   {
+    "name": "Rostering_p",
+    "fullname": "crafted/Rostering_p",
+    "constraints": [
+      "AllDifferent",
+      "Regular"
+    ],
+    "type": "CSP",
+    "tags": [
+      "crafted",
+      "xcsp22",
+      "xcsp25"
+    ],
+    "links": [
+      "https://dl.acm.org/doi/abs/10.5555/2387915.2387920",
+      "https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp"
+    ]
+  },
+  {
     "name": "RotatingWorkforce1",
     "fullname": "realistic/RotatingWorkforce1",
     "constraints": [
@@ -4048,11 +4342,13 @@
     "type": "CSP",
     "tags": [
       "realistic",
-      "mzn22"
+      "mzn22",
+      "xcsp24"
     ],
     "links": [
-      "https://www.semanticscholar.org/paper/2-The-Rotating-Workforce-Scheduling-Problem-Musliu-Schutt/4048daa6fe7917009174dab7f3fe84e84fdc36dd",
-      "https://www.minizinc.org/challenge2022/results2022.html"
+      "https://link.springer.com/chapter/10.1007/978-3-319-93031-2_31",
+      "https://www.minizinc.org/challenge2022/results2022.html",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -4081,6 +4377,23 @@
     ],
     "links": [
       "https://www.minizinc.org/challenge2013/results2013.html"
+    ]
+  },
+  {
+    "name": "RubiksCube",
+    "fullname": "recreational/RubiksCube",
+    "constraints": [
+      "AllDifferent"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "xcsp24"
+    ],
+    "links": [
+      "https://www.mail-archive.com/programming@jsoftware.com/msg05817.html",
+      "http://www.hakank.org/picat/1d_rubiks_cube.pi",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
     ]
   },
   {
@@ -4131,6 +4444,23 @@
     "links": []
   },
   {
+    "name": "SameQueensKnights",
+    "fullname": "recreational/SameQueensKnights",
+    "constraints": [
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "academic",
+      "recreational",
+      "xcsp24"
+    ],
+    "links": [
+      "http://archive.vector.org.uk/art10003900",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
+    ]
+  },
+  {
     "name": "Sandwich",
     "fullname": "single/Sandwich",
     "constraints": [
@@ -4178,12 +4508,15 @@
     "name": "SchedulingOS",
     "fullname": "realistic/SchedulingOS",
     "constraints": [
+      "AllDifferent",
+      "Element",
       "Maximum",
       "NoOverlap"
     ],
     "type": "COP",
     "tags": [
-      "realistic"
+      "realistic",
+      "xcsp25"
     ],
     "links": [
       "https://en.wikipedia.org/wiki/Open-shop_scheduling"
@@ -4425,11 +4758,14 @@
     "tags": [
       "realistic",
       "mzn18",
-      "mzn20"
+      "mzn20",
+      "xcsp24"
     ],
     "links": [
       "https://www.aimsciences.org/article/doi/10.3934/jimo.2018109",
-      "https://www.minizinc.org/challenge2020/results2020.html"
+      "https://link.springer.com/chapter/10.1007/978-3-319-44953-1_36",
+      "https://www.minizinc.org/challenge2020/results2020.html",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -4444,9 +4780,35 @@
     "tags": [
       "academic",
       "notebook",
+      "csplib",
+      "xcsp24"
+    ],
+    "links": [
+      "https://en.wikipedia.org/wiki/Social_golfer_problem",
+      "https://en.wikipedia.org/wiki/Kirkman%27s_schoolgirl_problem",
+      "https://www.csplib.org/Problems/prob010/",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
+    ]
+  },
+  {
+    "name": "SocialGolfers01",
+    "fullname": "academic/SocialGolfers",
+    "constraints": [
+      "Cardinality",
+      "Lex",
+      "Sum"
+    ],
+    "type": "CSP",
+    "tags": [
+      "academic",
       "csplib"
     ],
-    "links": []
+    "links": [
+      "https://en.wikipedia.org/wiki/Social_golfer_problem",
+      "https://en.wikipedia.org/wiki/Kirkman%27s_schoolgirl_problem",
+      "https://www.csplib.org/Problems/prob010/",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
+    ]
   },
   {
     "name": "SolitaireBattleship",
@@ -4491,6 +4853,23 @@
     ]
   },
   {
+    "name": "SolitairePattern",
+    "fullname": "recreational/SolitairePattern",
+    "constraints": [
+      "Sum",
+      "Table"
+    ],
+    "type": "CSP",
+    "tags": [
+      "academic",
+      "xcsp24"
+    ],
+    "links": [
+      "https://www.sciencedirect.com/science/article/abs/pii/S0305054805000195",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
+    ]
+  },
+  {
     "name": "Sonet",
     "fullname": "realistic/Sonet",
     "constraints": [
@@ -4532,6 +4911,7 @@
     ],
     "type": "CSP",
     "tags": [
+      "academic",
       "recreational"
     ],
     "links": []
@@ -4748,10 +5128,12 @@
     "type": "COP",
     "tags": [
       "academic",
-      "csplib"
+      "csplib",
+      "xcsp24"
     ],
     "links": [
-      "https://www.csplib.org/Problems/prob032/"
+      "https://www.csplib.org/Problems/prob032/",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
     ]
   },
   {
@@ -4784,7 +5166,8 @@
       "mzn09"
     ],
     "links": [
-      "https://www.csplib.org/Problems/prob032/"
+      "https://www.csplib.org/Problems/prob032/",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
     ]
   },
   {
@@ -4836,6 +5219,27 @@
     ]
   },
   {
+    "name": "Stripboard",
+    "fullname": "realistic/Stripboard",
+    "constraints": [
+      "AllDifferent",
+      "Element",
+      "Maximum",
+      "NoOverlap",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn22",
+      "mzn25"
+    ],
+    "links": [
+      "https://www.minizinc.org/challenge2022/results2022.html",
+      "https://www.minizinc.org/challenge2025/results2025.html"
+    ]
+  },
+  {
     "name": "Subisomorphism",
     "fullname": "recreational/Subisomorphism",
     "constraints": [
@@ -4845,10 +5249,12 @@
     "type": "CSP",
     "tags": [
       "recreational",
-      "notebook"
+      "notebook",
+      "xcsp24"
     ],
     "links": [
-      "https://www.sciencedirect.com/science/article/pii/S0004370210000718"
+      "https://www.sciencedirect.com/science/article/pii/S0004370210000718",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -5084,6 +5490,24 @@
     ]
   },
   {
+    "name": "Takuzu",
+    "fullname": "recreational/Takuzu",
+    "constraints": [
+      "AllDifferentList",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "academic",
+      "recreational",
+      "xcsp24"
+    ],
+    "links": [
+      "https://en.wikipedia.org/wiki/Takuzu",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
+    ]
+  },
+  {
     "name": "Talisman",
     "fullname": "academic/Talisman",
     "constraints": [
@@ -5134,6 +5558,25 @@
   },
   {
     "name": "TestScheduling",
+    "fullname": "realistic/TestScheduling",
+    "constraints": [
+      "Cumulative",
+      "Maximum",
+      "NoOverlap"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "csplib",
+      "xcsp24"
+    ],
+    "links": [
+      "https://www.csplib.org/Problems/prob073/",
+      "https://www.minizinc.org/challenge2018/results2018.html"
+    ]
+  },
+  {
+    "name": "TestScheduling_z",
     "fullname": "realistic/TestScheduling",
     "constraints": [
       "Cumulative",
@@ -5291,10 +5734,12 @@
     "type": "COP",
     "tags": [
       "recreational",
-      "notebook"
+      "notebook",
+      "xcsp24"
     ],
     "links": [
-      "https://www.researchgate.net/publication/220270875_The_Traveling_Tournament_Problem_Description_and_Benchmarks"
+      "https://www.researchgate.net/publication/220270875_The_Traveling_Tournament_Problem_Description_and_Benchmarks",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
     ]
   },
   {
@@ -5409,11 +5854,13 @@
     "tags": [
       "realistic",
       "mzn18",
-      "mzn23"
+      "mzn23",
+      "xcsp24"
     ],
     "links": [
       "https://link.springer.com/article/10.1007/s10601-016-9241-2",
-      "https://www.minizinc.org/challenge2018/results2018.html"
+      "https://www.minizinc.org/challenge2018/results2018.html",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
     ]
   },
   {
@@ -5462,21 +5909,6 @@
     ],
     "type": "COP",
     "tags": [
-      "recreational"
-    ],
-    "links": [
-      "https://link.springer.com/chapter/10.1007/10704567_6"
-    ]
-  },
-  {
-    "name": "Vellino1",
-    "fullname": "recreational/Vellino",
-    "constraints": [
-      "Lex",
-      "Sum"
-    ],
-    "type": "COP",
-    "tags": [
       "recreational",
       "notebook"
     ],
@@ -5485,7 +5917,22 @@
     ]
   },
   {
-    "name": "Vellino2",
+    "name": "Vellino_b",
+    "fullname": "recreational/Vellino",
+    "constraints": [
+      "Lex",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational"
+    ],
+    "links": [
+      "https://link.springer.com/chapter/10.1007/10704567_6"
+    ]
+  },
+  {
+    "name": "Vellino_c",
     "fullname": "recreational/Vellino",
     "constraints": [
       "Lex",
@@ -5672,6 +6119,44 @@
     ]
   },
   {
+    "name": "WordGolf",
+    "fullname": "recreational/WordGolf",
+    "constraints": [
+      "Count",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "xcsp24"
+    ],
+    "links": [
+      "https://en.wikipedia.org/wiki/Word_ladder",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
+    ]
+  },
+  {
+    "name": "WordSquare",
+    "fullname": "recreational/WordSquare",
+    "constraints": [
+      "AllDifferent",
+      "AllDifferentList",
+      "Element",
+      "Table"
+    ],
+    "type": "CSP",
+    "tags": [
+      "recreational",
+      "xcsp24"
+    ],
+    "links": [
+      "https://en.wikipedia.org/wiki/Word_square",
+      "https://github.com/matevz-kovacic/word-square?tab=readme-ov-file",
+      "https://www.hakank.org/minizinc/word_square.mzn",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
+    ]
+  },
+  {
     "name": "Wordpress",
     "fullname": "realistic/Wordpress",
     "constraints": [
@@ -5680,11 +6165,46 @@
     "type": "COP",
     "tags": [
       "realistic",
-      "mzn22"
+      "mzn22",
+      "xcsp24"
     ],
     "links": [
       "https://www.sciencedirect.com/science/article/abs/pii/S2352220821000274",
-      "https://www.minizinc.org/challenge2022/results2022.html"
+      "https://www.minizinc.org/challenge2022/results2022.html",
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
+    ]
+  },
+  {
+    "name": "Yumi",
+    "fullname": "realistic/Yumi",
+    "constraints": [
+      "AllDifferent",
+      "AllEqual",
+      "Count",
+      "Cumulative",
+      "Element",
+      "Maximum",
+      "Minimum",
+      "Precedence",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn21",
+      "mzn22",
+      "mzn23",
+      "mzn24"
+    ],
+    "links": [
+      "https://new.abb.com/products/robotics/robots/collaborative-robots/yumi/dual-arm",
+      "https://link.springer.com/article/10.1007/s10601-023-09345-4",
+      "https://link.springer.com/chapter/10.1007/978-3-030-58942-4_33",
+      "https://github.com/LuddeWessen/assembly-robot-manager-minizinc",
+      "https://www.minizinc.org/challenge2021/results2021.html",
+      "https://www.minizinc.org/challenge2022/results2022.html",
+      "https://www.minizinc.org/challenge2023/results2023.html",
+      "https://www.minizinc.org/challenge2024/results2024.html"
     ]
   },
   {
