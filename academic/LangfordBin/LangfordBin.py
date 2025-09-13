@@ -41,3 +41,7 @@ satisfy(
 
     [p[2 * i] == i + 2 + p[2 * i + 1] for i in range(n)]
 )
+
+"""
+1) Data used for the 2025 competition are: [10, 13, 14, 16, 39, 40, 59, 60, 79, 80, 120, 240]
+"""

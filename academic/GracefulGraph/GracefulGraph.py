@@ -21,7 +21,7 @@ and when each edge (x,y) is labelled with |f(x)−f(y)|, the edge labels are all
   - https://www.csplib.org/Problems/prob053
 
 ## Tags
-  academic, csplib
+  academic, csplib, xcsp25
 """
 
 from pycsp3 import *
@@ -52,3 +52,6 @@ satisfy(
         [cp[i][j] == abs(cn[i][j] - cn[i + 1][j]) for i in range(p - 1) for j in range(k)]
     ]
 )
+
+"""
+1) Data used for the 2025 competition are: [(3, 8), (3, 10), (4, 5), (4, 6), (5, 4), (5, 5), (5, 6), (6, 2), (6, 3), (6, 4)]"""

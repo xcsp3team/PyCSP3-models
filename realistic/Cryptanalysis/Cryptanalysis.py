@@ -172,10 +172,12 @@ satisfy(
     ]
 )
 
-"""
-1) data used in 2016 are : (5,11,128) (5,14,128) (5,16,128) (5,17,128) (7,10,192)
-2) auto-adjustment of array indexing is used:
+""" Comments
+1) Data used in 2016 are : (5,11,128) (5,14,128) (5,16,128) (5,17,128) (7,10,192)
+2) Auto-adjustment of array indexing is used:
  For example, deX[r][j + i][i] is equivalent to dX[r][(j + i) % BC][i]
+3) data used for the 2025 XCSP3 Competition are: [(3, 4, 128), (3, 5, 128), (4, 9, 128), (4, 11, 128), (4, 12, 128), (5, 10, 128), (5, 14, 128), (5, 15, 128), 
+  (6, 12, 128), (6, 16, 128), (6, 17, 128)]
 """
 
 # maximize(
