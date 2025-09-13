@@ -24,4 +24,4 @@ and when each edge (x,y) is labelled with |f(x)−f(y)|, the edge labels are all
   - https://www.csplib.org/Problems/prob053
 
 ## Tags
-  academic, csplib
+  academic, csplib, xcsp25
