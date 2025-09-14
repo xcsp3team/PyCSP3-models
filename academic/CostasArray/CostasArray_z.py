@@ -58,12 +58,13 @@ satisfy(
 1) Without symmetry-breaking, the number of solutions for n increasing is: 
    1, 2, 4, 12, 40,116, 200, 444, 760, 2160, 4368, 7852, 12828, 17252, 19612, 21104, 18276, 15096, 10240, 6464, 3536, 2052, 872, 200, 88, 56, 204
 
-2) we can write: 
+2) We can write: 
     [AllDifferent(y[i]) for i in range(n - 1)]
   instead of:
     [AllDifferent(y[i][i + 1:]) for i in range(n - 1)]
   because None are automatically discarded
-3) data used in challenges are:
+  
+3) Data used in challenges are:
   14 15 16 17 19 in 2010
   14 15 16 17 18 in 2011
   16 17 18 19 20 in 2015

@@ -14,9 +14,11 @@ From JaneStreet:
 ## Execution
   python ChainReaction.py -data=[number,number]
   python ChainReaction.py -data=[number,number] -variant=opt
+  python ChainReaction.py -data=[number,number] -variant=mini
 
 ## Links
   - https://www.janestreet.com/puzzles/chain-reaction-index/
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags
   academic, janestreet, xcsp25
@@ -61,5 +63,6 @@ if variant("opt"):
     )
 
 """
-1) Data used for the 2025 XCSP3 Competition are: [(20, 20), (20, 25), (30, 35), (30, 40), (40, 50), (40, 55), (50, 65), (50, 70), (60, 85), (60, 90), (70, 95), (70, 100), (80, 105), (80, 110)]
+1) Data used for the 2025 XCSP3 Competition are: [(20, 20), (20, 25), (30, 35), (30, 40), (40, 50), (40, 55), (50, 65), (50, 70), (60, 85), (60, 90), 
+    (70, 95), (70, 100), (80, 105), (80, 110)]
 """

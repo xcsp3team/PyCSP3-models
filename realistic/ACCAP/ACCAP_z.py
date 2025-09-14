@@ -24,12 +24,13 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Execution
   python ACCAP_z.py -data=<datafile.json>
   python ACCAP_z.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
+  python ACCAP.py -data=<datafile.json> -parser=ACCAP_Converter.py
 
 ## Links
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-  realistic, mzn19, mzn22
+  realistic, mzn19, mzn22, mzn24
 """
 
 from pycsp3 import *

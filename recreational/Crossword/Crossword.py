@@ -77,10 +77,10 @@ elif variant("alt"):
         if type(hole1.i) is type(hole2.i):  # it means that they are both horizontal or vertical (type is int or slice)
             return None
         if isinstance(hole1.i, int):  # if hole1 is horizontal (and so hole2 is vertical)
-            ofs1, ofs2 = hole2.j - hole1.j.start, hole1.i - hole2.i.start
+            ofs1, ofs2 = hole2.j - hole1.j.x, hole1.i - hole2.i.x
             return (ofs1, ofs2) if 0 <= ofs1 < hole1.r and 0 <= ofs2 < hole2.r else None
         else:  # if hole1 is vertical (and so hole2 is horizontal)
-            ofs1, ofs2 = hole1.j - hole2.j.start, hole2.i - hole1.i.start
+            ofs1, ofs2 = hole1.j - hole2.j.x, hole2.i - hole1.i.x
             return (ofs1, ofs2) if 0 <= ofs1 < hole2.r and 0 <= ofs2 < hole1.r else None
 
 

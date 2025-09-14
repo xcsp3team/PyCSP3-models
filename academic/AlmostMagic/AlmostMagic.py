@@ -18,6 +18,7 @@ From JaneStreet:
 
 ## Links
   - https://www.janestreet.com/puzzles/almost-magic-index/
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags
   academic, janestreet, xcsp25

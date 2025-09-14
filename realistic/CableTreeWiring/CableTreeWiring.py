@@ -20,7 +20,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2020/results2020.html
 
 ## Tags
-  realistic, mzn20
+  realistic, mzn20, mzn24
 """
 
 from pycsp3 import *

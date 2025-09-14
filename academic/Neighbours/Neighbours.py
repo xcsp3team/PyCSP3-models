@@ -28,7 +28,7 @@ The original MZN model was proposed by Peter J. Stuckey, with a Licence that sem
   - https://www.minizinc.org/challenge2021/results2021.html
 
 ## Tags
-  academic, mzn18, mzn21
+  academic, mzn18, mzn21, mzn24
 """
 
 from pycsp3 import *
@@ -89,8 +89,9 @@ maximize(
 
 """ Comments
 1) Data used in challenges are:
- 2018: (5,5), (4,7), (7,8), (6,6), (9,4)
- 2021: (9,14), (40,50), (20,19), (4,4), (4,9)
+ 2018: [(5,5), (4,7), (7,8), (6,6), (9,4)]
+ 2021: [(9,14), (40,50), (20,19), (4,4), (4,9)]
+ 2024: [(4, 2), (30, 31), (6, 5), (20, 25), (7, 12)] 
 2) Note that:
  Exist(y == k - 1 for y in x.beside(i, j))
   is an alternative to:
