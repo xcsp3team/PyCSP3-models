@@ -34,6 +34,7 @@ if __name__ == '__main__':
         problems = sorted([ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ])
 
         for p in problems:
+            print(f"{thedir} {p}")
             dir = f"{thedir}/{p}"
             model = f"{p}.py" if os.path.isfile(f"{dir}/{p}.py") else f"{p}1.py"
             alternatives = create_alternative_models(p, dir)

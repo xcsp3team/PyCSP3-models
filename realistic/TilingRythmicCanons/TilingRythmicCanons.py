@@ -9,7 +9,7 @@ i.e., all subsets B of Zn such that A ⊕ B = Zn.
   constraints: AllDifferent, NValues
 
 ## Execution
-  python TilingRythmicCanons1.py -data=<datafile.json>
+  python TilingRythmicCanons.py -data=<datafile.json>
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-024-09375-6
