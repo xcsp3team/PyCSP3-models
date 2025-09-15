@@ -20,7 +20,7 @@ Important: this PyCSP3 model is rather different from the mzn model as connected
 
 ## Execution
   python Hitori.py -data=<datafile.json>
-  python Hitori.py -data=<datafile.json> -parser=Hitori_ParserZ.py
+  python Hitori.py -data=<datafile.dzn> -parser=Hitori_ParserZ.py
 
 ## Links
   - https://www.puzzle-hitori.com/
