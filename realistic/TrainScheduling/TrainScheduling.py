@@ -30,9 +30,8 @@ TERMINUS, ORDINARY, HUB = range(3)
 SING, DOUB, QUAD, NONE = range(4)
 DUMMY = nStops - 1  # also dstop
 
-sroutes = cp_array([routes[services.routes[s]] for s in S])
-_rlength = [next((i for i in I if route[i] == DUMMY), nSteps) for route in routes]
-slengths = cp_array([_rlength[services.routes[s]] for s in S])
+sroutes = cp_array(routes[services.routes[s]] for s in S)
+slengths = cp_array(next((i for i in I if sroutes[s][i] == DUMMY), nSteps) for s in S)
 
 
 def structures(stop1, stop2):
@@ -108,7 +107,7 @@ satisfy(
         ) for s in S
     ],
 
-    #  engine of the train is the given engine or engine of previous routs
+    #  engine of the train is the given engine or engine of previous route
     [
         If(
             prv[s] < nEngines,
@@ -144,26 +143,36 @@ if nEngines > 1:
 
             if nLeft > 1:
                 satisfy(
-                    NoOverlap(origins=[depart[srvl[i]][stpl[i]] for i in range(nLeft)], lengths=min_sep),
+                    NoOverlap(
+                        origins=[depart[srvl[i]][stpl[i]] for i in range(nLeft)],
+                        lengths=min_sep
+                    ),
 
-                    [(depart[srvl[i]][stpl[i]] < depart[srvl[j]][stpl[j]]) == (arrive[srvl[i]][stpl[i] + 1] + min_sep <= arrive[srvl[j]][stpl[j] + 1])
-                     for i, j in combinations(nLeft, 2)]
+                    [
+                        (depart[srvl[i]][stpl[i]] < depart[srvl[j]][stpl[j]]) == (arrive[srvl[i]][stpl[i] + 1] + min_sep <= arrive[srvl[j]][stpl[j] + 1])
+                        for i, j in combinations(nLeft, 2)
+                    ]
                 )
 
             if nRight > 1:
                 satisfy(
-                    NoOverlap(origins=[depart[srvr[i]][stpr[i]] for i in range(nRight)], lengths=min_sep),
+                    NoOverlap(
+                        origins=[depart[srvr[i]][stpr[i]] for i in range(nRight)],
+                        lengths=min_sep
+                    ),
 
-                    [(depart[srvr[i]][stpr[i]] < depart[srvr[j]][stpr[j]]) == (arrive[srvr[i]][stpr[i] + 1] + min_sep <= arrive[srvr[j]][stpr[j] + 1])
-                     for i, j in combinations(nRight, 2)]
+                    [
+                        (depart[srvr[i]][stpr[i]] < depart[srvr[j]][stpr[j]]) == (arrive[srvr[i]][stpr[i] + 1] + min_sep <= arrive[srvr[j]][stpr[j] + 1])
+                        for i, j in combinations(nRight, 2)
+                    ]
                 )
 
     for stop1, stop2 in combinations(nStops, 2):
         if stops.lines[stop1][stop2] == SING:
             srvl, stpl, srvr, stpr = structures(stop1, stop2)
-            nLeft, nRight = len(srvl), len(srvr)
+            nLeft, nRight, nLocal = len(srvl), len(srvr), len(srvl) + len(srvr)
             allserv, allstop = cp_array(srvl + srvr), cp_array(stpl + stpr)
-            nLocal = nLeft + nRight
+
             if nLocal > 1:
                 _next = VarArray(size=nLocal + 1, dom=range(nLocal + 1), id="next_" + str(stop1) + "_" + str(stop2))  # nLocal is a special value
 
