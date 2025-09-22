@@ -22,6 +22,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 from pycsp3 import *
 
 nTrainings, nMaxJobs, engineerSkills, engineerLocations, jobs = data
+
 nEngineers, nSkills, nJobs, nOverseasCap = len(engineerSkills), len(engineerSkills[0]), len(jobs), 5
 E, T, J = range(nEngineers), range(nTrainings), range(nJobs)
 

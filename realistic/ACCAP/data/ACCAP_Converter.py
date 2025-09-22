@@ -12,7 +12,7 @@ opDur = d.get("opDur")
 cNum = d.get("cNum")
 xCoor = d.get("xCoor")
 assert len(opDur) == len(cNum) == len(xCoor)
-data['flights'] = [OrderedDict([("opDur", opDur[i]), ("cNum", cNum[i]), ("xCoor", xCoor[i])]) for i in range(len(opDur))]
+data['flights'] = [OrderedDict([("duration", opDur[i]), ("counters", cNum[i]), ("starting", xCoor[i])]) for i in range(len(opDur))]
 data['airlines'] = [decrement(t.get("set")) for t in d.get("FA")]
 nAirlines = d.get("airlines")
 nFlights = d.get("flights")

@@ -48,16 +48,13 @@ def modular_addition_word(i):
     a, b, c, d = R_rot[i], R[i], L[i + 1], cd[i]
     return (
         d[-1] == 0,
-
         [xor(a[j], b[j], c[j], d[j]) == 0 for j in range(n)],
-
         [
             If(
                 AllEqual(a[j], b[j], c[j]),
                 Then=AllEqual(a[j], b[j], c[j], d[j - 1])
             ) for j in range(1, n)
         ],
-
         [p[i] == Sum(NotAllEqual(a[j], b[j], c[j], d[j], d[j - 1]) for j in range(1, n))]
     )
 

@@ -28,12 +28,13 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 from pycsp3 import *
 
 games, iPoints, positions = data
-nGames, nTeams, nPositions = len(games), len(iPoints), len(positions)
 
+nGames, nTeams, nPositions = len(games), len(iPoints), len(positions)
+G, T = range(nGames), range(nTeams)
 P = [0, 1, 3]
 
-lb_score = min(iPoints[i] + sum(min(P) for j in range(nGames) if i in games[j]) for i in range(nTeams))
-ub_score = max(iPoints[i] + sum(max(P) for j in range(nGames) if i in games[j]) for i in range(nTeams))
+lb_score = min(iPoints[i] + sum(min(P) for j in G if i in games[j]) for i in T)
+ub_score = max(iPoints[i] + sum(max(P) for j in G if i in games[j]) for i in T)
 
 # points[j][0] and points[j][1] are the points for the two teams (indexes 0 and 1) of the jth game
 points = VarArray(size=[nGames, 2], dom=P)
@@ -52,29 +53,23 @@ wp = VarArray(size=nTeams, dom=range(1, nTeams + 1))
 
 satisfy(
     # assigning rights points for each game
-    [points[j] in {(0, 3), (1, 1), (3, 0)} for j in range(nGames)],
+    [points[j] in {(0, 3), (1, 1), (3, 0)} for j in G],
 
     # computing final points
-    [
-        iPoints[i] == score[i] - restScore for i in range(nTeams)
-        if (restScore := Sum(points[j][game.index(i)] for j, game in enumerate(games) if i in game),)
-    ],
+    [iPoints[i] == score[i] - Sum(points[j][games[j].index(i)] for j in G if i in games[j]) for i in T],
 
     # computing worst positions (the number of teams with greater total points)
-    [wp[i] == Sum(score[j] >= score[i] for j in range(nTeams)) for i in range(nTeams)],
+    [wp[i] == Sum(score[j] >= score[i] for j in T) for i in T],
 
     # computing best positions (from worst positions and the number of teams with equal points)
-    [
-        bp[i] == wp[i] - nEquallyScored for i in range(nTeams)
-        if (nEquallyScored := Sum(score[j] == score[i] for j in range(nTeams) if i != j),)
-    ],
+    [bp[i] == wp[i] - Sum(score[j] == score[i] for j in T if i != j) for i in T],
 
     # bounding final positions
     [
         (
             fp[i] >= bp[i],
             fp[i] <= wp[i]
-        ) for i in range(nTeams)
+        ) for i in T
     ],
 
     # ensuring different positions
@@ -84,8 +79,8 @@ satisfy(
     [
         (
             fp[i] == p,
-            Sum(score[j] > score[i] for j in range(nTeams) if j != i) < p,
-            Sum(score[j] < score[i] for j in range(nTeams) if j != i) <= nTeams + 1 - p
+            Sum(score[j] > score[i] for j in T if j != i) < p,
+            Sum(score[j] < score[i] for j in T if j != i) <= nTeams + 1 - p
         ) for i, p in positions
     ]
 )

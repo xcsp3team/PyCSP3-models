@@ -52,7 +52,7 @@ if not variant():
         AllDifferent(p),
 
         # ensuring that each permutation occurs in the sequence
-        [x[p[j] + k] == permutations[j][k] for k in range(n) for j in range(nPermutations)]
+        [x[(p[j] + k) % m] == permutations[j][k] for k in range(n) for j in range(nPermutations)]
     )
 
 elif variant("table"):

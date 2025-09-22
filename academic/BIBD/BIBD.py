@@ -25,11 +25,11 @@ A BIBD is therefore specified by its parameters (v,b,r,k,l).
 
 ## Data
   Five integers, corresponding to:
-    - v: the number of objects
-    - b: the number of blocks
-    - k: the number of distinct objects per block
-    - r: each object occurs in exactly r different blocks
-    - ld: every two distinct objects occur together in exactly ld blocks
+  - v: the number of objects
+  - b: the number of blocks
+  - k: the number of distinct objects per block
+  - r: each object occurs in exactly r different blocks
+  - ld: every two distinct objects occur together in exactly ld blocks
 
 ## Model(s)
   There are two variants:
