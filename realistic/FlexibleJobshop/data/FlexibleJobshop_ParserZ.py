@@ -27,7 +27,7 @@ nOptions = number_in(next_line())
 
 data['tasks'] = decrement(read_complex_line())
 data['optionalTasks'] = decrement(read_complex_line())
-print(line())
+
 data['option_machines'] = decrement(numbers_in(next_line()))
 if with_scenarii:
     data['weights'] = numbers_in(next_line())

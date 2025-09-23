@@ -1,0 +1,12 @@
+{
+  "key": "C",
+  "melody": [72, 74, 76, 72, 72, 74, 76, 72, 76, 77, 79, 79, 76, 77, 79, 79, 79, 65, 76, 72, 79, 65, 76, 72, 72, 67, 72, 72, 72, 67, 72, 72],
+  "mins": {
+    "perfect": 0,
+    "plagal": 0,
+    "imperfect": 0,
+    "interrupted": 0
+  },
+  "max_stationary": 2,
+  "enforce_cadences": 0
+}

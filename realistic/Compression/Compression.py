@@ -54,7 +54,7 @@ uses = VarArray(size=nPatterns, dom=range(n + 1))
 
 satisfy(
     # ensuring that the covered byte matches the pattern that covers it
-    [text[sx[cp[i]] + ci[i]] == text[i] for i in range(n)],
+    [((aux := Var()) == sx[cp[i]] + ci[i], text[aux] == text[i]) for i in range(n)],  # [text[sx[cp[i]] + ci[i]] == text[i] for i in range(n)],
 
     # ensuring that cover indexes follow in sequence (until the end of a pattern)
     [
