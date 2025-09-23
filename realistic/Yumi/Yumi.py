@@ -31,6 +31,11 @@ MIT Licence (Copyright 2021 Johan Ludde Wessénassumed)
 """
 
 from pycsp3 import *
+from pycsp3.dashboard import options
+
+#  option set to avoid writing ((aux:=Var()) == agent1_count - 1, task[aux] == end_depot_tasks[0])
+#  instead of task[agent1_count - 1] == end_depot_tasks[0]
+options.force_element_index = True
 
 tasks, task_orderings, agents, locations, nSuctionCups, zones = data
 tray_tasks, camera_tasks, output_task, empty_gripper_tasks = tasks

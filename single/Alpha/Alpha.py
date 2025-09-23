@@ -91,7 +91,7 @@ elif variant("var"):
 1) if ever you want to merge occurrences of the same variable, at compiling time, 
    you must add at the top of the file:
       from pycsp3.dashboard import options
-      options.groupsumcoeffs=True
+      options.group_sum_coeffs=True
 2) Note that:
  x[alphabet_positions(word)]
    is equivalent to:

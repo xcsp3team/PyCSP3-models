@@ -10,7 +10,7 @@ while paying attention to not having crossed lines.
 
 ## Execution
   python Amaze.py -data=<datafile.json>
-  python Amaze.py -data=<datafile.json> -keepHybrid
+  python Amaze.py -data=<datafile.json> -keep_hybrid
 
 ## Tags
   recreational, notebook
@@ -60,7 +60,7 @@ minimize(
       | {(v, v, v, v1, v2) for v in Values for v1 in range(nValues+1) for v2 in range(nValues+1) if v1 != v and v2 != v}
       | {(v, v, v1, v, v2) for v in Values for v1 in range(nValues+1) for v2 in range(nValues+1) if v1 != v and v2 != v}
           ...
-  the hybrid conditions are automatically converted to form starred tuples except if the option -keephybrid is used
+  the hybrid conditions are automatically converted to form starred tuples except if the option -keep_hybrid is used
 
 2) Data come from a text file via a parser that builds tuples (and not lists)
    so, we have to write tuple(p) because tuples (in data) are automatically converted to lists

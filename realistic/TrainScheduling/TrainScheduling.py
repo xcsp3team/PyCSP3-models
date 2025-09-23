@@ -216,4 +216,5 @@ minimize(
   If instead we write:
     [eng[s] == eng[prv[s] - nEngine]]
   we have an error (the domain of values of the expression prv[s] - nEngines being incompatible with the index range of the array 'eng' 
+  If we use the option force_element_index to true, this is not correct because the expression is within a logical expression (then part)
 """

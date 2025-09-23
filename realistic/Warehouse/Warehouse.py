@@ -26,7 +26,7 @@ In the Warehouse Location problem (WLP), a company considers opening warehouses 
 from pycsp3 import *
 from pycsp3.dashboard import options
 
-options.keepsum = True  # to get a better formed XCSP instance
+options.keep_sum = True  # to get a better formed XCSP instance
 
 cost, capacities, costs = data  # cost is the fixed cost when opening a warehouse
 nWarehouses, nStores = len(capacities), len(costs)

@@ -28,7 +28,7 @@ from pycsp3.dashboard import options
 from pycsp3.functions import absPython
 from pycsp3.tools.curser import OpOverrider
 
-options.keepsum = True  # to get a better formed XCSP instance (to be rechecked!)
+options.keep_sum = True  # to get a better formed XCSP instance (to be rechecked!)
 
 domains, frequencies, polarizations, hard_constraints, soft_constraints = data
 frequencies = [domains[f] for f in frequencies]  # we skip the indirection

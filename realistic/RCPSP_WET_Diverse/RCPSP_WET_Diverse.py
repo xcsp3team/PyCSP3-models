@@ -121,7 +121,7 @@ maximize(
   maximize(
     Sum(dmt) 
   )
- but the compilation time is higher (but more moderate with -dontuseauxcache) and introduces more aux variables 
+ but the compilation time is higher (but more moderate with -dont_use_aux_cache) and introduces more aux variables 
   or 
   b)
   # dmt[e][t] is 1 if the number of solutions dominating the point (e,t)

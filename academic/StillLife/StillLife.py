@@ -140,7 +140,7 @@ elif variant("wastage"):
 
  # imposing rules for ensuring valid dead cells around the board
  [x[0][i:i + 3] != (1, 1, 1) for i in range(m - 2)],
- ... (while using the option -recognizeSlides)
+ ... (while using the option -recognize_slides)
 
 3) We could use extension constraints instead of intension constraints, which would give:
   [x[0][i:i + 3] not in {(1, 1, 1)} for i in range(m - 2)],

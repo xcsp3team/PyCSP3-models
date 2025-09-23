@@ -28,7 +28,7 @@ This is distinct from the stable-marriage problem in that the stable-roommates p
 from pycsp3 import *
 from pycsp3.dashboard import options
 
-options.dontbuildsimilarconstraints = True
+options.dont_build_similar_constraints = True
 
 preferences = data
 n = len(preferences)

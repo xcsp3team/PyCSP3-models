@@ -203,5 +203,5 @@ minimize(
 
 """ Comments
 1) Not sure that the model is exactly the same as the Minizinc one. 
-2) Use -dontuseauxcache when compiling (otherwise, too long)
+2) Use -dont_use_aux_cache when compiling (otherwise, too long)
 """

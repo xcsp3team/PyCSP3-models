@@ -69,6 +69,6 @@ satisfy(
  [wf[hb[w]] == w for w in Women],
 
 3) Global constraints involved in general expressions are externalized by introducing
-   auxiliary variables. By using the compiler option, -useMeta, this is no more the case
+   auxiliary variables. By using the compiler option, -use_meta, this is no more the case
    but the generated instance is no more in the perimeter of XCSP3-core
 """

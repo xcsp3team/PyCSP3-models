@@ -50,5 +50,5 @@ satisfy(
   x[i + k]
 is equivalent to:
   x[(i + k) % n] 
- You can avoid this behavior by using the option -dontadjustindexing
+ You can avoid this behavior by using the option -dont_adjust_indexing
 """
