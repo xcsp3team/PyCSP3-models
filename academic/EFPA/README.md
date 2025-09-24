@@ -17,6 +17,7 @@ four numbers d, ld, q and n
 
 ## Links
   - https://www.csplib.org/Problems/prob055/
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   academic, csplib, xcsp25

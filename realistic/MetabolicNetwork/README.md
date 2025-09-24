@@ -19,6 +19,7 @@ Original model with MIT Licence (Copyright 2024 Maxime Mahout, François Fages).
 ## Links
   - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
   - https://www.minizinc.org/challenge2014/results2024.html
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags
   realistic, mzn24, xcsp25

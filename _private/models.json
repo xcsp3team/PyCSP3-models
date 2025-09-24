@@ -79,7 +79,7 @@
     "links": [
       "https://www.jair.org/index.php/jair/article/view/17032/27165",
       "https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper",
-      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -96,7 +96,7 @@
     "links": [
       "https://www.jair.org/index.php/jair/article/view/17032/27165",
       "https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper",
-      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -214,7 +214,7 @@
     ],
     "links": [
       "https://www.janestreet.com/puzzles/almost-magic-index/",
-      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -229,6 +229,26 @@
       "single"
     ],
     "links": []
+  },
+  {
+    "name": "AlteredStates",
+    "fullname": "recreational/AlteredStates",
+    "constraints": [
+      "Element",
+      "Lex",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "janestreet",
+      "xcsp25"
+    ],
+    "links": [
+      "https://www.janestreet.com/puzzles/altered-states-index/",
+      "https://www.janestreet.com/puzzles/altered-states-2-index/",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
   },
   {
     "name": "Amaze",
@@ -605,6 +625,25 @@
     ]
   },
   {
+    "name": "BlockModeling",
+    "fullname": "realistic/BlockModeling",
+    "constraints": [
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "xcsp25"
+    ],
+    "links": [
+      "https://link.springer.com/chapter/10.1007/978-3-030-30048-7_38",
+      "https://github.com/toulbar2/toulbar2/blob/master/web/TUTORIALS/tutorialCP2020.md#block-modeling-problem",
+      "https://forgemia.inra.fr/thomas.schiex/cost-function-library/-/tree/master/crafted/blockmodel",
+      "https://github.com/toulbar2/toulbar2/blob/master/web/TUTORIALS/blockmodel.py",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
+  },
+  {
     "name": "BlockedQueens",
     "fullname": "recreational/BlockedQueens",
     "constraints": [
@@ -696,7 +735,26 @@
       "xcsp25"
     ],
     "links": [
-      "https://www.csplib.org/Problems/prob022/"
+      "https://www.csplib.org/Problems/prob022/",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
+  },
+  {
+    "name": "ButtonScissors",
+    "fullname": "recreational/ButtonScissors",
+    "constraints": [
+      "Count",
+      "Maximum"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "lpcp21",
+      "xcsp25"
+    ],
+    "links": [
+      "https://github.com/lpcp-contest/lpcp-contest-2021/tree/main/problem-2",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
     ]
   },
   {
@@ -894,6 +952,24 @@
     ],
     "links": [
       "https://www.janestreet.com/puzzles/chain-reaction-index/",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
+    ]
+  },
+  {
+    "name": "ChampionsLeague",
+    "fullname": "recreational/ChampionsLeague",
+    "constraints": [
+      "Element",
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "xcsp25"
+    ],
+    "links": [
       "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
     ]
   },
@@ -1133,6 +1209,21 @@
     ]
   },
   {
+    "name": "Coprime",
+    "fullname": "academic/Coprime",
+    "constraints": [],
+    "type": "COP",
+    "tags": [
+      "academic",
+      "xcsp25"
+    ],
+    "links": [
+      "https://www.jair.org/index.php/jair/article/view/17032/27165",
+      "https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
+  },
+  {
     "name": "CostasArray",
     "fullname": "academic/CostasArray",
     "constraints": [
@@ -1203,7 +1294,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://github.com/lpcp-contest/lpcp-contest-2021/tree/main/problem-1"
+      "https://github.com/lpcp-contest/lpcp-contest-2021/tree/main/problem-1",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -1254,7 +1346,8 @@
     ],
     "links": [
       "https://link.springer.com/chapter/10.1007/978-3-319-44953-1_37",
-      "https://www.minizinc.org/challenge2016/results2016.html"
+      "https://www.minizinc.org/challenge2016/results2016.html",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -1285,7 +1378,9 @@
       "recreational",
       "xcsp25"
     ],
-    "links": []
+    "links": [
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
   },
   {
     "name": "CyclicBandwidth",
@@ -1537,7 +1632,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://www.csplib.org/Problems/prob055/"
+      "https://www.csplib.org/Problems/prob055/",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -1629,7 +1725,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://www.roadef.org/challenge/2001/fr/"
+      "https://www.roadef.org/challenge/2001/fr/",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
     ]
   },
   {
@@ -1776,6 +1873,25 @@
     ]
   },
   {
+    "name": "FlexibleJobshopScen",
+    "fullname": "realistic/FlexibleJobshopScen",
+    "constraints": [
+      "Cumulative",
+      "Sum",
+      "Count"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "csplib",
+      "xcsp25"
+    ],
+    "links": [
+      "https://www.csplib.org/Problems/prob077/",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
+  },
+  {
     "name": "FoolSolitaire",
     "fullname": "recreational/FoolSolitaire",
     "constraints": [
@@ -1792,6 +1908,42 @@
       "https://www.sciencedirect.com/science/article/abs/pii/S0305054805000195",
       "https://www.routledge.com/Winning-Ways-for-Your-Mathematical-Plays-Volume-2/Berlekamp-Conway-Guy/p/book/9781568811420",
       "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
+    ]
+  },
+  {
+    "name": "Fortress1",
+    "fullname": "recreational/Fortress",
+    "constraints": [
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "lpcp22",
+      "xcsp25"
+    ],
+    "links": [
+      "https://github.com/lpcp-contest/lpcp-contest-2022/tree/main/problem-1",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
+  },
+  {
+    "name": "Fortress2",
+    "fullname": "recreational/Fortress",
+    "constraints": [
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "lpcp22",
+      "xcsp25"
+    ],
+    "links": [
+      "https://github.com/lpcp-contest/lpcp-contest-2022/tree/main/problem-1",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
     ]
   },
   {
@@ -2043,7 +2195,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://www.csplib.org/Problems/prob053"
+      "https://www.csplib.org/Problems/prob053",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -2282,7 +2435,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://mathworld.wolfram.com/Heterosquare.html"
+      "https://mathworld.wolfram.com/Heterosquare.html",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -2356,6 +2510,27 @@
     "links": [
       "https://en.wikipedia.org/wiki/Sudoku",
       "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
+    ]
+  },
+  {
+    "name": "IHTC",
+    "fullname": "realistic/IHTC",
+    "constraints": [
+      "BinPacking",
+      "Cumulative",
+      "Element",
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "xcsp25"
+    ],
+    "links": [
+      "https://ihtc2024.github.io/assets/files/ihtc2024_problem_specification.pdf",
+      "https://ihtc2024.github.io/",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
     ]
   },
   {
@@ -2606,7 +2781,8 @@
     ],
     "links": [
       "https://link.springer.com/chapter/10.1007/11889205_15",
-      "https://www.csplib.org/Problems/prob024/"
+      "https://www.csplib.org/Problems/prob024/",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -2854,7 +3030,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://doi.org/10.1007/s10601-024-09368-5"
+      "https://doi.org/10.1007/s10601-024-09368-5",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -2869,7 +3046,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://doi.org/10.1007/s10601-024-09368-5"
+      "https://doi.org/10.1007/s10601-024-09368-5",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -2881,9 +3059,12 @@
     "type": "COP",
     "tags": [
       "academic",
-      "csplib"
+      "csplib",
+      "xcsp25"
     ],
-    "links": []
+    "links": [
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
   },
   {
     "name": "MQueens",
@@ -3131,7 +3312,8 @@
     ],
     "links": [
       "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop",
-      "https://www.minizinc.org/challenge2014/results2024.html"
+      "https://www.minizinc.org/challenge2014/results2024.html",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
     ]
   },
   {
@@ -3201,6 +3383,26 @@
       "https://www.csplib.org/Problems/prob035/",
       "https://link.springer.com/chapter/10.1007/978-3-540-45193-8_22",
       "https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp"
+    ]
+  },
+  {
+    "name": "Mondoku",
+    "fullname": "recreational/Mondoku",
+    "constraints": [
+      "Cardinality",
+      "Maximum",
+      "Minimum",
+      "Precedence"
+    ],
+    "type": "COP",
+    "tags": [
+      "academic",
+      "recreational",
+      "mzn25"
+    ],
+    "links": [
+      "https://www.reddit.com/r/generative/comments/1fxp5ng/irregular_mondoku_art/",
+      "https://www.minizinc.org/challenge2025/results2025.html"
     ]
   },
   {
@@ -4101,6 +4303,25 @@
     ]
   },
   {
+    "name": "ProductShelves",
+    "fullname": "realistic/ProductShelves",
+    "constraints": [
+      "Lex",
+      "Maximum",
+      "NoOverlap",
+      "Precedence",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn25"
+    ],
+    "links": [
+      "https://www.minizinc.org/challenge2025/results2025.html"
+    ]
+  },
+  {
     "name": "ProgressiveParty",
     "fullname": "recreational/ProgressiveParty",
     "constraints": [
@@ -4556,7 +4777,8 @@
       "xcsp25"
     ],
     "links": [
-      "http://www.mathematik.uni-bielefeld.de/~sillke/PUZZLES/partion3-ramsey"
+      "http://www.mathematik.uni-bielefeld.de/~sillke/PUZZLES/partion3-ramsey",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -4665,6 +4887,41 @@
     ]
   },
   {
+    "name": "RoadefPlanning2",
+    "fullname": "realistic/RoadefPlanning2",
+    "constraints": [
+      "Cardinality",
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "xcsp25"
+    ],
+    "links": [
+      "https://drops.dagstuhl.de/storage/00lipics/lipics-vol307-cp2024/LIPIcs.CP.2024.34/LIPIcs.CP.2024.34.pdf",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
+  },
+  {
+    "name": "RollerSplat",
+    "fullname": "recreational/RollerSplat",
+    "constraints": [
+      "Element",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "xcsp25"
+    ],
+    "links": [
+      "https://play.google.com/store/apps/details?id=com.neonplay.casualrollersplat2&hl=fr&pli=1",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
+  },
+  {
     "name": "RoomMate",
     "fullname": "recreational/RoomMate",
     "constraints": [
@@ -4765,7 +5022,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://www.csplib.org/Problems/prob087/"
+      "https://www.csplib.org/Problems/prob087/",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -4881,25 +5139,8 @@
     ],
     "links": [
       "https://www.jair.org/index.php/jair/article/view/17032/27165",
-      "https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper"
-    ]
-  },
-  {
-    "name": "SEDFMini",
-    "fullname": "realistic/SEDF",
-    "constraints": [
-      "AllDifferent",
-      "Cardinality",
-      "Element"
-    ],
-    "type": "CSP",
-    "tags": [
-      "realistic",
-      "xcsp25"
-    ],
-    "links": [
-      "https://www.jair.org/index.php/jair/article/view/17032/27165",
-      "https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper"
+      "https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {
@@ -5010,7 +5251,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://en.wikipedia.org/wiki/Open-shop_scheduling"
+      "https://en.wikipedia.org/wiki/Open-shop_scheduling",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
     ]
   },
   {
@@ -6047,6 +6289,46 @@
     ]
   },
   {
+    "name": "TankAllocation1",
+    "fullname": "realistic/TankAllocation",
+    "constraints": [
+      "BinPacking",
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "xcsp25"
+    ],
+    "links": [
+      "https://www.csplib.org/Problems/prob051/models/",
+      "https://link.springer.com/article/10.1007/s10601-017-9278-x",
+      "https://link.springer.com/chapter/10.1007/978-3-642-33558-7_58",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
+  },
+  {
+    "name": "TankAllocation2",
+    "fullname": "realistic/TankAllocation",
+    "constraints": [
+      "AllDifferent",
+      "Count Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "xcsp25"
+    ],
+    "links": [
+      "https://www.csplib.org/Problems/prob051/models/",
+      "https://link.springer.com/article/10.1007/s10601-017-9278-x",
+      "https://link.springer.com/chapter/10.1007/978-3-642-33558-7_58",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
+    ]
+  },
+  {
     "name": "TeamAssignment",
     "fullname": "realistic/TeamAssignment",
     "constraints": [
@@ -6097,7 +6379,7 @@
     ],
     "links": [
       "https://www.csplib.org/Problems/prob073/",
-      "https://www.minizinc.org/challenge2018/results2018.html"
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -6120,7 +6402,7 @@
     ],
     "links": [
       "https://www.csplib.org/Problems/prob073/",
-      "https://www.minizinc.org/challenge2018/results2018.html"
+      "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
     ]
   },
   {
@@ -6136,7 +6418,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://link.springer.com/article/10.1007/s10601-024-09375-6"
+      "https://link.springer.com/article/10.1007/s10601-024-09375-6",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp"
     ]
   },
   {

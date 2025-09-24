@@ -23,6 +23,7 @@ See problem 087 at CSPLib.
 
 ## Links
   - https://www.csplib.org/Problems/prob087/
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   realistic, csplib, xcsp25

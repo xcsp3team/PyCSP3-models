@@ -13,8 +13,8 @@ From LPCP contest 2021 (Problem 2):
   constraints: Count, Maximum
 
 ## Execution
-  python ButtonsScissors.py -data=<datafile.json>
-  python ButtonsScissors.py -data=<datafile.txt> -parser=ButtonsScissors_Parser.py
+  python ButtonScissors.py -data=<datafile.json>
+  python ButtonScissors.py -data=<datafile.txt> -parser=ButtonsScissors_Parser.py
 
 ## Links
   - https://github.com/lpcp-contest/lpcp-contest-2021/tree/main/problem-2

@@ -15,8 +15,8 @@ The problem si to schedule ROADEF parallel sessions into available time slots wh
   constraints: Cardinality, Sum, Table
 
 ## Execution
-  python RoadefPlaning2.py -data=<datafile.json>
-  python RoadefPlaning2.py -data=[datafile.json,number]
+  python RoadefPlanning2.py -data=<datafile.json>
+  python RoadefPlanning2.py -data=[datafile.json,number]
 
 ## Links
   - https://drops.dagstuhl.de/storage/00lipics/lipics-vol307-cp2024/LIPIcs.CP.2024.34/LIPIcs.CP.2024.34.pdf

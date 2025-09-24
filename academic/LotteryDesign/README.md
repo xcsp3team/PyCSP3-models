@@ -19,6 +19,7 @@ Important: the model, below, does not exactly correspond to this statement (it w
 
 ## Links
   - https://doi.org/10.1007/s10601-024-09368-5
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   realistic, xcsp25

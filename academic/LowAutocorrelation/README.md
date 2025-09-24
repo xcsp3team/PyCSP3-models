@@ -17,5 +17,8 @@ Each bit in the sequence takes the value +1 or -1.
   python LowAutocorrelation.py -data=number
 ```
 
+## Links
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
+
 ## Tags
-  academic, csplib
+  academic, csplib, xcsp25

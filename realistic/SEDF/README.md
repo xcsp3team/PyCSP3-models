@@ -27,14 +27,7 @@ See Experimental Data for TabID Journal Paper (URL given below).
 ## Links
   - https://www.jair.org/index.php/jair/article/view/17032/27165
   - https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   realistic, xcsp25
-
-<br />
-
-## _Alternative Model(s)_
-
-#### SEDFMini.py
- - constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Element](https://pycsp.org/documentation/constraints/Element)
- - tags: realistic, xcsp25

@@ -19,6 +19,7 @@ and has an associated cost. We must select a subset of possible shifts that cove
 
 ## Links
  - https://www.csplib.org/Problems/prob022/
+ - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags
   realistic, csplib, xcsp25

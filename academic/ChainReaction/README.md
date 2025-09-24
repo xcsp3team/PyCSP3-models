@@ -22,6 +22,7 @@ From JaneStreet:
 ## Links
   - https://www.janestreet.com/puzzles/chain-reaction-index/
   - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   academic, janestreet, xcsp25

@@ -15,6 +15,7 @@ Open-shop Scheduling Problem.
 
 ## Links
   - https://en.wikipedia.org/wiki/Open-shop_scheduling
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags
   realistic, xcsp25

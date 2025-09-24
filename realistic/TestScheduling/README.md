@@ -22,7 +22,7 @@ The objective is to finish the set of all tests as quickly as possible."
 
 ## Links
   - https://www.csplib.org/Problems/prob073/
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp
 
 ## Tags
   realistic, csplib, xcsp24

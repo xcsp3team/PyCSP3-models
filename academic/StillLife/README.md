@@ -32,7 +32,6 @@ The configuration of live and dead cells at time t leads to a new configuration 
   - https://www.csplib.org/Problems/prob032/
   - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
-
 ## Tags
   academic, csplib, xcsp24
 
