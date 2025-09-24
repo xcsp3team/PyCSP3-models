@@ -1,0 +1,11 @@
+{
+    "nAvailableShelves": 20,
+    "dimensions": {
+	"shelves": [8, 4, 4],
+	"products": [
+	    [4, 4, 4],
+	    [8, 4, 4]
+	]
+    },
+    "nProductsToBuild": [10, 1]
+}

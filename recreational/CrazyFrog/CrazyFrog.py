@@ -19,6 +19,7 @@ Important: the model, below, has not been checked to exactly correspond to this 
 
 ## Links
   - https://github.com/lpcp-contest/lpcp-contest-2021/tree/main/problem-1
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   recreational, lpcp21, xcsp25

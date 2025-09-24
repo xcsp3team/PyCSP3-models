@@ -21,6 +21,7 @@ Important: the variants of the model, below, are here for hardening the problem 
 
 ## Links
   - https://mathworld.wolfram.com/Heterosquare.html
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   academic, xcsp25

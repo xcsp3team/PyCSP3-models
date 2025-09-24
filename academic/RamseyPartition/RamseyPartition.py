@@ -19,6 +19,7 @@ while paying attention to not having crossed lines.
 
 ## Links
   - http://www.mathematik.uni-bielefeld.de/~sillke/PUZZLES/partion3-ramsey
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   academic, xcsp25

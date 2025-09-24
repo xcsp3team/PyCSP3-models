@@ -18,6 +18,7 @@ See Challenge ROADEF 2001 (FAPP: Problème d'affectation de fréquences avec pol
 
 ## Links
   - https://www.roadef.org/challenge/2001/fr/
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags
   realistic, xcsp25

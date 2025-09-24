@@ -13,6 +13,9 @@ Related papers:
   python Cutstock.py -data=<datafile.json>
   python Cutstock.py -data=<datafile.dzn> -parser=Cutstock_ParserZ.py
 
+## Links
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
+
 ## Tags
   recreational, xcsp25
 """

@@ -27,6 +27,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 ## Links
   - https://www.csplib.org/Problems/prob073/
   - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge2023/results2023.html
 
 ## Tags
   realistic, csplib, mzn18, mzn23

@@ -28,7 +28,7 @@ See Experimental Data for TabID Journal Paper (URL given below).
 ## Links
   - https://www.jair.org/index.php/jair/article/view/17032/27165
   - https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper
-  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   recreational, xcsp25

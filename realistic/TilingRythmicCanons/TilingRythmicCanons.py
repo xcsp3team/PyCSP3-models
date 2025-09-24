@@ -13,12 +13,10 @@ i.e., all subsets B of Zn such that A ⊕ B = Zn.
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-024-09375-6
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   realistic, xcsp25
-
-
-Version 1 : with non 01 variables
 """
 
 from data.TilingRythmicCanons_Instances import instance
@@ -113,6 +111,7 @@ if variant("opt"):
     )
 
 """ Comments
+0) Version 1 : with non 01 variables
 1) it seems currently not possible to use n_tailing_eros with the way lex constraints are posted (ot NValues ?)
 2) the variants are not finalized or totally tested
 """

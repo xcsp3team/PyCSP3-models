@@ -29,7 +29,8 @@ KNIGHT, BISHOP, ROOK, QUEEN, EMPTY = range(nPieces)
 
 symmetries = [sym.apply_on(n) for sym in TypeSquareSymmetry]
 
-knight_skips = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
+skips = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
+knight_neighbors = [[[(i + oi, j + oj) for (oi, oj) in skips if 0 <= i + oi < n and 0 <= j + oj < n] for j in range(n)] for i in range(n)]
 
 # x[i][j] is the piece in the cell of coordinates s(i,j)
 x = VarArray(size=[n, n], dom=range(nPieces))
@@ -38,7 +39,10 @@ x = VarArray(size=[n, n], dom=range(nPieces))
 y = VarArray(size=nPieces, dom=lambda p: range(limits[p] + 1) if p != EMPTY else range(n * n - sum(limits) + limits[EMPTY], n * n + 1))
 
 satisfy(
-    Cardinality(x, occurrences=y),
+    Cardinality(
+        within=x,
+        occurrences=y
+    ),
 
     # a rook or a queen prevents putting any other piece in the same row
     [
@@ -77,7 +81,7 @@ satisfy(
         If(
             x[i][j] == KNIGHT,
             Then=x[k][q] == EMPTY
-        ) for i in range(n) for j in range(n) for (k, q) in [(i + oi, j + oj) for (oi, oj) in knight_skips if 0 <= i + oi < n and 0 <= j + oj < n]
+        ) for i in range(n) for j in range(n) for (k, q) in knight_neighbors[i][j]
     ],
 
     # tag(redundant)

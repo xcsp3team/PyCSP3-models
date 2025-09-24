@@ -17,6 +17,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-44953-1_37
   - https://www.minizinc.org/challenge2016/results2016.html
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   realistic, mzn16, xcsp25

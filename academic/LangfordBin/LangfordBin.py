@@ -19,6 +19,7 @@ From paper (by Gent, Jefferson and Miguel at CP'06]:
 ## Links
   - https://link.springer.com/chapter/10.1007/11889205_15
   - https://www.csplib.org/Problems/prob024/
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/csp/csp
 
 ## Tags
   academic, csplib, xcsp25

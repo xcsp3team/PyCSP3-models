@@ -106,6 +106,10 @@ maximize(
        [1, 1, 1, 1, 0, 0], [1, 1, 0, 0, 1, 1], [1, 1, 0, 0, 1, 1], [0, 0, 1, 1, 0, 0], [0, 0, 1, 1, 1, 1], [0, 0, 1, 1, 1, 1], [1, 1, 1, 1, 0, 0],
        [1, 1, 1, 1, 0, 0], [0, 0, 1, 1, 1, 1]],
 2) y seems to be an approximation
+3) Note that
+    [x[:, j] <= x[:, j + 1] for j in range(nVaccines - 1)]
+  is equivalent to 
+   [LexIncreasing(x[:, j], x[:, j + 1]) for j in range(nVaccines - 1)]
 """
 
 # ig = VarArray(size=[nVaccines, nGroups], dom={0, 1})

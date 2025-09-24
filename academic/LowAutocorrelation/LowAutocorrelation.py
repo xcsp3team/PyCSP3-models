@@ -14,8 +14,11 @@ Each bit in the sequence takes the value +1 or -1.
 ## Execution
   python LowAutocorrelation.py -data=number
 
+## Links
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
+
 ## Tags
-  academic, csplib
+  academic, csplib, xcsp25
 """
 
 from pycsp3 import *
@@ -44,4 +47,5 @@ minimize(
 
 """ Comments 
 1) For the objective, c * c is possible, but parsers must be updated
+2) Data used for the 2025 competition are: [10, 20, 40, 60, 80, 100, 120, 150, 200, 300, 500, 800]
 """
