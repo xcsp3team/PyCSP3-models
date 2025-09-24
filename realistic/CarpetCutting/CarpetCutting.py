@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags
-  realistic, mzn11, mzn12, mzn16, mzn21, xcsp23
+  realistic, mzn11, mzn12, mzn16, mzn21, mzn25, xcsp23
 """
 
 from pycsp3 import *

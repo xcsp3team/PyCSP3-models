@@ -22,7 +22,7 @@ Accompanying instances are based on real-life instances.
   - https://www.minizinc.org/challenge2021/results2021.html
 
 ## Tags
-  realistic, mzn21
+  realistic, mzn21, mzn25
 """
 
 from pycsp3 import *
