@@ -33,4 +33,4 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2019/results2019.html
 
 ## Tags
-  academic, mzn19
+  academic, mzn19, mzn24

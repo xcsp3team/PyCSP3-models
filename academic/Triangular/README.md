@@ -23,4 +23,4 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
-  academic, mzn15, mzn19, mzn22
+  academic, mzn15, mzn19, mzn22, mzn24

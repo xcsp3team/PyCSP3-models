@@ -16,10 +16,12 @@ From JaneStreet:
 ```
   python ChainReaction.py -data=[number,number]
   python ChainReaction.py -data=[number,number] -variant=opt
+  python ChainReaction.py -data=[number,number] -variant=mini
 ```
 
 ## Links
   - https://www.janestreet.com/puzzles/chain-reaction-index/
+  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags
   academic, janestreet, xcsp25

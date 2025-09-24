@@ -24,6 +24,7 @@ between the counters of each pair of flights from the same airline.
 ```
   python ACCAP.py -data=<datafile.json>
   python ACCAP.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
+  python ACCAP.py -data=<datafile.json> -parser=ACCAP_Converter.py
 ```
 
 ## Links
@@ -39,4 +40,4 @@ between the counters of each pair of flights from the same airline.
 
 #### ACCAP_z.py
  - constraints: [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap), [Sum](https://pycsp.org/documentation/constraints/Sum)
- - tags: realistic, mzn19, mzn22
+ - tags: realistic, mzn19, mzn22, mzn24

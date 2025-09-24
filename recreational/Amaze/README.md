@@ -12,7 +12,7 @@ while paying attention to not having crossed lines.
 ## Execution
 ```
   python Amaze.py -data=<datafile.json>
-  python Amaze.py -data=<datafile.json> -keepHybrid
+  python Amaze.py -data=<datafile.json> -keep_hybrid
 ```
 
 ## Tags

@@ -27,7 +27,8 @@
     "tags": [
       "realistic",
       "mzn19",
-      "mzn22"
+      "mzn22",
+      "mzn24"
     ],
     "links": [
       "https://www.researchgate.net/publication/281979436_Optimizing_the_Airport_Check-In_Counter_Allocation_Problem",
@@ -77,7 +78,8 @@
     ],
     "links": [
       "https://www.jair.org/index.php/jair/article/view/17032/27165",
-      "https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper"
+      "https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
     ]
   },
   {
@@ -93,7 +95,8 @@
     ],
     "links": [
       "https://www.jair.org/index.php/jair/article/view/17032/27165",
-      "https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper"
+      "https://pure.york.ac.uk/portal/en/datasets/experimental-data-for-tabid-journal-paper",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
     ]
   },
   {
@@ -129,6 +132,25 @@
       "https://drops.dagstuhl.de/opus/frontdoor.php?source_opus=19069",
       "https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop",
       "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
+    ]
+  },
+  {
+    "name": "AircraftDisassembly",
+    "fullname": "realistic/AircraftDisassembly",
+    "constraints": [
+      "Cumulative",
+      "Maximum",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn24"
+    ],
+    "links": [
+      "https://link.springer.com/chapter/10.1007/978-3-031-60599-4_13",
+      "https://github.com/cftmthomas/AircraftDisassemblyScheduling",
+      "https://www.minizinc.org/challenge2024/results2024.html"
     ]
   },
   {
@@ -191,7 +213,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://www.janestreet.com/puzzles/almost-magic-index/"
+      "https://www.janestreet.com/puzzles/almost-magic-index/",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
     ]
   },
   {
@@ -761,7 +784,8 @@
     "type": "COP",
     "tags": [
       "realistic",
-      "mzn20"
+      "mzn20",
+      "mzn24"
     ],
     "links": [
       "https://link.springer.com/article/10.1007/s10601-021-09321-w",
@@ -869,7 +893,8 @@
       "xcsp25"
     ],
     "links": [
-      "https://www.janestreet.com/puzzles/chain-reaction-index/"
+      "https://www.janestreet.com/puzzles/chain-reaction-index/",
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop"
     ]
   },
   {
@@ -1056,6 +1081,23 @@
     ]
   },
   {
+    "name": "Compression",
+    "fullname": "realistic/Compression",
+    "constraints": [
+      "Cardinality",
+      "Element",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn24"
+    ],
+    "links": [
+      "https://www.minizinc.org/challenge2024/results2024.html"
+    ]
+  },
+  {
     "name": "ConcertHall",
     "fullname": "realistic/ConcertHall",
     "constraints": [
@@ -1067,7 +1109,8 @@
     "type": "COP",
     "tags": [
       "realistic",
-      "mzn18"
+      "mzn18",
+      "mzn24"
     ],
     "links": [
       "https://link.springer.com/article/10.1007/s10601-006-7095-8",
@@ -1515,6 +1558,22 @@
     ]
   },
   {
+    "name": "EchoSched",
+    "fullname": "realistic/EchoSched",
+    "constraints": [
+      "Maximum",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn25"
+    ],
+    "links": [
+      "https://www.minizinc.org/challenge/2025/results/"
+    ]
+  },
+  {
     "name": "Elitserien",
     "fullname": "realistic/Elitserien",
     "constraints": [
@@ -1571,6 +1630,21 @@
     ],
     "links": [
       "https://www.roadef.org/challenge/2001/fr/"
+    ]
+  },
+  {
+    "name": "FBD1",
+    "fullname": "academic/FBD1",
+    "constraints": [
+      "AllDifferent"
+    ],
+    "type": "COP",
+    "tags": [
+      "academic",
+      "mzn25"
+    ],
+    "links": [
+      "https://www.minizinc.org/challenge/2025/results/"
     ]
   },
   {
@@ -1730,7 +1804,8 @@
     "type": "COP",
     "tags": [
       "academic",
-      "mzn19"
+      "mzn19",
+      "mzn24"
     ],
     "links": [
       "https://link.springer.com/article/10.1007/s10601-018-9297-2",
@@ -1972,6 +2047,26 @@
     ]
   },
   {
+    "name": "GraphClear",
+    "fullname": "realistic/GraphClear",
+    "constraints": [
+      "AllDifferent",
+      "Maximum",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn24"
+    ],
+    "links": [
+      "https://robotics.ucmerced.edu/sites/g/files/ufvvjh1576/f/page/documents/iros2007c.pdf",
+      "https://link.springer.com/article/10.1007/s10601-018-9288-3",
+      "https://github.com/Kurorororo/didp-models/tree/main/graph-clear",
+      "https://www.minizinc.org/challenge/2024/results/"
+    ]
+  },
+  {
     "name": "GraphColoring",
     "fullname": "recreational/GraphColoring",
     "constraints": [
@@ -2156,6 +2251,25 @@
     ]
   },
   {
+    "name": "Harmony",
+    "fullname": "realistic/Harmony",
+    "constraints": [
+      "Count",
+      "Element",
+      "Maximum",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn24"
+    ],
+    "links": [
+      "https://www.ijcai.org/proceedings/2024/858",
+      "https://www.minizinc.org/challenge2024/results2024.html"
+    ]
+  },
+  {
     "name": "Heterosquare",
     "fullname": "academic/Heterosquare",
     "constraints": [
@@ -2191,6 +2305,25 @@
     ]
   },
   {
+    "name": "Hitori",
+    "fullname": "recreational/Hitori",
+    "constraints": [
+      "AllDifferent",
+      "Count",
+      "Sum",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "mzn25"
+    ],
+    "links": [
+      "https://www.puzzle-hitori.com/",
+      "https://www.minizinc.org/challenge/2025/results/"
+    ]
+  },
+  {
     "name": "Hoist",
     "fullname": "realistic/Hoist",
     "constraints": [
@@ -2199,7 +2332,8 @@
     "type": "COP",
     "tags": [
       "realistic",
-      "mzn20"
+      "mzn20",
+      "mzn24"
     ],
     "links": [
       "https://data.4tu.nl/articles/_/12682700/1",
@@ -2222,6 +2356,26 @@
     "links": [
       "https://en.wikipedia.org/wiki/Sudoku",
       "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
+    ]
+  },
+  {
+    "name": "IHTC24K",
+    "fullname": "realistic/IHTC24K",
+    "constraints": [
+      "Count",
+      "Cumulative",
+      "Element",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn25"
+    ],
+    "links": [
+      "https://ihtc2024.github.io/assets/files/ihtc2024_problem_specification.pdf",
+      "https://ihtc2024.github.io/",
+      "https://www.minizinc.org/challenge/2025/results/"
     ]
   },
   {
@@ -2964,6 +3118,23 @@
     ]
   },
   {
+    "name": "MetabolicNetwork",
+    "fullname": "realistic/MetabolicNetwork",
+    "constraints": [
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn24",
+      "xcsp25"
+    ],
+    "links": [
+      "https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop",
+      "https://www.minizinc.org/challenge2014/results2024.html"
+    ]
+  },
+  {
     "name": "MineSweeper",
     "fullname": "recreational/MineSweeper",
     "constraints": [
@@ -3030,6 +3201,22 @@
       "https://www.csplib.org/Problems/prob035/",
       "https://link.springer.com/chapter/10.1007/978-3-540-45193-8_22",
       "https://www.cril.univ-artois.fr/XCSP22/competitions/csp/csp"
+    ]
+  },
+  {
+    "name": "MonitorPlacement",
+    "fullname": "realistic/MonitorPlacement",
+    "constraints": [
+      "Count",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn24"
+    ],
+    "links": [
+      "https://www.minizinc.org/challenge2024/results2024.html"
     ]
   },
   {
@@ -3179,7 +3366,8 @@
     "tags": [
       "academic",
       "mzn18",
-      "mzn21"
+      "mzn21",
+      "mzn24"
     ],
     "links": [
       "https://research.ibm.com/haifa/ponderthis/challenges/December2012.html",
@@ -3572,7 +3760,8 @@
     "type": "COP",
     "tags": [
       "academic",
-      "mzn21"
+      "mzn21",
+      "mzn24"
     ],
     "links": [
       "https://link.springer.com/chapter/10.1007/978-3-540-24664-0_19",
@@ -3832,6 +4021,38 @@
     "links": [
       "https://archive.org/details/penrose-tiles-to-trapdoor-ciphers/mode/2up",
       "https://www.cril.univ-artois.fr/XCSP24/competitions/csp/csp"
+    ]
+  },
+  {
+    "name": "Portal",
+    "fullname": "recreational/Portal",
+    "constraints": [
+      "Element",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "mzn24"
+    ],
+    "links": [
+      "https://www.minizinc.org/challenge/2024/results/"
+    ]
+  },
+  {
+    "name": "Portal2",
+    "fullname": "recreational/Portal",
+    "constraints": [
+      "Element",
+      "Table"
+    ],
+    "type": "COP",
+    "tags": [
+      "recreational",
+      "mzn24"
+    ],
+    "links": [
+      "https://www.minizinc.org/challenge/2024/results/"
     ]
   },
   {
@@ -5680,6 +5901,39 @@
     ]
   },
   {
+    "name": "TSPTW",
+    "fullname": "realistic/TSPTW",
+    "constraints": [
+      "Circuit",
+      "Element"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic"
+    ],
+    "links": [
+      "https://www.jair.org/index.php/jair/article/view/17482",
+      "https://www.minizinc.org/challenge/2025/results/"
+    ]
+  },
+  {
+    "name": "TSPTW_z",
+    "fullname": "realistic/TSPTW",
+    "constraints": [
+      "Circuit",
+      "Element"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn25"
+    ],
+    "links": [
+      "https://www.jair.org/index.php/jair/article/view/17482",
+      "https://www.minizinc.org/challenge/2025/results/"
+    ]
+  },
+  {
     "name": "TSP_TW1",
     "fullname": "realistic/TSP_TW",
     "constraints": [
@@ -5902,6 +6156,22 @@
     ]
   },
   {
+    "name": "TinyCVRP",
+    "fullname": "realistic/TinyCVRP",
+    "constraints": [
+      "Maximum",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn24"
+    ],
+    "links": [
+      "https://www.minizinc.org/challenge2024/results2024.html"
+    ]
+  },
+  {
     "name": "Tower",
     "fullname": "realistic/Tower",
     "constraints": [
@@ -5961,6 +6231,25 @@
       "recreational"
     ],
     "links": []
+  },
+  {
+    "name": "TrainScheduling",
+    "fullname": "realistic/TrainScheduling",
+    "constraints": [
+      "AllDifferent",
+      "Cumulative",
+      "Element",
+      "NoOverlap",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn24"
+    ],
+    "links": [
+      "https://www.minizinc.org/challenge/2024/results/"
+    ]
   },
   {
     "name": "TravelingPurchaser",
@@ -6071,7 +6360,8 @@
       "academic",
       "mzn15",
       "mzn19",
-      "mzn22"
+      "mzn22",
+      "mzn24"
     ],
     "links": [
       "https://www.minizinc.org/challenge2022/results2022.html"
@@ -6459,6 +6749,25 @@
       "https://www.sciencedirect.com/science/article/abs/pii/S2352220821000274",
       "https://www.minizinc.org/challenge2022/results2022.html",
       "https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop"
+    ]
+  },
+  {
+    "name": "WorkTaskVariation",
+    "fullname": "realistic/WorkTaskVariation",
+    "constraints": [
+      "Cardinality",
+      "Element",
+      "Regular",
+      "Sum"
+    ],
+    "type": "COP",
+    "tags": [
+      "realistic",
+      "mzn25"
+    ],
+    "links": [
+      "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.CP.2025.24",
+      "https://www.minizinc.org/challenge/2025/results/"
     ]
   },
   {

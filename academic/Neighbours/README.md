@@ -31,4 +31,4 @@ The original MZN model was proposed by Peter J. Stuckey, with a Licence that sem
   - https://www.minizinc.org/challenge2021/results2021.html
 
 ## Tags
-  academic, mzn18, mzn21
+  academic, mzn18, mzn21, mzn24

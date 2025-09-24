@@ -23,4 +23,4 @@ The model was created by Hendrik 'Henk' Bierlee, with a licence that seems to be
   - https://www.minizinc.org/challenge2021/results2021.html
 
 ## Tags
-  academic, mzn21
+  academic, mzn21, mzn24
