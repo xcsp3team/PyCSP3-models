@@ -21,7 +21,7 @@ i.e., all subsets B of Zn such that A ⊕ B = Zn.
 Version 1 : with non 01 variables
 """
 
-from TilingRythmicCanons_Instances import instance
+from data.TilingRythmicCanons_Instances import instance
 from pycsp3 import *
 
 n, D, A = instance(data) if isinstance(data, int) else data

@@ -119,7 +119,7 @@ maximize(
     [imply((i != x[t][ME]) & (i != x[t][ELEPHANT]), op[i][t] == op[i][t - 1]) for i in Nodes],
    and also to:
      [imply(not_belong(i, x[t]), op[i][t] == op[i][t - 1]) for i in Nodes]
-5) data for challenge 2023 are: 6, 12, 19, 20, 28
+5) Data for challenge 2023 are: 6, 12, 19, 20, 28
 """
 
 # # test

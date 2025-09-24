@@ -35,7 +35,7 @@ rlength = numbers_in(next_line())
 routes = [[nStops - 1 if tok.strip() == "dstop" else STOPS.index(tok.strip()) for tok in ln[ln.index('|') + 1:].split(', ')] for _ in range(nRoutes) if
           (ln := next_line(),)]
 # routes = [routes[i][:rlength[i]] for i in range(nRoutes)]
-print(routes)
+# print(routes)
 
 data['routes'] = routes
 
