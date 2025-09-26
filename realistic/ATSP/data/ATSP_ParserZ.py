@@ -1,10 +1,12 @@
 from pycsp3.problems.data.parsing import *
 
-data['program_setup_time'] = number_in(line())
-data['sequence_setup_time'] = number_in(next_line())
+program_setup_time = number_in(line())
+sequence_setup_time = number_in(next_line())
+data['setup_times'] = OrderedDict([("program", program_setup_time), ("sequence", sequence_setup_time)])
 data['max_colors_per_job'] = number_in(next_line())
-data['min_cycles_per_job'] = number_in(next_line())
-data['max_cycles_per_job'] = number_in(next_line())
+min_cycles_per_job = number_in(next_line())
+max_cycles_per_job = number_in(next_line())
+data['cycles_per_job'] = OrderedDict([("min", min_cycles_per_job), ("max", max_cycles_per_job)])
 data['max_jobs'] = number_in(next_line())
 nColors = data['nColors'] = number_in(next_line())
 nPrograms = number_in(next_line())

@@ -28,17 +28,19 @@ Each plane has to land on one of the runways within its predetermined time windo
 from pycsp3 import *
 
 nPlanes, times, costs, separations = data
+
 earliest, target, latest = zip(*times)
 early_penalties, late_penalties = zip(*costs)
+P = range(nPlanes)
 
 # x[i] is the landing time of the ith plane
-x = VarArray(size=nPlanes, dom=lambda i: range(earliest[i], latest[i] + 1))
+x = VarArray(size=P, dom=lambda i: range(earliest[i], latest[i] + 1))
 
 # erl[i] is the earliness of the ith plane
-erl = VarArray(size=nPlanes, dom=lambda i: range(target[i] - earliest[i] + 1))
+erl = VarArray(size=P, dom=lambda i: range(target[i] - earliest[i] + 1))
 
 # trd[i] is the tardiness of the ith plane
-trd = VarArray(size=nPlanes, dom=lambda i: range(latest[i] - target[i] + 1))
+trd = VarArray(size=P, dom=lambda i: range(latest[i] - target[i] + 1))
 
 satisfy(
     # planes must land at different times
@@ -49,23 +51,23 @@ satisfy(
         NoOverlap(
             origins=[x[i], x[j]],
             lengths=[separations[i][j], separations[j][i]]
-        ) for i, j in combinations(nPlanes, 2)
+        ) for i, j in combinations(P, 2)
     ]
 )
 
 if not variant():
     satisfy(
         # computing earliness of planes
-        [erl[i] == max(0, target[i] - x[i]) for i in range(nPlanes)],
+        [erl[i] == max(0, target[i] - x[i]) for i in P],
 
         # computing tardiness of planes
-        [trd[i] == max(0, x[i] - target[i]) for i in range(nPlanes)]
+        [trd[i] == max(0, x[i] - target[i]) for i in P]
     )
 
 elif variant("table"):
     satisfy(
         # computing earliness and tardiness of planes
-        (x[i], erl[i], trd[i]) in {(v, max(0, target[i] - v), max(0, v - target[i])) for v in x[i].dom} for i in range(nPlanes)
+        (x[i], erl[i], trd[i]) in {(v, max(0, target[i] - v), max(0, v - target[i])) for v in x[i].dom} for i in P
     )
 
 minimize(
@@ -85,4 +87,8 @@ minimize(
  for v in x[i].dom
    is equivalent to:
  for v in range(earliest[i], latest[i] + 1)
+4) Note that
+ size=P
+  is equivalent to (by abuse of notation):
+ size=nPlanes
 """

@@ -2,7 +2,8 @@ import json
 
 from pycsp3.problems.data.parsing import *
 
-# illustrating how to convert from a JSON format to another one.
+# Illustrating how to convert from a JSON format to another one.
+# Example: python3 ACCAP.py -data=a03-f20-t10.json -parser=ACCAP_Converter.py
 
 name = options.data  # the name of the JSON file whose format must be converted
 with open(name) as f:

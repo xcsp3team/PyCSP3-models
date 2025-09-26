@@ -31,23 +31,25 @@ This model has been co-developed by teams of ONERA and CRIL.
 from pycsp3 import *
 
 takt, areas, stations, tasks, tasksPerMachine, precedences = data
+
 nAreas, nStations, nTasks, nMachines = len(areas), len(stations), len(tasks), len(tasksPerMachine)
+A, S, T, M = range(nAreas), range(nStations), range(nTasks), range(nMachines)
 
 areaCapacities, areaTasks = zip(*areas)  # number of operators who can work, and tasks per area
 stationMachines, stationMaxOperators = zip(*stations)
 durations, operators, usedAreaRooms, neutralizedAreas = zip(*tasks)
-usedAreas = [set(j for j in range(nAreas) if usedAreaRooms[i][j] > 0) for i in range(nTasks)]
+usedAreas = [set(j for j in A if usedAreaRooms[i][j] > 0) for i in T]
 
-ss = sum(durations[i] * operators[i] for i in range(nTasks))
+ss = sum(durations[i] * operators[i] for i in T)
 lb = ss // takt + (1 if ss % takt != 0 else 0)
 
 
 def station_of_task(i):
-    r = next((j for j in range(nMachines) if i in tasksPerMachine[j]), -1)
-    return -1 if r == -1 else next(j for j in range(nStations) if stationMachines[j][r] == 1)
+    r = next((j for j in M if i in tasksPerMachine[j]), -1)
+    return -1 if r == -1 else next(j for j in S if stationMachines[j][r] == 1)
 
 
-stationOfTasks = [station_of_task(i) for i in range(nTasks)]  # station of the ith task (-1 if it can be everywhere)
+stationOfTasks = [station_of_task(i) for i in T]  # station of the ith task (-1 if it can be everywhere)
 
 # x[i] is the starting time of the ith task
 x = VarArray(size=nTasks, dom=range(takt * nStations + 1))
@@ -57,13 +59,13 @@ z = VarArray(size=nStations, dom=lambda i: range(stationMaxOperators[i] + 1))
 
 satisfy(
     # respecting the final deadline
-    [x[i] + durations[i] <= takt * nStations for i in range(nTasks)],
+    [x[i] + durations[i] <= takt * nStations for i in T],
 
     # ensuring that tasks start and finish in the same station
-    [x[i] // takt == (x[i] + durations[i] - 1) // takt for i in range(nTasks) if durations[i] > 1],
+    [x[i] // takt == (x[i] + durations[i] - 1) // takt for i in T if durations[i] > 1],
 
     # ensuring that tasks are put on the right stations (wrt needed machines)
-    [x[i] // takt == stationOfTasks[i] for i in range(nTasks) if stationOfTasks[i] != -1],
+    [x[i] // takt == stationOfTasks[i] for i in T if stationOfTasks[i] != -1],
 
     # respecting precedence relations
     [x[i] + durations[i] <= x[j] for (i, j) in precedences],
@@ -78,7 +80,7 @@ satisfy(
                     height=usedAreaRooms[i][q]
                 ) for i in areaTasks[q]
             ]
-        ) <= areaCapacities[q] for q in range(nAreas) if len(areaTasks[q]) > 1
+        ) <= areaCapacities[q] for q in A if len(areaTasks[q]) > 1
     ],
 
     # computing/restricting the number of operators at each station
@@ -89,9 +91,9 @@ satisfy(
                     origin=x[i],
                     length=durations[i],
                     height=operators[i] * (x[i] // takt == k)
-                ) for i in range(nTasks)
+                ) for i in T
             ]
-        ) <= z[k] for k in range(nStations)
+        ) <= z[k] for k in S
     ],
 
     # no overlap (is there a better way to handle that?)
@@ -101,14 +103,14 @@ satisfy(
                 (x[i], durations[i]),
                 (x[j], durations[j])
             ]
-        ) for i in range(nTasks) for j in range(nTasks) if i != j and len(usedAreas[i].intersection(neutralizedAreas[j])) > 0
+        ) for i in T for j in T if i != j and len(usedAreas[i].intersection(neutralizedAreas[j])) > 0
     ],
 
     # avoiding tasks using the same machine to overlap
     [
         NoOverlap(
             tasks=[(x[i], durations[i]) for i in tasksPerMachine[q]]
-        ) for q in range(nMachines)
+        ) for q in M
     ],
 
     # Sum(z) >= lb

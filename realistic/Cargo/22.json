@@ -2,8 +2,20 @@
   "H": 1700,
   "T": 42000,
   "stackBefore": 30,
-  "limits": {"dailyStacking": 950, "nReclaimers": 2, "maxReclaimingGap": 300, "maxDelay": 14200, "sumMaxDelay": 330000},
-  "factors": {"meter": 1, "time": 1440, "tonnage": 1000, "length": 17, "hour": 60},
+  "limits": {
+    "dailyStacking": 950,
+    "nReclaimers": 2,
+    "maxReclaimingGap": 300,
+    "maxDelay": 14200,
+    "sumMaxDelay": 330000
+  },
+  "factors": {
+    "meter": 1,
+    "time": 1440,
+    "tonnage": 1000,
+    "length": 17,
+    "hour": 60
+  },
   "etas": [14189, 15462, 17624, 20735, 21526, 22067, 23385, 23583, 25238, 26889, 27555, 28271, 31443, 32993],
   "piles": [
     {"whichV": 0, "dS_": 3, "dR": 545},

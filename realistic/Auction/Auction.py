@@ -26,6 +26,7 @@ The problem then is to accept compatible bids such that we maximise the sum of t
 from pycsp3 import *
 
 bids = data or default_data("example.json")
+
 items = sorted({item for bid in bids for item in bid.items})
 vals = integer_scaling(bid.value for bid in bids)
 nBids = len(bids)

@@ -13,7 +13,7 @@ in the same check-in area, achieving this by minimizing the sum of the total dis
 between the counters of each pair of flights from the same airline.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019/2022 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   03.json
@@ -24,10 +24,12 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Execution
   python ACCAP_z.py -data=<datafile.json>
   python ACCAP_z.py -data=<datafile.dzn> -parser=ACCAP_ParserZ.py
-  python ACCAP.py -data=<datafile.json> -parser=ACCAP_Converter.py
+  python ACCAP_z.py -data=<datafile.json> -parser=ACCAP_Converter.py
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.researchgate.net/publication/281979436_Optimizing_the_Airport_Check-In_Counter_Allocation_Problem
+  - https://www.minizinc.org/challenge/2022/results/
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   realistic, mzn19, mzn22, mzn24
@@ -36,6 +38,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 
 flights, airlines = data
+
 durations, requirements, x = zip(*flights)  # requirements in terms of numbers of counters; x stands for starts
 nFlights, nAirlines, nCounters = len(flights), len(airlines), sum(requirements)
 

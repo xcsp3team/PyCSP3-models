@@ -12,7 +12,6 @@ Simultaneously, the goal is to cluster flights from the same airline together
 in the same check-in area, achieving this by minimizing the sum of the total distances (d)
 between the counters of each pair of flights from the same airline.
 
-
 ## Data Example
   03.json
 
@@ -26,7 +25,6 @@ between the counters of each pair of flights from the same airline.
 
 ## Links
   - https://www.researchgate.net/publication/281979436_Optimizing_the_Airport_Check-In_Counter_Allocation_Problem
-  - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
   realistic
@@ -35,6 +33,7 @@ between the counters of each pair of flights from the same airline.
 from pycsp3 import *
 
 flights, airlines = data
+
 durations, requirements, x = zip(*flights)  # requirements in terms of numbers of counters; x stands for starts
 nFlights, Counters = len(flights), range(sum(requirements))
 
@@ -58,10 +57,8 @@ minimize(
 
 """ Comments
 1) One can also write:
-minimize(
-     Sum(
-         Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airline for j in airline if i != j) for airline in airlines)
-     )
+  minimize(
+     Sum(Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airline for j in airline if i != j) for airline in airlines))
      + Maximum(y[i] + requirements[i] for i in range(nFlights))
-)
+  )
 """

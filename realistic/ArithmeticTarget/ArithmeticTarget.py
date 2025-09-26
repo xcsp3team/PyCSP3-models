@@ -22,29 +22,34 @@ from pycsp3 import *
 
 numbers, target = data
 
-n = len(numbers)
-m = 2 * n  # - 1
+n, m = len(numbers), len(numbers) * 2
 
+nTokens = 6
+VAL, ADD, SUB, MUL, DIV, NO = range(nTokens)
 M = range(1, m)
-VAL, ADD, SUB, MUL, DIV, NO = Tokens = range(6)
+
+
+def domain(v):
+    return lambda i: {-1} if i == 0 else range(v)
+
 
 # x[i] is the token associated with the ith node
-x = VarArray(size=m, dom=lambda i: {-1} if i == 0 else Tokens)
+x = VarArray(size=m, dom=domain(nTokens))
 
 # left[i] is the left child (or 0 if none) of the ith node
-left = VarArray(size=m, dom=lambda i: {-1} if i == 0 else range(m))
+left = VarArray(size=m, dom=domain(m))
 
 # right[i] is the right child (or 0 if none) of the ith node
-right = VarArray(size=m, dom=lambda i: {-1} if i == 0 else range(m))
+right = VarArray(size=m, dom=domain(m))
 
 # lowest[i] is the lowest descendant of the ith node
-lowest = VarArray(size=m, dom=lambda i: {-1} if i == 0 else range(m))
+lowest = VarArray(size=m, dom=domain(m))
 
 # highest[i] is the highest descendant of the ith node
-highest = VarArray(size=m, dom=lambda i: {-1} if i == 0 else range(m))
+highest = VarArray(size=m, dom=domain(m))
 
 # index[i] is the index of the number associated with the ith node
-index = VarArray(size=m, dom=lambda i: {-1} if i == 0 else range(n + 1))
+index = VarArray(size=m, dom=domain(n + 1))
 
 # leaf[i] is 1 if the ith node is a leaf
 leaf = VarArray(size=m, dom={0, 1})
@@ -59,7 +64,7 @@ unused = VarArray(size=m, dom={0, 1})
 depth = Var(range(1, 2 * n))
 
 # z1[i] is the value associated with the ith node
-z1 = VarArray(size=m, dom=lambda i: {-1} if i == 0 else range(10 * target + 1))
+z1 = VarArray(size=m, dom=domain(10 * target + 1))
 
 # z2 is the number of used nodes
 z2 = Var(range(1, n + 1))
@@ -220,12 +225,7 @@ minimize(
   Instead, one should write the safer expression: 
     x[i].among(ADD,SUB)
  This is because the operator 'in' cannot be redefined (and it is then quite technical to manage it for side-effects statements)
- Currently, if we write:
-    [If(x[i].among(ADD, MUL), Then=x[left[i]] <= x[right[i]]) for i in M],
-  instead of:
-    [If(x[i] in (ADD, MUL), Then=x[left[i]] <= x[right[i]]) for i in M],
-  a problem occurs because the test only contains a single test (and this is currently not handled).
-
+ 
 1) [(x[i] != DIV) | (z1[i] * z1[right[i]] == z1[left[i]]) for i in M],
  is posted instead of the problematic (div by zero)
    [(x[i] != DIV) | ((z1[right[i]] != 0) & (z1[i] == z1[left[i]] // z1[right[i]]) & (z1[left[i]] % z1[right[i]] == 0)) for i in M], 
