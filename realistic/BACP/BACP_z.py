@@ -8,10 +8,10 @@ Balanced academic curriculum problem:
   - students have lower and upper bounds on the number of courses they can study for in a given period
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2010/2011 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  09.json
+  10.json
 
 ## Model
   constraints: Sum
@@ -22,7 +22,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://www.csplib.org/Problems/prob030/
-  - https://www.minizinc.org/challenge2011/results2011.html
+  - https://www.researchgate.net/publication/2521521_Modelling_a_Balanced_Academic_Curriculum_Problem
+  - https://webperso.info.ucl.ac.be/~pdupont/pdupont/pdf/BACP_symcon_07.pdf
+  - https://www.minizinc.org/challenge/2011/results/
 
 ## Tags
   realistic, csplib, mzn10, mzn11
@@ -30,45 +32,46 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-nPeriods, l_lb, l_ub, c_lb, c_ub, loads, prerequisites = data
-nCourses = len(loads)
+nCourses, nPeriods, (load_min, load_max), (credit_min, credit_max), course_loads, prerequisites = data
+assert nCourses == len(course_loads)
 
-C, P, L = range(nCourses), range(nPeriods), range(l_lb, l_ub + 1)
+C, P, L = range(nCourses), range(nPeriods), range(load_min, load_max + 1)
 
-# x[i] is the period where is assigned the ith course
-x = VarArray(size=nCourses, dom=P)
+# x[c] is the period of course c (where it is assigned)
+x = VarArray(size=C, dom=P)
 
-# pd[k][i] is 1 if the kth period is assigned to the ith course
-pd = VarArray(size=[nPeriods, nCourses], dom={0, 1})
+# pc[p][c] is 1 if period p is assigned to course c
+pc = VarArray(size=[P, C], dom={0, 1})
 
-# ld[k] is the load of the kth period
-ld = VarArray(size=nPeriods, dom=L)
+# pl[p] is the load of period p
+pl = VarArray(size=P, dom=L)
 
 # z is the value of the objective (load)
 z = Var(dom=L)
 
 satisfy(
     # determining whether periods are assigned to courses
-    [pd[k][i] == (x[i] == k) for k in P for i in C],
+    [pc[p][c] == (x[c] == p) for p in P for c in C],
 
     # respecting limits in terms of courses per period
-    [Sum(pd[k]) in range(c_lb, c_ub + 1) for k in P],
+    [Sum(pc[p]) in range(credit_min, credit_max + 1) for p in P],
 
     # computing period loads
-    [ld[k] == loads * pd[k] for k in P],
+    [pl[p] == course_loads * pc[p] for p in P],
 
     # constraining the objective value
-    [ld[k] <= z for k in P],
+    [pl[p] <= z for p in P],
 
     # enforcing prerequisites between courses
-    [x[j] < x[i] for (i, j) in prerequisites],
+    [x[c2] < x[c1] for (c1, c2) in prerequisites],
 
-    # implied linear constraints  tag(redundant)
+    # implied linear constraints
+    # tag(redundant)
     [
         (
-            prod >= K * l_lb,
+            prod >= K * load_min,
             prod <= K * z
-        ) for (prod, K) in ((loads * [x[i] > k for i in C], nPeriods - k - 1) for k in P)
+        ) for (prod, K) in ((course_loads * [x[c] > k for c in C], nPeriods - k - 1) for k in P)
     ]
 )
 
@@ -78,15 +81,15 @@ minimize(
 
 """ Comments
 1) One can also write:
-    [ld[k] == Sum(pd[kl][i] * loads[i] for i in C) for k in P],
+    [pl[p] == Sum(pc[p][c] * course_loads[c] for c in C) for p in P],
  and 
-    [Sum((x[i] > k) * loads[i] for i in C) >= (nPeriods - k - 1) * l_lb for k in P], 
+    [Sum((x[x] > p) * course_loads[c] for c in C) >= (nPeriods - p - 1) * load_min for p in P], 
 
 2) Prerequisites do not seem to be posted in the Minizinc model
 
 3) The last group can be written as:
  [
-   [loads * [x[i] > k for i in C] >= (nPeriods - k - 1) * l_lb for k in P],
-   [loads * [x[i] > k for i in C] <= (nPeriods - k - 1) * z for k in P]
+   [course_loads * [x[c] > p for c in C] >= (nPeriods - p - 1) * load_min for p in P],
+   [course_loads * [x[c] > p for c in C] <= (nPeriods - p - 1) * z for p in P]
  ]
 """

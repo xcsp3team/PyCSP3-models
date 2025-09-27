@@ -3,8 +3,7 @@ Planning with Learned Binarized Neural Networks.
 See AIJ paper cited below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-The MZN model was proposed by Buser Say.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, proposed by Buser Say, no Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   sysadmin-4-2S.json

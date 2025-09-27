@@ -63,7 +63,7 @@ y = VarArray(size=[w, w], dom=lambda i, j: range(n + 1) if j < widths[i] else No
 
 satisfy(
     # only one root
-    Count(y, value=1) == 1,
+    Count(within=y, value=1) == 1,
 
     # ensuring connectedness
     [(y[i][j], x[i][j], y[neighbors[i][j]]) in T1(i, j) for i in range(w) for j in range(widths[i])],
@@ -87,7 +87,7 @@ satisfy(
 
         # # at least one hexagon on the left
         # Sum(x[:, 0]) > 0,  # x[0][0] == 1
-        #
+
         # # at least one hexagon on the top left
         # Sum(x[0] + x[1:n, 0]) > 0,
 

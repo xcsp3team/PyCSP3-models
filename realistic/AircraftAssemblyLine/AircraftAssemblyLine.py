@@ -40,8 +40,7 @@ stationMachines, stationMaxOperators = zip(*stations)
 durations, operators, usedAreaRooms, neutralizedAreas = zip(*tasks)
 usedAreas = [set(j for j in A if usedAreaRooms[i][j] > 0) for i in T]
 
-ss = sum(durations[i] * operators[i] for i in T)
-lb = ss // takt + (1 if ss % takt != 0 else 0)
+lb = (req := sum(durations[i] * operators[i] for i in T)) // takt + (1 if req % takt != 0 else 0)
 
 
 def station_of_task(i):

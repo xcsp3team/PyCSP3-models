@@ -1,5 +1,5 @@
 """
-Problem 30 of the CSPLib.
+Problem 30 in CSPLib.
 
 BACP is to design a balanced academic curriculum by assigning periods to courses in a way that the academic load of each period is balanced,
 i.e., as similar as possible.
@@ -23,6 +23,8 @@ i.e., as similar as possible.
 
 ## Links
  - https://www.csplib.org/Problems/prob030/
+ - https://www.researchgate.net/publication/2521521_Modelling_a_Balanced_Academic_Curriculum_Problem
+ - https://webperso.info.ucl.ac.be/~pdupont/pdupont/pdf/BACP_symcon_07.pdf
 
 ## Tags
   realistic, notebook, csplib
@@ -30,9 +32,15 @@ i.e., as similar as possible.
 
 from pycsp3 import *
 
-nCourses, nPeriods, minCredits, maxCredits, minCourses, maxCourses, credits, prerequisites = data
+print(data)
+
+nCourses, nPeriods, (minCredits, maxCredits), (minCourses, maxCourses), credits, prerequisites = data
 maxCredits = maxCredits * maxCourses if subvariant("d") else maxCredits
+
 assert nCourses == len(credits)
+assert variant() in ("m1", "m2")
+
+C, P = range(nCourses), range(nPeriods)
 
 # s[c] is the period (schedule) for course c
 s = VarArray(size=nCourses, dom=range(nPeriods))
@@ -45,7 +53,7 @@ cr = VarArray(size=nPeriods, dom=range(minCredits, maxCredits + 1))
 
 if variant("m1"):
     def table(c):
-        return {(0,) * p + (credits[c],) + (0,) * (nPeriods - p - 1) + (p,) for p in range(nPeriods)}
+        return {(0,) * p + (credits[c],) + (0,) * (nPeriods - p - 1) + (p,) for p in P}
 
 
     # cp[c][p] is 0 if the course c is not planned at period p, the number of credits for c otherwise
@@ -53,13 +61,13 @@ if variant("m1"):
 
     satisfy(
         # channeling between arrays cp and s
-        [(*cp[c], s[c]) in table(c) for c in range(nCourses)],
+        [(cp[c], s[c]) in table(c) for c in C],
 
         # counting the number of courses in each period
-        [Count(s, value=p) == co[p] for p in range(nPeriods)],
+        [Count(within=s, value=p) == co[p] for p in P],
 
         # counting the number of credits in each period
-        [Sum(cp[:, p]) == cr[p] for p in range(nPeriods)]
+        [Sum(cp[:, p]) == cr[p] for p in P]
     )
 
 elif variant("m2"):
@@ -68,21 +76,21 @@ elif variant("m2"):
 
     satisfy(
         # tag(channeling)
-        [iff(pc[p][c], s[c] == p) for p in range(nPeriods) for c in range(nCourses)],
+        [pc[p][c] == (s[c] == p) for p in P for c in C],
 
         # ensuring that each course is assigned to a period
-        [Sum(pc[:, c]) == 1 for c in range(nCourses)],
+        [Sum(pc[:, c]) == 1 for c in C],
 
         # counting the number of courses in each period
-        [Sum(pc[p]) == co[p] for p in range(nPeriods)],
+        [Sum(pc[p]) == co[p] for p in P],
 
         # counting the number of credits in each period
-        [pc[p] * credits == cr[p] for p in range(nPeriods)]
+        [pc[p] * credits == cr[p] for p in P]
     )
 
 satisfy(
     # handling prerequisites
-    s[c1] < s[c2] for (c1, c2) in prerequisites
+    s[c2] < s[c1] for (c1, c2) in prerequisites
 )
 
 if subvariant("d"):
@@ -100,5 +108,5 @@ annotate(decision=s)
 
 """ Comments
 1) The way we build the table could also be written as:
- return {tuple(credits[c] if j == p else p if j == nPeriods else 0 for j in range(nPeriods + 1)) for p in range(nPeriods)}
+ return {tuple(credits[c] if j == p else p if j == nPeriods else 0 for j in range(nPeriods + 1)) for p in P}
 """
