@@ -34,8 +34,8 @@ from pycsp3 import *
 
 H, T, stackBefore, limits, coeffs, eta, piles = data
 vessels, r_sd, rd = zip(*piles)  # r_sd is for rounded stacking duration, rd is for (precise) reclaiming duration
-nVessels, nPiles = len(eta), len(piles)
 
+nVessels, nPiles = len(eta), len(piles)
 V, P = range(nVessels), range(nPiles)
 
 vrd = [sum(rd[i] for i in P if vessels[i] == j) for j in V]  # reclaiming duration summed for vessels

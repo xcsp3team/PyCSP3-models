@@ -25,13 +25,15 @@ The original model has: Copyright (C) 2011 The University of Melbourne and NICTA
 from pycsp3 import *
 
 capacities, requirements, precedences = data
+
 nResources, nTasks, nPrecedences = len(capacities), len(requirements), len(precedences)
+R, T = range(nResources), range(nTasks)
 
 d = [0] + [1] * (nTasks - 2) + [0]  # tasks have a unit duration, except for the artificial source and sink tasks
 horizon = sum(precedences[i][2] for i in range(nPrecedences))  # maximal period
 
 # resources per task
-resources = [[i for i in range(nTasks) if requirements[i][r] > 0 and d[i] > 0] for r in range(nResources)]
+resources = [[i for i in T if requirements[i][r] > 0 and d[i] > 0] for r in R]
 
 # s[i] is the starting time of the ith task
 s = VarArray(size=nTasks, dom=range(horizon + 1))
@@ -47,7 +49,7 @@ z = Var(dom=range(horizon + 1))
 
 satisfy(
     # computing the make-span
-    z == 1 + Maximum(s[i] - k[i] * s[-1] for i in range(nTasks - 1)) - Minimum(s[i] - k[i] * s[-1] for i in range(nTasks - 1)),
+    z == 1 + Maximum(s[i] - k[i] * s[-1] for i in T[:-1]) - Minimum(s[i] - k[i] * s[-1] for i in T[:-1]),
 
     # generalised precedence constraints
     [
@@ -57,22 +59,27 @@ satisfy(
         ) for p, (i, j, latency, distance) in enumerate(precedences)
     ],
 
-    # redundant non-overlapping constraints  tag(redundant)
-    [(s[i] + d[i] <= s[j]) | (s[j] + d[j] <= s[i]) for i, j in combinations(nTasks, 2)
-     if any(requirements[i][r] + requirements[j][r] > capacities[r] for r in range(nResources))],
+    # redundant non-overlapping constraints
+    # tag(redundant)
+    [
+        either(
+            s[i] + d[i] <= s[j],
+            s[j] + d[j] <= s[i]
+        ) for i, j in combinations(T, 2) if any(requirements[i][r] + requirements[j][r] > capacities[r] for r in R)
+    ],
 
     # cumulative resource constraints
     [
         Cumulative(
-            tasks=[(s[i], d[i], requirements[i][r]) for i in resources[r]]
-        ) <= capacities[r] for r in range(nResources) if sum(requirements[i][r] for i in resources[r]) > capacities[r]
+            [Task(origin=s[i], length=d[i], height=requirements[i][r]) for i in resources[r]]
+        ) <= capacities[r] for r in R if sum(requirements[i][r] for i in resources[r]) > capacities[r]
     ],
 
     # computing the value of the last iteration
     k[-1] == Maximum(k[:-1]),
 
     # ensuring the last task starts after all other ones
-    [s[i] + d[i] <= s[-1] for i in range(nTasks - 1)],
+    [s[i] + d[i] <= s[-1] for i in T[:-1]],
 
     # tag(symmetry-breaking)
     [

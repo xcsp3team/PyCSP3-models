@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-021-09321-w
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   realistic, mzn20, mzn24
@@ -65,7 +65,10 @@ satisfy(
     ]
 )
 
-tmp = [[both(x[j] < x[i], x[i] < x[j + g]) for j in range(2 * b) for g in [b if j < b else -b] if i not in {j, j + g}] for i in range(2 * b)]
+tmp = [
+    [both(x[j] < x[i], x[i] < x[j + g]) for j in range(2 * b) for g in [b if j < b else -b] if i not in {j, j + g}]
+    for i in range(2 * b)
+]
 
 minimize(
     Sum(abs(x[i] - x[i + b]) > 1 for i in range(b)) * k ** 3

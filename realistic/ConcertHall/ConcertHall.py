@@ -30,21 +30,23 @@ from pycsp3 import *
 
 capacities, concerts = data
 starts, ends, prices, requirements = zip(*concerts)
-nConcerts, nHalls = len(starts), len(capacities)
 
-cliques = {tuple(j for j in range(nConcerts) if starts[j] <= starts[i] < ends[j]) for i in range(nConcerts)}
+nConcerts, nHalls = len(starts), len(capacities)
+C, H = range(nConcerts), range(nHalls)
+
+cliques = {tuple(j for j in C if starts[j] <= starts[i] < ends[j]) for i in C}
 cliques = [c for c in cliques if all(any(v not in d for v in c) for d in cliques if len(d) > len(c))]  # maximal cliques
 
-feasible_halls = [{-1} | {h for h in range(nHalls) if capacities[h] >= requirements[i]} for i in range(nConcerts)]  # we add -1
-feasible_concerts = [[i for i in range(nConcerts) if capacities[h] >= requirements[i]] for h in range(nHalls)]
-classes = {tuple(g for g in range(nHalls) if feasible_concerts[h] == feasible_concerts[g]) for h in range(nHalls)}
+feasible_halls = [{-1} | {h for h in H if capacities[h] >= requirements[i]} for i in C]  # we add -1
+feasible_concerts = [[i for i in C if capacities[h] >= requirements[i]] for h in H]
+classes = {tuple(g for g in H if feasible_concerts[h] == feasible_concerts[g]) for h in H}
 
 # x[i] is the hall used for the ith concert (event), or -1
 x = VarArray(size=nConcerts, dom=range(-1, nHalls))
 
 satisfy(
     # choosing feasible halls for concerts
-    [x[i] in feasible_halls[i] for i in range(nConcerts)],
+    [x[i] in feasible_halls[i] for i in C],
 
     # overlapping concerts cannot share a hall
     [AllDifferent(x[clique], excepting=-1) for clique in cliques],
@@ -60,7 +62,7 @@ satisfy(
 
 maximize(
     # maximizing the profit of organizing concerts
-    Sum(prices[i] * (x[i] >= 0) for i in range(nConcerts))
+    Sum(prices[i] * (x[i] >= 0) for i in C)
 )
 
 """ Comments

@@ -188,13 +188,24 @@ satisfy(
     ],
 
     # respecting roll length
-    Cumulative(origins=X, lengths=L, heights=W) <= rollWidth,
+    Cumulative(
+        origins=X,
+        lengths=L,
+        heights=W
+    ) <= rollWidth,
 
     # respecting roll width
-    Cumulative(origins=Y, lengths=W, heights=L) <= z,
+    Cumulative(
+        origins=Y,
+        lengths=W,
+        heights=L
+    ) <= z,
 
     # non-overlapping
-    NoOverlap(origins=zip(X, Y), lengths=zip(L, W))
+    NoOverlap(
+        origins=zip(X, Y),
+        lengths=zip(L, W)
+    )
 )
 
 minimize(

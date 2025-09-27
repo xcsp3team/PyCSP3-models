@@ -22,7 +22,6 @@ See Problem 086 on CSPLib, and VVRLib.
 from pycsp3 import *
 
 nNodes, capacity, demands, distances = data
-nVehicles = nNodes // 4  # This is a kind of hard coding, which can be at least used for Set A (Augerat, 1995)
 
 
 def max_tour():
@@ -34,11 +33,14 @@ def max_tour():
     return i - 2
 
 
+nVehicles = nNodes // 4  # This is a kind of hard coding, which can be at least used for Set A (Augerat, 1995)
 nSteps = max_tour()
+V, S, N = range(nVehicles), range(nSteps), range(nNodes)
+
 n0s = nVehicles * nSteps - nNodes + 1
 
 # c[i][j] is the jth customer (step) during the tour of the ith vehicle
-c = VarArray(size=[nVehicles, nSteps], dom=range(nNodes))
+c = VarArray(size=[nVehicles, nSteps], dom=N)
 
 # d[i][j] is the demand of the jth customer during the tour of the ith vehicle
 d = VarArray(size=[nVehicles, nSteps], dom=demands)
@@ -49,7 +51,7 @@ satisfy(
     # ensuring that all demands are satisfied
     Cardinality(
         within=c,
-        occurrences={0: n0s} | {i: 1 for i in range(1, nNodes)}
+        occurrences={v: n0s if v == 0 else 1 for v in N}
     ),
 
     # no holes permitted during tours
@@ -57,14 +59,14 @@ satisfy(
         If(
             c[i][j] == 0,
             Then=c[i][j + 1] == 0
-        ) for i in range(nVehicles) for j in range(nSteps - 1)
+        ) for i in V for j in S[:-1]
     ],
 
     # computing the collected demands
-    [demands[c[i][j]] == d[i][j] for i in range(nVehicles) for j in range(nSteps)],
+    [demands[c[i][j]] == d[i][j] for i in V for j in S],
 
     # not exceeding the capacity of each vehicle
-    [Sum(d[i]) <= capacity for i in range(nVehicles)],
+    [Sum(d[i]) <= capacity for i in V],
 
     # tag(symmetry-breaking)
     Decreasing(c[:, 0])
@@ -72,9 +74,9 @@ satisfy(
 
 minimize(
     # minimizing the total traveled distance by vehicles
-    Sum(distances[0][c[i][0]] for i in range(nVehicles))
-    + Sum(distances[c[i][j]][c[i][j + 1]] for i in range(nVehicles) for j in range(nSteps - 1))
-    + Sum(distances[c[i][-1]][0] for i in range(nVehicles))
+    Sum(distances[0][c[i][0]] for i in V)
+    + Sum(distances[c[i][j]][c[i][j + 1]] for i in V for j in S[:-1])
+    + Sum(distances[c[i][-1]][0] for i in V)
 )
 
 """ Comments

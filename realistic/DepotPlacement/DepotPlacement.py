@@ -41,6 +41,7 @@ tourLength = nClientsPerWarehouse + 1
 nLocations = tourLength * 2  # number of customers plus two warehouses
 WA, WB = 0, tourLength  # locations of warehouse A and B
 tourSize = tourLength + 1  # possibility of visiting one extra client
+TS = range(tourSize)
 
 # the location of the depot
 depot = Var(range(nLocations))
@@ -59,10 +60,10 @@ db = VarArray(size=tourSize, dom=distances)
 
 satisfy(
     # computing distances for tour A
-    [da[i] == distances[xa[i]][xa[i + 1]] for i in range(tourSize)],
+    [da[i] == distances[xa[i]][xa[i + 1]] for i in TS],
 
     # computing distances for tour B
-    [db[i] == distances[xb[i]][xb[i + 1]] for i in range(tourSize)],
+    [db[i] == distances[xb[i]][xb[i + 1]] for i in TS],
 
     # all locations are visited by at least one truck (for tours A and B)
     [Exist(xa + xb, value=i) for i in range(nLocations)],
@@ -81,14 +82,14 @@ satisfy(
 
     # coming back to the warehouses is possible from second location  tag(symmetry-breaking)
     [
-        [xa[i] != WA for i in range(2, tourSize)],
-        [xb[i] != WB for i in range(2, tourSize)]
+        [xa[i] != WA for i in TS[2:]],
+        [xb[i] != WB for i in TS[2:]]
     ],
 
     # warehouses cannot be visited by different trucks  tag(redundant)
     [
-        [xa[i] != WB for i in range(tourSize)],
-        [xb[i] != WA for i in range(tourSize)]
+        [xa[i] != WB for i in TS],
+        [xb[i] != WA for i in TS]
     ],
 
     # depot constraints (visiting the depot before an extern location)
@@ -96,14 +97,15 @@ satisfy(
         [
             If(
                 xa[i] >= tourLength, xa[i] != depot,
-                Then=Exist(xa[:i], value=depot)
-            ) for i in range(1, tourSize)
+                Then=Exist(within=xa[:i], value=depot)
+            ) for i in TS[1:]
         ],
         [
             If(
                 xb[i] < tourLength, xb[i] != depot,
-                Then=Exist(xb[:i], value=depot)
-            ) for i in range(1, tourSize)]
+                Then=Exist(within=xb[:i], value=depot)
+            ) for i in TS[1:]
+        ]
     ]
 )
 

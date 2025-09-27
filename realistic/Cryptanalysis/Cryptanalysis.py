@@ -73,14 +73,15 @@ idxa1 = [(J, J // BC, J % BC, (J - KC) // BC, (J - KC) % BC, (J - 1) // BC, (J +
 idxa2 = [v for v in idxa1 if v[0] >= KC]
 
 
-def initKS(J, r1, j1, r2, j2, r3, j3, i, k):
+def init_KS(J, r1, j1, r2, j2, r3, j3, i, k):
     if J < KC:  # for the first key schedule round
         return Kcomp[r1][j1][i][k] == (dK[r1][j1][i] if k == J else 0)
     if J % KC == 0:  # else, for SB positions (for AES 128, corresponds to the first column of dK for each round)
         return Kcomp[r1][j1][i][k] == (dK[r3][j3][i + 1] if k == (J // KC) * BC + j1 else Kcomp[r2][j2][i][k])
+    return None
 
 
-def auxKS(J, r1, j1, r2, j2, r3, j3, i):
+def aux_KS(J, r1, j1, r2, j2, r3, j3, i):
     if J % KC == 0:
         return XOR(dK[r2][j2][i], dK[r3][j3][(i + 1) % 4], dK[r1][j1][i])
     return [
@@ -113,8 +114,8 @@ satisfy(
 
     # KS (key Schedule)
     [
-        [initKS(*v, i, k) for v in idxa1 for i in range(4) for k in range(NBK)],
-        [auxKS(*v, i) for v in idxa2 for i in range(4)],
+        [init_KS(*v, i, k) for v in idxa1 for i in range(4) for k in range(NBK)],
+        [aux_KS(*v, i) for v in idxa2 for i in range(4)],
         [Sum(Kcomp[J // BC][J % BC][i]) + dK[J // BC][J % BC][i] != 1 for J in range(KC, n * BC) for i in range(4)]
     ],
 

@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017 challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   5-05.json
@@ -41,7 +41,10 @@ satisfy(
 )
 
 minimize(
-    Sum(abs(distance * 1024 - (1007 * max(dx, dy) + 441 * min(dx, dy))) for (i, j, distance) in roads if (dx := abs(x[i] - x[j]), dy := abs(y[i] - y[j])))
+    Sum(
+        abs(distance * 1024 - (1007 * max(dx, dy) + 441 * min(dx, dy)))
+        for (i, j, distance) in roads if (dx := abs(x[i] - x[j]), dy := abs(y[i] - y[j]))
+    )
 )
 
 """ Comments

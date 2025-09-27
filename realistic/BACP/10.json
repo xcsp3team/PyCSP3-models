@@ -1,11 +1,11 @@
 {
   "nCourses": 50,
   "nPeriods": 10,
-  "load_per_period_bounds": {
+  "load_per_period": {
     "min": 2,
     "max": 100
   },
-  "courses_per_period_bounds": {
+  "courses_per_period": {
     "min": 2,
     "max": 10
   },
