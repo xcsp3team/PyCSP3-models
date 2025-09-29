@@ -26,9 +26,11 @@ One has to fill the remaining empty cells with either 0 or 1 according to the fo
 
 from pycsp3 import *
 
-n = data
-assert n % 2 == 0
+n = data or 20
 m = n // 2
+
+assert n % 2 == 0
+assert not variant() or variant("regular")
 
 # x[i][j] is the value in the cell of the grid at coordinates (i,j)
 x = VarArray(size=[n, n], dom={0, 1})
@@ -83,4 +85,5 @@ satisfy(
    [Sum(x[i, j:j + 3]) <= 2 for i in range(n) for j in range(n - 2)],
 4) We can write:
    [Sum(x[i, j:j + 3]) in {1,2} for i in range(n) for j in range(n - 2)], 
+5) Data for the 2023 competition are: [20, 40, 60, 80, 100, 120]
 """

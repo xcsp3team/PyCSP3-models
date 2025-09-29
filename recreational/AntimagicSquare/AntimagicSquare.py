@@ -63,7 +63,7 @@ satisfy(
 """ Comments
 1) It is possible to relax so as to have a COP.
     minimizing the expression: Maximum(x) - Minimum(y)  
-2) For being compatible with the competition mini-track, we use:
+2) For being compatible with the competition mini-track, we used:
   z = VarArray(size=2*n+2, dom=range(2*n+2))
   
   [y[z[i]] +1 == y[z[i+1]] for i in range(2*n+1)], 

@@ -24,17 +24,18 @@ from pycsp3 import *
 
 import random
 
-if data is None:
-    random.seed(0)
+if isinstance(data, int):
+    random.seed(data)  # data is used as a seed
     schedule = [list(range(36)) for _ in range(8)]
     for row in schedule:
         random.shuffle(row)
     schedule = [[[row[i * 2], row[i * 2 + 1]] for i in range(len(row) // 2)] for row in schedule]
     position = 8
 else:
-    schedule, position = data  # position is 8 or 24 for example
+    schedule, position = data or load_json_data("2024-15.json")  # position is 8 or 24 for example
 
 nWeeks, nMatchesPerWeek, nTeams = len(schedule), len(schedule[0]), len(schedule[0]) * 2
+W, T = range(nWeeks), range(nTeams)
 assert nWeeks == 8 and nTeams == 36  # for the moment
 
 WON, DRAWN, LOST = results = range(3)
@@ -62,22 +63,22 @@ equal_target = Var(dom=range(nTeams))
 
 satisfy(
     # computing points won for every match
-    [(x[w][k], y[w][i], y[w][j]) in {(WON, 3, 0), (DRAWN, 1, 1), (LOST, 0, 3)} for w in range(nWeeks) for k, (i, j) in enumerate(schedule[w])],
+    [(x[w][k], y[w][i], y[w][j]) in {(WON, 3, 0), (DRAWN, 1, 1), (LOST, 0, 3)} for w in W for k, (i, j) in enumerate(schedule[w])],
 
     # computing the number of points of each team
-    [z[i] == Sum(y[:, i]) for i in range(nTeams)],
+    [z[i] == Sum(y[:, i]) for i in T],
 
     # tag(redundant)
-    [Sum(y[w]) in range(2 * nMatchesPerWeek, 3 * nMatchesPerWeek + 1) for w in range(nWeeks)],
+    [Sum(y[w]) in range(2 * nMatchesPerWeek, 3 * nMatchesPerWeek + 1) for w in W],
 
     # linking the target team with  its score
     z[target] == z_target,
 
     # computing the number of teams that have a score better than the target team
-    better_target == Sum(z[i] > z_target for i in range(nTeams)),
+    better_target == Sum(z[i] > z_target for i in T),
 
     # computing the number of teams that have a score equal to the target team (including itself)
-    equal_target == Sum(z[i] == z_target for i in range(nTeams)),
+    equal_target == Sum(z[i] == z_target for i in T),
 
     # the number of teams with a score better than the target team is less than the specified target position
     better_target < position,

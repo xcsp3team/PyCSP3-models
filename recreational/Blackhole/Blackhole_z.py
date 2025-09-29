@@ -80,9 +80,7 @@ satisfy(
 )
 
 """ Comments
-
-1) one could have written:
+1) One could have written:
  [y[pile[j]] < y[pile[j + 1]] for pile in piles for j in range(len(pile) - 1)]
-
-2) three instances in 2011 were already present in 2008
+2) Three instances in 2011 were already present in 2008
 """

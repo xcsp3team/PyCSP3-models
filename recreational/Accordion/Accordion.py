@@ -37,19 +37,21 @@ See Experimental Data for TabID Journal Paper (URL given below).
 from pycsp3 import *
 
 cards = data
+
 n, nSteps = len(cards), len(cards)
+T, N = range(nSteps - 1), range(n)  # T used for iterating from 0 to nSteps-1 (excluded)
 
 # pf[t] is the pile which is moved from at time t
-pf = VarArray(size=n - 1, dom=range(n))
+pf = VarArray(size=nSteps - 1, dom=range(n))
 
 # pt[t] is the pile which is moved to at time t
-pt = VarArray(size=n - 1, dom=range(n))
+pt = VarArray(size=nSteps - 1, dom=range(n))
 
 # cf[t] is the top card of the pile which is moved from at time t
-cf = VarArray(size=n - 1, dom=range(52))
+cf = VarArray(size=nSteps - 1, dom=range(52))
 
 # ct[t] is the top card of the pile which is moved to at time t
-ct = VarArray(size=n - 1, dom=range(52))
+ct = VarArray(size=nSteps - 1, dom=range(52))
 
 # x[t][i] is the top card of the jth pile at time t
 x = VarArray(size=[nSteps, n], dom=range(52))
@@ -64,7 +66,7 @@ satisfy(
             x[t][pf[t]] == x[t + 1][pt[t]],
             cf[t] == x[t][pf[t]],
             ct[t] == x[t][pt[t]]
-        ) for t in range(n - 1)
+        ) for t in T
     ],
 
     # ensuring each move is either 1 or three places
@@ -72,7 +74,7 @@ satisfy(
         either(
             pt[t] == pf[t] - 1,
             pt[t] == pf[t] - 3
-        ) for t in range(n - 1)
+        ) for t in T
     ],
 
     # ensuring that the top cards of the two involved piles are of the same rank or suit
@@ -80,7 +82,7 @@ satisfy(
         either(
             cf[t] % 13 == ct[t] % 13,
             cf[t] // 13 == ct[t] // 13
-        ) for t in range(n - 1)
+        ) for t in T
     ],
 
     # ensuring unmoved cards are copied from one timestep to the next one
@@ -89,26 +91,26 @@ satisfy(
             If(
                 i < pt[t],
                 Then=x[t][i] == x[t + 1][i]
-            ) for t in range(n - 1) for i in range(n)
+            ) for t in T for i in N
         ],
 
         [
             If(
                 both(i > pt[t], i < pf[t]),
                 Then=x[t][i] == x[t + 1][i]
-            ) for t in range(n - 1) for i in range(n)
+            ) for t in T for i in N
         ],
 
         [
             If(
                 i >= pf[t],
                 Then=x[t + 1][i] == x[t][i + 1]
-            ) for t in range(n - 1) for i in range(n - 1)
+            ) for t in T for i in N[:-1]
         ]
     ],
 
     # unused slots are filled up with zero
     x[1:, -1] == 0,
 
-    [pf[t] <= n - t + 1 for t in range(n - 1)]
+    [pf[t] <= n - t + 1 for t in T]
 )

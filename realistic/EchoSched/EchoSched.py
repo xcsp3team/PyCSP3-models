@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2025 Minizinc challenge.
-For the original mzn model, no Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
   12-12-0-1-7.json

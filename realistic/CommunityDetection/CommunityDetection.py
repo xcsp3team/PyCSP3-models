@@ -6,7 +6,7 @@ to same or different communities.
 See CP paper cited below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2021 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   n050-e2500-s10-d5-c4-p90.json
@@ -27,7 +27,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-graph, m, together, separate = data  # m is the maximum number of searched communities
+graph, m, together, separate = data or load_json_data("n050-e2500-s10-d5-c4-p90.json")  # m is the maximum number of searched communities
 n = len(graph)  # number of nodes
 
 

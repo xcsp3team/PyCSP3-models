@@ -33,7 +33,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-noHome, group1, group2, derbys, complementaryPairs = data
+noHome, group1, group2, derbys, complementaryPairs = data or load_json_data("handball01.json")
 derbyPeriod = [39 - p if p > 19 else p for (_, p) in derbys]  # p for period
 nDerbys = len(derbys)
 

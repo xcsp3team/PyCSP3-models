@@ -3,7 +3,7 @@ The problem is to find communities in a graph with maximum modularity value whil
 to same or different communities.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   strike-s2-k8.json
@@ -25,19 +25,23 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-m, together, separate, graph, W = data  # m is the maximum number of searched communities
+assert not variant() or variant("mzn24")
+
+m, together, separate, graph, W = data or load_json_data("strike-s2-k8.json")  # m is the maximum number of searched communities
 n = len(graph)  # number of nodes
 
-if not variant():
-    rng = range(sum(W[i][j] for i, j in combinations(n, 2)) + 1)
-elif variant("mzn24"):
-    rng = range(sum(W[i][j] for i, j in combinations(n, 2) if W[i][j] < 0), sum(W[i][j] for i, j in combinations(n, 2) if W[i][j] > 0) + 1)
+
+def domain_z():
+    if not variant():
+        return range(sum(W[i][j] for i, j in combinations(n, 2)) + 1)
+    return range(sum(W[i][j] for i, j in combinations(n, 2) if W[i][j] < 0), sum(W[i][j] for i, j in combinations(n, 2) if W[i][j] > 0) + 1)  # for mzn24
+
 
 # x[i] is the community of the ith node
 x = VarArray(size=n, dom=range(m))
 
 # z is the weighted sum of nodes belonging to the same communities
-z = Var(dom=rng)
+z = Var(dom=domain_z)
 
 satisfy(
     # considering nodes that must belong to the same community

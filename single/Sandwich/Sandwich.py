@@ -60,5 +60,5 @@ satisfy(
     [If(liking[alice][p], Then=liking[sascha][p]) for p in persons],
 
     # nobody likes everyone
-    [Count(liking[p], value=0) >= 1 for p in persons]
+    [Count(within=liking[p], value=0) >= 1 for p in persons]
 )

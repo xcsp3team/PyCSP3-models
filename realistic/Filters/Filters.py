@@ -26,7 +26,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-del_add, del_mul, number_add, number_mul, last, add, dependencies = data
+del_add, del_mul, number_add, number_mul, last, add, dependencies = data or load_json_data("ar-1-3.json")
 nOperations = len(dependencies)
 
 d = [del_add if i in add else del_mul for i in range(nOperations)]  # durations

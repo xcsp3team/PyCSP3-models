@@ -3,7 +3,7 @@ The deployment optimization problem is the problem of how to correctly deploy al
 needed by a cloud application on suitable VMs on the cloud at minimal cost.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2016/2019 challenges.
-The MZN model was proposed by Jacopo Mauro (under the terms of the ISC License)
+The original MZN model was proposed by Jacopo Mauro (under the terms of the ISC License)
 
 ## Data Example
   12-06-8-3.json
@@ -16,6 +16,7 @@ The MZN model was proposed by Jacopo Mauro (under the terms of the ISC License)
   python Zephyrus.py -data=<datafile.dzn> -parser=Zephyrus_ParserZ.py
 
 ## Links
+  - https://www.dicosmo.org/Articles/Aeolus-2014.pdf
   - https://bitbucket.org/jacopomauro/zephyrus2/src/master/
   - https://www.duo.uio.no/handle/10852/51754
   - https://www.minizinc.org/challenge2019/results2019.html

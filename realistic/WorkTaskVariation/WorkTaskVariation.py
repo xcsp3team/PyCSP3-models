@@ -29,11 +29,11 @@ The original mzn model by Mikael Zayenz Lagerkvist and Magnus Rattfeldt -- No Li
 
 from pycsp3 import *
 
-fixed, requirements, activity_run_costs, activity_frequency_costs = data
-nResources, nSlots = len(fixed), len(fixed[0])
+fixed, requirements, activity_run_costs, activity_frequency_costs = data or load_json_data("s03-l10-o08-w12-b15.json")
 
-Activities = [T, S, W, o, b] = range(5)
-nActivities = NONE = len(Activities)
+nResources, nSlots = len(fixed), len(fixed[0])
+nActivities = 5  # [T, S, W, o, b]
+NONE = nActivities
 
 extended_activity_run_costs = activity_run_costs + [[0] * (nSlots + 1)]
 
@@ -43,7 +43,7 @@ q = Automaton.q
 t = [(q(0), NONE, q(1)), (q(1), NONE, q(1)), (q(0), ne(NONE), q(2)), (q(1), ne(NONE), q(2)), (q(2), ne(NONE), q(2)), (q(2), NONE, q(3)), (q(3), NONE, q(3))]
 Automaton = Automaton(start=q(0), final=[q(1), q(2), q(3)], transitions=t)  # automaton for None* [^None]* None*
 
-# The actual schedule, what activities are done when for each resource
+# schedule[r][s] is the activity for resource r in slot s
 schedule = VarArray(size=[nResources, nSlots], dom=range(nActivities + 1))  # +1 for None
 
 # run_end[r][s] is 1 if the slot s is the end of an activity for the resource r
@@ -78,7 +78,7 @@ satisfy(
 
     # managing runs
     [
-        [run_end[r][s] == (1 if s == (nSlots - 1) else (schedule[r][s] != schedule[r][s + 1])) for r in R for s in S],
+        [run_end[r][s] == (1 if s == nSlots - 1 else (schedule[r][s] != schedule[r][s + 1])) for r in R for s in S],
         [run_length[r][s] == (1 if s == 0 else ift(run_end[r][s - 1], 1, run_length[r][s - 1] + 1)) for r in R for s in S],
         [run_cost[r][s] == ift(run_end[r][s], extended_activity_run_costs[schedule[r][s], run_length[r][s]], 0) for r in R for s in S]
     ],

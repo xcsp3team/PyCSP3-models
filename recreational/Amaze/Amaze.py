@@ -26,7 +26,7 @@ Fixed = [tuple(p) for pair in points for p in pair]
 Values = range(1, len(points))
 
 # x[i][j] is the value at row i and column j (possibly 0)
-x = VarArray(size=[n, m], dom={0} | set(Values))
+x = VarArray(size=[n, m], dom={0}.union(Values))
 
 satisfy(
     # putting two initially specified occurrences of each value on the board
@@ -44,7 +44,7 @@ satisfy(
     [
         Table(
             scope=x.cross(i, j),
-            supports=[(0, *[ANY] * r)] + [(v, *[v if k in (p, q) else ne(v) for k in range(r)]) for v in Values for p, q in combinations(r, 2)]
+            supports=[(0, [ANY] * r)] + [(v, [v if k in (p, q) else ne(v) for k in range(r)]) for v in Values for p, q in combinations(r, 2)]
         ) for i in range(n) for j in range(m) if (i, j) not in Fixed and (r := len(x.beside(i, j)),)
     ]
 )

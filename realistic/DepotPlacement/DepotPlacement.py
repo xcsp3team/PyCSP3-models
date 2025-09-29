@@ -35,7 +35,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-nClientsPerWarehouse, distances = data
+nClientsPerWarehouse, distances = data or load_json_data("rat-99-5.json")
 
 tourLength = nClientsPerWarehouse + 1
 nLocations = tourLength * 2  # number of customers plus two warehouses
@@ -66,7 +66,7 @@ satisfy(
     [db[i] == distances[xb[i]][xb[i + 1]] for i in TS],
 
     # all locations are visited by at least one truck (for tours A and B)
-    [Exist(xa + xb, value=i) for i in range(nLocations)],
+    [Exist(within=xa + xb, value=i) for i in range(nLocations)],
 
     # each tour visits different locations
     [
@@ -80,13 +80,15 @@ satisfy(
         xb[0] == WB
     ],
 
-    # coming back to the warehouses is possible from second location  tag(symmetry-breaking)
+    # coming back to the warehouses is possible from second location
+    # tag(symmetry-breaking)
     [
         [xa[i] != WA for i in TS[2:]],
         [xb[i] != WB for i in TS[2:]]
     ],
 
-    # warehouses cannot be visited by different trucks  tag(redundant)
+    # warehouses cannot be visited by different trucks
+    # tag(redundant)
     [
         [xa[i] != WB for i in TS],
         [xb[i] != WA for i in TS]
@@ -116,6 +118,6 @@ minimize(
 """ Comments
 1) There is auto-adjusting of indexing, so:
   distances[xa[i]][xa[i + 1]]
-is 
+is equivalent to:
   distances[xa[i]][xa[(i + 1]) % tourSize]
 """

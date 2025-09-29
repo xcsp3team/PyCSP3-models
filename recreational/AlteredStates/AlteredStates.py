@@ -30,6 +30,7 @@ from pycsp3.classes.main.annotations import ValHeuristic
 from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry
 
 n = data or 5
+assert not variant() or variant("bis")
 
 states = [
     ("Alabama", 5_024_279),  # 0
@@ -84,7 +85,7 @@ states = [
     ("Wyoming", 576_851)  # 49
 ]
 names, populations = zip(*states)
-nStates, lengths = len(states), [len(name) for name in names]
+nStates, max_length = len(states), max(len(name) for name in names)
 
 symmetries = [[i * n + j for i, j in s] for sym in TypeSquareSymmetry if [s := flatten(sym.apply_on(n), keep_tuples=True), ]]
 
@@ -100,34 +101,28 @@ x = VarArray(size=n * n, dom=range(26))
 y = VarArray(size=nStates, dom={0, 1})
 
 # z[k][q] is the (flat) cell index in x of the qth letter of the kth state, or 0 if the state is not present
-z = VarArray(size=[nStates, max(lengths)], dom=lambda k, q: range(n * n) if q < lengths[k] else None)
+z = VarArray(size=[nStates, max_length], dom=lambda k, q: range(n * n) if q < len(names[k]) else None)
 
 satisfy(
     # ensuring the coherence of putting or not the states in the grid
     [
         If(
             y[k] == 0,
-            Then=[z[k][q] == 0 for q in range(lengths[k])],  # we force 0 to avoid symmetries  z[k] == 0,
+            Then=[z[k][q] == 0 for q in Q],  # we force 0 to avoid symmetries  z[k] == 0,
             Else=[
-                [x[z[k][q]] == words[k][q] for q in range(lengths[k])] if not variant()
-                else Sum(x[z[k][q]] != words[k][q] for q in range(lengths[k])) <= 1,  # ensuring the name is present
-                [(z[k][q], z[k][q + 1]) in T for q in range(lengths[k] - 1)]  # ensuring connectedness of letters
+                [x[z[k][q]] == words[k][q] for q in Q] if not variant() else Sum(x[z[k][q]] != words[k][q] for q in Q) <= 1,  # ensuring the name is present
+                [(z[k][q], z[k][q + 1]) in T for q in Q[:-1]]  # ensuring connectedness of letters
             ]
-        ) for k in range(nStates)
+        ) for k in range(nStates) if (Q := range(len(names[k])))
     ],
 
     # tag(symmetry-breaking)
-    [
-        LexIncreasing(
-            x,
-            [x[row] for row in symmetry]
-        ) for symmetry in symmetries
-    ]
+    [x <= x[symmetry] for symmetry in symmetries]
 )
 
 if not variant():
     maximize(
-        y * lengths
+        y * [len(name) for name in names]
     )
 
 elif variant("bis"):
@@ -139,10 +134,15 @@ elif variant("bis"):
 #     valHeuristic=ValHeuristic().static(y, order=[1, 0])
 # )
 
-"""
-TODO avec z[k] == 0, 
- l'instance xml est différente et ACE ne reconnait pas la dcecomposition possible (et c'est tres inefficace)
-
+""" Comments
+1) Note that:
+     [x <= x[symmetry] for symmetry in symmetries]
+  is a shorter way of writing:
+    LexIncreasing(
+        x,
+        [x[row] for row in symmetry]
+     ) for symmetry in symmetries
+2) with z[k] == 0, l'instance xml est différente et ACE ne reconnait pas la dcecomposition possible (et c'est tres inefficace)
 """
 
 # satisfy(

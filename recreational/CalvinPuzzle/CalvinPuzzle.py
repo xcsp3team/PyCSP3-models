@@ -55,9 +55,8 @@ if not variant():
 elif variant("table"):
 
     def T(i, j):
-        r = len(N[i][j]) + 1
-        return [tuple(k if i == 0 else (k + 1) if i == j else ANY for i in range(r)) for k in range(1, n * n) for j in range(1, r)] \
-            + [(n * n, *[ANY] * (r - 1))]
+        r = len(N[i][j])
+        return [(k, *[k + 1 if i == j else ANY for i in range(r)]) for k in range(1, n * n) for j in range(r)] + [(n * n, *[ANY] * r)]
 
 
     satisfy(
@@ -68,4 +67,5 @@ elif variant("table"):
 """ Comments
 1) Using an hybrid table is possible
 2) 552 solutions for n=5 (with the symmetry-breaking constraint)
+3) Data used for the 2023 competition: [5, 6, 7, 8, 9, 10, 12]
 """

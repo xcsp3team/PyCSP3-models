@@ -85,5 +85,5 @@ satisfy(
 
 """ Comments
 1) it is possible to write hating[charles][p] == 0 instead of ~hating[charles][p]
-2) it is possible to write Exist(hating[p], value=0) instead of Count(hating[p], value=0) > 0 
+2) it is possible to write Exist(within=hating[p], value=0) instead of Count(hating[p], value=0) > 0 
 """
