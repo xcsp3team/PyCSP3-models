@@ -32,8 +32,6 @@ i.e., as similar as possible.
 
 from pycsp3 import *
 
-print(data)
-
 nCourses, nPeriods, (minCredits, maxCredits), (minCourses, maxCourses), credits, prerequisites = data
 maxCredits = maxCredits * maxCourses if subvariant("d") else maxCredits
 

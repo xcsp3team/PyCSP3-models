@@ -32,7 +32,10 @@ from math import factorial
 
 from pycsp3 import *
 
-n = data
+assert not variant() or variant("table")
+
+n = data or 4
+
 m = sum(factorial(i) for i in range(1, n + 1))  # the length of the sequence; this is valid for 2 <= n <= 5 (see above)
 assert 2 <= n <= 5, "for the moment, the model is valid for n between 2 and 5"
 
@@ -84,3 +87,7 @@ satisfy(
     # constraining a palindrome  tag(palindrome)
     [x[i] == x[-1 - i] for i in range(m // 2)]
 )
+
+""" Comments
+1) Data used in 2022: [3, 4, 5]
+"""

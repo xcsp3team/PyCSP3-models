@@ -27,13 +27,19 @@ Note that 1 is not prime, and that the queen does not attack its own cell.
   python QueenAttacking.py -data=number -variant=hybrid
   python QueenAttacking.py -data=number -variant=table
 
+## Links
+  - https://www.csplib.org/Problems/prob029/
+
 ## Tags
   academic, csplib
 """
 
 from pycsp3 import *
 
+assert not variant() or variant("aux") or variant("hybrid") or variant("table")
+
 n = data or 8
+
 primes = all_primes(n * n)
 m = len(primes)
 
@@ -69,7 +75,7 @@ if not variant():
         Sum(
             either(
                 q == x[j],
-                Or=conjunction(row(q) != row(x[j]), col(q) != col(x[j]), abs(row(q) - row(x[j])) != abs(col(q) - col(x[j])))
+                conjunction(row(q) != row(x[j]), col(q) != col(x[j]), abs(row(q) - row(x[j])) != abs(col(q) - col(x[j])))
             ) for j in [p - 1 for p in primes]
         )
     )

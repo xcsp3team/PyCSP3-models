@@ -13,9 +13,11 @@ For the original problem, the values of and are respectively 8 and 4.
   A triplet (n,s,w), where n is the number of groups, s the size of the groups and w the number of weeks.
 
 ## Model
-  You can  find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/SocialGolfers/).
+  You can find a step-by-step modeling process in this [Jupyter notebook](https://pycsp.org/documentation/models/CSP/SocialGolfers/).
 
-  There are 2 variants: a main one, and a variant '01' with additional variables
+  There are 2 variants:
+   - a main one
+   - a variant '01' with additional variables
 
   constraints: Cardinality, Lex, Sum
 
@@ -34,6 +36,8 @@ For the original problem, the values of and are respectively 8 and 4.
 """
 
 from pycsp3 import *
+
+assert not variant() or variant("cnt")
 
 nGroups, size, nWeeks = data or (4, 4, 5)  # size is the size of the groups
 nPlayers = nGroups * size

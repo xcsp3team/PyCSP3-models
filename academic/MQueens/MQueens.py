@@ -20,7 +20,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-n = data
+n = data or 11
 
 perms = [[i * n + j if k == 0 else (n - j - 1) * n + i if k == 1 else (n - i - 1) * n + (n - j - 1) if k == 2 else i * n + (n - j - 1)
           for i in range(n) for j in range(n)] for k in range(4)]

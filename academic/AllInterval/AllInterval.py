@@ -42,6 +42,8 @@ the problem of finding such a series is the all-interval series problem of order
 
 from pycsp3 import *
 
+assert not variant() or variant("aux")
+
 n = data or 8
 
 # x[i] is the ith note of the series

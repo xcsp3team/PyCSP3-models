@@ -24,13 +24,12 @@ In the classic ‘central’ Solitaire, the goal is to reverse the starting posi
   academic, recreational, xcsp25
 """
 
-from pycsp3 import *
-
 from data.PegSolitaire_Generator import generate_boards, build_transitions
+from pycsp3 import *
 
 assert variant() in {"english", "french"}
 
-origin_x, origin_y, nMoves = data
+origin_x, origin_y, nMoves = data or (0, 2, 0)
 
 init_board, final_board = generate_boards(variant(), origin_x, origin_y)
 n, m = len(init_board), len(init_board[0])

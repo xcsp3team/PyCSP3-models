@@ -26,7 +26,7 @@ The model is written for the English style board (standard), with 33 holes
 
 from pycsp3 import *
 
-from PegSolitaire_Generator import generate_boards
+from data.PegSolitaire_Generator import generate_boards
 from pycsp3.classes.main.annotations import ValHeuristic
 
 assert variant() in ("dec1", "dec2", "table", "hybrid")

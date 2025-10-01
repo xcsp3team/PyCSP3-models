@@ -22,11 +22,16 @@ Can n queens (of the same colour) be placed on an n×n chessboard so that none o
   python Queens.py -data=number -variant=v1
   python Queens.py -data=number -variant=v2
 
+## Links
+  - https://www.csplib.org/Problems/prob054/
+
 ## Tags
   academic, notebook, csplib
 """
 
 from pycsp3 import *
+
+assert not variant() or variant("v1") or variant("v2")
 
 n = data or 8
 

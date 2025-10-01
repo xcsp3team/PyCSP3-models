@@ -29,7 +29,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-v, b, r = data
+v, b, r = data or (15, 350, 100)
 
 
 def lower_bound():
@@ -64,6 +64,6 @@ minimize(
 
 """ Comments
 1) Data used in challenges are:
-  for 2015: (10,350,100) (10,100,30) (10,30,9) (11,22,10) (13,26,6)
-  for 2017: (15,350,100) (13,250,80) (6,50,25) (6,60,30) (8,28,14)
+  for 2015: [(10,350,100), (10,100,30), (10,30,9), (11,22,10), (13,26,6)]
+  for 2017: [(15,350,100), (13,250,80), (6,50,25), (6,60,30), (8,28,14)]
 """

@@ -1,7 +1,7 @@
 """
 This is [Problem 015](https://www.csplib.org/Problems/prob015/) at CSPLib.
 
-The problem is to put n balls labelled 1,...,n into 3 boxes so that for any triple of balls (x,y,z) with x+y=z,
+The problem is to put n balls labelled from 1 to n into 3 boxes so that for any triple of balls (x,y,z) with x+y=z,
 not all are in the same box.
 The variant 'mod' has been proposed by Bessiere Meseguer Freuder Larrosa, "On forward checking for non-binary constraint satisfaction", 2002.
 
@@ -15,7 +15,9 @@ The variant 'mod' has been proposed by Bessiere Meseguer Freuder Larrosa, "On fo
   A pair (n,d) where n is the number of balls, d the number of boxes
 
 ## Model
-  There are two variants of this problem, one with NValues, the other one with AllDifferent
+  There are two variants of this problem:
+    - the first one with NValues (NotAllEqual),
+    - the other one with AllDifferent
 
   constraints: AllDifferent, NValues
 
@@ -23,11 +25,18 @@ The variant 'mod' has been proposed by Bessiere Meseguer Freuder Larrosa, "On fo
   python SchurrLemma.py -data=[number,number]
   python SchurrLemma.py -data=[number,number] -variant=mod
 
+## Links
+  - https://en.wikipedia.org/wiki/Schur%27s_lemma
+  - https://www.sciencedirect.com/science/article/pii/S0004370202002631
+  - https://www.csplib.org/Problems/prob015/
+
 ## Tags
   academic, csplib
 """
 
 from pycsp3 import *
+
+assert not variant() or variant("mod")
 
 n, d = data or (8, 8)  # n is the number of balls -- d is the number of boxes
 
@@ -36,9 +45,10 @@ x = VarArray(size=n, dom=range(d))
 
 if not variant():
     satisfy(
-        NotAllEqual(x[i], x[j], x[k]) for (i, j, k) in product(range(n), repeat=3) if i < j and i + 1 + j == k
+        NotAllEqual(x[i], x[j], x[k]) for (i, j, k) in combinations(n, 3) if i + 1 + j == k
     )
+
 elif variant("mod"):
     satisfy(
-        AllDifferent(x[i], x[j], x[k]) for (i, j, k) in product(range(n), repeat=3) if i < j and i + 1 + j == k
+        AllDifferent(x[i], x[j], x[k]) for (i, j, k) in combinations(n, 3) if i + 1 + j == k
     )

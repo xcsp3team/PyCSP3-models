@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-m, n, tiles, dfa = data
+m, n, tiles, dfa = data or load_json_data("02.json")
 SPECIAL = nTiles = len(tiles)
 
 

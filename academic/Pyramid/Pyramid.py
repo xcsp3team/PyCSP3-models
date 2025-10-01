@@ -21,7 +21,7 @@ Minimize the root value (0 not permitted) while using different values
 
 from pycsp3 import *
 
-n, k = data
+n, k = data or (7, 500)
 
 # x[o,p] is the value of A(o,p)
 x = VarArray(size=[n, n], dom=lambda i, j: range(k + 1) if j <= i else None)

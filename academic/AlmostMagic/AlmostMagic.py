@@ -27,6 +27,8 @@ From JaneStreet:
 from pycsp3 import *
 from pycsp3.classes.main.annotations import ValHeuristic
 
+assert not variant() or variant("opt")
+
 n, p = data or (3, 100)
 
 # x[k][i][j] is the value at row i and column j in the kth region
@@ -74,7 +76,7 @@ if variant("opt"):
     )
 
 """ Comments
-1) data used for the 2025 XCSP competition rae: [(3,30), (3,35), (3,40), (3,70), (4,50), (4,80), (5,70), (6,100), (7,130), (8,160), (9,200), (10,250)]
+1) data used for the 2025 competition are: [(3,30), (3,35), (3,40), (3,70), (4,50), (4,80), (5,70), (6,100), (7,130), (8,160), (9,200), (10,250)]
 """
 
 # annotate(

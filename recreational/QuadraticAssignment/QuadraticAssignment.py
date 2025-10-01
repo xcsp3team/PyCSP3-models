@@ -21,7 +21,7 @@ The Quadratic Assignment Problem (QAP) has remained one of the great challenges 
 
 from pycsp3 import *
 
-weights, distances = data  # facility weights and location distances
+weights, distances = data or load_json_data("example.json")  # facility weights and location distances
 n = len(weights)
 
 T = {(i, j, distances[i][j]) for i in range(n) for j in range(n) if i != j}

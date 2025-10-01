@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2023 Minizinc challenge.
-The MZN model was proposed by David Gerault, under the MIT Licence.
+The original MZN model was proposed by David Gerault, under the MIT Licence.
 
 ## Data
   Two integers (n,nr)
@@ -12,6 +12,7 @@ The MZN model was proposed by David Gerault, under the MIT Licence.
   python Speck.py -data=[number,number]
 
 ## Links
+  - https://link.springer.com/chapter/10.1007/978-3-031-30872-7_10
   - https://www.minizinc.org/challenge2023/results2023.html
 
 ## Tags
@@ -20,7 +21,7 @@ The MZN model was proposed by David Gerault, under the MIT Licence.
 
 from pycsp3 import *
 
-n, nr = data  # word size (n) and number of rounds (nr)
+n, nr = data or (16, 2)  # word size (n) and number of rounds (nr)
 
 # L[i][j] is the left value of the jth bit in the ith round
 L = VarArray(size=[nr + 1, n], dom={0, 1})
@@ -50,7 +51,7 @@ def modular_addition_word(i):
         d[-1] == 0,
 
         [xor(a[j], b[j], c[j], d[j]) == 0 for j in range(n)],
-        
+
         [
             If(
                 AllEqual(a[j], b[j], c[j]),

@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2009 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
   Two integers m and n
@@ -20,7 +20,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-m, n = data  # number of copies of equality, and size of domains
+m, n = data or (4, 5)  # number of copies of equality, and size of domains
 
 
 def eq1(x, y, z):
@@ -81,4 +81,5 @@ satisfy(
 
 """ Comments
 1) Data used in 2009 are: (2,7),(3,6),(4,5),(4,6),(5,5),(5,6),(6,4),(6,5),(6,6),(7,2)
+2) it seems that the instances are unsatisfiable (although results published in 2009 indicates something else)
 """

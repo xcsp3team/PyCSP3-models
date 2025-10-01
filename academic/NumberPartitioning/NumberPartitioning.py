@@ -31,6 +31,7 @@ This problem consists in finding a partition of the set of numbers {1, 2, ..., n
 from pycsp3 import *
 
 n = data or 8
+
 assert n % 2 == 0, "The value of n must be even"
 K1, K2 = n * (n + 1) // 4, n * (n + 1) * (2 * n + 1) // 12
 
@@ -62,3 +63,7 @@ satisfy(
         Increasing(y, strict=True)
     ]
 )
+
+""" Comments
+1) Data used in 2022 competition are: [20, 50, 80, 110, 140, 170, 200, 230, 260, 290]
+"""

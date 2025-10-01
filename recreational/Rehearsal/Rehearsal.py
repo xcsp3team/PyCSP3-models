@@ -22,8 +22,12 @@ A concert is to consist of nine pieces of music of different durations each invo
 
 from pycsp3 import *
 
-durations, playing = data
+assert not variant() or variant("bis")
+
+durations, playing = data or load_json_data("rs.json")
 nPieces, nPlayers = len(durations), len(playing)
+
+PP = [(i, j) for i in range(nPlayers) for j in range(nPieces)]
 
 # p[j] is the piece played in slot j
 p = VarArray(size=nPieces, dom=range(nPieces))
@@ -48,14 +52,14 @@ if not variant():
                     s[i] <= j,
                     j <= e[i]
                 ]
-            ) for i in range(nPlayers) for j in range(nPieces)
+            ) for i, j in PP
         ]
     )
 
     minimize(
         # minimizing the waiting time of players (i.e. without playing)
         Sum(
-            durations[p[j]] * conjunction(playing[i][p[j]] == 0, s[i] <= j, j <= e[i]) for i in range(nPlayers) for j in range(nPieces)
+            durations[p[j]] * conjunction(playing[i][p[j]] == 0, s[i] <= j, j <= e[i]) for i, j in PP
         )
     )
 
@@ -69,7 +73,7 @@ elif variant("bis"):
         AllDifferent(p),
 
         # determining when players must effectively play
-        [ep[i][j] == playing[i][p[j]] for i in range(nPlayers) for j in range(nPieces)],
+        [ep[i][j] == playing[i][p[j]] for i, j in PP],
 
         # a player must be present when a piece of music requires him/her
         [
@@ -79,14 +83,14 @@ elif variant("bis"):
                     s[i] <= j,
                     j <= e[i]
                 ]
-            ) for i in range(nPlayers) for j in range(nPieces)
+            ) for i, j in PP
         ]
     )
 
     minimize(
         # minimizing the waiting time of players (i.e. without playing)
         Sum(
-            durations[p[j]] * conjunction(ep[i][j] == 0, s[i] <= j, j <= e[i]) for i in range(nPlayers) for j in range(nPieces)
+            durations[p[j]] * conjunction(ep[i][j] == 0, s[i] <= j, j <= e[i]) for i, j in PP
         )
     )
 

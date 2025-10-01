@@ -14,6 +14,9 @@ With 3 colours, the problem has a solution if n < 17.
 ## Execution
   python Ramsey.py -data=number
 
+## Links
+  - https://www.csplib.org/Problems/prob017/
+
 ## Tags
   academic, csplib
 """

@@ -22,7 +22,9 @@
 
 from pycsp3 import *
 
-rows, cols = data  # patterns for row and columns
+assert not variant() or variant("table")
+
+rows, cols = data or load_json_data("dom-06.json")  # patterns for row and columns
 n, m = len(rows), len(cols)
 
 # x[i][j] is 1 iff the cell at row i and col j is colored in black

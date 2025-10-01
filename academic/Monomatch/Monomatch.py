@@ -32,7 +32,7 @@ The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Lice
 from pycsp3 import *
 import math
 
-n, percentage = data
+n, percentage = data or (3, 97)
 
 nSymbols = n * n + n + 1
 nCards = math.floor((nSymbols * percentage) / 100)

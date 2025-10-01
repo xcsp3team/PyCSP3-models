@@ -24,7 +24,7 @@ The original model involves an option type while we use the special value -1.
 
 from pycsp3 import *
 
-n = data
+n = data or 5
 
 # p[i] is 1 if the ith penny is placed
 p = VarArray(size=n, dom={0, 1})
@@ -79,7 +79,12 @@ satisfy(
     [
         Decreasing(p),
 
-        [If(p[i + 1], Then=xy[i] < xy[i + 1]) for i in range(n - 1)]
+        [
+            If(
+                p[i + 1],
+                Then=xy[i] < xy[i + 1]
+            ) for i in range(n - 1)
+        ]
     ]
 )
 
@@ -91,5 +96,5 @@ maximize(
 """ Comments
 1) For getting unsatisfiable instances for large values of n, remove -1 from the domain of distances
 2) The opt variables of MZN are handled by using the special value -1 
-3) Data used in 2023 are : 5, 7, 8, 9, 12
+3) Data used in 2023 are : [5, 7, 8, 9, 12]
 """

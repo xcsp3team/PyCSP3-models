@@ -23,6 +23,7 @@ From Martin Gardner:
 from pycsp3 import *
 
 n = data or 5
+
 k = (n * (n + 1)) // 2
 
 x = VarArray(size=[n, n], dom=lambda i, j: range(1, k + 1) if i < n - j else None)

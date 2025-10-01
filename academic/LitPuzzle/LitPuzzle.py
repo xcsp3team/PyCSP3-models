@@ -24,7 +24,11 @@ Each mouse click constitutes one move and the objective of the puzzle is to ligh
 
 from pycsp3 import *
 
+assert not variant() or variant("aux") or variant("table")
+
 n = data or 5
+
+N = range(n)
 
 # x[i][j] is 1 if the player clicks on the square at row i and column j
 x = VarArray(size=[n, n], dom={0, 1})
@@ -32,7 +36,7 @@ x = VarArray(size=[n, n], dom={0, 1})
 if not variant():
     satisfy(
         # ensuring that all cells are lit
-        Sum(x.cross(i, j)) in (1, 3, 5) for i in range(n) for j in range(n)
+        Sum(x.cross(i, j)) in (1, 3, 5) for i in N for j in N
     )
 
 elif variant("aux"):
@@ -41,17 +45,17 @@ elif variant("aux"):
 
     satisfy(
         # ensuring that all cells are lit
-        Sum(x.cross(i, j)) - 2 * d[i, j] == 1 for i in range(n) for j in range(n)
+        Sum(x.cross(i, j)) - 2 * d[i, j] == 1 for i in N for j in N
     )
 
 elif variant("table"):
-    def table(r):
-        return [p for p in product(range(2), repeat=r) if sum(p) in (1, 3, 5)]
+    def T(r):
+        return [p for p in product({0, 1}, repeat=r) if sum(p) in (1, 3, 5)]
 
 
     satisfy(
         # ensuring that all cells are lit
-        scp in [p for p in product(range(2), repeat=len(scp)) if sum(p) in (1, 3, 5)] for i in range(n) for j in range(n) if (scp := x.cross(i, j),)
+        scp in T(r) for i in N for j in N if (scp := x.cross(i, j), r := len(scp))
     )
 
 minimize(

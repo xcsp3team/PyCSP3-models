@@ -5,7 +5,7 @@ the maximum number of nodes that can be selected without having all selected cor
 of any size or orientation.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015/2019/2022 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data
   An integer n
@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python Triangular.py -data=number
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   academic, mzn15, mzn19, mzn22, mzn24
@@ -25,7 +25,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-n = data
+n = data or 10
 
 # x[i][j] is 1 iff the jth node in the ith row is selected
 x = VarArray(size=[n, n], dom=lambda i, j: {0, 1} if i >= j else None)

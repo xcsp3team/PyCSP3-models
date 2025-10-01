@@ -33,9 +33,11 @@ The problem facing the rally organizer is that of minimizing the number of host 
 
 from pycsp3 import *
 
-nPeriods, boats = data
-nBoats = len(boats)
+nPeriods, boats = data or load_json_data("12-05.json")
+
 capacities, crews = zip(*boats)
+nBoats = len(boats)
+B, P = range(nBoats), range(nPeriods)
 
 
 def minimal_number_of_hosts():
@@ -46,6 +48,7 @@ def minimal_number_of_hosts():
             return cnt
         acc += capacity
         cnt += 1
+    assert False, "should not be reached"
 
 
 # h[b] indicates if the boat b is a host boat
@@ -59,22 +62,22 @@ g = VarArray(size=[nBoats, nPeriods, nBoats], dom={0, 1})
 
 satisfy(
     # identifying host boats
-    [h[b] == (s[b][p] == b) for b in range(nBoats) for p in range(nPeriods)],
+    [h[b] == (s[b][p] == b) for b in B for p in P],
 
     # identifying host boats (from visitors)
-    [h[s[b][p]] == 1 for b in range(nBoats) for p in range(nPeriods)],
+    [h[s[b][p]] == 1 for b in B for p in P],
 
     # channeling variables from arrays s and g
-    [Channel(g[b][p], s[b][p]) for b in range(nBoats) for p in range(nPeriods)],
+    [Channel(g[b][p], s[b][p]) for b in B for p in P],
 
     # boat capacities must be respected
-    [g[:, p, b] * crews <= capacities[b] for b in range(nBoats) for p in range(nPeriods)],
+    [g[:, p, b] * crews <= capacities[b] for b in B for p in P],
 
     # a guest boat cannot revisit a host
-    [AllDifferent(s[b], excepting=b) for b in range(nBoats)],
+    [AllDifferent(s[b], excepting=b) for b in B],
 
     # guest crews cannot meet more than once
-    [Sum(s[b1][p] == s[b2][p] for p in range(nPeriods)) <= 1 for b1, b2 in combinations(nBoats, 2)],
+    [Sum(s[b1][p] == s[b2][p] for p in P) <= 1 for b1, b2 in combinations(B, 2)],
 
     # ensuring a minimum number of hosts  tag(redundant)
     Sum(h) >= minimal_number_of_hosts()
@@ -87,10 +90,10 @@ minimize(
 
 """ Comments
 1) Here is an alternative way of posting the 2nd group:
- [If(s[b1][p] == b2, Then=h[b2]) for b1 in range(nBoats) for b2 in range(nBoats) if b1 != b2 for p in range(nPeriods)],
+ [If(s[b1][p] == b2, Then=h[b2]) for b1 in B for b2 in B if b1 != b2 for p in P],
 
 2) Here is a less compact way of posting the 4th group:
- [[g[i][p][b] for i in range(nBoats)] * crews <= capacities[b] for b in range(nBoats) for p in range(nPeriods)],
+ [[g[i][p][b] for i in B] * crews <= capacities[b] for b in B for p in P],
 
 3) In the Constraints paper cited above, additional constraints (not taken into account here) on host boats allow us 
    to prove easily optimality for the instance red42.

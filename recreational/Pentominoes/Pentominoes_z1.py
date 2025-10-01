@@ -23,7 +23,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 from pycsp3.problems.data.parsing import split_with_rows_of_size
 
-m, n, tiles, dfa = data
+m, n, tiles, dfa = data or load_json_data("02.json")
 nTiles = len(tiles)
 SEP = nTiles + 1
 

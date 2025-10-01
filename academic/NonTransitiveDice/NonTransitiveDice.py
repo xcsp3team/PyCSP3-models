@@ -23,8 +23,12 @@ The problem is to exhibit such a set of dice.
 
 from pycsp3 import *
 
+assert not variant() or variant("opt")
+
 n, m, d = data or (6, 6, 0)  # number of dice, number of sides of each die, and number of possible values
 d = 2 * m if d == 0 else d  # computing the number of possible values if necessary
+
+N, M = range(n), range(m)
 
 # x[i][j] is the value of the jth face of the ith die
 x = VarArray(size=[n, m], dom=range(d))
@@ -40,18 +44,18 @@ z = Var(dom=range(d))
 
 satisfy(
     # ordering numbers on each die  tag(symmetry-breaking)
-    [Increasing(x[i]) for i in range(n)],
+    [Increasing(x[i]) for i in N],
 
     # computing dominance
     [
         (
-            y[i][0] == Sum(x[i][r1] > x[i + 1][r2] for r1 in range(m) for r2 in range(m)),
-            y[i][1] == Sum(x[i + 1][r1] > x[i][r2] for r1 in range(m) for r2 in range(m))
-        ) for i in range(n)
+            y[i][0] == Sum(x[i][j1] > x[i + 1][j2] for j1 in M for j2 in M),
+            y[i][1] == Sum(x[i + 1][j1] > x[i][j2] for j1 in M for j2 in M)
+        ) for i in N
     ],
 
     # computing dominance gap
-    [gap[i] == y[i][0] - y[i][1] for i in range(n)],
+    [gap[i] == y[i][0] - y[i][1] for i in N],
 
     # computing z
     z == Maximum(x)
@@ -73,4 +77,5 @@ if variant("opt"):
    discard z
    [x[i][j] <= x[i][j + 1] for i in range(n) for j in range(m - 1)],
    #[Increasing(x[i]) for i in range(n)],
+3) Data used in 2023 competition are: [(6,6,0), (8,8,0), (8,8,3), (10,10,0), (10,10,3), (15,15,3), (15,15,4), (20,20,3), (20,20,4), (30,30,3), (30,30,4), (40,40,0)]
 """

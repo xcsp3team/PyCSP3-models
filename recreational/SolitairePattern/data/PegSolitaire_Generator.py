@@ -89,6 +89,6 @@ def generate_boards(mode, origin_x, origin_y):
         return order_board(3, origin_x, origin_y)
     if mode == "4x4":
         return order_board(4, origin_x, origin_y)
-    if type == "test1":
+    if mode == "test1":
         return test1()
     return test2()

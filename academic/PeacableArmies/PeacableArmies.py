@@ -30,18 +30,21 @@ so that the white queens do not attack the black queens (and necessarily vice ve
   python PeacableArmies.py -data=number -variant=m1
   python PeacableArmies.py -data=number -variant=m2
 
+## Links
+  - https://www.csplib.org/Problems/prob110/
+
 ## Tags
   academic, csplib
 """
 
 from pycsp3 import *
 
+assert variant("m1") or variant("m2")
+
 n = data or 6
 
-
-def queen_attack(i1, j1, i2, j2):
-    return i1 == i2 or j1 == j2 or abs(i1 - i2) == abs(j1 - j2)  # same row, column or diagonal
-
+# queen attacking cells (same row, column or diagonal)
+QA = [((i1, j1), (i2, j2)) for i1, j1, i2, j2 in product(range(n), repeat=4) if (i1, j1) < (i2, j2) and (i1 == i2 or j1 == j2 or abs(i1 - i2) == abs(j1 - j2))]
 
 if variant("m1"):
     # b[i][j] is 1 if a black queen is in the cell at row i and column j
@@ -59,7 +62,7 @@ if variant("m1"):
             (
                 b[i1][j1] + w[i2][j2] <= 1,
                 w[i1][j1] + b[i2][j2] <= 1
-            ) for (i1, j1, i2, j2) in product(range(n), repeat=4) if (i1, j1) < (i2, j2) and queen_attack(i1, j1, i2, j2)
+            ) for (i1, j1), (i2, j2) in QA
         ],
 
         # ensuring the same numbers of black and white queens
@@ -87,7 +90,7 @@ if variant("m2"):
         # no two opponent queens can attack each other
         [
             x[i1][j1] + x[i2][j2] != 3
-            for (i1, j1, i2, j2) in product(range(n), repeat=4) if (i1, j1) < (i2, j2) and queen_attack(i1, j1, i2, j2)
+            for (i1, j1), (i2, j2) in QA
         ],
 
         # counting the number of black queens

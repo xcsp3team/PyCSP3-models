@@ -49,74 +49,49 @@ That is, a ∗ a = a for every element a.
 
 from pycsp3 import *
 
-n = data or 8
+BASE, AUX, V3, V4, V5, V6, V7 = "base", "aux", "v3", "v4", "v5", "v6", "v7"
+assert variant() in (BASE, AUX) and subvariant() in (V3, V4, V5, V6, V7)
 
-pairs = [(i, j) for i in range(n) for j in range(n)]
+n = data or 8
 
 # x[i][j] is the value at row i and column j of the quasi-group
 x = VarArray(size=[n, n], dom=range(n))
+
+# y[i][j] is the value of the auxiliary variable for row i and column j
+y = VarArray(size=[n, n], dom=range(n * n if subvariant() in (V3, V4) else n)) if variant(AUX) else None
+
+
+def main_property(i, j):
+    if variant(BASE):
+        if subvariant(V3):
+            return x[x[i][j], x[j][i]] == i
+        if subvariant(V4):
+            return x[x[j][i], x[i][j]] == i
+        if subvariant(V5):
+            return x[x[x[j][i], j], j] == i
+        if subvariant(V6):
+            return x[x[i][j], j] == x[i, x[i][j]]
+        if subvariant(V7):
+            return x[x[j][i], j] == x[i, x[j][i]]
+    else:  # variant AUX
+        if subvariant(V3):
+            return x[y[i][j]] == i, y[i][j] == x[i][j] * n + x[j][i]
+        if subvariant(V4):
+            return x[y[i][j]] == i, y[i][j] == x[j][i] * n + x[i][j]
+        if subvariant(V5):
+            return x[:, i][x[i][j]] == y[i][j], x[:, i][y[i][j]] == j
+        if subvariant(V7):
+            return x[:, j][x[j][i]] == y[i][j], x[i][x[j][i]] == y[i][j]
+    assert False, "Should not be reached"
+
 
 satisfy(
     # ensuring a Latin square
     AllDifferent(x, matrix=True),
 
     # ensuring idempotence  tag(idempotence)
-    [x[i][i] == i for i in range(n)]
+    [x[i][i] == i for i in range(n)],
+
+    # ensuring main property
+    [main_property(i, j) for i in range(n) for j in range(n) if not (variant(AUX) and i == j)]
 )
-
-if variant("base"):
-    if subvariant("v3"):
-        satisfy(
-            x[x[i][j], x[j][i]] == i for i, j in pairs
-        )
-    elif subvariant("v4"):
-        satisfy(
-            x[x[j][i], x[i][j]] == i for i, j in pairs
-        )
-    elif subvariant("v5"):
-        satisfy(
-            x[x[x[j][i], j], j] == i for i, j in pairs
-        )
-    elif subvariant("v6"):
-        satisfy(
-            x[x[i][j], j] == x[i, x[i][j]] for i, j in pairs
-        )
-    elif subvariant("v7"):
-        satisfy(
-            x[x[j][i], j] == x[i, x[j][i]] for i, j in pairs
-        )
-elif variant("aux"):
-    if subvariant("v3"):
-        y = VarArray(size=[n, n], dom=range(n * n))
-
-        satisfy(
-            [x[y[i][j]] == i for i, j in pairs if i != j],
-            [y[i][j] == x[i][j] * n + x[j][i] for i, j in pairs if i != j]
-        )
-    elif subvariant("v4"):
-        y = VarArray(size=[n, n], dom=range(n * n))
-
-        satisfy(
-            [x[y[i][j]] == i for i, j in pairs if i != j],
-            [y[i][j] == x[j][i] * n + x[i][j] for i, j in pairs if i != j]
-        )
-    elif subvariant("v5"):
-        y = VarArray(size=[n, n], dom=range(n))
-
-        satisfy(
-            [x[:, i][x[i][j]] == y[i][j] for i, j in pairs if i != j],
-            [x[:, i][y[i][j]] == j for i, j in pairs if i != j]
-        )
-    elif subvariant("v7"):
-        y = VarArray(size=[n, n], dom=range(n))
-
-        satisfy(
-            (
-                x[:, j][x[j][i]] == y[i][j],
-                x[i][x[j][i]] == y[i][j]
-            ) for i, j in pairs if i != j
-        )
-
-""" Comments
-1) Note that we can post tuples of constraints instead of individually, as demonstrated in aux-v7
-"""

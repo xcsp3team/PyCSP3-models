@@ -17,6 +17,9 @@ elements in {1...n} such that any two triples have at most one common element.
 ## Execution
   python Steiner3.py -data=number
 
+## Links
+  - https://www.csplib.org/Problems/prob044/
+
 ## Tags
   academic, csplib
 """
@@ -24,6 +27,7 @@ elements in {1...n} such that any two triples have at most one common element.
 from pycsp3 import *
 
 n = data or 6
+
 nTriples = (n * (n - 1)) // 6
 
 T = {(i1, i2, i3, j1, j2, j3) for (i1, i2, i3, j1, j2, j3) in product(range(1, n + 1), repeat=6) if

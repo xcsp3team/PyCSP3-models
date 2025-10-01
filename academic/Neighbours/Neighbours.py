@@ -34,7 +34,7 @@ The original MZN model was proposed by Peter J. Stuckey, with a Licence that sem
 from pycsp3 import *
 from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry, TypeRectangleSymmetry
 
-n, m = data  # number of rows and number of columns
+n, m = data or (4, 7)  # number of rows and number of columns
 
 symmetries = [sym.apply_on(n) for sym in TypeSquareSymmetry] if n == m else [sym.apply_on(n, m) for sym in TypeRectangleSymmetry]
 

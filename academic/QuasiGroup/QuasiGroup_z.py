@@ -37,8 +37,10 @@ satisfy(
     # ensuring idempotence  tag(idempotence)
     [x[i][i] == i for i in range(n)],
 
+    # ensuring main property
     [x[i, x[j][i]] == x[x[j][i], j] for i in range(n) for j in range(n)],
 
+    # tag(redundant)
     [x[i][-1] + 2 >= i for i in range(n)]
 )
 

@@ -28,6 +28,7 @@ from pycsp3 import *
 from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry
 
 n, horizon = data or (5, 5)
+
 symmetries = [sym.apply_on(n + 2) for sym in TypeSquareSymmetry]
 
 # x[t][i][j] is 1 iff the cell at row i and col j is alive at time t

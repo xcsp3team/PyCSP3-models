@@ -17,7 +17,9 @@ The configuration of live and dead cells at time t leads to a new configuration 
   A pair (n,m), where n is the number of rows and m the number of columns.
 
 ## Model
-  There are two variants, a classical one and a "wastage" one.
+  There are two variants:
+    - a classical one
+    - a "wastage" one.
 
   constraints: Sum, Table
 
@@ -34,6 +36,8 @@ The configuration of live and dead cells at time t leads to a new configuration 
 """
 
 from pycsp3 import *
+
+assert not variant() or variant("wastage")
 
 n, m = data or (8, 8)
 
@@ -81,11 +85,11 @@ elif variant("wastage"):
         s3 = t1 + t3 + t5 + t7
         s1 = t0 + t2 + t6 + t8 + s3
         s2 = t0 * t2 + t2 * t8 + t8 * t6 + t6 * t0 + s3
-        return (t4 != 1 or (2 <= s1 <= 3 and (s2 > 0 or wa >= 2) and (s2 > 1 or wa >= 1))) and \
-            (t4 != 0 or (s1 != 3 and (0 < s3 < 4 or wa >= 2)) and (s3 > 1 or wa >= 1))
+        return ((t4 != 1 or (2 <= s1 <= 3 and (s2 > 0 or wa >= 2) and (s2 > 1 or wa >= 1)))
+                and (t4 != 0 or (s1 != 3 and (0 < s3 < 4 or wa >= 2)) and (s3 > 1 or wa >= 1)))
 
 
-    T = {(*t, i) for t in product(range(2), repeat=9) for i in range(3) if condition_for_tuple(*t, i)}
+    T = {(*t, i) for t in product({0, 1}, repeat=9) for i in range(3) if condition_for_tuple(*t, i)}
 
     # x[i][j] is 1 iff the cell at row i and col j is alive (note that there is a border)
     x = VarArray(size=[n + 2, n + 2], dom=lambda i, j: {0} if i in {0, n + 1} or j in {0, n + 1} else {0, 1})

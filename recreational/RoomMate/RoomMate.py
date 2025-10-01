@@ -28,9 +28,9 @@ This is distinct from the stable-marriage problem in that the stable-roommates p
 from pycsp3 import *
 from pycsp3.dashboard import options
 
-options.dont_build_similar_constraints = True
+assert not variant() or variant("table") or variant("hybrid")
 
-preferences = data
+preferences = data or load_json_data("sr0006.json")
 n = len(preferences)
 
 
@@ -61,29 +61,32 @@ if not variant():
         ) for i in range(n) for k in pref[i] if k != i
     )
 
-elif variant('table'):
+else:
+    options.dont_build_similar_constraints = True
 
-    def T(i, k):
-        return [(a, ANY) for a in x[i].dom if a < rank[i][k]] + [(rank[i][k], rank[k][i])] + \
-            [(a, b) for a in x[i].dom if a > rank[i][k] for b in x[k].dom if b < rank[k][i]]
+    if variant('table'):
+
+        def T(i, k):
+            return [(a, ANY) for a in x[i].dom if a < rank[i][k]] + [(rank[i][k], rank[k][i])] + \
+                [(a, b) for a in x[i].dom if a > rank[i][k] for b in x[k].dom if b < rank[k][i]]
 
 
-    satisfy(
-        (x[i], x[k]) in T(i, k) for i in range(n) for k in pref[i] if k != i
-    )
+        satisfy(
+            (x[i], x[k]) in T(i, k) for i in range(n) for k in pref[i] if k != i
+        )
 
-elif variant('hybrid'):
+    elif variant('hybrid'):
 
-    satisfy(
-        Table(
-            scope=(x[i], x[k]),
-            supports=[
-                (lt(rank[i][k]), ANY),
-                (rank[i][k], rank[k][i]),
-                (gt(rank[i][k]), lt(rank[k][i]))
-            ]
-        ) for i in range(n) for k in pref[i] if k != i
-    )
+        satisfy(
+            Table(
+                scope=(x[i], x[k]),
+                supports=[
+                    (lt(rank[i][k]), ANY),
+                    (rank[i][k], rank[k][i]),
+                    (gt(rank[i][k]), lt(rank[k][i]))
+                ]
+            ) for i in range(n) for k in pref[i] if k != i
+        )
 
 """ Comments
 1) It is very expensive to build starred tables for large instances.

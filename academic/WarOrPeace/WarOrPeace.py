@@ -28,7 +28,10 @@ Hence, it is 0, 1, 2, 4, 6, 9, 12, 16, 20, 25, 30, 36, 42, 49, 56, 64, 72, 81, .
 
 from pycsp3 import *
 
+assert not variant() or variant("or")
+
 n = data or 8
+
 WAR, PEACE = 0, 1
 
 # x[i][j] is 1 iff countries i and j have a peace treaty

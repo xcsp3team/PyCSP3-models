@@ -26,7 +26,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-n = data
+n = data or 10
+
 cells = [(i, j) for i in range(1, n + 1) for j in range(1, n + 1)]  # coordinates of valid cells
 
 # x[i][j] is 1 iff the cell with coordinates (i,j) is alive (note the presence of a border)

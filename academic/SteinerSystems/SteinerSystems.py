@@ -24,7 +24,7 @@ In an alternate notation for block designs, an S(t,k,n) would be a t-(n,k,1) des
 from pycsp3 import *
 from math import comb
 
-t, k, n = data
+t, k, n = data or (3, 3, 11)
 
 m = comb(n, t) // comb(k, t)  # the number of blocks
 
@@ -38,6 +38,7 @@ satisfy(
     # tag(symmetry-breaking)
     [
         [Increasing(x[i], strict=True) for i in range(m)],
+
         LexIncreasing(x, strict=True)
     ],
 
@@ -57,5 +58,6 @@ satisfy(
 
 """ Comments
 1) Data used in MZN21 are: (2,7,21) (3,3,11) (3,4,8) (4,4,10) (6,6,7)
-2) The model used in Minizinc challenge 2021 involves set variables
+2) The model used in Minizinc challenge 2021 involves set variables. 
+   This PyCSP3 model is substantially different.
 """

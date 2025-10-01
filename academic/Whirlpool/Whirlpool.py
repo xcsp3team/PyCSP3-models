@@ -5,8 +5,8 @@ A whirlpool permutation is an n x m matrix containing number 1..n*m where every 
 An extended whirlpool permutation requires that the outside ring is ordered cw or ccw, and the ring inside it, etc.
 A perfect diagonal whirlpool permutation required n = m and that the sum of both diagonals is n*(n+1)*(n+1) div 2.
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the M2020 inizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
+For the original MZN model, no Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data
   Two integers (n,m)
@@ -26,7 +26,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-n, m = data
+n, m = data or (8, 8)
 
 # x[i][j] is the value of the cell at coordinates (i,j)
 x = VarArray(size=[n, m], dom=range(n * m))

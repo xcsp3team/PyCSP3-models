@@ -76,4 +76,5 @@ satisfy(
 1) Note that a less compact way of posting symmetry_breaking constraints is:
  # tag(symmetry-breaking)
  [[x[0][j] == j for j in range(n)], [y[0][j] == j for j in range(n)]],
+ 2) Data used for the 2022 competition are: [5, 6, 7, 8, 9, 10, 11, 12, 15, 20]
 """

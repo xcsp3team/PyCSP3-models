@@ -22,7 +22,7 @@ The licence seems to be like a MIT Licence.
 
 from pycsp3 import *
 
-size, squares = data
+size, squares = data or load_json_data("057.json")
 nSquares = len(squares)
 
 # x[i] is the x-coordinate where is put the ith square

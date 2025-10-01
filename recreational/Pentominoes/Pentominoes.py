@@ -24,7 +24,7 @@ from pycsp3 import *
 from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry
 from pycsp3.tools.utilities import polyominoes
 
-n, m = data
+n, m = data or (3, 30)
 assert n * m in (60, 90, 120)  # for the moment
 nPieces = (n * m) // 5
 

@@ -31,6 +31,7 @@ is greater than or equal to some value k is called a (n,k)-talisman square.
 from pycsp3 import *
 
 n, k = data or (4, 2)
+
 limit = (n * (n * n + 1)) // 2
 
 # x[i][j] is the value in the talisman square at row i and column j

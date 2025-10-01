@@ -26,12 +26,14 @@ For example, in the Pythagorean triple 3, 4 and 5 (32 + 42 = 52 ), if 3 and 4 ar
 from pycsp3 import *
 from math import sqrt
 
+assert not variant() or variant("table")
+
 n = data or 2000
+
 RED, BLUE = 0, 1
 
 
-def conflicts():
-    t = []
+def conflicts():  # generator of valid scopes
     for i in range(1, n + 1):
         i2 = i * i
         for j in range(i + 1, n + 1):
@@ -41,8 +43,7 @@ def conflicts():
                 break
             sr = int(sqrt(s))
             if sr * sr == s:
-                t.append((i, j, sr))
-    return t
+                yield i, j, sr
 
 
 def valid_triple(i, j, k):
@@ -55,9 +56,14 @@ def valid_triple(i, j, k):
 x = VarArray(size=n + 1, dom={RED, BLUE})
 
 satisfy(
-    # putting 0 in the first setting an arbitrary value to integer 0  tag(symmetry-breaking)
+    # putting 0 in the first setting an arbitrary value to integer 0
+    # tag(symmetry-breaking)
     x[0] == 0,
 
     # ensuring that each Pythagorean triple is valid
     [valid_triple(i, j, k) for i, j, k in conflicts()]
 )
+
+""" Comments
+1) Data used for the 2023 competition are: [2000, 4000, 5000, 6000, 7000, 7500, 7824, 7825]
+"""

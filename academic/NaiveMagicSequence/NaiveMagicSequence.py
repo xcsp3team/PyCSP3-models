@@ -23,7 +23,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-n = data
+n = data or 20
 
 # x[i] is the ith value of the sequence
 x = VarArray(size=n, dom=range(n))
