@@ -21,7 +21,8 @@ A mathematical puzzle.
 
 from pycsp3 import *
 
-n, clues = data
+n, clues = data or load_json_data("example01.json")
+
 magic = n * (n * n + 1) // 2
 
 # x[i][j] is the value at row i and column j of the magic square

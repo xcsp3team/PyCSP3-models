@@ -20,7 +20,7 @@ A Latin square is an n × n array filled with n different symbols, each occurrin
 
 from pycsp3 import *
 
-n, clues = data  # if not -1, clues[i][j] is a value imposed at row i and col j
+n, clues = data or load_json_data("qwh-o030-h320.json")  # if not -1, clues[i][j] is a value imposed at row i and col j
 
 # x[i][j] is the value at row i and col j of the Latin Square
 x = VarArray(size=[n, n], dom=range(n))

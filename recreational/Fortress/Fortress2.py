@@ -5,7 +5,7 @@ From LPCP contest 2022 (problem 1):
      All point-of-interests must be inside the perimeter of the walls, the number of walls must be minimized,
      and as a second optimization criteria we prefer to minimize the amount of cells inside the perimeter of the walls.
 
-Important: Important: the model, below, has not been checked to exactly correspond to this statement (it was written for the 2025 XCSP3 competition).
+Important: the model, below, has not been checked to exactly correspond to this statement (it was written for the 2025 XCSP3 competition).
 
 ## Data Example
   03.json
@@ -27,7 +27,8 @@ Important: Important: the model, below, has not been checked to exactly correspo
 
 from pycsp3 import *
 
-grid = data
+grid = data or load_json_data("03.json")
+
 n, m = len(grid), len(grid[0])
 assert n <= 100 and m <= 100  # otherwise, we have for example to change the constant 10000 by n*m
 

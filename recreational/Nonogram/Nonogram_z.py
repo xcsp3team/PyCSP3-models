@@ -10,6 +10,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Execution
   python Nonogram_z.py -data=<datafile.json>
+  python Nonogram_z.py -data=<datafile.json> -variant=table
   python Nonogram_z.py -data=<datafile.dzn> -parser=Nonogram_ParserZ.py
 
 ## Links
@@ -24,14 +25,17 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 from pycsp3.problems.data.parsing import split_with_rows_of_size
 
-rows, cols = data  # patterns for row and columns
+assert not variant() or variant("table")
+
+rows, cols = data or load_json_data("dom-06.json")  # patterns for row and columns
+
 n, m = len(rows), len(cols)
 
 # x[i][j] is 1 iff the cell at row i and col j is colored in black
 x = VarArray(size=[n, m], dom={0, 1})
 
 if not variant():
-    def automaton_for(clue):
+    def A(clue):  # automaton for given clue
         q = Automaton.q  # for building names of states
         if len(clue) == 0 or clue[0] == 0:
             return Automaton(start=q(1), final=q(1), transitions=[(q(1), 0, q(1))])
@@ -44,16 +48,16 @@ if not variant():
 
 
     satisfy(
-        [x[i] in automaton_for(rows[i]) for i in range(n)],
+        [x[i] in A(rows[i]) for i in range(n)],
 
-        [x[:, j] in automaton_for(cols[j]) for j in range(m)]
+        [x[:, j] in A(cols[j]) for j in range(m)]
     )
 
 elif variant("table"):
     cache = dict()
 
 
-    def table(pattern, row):
+    def T(pattern, row):
         def build_from(lst, tmp, i, k):
             s = sum([pattern[e] for e in range(k, len(pattern))])
             if i + s + (len(pattern) - 1 - k) > len(tmp):
@@ -80,7 +84,7 @@ elif variant("table"):
 
 
     satisfy(
-        [x[i] in table(rows[i], row=True) for i in range(n)],
+        [x[i] in T(rows[i], row=True) for i in range(n)],
 
-        [x[:, j] in table(cols[j], row=False) for j in range(m)]
+        [x[:, j] in T(cols[j], row=False) for j in range(m)]
     )

@@ -30,7 +30,8 @@ The goal is to cut correct slices out of the pizza maximizing the total number o
 
 from pycsp3 import *
 
-minIngredients, maxSize, pizza = data
+minIngredients, maxSize, pizza = data or load_json_data("10-10-2-6-00.json")
+
 n, m = len(pizza), len(pizza[0])  # nRows and nColumns
 patterns = [(i, j) for i in range(1, min(maxSize, n) + 1) for j in range(1, min(maxSize, m) + 1) if 2 * minIngredients <= i * j <= maxSize]
 nPatterns = len(patterns)

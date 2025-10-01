@@ -24,7 +24,8 @@ One has to find the position (and rotation) of each domino.
 
 from pycsp3 import *
 
-grid = data
+grid = data or load_json_data("grid01.json")
+
 nRows, nCols, nValues = len(grid), len(grid[0]), len(grid)
 dominoes = [(i, j) for i in range(nValues) for j in range(i, nValues)]  # pairs of values to be considered
 indexes = range(nRows * nCols)  # indexes of cells

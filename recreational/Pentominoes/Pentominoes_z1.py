@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2008/2011/2013 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   02.json
@@ -24,11 +24,12 @@ from pycsp3 import *
 from pycsp3.problems.data.parsing import split_with_rows_of_size
 
 m, n, tiles, dfa = data or load_json_data("02.json")
+
 nTiles = len(tiles)
 SEP = nTiles + 1
 
 
-def automaton_for(tile):
+def A(tile):  # automaton for given tile
     n_states, n_symbols = tile[0], tile[1]
     t = split_with_rows_of_size(dfa[tile[-1]:tile[-1] + n_states * n_symbols], n_symbols)
     q = Automaton.q  # for building names of states
@@ -47,7 +48,7 @@ satisfy(
     [x[i][-1] == SEP for i in range(n)],
 
     # ensuring each tile is present
-    [x in automaton_for(tile) for tile in tiles]
+    [x in A(tile) for tile in tiles]
 )
 
 """ Comments

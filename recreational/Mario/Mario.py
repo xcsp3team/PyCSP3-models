@@ -33,7 +33,10 @@ This problem was proposed by maury Ollagnier and Jean-Guillaume Fages.
 
 from pycsp3 import *
 
-marioHouse, luigiHouse, fuelLimit, houses = data
+assert not variant() or variant("table") or variant("aux")
+
+marioHouse, luigiHouse, fuelLimit, houses = data or load_json_data("easy-2.json")
+
 fuels, golds = zip(*houses)  # using cp_array is not necessary since intern arrays have the right type (for the constraint Element)
 nHouses = len(houses)
 

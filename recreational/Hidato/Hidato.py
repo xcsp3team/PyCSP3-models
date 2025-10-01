@@ -28,7 +28,9 @@ The goal of Hidato is to fill the grid with consecutive numbers that connect hor
 
 from pycsp3 import *
 
-n, m, clues = data  # clues are given by strictly positive values
+assert not variant() or variant("table")
+
+n, m, clues = data or load_json_data("p1.json")  # clues are given by strictly positive values
 
 Cells = [(i, j) for i in range(n) for j in range(m)]
 

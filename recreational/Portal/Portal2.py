@@ -29,14 +29,13 @@ For the original MZN model, no Licence was explicitly mentioned (MIT Licence ass
 """
 
 from pycsp3 import *
-from pycsp3.functions import VarArrayMultiple
 from pycsp3.dashboard import options
 
-#  option set to avoid writing ((aux := Var()) == z - 1, a[aux] == MOVE)
-#  instead of a[z - 1] == MOVE
+# below, option set to avoid writing ((aux := Var()) == z - 1, a[aux] == MOVE), instead of a[z - 1] == MOVE
 options.force_element_index = True
 
-board, k = data
+board, k = data or load_json_data("rand-10-9-010.json")
+
 n, m = len(board), len(board[0])
 
 PLAYER_NORTH, PLAYER_SOUTH, PLAYER_EAST, PLAYER_WEST, WALL, WALL_NO_PORTAL, EMPTY, PIT, GOAL = cells = ('^', 'v', '>', '<', 'X', 'N', ' ', 'O', '!')
@@ -50,13 +49,13 @@ goal = next(((i, j) for i in range(n) for j in range(m) if board[i][j] == GOAL),
 assert init != ABSENT and goal != ABSENT
 init_heading = cells.index(board[init[0]][init[1]])
 
-accessible = cp_array([[1 if board[i][j] in (EMPTY, PLAYER_NORTH, PLAYER_SOUTH, PLAYER_EAST, PLAYER_WEST, GOAL) else 0 for j in range(m)] for i in range(n)])
+accessible = cp_array([1 if board[i][j] in (EMPTY, PLAYER_NORTH, PLAYER_SOUTH, PLAYER_EAST, PLAYER_WEST, GOAL) else 0 for j in range(m)] for i in range(n))
 
 # next heading wrt a heading (first dimension) and an action (second dimension)
 next_heading = cp_array([[WEST, EAST, NORTH, NORTH], [EAST, WEST, SOUTH, SOUTH], [NORTH, SOUTH, EAST, EAST], [SOUTH, NORTH, WEST, WEST]])
 
 
-def wphor(i, j, h):
+def next_wall_hor(i, j, h):
     if h == EAST:
         return next((k for k in range(j + 1, m) if board[i][k] in (WALL, WALL_NO_PORTAL)), -1)
     if h == WEST:
@@ -64,7 +63,7 @@ def wphor(i, j, h):
     return j
 
 
-def wpver(i, j, h):
+def next_wall_ver(i, j, h):
     if h == NORTH:
         return next((k for k in range(i - 1, -1, -1) if board[k][j] in (WALL, WALL_NO_PORTAL)), -1)
     if h == SOUTH:
@@ -73,7 +72,7 @@ def wpver(i, j, h):
 
 
 Tw = [(i, j, h, ii if valid else -1, jj if valid else -1) for i in range(n) for j in range(m) for h in range(nHeadings)
-      if (ii := wpver(i, j, h), jj := wphor(i, j, h), valid := ii != -1 and jj != -1 and board[ii][jj] == WALL)]
+      if (ii := next_wall_ver(i, j, h), jj := next_wall_hor(i, j, h), valid := ii != -1 and jj != -1 and board[ii][jj] == WALL)]
 
 Td = [(i, j, h, ii if valid else -1, jj if valid else -1) for i in range(n) for j in range(m) for h in range(nHeadings)
       if (ii := i + (1 if h == SOUTH else -1 if h == NORTH else 0),

@@ -22,7 +22,8 @@ The knapsack problem or rucksack problem is a problem in combinatorial optimizat
 
 from pycsp3 import *
 
-capacity, items = data
+capacity, items = data or load_json_data("20-50-00.json")
+
 weights, values = zip(*items)
 nItems = len(items)
 

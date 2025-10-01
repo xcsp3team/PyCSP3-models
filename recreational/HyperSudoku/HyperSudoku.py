@@ -24,7 +24,8 @@ The model is given below for an empty grid (no clues).
 
 from pycsp3 import *
 
-base = data  # base of the grid
+base = data or 6  # base of the grid
+
 assert base >= 2
 n = base * base
 

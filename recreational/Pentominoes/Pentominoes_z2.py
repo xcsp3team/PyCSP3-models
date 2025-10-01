@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   02.json
@@ -25,7 +25,7 @@ m, n, tiles, dfa = data or load_json_data("02.json")
 SPECIAL = nTiles = len(tiles)
 
 
-def automaton_for(tile):
+def A(tile):  # automaton for given clue
     q = Automaton.q
     nStates = tile[0]
     assert tile[1] == nTiles + 1
@@ -44,5 +44,5 @@ satisfy(
     [x[i * m + m - 1] == SPECIAL for i in range(n)],
 
     # ensuring each tile is present
-    [x in automaton_for(tile) for tile in tiles]
+    [x in A(tile) for tile in tiles]
 )

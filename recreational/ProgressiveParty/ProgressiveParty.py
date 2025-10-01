@@ -37,6 +37,7 @@ nPeriods, boats = data or load_json_data("12-05.json")
 
 capacities, crews = zip(*boats)
 nBoats = len(boats)
+
 B, P = range(nBoats), range(nPeriods)
 
 

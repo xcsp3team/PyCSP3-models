@@ -23,7 +23,7 @@ from pycsp3 import *
 
 mzn25 = [(8, 8, 4), (10, 10, 6), (12, 12, 8), (14, 14, 8), (20, 18, 9)]
 
-W, H, C = data  # width, height and number of  colors
+W, H, C = data or (8, 8, 4)  # width, height and number of  colors
 
 # x[w][h] is the color in the matrix in cell (w,h)
 x = VarArray(size=[W, H], dom=range(1, C + 1))

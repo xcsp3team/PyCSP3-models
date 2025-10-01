@@ -33,7 +33,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-marioHouse, luigiHouse, fuelLimit, houses = data
+marioHouse, luigiHouse, fuelLimit, houses = data or load_json_data("easy-2.json")
+
 fuels, golds = zip(*houses)  # using cp_array is not necessary since intern arrays have the right type (for the constraint Element)
 nHouses = len(houses)
 

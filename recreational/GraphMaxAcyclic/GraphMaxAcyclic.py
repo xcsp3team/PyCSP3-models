@@ -18,7 +18,9 @@ Given an edge-weighted directed graph with possibly many cycles, the task is to 
 
 from pycsp3 import *
 
-n, arcs = data
+assert not variant() or variant("cnt")
+
+n, arcs = data or load_json_data("example.json")
 
 valid_arcs = [(i, j) for i in range(n) for j in range(n) if i != j and arcs[i][j] != 0]
 valid_numbers = [len([(i, j) for i in range(n) if (i, j) in valid_arcs]) for j in range(n)]

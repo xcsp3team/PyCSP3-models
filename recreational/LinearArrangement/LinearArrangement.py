@@ -17,7 +17,8 @@ in such a way to minimize the sum of distances between adjacent nodes (in G).
 
 from pycsp3 import *
 
-n, edges = data
+n, edges = data or load_json_data("MinLA01.json")
+
 Edges = [(i, j) for i, j in edges]  # to be sure to have tuples
 
 # x[i] denotes the position (in the line) of the ith node

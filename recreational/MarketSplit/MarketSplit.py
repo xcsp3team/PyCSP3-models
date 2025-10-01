@@ -20,7 +20,7 @@ The feasibility problem consists of m 0-1 equality knapsack constraints defined 
 
 from pycsp3 import *
 
-n, constraints = data
+n, constraints = data or load_json_data("04.json")
 
 x = VarArray(size=n, dom={0, 1})
 

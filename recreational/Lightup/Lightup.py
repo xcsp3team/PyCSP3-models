@@ -20,7 +20,8 @@ It is a logic puzzle.
 
 from pycsp3 import *
 
-grid = data  # -1 is for a white cell, 0 to 4 for a hint and 5 for a black cell
+grid = data or load_json_data("example.json")  # -1 is for a white cell, 0 to 4 for a hint and 5 for a black cell
+
 n, m = len(grid), len(grid[0])
 
 Cells = [(i, j) for i in range(n) for j in range(m)]

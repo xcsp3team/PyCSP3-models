@@ -21,7 +21,8 @@ from collections import OrderedDict
 
 from pycsp3 import *
 
-puzzle = data
+puzzle = data or load_json_data("example.json")
+
 n, m = len(puzzle), len(puzzle[0])
 
 shapes = [  # the offsets, wrt (0,0), for the three other points of the basic shapes of each tetramino

@@ -26,7 +26,7 @@ from pycsp3 import *
 
 from pycsp3.classes.nodes import TypeNode
 
-k, d = data
+k, d = data or (2, 20)
 
 
 def det_terms(t):
@@ -67,4 +67,5 @@ satisfy(
    instead of 
   return [t for t, _ in terms] * [c for _, c in terms]
  but the output is more involved
+2) Data used for the 2022 competition are: [[2,20], [2,25], [3,7], [3,8], [3,9], [4,3], [4,4], [4,5], [5,4], [5,5]]
 """

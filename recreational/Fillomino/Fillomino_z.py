@@ -28,7 +28,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-puzzle = data
+puzzle = data or load_json_data("08.json")
+
 n, m = len(puzzle), len(puzzle[0])
 
 horizon = min(9, n + m) + 1

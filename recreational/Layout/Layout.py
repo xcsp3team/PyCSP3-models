@@ -20,7 +20,8 @@ Given a grid, we want to place a number of pieces such that every piece is compl
 
 from pycsp3 import *
 
-grid, shapes = data
+grid, shapes = data or load_json_data("example.json")
+
 n, m, nShapes = len(grid), len(grid[0]), len(shapes)
 
 

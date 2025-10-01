@@ -21,7 +21,9 @@ It is a kind of logic puzzle. See "Kakuro as a Constraint Problem" by Helmut Sim
 
 from pycsp3 import *
 
-n, m, clues = data
+assert not variant() or variant("table")
+
+n, m, clues = data or load_json_data("easy-000.json")
 
 Cells = [(i, j) for i in range(n) for j in range(m)]
 

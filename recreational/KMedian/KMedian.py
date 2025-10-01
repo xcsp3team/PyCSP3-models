@@ -24,7 +24,10 @@ sum of the distances from each data point to the nearest ci.
 
 from pycsp3 import *
 
-distances, k = data
+assert not variant() or variant("aux")
+
+distances, k = data or load_json_data("pmed01.json")
+
 n = len(distances)
 
 # x[i] is the ith selected node

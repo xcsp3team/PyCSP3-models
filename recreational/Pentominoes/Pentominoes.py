@@ -25,13 +25,14 @@ from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry
 from pycsp3.tools.utilities import polyominoes
 
 n, m = data or (3, 30)
+
 assert n * m in (60, 90, 120)  # for the moment
 nPieces = (n * m) // 5
 
 pentominoes = list(polyominoes[5].values())  # 12 distinct pentominoes
 
 
-def table(pentomino):
+def T(pentomino):  # table for given pentomino
     tbl = []
     for i in range(n):
         for j in range(m):
@@ -46,7 +47,7 @@ x = VarArray(size=[nPieces, 5], dom=range(n * m))
 
 satisfy(
     # positioning all pentominoes correctly
-    [x[i] in table(pentominoes[i % 12]) for i in range(nPieces)],
+    [x[i] in T(pentominoes[i % 12]) for i in range(nPieces)],
 
     # ensuring no overlapping pieces
     AllDifferent(x),

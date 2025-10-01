@@ -21,8 +21,10 @@ All adjacent tiles on the board must have matching colors along their common edg
 
 from pycsp3 import *
 
-n, m, pieces = data
+n, m, pieces = data or load_json_data("06-06.json")
+
 assert n * m == len(pieces), "badly formed data"
+
 max_value = max(max(piece) for piece in pieces)  # max possible value on pieces
 
 T = {(i, piece[r % 4], piece[(r + 1) % 4], piece[(r + 2) % 4], piece[(r + 3) % 4]) for i, piece in enumerate(pieces) for r in range(4)}
@@ -42,8 +44,10 @@ satisfy(
 
     # all pieces must be valid (i.e., must correspond to those given initially, possibly after applying some rotation)
     [
-        (x[i][j], top[i][j], lft[i][j + 1], top[i + 1][j], lft[i][j]) in T
-        for i in range(n) for j in range(m)
+        Table(
+            scope=(x[i][j], top[i][j], lft[i][j + 1], top[i + 1][j], lft[i][j]),
+            supports=T
+        ) for i in range(n) for j in range(m)
     ],
 
     # putting special value 0 on borders

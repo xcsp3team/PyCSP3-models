@@ -23,7 +23,8 @@ The goal is to divide the grid into regions called polyominoes (by filling in th
 
 from pycsp3 import *
 
-puzzle = data
+puzzle = data or load_json_data("08.json")
+
 n, m = len(puzzle), len(puzzle[0])
 
 Values = {puzzle[i][j] for i in range(n) for j in range(m) if puzzle[i][j] > 0}

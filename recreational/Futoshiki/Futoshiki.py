@@ -19,7 +19,7 @@ It is a logic puzzle game from Japan.
 
 from pycsp3 import *
 
-n, nbHints, opHints = data  # n is the order of the grid
+n, nbHints, opHints = data or load_json_data("futo3-0.json")  # n is the order of the grid
 
 # x[i][j] is the number put at row i and column j
 x = VarArray(size=[n, n], dom=range(1, n + 1))

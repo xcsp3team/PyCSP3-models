@@ -32,7 +32,7 @@ from pycsp3.classes.main.annotations import ValHeuristic
 
 assert variant() in ("dec1", "dec2", "table", "hybrid")
 
-origin_x, origin_y = data
+origin_x, origin_y = data or (0, 2)
 
 init_board, final_board = generate_boards("english", origin_x, origin_y)
 n, m = len(init_board), len(init_board[0])
@@ -236,7 +236,7 @@ minimize(
 #     valHeuristic=ValHeuristic().static(y, order=corners)
 # )
 
-"""
+""" Comments
 1) For the mini-tracks, we use:
   # ensuring no useless use of Nada
     [(x[t][p1], x[t][p2], x[t][p3], y[t]) in [(0, ANY, ANY, ANY), (ANY, 0, ANY, ANY), (ANY, ANY, 1, ANY)] + [(ANY, ANY, ANY, v) for v in range(nTransitions)]

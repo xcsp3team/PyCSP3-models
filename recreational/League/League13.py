@@ -21,7 +21,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-leagueSize, rankings, nationalities = data
+leagueSize, rankings, nationalities = data or load_json_data("020-03-05.json")
+
 sr, sn = sorted(list(set(rankings))), sorted(list(set(nationalities))),
 assert sr[0] == 0 and all(sr[i + 1] == sr[i] + 1 for i in range(len(sr) - 1))
 assert sn[0] == 0 and all(sn[i + 1] == sn[i] + 1 for i in range(len(sn) - 1))

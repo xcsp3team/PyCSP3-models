@@ -5,7 +5,7 @@ From LPCP contest 2022 (problem 1):
      All point-of-interests must be inside the perimeter of the walls, the number of walls must be minimized,
      and as a second optimization criteria we prefer to minimize the amount of cells inside the perimeter of the walls.
 
-Important: Important: the model, below, has not been checked to exactly correspond to this statement (it was written for the 2025 XCSP3 competition).
+Important: the model, below, has not been checked to exactly correspond to this statement (it was written for the 2025 XCSP3 competition).
 
 ## Data Example
   03.json
@@ -27,22 +27,19 @@ Important: Important: the model, below, has not been checked to exactly correspo
 
 from pycsp3 import *
 
-grid = data
-n, m = len(grid), len(grid[0])
+grid = data or load_json_data("03.json")
 
-points = [(i, j) for i in range(n) for j in range(m) if grid[i][j] != 0]
+n, m = len(grid), len(grid[0])
+N, M = range(n), range(m)
+
+points = [(i, j) for i in N for j in M if grid[i][j] != 0]
 
 left = min(j - grid[i][j] for i, j in points) - 1
 right = max(j + grid[i][j] for i, j in points) + 1
 top = min(i - grid[i][j] for i, j in points) - 1
 bot = max(i + grid[i][j] for i, j in points) + 1
 
-t = decrement(
-    [[6, 15], [16, 7], [7, 10], [7, 16], [12, 3], [17, 8], [11, 4], [10, 5], [13, 4], [11, 16], [8, 17], [10, 17], [13, 16], [15, 13], [18, 9], [15, 16],
-     [6, 13], [16, 15], [7, 12], [14, 5], [12, 17], [17, 10], [8, 7], [14, 17], [9, 6], [7, 11], [15, 6], [9, 18], [16, 14], [15, 12], [6, 9], [16, 11], [7, 8],
-     [7, 14]])
-
-neighborhoods = [[(k, l) for k in range(n) for l in range(m) if abs(k - i) + abs(l - j) < grid[i][j]] for i, j in points]
+neighborhoods = [[(k, q) for k in N for q in M if abs(k - i) + abs(q - j) < grid[i][j]] for i, j in points]
 
 # w[i][j] is 1 iff the cell (i,j) is a wall
 w = VarArray(size=[n, m], dom=lambda i, j: {0, 1} if i in range(top, bot + 1) and j in range(left, right + 1) else {0})
@@ -61,13 +58,18 @@ satisfy(
     [w[i][j] == 0 for neighborhood in neighborhoods for i, j in neighborhood],
 
     # setting the status of the border
-    [(w[i][j], f[i][j]) in {(0, 1), (1, 0)} for i in range(n) for j in range(m) if i in (0, n - 1) or j in (0, m - 1)],
+    [(w[i][j], f[i][j]) in {(0, 1), (1, 0)} for i in N for j in M if i in (0, n - 1) or j in (0, m - 1)],
 
     # setting the status of the point of interest
     [f[i][j] == 0 for i, j in points],
 
-    [(w[i][j], f.cross(i, j)) in {(0, 0, 0, 0, 0, 0), (0, 1, 1, ANY, ANY, ANY), (0, 1, ANY, 1, ANY, ANY), (0, 1, ANY, ANY, 1, ANY), (0, 1, ANY, ANY, ANY, 1),
-                                  (1, 0, ANY, ANY, ANY, ANY)} for i in range(1, n - 1) for j in range(1, m - 1)],
+    [
+        Table(
+            scope=(w[i][j], f.cross(i, j)),
+            supports={(0, 0, 0, 0, 0, 0), (0, 1, 1, ANY, ANY, ANY), (0, 1, ANY, 1, ANY, ANY), (0, 1, ANY, ANY, 1, ANY),
+                      (0, 1, ANY, ANY, ANY, 1), (1, 0, ANY, ANY, ANY, ANY)}
+        ) for i in N[1:-1] for j in M[1:- 1]
+    ],
 
     # computing thr number of walls
     nW == Sum(w),
@@ -80,4 +82,6 @@ minimize(
     Sum(w) * 10000 - Sum(f)
 )
 
-# 10000 is enough for a grid up to 100*100
+""" Comments
+1) 10000, as coefficient in the objective expression,  is enough for a grid up to 100*100
+"""

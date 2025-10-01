@@ -25,13 +25,14 @@ from pycsp3 import *
 assert not variant() or variant("table")
 
 rows, cols = data or load_json_data("dom-06.json")  # patterns for row and columns
+
 n, m = len(rows), len(cols)
 
 # x[i][j] is 1 iff the cell at row i and col j is colored in black
 x = VarArray(size=[n, m], dom={0, 1})
 
 if not variant():
-    def automaton(pattern):
+    def A(pattern):
         q = Automaton.q  # for building state names
         t = []
         if len(pattern) == 0:
@@ -49,16 +50,16 @@ if not variant():
 
 
     satisfy(
-        [x[i] in automaton(rows[i]) for i in range(n)],
+        [x[i] in A(rows[i]) for i in range(n)],
 
-        [x[:, j] in automaton(cols[j]) for j in range(m)]
+        [x[:, j] in A(cols[j]) for j in range(m)]
     )
 
 elif variant("table"):
     cache = dict()
 
 
-    def table(pattern, row):
+    def T(pattern, row):
         def build_from(lst, tmp, i, k):
             s = sum([pattern[e] for e in range(k, len(pattern))])
             if i + s + (len(pattern) - 1 - k) > len(tmp):
@@ -85,7 +86,7 @@ elif variant("table"):
 
 
     satisfy(
-        [x[i] in table(rows[i], row=True) for i in range(n)],
+        [x[i] in T(rows[i], row=True) for i in range(n)],
 
-        [x[:, j] in table(cols[j], row=False) for j in range(m)]
+        [x[:, j] in T(cols[j], row=False) for j in range(m)]
     )

@@ -21,7 +21,8 @@ Make leagues for some games:
 
 from pycsp3 import *
 
-leagueSize, players = data  # rankings and countries of players
+leagueSize, players = data or load_json_data("010-03-04.json")  # rankings and countries of players
+
 rankings, countries = zip(*players)
 nPlayers = len(players)
 nLeagues = nPlayers // leagueSize + (1 if nPlayers % leagueSize != 0 else 0)
