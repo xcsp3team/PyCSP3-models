@@ -7,10 +7,11 @@ nHospitals = number_in(next_line())
 max_rpref_len = number_in(next_line())
 max_hpref_len = number_in(next_line())
 data['rpref'] = [[v - 1 for v in numbers_in(next_line()) if v != 0] + [-1] for _ in range(nResidents)]  # we add -1 for better handling element constraints
-data['rpref_len'] = numbers_in(next_line())
-assert nResidents == len(data['rpref']) == len(data['rpref_len'])
-assert max_rpref_len == max(data['rpref_len'])
-assert all(len(data['rpref'][i]) - 1 == data['rpref_len'][i] for i in range(nResidents))
+# data['rpref'] = [[v - 1 for v in numbers_in(next_line()) if v != 0] for _ in range(nResidents)]  # we add -1 for better handling element constraints
+rpref_len = numbers_in(next_line())
+assert nResidents == len(data['rpref']) == len(rpref_len)
+assert max_rpref_len == max(rpref_len)
+assert all(len(data['rpref'][i]) - 1 == rpref_len[i] for i in range(nResidents))
 hpref = [[v - 1 for v in numbers_in(next_line()) if v != 0] for _ in range(nHospitals)]
 hpref_len = numbers_in(next_line())
 hrank = [decrement(numbers_in(next_line())) for _ in range(nHospitals)]

@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data
   an integer n
@@ -20,7 +20,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-nRounds = data
+nRounds = data or 8
 
 DDT = [(0, 0, 0, 0, 0, 0, 0, 0, 0), (0, 0, 0, 1, 0, 0, 1, 1, 2), (0, 0, 0, 1, 0, 1, 1, 1, 2), (0, 0, 0, 1, 1, 0, 0, 1, 2), (0, 0, 0, 1, 1, 1, 0, 1, 2),
        (0, 0, 1, 0, 0, 0, 1, 1, 3), (0, 0, 1, 0, 0, 1, 0, 1, 2), (0, 0, 1, 0, 0, 1, 1, 0, 3), (0, 0, 1, 0, 1, 0, 1, 0, 3), (0, 0, 1, 0, 1, 1, 0, 0, 3),

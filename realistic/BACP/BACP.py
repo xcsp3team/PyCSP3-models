@@ -32,11 +32,12 @@ i.e., as similar as possible.
 
 from pycsp3 import *
 
+assert variant() in ("m1", "m2")
+
 nCourses, nPeriods, (minCredits, maxCredits), (minCourses, maxCourses), credits, prerequisites = data
 maxCredits = maxCredits * maxCourses if subvariant("d") else maxCredits
 
 assert nCourses == len(credits)
-assert variant() in ("m1", "m2")
 
 C, P = range(nCourses), range(nPeriods)
 

@@ -2,7 +2,7 @@
 Hoist Scheduling (M hoists, 1 track).
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-The MZN model was proposed by M. Wallace and N. Yorke-Smith,
+The original MZN model was proposed by M. Wallace and N. Yorke-Smith,
 and released under CC BY-NC-SA license (https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ## Data Example
@@ -18,7 +18,7 @@ and released under CC BY-NC-SA license (https://creativecommons.org/licenses/by-
 ## Links
   - https://data.4tu.nl/articles/_/12682700/1
   - https://link.springer.com/article/10.1007/s10601-020-09316-z
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   realistic, mzn20, mzn24
@@ -26,7 +26,8 @@ and released under CC BY-NC-SA license (https://creativecommons.org/licenses/by-
 
 from pycsp3 import *
 
-limitJobs, minTimes, maxTimes, eTimes, fTimes, multiplier, nHoists, capacity = data
+limitJobs, minTimes, maxTimes, eTimes, fTimes, multiplier, nHoists, capacity = data or load_json_data("PU-1-2-2.json")
+
 nTanks = len(minTimes)
 N = multiplier * nTanks
 

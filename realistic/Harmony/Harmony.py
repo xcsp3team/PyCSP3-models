@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2024 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   brother.json
@@ -22,7 +22,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-key, melody, mins, max_stationary, enforce_cadences = data
+key, melody, mins, max_stationary, enforce_cadences = data or load_json_data("brother.json")
+
 nPitches = 128
 
 notes = [["C"], ["C#", "Db"], ["D"], ["D#", "Eb"], ["E"], ["F"], ["F#", "Gb"], ["G"], ["G#", "Ab"], ["A"], ["A#", "Bb"], ["B"]]
@@ -164,7 +165,7 @@ minimize(
     Sum(max_jump) + non_root + non_doubled_root
 )
 
-"""
+""" Comments
 1) Note that:
  [chord_offsets[chord[t]] == set(note[:, t]) for t in Time],
   is equivalent to: 
