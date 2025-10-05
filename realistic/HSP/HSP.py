@@ -31,7 +31,9 @@ time of a set of jobs (i.e., the makespan), while, at the same time, satisfying 
 
 from pycsp3 import *
 
-intervals, ld, ud = data  # loaded and unloaded time for one move (from one tank to one of its successors)
+assert not variant() or variant("aux") or variant("table")
+
+intervals, ld, ud = data or load_json_data("10405.json")  # loaded and unloaded time for one move (from one tank to one of its successors)
 
 min_dips, max_dips = zip(*intervals)  # min and max dip durations
 nTanks = len(intervals) + 1
@@ -72,7 +74,10 @@ satisfy(
     [(o[i] < o[j]) == (t[i] < t[j]) for i, j in combinations(nTanks, 2)],
 
     # ensuring a minimal duration between any two tanks
-    NoOverlap(origins=t, lengths=ld + min(ud, min(min_dips))),
+    NoOverlap(
+        origins=t,
+        lengths=ld + min(ud, min(min_dips))
+    ),
 
     # computing the time of the cycle
     z == Maximum(t[i] + ld + (i + 1) * ud for i in range(1, nTanks)),

@@ -22,6 +22,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 
 nPeriods, minCourses, maxCourses, w1, w2, courseLoads, curricula, precedences, undesirables = data
+
 nCourses, nCurricula, nPrecedences, nUndesirables = len(courseLoads), len(curricula), len(precedences), len(undesirables)
 
 max_load = sum(courseLoads)

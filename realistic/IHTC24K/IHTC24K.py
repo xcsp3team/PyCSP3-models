@@ -6,7 +6,7 @@ The Integrated Healthcare Timetabling Problem (IHTP), brings together three NP-h
 See ihtc2024.github.io
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2025 Minizinc challenges.
-The original mzn model by  Lucas Kletzander -- No Licence was explicitly mentioned (MIT Licence assumed).
+The original mzn model by Lucas Kletzander -- No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   i02.json
@@ -29,17 +29,20 @@ The original mzn model by  Lucas Kletzander -- No Licence was explicitly mention
 
 from pycsp3 import *
 
-occupants, patients, max_surgery, room_capacities, max_ot, weight_selection, weight_delay = data
+occupants, patients, max_surgery, room_capacities, max_ot, weight_selection, weight_delay = data or load_json_data("i02.json")
+
 oc_length_of_stay, oc_gender, oc_room = occupants
 length_of_stay, gender, incompatible_rooms, mandatory, surgery_duration, surgeon, release_day, due_day = patients
 
-nOccupants, nPatients, nSurgeons, nRooms, nTheaters, horizon = len(oc_gender), len(gender), len(max_surgery), len(room_capacities), len(max_ot), len(
-    max_ot[0])
+nOccupants, nPatients, nSurgeons, nRooms, nTheaters = len(oc_gender), len(gender), len(max_surgery), len(room_capacities), len(max_ot)
+nDays = len(max_ot[0])
+
+P, D = range(nPatients), range(nDays)
 
 selection = VarArray(size=nPatients, dom={0, 1})
 
 # pd[i] is the patient admission day of the ith patient
-pd = VarArray(size=nPatients, dom=range(horizon))
+pd = VarArray(size=nPatients, dom=range(nDays))
 
 # pr[i] is the patient admission room of the ith patient
 pr = VarArray(size=nPatients, dom=range(nRooms))
@@ -54,40 +57,47 @@ satisfy(
     [
         If(
             selection[p],
-            Then=either(oc_room[c] != pr[p], pd[p] >= oc_length_of_stay[c])
-        ) for c in range(nOccupants) for p in range(nPatients) if oc_gender[c] != gender[p]
+            Then=either(
+                oc_room[c] != pr[p],
+                pd[p] >= oc_length_of_stay[c]
+            )
+        ) for c in range(nOccupants) for p in P if oc_gender[c] != gender[p]
     ],
 
     [
         If(
             selection[p1], selection[p2],
-            Then=disjunction(pr[p1] != pr[p2], pd[p1] >= pd[p2] + length_of_stay[p2], pd[p2] >= pd[p1] + length_of_stay[p1])
-        ) for p1 in range(nPatients) for p2 in range(nPatients) if gender[p1] != gender[p2]
+            Then=disjunction(
+                pr[p1] != pr[p2],
+                pd[p1] >= pd[p2] + length_of_stay[p2],
+                pd[p2] >= pd[p1] + length_of_stay[p1]
+            )
+        ) for p1 in P for p2 in P if gender[p1] != gender[p2]
     ],
 
     #  H2 Compatible rooms
-    [pr[p] not in incompatible_rooms[p] for p in range(nPatients)],
+    [pr[p] not in incompatible_rooms[p] for p in P],
 
     #  H3 Surgeon overtime
-    [Sum(surgery_duration[p] * selection[p] * (pd[p] == d) * (surgeon[p] == s) for p in range(nPatients)) <= max_surgery[s, d]
-     for s in range(nSurgeons) for d in range(horizon)],
+    [Sum(surgery_duration[p] * selection[p] * (pd[p] == d) * (surgeon[p] == s) for p in P) <= max_surgery[s][d]
+     for s in range(nSurgeons) for d in D],
 
     # H4 OT overtime
-    [Sum(surgery_duration[p] * selection[p] * (pd[p] == d) * (pt[p] == o) for p in range(nPatients)) <= max_ot[o, d]
-     for o in range(nTheaters) for d in range(horizon)],
+    [Sum(surgery_duration[p] * selection[p] * (pd[p] == d) * (pt[p] == o) for p in P) <= max_ot[o][d]
+     for o in range(nTheaters) for d in D],
 
     # H5 Mandatory patients
-    [selection[p] == 1 for p in range(nPatients) if mandatory[p]],
+    [selection[p] == 1 for p in P if mandatory[p]],
 
     # H6 Admission day
-    [pd[p] in range(release_day[p], due_day[p] + 1) for p in range(nPatients)],
+    [pd[p] in range(release_day[p], due_day[p] + 1) for p in P],
 
     # H7 Room capacity
     [
         If(
             selection[p],
             Then=room_admission[pr[p], p] == pd[p]
-        ) for p in range(nPatients)
+        ) for p in P
     ],
 
     [
@@ -101,5 +111,5 @@ satisfy(
 
 minimize(
     Count(selection, value=0) * weight_selection
-    + Sum(selection[p] * (pd[p] - release_day[p]) for p in range(nPatients)) * weight_delay
+    + Sum(selection[p] * (pd[p] - release_day[p]) for p in P) * weight_delay
 )

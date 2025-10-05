@@ -1,8 +1,8 @@
 """
 Discrete Lot Sizing problem.
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
-The MZN model was proposed by Andrea Rendl-Pitrey (Satalia).
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019/2020 Minizinc challenge.
+The original MZN model was proposed by Andrea Rendl-Pitrey (Satalia).
 MIT Licence.
 
 ## Data Example
@@ -17,7 +17,7 @@ MIT Licence.
 
 ## Links
   - https://www.csplib.org/Problems/prob058/
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, csplib, mzn19, mzn20
@@ -25,7 +25,8 @@ MIT Licence.
 
 from pycsp3 import *
 
-nPeriods, inventoryCost, changeCosts, nbOfOrders, orders = data
+nPeriods, inventoryCost, changeCosts, nbOfOrders, orders = data or load_json_data("pigment15d.json")
+
 duePeriods, itemTypes = zip(*orders)
 nOrders, nItemTypes = len(orders), len(nbOfOrders)
 
@@ -82,7 +83,12 @@ satisfy(
     ],
 
     # tag(redundant)
-    [Count(po, value=i) in range(1, 2 + (nPeriods - nOrders)) for i in range(nOrders)],
+    [
+        Count(
+            within=po,
+            value=i
+        ) in range(1, 2 + nPeriods - nOrders) for i in range(nOrders)
+    ],
 
     # computing change costs (the change cost is applied when changing from one item type to another)
     [cc[t] == changeCosts[po[t]][po[t + 1]] for t in range(nPeriods - 1)],

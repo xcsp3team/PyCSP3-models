@@ -31,6 +31,7 @@ meaning that there are six jars, containing 1, 2, 4, 12, 13 and 15 cookies each.
 from pycsp3 import *
 
 jars = data or [15, 13, 12, 4, 2, 1]
+
 nJars, horizon = len(jars), len(jars) + 1
 
 # x[t][i] is the quantity of cookies in the ith jar at time t
@@ -53,7 +54,7 @@ satisfy(
     [
         either(
             x[t + 1][i] == x[t][i],
-            Or=x[t + 1][i] == x[t][i] - y[t]
+            x[t + 1][i] == x[t][i] - y[t]
         ) for t in range(horizon - 1) for i in range(nJars)
     ],
 

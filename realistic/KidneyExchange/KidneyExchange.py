@@ -9,7 +9,6 @@ The model, below, is close to (can be seen as the close translation of) the one 
 The MZN model was proposed by Edward Lam and Vicky Mak-Hau.
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
-
 ## Data Example
   3-20-025-2.json
 
@@ -25,7 +24,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://en.wikipedia.org/wiki/Optimal_kidney_exchange
   - https://www.preflib.org/dataset/00036
   - https://link.springer.com/article/10.1007/s10878-015-9932-4
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, notebook, mzn19, mzn23
@@ -33,26 +32,27 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-weights, k = data
-n = len(weights)
+weights, k = data or load_json_data("3-20-025-2.json")
+
+n, N = len(weights), range(len(weights))
 
 # x[i] is the successor node of node i (in the cycle where i belongs)
-x = VarArray(size=n, dom=range(n))
+x = VarArray(size=n, dom=N)
 
 # y[i] is the cycle (index) where the node i belongs
-y = VarArray(size=n, dom=range(n))
+y = VarArray(size=n, dom=N)
 
 satisfy(
     AllDifferent(x),
 
     # ensuring correct cycles
-    [y[i] == y[x[i]] for i in range(n)],
+    [y[i] == y[x[i]] for i in N],
 
     # disabling infeasible arcs
-    [x[i] != j for i in range(n) for j in range(n) if i != j and weights[i][j] < 0],
+    [x[i] != j for i in N for j in N if i != j and weights[i][j] < 0],
 
     # each cycle has k as maximum length
-    BinPacking(y, sizes=1) <= k,
+    BinPacking(partition=y, sizes=1) <= k,
 
     # tag(symmetry-breaking)
     Precedence(y)
@@ -60,5 +60,5 @@ satisfy(
 
 maximize(
     # maximizing the sum of arc weights of selected cycles
-    Sum(weights[i][x[i]] for i in range(n))
+    Sum(weights[i][x[i]] for i in N)
 )

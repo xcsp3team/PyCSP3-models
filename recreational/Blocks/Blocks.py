@@ -27,6 +27,7 @@ The MZN model was proposed by Mats Carlsson, under the MIT Licence.
 from pycsp3 import *
 
 n, nPiles, start, goal = data if data else (5, 3, [5, 0, 2, 0, 4], [2, 3, 0, 5, 0])
+
 start, goal = [0] + start, [0] + goal
 nCubes, horizon = n + 1, n * nPiles + 1  # nCubes includes the dummy cube 0
 

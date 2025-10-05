@@ -7,7 +7,7 @@ Staff members should not be on-call for more than two days in a row (unless fixe
 Staff members who are on-call over the weekend prefer not be on-call on the Wednesday before that weekend.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2013/2018 Minizinc challenges.
-The MZN model was proposed by Julien Fischer.
+The original MZN model was proposed by Julien Fischer.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example

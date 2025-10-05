@@ -1,6 +1,10 @@
 """
+The median string problem is formulated as follows:
+    Given a set of strings (of length at most equal to k) over a finite alphabet,
+    find a string that minimizes the global edit distance to each of the given strings.
+
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   p1-15-20-1.json
@@ -13,6 +17,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python MedianString.py -data=<datafile.dzn> -parser=MedianString_ParserZ.py
 
 ## Links
+  - https://www.sciencedirect.com/science/article/abs/pii/0167865585900613
   - https://ojs.aaai.org/index.php/AAAI/article/view/5530
   - https://www.minizinc.org/challenge2019/results2019.html
 
@@ -22,10 +27,11 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-maxLength, medLength, maxChar, strings = data
+maxLength, medLength, maxChar, strings = data or load_json_data("p1-15-20-1.json")
+
 nStrings = len(strings)
 
-pairs = [(i, j) for i in range(nStrings) for j in range(1, maxLength + 1)]
+P = [(i, j) for i in range(nStrings) for j in range(1, maxLength + 1)]
 
 # x[i] is the ith character of the median string
 x = VarArray(size=maxLength, dom=range(maxChar + 1))
@@ -44,12 +50,12 @@ satisfy(
     t[:, -1, -1] == z,
 
     # upper bound on gradually computed distances
-    [t[i][j][k] <= j + k for i, j in pairs for k in range(1, maxLength + 1)],
+    [t[i][j][k] <= j + k for i, j in P for k in range(1, maxLength + 1)],
 
     # setting distances when first characters
     [
-        [t[i][0][k] == k for i, k in pairs],
-        [t[i][j][0] == j for i, j in pairs]
+        [t[i][0][k] == k for i, k in P],
+        [t[i][j][0] == j for i, j in P]
     ],
 
     # iterative computation
@@ -62,7 +68,7 @@ satisfy(
                 Then=t[i][j][k - 1],
                 Else=t[i][j - 1][k] if strings[i][j - 1] == 0 else min(t[i][j - 1][k] + 1, t[i][j][k - 1] + 1)
             )
-        ) for i, j in pairs for k in range(1, maxLength + 1)
+        ) for i, j in P for k in range(1, maxLength + 1)
     ],
 
     # ensuring the median is 0 after its length

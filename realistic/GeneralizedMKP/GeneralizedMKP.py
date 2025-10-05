@@ -13,6 +13,7 @@ See Wikipedia.
 
 ## Execution
   python GeneralizedMKP.py -data=<datafile.json>
+  python GeneralizedMKP.py -data=[number,<datafile.txt>] -parser=GeneralizedMKP_Parser.py
 
 ## Links
   - https://en.wikipedia.org/wiki/Knapsack_problem
@@ -26,7 +27,8 @@ See Wikipedia.
 
 from pycsp3 import *
 
-profits, wmatrix, capacities, pmatrix = data  # , pmatrix = data
+profits, w_matrix, capacities, p_matrix = data or load_json_data("OR05x100-25-1.json")  # , pmatrix = data
+
 nItems, nBins = len(profits), len(capacities)
 
 # x[i] is 1 if the ith item is packed
@@ -35,7 +37,7 @@ x = VarArray(size=nItems, dom={0, 1})
 # w[j] si the total weight in the jth bin
 w = VarArray(size=nBins, dom=lambda j: range(capacities[j] + 1))
 
-z = Var(range(sum(profits) + 1))
+z = Var(dom=range(sum(profits) + 1))
 
 satisfy(
     [
@@ -43,8 +45,8 @@ satisfy(
             selection=x,
             weights=weights,
             wlimit=w[j],
-            profits=pmatrix[j]
-        ) >= z for j, weights in enumerate(wmatrix)
+            profits=p_matrix[j]
+        ) >= z for j, weights in enumerate(w_matrix)
     ],
 
     # computing the objective value

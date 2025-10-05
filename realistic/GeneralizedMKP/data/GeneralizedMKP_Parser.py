@@ -9,13 +9,13 @@ e = next_int()  # number of constraints
 next_line()
 
 data['profits'] = t = [next_int() for _ in range(n)]  # objective coefficients
-data['wmatrix'] = [[next_int() for _ in range(n)] for _ in range(e)]
+data['w_matrix'] = [[next_int() for _ in range(n)] for _ in range(e)]
 data['capacities'] = [next_int() for _ in range(e)]  # constraint limits
 
-data["pmatrix"] = [t.copy() for _ in range(e)]
-for tt in data['pmatrix']:
+data["p_matrix"] = [t.copy() for _ in range(e)]
+for tt in data['p_matrix']:
     shuffle(tt)
 
-assert e == len(data['wmatrix']) == len(data['capacities'])
+assert e == len(data['w_matrix']) == len(data['capacities'])
 
-# python GeneralizedMKP.py -data=[0,/home/lecoutre/instances/mknap/chubeas/OR5x100/OR5x100-025-1] -dataparser=ppycsp3/pproblems/reserve/GeneralizedMKP_Parser.py
+# python GeneralizedMKP.py -data=[0,/home/lecoutre/instances/mknap/chubeas/OR5x100/OR5x100-025-1] -parser=ppycsp3/pproblems/reserve/GeneralizedMKP_Parser.py

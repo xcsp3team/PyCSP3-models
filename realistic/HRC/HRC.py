@@ -194,9 +194,9 @@ minimize(
 )
 
 """ Comments
-1) Since oct 2025, we can write: If(sp[i] > j, type1(i, j), Then= 
-   we are no more obliged to keep using & and |
-   as for example in If(sp[i] > j) & type1(i, j), Then=
+1) Since oct 2025, we can write: If(sp[i] > j, type1(i, j), Then=... 
+   This way, we are no more obliged to keep using & and |, or both, either 
+   as for example in If(sp[i] > j) & type1(i, j), Then=...
 """
 
 # coup_pos == decrement([1, 2, 4, 2, 1, 8, 5, 3, 3, 11, 3, 1, 13, 6, 1, 2, 2, 14, 6, 3, 3, 1, 10, 7, 3]),

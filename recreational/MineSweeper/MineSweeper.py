@@ -12,7 +12,7 @@ A logic puzzle video game.
   python MineSweeper.py -data=<datafile.json>
 
 ## Links
- - https://en.wikipedia.org/wiki/Minesweeper_(video_game)
+  - https://en.wikipedia.org/wiki/Minesweeper_(video_game)
 
 ## Tags
   recreational
@@ -30,6 +30,7 @@ puzzle = data or [
     [0, 1, -1, 4, -1, -1, -1, 3],
     [0, 1, 2, -1, 2, 3, -1, 2]
 ]  # 4 solutions
+
 n, m = len(puzzle), len(puzzle[0])
 
 # x[i][j] is 1 iff there is a mine in the square at row i and column j

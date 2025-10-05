@@ -118,6 +118,6 @@ minimize(
     z
 )
 
-"""
+""" Comments
 1) The objective is not connected to the rest of the variables. Hence the optimum is always 1. This is fixed in 2016.
 """

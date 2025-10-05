@@ -3,7 +3,7 @@ Maximum Directed Acyclic Graph.
 Given a directed graph G=(V,E) find the subgraph of G that is a DAG, while maximizing the number of edges.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2016 challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   25-01.json
@@ -24,8 +24,9 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-tails, incident = data
-n, m = len(incident), len(tails)
+tails, incidence_matrix = data or load_json_data("25-01.json")
+
+n, m = len(incidence_matrix), len(tails)
 
 # x[j] is 1 iff the jth edge is selected to be in the DAG
 x = VarArray(size=m, dom={0, 1})
@@ -40,7 +41,7 @@ satisfy(
     # computing other distances
     [
         d[i] == Maximum(
-            (d[tails[j]] + 1) * x[j] for j in range(m) if incident[i][j] == 1
+            (d[tails[j]] + 1) * x[j] for j in range(m) if incidence_matrix[i][j] == 1
         ) for i in range(1, n)
     ]
 )

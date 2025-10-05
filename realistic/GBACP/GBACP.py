@@ -30,7 +30,8 @@ See CSPLib.
 
 from pycsp3 import *
 
-nYears, nPeriodsPerYear, loadBounds, courseLoads, curricula, precedences, undesiredPeriods = data
+nYears, nPeriodsPerYear, loadBounds, courseLoads, curricula, precedences, undesiredPeriods = data or load_json_data("UD04.json")
+
 nPeriods, nCourses, nCurricula = nYears * nPeriodsPerYear, len(courseLoads), len(curricula)
 loadRange = range(loadBounds.min, loadBounds.max + 1)
 

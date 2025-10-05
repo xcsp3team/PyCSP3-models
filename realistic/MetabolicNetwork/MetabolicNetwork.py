@@ -24,7 +24,8 @@ Original model with MIT Licence (Copyright 2024 Maxime Mahout, François Fages).
 
 from pycsp3 import *
 
-nReactions, stoichiometry_matrix, reversible_indicators = data
+nReactions, stoichiometry_matrix, reversible_indicators = data or load_json_data("09.json")
+
 nMetabolites, nReversibleReactions = len(stoichiometry_matrix), len(reversible_indicators)
 
 iub = 50  # integer upper bound
@@ -40,13 +41,12 @@ satisfy(
     Sum(z) >= 1,
 
     # computing supports
-    [z[j] == (x[j] > 0) for j in range(nReactions)] if not variant()
-    else [(z[j], x[j]) in [(0, 0), (1, gt(0))] for j in range(nReactions)],  # for mini-tracks
+    [z[j] == (x[j] > 0) for j in range(nReactions)],
 
     # handling steady-states
     [x * stoichiometry_matrix[i] == 0 for i in range(nMetabolites)],
 
-    # respecting reversibilities
+    # respecting reversibility
     [z * reversible_indicators[i] <= 1 for i in range(nReversibleReactions)]
 )
 
@@ -55,6 +55,8 @@ minimize(
     Sum(z)
 )
 
-"""
-1) use -variant=mini for generating instances compatible with mini-tracks
+""" Comments
+1) use 
+ [(z[j], x[j]) in [(0, 0), (1, gt(0))] for j in range(nReactions)]
+ instead of the current group 'computing supports' for generating instances compatible with mini-tracks
 """

@@ -65,5 +65,14 @@
     {"id": "n10", "skill_level": 2, "working_shifts": [{"day": 8, "shift": "early", "max_load": 15}, {"day": 13, "shift": "late", "max_load": 15}]},
     {"id": "n11", "skill_level": 1, "working_shifts": [{"day": 7, "shift": "night", "max_load": 12}]}
   ],
-  "weights": {"room_mixed_age": 5, "room_nurse_skill": 10, "continuity_of_care": 1, "nurse_eccessive_workload": 10, "open_operating_theater": 30, "surgeon_transfer": 10, "patient_delay": 10, "unscheduled_optional": 350}
+  "weights": {
+    "room_mixed_age": 5,
+    "room_nurse_skill": 10,
+    "continuity_of_care": 1,
+    "nurse_eccessive_workload": 10,
+    "open_operating_theater": 30,
+    "surgeon_transfer": 10,
+    "patient_delay": 10,
+    "unscheduled_optional": 350
+  }
 }

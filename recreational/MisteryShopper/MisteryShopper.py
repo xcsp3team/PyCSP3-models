@@ -70,10 +70,10 @@ satisfy(
     ],
 
     # linking a visitor with its group
-    [(vrg[i][w], vr[i][w]) in Tvr for i in range(nVisitors) for w in W],
+    [(vrg[i][w], vr[i][w]) in Tvr for i in V for w in W],
 
     # linking a visitee with its group
-    [(veg[i][w], ve[i][w]) in Tve for i in range(nVisitors) for w in W]
+    [(veg[i][w], ve[i][w]) in Tve for i in V for w in W]
 )
 
 """

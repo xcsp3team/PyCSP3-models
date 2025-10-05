@@ -7,7 +7,7 @@ This is the case in the PhD thesis of Gabriel Hjort Blindell in 2018,
 with an approach that combines instruction selection with global code motion and block ordering.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015/2020 Minizinc challenges.
-The MZN model was proposed by Gabriel Hjort Blindell (Copyright (c) 2013-2015)
+The original MZN model was proposed by Gabriel Hjort Blindell (Copyright (c) 2013-2015)
 
 ## Data Example
   A3PZaPjnUz.json

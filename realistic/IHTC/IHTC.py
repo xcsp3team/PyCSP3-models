@@ -5,8 +5,7 @@ The Integrated Healthcare Timetabling Problem (IHTP), brings together three NP-h
   - (iii) the nurse for each room during each shift of the scheduling period, and (iv) the operating theater (OT) for each admitted patient.
 See ihtc2024.github.io
 
-Important; the model proposed below is an abridged version wrt the full problem.
-
+Important; the model proposed below (by C. Lecoutre) is an abridged version wrt the full problem.
 
 ## Data Example
   i01.json
@@ -30,31 +29,30 @@ from pycsp3 import *
 
 bp1, bp2 = False, True  # hard coding
 
-nDays, nSkills, shifts, ages, occupants, patients, surgeons, theaters, rooms, nurses, weights = data
-nShifts, nPatients, nSurgeons, nTheaters, nRooms, nNurses = nDays * 3, len(patients), len(surgeons), len(theaters), len(rooms), len(nurses)
+nDays, nSkills, shifts, ages, occupants, patients, surgeons, theaters, rooms, nurses, weights = data or load_json_data("i01.json")
 
+nShifts, nPatients, nSurgeons, nTheaters, nRooms, nNurses = nDays * 3, len(patients), len(surgeons), len(theaters), len(rooms), len(nurses)
 assert shifts == ["early", "late", "night"]
+
 GENDERS, A, B = ["A", "B"], 0, 1
 assert all(patient.gender in GENDERS for patient in patients) and all(occupant.gender in GENDERS for occupant in occupants)
 OCCUPANTS, PATIENTS, SURGEONS, THEATERS, ROOMS, NURSES = ALL = [[obj.id for obj in t] for t in (occupants, patients, surgeons, theaters, rooms, nurses)]
 assert all(int(t[0][1:]) == 0 and all(int(t[i][1:]) + 1 == int(t[i + 1][1:]) for i in range(len(t) - 1)) for t in ALL)
-
 DUMMY_DAY, DUMMY_ROOM, DUMMY_THEATER, DUMMY_NURSE = nDays, nRooms, nTheaters, nNurses
 MAX = 100_000_000
 
 max_stay = max(patient.length_of_stay for patient in patients)
-
 shift_nurses = [[[i for i in range(nNurses) if any(asg.day == d and asg.shift == s for asg in nurses[i].working_shifts)] for s in shifts] for d in range(nDays)]
-
 surgery_times = [sum(surgeon.max_surgery_time[d] for surgeon in surgeons) for d in range(nDays)]
 sum_surgery_times = sum(surgery_times)
 theater_times = [sum(theater.availability[d] for theater in theaters) for d in range(nDays)]
 times = sorted([patient.surgery_duration for patient in patients])
 nb_min_unscheduled = nPatients - number_max_of_values_for_sum_le(times, sum_surgery_times)
-
 maxll = [number_max_of_values_for_sum_le(t, surgery_times[d]) for d in range(nDays)
          if (t := sorted(p.surgery_duration for p in patients if p.surgery_release_day <= d <= p.surgery_due_day and
                          surgeons[SURGEONS.index(p.surgeon_id)].max_surgery_time[d] >= p.surgery_duration),)]
+
+P, D, R = range(nPatients), range(nDays), range(nRooms)
 
 # pd[i] is the patient admission day of the ith patient
 pd = VarArray(size=nPatients, dom=range(nDays + 1))  # +1 for DUMMY_DAY
@@ -78,19 +76,19 @@ nrs = VarArray(size=[nDays, 3, nRooms], dom=lambda d, s, r: shift_nurses[d][s]) 
 gender = VarArray(size=[nDays + max_stay, nRooms + 1], dom=lambda i, j: {A, B} if i < nDays and j < nRooms else {-1})
 
 satisfy(
-    [nrs[d][s][r] == shift_nurses[d][s][0] for d in range(nDays) for s in range(3) for r in range(nRooms)],
+    [nrs[d][s][r] == shift_nurses[d][s][0] for d in D for s in range(3) for r in R],
 
     # respecting possible admission days of optional patients
-    [pd[i] >= patient.surgery_release_day for i, patient in enumerate(patients) if not patient.mandatory],
+    [pd[i] >= patients[i].surgery_release_day for i in P if not patients[i].mandatory],
 
     # respecting possible admission days of mandatory patients
-    [pd[i] in range(patient.surgery_release_day, patient.surgery_due_day + 1) for i, patient in enumerate(patients) if patient.mandatory],
+    [pd[i] in range(patients[i].surgery_release_day, patients[i].surgery_due_day + 1) for i in P if patients[i].mandatory],
 
     # assigning patients to compatible rooms
-    [pr[i] not in T for i, patient in enumerate(patients) if (T := [int(s[1:]) for s in patient.incompatible_room_ids],)],
+    [pr[i].not_among(T) for i in P if (T := [int(s[1:]) for s in patients[i].incompatible_room_ids])],
 
     # computing ptd
-    [ptd[i] == pd[i] * (nTheaters + 1) + pt[i] for i in range(nPatients)],
+    [ptd[i] == pd[i] * (nTheaters + 1) + pt[i] for i in P],
 
     # taking gender of occupants into account
     [gender[d][r] == g for occupant in occupants for d in range(occupant.length_of_stay)
@@ -100,56 +98,79 @@ satisfy(
     [
         If(
             pd[i] + k < DUMMY_DAY,
-            Then=gender[pd[i] + k, pr[i]] == GENDERS.index(patient.gender)
-        ) for i, patient in enumerate(patients) for k in range(patient.length_of_stay)
+            Then=gender[pd[i] + k, pr[i]] == GENDERS.index(patients[i].gender)
+        ) for i in P for k in range(patients[i].length_of_stay)
     ],
 
     # not exceeding daily working time of surgeons
-    [
-        Sum(patient.surgery_duration * (pd[i] == d) for i, patient in enumerate(patients) if patient.surgeon_id == surgeon.id) <= surgeon.max_surgery_time[d]
-        for surgeon in surgeons for d in range(nDays)
-    ] if not bp1 else
-    [
-        BinPacking(
-            [pd[i] for i in SP],
-            sizes=[patients[i].surgery_duration for i in SP],
-            limits=surgeon.max_surgery_time + [MAX]
-        ) for surgeon in surgeons if (SP := [i for i, patient in enumerate(patients) if patient.surgeon_id == surgeon.id],)
-    ],
+    If(
+        not bp1,
+        Then=[
+            Sum(patients[i].surgery_duration * (pd[i] == d) for i in P if patients[i].surgeon_id == surgeon.id) <= surgeon.max_surgery_time[d]
+            for surgeon in surgeons for d in D
+        ],
+        Else=[
+            BinPacking(
+                partition=[pd[i] for i in SP],
+                sizes=[patients[i].surgery_duration for i in SP],
+                limits=surgeon.max_surgery_time + [MAX]
+            ) for surgeon in surgeons if (SP := [i for i in P if patients[i].surgeon_id == surgeon.id],)
+        ]),
 
     # not exceeding daily occupation time of theaters
-    [
-        Sum(patient.surgery_duration * both(pd[i] == d, pt[i] == k) for i, patient in enumerate(patients)) <= theater.availability[d]
-        for k, theater in enumerate(theaters) for d in range(nDays)
-    ] if not bp2 else
-    BinPacking(ptd,
-               sizes=[patient.surgery_duration for patient in patients],
-               limits=[0 if k == nTheaters else theaters[k].availability[d] for d in range(nDays) for k in range(nTheaters + 1)] + [0] * nTheaters + [MAX]),
+    If(
+        not bp2,
+        Then=[
+            Sum(patients[i].surgery_duration * both(pd[i] == d, pt[i] == k) for i in P) <= theaters[k].availability[d]
+            for k, theater in enumerate(theaters) for d in D
+        ],
+        Else=BinPacking(
+            partition=ptd,
+            sizes=[patients[i].surgery_duration for i in P],
+            limits=[0 if k == nTheaters else theaters[k].availability[d] for d in D for k in range(nTheaters + 1)] + [0] * nTheaters + [MAX])
+    ),
 
     # handling postponed patients
-    [(pd[i], pr[i], pt[i]) in {(DUMMY_DAY, DUMMY_ROOM, DUMMY_THEATER), (ne(DUMMY_DAY), ne(DUMMY_ROOM), ne(DUMMY_THEATER))} for i in range(nPatients)],
+    [(pd[i], pr[i], pt[i]) in {(DUMMY_DAY, DUMMY_ROOM, DUMMY_THEATER), (ne(DUMMY_DAY), ne(DUMMY_ROOM), ne(DUMMY_THEATER))} for i in P],
 
     # computing effective stay lengths
-    [pl[i] == min(patient.length_of_stay, DUMMY_DAY - pd[i]) for i, patient in enumerate(patients)],
+    [pl[i] == min(patients[i].length_of_stay, DUMMY_DAY - pd[i]) for i in P],
 
     # respecting room capacities
     [
         Cumulative(
-            tasks=[Task(origin=pd[i], length=(pr[i] == r) * pl[i], height=1) for i in range(nPatients)]
-                  + [Task(origin=0, length=occupant.length_of_stay, height=1) for i, occupant in enumerate(occupants) if occupant.room_id == room.id]
-        ) <= room.capacity for r, room in enumerate(rooms)
+            [
+                Task(
+                    origin=pd[i],
+                    length=(pr[i] == r) * pl[i],
+                    height=1
+                ) for i in P
+            ]
+            +
+            [
+                Task(
+                    origin=0,
+                    length=occupant.length_of_stay,
+                    height=1
+                ) for i, occupant in enumerate(occupants) if occupant.room_id == rooms[r].id
+            ]
+        ) <= rooms[r].capacity for r in R
     ],
 
     # tag(redundant)
     [
-        BinPacking(pd, sizes=1, limits=maxll + [MAX]),
+        BinPacking(
+            partition=pd,
+            sizes=1,
+            limits=maxll + [MAX]
+        ),
 
-        Sum(pd[i] == DUMMY_DAY for i in range(nPatients)) >= nb_min_unscheduled
+        Sum(pd[i] == DUMMY_DAY for i in P) >= nb_min_unscheduled
     ]
 )
 
 minimize(
-    weights.unscheduled_optional * Sum(pd[i] == DUMMY_DAY for i, patient in enumerate(patients) if not patient.mandatory)  # S8
+    weights.unscheduled_optional * Sum(pd[i] == DUMMY_DAY for i in P if not patients[i].mandatory)  # S8
 
     # Sum(
     #     # weights.open_operating_theater * NValues(ptd),  # , excepting=DUMMY_DAY * DUMMY_THEATER),  # S5
@@ -177,3 +198,11 @@ TODO : somme des surgery times et compter le nb min de dummy days (et temps des 
 # for p1, p2 in combinations(patients, 2):
 #     if all(getattr(p1, name) == getattr(p2, name) for name in p1._fields if name != "id"):
 #         print(p1, p2)
+
+
+# [
+#     Table(
+#         scope=pr[i],
+#         conflicts=[int(s[1:]) for s in patients[i].incompatible_room_ids]
+#     ) for i, patient in enumerate(patients)
+# ],

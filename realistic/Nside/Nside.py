@@ -27,9 +27,11 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-nDays, costs, centerWorkers, worksheets, blocks, arcs = data  # costs if for perturbation costs
-work_center, mandatory, importance, est, lst, durations, roads, workers = zip(*worksheets)
+assert not variant() or variant("test")
 
+nDays, costs, centerWorkers, worksheets, blocks, arcs = data or load_json_data("easy-0200-50.json")  # costs if for perturbation costs
+
+work_center, mandatory, importance, est, lst, durations, roads, workers = zip(*worksheets)
 nRoads, nCenters, nWorksheets = len(costs) - 1, len(centerWorkers), len(mandatory)
 centerWorksheets = [[i for i in range(nWorksheets) if work_center[i] == c] for c in range(nCenters)]
 
@@ -74,7 +76,11 @@ satisfy(
     # not exceeding the capacity of work centers
     [
         Cumulative(
-            tasks=[Task(origin=d[i] + a, length=g[i], height=workers[i][a]) for i in centerWorksheets[c] for a in range(durations[i])]
+            Task(
+                origin=d[i] + a,
+                length=g[i],
+                height=workers[i][a]
+            ) for i in centerWorksheets[c] for a in range(durations[i])
         ) <= centerWorkers[c] for c in range(nCenters) if len(centerWorksheets[c]) > 0
     ]
 )

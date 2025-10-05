@@ -1,7 +1,10 @@
 """
 The model, below, is rebuilt from instances submitted to the 2013/2021 Minizinc challenges.
 These instances are initially automatically generated from a problem description in Java.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original DZN files, no licence was explicitly mentioned (MIT Licence assumed).
+
+The model, below, is an attempt to rebuild the original model from DZN files.
+Unfortunately, we didn't find any information about the origin of this problem/model.
 
 ## Data Example
   trip6-3.json
@@ -65,12 +68,20 @@ satisfy(
 
     [var(name1) >= var(name2) for name1, name2 in cnot],
 
-    [If(var(name1) == v1, Then=var(name2) > v2) for name1, v1, name2, v2 in cimp],
+    [
+        If(
+            var(name1) == v1,
+            Then=var(name2) > v2
+        ) for name1, v1, name2, v2 in cimp
+    ],
 
     [var(name) == var(name1) + var(name2) for name, _, (name1, name2) in binop],
 
     [x[var(index)] == v for index, value, t in celt
-     if (x := cp_array(e if isinstance(e, int) else var(e) for e in t), v := (value if isinstance(value, int) else var(value)))],
+     if (
+         x := cp_array(e if isinstance(e, int) else var(e) for e in t),
+         v := (value if isinstance(value, int) else var(value))
+     )],
 
     z == var(objec[0][2][0]) + var(objec[0][2][1])
 )
