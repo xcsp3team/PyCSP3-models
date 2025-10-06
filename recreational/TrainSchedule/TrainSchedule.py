@@ -25,6 +25,7 @@ of its fleet at Brussels central. The problem to be solved is the following:
 from pycsp3 import *
 
 trains = data or default_data("Brussels.json")
+
 departures, gaps, costs = zip(*trains)
 nTrains, horizon = len(trains), max(departures) + max(gaps) * 4 + 1  # arbitrary horizon
 

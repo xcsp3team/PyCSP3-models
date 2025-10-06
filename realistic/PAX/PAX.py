@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   pp-20-1c.json
@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python PAX.py -data=<datafile.dzn> -parser=PAX_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
   realistic, mzn19
@@ -21,7 +21,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-objType, forwardTW, backwardTW, stationLines, maxPAX, services, trips = data
+objType, forwardTW, backwardTW, stationLines, maxPAX, services, trips = data or load_json_data("pp-20-1c.json")
+
 serviceLines, schedules = zip(*services)
 nStations, nServices, nPassengers = len(stationLines), len(services), len(trips)
 
@@ -71,5 +72,5 @@ minimize(
 
 """ Comments
 1) Hybrid tables possible for the cost computation
-2) In data, we replaced 1..3 by {1,2,3} for simplifying parsing
+2) In data (dzn files), we replaced 1..3 by {1,2,3} for simplifying parsing
 """

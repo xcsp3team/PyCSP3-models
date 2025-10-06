@@ -14,7 +14,7 @@ See also the model in Minizinc
   python PrizeCollecting.py -data=<datafile.dzn> -variant=table
 
 ## Links
-  - https://www.minizinc.org/challenge2016/results2016.html
+  - https://www.minizinc.org/challenge/2016/results/
 
 ## Tags
   realistic
@@ -22,7 +22,11 @@ See also the model in Minizinc
 
 from pycsp3 import *
 
-n, prizes = data.n, data.prizes
+assert not variant() or variant("table")
+
+n, prizes = data or load_json_data("25-5-5-9.json")
+
+N = range(n)
 
 # s[i] is the node that succeeds to the ith node in the tour (value i if unused)
 s = VarArray(size=n, dom=range(n))
@@ -38,13 +42,13 @@ satisfy(
     p[0] == 0,
 
     # managing unused nodes
-    [(p[i] != -1) == (s[i] != i) for i in range(n)],
+    [(p[i] != -1) == (s[i] != i) for i in N],
 
     # each node appears at most once during the tour
-    [Count(s, value=i) <= 1 for i in range(n)],
+    [Count(within=s, value=i) <= 1 for i in N],
 
     # computing gains
-    [prizes[i][s[i]] == g[i] for i in range(n)]
+    [prizes[i][s[i]] == g[i] for i in N]
 )
 
 if not variant():
@@ -53,7 +57,7 @@ if not variant():
         If(
             s[i] != i, s[i] != 0,
             Then=p[s[i]] == p[i] + 1
-        ) for i in range(n)
+        ) for i in N
     )
 
 elif variant("table"):
@@ -62,13 +66,16 @@ elif variant("table"):
                (0,) + (ANY,) * n}  # 0 means "last node", so this is not constraining (we use ANY)
         for j in range(1, n):
             if j != i:
-                tbl |= {(j,) + tuple(v if k == j else v - 1 if k == i else ANY for k in range(n)) for v in range(1, n)}
+                tbl |= {(j,) + tuple(v if k == j else v - 1 if k == i else ANY for k in N) for v in N[1:]}
         return tbl
 
 
     satisfy(
         # linking variables from s and p
-        (s[i], *p) in table(i) for i in range(n)
+        Table(
+            scope=(s[i], p),
+            supports=table(i)
+        ) for i in N
     )
 
 maximize(

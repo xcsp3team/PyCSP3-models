@@ -20,7 +20,8 @@ See similar model (called ttp) proposed by Kathryn Francis for the 2012 Minizinc
 
 from pycsp3 import *
 
-distances, prices = data
+distances, prices = data or load_json_data("7-5-30-1.json")
+
 nCities, nProducts = len(distances), len(prices)
 
 # s[i] is the city succeeding to the ith city (itself if not part of the route)

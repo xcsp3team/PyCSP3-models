@@ -24,7 +24,8 @@ This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem
 
 from pycsp3 import *
 
-nOrders, changeCosts, stockingCosts, demands = data
+nOrders, changeCosts, stockingCosts, demands = data or load_json_data("001.json")
+
 nItems, horizon = len(demands), len(demands[0])
 
 required = [[sum(demands[i][:t + 1]) for t in range(horizon)] for i in range(nItems)]
@@ -40,22 +41,32 @@ z = VarArray(size=horizon - 1, dom=changeCosts)
 
 satisfy(
     # channeling variables
-    [p[i][t] == (x[t] == i) for i in range(nItems) for t in range(horizon)],
+    [
+        p[i][t] == (x[t] == i)
+        for i in range(nItems) for t in range(horizon)
+    ],
 
     # ensuring that deadlines of demands are respected
-    [Sum(p[i][:t + 1]) >= required[i][t] for i in range(nItems) for t in range(horizon) if t == 0 or required[i][t - 1] != required[i][t]],
+    [
+        Sum(p[i][:t + 1]) >= required[i][t]
+        for i in range(nItems) for t in range(horizon) if t == 0 or required[i][t - 1] != required[i][t]
+    ],
 
     # computing changeover costs
-    [z[t] == changeCosts[x[t], x[t + 1]] for t in range(horizon - 1)],
+    [
+        z[t] == changeCosts[x[t], x[t + 1]]
+        for t in range(horizon - 1)
+    ],
 
     # tag(redundant)
-    [Count(x, value=i) >= required[i][-1] for i in range(nItems)]
+    [
+        Count(within=x, value=i) >= required[i][-1]
+        for i in range(nItems)
+    ]
 )
 
 minimize(
-    Sum(
-        stockingCosts[i] * (Sum(p[i][:t + 1]) - required[i][t]) for i in range(nItems) for t in range(horizon)
-    )
+    Sum(stockingCosts[i] * (Sum(p[i][:t + 1]) - required[i][t]) for i in range(nItems) for t in range(horizon))
     + Sum(z)
 )
 

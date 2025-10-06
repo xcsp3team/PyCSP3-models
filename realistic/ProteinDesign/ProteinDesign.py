@@ -1,7 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2013/2018 Minizinc challenges.
-The MZN model was proposed by Simon de Givry.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Simon de Givry - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   execute 'python ProteinDesign.py -data=<datafile.dzn> -parser=ProteinDesign_ParserZ.py -export' to get a JSON file
@@ -14,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python ProteinDesign.py -data=<datafile.dzn> -parser=ProteinDesign_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge/2018/results/
 
 ## Tags
   realistic, mzn13, mzn18, mzn25
@@ -23,6 +22,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 
 n, d, maxCosts1, maxCosts2, c1s, c2s = data
+
 e1, e2 = len(c1s), len(c2s)
 
 # x[i] is the value for the ith variable
@@ -36,10 +36,16 @@ c2 = VarArray(size=e2, dom=range(maxCosts2 + 1))
 
 satisfy(
     # unary cost functions
-    [(c1[k], x[i]) in [t[i * 2:i * 2 + 2] for i in range(len(t) // 2)] for k, (i, t) in enumerate(c1s)],
+    [
+        (c1[k], x[i]) in [t[i * 2:i * 2 + 2] for i in range(len(t) // 2)]
+        for k, (i, t) in enumerate(c1s)
+    ],
 
     # binary cost functions
-    [(c2[k], x[i], x[j]) in [t[i * 3:i * 3 + 3] for i in range(len(t) // 3)] for k, (i, j, t) in enumerate(c2s)]
+    [
+        (c2[k], x[i], x[j]) in [t[i * 3:i * 3 + 3] for i in range(len(t) // 3)]
+        for k, (i, j, t) in enumerate(c2s)
+    ]
 )
 
 minimize(

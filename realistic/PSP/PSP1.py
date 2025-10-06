@@ -24,7 +24,8 @@ This is a particular case of the Discrete Lot Sizing Problem (DLSP); see Problem
 
 from pycsp3 import *
 
-nOrders, changeCosts, stockingCosts, demands = data
+nOrders, changeCosts, stockingCosts, demands = data or load_json_data("001.json")
+
 nItems, horizon = len(demands), len(demands[0])
 
 # x[t][i] is 1 when item i is produced at time t
@@ -44,16 +45,28 @@ satisfy(
     s[0] == 0,
 
     # when an item is produced, it is either delivered or stocked for later delivery
-    [x[t][i] + s[t][i] == demands[i][t] + s[t + 1][i] for t in range(horizon) for i in range(nItems)],
+    [
+        x[t][i] + s[t][i] == demands[i][t] + s[t + 1][i]
+        for t in range(horizon) for i in range(nItems)
+    ],
 
     # consistency between production and machine setup
-    [x[t][i] <= y[t][i] for t in range(horizon) for i in range(nItems)],
+    [
+        x[t][i] <= y[t][i]
+        for t in range(horizon) for i in range(nItems)
+    ],
 
     # only 1 unit of one item is produced at each time
-    [Sum(y[t]) == 1 for t in range(horizon)],
+    [
+        Sum(y[t]) == 1
+        for t in range(horizon)
+    ],
 
     # consistency between machine setup and changeover
-    [c[t][i][j] >= y[t - 1][i] + y[t][j] - 1 for t in range(1, horizon) for i in range(nItems) for j in range(nItems) if i != j]
+    [
+        c[t][i][j] >= y[t - 1][i] + y[t][j] - 1
+        for t in range(1, horizon) for i in range(nItems) for j in range(nItems) if i != j
+    ]
 )
 
 minimize(

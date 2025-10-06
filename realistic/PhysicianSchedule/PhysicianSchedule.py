@@ -17,7 +17,7 @@ The licence seems to be like a MIT Licence.
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-030-78230-6_29
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   realistic, mzn21
@@ -25,7 +25,8 @@ The licence seems to be like a MIT Licence.
 
 from pycsp3 import *
 
-nDepartments, stations, shifts, weights, nSkills, demands, subsums, persons = data
+nDepartments, stations, shifts, weights, nSkills, demands, subsums, persons = data or load_json_data("03-0-34.json")
+
 departments, commons = cp_array(zip(*stations))
 shiftLengths, forbiddenSequences = cp_array(zip(*shifts))
 subDemand = cp_array(sub.demands for sub in subsums)
@@ -81,18 +82,27 @@ satisfy(
 
     # ensuring at most 6 consecutive days without a day off
     [
-        [Exist(sh[i][:max(0, 7 - persons[i].histDays)], value=OFF) for i in range(nPersons) if nDays >= 7],
+        [
+            Exist(
+                within=sh[i][:max(0, 7 - persons[i].histDays)],
+                value=OFF
+            ) for i in range(nPersons) if nDays >= 7
+        ],
 
-        [Exist(sh[i][j:j + 7], value=OFF) for i in range(nPersons) for j in range(1, nDays - 6 + 1)]
+        [
+            Exist(
+                within=sh[i][j:j + 7],
+                value=OFF
+            ) for i in range(nPersons) for j in range(1, nDays - 6 + 1)
+        ]
     ],
 
     # here, two groups of the original model not posted because indexNight is empty in the 5 available instances
 
     # respecting a maximal number of hours per week
     [
-        Sum(
-            shiftLengths[sh[i][7 * j + k]] for k in range(7)
-        ) <= persons[i].maxHoursPerWeek for i in range(nPersons) for j in range(nWeeks)
+        Sum(shiftLengths[sh[i][7 * j: 7 * j + 7]]) <= persons[i].maxHoursPerWeek
+        for i in range(nPersons) for j in range(nWeeks)
     ],
 
     # shifts 1 and 2: individual assignments on common stations
@@ -180,23 +190,18 @@ satisfy(
 
     # working at most in two different departments
     [
-        NValues(
-            [departments[persons[i].histStation]] + [departments[st[i][j]] for j in range(nDays)]
-        ) <= 2 for i in range(nPersons)
+        NValues(within=[departments[persons[i].histStation]] + [departments[st[i][j]] for j in range(nDays)]) <= 2
+        for i in range(nPersons)
     ],
 
     # computing the number of working persons
     z1 == Sum(w),
 
     # computing the sum of preferences
-    z2 == Sum(
-        persons[i].preferences[st[i][j]][sk[i][j]] for i in range(nPersons) for j in range(nDays)
-    ),
+    z2 == Sum(persons[i].preferences[st[i][j]][sk[i][j]] for i in range(nPersons) for j in range(nDays)),
 
     # computing the weighted persons at risk that are working
-    z3 == Sum(
-        departments[last[i][-1]] * w[i] for i in range(nPersons) if persons[i].atRisk
-    ),
+    z3 == Sum(departments[last[i][-1]] * w[i] for i in range(nPersons) if persons[i].atRisk),
 
     # computing the number of changes
     z4 == Count(
@@ -209,9 +214,9 @@ satisfy(
     # ensuring that shifts, stations and skills are covered
     [
         (
-            Cardinality(sh[:, j], occurrences=Osh[j]),
-            Cardinality(st[:, j], occurrences=Ost[j]),
-            Cardinality(sk[:, j], occurrences=Osk[j])
+            Cardinality(within=sh[:, j], occurrences=Osh[j]),
+            Cardinality(within=st[:, j], occurrences=Ost[j]),
+            Cardinality(within=sk[:, j], occurrences=Osk[j])
         ) for j in range(nDays)
     ]
 )

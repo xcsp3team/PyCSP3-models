@@ -21,7 +21,10 @@ what is the shortest possible route that visits each city exactly once and retur
 
 from pycsp3 import *
 
-distances = data
+assert not variant() or variant("table")
+
+distances = data or load_json_data("10-20-0.json")
+
 nCities = len(distances)
 
 # c[i] is the ith city of the tour

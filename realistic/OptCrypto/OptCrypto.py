@@ -12,7 +12,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence is 
   python OptCrypto.py -data=number
 
 ## Links
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   realistic, mzn17, mzn18, mzn21
@@ -61,7 +61,10 @@ z = Var(dom=range(1, nBits + 1))
 
 satisfy(
     # applying permutations
-    [xp[i][P[j]] == x[i][j] for i in range(nRounds) for j in range(nBits)],
+    [
+        xp[i][P[j]] == x[i][j]
+        for i in range(nRounds) for j in range(nBits)
+    ],
 
     # SB
     [

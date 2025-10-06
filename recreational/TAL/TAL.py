@@ -14,7 +14,8 @@
 from pycsp3 import *
 import math
 
-maxArity, maxHeight, sentence, grammar, tokens, costs = data
+maxArity, maxHeight, sentence, grammar, tokens, costs = data or load_json_data("frobserved-7-15-11-13-9-1-11-7-4_1.json")
+
 grammar = [{} if row is None else {tuple(ANY if v == 2147483646 else v for v in t) for t in row} for row in grammar]  # to be used as supports
 nWords, nLevels, nTokens = len(sentence), len(sentence) * 2, len(tokens)
 lengths = [nWords] + [nWords - math.floor((i + 1) / 2) + 1 for i in range(1, nLevels)]

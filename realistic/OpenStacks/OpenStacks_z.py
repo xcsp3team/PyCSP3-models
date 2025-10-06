@@ -1,7 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2009/2011/2015 Minizinc challenges.
-The MZN model was proposed by Peter J. Stuckey.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The original MZN model was proposed by Peter J. Stuckey - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   pb-20-20-1.json
@@ -14,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python OpenStacks.py -data=<datafile.dzn> -parser=OpenStacks_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2015/results2015.html
+  - https://www.minizinc.org/challenge/2015/results/
 
 ## Tags
   realistic, mzn09, mzn11, mzn15
@@ -22,10 +21,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-orders = data
-nCustomers, nProducts = len(orders), len(orders[0])
+orders = data or load_json_data("pb-20-20-1.json")
 
-quantities = [sum(orders[i]) for i in range(nCustomers)]  # total quantities per customer
+quantities = [sum(order) for order in orders]  # total quantities per customer
+nCustomers, nProducts = len(orders), len(orders[0])
 
 # x[i] is the schedule of the ith product
 x = VarArray(size=nProducts, dom=range(nProducts))
@@ -38,10 +37,16 @@ satisfy(
     AllDifferent(x),
 
     # no product built at time 0
-    [y[i][0] == 0 for i in range(nCustomers)],
+    [
+        y[i][0] == 0
+        for i in range(nCustomers)
+    ],
 
     # computing the quantity of products built at any time
-    [y[i][t] == y[i][t - 1] + orders[i][x[t - 1]] for t in range(1, nProducts + 1) for i in range(nCustomers)]
+    [
+        y[i][t] == y[i][t - 1] + orders[i][x[t - 1]]
+        for t in range(1, nProducts + 1) for i in range(nCustomers)
+    ]
 )
 
 minimize(

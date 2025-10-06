@@ -18,7 +18,7 @@ The original model was written by Danyal Mirza  from Ericsson (MIT Licence).
   python ProductShelves.py -data=<datafile.dzn> -parser=ProductShelves_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2025/results2025.html
+  - https://www.minizinc.org/challenge/2025/results/
 
 ## Tags
   realistic, mzn25
@@ -26,9 +26,9 @@ The original model was written by Danyal Mirza  from Ericsson (MIT Licence).
 
 from pycsp3 import *
 
-nShelves, dimensions, nProductsToBuild = data
-maxLength = max(v for dim in dimensions.products for v in dim)
+nShelves, dimensions, nProductsToBuild = data or load_json_data("toy.json")
 
+maxLength = max(v for dim in dimensions.products for v in dim)
 productOf = flatten([i] * v for i, v in enumerate(nProductsToBuild))  # product per item
 nProducts, nItems, nDimensions = len(dimensions.products), len(productOf), 3  # Length, Width, Height
 
@@ -63,7 +63,10 @@ satisfy(
     ],
 
     # ensuring items are placed within the dimensions of the shelves
-    [ipos[i][s][d] + ilen[i][s][d] <= dimensions.shelves[d] for s in range(nShelves) for i in range(nItems) for d in range(nDimensions)],
+    [
+        ipos[i][s][d] + ilen[i][s][d] <= dimensions.shelves[d]
+        for s in range(nShelves) for i in range(nItems) for d in range(nDimensions)
+    ],
 
     # tag(symmetry-breaking)
     [

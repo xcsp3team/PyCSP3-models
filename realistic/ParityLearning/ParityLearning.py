@@ -31,7 +31,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-maxErrors, sampleOutputs, sampleInputs = data
+maxErrors, sampleOutputs, sampleInputs = data or load_json_data("44-22-5-2.json")
+
 m, n = len(sampleOutputs), len(sampleInputs[0])  # m is the number of samples, n is the number of variables
 
 assert 0 <= maxErrors <= m and n > 0 and m > 0
@@ -48,15 +49,12 @@ z = Var(dom=range(maxErrors + 1))
 satisfy(
     # computing the parity of samples
     [
-        y[j] == xor(
-            x[i] for i in range(n) if sampleInputs[j][i]
-        ) for j in range(m)
+        y[j] == xor(x[i] for i in range(n) if sampleInputs[j][i])
+        for j in range(m)
     ],
 
     # computing the number of errors
-    z == Sum(
-        sampleOutputs[j] != y[j] for j in range(m)
-    )
+    z == Sum(sampleOutputs[j] != y[j] for j in range(m))
 )
 
 minimize(

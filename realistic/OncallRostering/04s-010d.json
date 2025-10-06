@@ -7,6 +7,8 @@
     {"workload": 100, "unavailableDays": [1], "fixedDays": []}
   ],
   "offset": 2,
-  "adjacency": 1,
-  "wednesday": 1
+  "costs": {
+    "adjacency": 1,
+    "wednesday": 1
+  }
 }

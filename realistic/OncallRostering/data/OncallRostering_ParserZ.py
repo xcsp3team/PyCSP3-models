@@ -15,5 +15,6 @@ assert len(workLoads) == len(unavailable) == len(fixed)
 data['workers'] = [OrderedDict([("workload", workLoads[i]), ("unavailableDays", unavailable[i]), ("fixedDays", fixed[i])]) for i in range(len(workLoads))]
 next_line()
 data['offset'] = number_in(next_line())
-data['adjacency'] = number_in(next_line())
-data['wednesday'] = number_in(next_line())
+data['costs'] = OrderedDict([("adjacency", number_in(next_line())), ("wednesday", number_in(next_line()))])
+# data['adjacency'] = number_in(next_line())
+# data['wednesday'] = number_in(next_line())

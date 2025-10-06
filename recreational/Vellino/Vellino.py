@@ -32,13 +32,14 @@ The compatibility constraints are:
 
 from pycsp3 import *
 
+capacities, demands = data or load_json_data("05.json")
+
+capacities.insert(0, 0)  # unusable bins have capacity 0
+maxCapacity, nBins = max(capacities), sum(demands)
+
 Unusable, Red, Blue, Green = BIN_COLORS = 0, 1, 2, 3  # 0 is a special color 'Unusable' for any empty bin
 Glass, Plastic, Steel, Wood, Copper = MATERIALS = 0, 1, 2, 3, 4
 nColors, nMaterials = len(BIN_COLORS), len(MATERIALS)
-
-capacities, demands = data
-capacities.insert(0, 0)  # unusable bins have capacity 0
-maxCapacity, nBins = max(capacities), sum(demands)
 
 # c[i] is the color of the ith bin
 c = VarArray(size=nBins, dom=range(nColors))

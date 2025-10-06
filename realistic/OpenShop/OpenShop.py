@@ -7,7 +7,7 @@ Tasks cannot be interrupted.
 The goal is to schedule each job to minimise the finishing time (makespan).
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014 Minizinc challenge.
-The MZN model was proposed by Diarmuid Grimes (adapted from Ralph Becket model).
+The original MZN model was proposed by Diarmuid Grimes (adapted from Ralph Becket model).
 Instances were taken from benchmarks proposed by Taillard, Gueret and Prin, and Brucker et al.; see links below.
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
@@ -26,7 +26,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.sciencedirect.com/science/article/abs/pii/037722179390182M
   - https://link.springer.com/article/10.1023/A:1018930613891
   - https://www.sciencedirect.com/science/article/pii/S0166218X96001163
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   realistic, mzn14
@@ -34,11 +34,14 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-nMachines, durations = data
+nMachines, durations = data or load_json_data("gp10-4.json")
+
 nJobs = len(durations)
 Time = range(sum(sum(row) for row in durations) + 1)
 
-# x[i][j] is the starting time of the ith job on the jth machine (task)
+J, M = range(nJobs), range(nMachines)
+
+# x[j][m] is the starting time of job j on machine (task) m
 x = VarArray(size=[nJobs, nMachines], dom=Time)
 
 # z is the make-span
@@ -48,35 +51,46 @@ satisfy(
     # tasks on the same job cannot overlap
     [
         NoOverlap(
-            origins=(x[i][j1], x[i][j2]),
-            lengths=(durations[i][j1], durations[i][j2])
-        ) for i in range(nJobs) for j1, j2 in combinations(nMachines, 2)
+            origins=(x[j][m1], x[j][m2]),
+            lengths=(durations[j][m1], durations[j][m2])
+        ) for j in J for m1, m2 in combinations(M, 2)
     ],
 
     # tasks on the same machine cannot overlap
     [
         NoOverlap(
-            origins=(x[i1][k], x[i2][k]),
-            lengths=(durations[i1][k], durations[i2][k])
-        ) for i1, i2 in combinations(nJobs, 2) for k in range(nMachines)
+            origins=(x[j1][m], x[j2][m]),
+            lengths=(durations[j1][m], durations[j2][m])
+        ) for j1, j2 in combinations(J, 2) for m in M
     ],
 
     # tasks on the same job cannot overlap
     [
         Cumulative(
-            tasks=[Task(origin=x[i][j], length=durations[i][j], height=1) for j in range(nMachines)]
-        ) <= 1 for i in range(nJobs)
+            Task(
+                origin=x[j][m],
+                length=durations[j][m],
+                height=1
+            ) for m in M
+        ) <= 1 for j in J
     ],
 
     # tasks on the same machine cannot overlap
     [
         Cumulative(
-            tasks=[Task(origin=x[i][j], length=durations[i][j], height=1) for i in range(nJobs)]
-        ) <= 1 for j in range(nMachines)
+            Task(
+                origin=x[j][m],
+                length=durations[j][m],
+                height=1
+            ) for j in J
+        ) <= 1 for m in M
     ],
 
     # the finishing time must be no earlier than the finishing time of any task
-    [x[i][j] + durations[i][j] <= z for i in range(nJobs) for j in range(nMachines)]
+    [
+        x[j][m] + durations[j][m] <= z
+        for j in J for m in M
+    ]
 )
 
 minimize(

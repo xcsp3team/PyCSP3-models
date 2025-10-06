@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python PillarsPlanks.py -data=<datafile.dzn> -parser=PillarsPlanks_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, mzn20
@@ -21,8 +21,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-plankWidths, pillarHeights, pillarWidths, width, height = data
+plankWidths, pillarHeights, pillarWidths, width, height = data or load_json_data("p-d02.json")
+
 nPlanks, nPillars = len(plankWidths), len(pillarHeights)
+Pk, Pr = range(nPlanks), range(nPillars)
 
 plankWidthsx = cp_array(plankWidths + [width])
 
@@ -56,9 +58,9 @@ xkx, ykx = cp_array(xk + [xka]), cp_array(yk + [yka])
 satisfy(
     # ensuring that the structure stays within the allocated space
     [
-        [xk[p] + plankWidths[p] <= width for p in range(nPlanks)],
-        [xr[p] + pillarWidths[p] <= width for p in range(nPillars)],
-        [yr[p] + pillarHeights[p] <= height for p in range(nPillars)]
+        [xk[p] + plankWidths[p] <= width for p in Pk],
+        [xr[p] + pillarWidths[p] <= width for p in Pr],
+        [yr[p] + pillarHeights[p] <= height for p in Pr]
     ],
 
     # tag(symmetry-breaking)
@@ -67,13 +69,13 @@ satisfy(
             If(
                 yk[p1] <= yk[p2], yk[p1] == yk[p2],
                 Then=xk[p1] < xk[p2]
-            ) for p1, p2 in combinations(nPlanks, 2) if plankWidths[p1] == plankWidths[p2]
+            ) for p1, p2 in combinations(Pk, 2) if plankWidths[p1] == plankWidths[p2]
         ],
         [
             If(
                 yr[p1] <= yr[p2], yr[p1] == yr[p2],
                 Then=xr[p1] < xr[p2]
-            ) for p1, p2 in combinations(nPillars, 2) if pillarWidths[p1] == pillarWidths[p2] and pillarHeights[p1] == pillarHeights[p2]
+            ) for p1, p2 in combinations(Pr, 2) if pillarWidths[p1] == pillarWidths[p2] and pillarHeights[p1] == pillarHeights[p2]
         ],
     ),
 
@@ -91,7 +93,7 @@ satisfy(
             xr[right[p]] <= xk[p] + plankWidths[p] - 1,
             xr[right[p]] + pillarWidths[right[p]] > xk[p] + plankWidths[p] - 1,
             yk[p] == yr[right[p]] + pillarHeights[right[p]]
-        ) for p in range(nPlanks)
+        ) for p in Pk
     ),
 
     # each pillar sits on exactly one plank
@@ -100,13 +102,13 @@ satisfy(
             xr[p] >= xkx[support[p]],
             xr[p] + pillarWidths[p] <= xkx[support[p]] + plankWidthsx[support[p]],
             yr[p] == ykx[support[p]] + 1
-        ) for p in range(nPillars)
+        ) for p in Pr
     )
 )
 
 minimize(
     # minimizing the height of the structure
-    Maximum([yk[p] + 1 for p in range(nPlanks)] + [yr[p] + pillarHeights[p] for p in range(nPillars)])
+    Maximum([yk[p] + 1 for p in Pk] + [yr[p] + pillarHeights[p] for p in Pr])
 )
 
 """ Comments
