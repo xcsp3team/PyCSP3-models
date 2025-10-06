@@ -3,7 +3,7 @@ Diameter Constrained Minimum Spanning Tree.
 Given an undirected graph G=(V,E) and an integer k find a spanning tree of G of minimum cost such that its diameter is not greater than k.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2016/2022 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   s-v20-a50-d4.json
@@ -16,7 +16,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python DC_MST.py -data=<datafile.dzn> -parser=DC_MST_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   realistic, mzn16, mzn22
@@ -24,7 +24,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-diameter, edges, n, weights = data
+diameter, edges, n, weights = data or load_json_data("s-v20-a50-d4.json")
+
 radius, m = diameter // 2, len(weights)
 assert n <= m
 
@@ -46,6 +47,7 @@ satisfy(
 )
 
 if diameter % 2 == 1:
+
     # ra is the node root a
     ra = Var(dom=range(n))
 
@@ -65,8 +67,14 @@ if diameter % 2 == 1:
         # ensuring the edge root is selected
         [
             (
-                If(ra == a, rb == b, Then=x[j] == 1),
-                If(rb == a, ra == b, Then=x[j] == 1)
+                If(
+                    ra == a, rb == b,
+                    Then=x[j] == 1
+                ),
+                If(
+                    rb == a, ra == b,
+                    Then=x[j] == 1
+                )
             ) for j, (a, b) in enumerate(edges)
         ],
 
@@ -88,7 +96,13 @@ if diameter % 2 == 1:
         ],
 
         #  computing heights and parents of nodes
-        [((h[a] == 0) & (h[b] == 0)) | (x[j] == 0) | ((h[a] == h[b] + 1) & (p[a] == b)) | ((h[b] == h[a] + 1) & (p[b] == a)) for j, (a, b) in enumerate(edges)]
+        [
+            disjunction(
+                both(h[a] == 0, h[b] == 0),
+                x[j] == 0,
+                both(h[a] == h[b] + 1, p[a] == b),
+                both(h[b] == h[a] + 1, p[b] == a)
+            ) for j, (a, b) in enumerate(edges)]
     )
 
 else:
@@ -111,7 +125,12 @@ else:
         ],
 
         #  computing heights and parents of nodes
-        [(x[j] == 0) | ((h[a] == h[b] + 1) & (p[a] == b)) | ((h[b] == h[a] + 1) & (p[b] == a)) for j, (a, b) in enumerate(edges)]
+        [
+            disjunction(
+                x[j] == 0,
+                both(h[a] == h[b] + 1, p[a] == b),
+                both(h[b] == h[a] + 1, p[b] == a)
+            ) for j, (a, b) in enumerate(edges)]
     )
 
 pairs = [(a1, b1, a2, b2) for j1, (a1, b1) in enumerate(edges) for j2, (a2, b2) in enumerate(edges) if weights[j1] < weights[j2]]
@@ -137,3 +156,9 @@ minimize(
     # minimizing the weighted tree
     x * weights
 )
+
+"""
+1) It is also possible to write equivalently (but we are not very fond of using '|' and '&'):
+  [((h[a] == 0) & (h[b] == 0)) | (x[j] == 0) | ((h[a] == h[b] + 1) & (p[a] == b)) | ((h[b] == h[a] + 1) & (p[b] == a)) for j, (a, b) in enumerate(edges)]
+  [(x[j] == 0) | ((h[a] == h[b] + 1) & (p[a] == b)) | ((h[b] == h[a] + 1) & (p[b] == a)) for j, (a, b) in enumerate(edges)] 
+"""

@@ -10,8 +10,7 @@ If there is no solution, (1) become soft constraints while (2) remain hard const
 and you have to minimize a weighted sum of the violated soft constraints.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2013/2016 Minizinc challenges.
-The MZN model was proposed by Simon de Givry.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Simon de Givry - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   celar06-sub0.json
@@ -25,7 +24,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://link.springer.com/article/10.1023/A:1009812409930
-  - https://www.minizinc.org/challenge2016/results2016.html
+  - https://www.minizinc.org/challenge/2016/results/
 
 ## Tags
   realistic, mzn13, mzn16
@@ -33,7 +32,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-domainTypes, domains, minFreq, maxFreq, hards, softs, costs = data
+domainTypes, domains, minFreq, maxFreq, hards, softs, costs = data or load_json_data("celar06-sub0.json")
+
 n = len(domains)
 
 # x[i] is the frequency used for the ith antenna

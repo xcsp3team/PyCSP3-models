@@ -32,7 +32,7 @@ between the counters of each pair of flights from the same airline.
 
 from pycsp3 import *
 
-flights, airlines = data
+flights, airlines = data or load_json_data("03.json")
 
 durations, requirements, x = zip(*flights)  # requirements in terms of numbers of counters; x stands for starts
 nFlights, Counters = len(flights), range(sum(requirements))

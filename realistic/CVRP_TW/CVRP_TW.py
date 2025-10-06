@@ -2,7 +2,7 @@
 Capacitated Vehicle Routing problem with Time Windows, Service Times and Pickup and deliveries.
 
 The model, below, is close to (can be seen as the close translation of) the one (called VrpSubmission) submitted to the 2021 Minizinc challenge.
-The MZN model was proposed by Haakon H. Rød (with a Copyright that seems to be like a MIT Licence),
+The original MZN model was proposed by Haakon H. Rød (with a Copyright that seems to be like a MIT Licence),
 based on Andrea Rendl's work from 2015 and the Routing model used by the LNS solver for VRPs in Google's OR Tools.
 
 ## Data
@@ -15,7 +15,7 @@ based on Andrea Rendl's work from 2015 and the Routing model used by the LNS sol
   python CVRP_TW.py -data=<datafile.json>
 
 ## Links
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   realistic, mzn21
@@ -23,12 +23,14 @@ based on Andrea Rendl's work from 2015 and the Routing model used by the LNS sol
 
 from pycsp3 import *
 
-nVehicles, nCustomers, capacities, windows, demands, pds, travelTimes = data
+nVehicles, nCustomers, capacities, windows, demands, pds, travelTimes = data or load_json_data("toy-D-2v-4l-w-reload.json")
+
 pds = [t[1] - 1 for t in pds]
 
 n = 2 * nVehicles + nCustomers
 horizon = max(windows[:, 1]) + max(max(travelTimes[i] for i in range(n))) + 1  # the maximal of time that we got
-r1, r2, r3 = range(nCustomers), range(nCustomers, nCustomers + nVehicles), range(nCustomers + nVehicles, nCustomers + 2 * nVehicles)
+
+R1, R2, R3 = range(nCustomers), range(nCustomers, nCustomers + nVehicles), range(nCustomers + nVehicles, nCustomers + 2 * nVehicles)
 
 # succ[i] is the node that succeeds to the ith node
 succ = VarArray(size=n, dom=range(n))
@@ -56,14 +58,14 @@ slack = VarArray(size=n, dom=range(horizon))
 satisfy(
     # predecessors of start nodes are end nodes and successors of end nodes are start nodes
     (
-        [pred[i] == (n - 1 if i == nCustomers else i + nVehicles - 1) for i in r2],
-        [succ[i] == (nCustomers if i == n - 1 else i - nVehicles + 1) for i in r3]
+        [pred[i] == (n - 1 if i == nCustomers else i + nVehicles - 1) for i in R2],
+        [succ[i] == (nCustomers if i == n - 1 else i - nVehicles + 1) for i in R3]
     ),
 
     # associating each start/end nodes with a vehicle
     (
-        [veh[i] == i - nCustomers for i in r2],
-        [veh[i] == i - nCustomers - nVehicles for i in r3]
+        [veh[i] == i - nCustomers for i in R2],
+        [veh[i] == i - nCustomers - nVehicles for i in R3]
     ),
 
     # linking predecessors and successors
@@ -80,7 +82,7 @@ satisfy(
         (
             veh[pred[i]] == veh[i],
             veh[succ[i]] == veh[i]
-        ) for i in r1
+        ) for i in R1
     ),
 
     # managing pickups and deliveries
@@ -88,7 +90,7 @@ satisfy(
         (
             veh[i] == veh[pds[i]],
             arr[i] >= arr[pds[i]]
-        ) for i in r1 if pds[i] != i
+        ) for i in R1 if pds[i] != i
     ),
 
     # time constraints
@@ -99,21 +101,21 @@ satisfy(
         (
             arr[i] >= windows[i][0],
             arr[i] <= windows[i][1]
-        ) for i in r1
+        ) for i in R1
     ),
 
     # load constraints
     (
-        [load[i] + demands[i] == load[succ[i]] for i in r1],
-        [load[i] == load[succ[i]] for i in r2],
-        [load[i] <= capacities[veh[i]] for i in r1]
+        [load[i] + demands[i] == load[succ[i]] for i in R1],
+        [load[i] == load[succ[i]] for i in R2],
+        [load[i] <= capacities[veh[i]] for i in R1]
     ),
 
-    # z == Sum(arr[r3]) - Sum(arr[r2])
+    # z == Sum(arr[R3]) - Sum(arr[R2])
 )
 
 minimize(
-    Sum(arr[r3]) - Sum(arr[r2])  # z
+    Sum(arr[R3]) - Sum(arr[R2])  # z
 )
 
 """ Comments

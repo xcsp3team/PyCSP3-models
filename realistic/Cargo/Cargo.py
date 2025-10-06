@@ -23,7 +23,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://optimization-online.org/wp-content/uploads/2013/02/3755.pdf
   - https://www.sciencedirect.com/science/article/pii/S2192437620301217
   - https://link.springer.com/chapter/10.1007/978-3-319-07046-9_12
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge/2018/results/
   - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
@@ -32,10 +32,11 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-H, T, stackBefore, limits, coeffs, eta, piles = data
-vessels, r_sd, rd = zip(*piles)  # r_sd is for rounded stacking duration, rd is for (precise) reclaiming duration
+H, T, stackBefore, limits, coeffs, eta, piles = data or load_json_data("22.json")
 
+vessels, r_sd, rd = zip(*piles)  # r_sd is for rounded stacking duration, rd is for (precise) reclaiming duration
 nVessels, nPiles = len(eta), len(piles)
+
 V, P = range(nVessels), range(nPiles)
 
 vrd = [sum(rd[i] for i in P if vessels[i] == j) for j in V]  # reclaiming duration summed for vessels
@@ -90,7 +91,7 @@ satisfy(
     [st[i] >= eta[vessels[i]] - stackBefore * coeffs.time for i in P],
 
     # respecting the continuous reclaim time limit (e.g., 5 hours)
-    [rt[i + 1] <= rt[i] + rd[i] + limits.maxReclaimingGap for i in range(nPiles - 1) if vessels[i] == vessels[i + 1]],
+    [rt[i + 1] <= rt[i] + rd[i] + limits.maxReclaimingGap for i in P[:-1] if vessels[i] == vessels[i + 1]],
 
     # stacking of a stockpile has to complete before reclaiming can start
     [r_st[i] + r_sd[i] <= rt[i] // coeffs.time for i in P],
@@ -99,7 +100,7 @@ satisfy(
     [y[i] + lengths[i] <= H // coeffs.meter for i in P],
 
     # respecting the reclaim order of the stockpiles of a vessel
-    [rt[i] + rd[i] <= rt[i + 1] for i in range(nPiles - 1) if vessels[i] == vessels[i + 1]],
+    [rt[i] + rd[i] <= rt[i + 1] for i in P[:-1] if vessels[i] == vessels[i + 1]],
 
     # computing the sum of vessel delays
     Sum(ft[j] - eta[j] - vrd[j] for j in V) <= limits.sumMaxDelay,
@@ -137,7 +138,7 @@ satisfy(
 )
 
 minimize(
-    Sum(ft[j] - eta[j] - vrd[j] for j in range(4, nVessels - 5))
+    Sum(ft[j] - eta[j] - vrd[j] for j in V[4:-5])
 )
 
 """ Comments

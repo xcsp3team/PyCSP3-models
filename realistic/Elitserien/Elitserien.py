@@ -9,7 +9,7 @@ In a 14-team league, form 2 divisions which hold a SRRT (Single Round-Robin Tour
   - each division must have 3 pairs of complementary schedules
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014/2016/2018/2023 Minizinc challenges.
-The MZN model was proposed by Jeff Larson and Mats Carlsson, and described in the papers mentioned below.
+The original MZN model was proposed by Jeff Larson and Mats Carlsson, and described in the papers mentioned below.
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
@@ -25,7 +25,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S0377221716309584?via%3Dihub
   - https://link.springer.com/chapter/10.1007/978-3-319-07046-9_11
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, mzn14, mzn16, mzn18, mzn23
@@ -34,6 +34,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 from pycsp3 import *
 
 noHome, group1, group2, derbys, complementaryPairs = data or load_json_data("handball01.json")
+
 derbyPeriod = [39 - p if p > 19 else p for (_, p) in derbys]  # p for period
 nDerbys = len(derbys)
 
@@ -41,48 +42,54 @@ nTeams, nPeriods = 14, 20
 DivisionSize = 7
 north_teams, south_teams = range(DivisionSize), range(DivisionSize, 2 * DivisionSize)
 tour1, tour2 = range(7), range(7, 20)
-
 AWAY, BYE, HOME = values = 1, 2, 3
 
-INIT, B_1, A_1, H_1, A_2, H_2, AB_2, HB_2, A_3, H_3, AB_3, HB_3, A_4, H_4, AB_4, HB_4, A_5, H_5, AB_5, HB_5, A_6, H_6, AB_6, \
-    HB_6, AB_7, HB_7, AB_8, HB_8, AB_9, HB_9, AB_20, HB_20 = states = Automaton.states_for(range(1, 33))
+T, P = range(nTeams), range(nPeriods)
 
-t = [[A_1, B_1, H_1],  # INIT, start state
-     [AB_2, 0, HB_2],  # B_1
-     [0, AB_2, H_2],  # A_1
-     [A_2, HB_2, 0],  # H_1
-     [0, AB_3, H_3],  # A_2
-     [A_3, HB_3, 0],  # H_2
-     [0, 0, HB_3],  # AB_2
-     [AB_3, 0, 0],  # HB_2
-     [0, AB_4, H_4],  # A_3
-     [A_4, HB_4, 0],  # H_3
-     [0, 0, HB_4],  # AB_3
-     [AB_4, 0, 0],  # HB_3
-     [0, AB_5, H_5],  # A_4
-     [A_5, HB_5, 0],  # H_4
-     [0, 0, HB_5],  # AB_4
-     [AB_5, 0, 0],  # HB_4
-     [0, AB_6, H_6],  # A_5
-     [A_6, HB_6, 0],  # H_5
-     [0, 0, HB_6],  # AB_5
-     [AB_6, 0, 0],  # HB_5
-     [0, AB_7, 0],  # A_6
-     [0, HB_7, 0],  # H_6
-     [0, 0, HB_7],  # AB_6
-     [AB_7, 0, 0],  # HB_6
-     [0, 0, HB_8],  # AB_7
-     [AB_8, 0, 0],  # HB_7
-     [0, 0, HB_9],  # AB_8, accept state
-     [AB_9, 0, 0],  # HB_8, accept state
-     [AB_20, 0, HB_8],  # AB_9
-     [AB_8, 0, HB_20],  # HB_9
-     [0, 0, HB_20],  # AB_20, accept state
-     [AB_20, 0, 0]  # HB_20, accept state
-     ]
 
-transitions = [(s, v, Automaton.q(0) if isinstance(t[i][j], int) else t[i][j]) for i, s in enumerate(states) for j, v in enumerate(values)]
-A = Automaton(start=INIT, final=[AB_8, HB_8, AB_20, HB_20], transitions=transitions)
+def build_atomaton():
+    INIT, B_1, A_1, H_1, A_2, H_2, AB_2, HB_2, A_3, H_3, AB_3, HB_3, A_4, H_4, AB_4, HB_4, A_5, H_5, AB_5, HB_5, A_6, H_6, AB_6, \
+        HB_6, AB_7, HB_7, AB_8, HB_8, AB_9, HB_9, AB_20, HB_20 = states = Automaton.states_for(range(1, 33))
+
+    t = [[A_1, B_1, H_1],  # INIT, start state
+         [AB_2, 0, HB_2],  # B_1
+         [0, AB_2, H_2],  # A_1
+         [A_2, HB_2, 0],  # H_1
+         [0, AB_3, H_3],  # A_2
+         [A_3, HB_3, 0],  # H_2
+         [0, 0, HB_3],  # AB_2
+         [AB_3, 0, 0],  # HB_2
+         [0, AB_4, H_4],  # A_3
+         [A_4, HB_4, 0],  # H_3
+         [0, 0, HB_4],  # AB_3
+         [AB_4, 0, 0],  # HB_3
+         [0, AB_5, H_5],  # A_4
+         [A_5, HB_5, 0],  # H_4
+         [0, 0, HB_5],  # AB_4
+         [AB_5, 0, 0],  # HB_4
+         [0, AB_6, H_6],  # A_5
+         [A_6, HB_6, 0],  # H_5
+         [0, 0, HB_6],  # AB_5
+         [AB_6, 0, 0],  # HB_5
+         [0, AB_7, 0],  # A_6
+         [0, HB_7, 0],  # H_6
+         [0, 0, HB_7],  # AB_6
+         [AB_7, 0, 0],  # HB_6
+         [0, 0, HB_8],  # AB_7
+         [AB_8, 0, 0],  # HB_7
+         [0, 0, HB_9],  # AB_8, accept state
+         [AB_9, 0, 0],  # HB_8, accept state
+         [AB_20, 0, HB_8],  # AB_9
+         [AB_8, 0, HB_20],  # HB_9
+         [0, 0, HB_20],  # AB_20, accept state
+         [AB_20, 0, 0]  # HB_20, accept state
+         ]
+
+    transitions = [(s, v, Automaton.q(0) if isinstance(t[i][j], int) else t[i][j]) for i, s in enumerate(states) for j, v in enumerate(values)]
+    return Automaton(start=INIT, final=[AB_8, HB_8, AB_20, HB_20], transitions=transitions)
+
+
+A = build_atomaton()
 
 # whr[t][p] is where is playing team t at period p
 whr = VarArray(size=[nTeams, nPeriods], dom={AWAY, BYE, HOME})
@@ -119,8 +126,14 @@ satisfy(
 
         [
             (
-                Exist([row[u] for u in derbySet if u != t], value=opp[row[t]][derbyPeriod]),
-                Exist([opp[row[u]][derbyPeriod] for u in derbySet if u != t], value=row[t])
+                Exist(
+                    within=[row[u] for u in derbySet if u != t],
+                    value=opp[row[t]][derbyPeriod]
+                ),
+                Exist(
+                    within=[opp[row[u]][derbyPeriod] for u in derbySet if u != t],
+                    value=row[t]
+                )
             ) for derbySet, derbyPeriod in derbys if len(derbySet) == 4 for t in derbySet
         ]
     ],
@@ -129,7 +142,7 @@ satisfy(
     [
         (
             brk[row[t]] == brk[row[u]],
-            [whr[row[t]][p] != whr[row[u]][p] for p in range(nPeriods)]
+            [whr[row[t]][p] != whr[row[u]][p] for p in P]
         ) for t, u in complementaryPairs
     ],
 
@@ -140,30 +153,30 @@ satisfy(
     ],
 
     # computing breaks (2)
-    [brk[t] == Sum(p * (whr[t][p - 1] == whr[t][p]) for p in {9, 11, 13, 15, 17, 19}) for t in range(nTeams)],
+    [brk[t] == Sum(p * (whr[t][p - 1] == whr[t][p]) for p in {9, 11, 13, 15, 17, 19}) for t in T],
 
     # constraining where teams can play in sequence (4)
-    [whr[t] in A for t in range(nTeams)],
+    [whr[t] in A for t in T],
 
     # RRT (5)
-    [Channel(opp[:, p]) for p in range(nPeriods)],
+    [Channel(opp[:, p]) for p in P],
 
     # RRT (6)
     [
-        [AllDifferent(opp[t][tour1]) for t in range(nTeams)],
-        [AllDifferent(opp[t][tour2]) for t in range(nTeams)]
+        [AllDifferent(opp[t][tour1]) for t in T],
+        [AllDifferent(opp[t][tour2]) for t in T]
     ],
 
     # ensuring the compatibility of venues how (where) opponents play (7)
-    [whr[opp[t][p]][p] + whr[t][p] == AWAY + HOME for p in range(nPeriods) for t in range(nTeams)],
+    [whr[opp[t][p]][p] + whr[t][p] == AWAY + HOME for p in P for t in T],
 
     # alternative venue requirements (1) (8)
-    [AllDifferent(3 * opp[t][p] + whr[t][p] for p in range(nPeriods)) for t in range(nTeams)],
+    [AllDifferent(3 * opp[t][p] + whr[t][p] for p in P) for t in T],
 
     # tag(redundant)
     [
         # considering the consequence of Bye (3)
-        [(opp[t][p] == t) == (whr[t][p] == BYE) for t in range(nTeams) for p in range(nPeriods)],
+        [(opp[t][p] == t) == (whr[t][p] == BYE) for t in T for p in P],
 
         # exactly six aligned breaks per division (10)
         [
@@ -172,7 +185,10 @@ satisfy(
         ],
 
         # exactly two occurrences of every break period (12)
-        Cardinality(brk, occurrences={v: 2 for v in (0, 9, 11, 13, 15, 17, 19)})
+        Cardinality(
+            within=brk,
+            occurrences={v: 2 for v in (0, 9, 11, 13, 15, 17, 19)}
+        )
     ],
 
     # tag(symmetry-breaking)
@@ -188,7 +204,7 @@ satisfy(
             [
                 csc[t] == both(
                     brk[t] == brk[t + 1],
-                    NotExist(whr[t][p] == whr[t + 1][p] for p in range(nPeriods))
+                    NotExist(whr[t][p] == whr[t + 1][p] for p in P)
                 ) for t in range(nTeams - 1) if t != 6
             ],
             [csc[t1] | csc[t2] for t1, t2 in [(0, 1), (2, 3), (4, 5), (7, 8), (9, 10), (11, 12)]]
@@ -206,8 +222,8 @@ satisfy(
 )
 
 minimize(
-    Sum(whr[row[t]][p] == HOME for t in range(nTeams) for p in range(nPeriods) if noHome[t][p] == 1)
-    + Sum(whr[row[t]][39 - p] == AWAY for t in range(nTeams) for p in range(20, 33) if noHome[t][p] == 1)
+    Sum(whr[row[t]][p] == HOME for t in T for p in P if noHome[t][p] == 1)
+    + Sum(whr[row[t]][39 - p] == AWAY for t in T for p in range(20, 33) if noHome[t][p] == 1)
 )
 
 """ Comments

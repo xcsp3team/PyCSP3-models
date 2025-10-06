@@ -25,7 +25,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-capacity, demands, distances = data
+capacity, demands, distances = data or load_json_data("A-n32-k5.json")
 
 n = len(demands)  # n is the number of customers
 nVehicles = n  # here, n is also the number of vehicles

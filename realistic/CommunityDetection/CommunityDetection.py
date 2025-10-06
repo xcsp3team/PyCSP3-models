@@ -19,7 +19,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence is 
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-66158-2_31
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   realistic, notebook, mzn21
@@ -28,6 +28,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence is 
 from pycsp3 import *
 
 graph, m, together, separate = data or load_json_data("n050-e2500-s10-d5-c4-p90.json")  # m is the maximum number of searched communities
+
 n = len(graph)  # number of nodes
 
 

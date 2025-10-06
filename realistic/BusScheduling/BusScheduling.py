@@ -24,7 +24,8 @@ and has an associated cost. We must select a subset of possible shifts that cove
 
 from pycsp3 import *
 
-nTasks, shifts = data
+nTasks, shifts = data or load_json_data("t1.json")
+
 nShifts = len(shifts)
 
 # x[i] is 1 iff the ith shift is selected
@@ -32,7 +33,8 @@ x = VarArray(size=nShifts, dom={0, 1})
 
 satisfy(
     # each task is covered by exactly one shift
-    Count(x[i] for i, shift in enumerate(shifts) if t in shift) == 1 for t in range(nTasks)
+    Count(x[i] for i, shift in enumerate(shifts) if t in shift) == 1
+    for t in range(nTasks)
 )
 
 minimize(

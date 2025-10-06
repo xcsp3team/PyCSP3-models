@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2022 Minizinc challenge.
-The MZN model was proposed by Kelvin Davis, under the MIT Licence.
+The original MZN model was proposed by Kelvin Davis, under the MIT Licence.
 
 ## Data Example
   0814.json
@@ -12,7 +12,7 @@ The MZN model was proposed by Kelvin Davis, under the MIT Licence.
   python ArithmeticTarget.py -data=<datafile.json>
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   realistic, mzn22
@@ -20,7 +20,7 @@ The MZN model was proposed by Kelvin Davis, under the MIT Licence.
 
 from pycsp3 import *
 
-numbers, target = data
+numbers, target = data or load_json_data("0814.json")
 
 n, m = len(numbers), len(numbers) * 2
 

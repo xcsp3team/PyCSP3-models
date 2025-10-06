@@ -28,7 +28,6 @@ For the original MZN model, no Licence was explicitly mentioned (MIT Licence ass
 
 ## Links
   - https://www.researchgate.net/publication/281979436_Optimizing_the_Airport_Check-In_Counter_Allocation_Problem
-  - https://www.minizinc.org/challenge/2022/results/
   - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
@@ -37,7 +36,7 @@ For the original MZN model, no Licence was explicitly mentioned (MIT Licence ass
 
 from pycsp3 import *
 
-flights, airlines = data
+flights, airlines = data or load_json_data("03.json")
 
 durations, requirements, x = zip(*flights)  # requirements in terms of numbers of counters; x stands for starts
 nFlights, nAirlines, nCounters = len(flights), len(airlines), sum(requirements)
@@ -63,9 +62,8 @@ satisfy(
 
     # computing the maximal distance between two flights of the same airline
     [
-        Sum(
-            y[i], -y[j], -d[a]
-        ) <= 1 - requirements[i] for a in range(nAirlines) for i in airlines[a] for j in airlines[a] if i != j
+        Sum(y[i], -y[j], -d[a]) <= 1 - requirements[i]
+        for a in range(nAirlines) for i in airlines[a] for j in airlines[a] if i != j
     ]
 )
 

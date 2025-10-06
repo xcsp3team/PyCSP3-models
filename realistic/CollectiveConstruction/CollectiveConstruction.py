@@ -7,8 +7,7 @@ and then remove the ramps upon completion of the building.
 See CP paper cited below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-The MZN model was proposed by Edward Lam.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The MZN model was proposed by Edward Lam - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   037.json
@@ -22,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-030-58475-7_43
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, mzn20
@@ -30,7 +29,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-nAgents, horizon, width, depth, height, building = data
+nAgents, horizon, width, depth, height, building = data  # or load_json_data("037.json")
+
 assert width == depth  # for simplicity, the model is built with this assumption
 n = width
 
@@ -74,12 +74,15 @@ blp = VarArray(size=[horizon, n * n], dom=lambda t, i: {i} if t in {0, horizon -
 # pik[t][i] is 1 if at time t the agent in the ith position makes a pickup
 pik = VarArray(size=[horizon, n * n], dom=lambda t, i: {0} if t in {0, horizon - 1} else {0, 1})
 
-# pik[t][i] is 1 if at time t the agent in the ith position makes a delivery
+# dlv[t][i] is 1 if at time t the agent in the ith position makes a delivery
 dlv = VarArray(size=[horizon, n * n], dom=lambda t, i: {0} if t in {0, horizon - 1} else {0, 1})
 
 satisfy(
     # change in height: the height of a cell evolves of at most 1 at each step
-    [abs(hgt[t + 1][i] - hgt[t][i]) <= 1 for t, i in P(0, horizon - 2)],
+    [
+        abs(hgt[t + 1][i] - hgt[t][i]) <= 1
+        for t, i in P(0, horizon - 2)
+    ],
 
     # agents stay at the same position when doing a block operation
     [
@@ -106,10 +109,20 @@ satisfy(
     ],
 
     # carrying status - pickup
-    [pik[t][i] == both(act[t][i] == BLOCK, car[t][i] == 0) for t, i in P()],
+    [
+        pik[t][i] == both(
+            act[t][i] == BLOCK,
+            car[t][i] == 0
+        ) for t, i in P()
+    ],
 
     # carrying status - delivery
-    [dlv[t][i] == both(act[t][i] == BLOCK, car[t][i] == 1) for t, i in P()],
+    [
+        dlv[t][i] == both(
+            act[t][i] == BLOCK,
+            car[t][i] == 1
+        ) for t, i in P()
+    ],
 
     # flow out
     [
@@ -194,7 +207,10 @@ satisfy(
     ],
 
     # height change
-    [hgt[t + 1][i] == hgt[t][i] + Sum((blp[t][j] == i) * (dlv[t][j] - pik[t][j]) for j in neighbours(i)) for t, i in P()]
+    [
+        hgt[t + 1][i] == hgt[t][i] + Sum((blp[t][j] == i) * (dlv[t][j] - pik[t][j]) for j in neighbours(i))
+        for t, i in P()
+    ]
 )
 
 minimize(

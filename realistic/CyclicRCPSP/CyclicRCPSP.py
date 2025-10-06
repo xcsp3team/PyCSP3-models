@@ -16,7 +16,7 @@ The original model has: Copyright (C) 2011 The University of Melbourne and NICTA
   python CyclicRCPSP.py -data=<datafile.dzn> -parser=CyclicRCPSP_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   realistic, mzn11, mzn14
@@ -24,9 +24,10 @@ The original model has: Copyright (C) 2011 The University of Melbourne and NICTA
 
 from pycsp3 import *
 
-capacities, requirements, precedences = data
+capacities, requirements, precedences = data or load_json_data("easy-4.json")
 
 nResources, nTasks, nPrecedences = len(capacities), len(requirements), len(precedences)
+
 R, T = range(nResources), range(nTasks)
 
 d = [0] + [1] * (nTasks - 2) + [0]  # tasks have a unit duration, except for the artificial source and sink tasks
@@ -71,7 +72,11 @@ satisfy(
     # cumulative resource constraints
     [
         Cumulative(
-            [Task(origin=s[i], length=d[i], height=requirements[i][r]) for i in resources[r]]
+            Task(
+                origin=s[i],
+                length=d[i],
+                height=requirements[i][r]
+            ) for i in resources[r]
         ) <= capacities[r] for r in R if sum(requirements[i][r] for i in resources[r]) > capacities[r]
     ],
 

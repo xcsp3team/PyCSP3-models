@@ -19,14 +19,14 @@ The original MZN model is by Allen Zhon (No Licence was explicitly mentioned - M
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-031-60599-4_13
   - https://github.com/cftmthomas/AircraftDisassemblyScheduling
-  - https://www.minizinc.org/challenge2024/results2024.html
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   realistic, mzn24
 """
 from pycsp3 import *
 
-horizon, precedences, unrelated_precedences, resources, mass, location_capacities, activities, unavailable = data
+horizon, precedences, unrelated_precedences, resources, mass, location_capacities, activities, unavailable = data or load_json_data("600-01.json")
 
 useful_resources, durations, skill_requirements, required_mass, locations, occupancies = activities
 _, costs, skill_mastery = resources

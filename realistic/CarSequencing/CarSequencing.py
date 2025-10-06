@@ -35,17 +35,19 @@ See problem 001 at CSPLib.
 from pycsp3 import *
 from math import ceil
 
-classes, limits = data
+assert not variant() or variant("table")
+
+classes, limits = data or load_json_data("dingbas.json")
+
 demands, options = zip(*classes)
 nCars, nClasses, nOptions = sum(demands), len(classes), len(limits)
 
 
-def sum_from_full_consecutive_blocks(k, nb):
-    # nb stands for the number of consecutive blocks (of several cars) set to their maximal capacity
+def indicators(k, nb):  # nb stands for the number of consecutive blocks (of several cars) set to their maximal capacity
     n_cars_with_option = sum(demand for (demand, opts) in classes if opts[k] == 1)
     remaining = n_cars_with_option - nb * limits[k].num
     possible = nCars - nb * limits[k].den
-    return Sum(o[:possible, k]) >= remaining if remaining > 0 and possible > 0 else None
+    return remaining, possible
 
 
 # c[i] is the class of the ith assembled car
@@ -74,15 +76,24 @@ if not variant():
 elif variant("table"):
     satisfy(
         # computing assembled car options
-        (c[i], o[i]) in enumerate(options) for i in range(nCars)
+        (c[i], o[i]) in enumerate(options)
+        for i in range(nCars)
     )
 
 satisfy(
     # respecting option frequencies
-    [Sum(o[i:i + den, k]) <= num for k, (num, den) in enumerate(limits) for i in range(nCars) if i <= nCars - den],
+    [
+        Sum(o[i:i + den, k]) <= num
+        for k, (num, den) in enumerate(limits) for i in range(nCars) if i <= nCars - den
+    ],
 
-    # additional constraints by reasoning from consecutive blocks  tag(redundant)
-    [sum_from_full_consecutive_blocks(k, nb) for k in range(nOptions) for nb in range(ceil(nCars // limits[k].den) + 1)]
+    # additional constraints by reasoning from consecutive blocks
+    # tag(redundant)
+    [
+        Sum(o[:possible, k]) >= remaining
+        for k in range(nOptions) for nb in range(ceil(nCars // limits[k].den) + 1)
+        if (res := indicators(k, nb)) and ((remaining := res[0]) > 0) and ((possible := res[1]) > 0)
+    ]
 )
 
 """ Comments

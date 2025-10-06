@@ -26,7 +26,8 @@ See CP'19 paper whose URL is given below.
 
 from pycsp3 import *
 
-M, nBlocks = data
+M, nBlocks = data or load_json_data("kansas-2.json")
+
 nNodes = len(M)
 
 # x[i][j] is the value in the grid at the ith row and jth column

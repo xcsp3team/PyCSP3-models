@@ -32,12 +32,12 @@ i.e., as similar as possible.
 
 from pycsp3 import *
 
-assert variant() in ("m1", "m2")
+assert (variant("m1") or variant("m2")) and (not subvariant() or subvariant("d"))
 
-nCourses, nPeriods, (minCredits, maxCredits), (minCourses, maxCourses), credits, prerequisites = data
-maxCredits = maxCredits * maxCourses if subvariant("d") else maxCredits
+nCourses, nPeriods, (minCredits, maxCredits), (minCourses, maxCourses), credits, prerequisites = data or load_json_data("10.json")
 
 assert nCourses == len(credits)
+maxCredits = maxCredits * maxCourses if subvariant("d") else maxCredits
 
 C, P = range(nCourses), range(nPeriods)
 

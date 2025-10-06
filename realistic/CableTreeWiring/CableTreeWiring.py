@@ -3,7 +3,7 @@ Deriving the optimal wiring sequence for a given layout of a cable tree.
 See paper cited below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   A031.json
@@ -25,7 +25,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-k, b, atomic, disjunctive, soft, direct = data
+k, b, atomic, disjunctive, soft, direct = data or load_json_data("A031.json")
+
 assert b > 0 and isinstance(direct, list), str(direct)
 
 # x[i] is the position of the ith cavity

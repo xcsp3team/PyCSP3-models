@@ -22,7 +22,10 @@
 
 from pycsp3 import *
 
+assert not variant() or variant("aux") or variant("table")
+
 n, edges = data or (5, [[0, 1], (0, 4), (1, 2), (1, 3), (2, 3), (2, 4)])
+
 edges = [tuple(t) for t in edges]  # because from JSON, we get lists and not tuples (which may be a problem with some conditions)
 
 # x[i] is the label of the ith node

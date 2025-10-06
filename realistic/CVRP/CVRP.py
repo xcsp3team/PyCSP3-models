@@ -21,7 +21,7 @@ See Problem 086 on CSPLib, and VVRLib.
 
 from pycsp3 import *
 
-nNodes, capacity, demands, distances = data
+nNodes, capacity, demands, distances = data or load_json_data("A-n32-k5.json")
 
 
 def max_tour():
@@ -35,9 +35,9 @@ def max_tour():
 
 nVehicles = nNodes // 4  # This is a kind of hard coding, which can be at least used for Set A (Augerat, 1995)
 nSteps = max_tour()
-V, S, N = range(nVehicles), range(nSteps), range(nNodes)
-
 n0s = nVehicles * nSteps - nNodes + 1
+
+V, S, N = range(nVehicles), range(nSteps), range(nNodes)
 
 # c[i][j] is the jth customer (step) during the tour of the ith vehicle
 c = VarArray(size=[nVehicles, nSteps], dom=N)

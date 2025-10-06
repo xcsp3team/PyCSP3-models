@@ -32,7 +32,8 @@ For the original MZN model, no Licence was explicitly mentioned (MIT Licence ass
 
 from pycsp3 import *
 
-nCourses, nPeriods, (load_min, load_max), (credit_min, credit_max), course_loads, prerequisites = data
+nCourses, nPeriods, (load_min, load_max), (credit_min, credit_max), course_loads, prerequisites = data or load_json_data("10.json")
+
 assert nCourses == len(course_loads)
 
 C, P, L = range(nCourses), range(nPeriods), range(load_min, load_max + 1)

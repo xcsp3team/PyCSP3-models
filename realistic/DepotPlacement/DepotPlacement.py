@@ -17,7 +17,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  ratt-99-5.json
+  rat-99-5.json
 
 ## Model
   constraints: AllDifferent, Count, Element, Maximum
@@ -27,7 +27,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python DepotPlacement.py -data=<datafile.dzn> -parser=DepotPlacement_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2016/results2016.html
+  - https://www.minizinc.org/challenge/2016/results/
 
 ## Tags
   realistic, mzn10, mzn11, mzn16

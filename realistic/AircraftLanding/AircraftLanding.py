@@ -27,7 +27,9 @@ Each plane has to land on one of the runways within its predetermined time windo
 
 from pycsp3 import *
 
-nPlanes, times, costs, separations = data
+assert not variant() or variant("table")
+
+nPlanes, times, costs, separations = data or load_json_data("airland01.json")
 
 earliest, target, latest = zip(*times)
 early_penalties, late_penalties = zip(*costs)
@@ -67,7 +69,8 @@ if not variant():
 elif variant("table"):
     satisfy(
         # computing earliness and tardiness of planes
-        (x[i], erl[i], trd[i]) in {(v, max(0, target[i] - v), max(0, v - target[i])) for v in x[i].dom} for i in P
+        (x[i], erl[i], trd[i]) in {(v, max(0, target[i] - v), max(0, v - target[i])) for v in x[i].dom}
+        for i in P
     )
 
 minimize(

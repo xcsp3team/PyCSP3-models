@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2024 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   bin-07.json
@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python Compression.py -data=<datafile.json> -variant=mzn
 
 ## Links
-  - https://www.minizinc.org/challenge2024/results2024.html
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   realistic, mzn24
@@ -26,9 +26,11 @@ from pycsp3.dashboard import options
 #  instead of [text[sx[cp[i]] + ci[i]] == text[i] for i in range(n)]
 options.force_element_index = True
 
-nPatterns, maxPatternLength, text = data
-n = len(text)
+assert not variant() or variant("mzn")
 
+nPatterns, maxPatternLength, text = data
+
+n = len(text)
 nNodes = 2 * nPatterns - 1
 root, nInternals = 0, nPatterns - 1  # maximal number of internal nodes (not leaves)
 
@@ -58,7 +60,10 @@ uses = VarArray(size=nPatterns, dom=range(n + 1))
 
 satisfy(
     # ensuring that the covered byte matches the pattern that covers it
-    [text[sx[cp[i]] + ci[i]] == text[i] for i in range(n)],
+    [
+        text[sx[cp[i]] + ci[i]] == text[i]
+        for i in range(n)
+    ],
 
     # ensuring that cover indexes follow in sequence (until the end of a pattern)
     [
@@ -76,8 +81,14 @@ satisfy(
     # managing parents
     [
         parent[root] == -1,
-        [(parent[nInternals + j] != -1) == (sl[j] > 0) for j in range(nPatterns)],
-        Cardinality(parent, occurrences={k: pcount[k] for k in range(nInternals)})
+        [
+            (parent[nInternals + j] != -1) == (sl[j] > 0)
+            for j in range(nPatterns)
+        ],
+        Cardinality(
+            within=parent,
+            occurrences={k: pcount[k] for k in range(nInternals)}
+        )
     ],
 
     # computing costs

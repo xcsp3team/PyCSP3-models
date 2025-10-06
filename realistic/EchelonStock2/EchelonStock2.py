@@ -24,6 +24,7 @@ from math import floor, gcd
 from functools import reduce
 
 children, hcosts, pcosts, demands = data or load_json_data("A01.json")
+
 n, nPeriods, nLeaves = len(children), len(demands[0]), len(demands)
 
 simplification = True

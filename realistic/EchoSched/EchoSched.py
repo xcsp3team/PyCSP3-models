@@ -21,7 +21,7 @@ For the original MZN model, no Licence was explicitly mentioned (MIT Licence ass
 
 from pycsp3 import *
 
-durations, energies, precedences = data
+durations, energies, precedences = data or load_json_data("12-12-0-1-7.json")
 
 nJobs, nMachines, nSpeeds = len(durations), len(durations[0]), len(durations[0][0])
 J, M = range(nJobs), range(nMachines)
@@ -45,7 +45,7 @@ satisfy(
         either(
             x[j1][m] + durations[j1][m][y[j1][m]] <= x[j2][m],
             x[j2][m] + durations[j2][m][y[j2][m]] <= x[j1][m]
-        ) for j1, j2 in combinations(nJobs, 2) for m in M
+        ) for j1, j2 in combinations(J, 2) for m in M
     ]
 )
 

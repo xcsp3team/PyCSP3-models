@@ -30,7 +30,7 @@ This model has been co-developed by teams of ONERA and CRIL.
 
 from pycsp3 import *
 
-takt, areas, stations, tasks, tasksPerMachine, precedences = data
+takt, areas, stations, tasks, tasksPerMachine, precedences = data or load_json_data("data-example.json")
 
 nAreas, nStations, nTasks, nMachines = len(areas), len(stations), len(tasks), len(tasksPerMachine)
 A, S, T, M = range(nAreas), range(nStations), range(nTasks), range(nMachines)

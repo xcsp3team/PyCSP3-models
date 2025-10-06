@@ -19,7 +19,6 @@ Accompanying instances are based on real-life instances.
 ## Links
   - https://ojs.aaai.org/index.php/ICAPS/article/view/15997W
   - https://dbai.tuwien.ac.at/staff/winter/
-  - https://www.minizinc.org/challenge/2021/results/
   - https://www.minizinc.org/challenge/2025/results/
 
 ## Tags
@@ -28,7 +27,7 @@ Accompanying instances are based on real-life instances.
 
 from pycsp3 import *
 
-setup_times, maxColors, cyclesPerJob, nJobs, nColors, nLines, compatibilities, programs, moulds, demands = data
+setup_times, maxColors, cyclesPerJob, nJobs, nColors, nLines, compatibilities, programs, moulds, demands = data or load_json_data("05-0p15.json")
 
 slots, cycle_time = [list(t) for t in zip(*programs)]  # we need lists to be able to insert a new value (0)
 dqty, ddue, dcol, dmld = zip(*demands)
@@ -93,12 +92,14 @@ satisfy(
 
     # checking number of assigned moulds per job
     [
-        Sum(jm[j]) == slots0[jp[j]] for j in J
+        Sum(jm[j]) == slots0[jp[j]]
+        for j in J
     ],
 
     # checking number of available moulds per type
     [
-        Sum(jm[j][m]) <= moulds[m].available for j in J for m in M
+        Sum(jm[j][m]) <= moulds[m].available
+        for j in J for m in M
     ],
 
     # checking the number of colors and lines per job
@@ -150,8 +151,8 @@ satisfy(
         If(
             jp[j] > 0,
             Then=je[j] == jt[0] + Sum(
-                jt[k] + setup_times.sequence + (jp[k - 1] != jp[k]) * (setup_times.program - setup_times.sequence) for k in range(1, j + 1)
-            ), Else=je[j] == lb
+                jt[k] + setup_times.sequence + (jp[k - 1] != jp[k]) * (setup_times.program - setup_times.sequence) for k in range(1, j + 1)),
+            Else=je[j] == lb
         ) for j in J
     ),
 

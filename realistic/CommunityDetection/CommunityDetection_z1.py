@@ -28,6 +28,7 @@ from pycsp3 import *
 assert not variant() or variant("mzn24")
 
 m, together, separate, graph, W = data or load_json_data("strike-s2-k8.json")  # m is the maximum number of searched communities
+
 n = len(graph)  # number of nodes
 
 

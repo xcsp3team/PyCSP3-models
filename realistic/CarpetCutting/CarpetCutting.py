@@ -26,7 +26,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-rollWidth, maxRollLength, roomCarpets, rectangles, stairCarpets = data
+rollWidth, maxRollLength, roomCarpets, rectangles, stairCarpets = data or load_json_data("01.json")
+
 roomRectangles, possibleRotations, maxLengths, maxWidths = zip(*roomCarpets)
 rectLengths, rectWidths, xOffsets, yOffsets = zip(*rectangles)
 stairLengths, stairWidths, nCoveredSteps, minCutSteps, maxCuts = zip(*stairCarpets) if len(stairCarpets) > 0 else ([], [], [], [], [])
@@ -175,9 +176,15 @@ satisfy(
             ) for i, offset in enumerate(stairOffsets) for j in range(nCoveredSteps[i]) if [k := j + offset]
         ],
 
-        [Sum(lp[i][:nCoveredSteps[i]]) <= maxCuts[i] + 1 for i in SC],
+        [
+            Sum(lp[i][:nCoveredSteps[i]]) <= maxCuts[i] + 1
+            for i in SC
+        ],
 
-        [lp[i][j] == 0 for i in SC if minCutSteps[i] > 1 for j in range(minCutSteps[i] - 1)],
+        [
+            lp[i][j] == 0
+            for i in SC if minCutSteps[i] > 1 for j in range(minCutSteps[i] - 1)
+        ],
 
         [
             If(
