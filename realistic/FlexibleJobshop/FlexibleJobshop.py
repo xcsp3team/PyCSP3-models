@@ -18,7 +18,7 @@ The MZN model was proposed by Andreas Schutt (Copyright 2013 National ICT Austra
   python FlexibleJobshop.py -data=<datafile.dzn> -parser=FlexibleJobshop_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.minizinc.org/challenge/2013/results/
 
 ## Tags
   realistic, mzn13
@@ -26,16 +26,18 @@ The MZN model was proposed by Andreas Schutt (Copyright 2013 National ICT Austra
 
 from pycsp3 import *
 
-nMachines, tasks, options, option_machines, durations = data
+nMachines, tasks, options, option_machines, durations = data or load_json_data("easy01.json")
+
 nJobs, nTasks, nOptions = len(tasks), len(options), len(option_machines)
+J, T, O, M = range(nJobs), range(nTasks), range(nOptions), range(nMachines)
 
-siblings = [next(tasks[i] for i in range(nJobs) if t in tasks[i]) for t in range(nTasks)]
-minDurations = [min(durations[options[t]]) for t in range(nTasks)]
-maxDurations = [max(durations[options[t]]) for t in range(nTasks)]
-minStarts = [sum(minDurations[k] for k in siblings[t] if k < t) for t in range(nTasks)]
-maxStarts = [sum(durations) - sum(minDurations[k] for k in siblings[t] if k >= t) for t in range(nTasks)]
+siblings = [next(tasks[j] for j in J if t in tasks[j]) for t in T]
+minDurations = [min(durations[options[t]]) for t in T]
+maxDurations = [max(durations[options[t]]) for t in T]
+minStarts = [sum(minDurations[k] for k in siblings[t] if k < t) for t in T]
+maxStarts = [sum(durations) - sum(minDurations[k] for k in siblings[t] if k >= t) for t in T]
 
-taskForOption = [next(t for t in range(nTasks) if o in options[t]) for o in range(nOptions)]
+taskForOption = [next(t for t in T if o in options[t]) for o in O]
 
 # x[t] is the starting time of the task t
 x = VarArray(size=nTasks, dom=lambda t: range(minStarts[t], maxStarts[t] + 1))
@@ -48,32 +50,54 @@ b = VarArray(size=nOptions, dom={0, 1})
 
 satisfy(
     # respecting precedence relations
-    [x[t] + d[t] <= x[t + 1] for i in range(nJobs) for t in tasks[i][:-1]],
+    [
+        x[t] + d[t] <= x[t + 1]
+        for j in J for t in tasks[j][:-1]
+    ],
 
     # computing durations of tasks
     [
-        b[o] == 1 if len(options[t]) == 1 else If(b[o], Then=d[t] == durations[o])
-        for o in range(nOptions) if [t := taskForOption[o]]
+        If(
+            len(options[t]) == 1,
+            Then=b[o] == 1,
+            Else=If(
+                b[o],
+                Then=d[t] == durations[o]
+            )
+        ) for o in O if [t := taskForOption[o]]
     ],
 
     # managing optional operations
     [
-        [Sum(b[o] for o in T) <= 1 for t in range(nTasks) if len(T := options[t]) > 1],
-        [Exist(b[o] for o in T) for t in range(nTasks) if len(T := options[t]) > 1],
-        [b[min(T)] == ~b[max(T)] for t in range(nTasks) if len(T := options[t]) == 2]
+        [
+            Sum(b[o] for o in options[t]) <= 1
+            for t in T if len(options[t]) > 1
+        ],
+        [
+            Exist(b[o] for o in options[t])
+            for t in T if len(options[t]) > 1]
+        ,
+        [
+            b[min(X)] == ~b[max(X)]
+            for t in T if len(X := options[t]) == 2
+        ]
     ],
 
     # cumulative resource constraints
     [
         Cumulative(
-            tasks=[Task(origin=x[taskForOption[o]], length=durations[o], height=b[o]) for o in range(nOptions) if option_machines[o] == m]
-        ) <= 1 for m in range(nMachines)
+            Task(
+                origin=x[taskForOption[o]],
+                length=durations[o],
+                height=b[o]
+            ) for o in O if option_machines[o] == m
+        ) <= 1 for m in M
     ]
 )
 
 minimize(
     # minimizing the make-span
-    Maximum(x[tasks[i][-1]] + d[tasks[i][-1]] for i in range(nJobs))
+    Maximum(x[tasks[j][-1]] + d[tasks[j][-1]] for j in J)
 )
 
 """ Comments
@@ -83,4 +107,19 @@ minimize(
 2) The block "computing durations of tasks" cab be written:
  [(b[o] == 0) | (d[taskForOption[o]] == durations[o]) for o in range(nOptions) if len(options[taskForOption[o]]) > 1],
  [b[o] == 1 for o in range(nOptions) if len(options[taskForOption[o]]) == 1]
+3) Note that:
+  If(
+     len(options[t]) == 1,
+     Then=b[o] == 1,
+     Else=If(b[o], Then=d[t] == durations[o])
+   ) for o in O if [t := taskForOption[o]]
+ could be written (after having closed the call to previous satisfy)
+  if len(options[t]) == 1:
+     satisfy(b[o] == 1)
+  else:
+     satisfy(f(b[o], Then=d[t] == durations[o]))
+ or also written:
+    b[o] == 1 if len(options[t]) == 1 else If(b[o], Then=d[t] == durations[o])
+    for o in O if [t := taskForOption[o]]    
+4) there is room for optimizing the way the model is built    
 """

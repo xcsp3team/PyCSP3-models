@@ -25,7 +25,8 @@ this model uses different planning horizons for adjusting the hardness of the pr
 
 from pycsp3 import *
 
-horizon = data
+horizon = data or 6
+
 nNodes, nSteps = 58, horizon
 
 # Definition of the network (this is one possible input for the problem in https://adventofcode.com/2022/day/16)

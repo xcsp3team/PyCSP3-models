@@ -6,14 +6,13 @@ All workers complete the same schedule, just starting at different days.
 See CPAIOR paper cited below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2018/2019 Minizinc challenges.
-The MZN model was proposed by Andreas Schutt.
-No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
+The original MZN model was proposed by Andreas Schutt - no licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Data Example
   0103.json
 
 ## Model
-  constraints: Cardinality, Regular
+  constraints: Cardinality, Regular, Sum
 
 ## Execution
   python RotatingWorkforce1.py -data=<datafile.json>
@@ -21,7 +20,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-93031-2_31
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
   realistic, mzn18, mzn19
@@ -30,18 +29,19 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 from pycsp3 import *
 from pycsp3.problems.data.parsing import split_with_rows_of_size
 
-weekLength, nWorkers, daysOff, workBlockLength, needs, shifts, forbids = data
+weekLength, nWorkers, daysOff, workBlockLength, needs, shifts, forbids = data or load_json_data("0103.json")
+
 assert daysOff.min <= 2 and sum(needs[:, -1]) < nWorkers
 nShifts, nDays = len(shifts), weekLength
-
 OFF = nShifts
+
 nOnDutyDays = sum(sum(needs[j]) for j in range(nShifts))
 nOffDutyDays = weekLength * nWorkers - nOnDutyDays
 
-S, Sp1, D, W = range(nShifts), range(nShifts + 1), range(nDays), range(nWorkers)
+S, D, W = range(nShifts), range(nDays), range(nWorkers)
 
 
-def automaton():
+def Aut():
     def state(shift, day, dayw):
         return first[shift] + (workBlockLength.max * (day - 1)) + (dayw - 1)
 
@@ -50,6 +50,7 @@ def automaton():
     toff = [[(not any(before == i and after == j for (before, after, doff) in forbids if doff == 1)) for j in S] for i in S]
     ton = [[(not any(before == i and after == j for (before, after, doff) in forbids if doff == 0)) for j in S] for i in S]
 
+    Sp1 = range(nShifts + 1)
     t = first + [OFF2]
     t += [(OFF2 if 1 < daysOff.max else 0) if j == OFF else first[j] if 1 >= daysOff.min and toff[i][j] else 0 for i in S for j in Sp1]
     t += [(nShifts + 1 + d if d < daysOff.max else 0) if j == OFF else first[j] if d >= daysOff.min else 0 for d in range(2, daysOff.max + 1) for j in Sp1]
@@ -86,13 +87,16 @@ satisfy(
     ],
 
     # ensuring legal rules are respected
-    x in automaton(),
+    Regular(
+        scope=x,
+        automaton=Aut()
+    ),
 
     # tag(symmetry-breaking)
     (
         x[-2][-1] == OFF if sum(needs[:, -1]) < nWorkers else None,
 
-        x[0][0] != OFF if all(needs[j][d] == needs[j][d + 1] for j in S for d in range(nDays - 1)) or sum(needs[:, -1]) < sum(needs[:, 0]) else None
+        x[0][0] != OFF if all(needs[j][d] == needs[j][d + 1] for j in S for d in D[:-1]) or sum(needs[:, -1]) < sum(needs[:, 0]) else None
     )
 )
 
@@ -127,22 +131,22 @@ def post_redundant_constraints():
         [rem_on[i] == nOnDutyDays - weekLength * (i + 1) + count_off_duty[i] for i in W],
 
         # lower bound of off-duty blocks
-        [lb_off_blocks[i] == (rem_off[i] // daysOff.max) + (rem_off[i] % daysOff.max > 0) - ((x[0][0] != OFF) & (x[i + 1][0] == OFF)) for i in W],
+        [lb_off_blocks[i] == rem_off[i] // daysOff.max + (rem_off[i] % daysOff.max > 0) - ((x[0][0] != OFF) & (x[i + 1][0] == OFF)) for i in W],
 
         # upper bound of on-duty blocks
-        [ub_on_blocks[i] == (rem_on[i] // workBlockLength.min) + ((x[0][0] != OFF) & (x[i][-1] != OFF)) for i in W],
+        [ub_on_blocks[i] == rem_on[i] // workBlockLength.min + ((x[0][0] != OFF) & (x[i][-1] != OFF)) for i in W],
 
         # lower bound of on-duty blocks
-        [lb_on_blocks[i] == (rem_on[i] // workBlockLength.max) + (rem_on[i] % workBlockLength.max > 0) - ((x[0][0] == OFF) & (x[i + 1][0] != OFF)) for i in W],
+        [lb_on_blocks[i] == rem_on[i] // workBlockLength.max + (rem_on[i] % workBlockLength.max > 0) - ((x[0][0] == OFF) & (x[i + 1][0] != OFF)) for i in W],
 
         # upper bound of off-duty blocks
-        [ub_off_blocks[i] == (rem_off[i] // daysOff.min) + ((x[0][0] == OFF) & (x[i][-1] == OFF)) for i in W],
+        [ub_off_blocks[i] == rem_off[i] // daysOff.min + ((x[0][0] == OFF) & (x[i][-1] == OFF)) for i in W],
 
         # the first week is just the sum of the off-duty days in that week
         count_off_duty[0] == Sum(x[0][d] == OFF for d in D),
 
         # the remaining weeks are the sum of the previous weeks and the current one
-        [count_off_duty[i] == count_off_duty[i - 1] + Sum(x[i][d] == OFF for d in D) for i in range(1, nWorkers)],
+        [count_off_duty[i] == count_off_duty[i - 1] + Sum(x[i][d] == OFF for d in D) for i in W[1:]],
 
         # the sum of the last week must be equal to the number of off-duty days
         count_off_duty[-1] == nOffDutyDays,
@@ -158,14 +162,6 @@ def post_redundant_constraints():
 post_redundant_constraints()
 
 """ Comments
-1) This solution from MZN (chuffed) for 1479 is ok:
-   flatten(x) == decrement(
-        [1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2,
-         4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1,
-         2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1,
-         1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 2, 2, 4, 4, 1, 1, 1, 1, 1, 4, 4, 4,
-         1, 1, 1, 1, 1, 4, 4, 2, 2, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 1, 1, 1, 3, 3, 3, 4, 4, 3, 3, 3, 3, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3,
-         3, 3, 3, 4, 4, 4, 1, 1, 1, 3, 3, 3, 4, 4, 1, 1, 1, 3, 3, 3, 4, 4, 3, 3, 3, 3, 4, 4, 2, 2, 2, 3, 3, 3, 4, 4, 1, 1, 1, 1, 1, 4, 4, 1, 1, 1,
-         1, 2, 2, 4]),
-2) Need python 3.9 (for handling the union of dictionaries)
+1) Need python 3.9 (for handling the union of dictionaries)
+2) For posting the Regular constraint, it is possible to write: x in automaton(),
 """

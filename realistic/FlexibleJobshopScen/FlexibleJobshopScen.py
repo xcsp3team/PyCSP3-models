@@ -22,10 +22,10 @@ From CSPLib, Problem 077 (and proposed by David Hemmi, Guido Tack and Mark Walla
     Machines and durations are given for optional operations."
 
 The model, below, is close to (can be seen as the close translation of) the one present at CSPLib.
-The MZN model was proposed by Andreas Schutt (Copyright 2013 National ICT Australia).
+The original MZN model was proposed by Andreas Schutt (Copyright 2013 National ICT Australia).
 
 ## Data Example
-  easy01.json
+  see data files from the 2025 competition
 
 ## Model
   constraints: Cumulative, Sum, Count
@@ -45,21 +45,22 @@ The MZN model was proposed by Andreas Schutt (Copyright 2013 National ICT Austra
 
 from pycsp3 import *
 
-first_scen, last_scen, nMachines, tasks, options, option_machines, weights, durations = data
-nAllScenarios, nJobs, nTasks, nOptions = len(durations), len(tasks), len(options), len(option_machines)
+first_scen, last_scen, nMachines, tasks, options, option_machines, weights, durations = data or load_json_data("dh-5-16-20.json")
 
-assert first_scen == 0 and 0 < last_scen < nAllScenarios
+assert first_scen == 0 and 0 < last_scen < len(durations)
 nScenarios = last_scen + 1
 
-siblings = [next(tasks[i] for i in range(nJobs) if t in tasks[i]) for t in range(nTasks)]
-minDurations = [[min(durations[s][options[t]]) for t in range(nTasks)] for s in range(nScenarios)]
-maxDurations = [[max(durations[s][options[t]]) for t in range(nTasks)] for s in range(nScenarios)]
-minStarts = [[sum(minDurations[s][k] for k in siblings[t] if k < t) for t in range(nTasks)] for s in range(nScenarios)]
-maxStarts = [[sum(durations[s]) - sum(minDurations[s][k] for k in siblings[t] if k >= t) for t in range(nTasks)] for s in range(nScenarios)]
+nJobs, nTasks, nOptions = len(tasks), len(options), len(option_machines)
+J, T, O, M, S = range(nJobs), range(nTasks), range(nOptions), range(nMachines), range(nScenarios)
 
-taskForOperation = [next(t for t in range(nTasks) if o in options[t]) for o in range(nOptions)]
+siblings = [next(tasks[i] for i in J if t in tasks[i]) for t in T]
+minDurations = [[min(durations[s][options[t]]) for t in T] for s in S]
+maxDurations = [[max(durations[s][options[t]]) for t in T] for s in S]
+minStarts = [[sum(minDurations[s][k] for k in siblings[t] if k < t) for t in T] for s in S]
+maxStarts = [[sum(durations[s]) - sum(minDurations[s][k] for k in siblings[t] if k >= t) for t in T] for s in S]
+t_max = [sum(max(durations[s][o] for o in options[t]) for t in T) for s in S]
 
-t_max = [sum(max(durations[s][o] for o in options[t]) for t in range(nTasks)) for s in range(nScenarios)]
+taskForOperation = [next(t for t in T if o in options[t]) for o in O]
 
 # x[s][t] is the starting time of the task t in the scenario s
 x = VarArray(size=[nScenarios, nTasks], dom=lambda s, t: range(minStarts[s][t], maxStarts[s][t] + 1))
@@ -75,34 +76,59 @@ z = VarArray(size=nScenarios, dom=range(max(t_max) + 1))
 
 satisfy(
     # respecting precedence relations
-    [x[s][t] + d[s][t] <= x[s][t + 1] for s in range(nScenarios) for i in range(nJobs) for t in tasks[i][:-1]],
+    [
+        x[s][t] + d[s][t] <= x[s][t + 1]
+        for s in S for j in J for t in tasks[j][:-1]
+    ],
 
     # computing durations of tasks
     [
-        b[o] == 1 if len(options[t]) == 1 else If(b[o], Then=d[s][t] == durations[s][o])
-        for o in range(nOptions) for s in range(nScenarios) if [t := taskForOperation[o]]
+        If(
+            len(options[t]) == 1,
+            Then=b[o] == 1,
+            Else=If(
+                b[o],
+                Then=d[s][t] == durations[s][o])
+        )
+        for o in O for s in S if [t := taskForOperation[o]]
     ],
 
     # managing optional operations
     [
-        [Sum(b[o] for o in T) <= 1 for t in range(nTasks) if len(T := options[t]) > 1],
-        [Exist(b[o] for o in T) for t in range(nTasks) if len(T := options[t]) > 1],
-        [b[min(T)] == ~b[max(T)] for t in range(nTasks) if len(T := options[t]) == 2]
+        [
+            Sum(b[o] for o in options[t]) <= 1
+            for t in T if len(options[t]) > 1
+        ],
+        [
+            Exist(b[o] for o in options[t])
+            for t in T if len(options[t]) > 1
+        ],
+        [
+            b[min(X)] == ~b[max(X)]
+            for t in T if len(X := options[t]) == 2
+        ]
     ],
 
     # cumulative resource constraints
     [
         Cumulative(
-            tasks=[Task(origin=x[s][taskForOperation[o]], length=durations[s][o], height=b[o]) for o in range(nOptions) if option_machines[o] == m]
-        ) <= 1 for m in range(nMachines) for s in range(nScenarios)
+            Task(
+                origin=x[s][taskForOperation[o]],
+                length=durations[s][o],
+                height=b[o]
+            ) for o in O if option_machines[o] == m
+        ) <= 1 for m in M for s in S
     ],
 
     # computing the objective
-    [x[s][tasks[i][-1]] + d[s][tasks[i][-1]] <= z[s] for s in range(nScenarios) for i in range(nJobs)]
+    [
+        x[s][tasks[j][-1]] + d[s][tasks[j][-1]] <= z[s]
+        for s in S for j in J
+    ]
 
 )
 
 minimize(
     # minimizing the weighted combination of make-spans
-    Sum(weights[s] * z[s] for s in range(nScenarios))
+    Sum(weights[s] * z[s] for s in S)
 )

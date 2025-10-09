@@ -31,18 +31,19 @@ from pycsp3.tools.curser import OpOverrider
 
 options.keep_sum = True  # to get a better formed XCSP instance (to be rechecked!)
 
-domains, frequencies, polarizations, hard_constraints, soft_constraints = data
+assert not variant() or variant("aux")
+
+domains, frequencies, polarizations, hard_constraints, soft_constraints = data or load_json_data("ex2.json")
+
 frequencies = [domains[f] for f in frequencies]  # we skip the indirection
 n, nSofts = len(frequencies), len(soft_constraints)
 
 
 # cacheT = {}
 
-
 def table(i, j, eqr, ner, short_table=True):  # table for a soft constraint
     OpOverrider.disable()
     # keyT = str(frequencies[i]) + "-" + str(frequencies[j]) + "-" + str(polarizations[i]) + "-" + str(polarizations[j]) + "-" + str(eqr) + "-" + str(ner)
-
     eq_relaxation, ne_relaxation = tuple(eqr), tuple(ner)
     T = []  # we use a list instead of a set because is quite faster to process
     cache = {}
@@ -68,8 +69,7 @@ def table(i, j, eqr, ner, short_table=True):  # table for a soft constraint
             elif short_table:
                 # if key in cacheF:
                 continue
-                # else:
-                #     cacheF.add(key)
+                # else: cacheF.add(key)
             for suffix in cache[key]:
                 T.append((distance, *suffix) if short_table else (f1, f2, *suffix))
     OpOverrider.enable()
@@ -94,13 +94,15 @@ v2 = VarArray(size=nSofts, dom=range(11))
 
 satisfy(
     # imperative constraints
-    dst == gap if c4 == "E" else dst != gap for (i, j, c3, c4, gap) in hard_constraints if (dst := abs(f[i] - f[j] if c3 == "F" else p[i] - p[j]),)
+    dst == gap if c4 == "E" else dst != gap
+    for (i, j, c3, c4, gap) in hard_constraints if (dst := abs(f[i] - f[j] if c3 == "F" else p[i] - p[j]),)
 )
 
 if not variant():
     satisfy(
         # soft radio-electric compatibility constraints
-        (f[i], f[j], p[i], p[j], k, v1[q], v2[q]) in table(i, j, eqr, ner, False) for q, (i, j, eqr, ner) in enumerate(soft_constraints)
+        (f[i], f[j], p[i], p[j], k, v1[q], v2[q]) in table(i, j, eqr, ner, False)
+        for q, (i, j, eqr, ner) in enumerate(soft_constraints)
     )
 
 elif variant("aux"):
@@ -118,10 +120,16 @@ elif variant("aux"):
 
     satisfy(
         # computing intermediary distances
-        [d[q] == abs(f[i] - f[j]) for q, (i, j, _, _) in enumerate(soft_constraints)],
+        [
+            d[q] == abs(f[i] - f[j])
+            for q, (i, j, _, _) in enumerate(soft_constraints)
+        ],
 
         # soft radio-electric compatibility constraints
-        [(d[q], p[i], p[j], k, v1[q], v2[q]) in table(i, j, eqr, ner) for q, (i, j, eqr, ner) in enumerate(soft_constraints)]
+        [
+            (d[q], p[i], p[j], k, v1[q], v2[q]) in table(i, j, eqr, ner)
+            for q, (i, j, eqr, ner) in enumerate(soft_constraints)
+        ]
     )
 
 minimize(

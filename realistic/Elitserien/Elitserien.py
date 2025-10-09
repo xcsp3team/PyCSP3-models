@@ -42,7 +42,7 @@ nTeams, nPeriods = 14, 20
 DivisionSize = 7
 north_teams, south_teams = range(DivisionSize), range(DivisionSize, 2 * DivisionSize)
 tour1, tour2 = range(7), range(7, 20)
-AWAY, BYE, HOME = values = 1, 2, 3
+AWAY, BYE, HOME = Values = 1, 2, 3
 
 T, P = range(nTeams), range(nPeriods)
 
@@ -85,7 +85,7 @@ def build_atomaton():
          [AB_20, 0, 0]  # HB_20, accept state
          ]
 
-    transitions = [(s, v, Automaton.q(0) if isinstance(t[i][j], int) else t[i][j]) for i, s in enumerate(states) for j, v in enumerate(values)]
+    transitions = [(s, v, Automaton.q(0) if isinstance(t[i][j], int) else t[i][j]) for i, s in enumerate(states) for j, v in enumerate(Values)]
     return Automaton(start=INIT, final=[AB_8, HB_8, AB_20, HB_20], transitions=transitions)
 
 
@@ -148,12 +148,21 @@ satisfy(
 
     # first round-robin tournament
     [
-        [opp[t][p] in north_teams for p in tour1 for t in north_teams],
-        [opp[t][p] in south_teams for p in tour1 for t in south_teams]
+        [
+            opp[t][p] in north_teams
+            for p in tour1 for t in north_teams
+        ],
+        [
+            opp[t][p] in south_teams
+            for p in tour1 for t in south_teams
+        ]
     ],
 
     # computing breaks (2)
-    [brk[t] == Sum(p * (whr[t][p - 1] == whr[t][p]) for p in {9, 11, 13, 15, 17, 19}) for t in T],
+    [
+        brk[t] == Sum(p * (whr[t][p - 1] == whr[t][p]) for p in {9, 11, 13, 15, 17, 19})
+        for t in T
+    ],
 
     # constraining where teams can play in sequence (4)
     [whr[t] in A for t in T],
@@ -168,15 +177,24 @@ satisfy(
     ],
 
     # ensuring the compatibility of venues how (where) opponents play (7)
-    [whr[opp[t][p]][p] + whr[t][p] == AWAY + HOME for p in P for t in T],
+    [
+        whr[opp[t][p]][p] + whr[t][p] == AWAY + HOME
+        for p in P for t in T
+    ],
 
     # alternative venue requirements (1) (8)
-    [AllDifferent(3 * opp[t][p] + whr[t][p] for p in P) for t in T],
+    [
+        AllDifferent(3 * opp[t][p] + whr[t][p] for p in P)
+        for t in T
+    ],
 
     # tag(redundant)
     [
         # considering the consequence of Bye (3)
-        [(opp[t][p] == t) == (whr[t][p] == BYE) for t in T for p in P],
+        [
+            (opp[t][p] == t) == (whr[t][p] == BYE)
+            for t in T for p in P
+        ],
 
         # exactly six aligned breaks per division (10)
         [

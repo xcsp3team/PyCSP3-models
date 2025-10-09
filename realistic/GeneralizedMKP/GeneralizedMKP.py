@@ -27,7 +27,7 @@ See Wikipedia.
 
 from pycsp3 import *
 
-profits, w_matrix, capacities, p_matrix = data or load_json_data("OR05x100-25-1.json")  # , pmatrix = data
+profits, w_matrix, capacities, p_matrix = data or load_json_data("OR05x100-25-1.json")
 
 nItems, nBins = len(profits), len(capacities)
 
@@ -59,11 +59,11 @@ maximize(
 )
 
 """ Comments
-1) Wrt the minizinc model, must we write  >= opt or == opt ?
+1) Wrt the minizinc model, must we write  >= z or == z ?
 
 2) One can write wcondition=eq(w[j]) or wcondition=le(w[j]) or wlimit=w[j]
 
 3) For being compatible with the competition mini-track, we use:
-  [x * weights <= w[j] for j, weights in enumerate(wmatrix)],
-  [x * pmatrix[j] >= z for j, weights in enumerate(wmatrix)],
+  [x * weights <= w[j] for j, weights in enumerate(w_matrix)],
+  [x * pmatrix[j] >= z for j, weights in enumerate(w_matrix)],
 """

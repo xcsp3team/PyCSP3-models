@@ -20,9 +20,9 @@ Large scale scheduling instances have been built to show the interest of a scala
 
 from pycsp3 import *
 
-limit, durations, heights = data
-nTasks = len(durations)
+limit, durations, heights = data or load_json_data("00100-0.json")
 
+nTasks = len(durations)
 horizon = sum(durations) + 1  # trivial upper bound on the horizon
 
 # x[i] is the starting time of the ith task

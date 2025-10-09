@@ -9,11 +9,8 @@ paid for. Similarly, a voucher (3, 2) means that if you pay for 3 pizzas you can
 free as long as they each cost no more than the cheapest of the 3 pizzas you paid for. The aim is to
 obtain all the ordered pizzas for the least possible cost. Note that not all vouchers need to be used.
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
-
 ## Data Example
-  pizza06.json
+  06b.json
 
 ## Model
   constraints: Count, Sum
@@ -27,46 +24,56 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-prices, vouchers = data
-pay, free = zip(*vouchers)
-nPizzas, nVouchers = len(prices), len(pay)
+prices, vouchers = data or load_json_data("06b.json")
 
-# v[i] is the voucher used for the ith pizza. 0 means that no voucher is used.
-# A negative (resp., positive) value i means that the ith pizza contributes to the pay (resp., free) part of voucher |i|.
-v = VarArray(size=nPizzas, dom=range(-nVouchers, nVouchers + 1))
+nPizzas, nVouchers = len(prices), len(vouchers)
+P, V = range(nPizzas), range(nVouchers)
 
-# p[i] is the number of paid pizzas wrt the ith voucher
-p = VarArray(size=nVouchers, dom=lambda i: {0, pay[i]})
+# x[p] is the voucher used for pizza p. 0 means that no voucher is used.
+# A negative (resp., positive) value v means that pizza p contributes to the pay (resp., free) part of voucher |v|.
+x = VarArray(size=nPizzas, dom=range(-nVouchers, nVouchers + 1))
 
-# f[i] is the number of free pizzas wrt the ith voucher
-f = VarArray(size=nVouchers, dom=lambda i: range(free[i] + 1))
+# pp[v] is the number of paid pizzas wrt voucher v
+pp = VarArray(size=nVouchers, dom=lambda i: {0, vouchers[i].pay})
+
+# fp[v] is the number of free pizzas wrt voucher v
+fp = VarArray(size=nVouchers, dom=lambda i: range(vouchers[i].free + 1))
 
 satisfy(
     # counting paid pizzas
-    [Count(v, value=-i - 1) == p[i] for i in range(nVouchers)],
+    [
+        Count(
+            within=x,
+            value=-v - 1
+        ) == pp[v] for v in V
+    ],
 
     # counting free pizzas
-    [Count(v, value=i + 1) == f[i] for i in range(nVouchers)],
+    [
+        Count(
+            within=x,
+            value=v + 1
+        ) == fp[v] for v in V
+    ],
 
     # a voucher, if used, must contribute to have at least one free pizza.
-    [(f[i] == 0) == (p[i] != pay[i]) for i in range(nVouchers)],
+    [
+        (fp[v] == 0) == (pp[v] != vouchers[v].pay)
+        for v in V
+    ],
 
     # a free pizza obtained with a voucher must be cheaper than any pizza paid wrt this voucher
     [
         If(
-            v[i] < 0,
-            Then=v[i] != -v[j]
-        ) for i in range(nPizzas) for j in range(nPizzas) if prices[i] < prices[j]
+            x[p1] < 0,
+            Then=x[p1] != -x[p2]
+        ) for p1 in P for p2 in P if prices[p1] < prices[p2]
     ]
 )
 
 minimize(
     # minimizing summed up costs of pizzas
-    Sum((v[i] <= 0) * prices[i] for i in range(nPizzas))
+    Sum((x[p] <= 0) * prices[p] for p in P)
 )
 
-annotate(decision=v)
-
-""" Comments
-1) Do you think that [(f[i] == 0) == (p[i] != vouchers[i].payPart) for i in range(nVouchers)] is clearer?
-"""
+annotate(decision=x)

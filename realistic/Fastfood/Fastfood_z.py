@@ -1,9 +1,9 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2011/2012 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  02.json
+  ff01.json
 
 ## Model
   constraints: Sum, Minimum
@@ -21,7 +21,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-nDepots, restaurants = data
+nDepots, restaurants = data or load_json_data("ff01.json")
+
 positions = [r.position for r in restaurants]
 
 # x[i] is the position of the ith depot

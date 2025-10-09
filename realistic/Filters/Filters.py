@@ -18,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S1383762103000754
   - https://github.com/radsz/jacop/tree/develop/src/main/java/org/jacop/examples/fd/filters
-  - https://www.minizinc.org/challenge2016/results2016.html
+  - https://www.minizinc.org/challenge/2016/results/
 
 ## Tags
   realistic, mzn10, mzn12, mzn13, mzn16
@@ -27,6 +27,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 
 del_add, del_mul, number_add, number_mul, last, add, dependencies = data or load_json_data("ar-1-3.json")
+
 nOperations = len(dependencies)
 
 d = [del_add if i in add else del_mul for i in range(nOperations)]  # durations

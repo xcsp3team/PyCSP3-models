@@ -2,7 +2,7 @@
 Multi Dimensional Knapsack Problem.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   01-06.json
@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python MultiKnapsack_z1.py -data=<datafile.dzn> -parser=MultiKnapsack_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   crafted, mzn14
@@ -23,7 +23,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-weights, profits, sizes, z = data
+weights, profits, sizes, z = data or load_json_data("01-06.json")
+
 nItems, nBins = len(profits), len(sizes)
 
 # x[i] is 1 if the ith item is selected

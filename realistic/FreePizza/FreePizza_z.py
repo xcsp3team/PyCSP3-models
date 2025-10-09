@@ -13,7 +13,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  06.json
+  06a.json
 
 ## Model
   constraints: Sum
@@ -23,7 +23,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python FreePizza_z.py -data=<datafile.dzn> -parser=FreePizza_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2015/results2015.html
+  - https://www.minizinc.org/challenge/2015/results/
 
 ## Tags
   realistic, mzn15
@@ -31,8 +31,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-prices, buy, free = data
+prices, buy, free = data or load_json_data("06a.json")
+
 nPizzas, nVouchers = len(prices), len(buy)
+P, V = range(nPizzas), range(nVouchers)
 
 # how[i] is the voucher used for the ith pizza. 0 means that no voucher is used.
 # A negative (resp., positive) value i means that the ith pizza contributes to the buy (resp., free) part of voucher |i|.
@@ -45,24 +47,27 @@ satisfy(
     # assigning right number of pizzas to buy order
     [
         (
-            used[v] == (Sum(how[p] == -(v + 1) for p in range(nPizzas)) >= buy[v]),
-            Sum(how[p] == -(v + 1) for p in range(nPizzas)) <= used[v] * buy[v]
-        ) for v in range(nVouchers)
+            used[v] == (Sum(how[p] == -(v + 1) for p in P) >= buy[v]),
+            Sum(how[p] == -(v + 1) for p in P) <= used[v] * buy[v]
+        ) for v in V
     ],
 
     # assigning not too many pizzas to free order
-    [Sum(how[p] == (v + 1) for p in range(nPizzas)) <= used[v] * free[v] for v in range(nVouchers)],
+    [
+        Sum(how[p] == (v + 1) for p in P) <= used[v] * free[v]
+        for v in V
+    ],
 
     # pizzas assigned to free are cheaper than pizzas assigned to buy
     [
         If(
             how[p1] < how[p2],
             Then=how[p1] != -how[p2]
-        ) for p1 in range(nPizzas) for p2 in range(nPizzas) if prices[p1] < prices[p2]
+        ) for p1 in P for p2 in P if prices[p1] < prices[p2]
     ]
 )
 
 minimize(
     # minimizing summed up costs of pizzas
-    Sum((how[i] <= 0) * prices[i] for i in range(nPizzas))
+    Sum((how[p] <= 0) * prices[p] for p in P)
 )

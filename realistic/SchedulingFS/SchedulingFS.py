@@ -1,4 +1,5 @@
 """
+Flow-shop Scheduling
 
 ## Data Example
   04-04-0.json
@@ -19,7 +20,8 @@
 
 from pycsp3 import *
 
-durations = data  # durations[i][j] is the duration of operation/machine j for job i
+durations = data or load_json_data("04-04-0.json")  # durations[i][j] is the duration of operation/machine j for job i
+
 horizon = sum(sum(t) for t in durations) + 1
 n, m = len(durations), len(durations[0])
 

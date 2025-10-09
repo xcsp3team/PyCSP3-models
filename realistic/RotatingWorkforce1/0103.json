@@ -1,0 +1,25 @@
+{
+  "weekLength": 7,
+  "nWorkers": 16,
+  "daysOff": {"min": 1, "max": 4},
+  "workBlockLength": {"min": 3, "max": 7},
+  "temporalRequirements": [
+    [5, 4, 4, 4, 4, 3, 3],
+    [5, 5, 5, 5, 4, 0, 0],
+    [4, 3, 3, 3, 3, 2, 2]
+  ],
+  "shifts": [
+    {"blockMin": 2, "blockMax": 6},
+    {"blockMin": 3, "blockMax": 6},
+    {"blockMin": 3, "blockMax": 4}
+  ],
+  "forbids": [
+    {"before": 2, "after": 0, "daysOff": 0},
+    {"before": 2, "after": 1, "daysOff": 0},
+    {"before": 1, "after": 0, "daysOff": 0},
+    {"before": 2, "after": 2, "daysOff": 1},
+    {"before": 1, "after": 0, "daysOff": 1},
+    {"before": 2, "after": 1, "daysOff": 1},
+    {"before": 2, "after": 0, "daysOff": 1}
+  ]
+}
