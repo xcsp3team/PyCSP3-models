@@ -1,5 +1,5 @@
 """
-The rectangle (square) packing problem consists of squares (bowes)
+The rectangle (square) packing problem consists of squares (boxes)
 to be put in an enclosing rectangle (container) without overlapping of the squares.
 
 
@@ -21,9 +21,10 @@ to be put in an enclosing rectangle (container) without overlapping of the squar
 
 from pycsp3 import *
 
-width, height = data.container
-boxes = data.boxes
+(width, height), boxes = data or load_json_data("perfect-001.json")
+
 nBoxes = len(boxes)
+B = range(nBoxes)
 
 # x[i] is the x-coordinate where is put the ith rectangle
 x = VarArray(size=nBoxes, dom=range(width))
@@ -33,14 +34,14 @@ y = VarArray(size=nBoxes, dom=range(height))
 
 satisfy(
     # unary constraints on x
-    [x[i] + boxes[i].width <= width for i in range(nBoxes)],
+    [x[i] + boxes[i].width <= width for i in B],
 
     # unary constraints on y
-    [y[i] + boxes[i].height <= height for i in range(nBoxes)],
+    [y[i] + boxes[i].height <= height for i in B],
 
     # no overlap on boxes
     NoOverlap(
-        origins=[(x[i], y[i]) for i in range(nBoxes)],
+        origins=[(x[i], y[i]) for i in B],
         lengths=boxes
     ),
 

@@ -1,5 +1,5 @@
 """
-The ROADEF1 conference is the largest French-speaking event aimed at bringing together researchers from various domains, including combinatorial optimization,
+The ROADEF conference is the largest French-speaking event aimed at bringing together researchers from various domains, including combinatorial optimization,
  operational research, constraint programming and industrial engineering.
 This event is organized annually and welcomes around 600 participants.
 ROADEF includes plenary sessions, tutorials in semi-plenary sessions, and multiple parallel sessions.
@@ -7,12 +7,11 @@ The conference also involves many working groups consisting of researchers colla
  on specific themes covered by the conference, with each parallel session usually being organized by one or more of these working group.
 The problem si to schedule ROADEF parallel sessions into available time slots while avoiding clashes among research working groups.
 
-
 ## Data Example
   2021.json
 
 ## Model
-  constraints: Cardinality, Sum, Table
+  constraints: Cardinality, Lex, Sum, Table
 
 ## Execution
   python RoadefPlanning2.py -data=<datafile.json>
@@ -28,7 +27,8 @@ The problem si to schedule ROADEF parallel sessions into available time slots wh
 
 from pycsp3 import *
 
-nSessions, nSlots, papers_range, nGroups, nSessionPapers, slot_capacities, session_groups, forbidden, nRooms = data
+nSessions, nSlots, papers_range, nGroups, nSessionPapers, slot_capacities, session_groups, forbidden, nRooms = data or (*load_json_data("2021.json"), 6)
+
 assert nSessions == len(nSessionPapers) == len(session_groups) and nSlots == len(slot_capacities)
 slot_capacities.sort()  # easier for reasoning and posting some constraints
 decrement(forbidden)  # because we start indexing at 0
@@ -41,7 +41,7 @@ conflicts = [(i, j, v) for i, j in combinations(nSessions, 2) if (v := len(set(s
 T = [(t, v) for t in range(nSlots) for v in range(papers_range[0], slot_capacities[t] + 1)] + [(NO, 0)]
 
 maxSlots = [next(t if (t + 1) * papers_range[0] > k else t + 1 for t in range(nSlots) if sum(slot_capacities[:t + 1]) >= k)
-            for i in range(nSessions) if (k := nSessionPapers[i],)]
+            for i, k in enumerate(nSessionPapers)]
 gap = nRooms * sum(slot_capacities) - sum(nSessionPapers)
 min_nb_rooms = [max(0, nRooms - (gap // slot_capacities[t] + (1 if gap % slot_capacities[t] != 0 else 0))) for t in range(nSlots)]
 
@@ -110,7 +110,9 @@ minimize(
 """ Comments
 1) the range used for NO should be double checked
 2) value 2 removed from the end of the array np of instance 2023 (seems a mistake)
-3) Compilation example: python3 RoadefPlaning.py -data=[2024.json,k=15]
+3) Compilation example: python3 RoadefPlaning2.py -data=[2024.json,k=15]
+4) ACE-rr is quite competitive wrt the MaxSAt approach presented at CP'04, as ACE can prove unsatisfiability or finds an optimal solution within 10 seconds 
+   (optimality proof is not achieved for 4 instances however, as it can be seen at https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop)           
 """
 
 # [Count(x, value=t) <= nRooms for t in range(nSlots)],

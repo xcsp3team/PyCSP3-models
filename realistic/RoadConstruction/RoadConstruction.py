@@ -2,8 +2,7 @@
 Road construction problem.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014 Minizinc challenge.
-The MZN model was proposed by Rehan Abdul Aziz.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Rehan Abdul Aziz - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   09.json
@@ -16,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python RoadConstruction.py -data=<datafile.dzn> -parser=RoadConstruction_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
   realistic, mzn14, mzn17
@@ -24,10 +23,11 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-budget, distances, costs = data
+budget, distances, costs = data or load_json_data("09.json")
+
 n = len(distances)
 
-M = 1000000
+M = 1_000_000
 
 # x[i][j][k] is the smallest distance between nodes i and j, computed after k reasoning steps
 x = VarArray(size=[n, n, n], dom=lambda i, j, k: range(M + 1) if i < j else None)
@@ -38,10 +38,10 @@ y = VarArray(size=[n, n], dom=lambda i, j: {0, 1} if i < j else None)
 satisfy(
     # initially computing the smallest distance between pairs of nodes
     [
-        (x[i][j][0], y[i][j]) in {
-            (M, 0),
-            (distances[i][j], 1)
-        } for i, j in combinations(n, 2)
+        Table(
+            scope=(x[i][j][0], y[i][j]),
+            supports={(M, 0), (distances[i][j], 1)}
+        ) for i, j in combinations(n, 2)
     ],
 
     # iteratively computing the smallest distance between pairs of nodes
@@ -53,9 +53,7 @@ satisfy(
     ],
 
     # not exceeding the budget
-    Sum(
-        costs[i][j] * y[i][j] for i, j in combinations(n, 2)
-    ) <= budget
+    Sum(costs[i][j] * y[i][j] for i, j in combinations(n, 2)) <= budget
 )
 
 minimize(

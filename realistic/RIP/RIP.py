@@ -25,7 +25,8 @@ of the (unlimited) renewable resources required to complete the project by a pre
 
 from pycsp3 import *
 
-horizon, costs, tasks = data
+horizon, costs, tasks = data or load_json_data("25-0-j060-01-01.json")
+
 durations, successors, requirements = zip(*tasks)
 nResources, nTasks = len(costs), len(tasks)
 requirements = [[r[k] for r in requirements] for k in range(nResources)]

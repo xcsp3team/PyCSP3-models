@@ -1,10 +1,10 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
 Instances (and the model) wre developed in the context of the ESPRIT PROJECT 22165 CHIC-2, with contributions from:
-  - IC-Parc, Imperial College, London,
-  - Bouygues research, Paris,
-  - EuroDecision, Paris,
-No Licence was explicitly mentioned (MIT Licence is assumed).
+  - IC-Parc, Imperial College, London
+  - Bouygues research, Paris
+  - EuroDecision, Paris
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   05.json
@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python Roster.py -data=<datafile.dzn> -parser=Roster_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, mzn09, mzn11, mzn15, mzn23
@@ -25,7 +25,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-nWeeks, requirements, lb = data
+nWeeks, requirements, lb = data or load_json_data("05.json")
+
 REST, MORN, DAY, EVE, JOKER = shifts = range(5)
 nDays, nShifts, horizon = 7, len(shifts), 7 * nWeeks
 
@@ -45,29 +46,44 @@ x_flat = flatten(x)  # useful auxiliary array for posting some constraints
 
 satisfy(
     # ensuring shift requirements are satisfied
-    [Count(x[:, day], value=shift) == requirements[shift, day] for shift in range(nShifts) for day in range(nDays)],
+    [
+        Count(
+            within=x[:, d],
+            value=s
+        ) == requirements[s, d] for s in range(nShifts) for d in range(nDays)
+    ],
 
     # ensuring that in any sequence of 7 days, at least one of them is a Rest day
-    [Count(x_flat[d:d + 7], value=REST) >= 1 for d in range(horizon)],
+    [
+        Count(
+            within=x_flat[i:i + 7],
+            value=REST
+        ) >= 1 for i in range(horizon)
+    ],
 
     # ensuring there is no sequence of three Rest days in a row
-    [Count(x_flat[d:d + 4], value=REST) <= 3 for d in range(horizon)],
+    [
+        Count(
+            within=x_flat[i:i + 4],
+            value=REST
+        ) <= 3 for i in range(horizon)
+    ],
 
     # counting Evenings before Mornings
     z1 == Sum(
         both(
-            x_flat[d] == EVE,
-            x_flat[d + 1] == MORN
-        ) for d in range(horizon)
+            x_flat[i] == EVE,
+            x_flat[i + 1] == MORN
+        ) for i in range(horizon)
     ),
 
     # counting isolated Rest days
     z2 == Sum(
         conjunction(
-            x_flat[d] != REST,
-            x_flat[d + 1] == REST,
-            x_flat[d + 2] != REST
-        ) for d in range(horizon)
+            x_flat[i] != REST,
+            x_flat[i + 1] == REST,
+            x_flat[i + 2] != REST
+        ) for i in range(horizon)
     ),
 
     # computing the objective value

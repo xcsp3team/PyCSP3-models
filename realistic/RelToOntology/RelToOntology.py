@@ -3,7 +3,7 @@ The Relational-To-Ontology Mapping Problem is viewed here as a Steiner Tree Prob
 See IJCAI paper below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   3-09.json
@@ -25,7 +25,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-attributes, adjacency, dnodes, anodes, edges = data
+attributes, adjacency, d_nodes, a_nodes, edges = data or load_json_data("3-09.json")
+
 domains, matchCosts = zip(*attributes)
 tails, heads, edgeCosts = zip(*edges)
 nAttributes, n, m = len(attributes), len(adjacency), len(edges)
@@ -54,7 +55,7 @@ root = Var(dom=range(n))
 
 satisfy(
     # some attributes must be in the tree
-    [x[i] == 1 for i in anodes],
+    [x[i] == 1 for i in a_nodes],
 
     # enforcing treeness
     [
@@ -97,10 +98,10 @@ satisfy(
     ],
 
     # matched nodes are in the tree
-    [x[i] == Exist(match[k] == i for k in range(nAttributes)) for i in dnodes],
+    [x[i] == Exist(match[k] == i for k in range(nAttributes)) for i in d_nodes],
 
     # only one edge coming out of the match
-    [x[i] == ExactlyOne(y[j] for j in range(m) if adjacency[i][j] == 1) for i in dnodes]
+    [x[i] == ExactlyOne(y[j] for j in range(m) if adjacency[i][j] == 1) for i in d_nodes]
 )
 
 minimize(

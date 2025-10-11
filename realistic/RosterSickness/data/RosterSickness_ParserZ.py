@@ -23,4 +23,4 @@ data['shifts'] = [OrderedDict([("start", starts[i]), ("stop", stops[i]), ("requi
 perHour = number_in(next_line())
 assigneds = split_with_rows_of_size(booleans_in(next_line()), nShifts)
 assert nEmployees == len(assigneds)
-data['emplyees'] = [OrderedDict([("contract", contracts[i]), ("expertise", expertises[i]), ("assigned", assigneds[i])]) for i in range(nEmployees)]
+data['employees'] = [OrderedDict([("contract", contracts[i]), ("expertise", expertises[i]), ("assigned", assigneds[i])]) for i in range(nEmployees)]

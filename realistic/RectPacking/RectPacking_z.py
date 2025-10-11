@@ -3,7 +3,7 @@ The rectangle (square) packing problem consists of n squares of size 1x1, 2x2, 3
 to be put in an enclosing rectangle (container) without overlapping of the squares.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2009/2014 Minizinc challenges.
-The MZN model has Copyright (C) 2009-2014 The University of Melbourne and NICTA.
+The original MZN model has Copyright (C) 2009-2014 The University of Melbourne and NICTA.
 
 ## Data
   Two integers (n,k)
@@ -15,7 +15,7 @@ The MZN model has Copyright (C) 2009-2014 The University of Melbourne and NICTA.
   python RectPacking_z.py -data=[number,number]
 
 ## Links
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   academic, mzn09, mzn14
@@ -24,7 +24,7 @@ The MZN model has Copyright (C) 2009-2014 The University of Melbourne and NICTA.
 from pycsp3 import *
 from math import floor, ceil, sqrt
 
-n, including_square1 = data
+n, including_square1 = data or (9, 0)
 
 max_width = sum(i for i in range(1, n + 1) if i >= (n // 2) + 1)
 min_height = n if n % 2 == 1 else n + 1
@@ -36,38 +36,42 @@ min_width = ceil(sqrt(min_area))
 starting_square = 1 if including_square1 == 1 else 2
 squares = range(starting_square, n + 1)
 
-gaps = [0, 2, 3, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10]
-
 
 def forbidden_gaps(axis, c, limit, max_value):
+    gaps = [0, 2, 3, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10]
+
     bl = VarArray(size=n, dom=lambda i: {0, 1} if i + 1 >= starting_square else None, id="bl" + axis)
+
     br = VarArray(size=n, dom=lambda i: {0, 1} if i + 1 >= starting_square and 2 * gaps[i] + 2 <= max_value - (i + 1) else None, id="br" + axis)
 
-    return [
-        (
-            If(
-                bl[i - 1],
-                Then=c[i - 1] <= 0,
-                Else=c[i - 1] > gaps[i - 1]
-            ),
-            If(
-                br[i - 1],
-                Then=c[i - 1] >= limit - i,
-                Else=c[i - 1] < limit - i - gaps[i - 1]
-            ),
-            either(
-                bl[i - 1] == 0,
-                br[i - 1] == 0
+    C = []
+    for i in squares:
+        if 2 * gaps[i - 1] + 2 <= max_value - i:
+            C.extend([
+                If(
+                    bl[i - 1],
+                    Then=c[i - 1] <= 0,
+                    Else=c[i - 1] > gaps[i - 1]
+                ),
+                If(
+                    br[i - 1],
+                    Then=c[i - 1] >= limit - i,
+                    Else=c[i - 1] < limit - i - gaps[i - 1]
+                ),
+                either(
+                    bl[i - 1] == 0,
+                    br[i - 1] == 0
+                )
+            ])
+        else:
+            C.append(
+                If(
+                    bl[i - 1],
+                    Then=c[i - 1] <= 0,
+                    Else=c[i - 1] >= limit - i
+                )
             )
-        ) if 2 * gaps[i - 1] + 2 <= max_value - i else
-        (
-            If(
-                bl[i - 1],
-                Then=c[i - 1] <= 0,
-                Else=c[i - 1] >= limit - i
-            )
-        ) for i in squares
-    ]
+    return C
 
 
 # x[i] is the x-coordinate of the ith square (left lower corner)
@@ -108,12 +112,20 @@ satisfy(
 
     # ensuring a non-overload wrt rectangle height
     Cumulative(
-        tasks=[Task(origin=x[i - 1], length=i, height=i) for i in squares]
+        Task(
+            origin=x[i - 1],
+            length=i,
+            height=i
+        ) for i in squares
     ) <= h,
 
     # ensuring a non-overload wrt rectangle width
     Cumulative(
-        tasks=[Task(origin=y[i - 1], length=i, height=i) for i in squares]
+        Task(
+            origin=y[i - 1],
+            length=i,
+            height=i
+        ) for i in squares
     ) <= w,
 
     # when the unit square is not considered, its origin is assigned to (0, 0)

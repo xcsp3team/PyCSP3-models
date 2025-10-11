@@ -28,12 +28,14 @@ See problem 087 at CSPLib.
 
 from pycsp3 import *
 
-nDaysPerWeek, nWeeks, shift_min, shift_max, requirements = data
-nDays = nWeeks * nDaysPerWeek
+nDaysPerWeek, nWeeks, shift_min, shift_max, requirements = data or load_json_data("008-2-3.json")
 
 SATURDAY, SUNDAY = 5, 6
 shifts = (OFF, EARLY, LATE, NIGHT) = range(4)
 nShifts = len(shifts)
+
+nDays = nWeeks * nDaysPerWeek
+D, W = range(nDays), range(nWeeks)
 
 # x[i] is the shift for the ith day (along the flattened horizon)
 x = VarArray(size=nDays, dom=range(nShifts))
@@ -43,17 +45,17 @@ y = VarArray(size=[nWeeks, nDaysPerWeek], dom=range(nShifts))
 
 satisfy(
     # computing y
-    [y[w][d] == x[w * nDaysPerWeek + d] for w in range(nWeeks) for d in range(nDaysPerWeek)],
+    [y[w][d] == x[w * nDaysPerWeek + d] for w in W for d in range(nDaysPerWeek)],
 
     # ensuring weekend days (Saturday and Sunday) have the same shift
-    [y[w][SATURDAY] == y[w][SUNDAY] for w in range(nWeeks)],
+    [y[w][SATURDAY] == y[w][SUNDAY] for w in W],
 
     # ensuring a minimum length of consecutive similar shifts
     [
         If(
             x[i] != x[i + 1],
             Then=AllEqual(x[i + 1:i + 1 + shift_min])
-        ) for i in range(nDays)
+        ) for i in D
     ],
 
     # ensuring a maximum length of consecutive similar shifts
@@ -61,7 +63,7 @@ satisfy(
         If(
             AllEqual(x[i:i + shift_max]),
             Then=x[i] != x[i + shift_max]
-        ) for i in range(nDays)
+        ) for i in D
     ],
 
     # ensuring to have at least 2 resting days every 2 weeks
@@ -69,11 +71,11 @@ satisfy(
         Count(
             within=x[i:i + 2 * nDaysPerWeek + 1],
             value=OFF
-        ) >= 2 for i in range(nDays)  # does seem to be +1 in the model posted at CSPLib?
+        ) >= 2 for i in D  # does seem to be +1 in the model posted at CSPLib?
     ],
 
     # avoiding some specific successive shifts
-    [(x[i], x[i + 1]) not in {(LATE, EARLY), (NIGHT, EARLY), (NIGHT, LATE)} for i in range(nDays)],
+    [(x[i], x[i + 1]) not in {(LATE, EARLY), (NIGHT, EARLY), (NIGHT, LATE)} for i in D],
 
     # ensuring the right number of employees
     [

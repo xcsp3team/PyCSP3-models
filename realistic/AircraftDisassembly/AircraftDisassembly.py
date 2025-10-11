@@ -123,7 +123,7 @@ satisfy(
             act_leq_act[i][j],
             act_leq_act[j][i]
         ) for i, j in combinations(A, 2)
-    ],
+    ]
 )
 
 minimize(

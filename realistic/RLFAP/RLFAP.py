@@ -22,7 +22,10 @@ Radio Link Frequency Assignment.
 
 from pycsp3 import *
 
-domains, variables, constraints, interferenceCosts, mobilityCosts = data
+assert variant("card") or variant("span") or variant("max")
+
+domains, variables, constraints, interferenceCosts, mobilityCosts = data or load_json_data("graph-01.json")
+
 n = len(variables)
 
 # f[i] is the frequency of the ith radio link
