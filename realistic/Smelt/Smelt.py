@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   02.json
@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python Smelt.py -data=<datafile.dzn> -parser=Smelt_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   realistic, mzn14
@@ -21,9 +21,11 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-flows, recipes, orders, nLines, rules = data
+flows, recipes, orders, nLines, rules = data or load_json_data("02.json")
+
 ot, oh, ow = zip(*orders)
 rt, rk1, rd, rk2 = zip(*rules)
+
 nMinerals, nRecipes, nOrders, nRules = len(flows), len(recipes), len(orders), len(rules)
 durations = [sum(oh[i] * ow[i] for i in range(nOrders) if ot[i] == j) for j in range(nRecipes)]
 H = 1000  # horizon
@@ -58,8 +60,7 @@ def production_rule(i):
         return re[rk1[i]] + rd[i] >= rs[rk2[i]]
     if rt[i] == 2:
         return rs[rk1[i]] - rd[i] <= rs[rk2[i]]
-    if rt[i] == 3:
-        return re[rk1[i]] - rd[i] <= re[rk2[i]]
+    return re[rk1[i]] - rd[i] <= re[rk2[i]]  # rt[i] == 3
 
 
 satisfy(

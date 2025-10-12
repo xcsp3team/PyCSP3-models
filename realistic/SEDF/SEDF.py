@@ -32,7 +32,8 @@ See Experimental Data for TabID Journal Paper (URL given below).
 
 from pycsp3 import *
 
-inv, tab, k, m, ld = data
+inv, tab, k, m, ld = data or load_json_data("19-1-C19-3-3-1.json")
+
 n = len(inv)
 
 # x[i][j] is the jth value of the ith list

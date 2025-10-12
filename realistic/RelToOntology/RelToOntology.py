@@ -33,11 +33,7 @@ nAttributes, n, m = len(attributes), len(adjacency), len(edges)
 
 match_lb, match_ub = min(min(domain) for domain in domains), max(max(domain) for domain in domains)
 matrix = cp_array([next((e for e in range(m) if adjacency[i][e] == adjacency[j][e] == 1), -1) for j in range(n)] for i in range(n))
-
-
-def possible_parents(i):
-    return {heads[j] if tails[j] == i else tails[j] for j in range(m) if adjacency[i][j] == 1}
-
+possible_parents = [{heads[j] if tails[j] == i else tails[j] for j in range(m) if adjacency[i][j] == 1} for i in range(n)]
 
 # x[i] is 1 if the ith node is selected in the tree
 x = VarArray(size=n, dom={0, 1})
@@ -73,7 +69,7 @@ satisfy(
             If(
                 root != i, x[i] != 0,
                 Then=[
-                    p[i] in possible_parents(i),
+                    p[i] in possible_parents[i],
                     y[matrix[i][p[i]]] == 1,
                     x[p[i]] == 1,
                     p[p[i]] != i

@@ -163,32 +163,3 @@ post_redundant_constraints()
  is equivalent to:
    ((x[0][0] != OFF) & (x[i + 1][0] == OFF))
 """
-
-# def build_automaton():
-#     def state(shift, day, dayw):
-#         return first[shift] + (workBlockLength.max * (day - 1)) + (dayw - 1)
-#
-#     OFF2 = nShifts + 2  # The state of the DFA when the current block is an off-duty one and at least of length two
-#     first = [1 + nShifts + daysOff.max + sum(workBlockLength.max * shifts[j].blockMax for j in range(i)) for i in S]
-#     toff = [[(not any(before == i and after == j for (before, after, doff) in forbids if doff == 1)) for j in S] for i in S]
-#     ton = [[(not any(before == i and after == j for (before, after, doff) in forbids if doff == 0)) for j in S] for i in S]
-#
-#     t = first + [OFF2]
-#     t += [(OFF2 if 1 < daysOff.max else 0) if j == OFF else first[j] if 1 >= daysOff.min and toff[i][j] else 0 for i in S for j in range(nShifts + 1)]
-#     t += [(nShifts + 1 + d if d < daysOff.max else 0) if j == OFF else first[j] if d >= daysOff.min else 0 for d in range(2, daysOff.max + 1) for j in
-#           range(nShifts + 1)]
-#
-#     def val(i, shift, ds, dw, j):
-#         if j == OFF:
-#             return i + 1 if ds >= shift.blockMin and dw >= workBlockLength.min else 0
-#         if j == i:
-#             return state(i, ds + 1, dw + 1) if ds < shift.blockMax and dw < workBlockLength.max else 0
-#         return state(j, 1, dw + 1) if ds >= shift.blockMin and dw < workBlockLength.max and ton[i][j] else 0
-#
-#     t += [val(i, shift, ds, dw, j) for i, shift in enumerate(shifts) for ds in range(1, shift.blockMax + 1) for dw in range(1, workBlockLength.max + 1)
-#           for j in range(nShifts + 1)]
-#
-#     t = split_with_rows_of_size(t, nShifts + 1)
-#     q = Automaton.q
-#     trs = [(q(i + 1), j, q(t[i][j])) for i in range(len(t)) for j in range(nShifts + 1) if t[i][j] != 0]
-#     return Automaton(start=q(1), final=[q(i) for i in range(1, len(t) + 1)], transitions=trs)

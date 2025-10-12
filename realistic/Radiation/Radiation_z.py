@@ -4,8 +4,7 @@ largely due to its application in radiation treatment for cancer.
 See paper whose reference is given below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
-The MZN model was proposed by Sebastian Brand.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Sebastian Brand - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   01.json
@@ -19,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-010-9104-1
-  - https://www.minizinc.org/challenge2012/results2012.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, mzn08, mzn12, mzn13, mzn15, mzn20
@@ -27,7 +26,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-intensity = data  # intensity matrix
+intensity = data or load_json_data("01.json")  # intensity matrix
+
 n, m = len(intensity), len(intensity[0])
 nIntensities = max(v for t in intensity for v in t) + 1  # +1 because we also have 0
 sumIntensities = sum(sum(t) for t in intensity)

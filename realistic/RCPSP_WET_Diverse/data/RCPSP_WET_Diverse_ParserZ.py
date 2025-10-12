@@ -18,8 +18,10 @@ data['tasks'] = [OrderedDict([("duration", durations[i]), ("successors", success
 data['horizon'] = horizon
 
 next_line(repeat=2)
-data['earlinessMin'] = number_in(next_line())
-data['earlinessMax'] = number_in(next_line())
-data['tardinessMin'] = number_in(next_line())
-data['tardinessMax'] = number_in(next_line())
+earlinessMin = number_in(next_line())
+earlinessMax = number_in(next_line())
+data['earliness'] = OrderedDict([("min", earlinessMin), ("max", earlinessMax)])
+tardinessMin = number_in(next_line())
+tardinessMax = number_in(next_line())
+data['tardiness'] = OrderedDict([("min", tardinessMin), ("max", tardinessMax)])
 data['nSolutions'] = number_in(next_line())

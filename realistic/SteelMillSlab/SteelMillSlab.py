@@ -22,9 +22,13 @@ Steel is produced by casting molten iron into slabs.
 
 from pycsp3 import *
 
-capacities, orders = data
-possibleLosses = [min(v for v in [0] + capacities if v >= i) - i for i in range(max(capacities) + 1)]
+assert not variant() or variant("01")
+
+capacities, orders = data or load_json_data("bench-2-0.json")
+
 sizes, colors = zip(*orders)
+
+possibleLosses = [min(v for v in [0] + capacities if v >= i) - i for i in range(max(capacities) + 1)]
 allColors = sorted(set(colors))
 colorGroups = [[i for i, order in enumerate(orders) if order.color == color] for color in allColors]
 nOrders, nSlabs, nColors = len(orders), len(orders), len(allColors)

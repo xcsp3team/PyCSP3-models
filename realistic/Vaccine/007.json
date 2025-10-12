@@ -31,7 +31,13 @@
     {"lb": 0, "ub": 10},
     {"lb": 0, "ub": 10}
   ],
-  "limits": {"minSize": 5, "maxDiff": 40, "maxShare": 3},
-  "health_information": [1, 2, 3],
-  "exposure_information": [1, 2, 3, 4]
+  "limits": {
+    "minSize": 5,
+    "maxDiff": 40,
+    "maxShare": 3
+  },
+  "information": {
+    "health": [1, 2, 3],
+    "exposure": [1, 2, 3, 4]
+  }
 }

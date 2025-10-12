@@ -2,8 +2,7 @@
 Steiner Tree Problem: find a tree in a graph containing all the "terminal" nodes while minimizing its weight.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2018 Minizinc challenge.
-The MZN model was proposed by Diege de Una.
-No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
+The original MZN model was proposed by Diege de Una - no licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Data Example
   es10fst03.json
@@ -24,7 +23,8 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 from pycsp3 import *
 
-endNodes, terminals, weights = data
+endNodes, terminals, weights = data or load_json_data("es10fst03.json")
+
 n, m = len(endNodes[0]), len(endNodes)
 
 pairs = [[i for i in range(n) if endNodes[e][i]] for e in range(m)]

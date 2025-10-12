@@ -48,9 +48,11 @@ max_diff = number_in(next_line())
 max_share = number_in(next_line())
 data['limits'] = OrderedDict([("minSize", minsize), ("maxDiff", max_diff), ("maxShare", max_share)])
 
-data['health_information'] = numbers_in(next_line())
-data['exposure_information'] = numbers_in(next_line())
-assert len(HEALTH) == len(data['health_information']) and len(EXPOSURE) == len(data['exposure_information'])
+health_information = numbers_in(next_line())
+exposure_information = numbers_in(next_line())
+assert len(HEALTH) == len(health_information) and len(EXPOSURE) == len(exposure_information)
+
+data['information'] = OrderedDict([("health", health_information), ("exposure", exposure_information)])
 
 # s = "{Vaccine(5), Vaccine(6)}, {Vaccine(3), Vaccine(4), Vaccine(5), Vaccine(6)}, {Vaccine(1), Vaccine(2), Vaccine(5), Vaccine(6)}, {Vaccine(1), Vaccine(2), Vaccine(5), Vaccine(6)}, {Vaccine(1), Vaccine(2)}, {Vaccine(1), Vaccine(2), Vaccine(3), Vaccine(4)}, {Vaccine(1), Vaccine(2), Vaccine(3), Vaccine(4), Vaccine(5), Vaccine(6)}, {Vaccine(1), Vaccine(2), Vaccine(3), Vaccine(4)}, {Vaccine(1), Vaccine(2), Vaccine(5), Vaccine(6)}, {Vaccine(1), Vaccine(2), Vaccine(5), Vaccine(6)}, {Vaccine(3), Vaccine(4)}, {Vaccine(3), Vaccine(4), Vaccine(5), Vaccine(6)}, {Vaccine(3), Vaccine(4), Vaccine(5), Vaccine(6)}, {Vaccine(1), Vaccine(2), Vaccine(3), Vaccine(4)}, {Vaccine(1), Vaccine(2), Vaccine(3), Vaccine(4)}, {Vaccine(3), Vaccine(4), Vaccine(5), Vaccine(6)}"
 # m = [decrement(numbers_in(tok)) for tok in s.split("}, {")]

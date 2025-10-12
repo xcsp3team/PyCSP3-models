@@ -12,6 +12,7 @@ See CP paper below.
 
 ## Execution
   python SREFLP.py -data=<datafile.json>
+  python SREFLP.py -data=<datafile.json> -variant=mini
   python SREFLP.py -data=<datafile.txt> -parser=SREFLP_Parser.py
 
 ## Links
@@ -25,12 +26,14 @@ See CP paper below.
 
 from pycsp3 import *
 
-lengths, traffics = data
+assert not variant() or variant("mini")
+
+lengths, traffics = data or load_json_data("Cl07.json")
+
 n = len(lengths)
+P = [(i, j) for i, j in combinations(n, 2) if i + 1 < j]
 
 ordered_lengths = sorted(lengths)
-
-pairs = [(i, j) for i, j in combinations(n, 2) if i + 1 < j]
 
 # x[i] is the department at the ith position
 x = VarArray(size=n, dom=range(n))
@@ -47,19 +50,20 @@ satisfy(
 
     # computing lengths
     [
-        (x[i], y[i]) in [
-            (j, lengths[j]) for j in range(n)
-        ] for i in range(n)
+        Table(
+            scope=(x[i], y[i]),
+            supports=[(j, lengths[j]) for j in range(n)]
+        ) for i in range(n)
     ],
 
     # computing distances
-    [d[i][j] == Sum(y[i + 1:j]) for i, j in pairs]
+    [d[i][j] == Sum(y[i + 1:j]) for i, j in P]
 )
 
 if not variant():
     minimize(
         # minimizing weighted end-to-start distances
-        Sum(d[i][j] * traffics[x[i], x[j]] for i, j in pairs)
+        Sum(d[i][j] * traffics[x[i], x[j]] for i, j in P)
     )
 
 elif variant("mini"):
@@ -70,9 +74,9 @@ elif variant("mini"):
     w = VarArray(size=[n, n], dom=lambda i, j: range(sum(ordered_lengths[:j - i - 1]) * m, sum(ordered_lengths[i - j + 1:]) * M + 1) if i + 1 < j else None)
 
     satisfy(
-        [(z[i][j], x[i], x[j]) in [(traffics[v1][v2], v1, v2) for v1 in range(n) for v2 in range(n)] for i, j in pairs],
+        [(z[i][j], x[i], x[j]) in [(traffics[v1][v2], v1, v2) for v1 in range(n) for v2 in range(n)] for i, j in P],
 
-        [w[i][j] == d[i][j] * z[i][j] for i, j in pairs]
+        [w[i][j] == d[i][j] * z[i][j] for i, j in P]
     )
 
     minimize(
@@ -82,5 +86,5 @@ elif variant("mini"):
 
 """ Comments
 1) An alternative for computing distance is:
- [d[i][j] == (y[i + 1] if i + 2 == j else (y[i + 1] + y[i + 2]) if i + 3 == j else (d[i][j - 1] + y[j - 1])) for i, j in pairs]
+ [d[i][j] == (y[i + 1] if i + 2 == j else (y[i + 1] + y[i + 2]) if i + 3 == j else (d[i][j - 1] + y[j - 1])) for i, j in P]
 """

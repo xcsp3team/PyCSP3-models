@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   2w-1.json
@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python SkillAllocation.py -data=<datafile.dzn> -parser=SkillAllocation_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge2012/results2012.html
 
 ## Tags
   realistic, mzn20, mzn25
@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-nTrainings, nMaxJobs, engineerSkills, engineerLocations, jobs = data
+nTrainings, nMaxJobs, engineerSkills, engineerLocations, jobs = data or load_json_data("2w-1.json")
 
 nEngineers, nSkills, nJobs, nOverseasCap = len(engineerSkills), len(engineerSkills[0]), len(jobs), 5
 E, T, J = range(nEngineers), range(nTrainings), range(nJobs)

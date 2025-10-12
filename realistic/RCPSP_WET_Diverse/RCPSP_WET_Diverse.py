@@ -4,8 +4,7 @@ The objective is to find an optimal schedule so that tasks start as close as pos
 penalizing earliness or tardiness according to the given weight for earliness and tardiness per task.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
-The MZN model was proposed by the University of Melbourne and NICTA.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The original MZN model was proposed by the University of Melbourne and NICTA - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   j30-27-5-3.json
@@ -18,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python RCPSP_WET_Diverse.py -data=<datafile.dzn> -parser=RCPSP_WET_Diverse_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
   realistic, mzn19
@@ -26,39 +25,46 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-resources, tasks, horizon, earlinessMin, earlinessMax, tardinessMin, tardinessMax, nSolutions = data
+resources, tasks, horizon, earliness, tardiness, nSolutions = data or load_json_data("j30-27-5-3.json")
+
 requirements, capacities = zip(*resources)
 durations, successors, deadlines = zip(*tasks)
-nTasks, nResources = len(tasks), len(resources)
 
-E, T = objectives = range(2)  # earliness and tardiness
+nTasks, nResources = len(tasks), len(resources)
+T, S, R = range(nTasks), range(nSolutions), range(nResources)
+
+ERL, TRD = objectives = range(2)  # earliness and tardiness
 nObjectives = len(objectives)
 
-relevantTasks = [[i for i in range(nTasks) if requirements[r][i] > 0 and durations[i] > 0] for r in range(nResources)]
+relevantTasks = [[i for i in T if requirements[r][i] > 0 and durations[i] > 0] for r in R]
 
-maxE = sum(deadlines[i][1] * deadlines[i][0] for i in range(nTasks))
-maxT = sum(deadlines[i][2] * (horizon - deadlines[i][0]) for i in range(nTasks))
+maxE = sum(deadlines[i][1] * deadlines[i][0] for i in T)
+maxT = sum(deadlines[i][2] * (horizon - deadlines[i][0]) for i in T)
 
-# x[k][i] is the starting time of the ith task in the kth simulation
+# x[s][i] is the starting time of the ith task in solution k
 x = VarArray(size=[nSolutions, nTasks], dom=range(horizon))
 
-# z[j][k] is the value of the jth objective for the kth solution
+# z[j][s] is the value of the jth objective for solution s
 z = VarArray(size=[nObjectives, nSolutions], dom=lambda i, j: range(maxE + 1) if i == 0 else range(maxT + 1))
 
 # dmt[e][t] is 1 if the point (e,t) is dominated
-dmt = VarArray(size=[earlinessMax - earlinessMin + 1, tardinessMax - tardinessMin + 1], dom={0, 1})  # range(nSolutions + 1))
+dmt = VarArray(size=[earliness.max - earliness.min + 1, tardiness.max - tardiness.min + 1], dom={0, 1})  # range(nSolutions + 1))
 
 
 def post_for(s):
     satisfy(
         # respecting precedence relations
-        [s[i] + durations[i] <= s[j] for i in range(nTasks) for j in successors[i]],
+        [s[i] + durations[i] <= s[j] for i in T for j in successors[i]],
 
         # cumulative resource constraints
         [
             Cumulative(
-                tasks=[Task(origin=s[i], length=durations[i], height=requirements[r][i]) for i in relevantTasks[r]]
-            ) <= capacities[r] for r in range(nResources) if sum(requirements[r][i] for i in relevantTasks[r]) > capacities[r]
+                Task(
+                    origin=s[i],
+                    length=durations[i],
+                    height=requirements[r][i]
+                ) for i in relevantTasks[r]
+            ) <= capacities[r] for r in R if sum(requirements[r][i] for i in relevantTasks[r]) > capacities[r]
         ],
 
         # redundant non-overlapping constraints  tag(redundant)
@@ -66,7 +72,7 @@ def post_for(s):
             either(
                 s[i] + durations[i] <= s[j],
                 s[j] + durations[j] <= s[i]
-            ) for i, j in combinations(nTasks, 2) if any(requirements[r][i] + requirements[r][j] > capacities[r] for r in range(nResources))
+            ) for i, j in combinations(T, 2) if any(requirements[r][i] + requirements[r][j] > capacities[r] for r in R)
         ]
     )
 
@@ -76,41 +82,41 @@ for k in range(nSolutions):
 
 satisfy(
     # computing earliness values of solutions
-    [z[E][j] == Sum(deadlines[i][1] * max(0, deadlines[i][0] - x[j][i]) for i in range(nTasks)) for j in range(nSolutions)],
+    [z[ERL][s] == Sum(deadlines[i][1] * max(0, deadlines[i][0] - x[s][i]) for i in T) for s in S],
 
     # computing tardiness values of solutions
-    [z[T][j] == Sum(deadlines[i][2] * max(0, x[j][i] - deadlines[i][0]) for i in range(nTasks)) for j in range(nSolutions)],
+    [z[TRD][s] == Sum(deadlines[i][2] * max(0, x[s][i] - deadlines[i][0]) for i in T) for s in S],
 
     # objective values fixed for the two first solutions
     [
-        z[E][0] == earlinessMin,
-        z[T][0] == tardinessMax,
-        z[E][1] == earlinessMax,
-        z[T][1] == tardinessMin
+        z[ERL][0] == earliness.min,
+        z[TRD][0] == tardiness.max,
+        z[ERL][1] == earliness.max,
+        z[TRD][1] == tardiness.min
     ],
 
     # computing dominated points
     [
         dmt[e][t] == disjunction(  # Exist (i.e. Count) seems more penalizing than disjunction (i.e., Intension)
             both(
-                z[E][k] <= earlinessMin + e,
-                z[T][k] <= tardinessMin + t
-            ) for k in range(nSolutions)
-        ) for e in range(earlinessMax - earlinessMin + 1) for t in range(tardinessMax - tardinessMin + 1)
+                z[ERL][s] <= earliness.min + e,
+                z[TRD][s] <= tardiness.min + t
+            ) for s in S
+        ) for e in range(earliness.max - earliness.min + 1) for t in range(tardiness.max - tardiness.min + 1)
     ],
 
     # a solution must not be dominated by any other solution
     [
         either(
-            z[E][k1] < z[E][k2],
-            z[T][k1] < z[T][k2]
-        ) for k1 in range(nSolutions) for k2 in range(nSolutions) if k1 != k2
+            z[ERL][s1] < z[ERL][s2],
+            z[TRD][s1] < z[TRD][s2]
+        ) for s1 in S for s2 in S if s1 != s2
     ]
 )
 
 maximize(
     # maximizing the hyper-volume (the number of dominated points)
-    Sum(dmt)  # [e][t] >= 1 for e in range(earlinessMax - earlinessMin + 1) for t in range(tardinessMax - tardinessMin + 1))
+    Sum(dmt)
 )
 
 """

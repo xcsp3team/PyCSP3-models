@@ -22,7 +22,8 @@ Problem 061 on CSPLib
 
 from pycsp3 import *
 
-jobs, horizon, capacities, _ = data
+jobs, horizon, capacities, _ = data or load_json_data("j030-01-01.json")
+
 durations, successors, quantities = zip(*jobs)  # [job.duration for job in jobs]
 nJobs = len(jobs)
 
@@ -36,7 +37,13 @@ satisfy(
     # resource constraints
     [
         Cumulative(
-            tasks=[Task(origin=s[i], length=durations[i], height=quantities[i][k]) for i in range(nJobs) if quantities[i][k] > 0]
+            tasks=[
+                Task(
+                    origin=s[i],
+                    length=durations[i],
+                    height=quantities[i][k]
+                ) for i in range(nJobs) if quantities[i][k] > 0
+            ]
         ) <= capacity for k, capacity in enumerate(capacities)
     ]
 )

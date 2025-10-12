@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2009/2013 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   00.json
@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python RCPSP_z.py -data=<datafile.dzn> -parser=RCPSP_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.minizinc.org/challenge/2013/results/
 
 ## Tags
   realistic, mzn08, mzn13
@@ -21,9 +21,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-capacities, durations, requirements, successors = data
-nResources, nTasks = len(capacities), len(durations)
+capacities, durations, requirements, successors = data or load_json_data("00.json")
+
 horizon = sum(durations) + 1
+nTasks, nResources = len(durations), len(capacities)
 
 # x[i] is the starting time of the ith task
 x = VarArray(size=nTasks, dom=range(horizon))

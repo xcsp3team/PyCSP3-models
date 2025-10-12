@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014/2019 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   s2-v2-c7.json
@@ -20,7 +20,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-nVehicles, nCustomers, timeBudget, services, distances, weights = data
+nVehicles, nCustomers, timeBudget, services, distances, weights = data or load_json_data("s2-v2-c7.json")
+
 nNodes, nSetups = nCustomers + 2 * nVehicles, len(weights)
 
 distances = cp_array([distances[p + j * nNodes:p + (j + 1) * nNodes] for j in range(nNodes)] for k in range(nSetups) if (p := k * (nNodes * nNodes),))

@@ -2,8 +2,7 @@
 Soccer Computational Problem (Position in Ranking Problem).
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2018/2020 Minizinc challenges.
-The original MZN model was proposed by Robinson Duque, Alejandro Arbelaez, and Juan Francisco Díaz.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The original MZN model was proposed by Robinson Duque, Alejandro Arbelaez, and Juan Francisco Díaz - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   22-12-22-5.json
@@ -27,10 +26,11 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-games, iPoints, positions = data
+games, iPoints, positions = data or load_json_data("22-12-22-5.json")
 
 nGames, nTeams, nPositions = len(games), len(iPoints), len(positions)
 G, T = range(nGames), range(nTeams)
+
 P = [0, 1, 3]
 
 lb_score = min(iPoints[i] + sum(min(P) for j in G if i in games[j]) for i in T)

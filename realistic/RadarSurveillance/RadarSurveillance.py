@@ -23,7 +23,8 @@ from enum import Enum
 
 from pycsp3 import *
 
-mapSize, maxCoverage, radars, insignificantCells = data
+mapSize, maxCoverage, radars, insignificantCells = data or load_json_data("8-24-3-2-00.json")
+
 nRadars = len(radars)
 
 

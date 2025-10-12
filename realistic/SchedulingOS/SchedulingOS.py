@@ -1,5 +1,5 @@
 """
-Open-shop Scheduling Problem.
+Open-shop Scheduling
 
 ## Data Example
   GP-os-01.json
@@ -20,7 +20,8 @@ Open-shop Scheduling Problem.
 
 from pycsp3 import *
 
-durations = data  # durations[i][j] is the duration of operation/machine j for job i
+durations = data or load_json_data("GP-os-01.json")  # durations[i][j] is the duration of operation/machine j for job i
+
 horizon = sum(sum(t) for t in durations) + 1
 n, m = len(durations), len(durations[0])
 

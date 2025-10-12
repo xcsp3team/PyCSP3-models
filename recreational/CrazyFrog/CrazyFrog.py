@@ -8,7 +8,7 @@ From LPCP contest 2021 (Problem 1):
 Important: the model, below, has not been checked to exactly correspond to this statement (it was written for the 2025 XCSP3 competition).
 
 ## Data Example
-  01.json
+  06.json
 
 ## Model
   constraints: AllDifferent, Circuit, Table

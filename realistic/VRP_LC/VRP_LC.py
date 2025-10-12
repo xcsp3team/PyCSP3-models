@@ -7,7 +7,7 @@ The MZN model was proposed by Edward Lam, and described in the 2016 paper of Con
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
-  09-5-10-s1.json
+  09-05-10-s1.json
 
 ## Model
   constraints: Circuit, Cumulative, Element, Sum
@@ -18,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-016-9241-2
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge/2023/results/
   - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags
@@ -27,7 +27,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-horizon, nVehicles, vehicleCapacity, nLocations, locationCapacity, nPickups, times, requests = data
+horizon, nVehicles, vehicleCapacity, nLocations, locationCapacity, nPickups, times, requests = data or load_json_data("09-05-10-s1.json")
+
 rl, ra, rb, rs, rq = zip(*requests)
 nNodes, n = len(times), len(requests)  # n is the number of requests (pickups and deliveries)
 
@@ -104,7 +105,13 @@ satisfy(
     # handling service resources
     [
         Cumulative(
-            tasks=[Task(origin=ser[i], length=rs[i], height=1) for i in range(n) if rl[i] == p]
+            tasks=[
+                Task(
+                    origin=ser[i],
+                    length=rs[i],
+                    height=1
+                ) for i in range(n) if rl[i] == p
+            ]
         ) <= locationCapacity for p in range(nLocations)
     ],
 

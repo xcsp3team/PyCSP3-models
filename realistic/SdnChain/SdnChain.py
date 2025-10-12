@@ -7,10 +7,9 @@ that composes the service.
 See paper link below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-It seems that the original MZN model was proposed by Liu, Tong, et al.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+It seems that the original MZN model was proposed by Liu, Tong, et al. - No licence was explicitly mentioned (MIT Licence is assumed).
 
-NB: We obtain the same bounds for all instances except for the instance d30 where we get 22 (with ACE and Choco) instead of 23.
+NB: We obtain the same bounds (wrt the MZN model) for all instances except for the instance d30 where we get 22 (with ACE and Choco) instead of 23.
 After double checking, we didn't find what is the difference between the two models
 TODO : problem with an instance (bound)
 
@@ -26,7 +25,7 @@ TODO : problem with an instance (bound)
 
 ## Links
   - https://inria.hal.science/hal-02395208
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, mzn20
@@ -34,8 +33,9 @@ TODO : problem with an instance (bound)
 
 from pycsp3 import *
 
-weights, links, nodes, start_domain, target_domain, vnflist, vnf_arcs, proximity_to_source, proximity_to_destination, domain_constraints = data
-nDomains, nLinks, nNodes, nVnfs = len(weights), len(links), len(nodes), len(vnflist)
+weights, links, nodes, domain, vnfs, proximity, domain_constraints = data or load_json_data("d10n780-1.json")
+
+nDomains, nLinks, nNodes, nVnfs = len(weights), len(links), len(nodes), len(vnfs.list)
 
 TYPE, DOMAIN, GATEWAY, ENDPOINT = 1, 7, 8, 9
 
@@ -91,15 +91,15 @@ satisfy(
     [pth[i][j] == dp(i, j) for i, j in combinations(nDomains, 2)],
 
     # first element in matching (start ENDPOINT)
-    [vnf[0] == i for i, a in enumerate(nodes) if a[DOMAIN] == start_domain and a[TYPE] == ENDPOINT],
+    [vnf[0] == i for i, a in enumerate(nodes) if a[DOMAIN] == domain.start and a[TYPE] == ENDPOINT],
 
     # final element in matching (target ENDPOINT)
-    [vnf[-1] == i for i, a in enumerate(nodes) if a[DOMAIN] == target_domain and a[TYPE] == ENDPOINT],
+    [vnf[-1] == i for i, a in enumerate(nodes) if a[DOMAIN] == domain.target and a[TYPE] == ENDPOINT],
 
     # node type in matching observes vnflist
     [
         Exist(
-            vnf[i] == j for j, b in enumerate(nodes) if b[TYPE] == vnflist[i]
+            vnf[i] == j for j, b in enumerate(nodes) if b[TYPE] == vnfs.list[i]
         ) for i in range(1, nVnfs)
     ],
 
@@ -111,19 +111,19 @@ satisfy(
     ],
 
     # bound vnf to path
-    [pth[nodes[vnf[i]][DOMAIN], nodes[vnf[j]][DOMAIN]] == 1 for i, j in vnf_arcs],
+    [pth[nodes[vnf[i]][DOMAIN], nodes[vnf[j]][DOMAIN]] == 1 for i, j in vnfs.arcs],
 
     # proximity constraints
     (
         [
             Exist(
-                both(sn[j] == 1, vnf[i] == j) for j, b in enumerate(nodes) if b[DOMAIN] == target_domain
-            ) for i in range(nVnfs) if proximity_to_destination[i] == 1
+                both(sn[j] == 1, vnf[i] == j) for j, b in enumerate(nodes) if b[DOMAIN] == domain.target
+            ) for i in range(nVnfs) if proximity.to_destination[i] == 1
         ],
         [
             Exist(
-                both(sn[j] == 1, vnf[i] == j) for j, b in enumerate(nodes) if b[DOMAIN] == start_domain
-            ) for i in range(nVnfs) if proximity_to_source[i] == 1
+                both(sn[j] == 1, vnf[i] == j) for j, b in enumerate(nodes) if b[DOMAIN] == domain.start
+            ) for i in range(nVnfs) if proximity.to_source[i] == 1
         ]
     ),
 
@@ -148,13 +148,13 @@ satisfy(
 
     # ENDPOINT arcs must be selected in start and target domains
     [sl[i] == 1 for i, (a, b) in L if
-     (b[TYPE] == GATEWAY and a[TYPE] == ENDPOINT and a[DOMAIN] == start_domain) or (a[TYPE] == GATEWAY and b[TYPE] == ENDPOINT and b[DOMAIN] == target_domain)],
+     (b[TYPE] == GATEWAY and a[TYPE] == ENDPOINT and a[DOMAIN] == domain.start) or (a[TYPE] == GATEWAY and b[TYPE] == ENDPOINT and b[DOMAIN] == domain.target)],
 
     # no arcs to ENDPOINT if they are not start target domains
-    [sl[i] == 0 for i, (a, b) in L if (a[TYPE] == ENDPOINT and a[DOMAIN] != start_domain) or (b[TYPE] == ENDPOINT and b[DOMAIN] != target_domain)],
+    [sl[i] == 0 for i, (a, b) in L if (a[TYPE] == ENDPOINT and a[DOMAIN] != domain.start) or (b[TYPE] == ENDPOINT and b[DOMAIN] != domain.target)],
 
     # ENDPOINT in start and target domains are selected, others no
-    [sn[i] == (1 if a[DOMAIN] in (start_domain, target_domain) else 0) for i, a in enumerate(nodes) if a[TYPE] == ENDPOINT],
+    [sn[i] == (1 if a[DOMAIN] in (domain.start, domain.target) else 0) for i, a in enumerate(nodes) if a[TYPE] == ENDPOINT],
 
     # no loop between neighbor domains
     [
@@ -165,7 +165,7 @@ satisfy(
     ],
 
     # start domain has no incoming arc from other domain
-    [sl[i] == 0 for i, (a, b) in L if a[TYPE] == b[TYPE] == GATEWAY and b[DOMAIN] == start_domain],
+    [sl[i] == 0 for i, (a, b) in L if a[TYPE] == b[TYPE] == GATEWAY and b[DOMAIN] == domain.start],
 
     #  no domains allow 2 incoming arcs from different domains
     [
@@ -180,7 +180,7 @@ satisfy(
         If(
             sd[i] == 1,
             Then=Exist(sl[j] for j, (a, b) in G if b[DOMAIN] == i and a[DOMAIN] != i)
-        ) for i in range(nDomains) if i != start_domain
+        ) for i in range(nDomains) if i != domain.start
     ],
 
     # no outgoing arcs from unselected domains

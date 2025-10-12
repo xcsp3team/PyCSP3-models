@@ -22,13 +22,14 @@ Compared to the Minizinc model, we do not use set variables.
 
 from pycsp3 import *
 
-nVaccines, groups, ageBounds, limits, health_information, exposure_information = data
+nVaccines, groups, ageBounds, limits, information = data or load_json_data("007.json")
+
 ageBounds = [range(bounds.lb, bounds.ub + 1) for bounds in ageBounds]
 ages, genders, healths, exposures, sizes = zip(*groups)
 min_size, max_diff, max_share = limits
 nGroups, nGenders = len(groups), 3
 
-infos = [health_information[healths[i]] * exposure_information[exposures[i]] for i in range(nGroups)]
+infos = [information.health[healths[i]] * information.exposure[exposures[i]] for i in range(nGroups)]
 similar_groups = [[ii for ii in range(nGroups) if ii < i and healths[i] == healths[ii] and exposures[i] == exposures[ii]] for i in range(nGroups)]
 
 # x[i][j] is 1 if the jth vaccine is used for the ith group

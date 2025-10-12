@@ -28,21 +28,28 @@ from pycsp3 import *
 horizon = data or 6
 
 nNodes, nSteps = 58, horizon
+N = range(nNodes)
 
-# Definition of the network (this is one possible input for the problem in https://adventofcode.com/2022/day/16)
 
-(GJ, HE, ET, SG, LC, EE, AA, TF, GO, QE, MI, BR, UV, EH, WK, NT, KI, AH, EL, GP, GM, LU, LB, QC, JJ, MM, VI, NV, VT, RE, FO, DV, SQ, OQ, FF, IV, HY, ML, JS, KU,
- QA, EU, SV, JG, DW, UD, QJ, HU, ZR, YA, JH, OS, LG, SB, UU, VL, AO, EM) = Nodes = range(nNodes)
+def build_network():  # Definition of the network (this is one possible input for the problem in https://adventofcode.com/2022/day/16)
 
-connections = cp_array(
-    [[UV, AO, MM, UD, GM], [QE, SV], [LU, SB], [FF, SB], [QJ, GM], [RE, BR], [QC, ZR, NT, JG, FO], [LU, MM], [LB, AH], [LG, HE], [KU, FF], [HY, EE], [GP, GJ],
-     [UU, FF], [HY, EL], [FF, AA], [OQ, AO], [GO, RE], [WK, SQ], [SB, UV], [LC, GJ], [UU, DW, TF, ET, ML], [GO, VI], [ML, AA], [QJ, DV], [TF, GJ], [LB],
-     [SB, KU], [HY, JG], [AH, EE], [SB, AA], [JH, UD, JJ], [EL, QA], [KI, IV, JS], [EU, NT, SG, MI, EH], [LG, OQ], [VT, BR, WK], [LU, QC], [EM, OQ],
-     [MI, VL, NV, HU, DW], [OS, SQ], [FF, OS], [QJ, HE], [AA, VT], [LU, KU], [DV, GJ], [JJ, SV, LC, EM, YA], [JH, KU], [AA, VL], [QJ, OS], [HU, DV],
-     [EU, YA, QA], [QE, IV], [FO, SG, NV, GP, ET], [EH, LU], [ZR, KU], [GJ, KI], [QJ, JS]])
+    (GJ, HE, ET, SG, LC, EE, AA, TF, GO, QE, MI, BR, UV, EH, WK, NT, KI, AH, EL, GP, GM, LU, LB, QC, JJ, MM, VI, NV, VT, RE, FO, DV, SQ, OQ, FF, IV, HY, ML, JS,
+     KU, QA, EU, SV, JG, DW, UD, QJ, HU, ZR, YA, JH, OS, LG, SB, UU, VL, AO, EM) = range(nNodes)
 
-flow = [14, 0, 0, 0, 0, 13, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 9, 0, 0, 0, 0, 18, 0, 0, 0, 0, 10, 12, 23, 3, 0, 8, 0, 0, 5, 0, 0, 0, 0, 0, 0, 17, 0,
-        0, 0, 0, 15, 0, 4, 0, 0, 0, 0]
+    connects = cp_array(
+        [[UV, AO, MM, UD, GM], [QE, SV], [LU, SB], [FF, SB], [QJ, GM], [RE, BR], [QC, ZR, NT, JG, FO], [LU, MM], [LB, AH], [LG, HE], [KU, FF], [HY, EE],
+         [GP, GJ], [UU, FF], [HY, EL], [FF, AA], [OQ, AO], [GO, RE], [WK, SQ], [SB, UV], [LC, GJ], [UU, DW, TF, ET, ML], [GO, VI], [ML, AA], [QJ, DV], [TF, GJ],
+         [LB], [SB, KU], [HY, JG], [AH, EE], [SB, AA], [JH, UD, JJ], [EL, QA], [KI, IV, JS], [EU, NT, SG, MI, EH], [LG, OQ], [VT, BR, WK], [LU, QC], [EM, OQ],
+         [MI, VL, NV, HU, DW], [OS, SQ], [FF, OS], [QJ, HE], [AA, VT], [LU, KU], [DV, GJ], [JJ, SV, LC, EM, YA], [JH, KU], [AA, VL], [QJ, OS], [HU, DV],
+         [EU, YA, QA], [QE, IV], [FO, SG, NV, GP, ET], [EH, LU], [ZR, KU], [GJ, KI], [QJ, JS]])
+
+    flows = [14, 0, 0, 0, 0, 13, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 22, 0, 0, 0, 9, 0, 0, 0, 0, 18, 0, 0, 0, 0, 10, 12, 23, 3, 0, 8, 0, 0, 5, 0, 0, 0, 0, 0, 0,
+             17, 0, 0, 0, 0, 15, 0, 4, 0, 0, 0, 0]
+
+    return AA, connects, flows
+
+
+AA, connections, flow = build_network()
 
 nActions, nPersons = 2, 2
 MOVE, OPEN = Actions = range(nActions)
@@ -52,7 +59,7 @@ ME, ELEPHANT = Persons = range(nPersons)
 op = VarArray(size=[nNodes, nSteps], dom={0, 1})
 
 # x[t][j] is the position (node) of the jth person at time t
-x = VarArray(size=[nSteps, nPersons], dom=Nodes)
+x = VarArray(size=[nSteps, nPersons], dom=range(nNodes))
 
 # ac[t][j] is the action of the jth person at time t
 ac = VarArray(size=[nSteps, nPersons], dom=lambda t, j: Actions if t > 0 else None)
@@ -78,7 +85,7 @@ satisfy(
             both(ac[t][ME] == OPEN, x[t][ME] == i),
             both(ac[t][ELEPHANT] == OPEN, x[t][ELEPHANT] == i),
             op[i][t - 1]
-        ) for t in range(1, nSteps) for i in Nodes
+        ) for t in range(1, nSteps) for i in N
     ],
 
     # computing the result of actions
@@ -87,11 +94,11 @@ satisfy(
             ac[t][j] == OPEN,
             Then=[
                 op[x[t][j], t],
-                [If(not_belong(i, x[t]), Then=op[i][t] == op[i][t - 1]) for i in Nodes],
+                [If(not_belong(i, x[t]), Then=op[i][t] == op[i][t - 1]) for i in N],
                 x[t][j] == x[t - 1][j]
             ],
             Else=[
-                [If(i != x[t][(j + 1) % nPersons], Then=op[i][t] == op[i][t - 1]) for i in Nodes],
+                [If(i != x[t][(j + 1) % nPersons], Then=op[i][t] == op[i][t - 1]) for i in N],
                 x[t][j] in connections[x[t - 1][j]]
             ]
         ) for t in range(1, nSteps) for j in Persons
@@ -120,7 +127,7 @@ maximize(
     [imply((i != x[t][ME]) & (i != x[t][ELEPHANT]), op[i][t] == op[i][t - 1]) for i in Nodes],
    and also to:
      [imply(not_belong(i, x[t]), op[i][t] == op[i][t - 1]) for i in Nodes]
-5) Data for challenge 2023 are: 6, 12, 19, 20, 28
+5) Data for challenge 2023 are: [6, 12, 19, 20, 28]
 """
 
 # # test

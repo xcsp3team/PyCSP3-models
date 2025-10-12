@@ -2,8 +2,8 @@ from pycsp3.problems.data.parsing import *
 
 orientations = ["Upright", "Clockwise", "UpsideDown", "Anticlockwise"]
 
-data['maxw'] = number_in(line())
-data['maxh'] = number_in(next_line())
+data['max_w'] = number_in(line())
+data['max_h'] = number_in(next_line())
 data['max_links'] = number_in(next_line())
 l = next_line()
 components = l[l.index('{') + 1:l.rindex('}')].split(', ')

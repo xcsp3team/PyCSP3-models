@@ -22,10 +22,11 @@ See paper whose reference is given below.
 
 from pycsp3 import *
 
-intensity = data  # intensity matrix
-nRows, nCols = len(intensity), len(intensity[0])
+intensity = data or load_json_data("01.json")  # intensity matrix
+
+n, m = len(intensity), len(intensity[0])
 nIntensities = max(v for t in intensity for v in t) + 1  # +1 because we also have 0
-nCells = nRows * nCols + 1  # +1 to avoid systematically adding 1 in the model
+nCells = n * m + 1  # +1 to avoid systematically adding 1 in the model
 
 # k is the number of shape matrices
 k = Var(dom=range(nCells))
@@ -34,17 +35,17 @@ k = Var(dom=range(nCells))
 x = VarArray(size=nIntensities, dom=lambda b: range(nCells) if b > 0 else {0})
 
 # q[i,j,b] is the number of shape matrices that have associated beam-on time b and that expose cell (i,j)
-q = VarArray(size=[nRows, nCols, nIntensities], dom=lambda i, j, b: range(nCells) if b > 0 else {0})
+q = VarArray(size=[n, m, nIntensities], dom=lambda i, j, b: range(nCells) if b > 0 else {0})
 
 satisfy(
     # computing k
     k == Sum(x),
 
     # respecting the specified intensity in each cell
-    [q[i][j] * range(nIntensities) == intensity[i][j] for i in range(nRows) for j in range(nCols)],
+    [q[i][j] * range(nIntensities) == intensity[i][j] for i in range(n) for j in range(m)],
 
     # settings upper bounds on increments
-    [x[b] >= q[i][0][b] + Sum(max(q[i][j][b] - q[i][j - 1][b], 0) for j in range(1, nCols)) for i in range(nRows) for b in range(1, nIntensities)]
+    [x[b] >= q[i][0][b] + Sum(max(q[i][j][b] - q[i][j - 1][b], 0) for j in range(1, m)) for i in range(n) for b in range(1, nIntensities)]
 )
 
 minimize(

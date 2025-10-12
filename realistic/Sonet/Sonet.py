@@ -32,7 +32,7 @@ satisfying all demands.
 
 from pycsp3 import *
 
-nNodes, nRings, r, connections = data
+nNodes, nRings, r, connections = data or load_json_data("s2ring02.json")
 
 # x[i][k] is 1 if the ith ring contains the kth node
 x = VarArray(size=[nRings, nNodes], dom={0, 1})

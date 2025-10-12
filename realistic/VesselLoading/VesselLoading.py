@@ -20,7 +20,8 @@ See Problem 008 on CSPLib
 
 from pycsp3 import *
 
-deckWidth, deckHeight, containers, separations = data
+deckWidth, deckHeight, containers, separations = data or load_json_data("inst1.json")
+
 nContainers = len(containers)
 
 

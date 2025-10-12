@@ -2,8 +2,7 @@
 The problem is to move a person from a start position to a goal position.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-The MZN model was proposed by Toshimitsu Fujiwara.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The original MZN model was proposed by Toshimitsu Fujiwara - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   sm-10-12-00.json
@@ -16,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python SeatMoving.py -data=sm-10-13-00.dzn -dataparser=SeatMoving_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - www.minizinc.org/challenge/2021/results/
 
 ## Tags
   realistic, mzn18, mzn21
@@ -24,10 +23,13 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-nPersons, seats, swaps = data
+nPersons, seats, swaps = data or load_json_data("sm-10-12-00.json")
+
 start, goal = zip(*seats)
+
 nSeats = len(seats)
 horizon = (2 * nSeats) // (nSeats - nPersons + 1) + 1  # maximum number of steps
+H, P = range(horizon), range(nPersons)
 
 # x[t][i] is the person at the ith seat at time t (-1 means 'empty seat')
 x = VarArray(size=[horizon, nSeats], dom=range(-1, nPersons))
@@ -43,8 +45,12 @@ z2 = Var(dom=range(nPersons * horizon + 1))
 
 
 def move(t, j):
-    empty = (x[t][y[t + 1][j]] == -1)
-    return empty if not swaps[j] else either(y[t][j] == y[t + 1][x[t][y[t + 1][j]]], empty)
+    if not swaps[j]:
+        return x[t][y[t + 1][j]] == -1
+    return either(
+        y[t][j] == y[t + 1][x[t][y[t + 1][j]]],
+        x[t][y[t + 1][j]] == -1
+    )
 
 
 satisfy(
@@ -55,23 +61,23 @@ satisfy(
     ],
 
     # binding persons and seats
-    [x[t][y[t][j]] == j for t in range(horizon) for j in range(nPersons)],
+    [x[t][y[t][j]] == j for t in H for j in P],
 
     # ensuring different persons at any time
-    [AllDifferent(x[t], excepting=-1) for t in range(horizon)],
+    [AllDifferent(x[t], excepting=-1) for t in H],
 
     # tag(redundant)
-    [AllDifferent(y[t]) for t in range(horizon)],
+    [AllDifferent(y[t]) for t in H],
 
     # computing overall moving cost
-    z2 == Sum(y[t][j] != y[t + 1][j] for t in range(horizon - 1) for j in range(nPersons)),
+    z2 == Sum(y[t][j] != y[t + 1][j] for t in H[:-1] for j in P),
 
     # not moving after all seats are fixed
     [
         If(
             z1 <= t,
             Then=x[t] == goal
-        ) for t in range(horizon)
+        ) for t in H
     ],
 
     # managing allowed moves
@@ -79,7 +85,7 @@ satisfy(
         If(
             y[t][j] != y[t + 1][j],
             Then=move(t, j)
-        ) for t in range(horizon - 1) for j in range(nPersons)
+        ) for t in H[:-1] for j in P
     ]
 )
 

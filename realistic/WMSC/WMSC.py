@@ -2,7 +2,7 @@
 Weighted multi-set cover.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2021 Minizinc challenge.
-The MZN model was proposed by Mikael Zayenz Lagerkvist.
+The original MZN model was proposed by Mikael Zayenz Lagerkvist.
 The model and the instances are extracted from an industrial use-case.
 MIT License.
 
@@ -17,7 +17,7 @@ MIT License.
   python WMSC.py -data=b0_c115_i1_base_full_e3_sr702_cd86.dzn -dataparser=WMSC_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   realistic, mzn21
@@ -25,7 +25,8 @@ MIT License.
 
 from pycsp3 import *
 
-requirements, candidateSets, candidateWeights = data
+requirements, candidateSets, candidateWeights = data or load_json_data("b0-c253-i6-small-cost-e4-sr472-cd16.json")
+
 n, m = len(requirements), len(candidateSets)
 
 # x[i] is the number of times a candidate is used

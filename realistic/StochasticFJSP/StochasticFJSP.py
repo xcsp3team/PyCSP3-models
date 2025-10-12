@@ -20,9 +20,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-nTasks, _, nMachines, horizon, nAdditionalTasks, jobs, durations, machines, add_starts, add_ends, add_machines, weights = data
+nTasks, _, nMachines, horizon, nat, jobs, durations, machines, add_starts, add_ends, add_machines, weights = data or load_json_data("a1-s2-t15-j3-m3.json")
+
 nSetups = len(weights)
-assert nAdditionalTasks == 1
+assert nat == 1
 
 decrement([jobs, machines, add_machines])  # to adapt the model, we need to decrement some numbers
 

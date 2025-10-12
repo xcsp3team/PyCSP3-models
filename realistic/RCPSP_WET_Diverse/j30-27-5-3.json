@@ -40,9 +40,7 @@
     {"duration": 0, "successors": [], "deadline": [58, 5, 4]}
   ],
   "horizon": 59,
-  "earlinessMin": 0,
-  "earlinessMax": 104,
-  "tardinessMin": 0,
-  "tardinessMax": 143,
+  "earliness": {"min": 0, "max": 104},
+  "tardiness": {"min": 0, "max": 143},
   "nSolutions": 3
 }

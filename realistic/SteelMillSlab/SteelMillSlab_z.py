@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017/2019 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   13-0.json
@@ -14,7 +14,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://www.csplib.org/Problems/prob038/
-  - https://www.minizinc.org/challenge2017/results2017.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
   realistic, csplib, mzn17, mzn19
@@ -22,7 +22,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-slabSizes, orders = data
+slabSizes, orders = data or load_json_data("13-0.json")
+
 colors, sizes = zip(*orders)
 nOrders, nColors = len(orders), len(set(colors))
 nSlabs, slabSizeLimit = nOrders, max(slabSizes) + 1
@@ -45,7 +46,11 @@ satisfy(
     ],
 
     # computing loads of slabs
-    BinPacking(x, sizes=sizes, loads=y),
+    BinPacking(
+        partition=x,
+        sizes=sizes,
+        loads=y
+    ),
 
     # tag(symmetry-breaking)
     (

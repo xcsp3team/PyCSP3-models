@@ -1,7 +1,8 @@
 """
+Job-shop Scheduling
 
 ## Data Example
-  Sadeh-js-e0ddr1-0.json
+  e0ddr1-0.json
 
 ## Model
   constraints: Maximum, NoOverlap
@@ -17,11 +18,14 @@
 """
 from pycsp3 import *
 
-jobs = data
-horizon = max(job.dueDate for job in jobs) if all(job.dueDate != -1 for job in jobs) else sum(sum(job.durations) for job in jobs)
-durations = [job.durations for job in jobs]
-indexes = [[job.resources.index(j) for j in range(len(job.durations))] for job in jobs]
+jobs = data or load_json_data("e0ddr1-0.json")
+
+durations, resources, release_dates, due_dates = zip(*jobs)
+assert all(len(t) == len(durations[0]) for t in durations) and all(len(t) == len(durations[0]) for t in resources)
+
 n, m = len(jobs), len(jobs[0].durations)
+
+horizon = max(due_dates) if all(v != -1 for v in due_dates) else sum(sum(t) for t in durations)
 
 # s[i][j] is the start time of the jth operation for the ith job
 s = VarArray(size=[n, m], dom=range(horizon))
@@ -31,15 +35,20 @@ satisfy(
     [Increasing(s[i], lengths=durations[i]) for i in range(n)],
 
     # respecting release dates
-    [s[i][0] > jobs[i].releaseDate for i in range(n) if jobs[i].releaseDate > 0],
+    [s[i][0] > release_dates[i] for i in range(n) if release_dates[i] > 0],
 
     # respecting due dates
-    [s[i][-1] <= jobs[i].dueDate - durations[i][-1] for i in range(n) if 0 <= jobs[i].dueDate < horizon - 1],
+    [s[i][-1] <= due_dates[i] - durations[i][-1] for i in range(n) if 0 <= due_dates[i] < horizon - 1],
 
     # no overlap on resources
     [
         NoOverlap(
-            tasks=[(s[i][indexes[i][j]], durations[i][indexes[i][j]]) for i in range(n)]
+            tasks=[
+                Task(
+                    origin=s[i][resources[i].index(j)],
+                    length=durations[i][resources[i].index(j)]
+                ) for i in range(n)
+            ]
         ) for j in range(m)
     ]
 )
@@ -51,5 +60,5 @@ minimize(
 
 """ Comments
 1) The group of overlap constraints could be equivalently written:
- [NoOverlap(origins=[s[i][indexes[i][j]] for i in range(n)], lengths=[durations[i][indexes[i][j]] for i in range(n)]) for j in range(m)]
+ [NoOverlap(origins=[s[i][[resources[i].index(j)] for i in range(n)], lengths=[durations[i][[resources[i].index(j)] for i in range(n)]) for j in range(m)]
 """

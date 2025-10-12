@@ -28,7 +28,10 @@ from pycsp3.dashboard import options
 
 options.keep_sum = True  # to get a better formed XCSP instance
 
-cost, capacities, costs = data  # cost is the fixed cost when opening a warehouse
+assert not variant() or variant("compact")
+
+cost, capacities, costs = data or load_json_data("opl-example.json")  # cost is the fixed cost when opening a warehouse
+
 nWarehouses, nStores = len(capacities), len(costs)
 
 # w[i] is the warehouse supplying the ith store

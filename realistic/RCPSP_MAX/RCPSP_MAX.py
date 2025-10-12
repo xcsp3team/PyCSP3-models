@@ -19,7 +19,7 @@ The Licence seems to be like a MIT Licence.
   python RCPSP_MAX.py -data=<datafile.dzn> -parser=RCPSP_MAX_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2010/results2010.html
+  - https://www.minizinc.org/challenge/2010/results/
 
 ## Tags
   realistic, mzn10
@@ -27,13 +27,15 @@ The Licence seems to be like a MIT Licence.
 
 from pycsp3 import *
 
-capacities, durations, requirements, precedences = data
-nResources, nTasks = len(capacities), len(durations)
+capacities, durations, requirements, precedences = data or load_json_data("psp-j20-34.json")
+
+nTasks, nResources = len(durations), len(capacities)
+T, R = range(nTasks), range(nResources)
 
 # trivial upper bound for the project duration
-horizon = sum(max([durations[i]] + [d for (j, d, _) in precedences if j == i]) for i in range(nTasks)) + 1
+horizon = sum(max([durations[i]] + [d for (j, d, _) in precedences if j == i]) for i in T) + 1
 
-P = [(i, j) for i, j in combinations(nTasks, 2) if any(requirements[r][i] + requirements[r][j] > capacities[r] for r in range(nResources))]
+P = [(i, j) for i, j in combinations(T, 2) if any(requirements[r][i] + requirements[r][j] > capacities[r] for r in R)]
 P1 = [(i, j) for i, j in P if any(k == i and l == j and -durations[j] < d < durations[i] for (k, d, l) in precedences)]
 P2 = [(i, j) for i, j in P if any(k == j and l == i and -durations[i] < d < durations[j] for (k, d, l) in precedences)]
 P3 = [(i, j) for i, j in P if (i, j) not in P1 and (i, j) not in P2]
@@ -65,12 +67,16 @@ satisfy(
     # cumulative resource constraints
     [
         Cumulative(
-            Task(origin=s[i], length=durations[i], height=requirements[r][i]) for i in range(nTasks)
-        ) <= capacities[r] for r in range(nResources)
+            Task(
+                origin=s[i],
+                length=durations[i],
+                height=requirements[r][i]
+            ) for i in T
+        ) <= capacities[r] for r in R
     ],
 
     # constraining the objective value
-    [s[i] + durations[i] <= z for i in range(nTasks)]
+    [s[i] + durations[i] <= z for i in T]
 )
 
 minimize(

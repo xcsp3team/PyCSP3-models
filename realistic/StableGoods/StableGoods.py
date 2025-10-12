@@ -1,6 +1,6 @@
 """
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The model (main variant), below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   s-d06.json
@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python StableGoods.py -data=<datafile.dzn> -parser=StableGoods_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, mzn20
@@ -21,7 +21,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-goods, persons = data
+assert not variant() or variant("table")
+
+goods, persons = data or load_json_data("s-d06.json")
+
 quantities, values = zip(*goods)
 preferences, requirements = zip(*persons)
 nGoods, nPersons = len(goods), len(persons)
@@ -29,13 +32,13 @@ nGoods, nPersons = len(goods), len(persons)
 ranks = cp_array([max((t[k] == j) * (k + 1) for k in range(len(t))) for j in range(nGoods)] for t in preferences)
 requs = cp_array([max((t[k] == j) * requirements[i][k] for k in range(len(t))) for j in range(nGoods)] for i, t in enumerate(preferences))
 
-# tg[i] is the type of goods chosen for the ith person
+# tg[p] is the type of goods chosen for person p
 tg = VarArray(size=nPersons, dom=range(nGoods))
 
-# ng[i] is the number of goods of the type chosen for the ith person
+# ng[p] is the number of goods of the type chosen for person p
 ng = VarArray(size=nPersons, dom=range(max(max(t) for t in requirements) + 1))
 
-# pr[i] is the preference rank of the type of goods chosen for the ith person
+# pr[p] is the preference rank of the type of goods chosen for person p
 pr = VarArray(size=nPersons, dom=lambda i: range(len(preferences[i])))
 
 # z[j] is the number of remaining goods of the jth type
@@ -44,18 +47,14 @@ z = VarArray(size=nGoods, dom=range(max(quantities) + 1))
 satisfy(
     # choosing types and number of goods
     (
-        tg[i] == preferences[i][pr[i]],
-        ng[i] == requirements[i][pr[i]]
-    ) for i in range(nPersons)
+        tg[p] == preferences[p][pr[p]],
+        ng[p] == requirements[p][pr[p]]
+    ) for p in range(nPersons)
 )
 
 satisfy(
     # computing the distribution of goods
-    [
-        quantities[j] == Sum(
-            (tg[i] == j) * ng[i] for i in range(nPersons)
-        ) + z[j] for j in range(nGoods)
-    ]
+    [quantities[j] == Sum((tg[p] == j) * ng[p] for p in range(nPersons)) + z[j] for j in range(nGoods)]
 )
 
 if not variant():

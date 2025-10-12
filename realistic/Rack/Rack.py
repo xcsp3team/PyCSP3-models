@@ -21,7 +21,8 @@ The rack configuration problem consists of plugging a set of electronic cards in
 
 from pycsp3 import *
 
-nRacks, models, cardTypes = data
+nRacks, models, cardTypes = data or load_json_data("r2.json")
+
 models.append([0, 0, 0])  # we add first a dummy model (0,0,0)
 powers, sizes, costs = zip(*models)
 cardPowers, cardDemands = zip(*cardTypes)

@@ -21,7 +21,8 @@ The Square packing problem involves packing all squares with sizes 1 Ã— 1 to n Ã
 
 from pycsp3 import *
 
-n = data
+n = data or 6
+
 assert 6 <= n <= 27  # for data (containers) below, as given in papers mentioned above
 
 containers = [[9, 11],  # 6

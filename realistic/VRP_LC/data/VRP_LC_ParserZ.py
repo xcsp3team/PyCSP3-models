@@ -1,11 +1,11 @@
 from pycsp3.problems.data.parsing import *
 
-data['T'] = number_in(line())
-V = data['V'] = number_in(next_line())
-data['Q'] = number_in(next_line())
-data['L'] = number_in(next_line())
-data['C'] = number_in(next_line())
-P = data['P'] = number_in(next_line())
+data['horizon'] = number_in(line())
+V = data['nVehicles'] = number_in(next_line())
+data['vehicleCapacity'] = number_in(next_line())
+data['nLocations'] = number_in(next_line())
+data['locationCapacity'] = number_in(next_line())
+P = data['nPickups'] = number_in(next_line())
 R = 2 * P
 N = R + 2 * V
 data["times"] = split_with_rows_of_size(numbers_in_lines_until(";"), N)

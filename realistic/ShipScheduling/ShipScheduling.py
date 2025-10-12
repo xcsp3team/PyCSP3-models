@@ -7,8 +7,7 @@ restrictions on the draft of ships that may safely enter the port.
 Draft is the distance between the waterline and the ship’s keel, and is a function of the amount of cargo loaded onto the ship."
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2011/2012/2014 Minizinc challenges.
-The MZN model was proposed by Elena Kelareva.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Elena Kelareva - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   3-Ships.json
@@ -22,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://ojs.aaai.org/index.php/ICAPS/article/view/13494
-  - https://www.minizinc.org/challenge2012/results2012.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   realistic, mzn11, mzn12, mzn14
@@ -30,16 +29,17 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-berthSwaps, minSeparations, sailingDrafts, nTugs, ships, inShips, outShips, tugAllowances = data
+berthSwaps, minSeparations, sailingDrafts, nTugs, ships, inShips, outShips, tugAllowances = data or load_json_data("3-Ships.json")
+
 inBerths, outBerths, gapBerths = zip(*berthSwaps)
 earliest, tonnesPerCmDraft, tugSets, tugTurnarounds = zip(*ships)
 nShips, horizon, nBerthSwaps, maxTugSets = len(ships), len(sailingDrafts), len(berthSwaps), len(tugSets[0])
 
 assert nShips > 0 and horizon > 0 and all(0 < v <= horizon for v in earliest)
 
-minDraft = min(v for row in sailingDrafts for v in row)
-maxDraft = max(v for row in sailingDrafts for v in row)
-maxTugsRequiredPerShip = max(v for row in tugSets for v in row)
+minDraft = min(v for t in sailingDrafts for v in t)
+maxDraft = max(v for t in sailingDrafts for v in t)
+maxTugsRequiredPerShip = max(v for t in tugSets for v in t)
 
 # x[i] is the starting time of the ith ship
 x = VarArray(size=nShips, dom=range(1, horizon))

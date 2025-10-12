@@ -4,7 +4,7 @@ Layout for electrical components on stripboard.
 Taking component footprints, pin locations and pinlist as input and trying to produce the most compact layout.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019/2022 Minizinc challenges.
-MIT Licence (Copyright 2022 Monash University, model by Jason Nguyen, for the original mzn model)
+MIT Licence (Copyright 2022 Monash University, model by Jason Nguyen, for the original MZN model)
 
 ## Data Example
   common-emitter-simple.json
@@ -18,8 +18,7 @@ MIT Licence (Copyright 2022 Monash University, model by Jason Nguyen, for the or
   python Stripboard.py -data=<datafile.json>
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
-  - https://www.minizinc.org/challenge2025/results2025.html
+  - https://www.minizinc.org/challenge/2025/results/
 
 ## Tags
   realistic, mzn22, mzn25
@@ -27,7 +26,8 @@ MIT Licence (Copyright 2022 Monash University, model by Jason Nguyen, for the or
 
 from pycsp3 import *
 
-max_w, max_h, nLinks, components, pins, nets = data
+max_w, max_h, nLinks, components, pins, nets = data or load_json_data("common-emitter-simple.json")
+
 full_w = max(max_w, nLinks)
 
 orientation_names = ["Upright", "Clockwise", "UpsideDown", "Anticlockwise"]
