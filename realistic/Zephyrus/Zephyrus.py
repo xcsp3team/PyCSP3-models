@@ -19,7 +19,7 @@ The original MZN model was proposed by Jacopo Mauro (under the terms of the ISC 
   - https://www.dicosmo.org/Articles/Aeolus-2014.pdf
   - https://bitbucket.org/jacopomauro/zephyrus2/src/master/
   - https://www.duo.uio.no/handle/10852/51754
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
   realistic, mzn16, mzn19
@@ -27,9 +27,11 @@ The original MZN model was proposed by Jacopo Mauro (under the terms of the ISC 
 
 from pycsp3 import *
 
-matrix, locations, components = data
+matrix, locations, components = data or load_json_data("12-06-8-3.json")
+
 costs, resources = zip(*locations)
 requiring, providing, conflicts, consuming = zip(*components)
+
 nLocations, nComponents, nPorts, nMultiPorts, nResources = len(locations), len(components), len(requiring[0]), len(providing[0]), 1  # len(resources[0])
 assert nComponents == 4 and nPorts == 4 and nMultiPorts == 5 and nResources == 1
 

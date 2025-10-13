@@ -1,7 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2018/2022 Minizinc challenges.
-The MZN model was proposed by Erik Thörnbald (Uppsala University).
-No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
+The original MZN model was proposed by Erik Thörnbald (Uppsala University) - no licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Data Example
   2-5-6.json
@@ -14,7 +13,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   python TeamAssignment.py -data=<datafile.dzn> -parser=TeamAssignment_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   realistic, mzn18, mzn22
@@ -22,7 +21,8 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 from pycsp3 import *
 
-nTeams, nBoards, requests, rating, singleRequests, doubleRequests = data
+nTeams, nBoards, requests, rating, singleRequests, doubleRequests = data or load_json_data("2-5-6.json")
+
 nPlayers = nTeams * nBoards
 
 # t[i] is the team of the ith player
@@ -39,19 +39,26 @@ happiness = Var(dom=range(requests + 1))
 
 satisfy(
     # computing team ratings
-    BinPacking(t, sizes=rating, loads=tr),
+    BinPacking(
+        partition=t,
+        sizes=rating,
+        loads=tr
+    ),
 
     # computing the balance
     balance == Maximum(tr) - Minimum(tr),
 
     # computing the happiness
-    happiness == Sum(t[i] == t[j] for i, j in doubleRequests) * 2 + Sum(t[i] == t[j] for i, j in singleRequests),
+    happiness == 2 * Sum(t[i] == t[j] for i, j in doubleRequests) + Sum(t[i] == t[j] for i, j in singleRequests),
 
     # teams are different on each board
     [AllDifferent(t[b * nTeams: (b + 1) * nTeams]) for b in range(nBoards)],
 
     # tag(redundant)
-    BinPacking(t, sizes=1) <= nBoards,
+    BinPacking(
+        partition=t,
+        sizes=1
+    ) <= nBoards,
 
     # tag(symmetry-breaking)
     [t[i] == i for i in range(nTeams)]
@@ -62,9 +69,9 @@ maximize(
 )
 
 """ Comments
-1) Currently, we need to write
+1) Now, we can indifferently write 
  Sum(t[i] == t[j] for i, j in doubleRequests) * 2
-  instead of 
- 2 * um(t[i] == t[j] for i, j in doubleRequests) 
- in case the Sum generated the DummyConstraint 0 (when doubleRequests is empty)
+  or 
+ 2 * Sum(t[i] == t[j] for i, j in doubleRequests) 
+ (in case the Sum generates the DummyConstraint 0 when doubleRequests is empty, this is ok)
 """

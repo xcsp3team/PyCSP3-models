@@ -4,7 +4,7 @@ from a rectangular carpet roll with a fixed roll width and a sufficiently long r
 See the "Optimal Carpet Cutting" conference paper published at CP'11.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data
   test01.json
@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-642-23786-7_8
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2025/results/
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags

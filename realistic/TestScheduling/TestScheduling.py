@@ -10,6 +10,9 @@ For some tests, additional, possibly more than one, global resources are needed.
 While those resources are used for a test, no other test can use the resource.
 The objective is to finish the set of all tests as quickly as possible."
 
+## Data Example
+  t020m10r03-1.json
+
 ## Model
   constraints: Cumulative, Maximum, NoOverlap
 
@@ -27,10 +30,11 @@ The objective is to finish the set of all tests as quickly as possible."
 
 from pycsp3 import *
 
-nMachines, nResources, tests = data
-durations, machines, resources = zip(*tests)  # information split over the tests
-nTests = len(tests)
+nMachines, nResources, tests = data or load_json_data("t020m10r03-1.json")
 
+durations, machines, resources = zip(*tests)  # information split over the tests
+
+nTests = len(tests)
 horizon = sum(durations) + 1  # computing a better upper bound?
 
 tests_by_single_machines = [t for t in [[i for i in range(nTests) if len(machines[i]) == 1 and m in machines[i]] for m in range(nMachines)] if len(t) > 1]
@@ -41,7 +45,7 @@ def conflicting_tests():
     def possibly_conflicting(i, j):
         return len(machines[i]) == 0 or len(machines[j]) == 0 or len(set(machines[i] + machines[j])) != len(machines[i]) + len(machines[j])
 
-    pairs = [(i, j) for i, j in combinations(range(nTests), 2) if possibly_conflicting(i, j)]
+    pairs = [(i, j) for i, j in combinations(nTests, 2) if possibly_conflicting(i, j)]
     for t in tests_by_single_machines + tests_by_resources:
         for i, j in combinations(t, 2):
             if (i, j) in pairs:
@@ -60,21 +64,34 @@ satisfy(
     [
         If(
             m[i] == m[j],
-            Then=either(s[i] + durations[i] <= s[j], s[j] + durations[j] <= s[i])
+            Then=either(
+                s[i] + durations[i] <= s[j],
+                s[j] + durations[j] <= s[i]
+            )
         ) for i, j in conflicting_tests()
     ],
 
     # no overlapping on single pre-assigned machines
     [
         NoOverlap(
-            tasks=[Task(origin=s[i], length=durations[i]) for i in t]
+            tasks=[
+                Task(
+                    origin=s[i],
+                    length=durations[i]
+                ) for i in t
+            ]
         ) for t in tests_by_single_machines
     ],
 
     # no overlapping on resources
     [
         NoOverlap(
-            tasks=[Task(origin=s[i], length=durations[i]) for i in t]
+            tasks=[
+                Task(
+                    origin=s[i],
+                    length=durations[i]
+                ) for i in t
+            ]
         ) for t in tests_by_resources
     ],
 

@@ -10,7 +10,7 @@ The departure time at the last-visited location is to be minimised.
 This model is a simplified (but equivalent) version of TSPTW_z (submitted to the 2025 Minizinc challenge).
 
 ## Data Example
-  n020w140-005.jso
+  n020w140-005.json
 
 ## Model
   constraints: Circuit, Element
@@ -29,10 +29,11 @@ This model is a simplified (but equivalent) version of TSPTW_z (submitted to the
 
 from pycsp3 import *
 
-durations, early_times, late_times = data
+durations, early_times, late_times = data or load_json_data("n020w140-005.json")
+
 nLocations = len(durations)
 
-depot = 0  # The first location is the depot
+DEPOT = 0  # The first location is the depot
 
 # pred[i] is the location visited just before the ith location
 pred = VarArray(size=nLocations, dom=range(nLocations))
@@ -48,7 +49,7 @@ satisfy(
     Circuit(pred, no_self_looping=True),
 
     # starting at time 0 from the depot
-    dep[depot] == 0,
+    dep[DEPOT] == 0,
 
     # leaving after arriving
     [dep[i] >= arr[i] for i in range(1, nLocations)],
@@ -59,5 +60,5 @@ satisfy(
 
 minimize(
     # minimizing the arrival time at depot
-    arr[depot]
+    arr[DEPOT]
 )

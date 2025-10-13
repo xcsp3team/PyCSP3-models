@@ -28,7 +28,7 @@ options.force_element_index = True
 
 assert not variant() or variant("mzn")
 
-nPatterns, maxPatternLength, text = data
+nPatterns, maxPatternLength, text = data or load_json_data("bin-07.json")
 
 n = len(text)
 nNodes = 2 * nPatterns - 1

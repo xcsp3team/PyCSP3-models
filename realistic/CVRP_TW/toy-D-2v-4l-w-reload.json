@@ -1,6 +1,6 @@
 {
-  "K": 2,
-  "M": 8,
+  "nVehicles": 2,
+  "nCustomers": 8,
   "capacities": [180, 150],
   "timeWindows": [
     [54, 594],

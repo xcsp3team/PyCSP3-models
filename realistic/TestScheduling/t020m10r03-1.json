@@ -1,0 +1,26 @@
+{
+  "nMachines": 10,
+  "nResources": 3,
+  "tests": [
+    {"duration": 424, "machines": [], "resources": []},
+    {"duration": 15, "machines": [], "resources": []},
+    {"duration": 266, "machines": [], "resources": []},
+    {"duration": 778, "machines": [], "resources": []},
+    {"duration": 435, "machines": [], "resources": []},
+    {"duration": 427, "machines": [], "resources": [0, 1, 2]},
+    {"duration": 173, "machines": [], "resources": []},
+    {"duration": 422, "machines": [], "resources": [1, 2]},
+    {"duration": 255, "machines": [], "resources": []},
+    {"duration": 672, "machines": [], "resources": []},
+    {"duration": 328, "machines": [], "resources": []},
+    {"duration": 263, "machines": [], "resources": []},
+    {"duration": 655, "machines": [3, 6], "resources": []},
+    {"duration": 742, "machines": [], "resources": []},
+    {"duration": 364, "machines": [2, 7], "resources": []},
+    {"duration": 272, "machines": [3], "resources": []},
+    {"duration": 472, "machines": [], "resources": [2]},
+    {"duration": 555, "machines": [], "resources": [0, 1, 2]},
+    {"duration": 19, "machines": [], "resources": []},
+    {"duration": 364, "machines": [], "resources": []}
+  ]
+}

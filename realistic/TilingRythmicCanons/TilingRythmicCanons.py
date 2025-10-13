@@ -22,7 +22,10 @@ i.e., all subsets B of Zn such that A ⊕ B = Zn.
 from data.TilingRythmicCanons_Instances import instance
 from pycsp3 import *
 
-n, D, A = instance(data) if isinstance(data, int) else data
+assert not variant() or variant("opt") or variant("table")
+
+n, D, A = instance(data) if isinstance(data, int) else data if data is not None else instance(1)
+
 lD, lA, lB = len(D), len(A), n // len(A)
 
 # x[i] is the ith value of the aperiodic tiling complement

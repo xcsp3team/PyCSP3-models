@@ -22,8 +22,6 @@ MIT Licence (Copyright 2021 Johan Ludde Wessénassumed)
   - https://link.springer.com/chapter/10.1007/978-3-030-58942-4_33
   - https://github.com/LuddeWessen/assembly-robot-manager-minizinc
   - https://www.minizinc.org/challenge2021/results2021.html
-  - https://www.minizinc.org/challenge2022/results2022.html
-  - https://www.minizinc.org/challenge2023/results2023.html
   - https://www.minizinc.org/challenge2024/results2024.html
 
 ## Tags
@@ -33,17 +31,19 @@ MIT Licence (Copyright 2021 Johan Ludde Wessénassumed)
 from pycsp3 import *
 from pycsp3.dashboard import options
 
-#  option set to avoid writing ((aux:=Var()) == agent1_count - 1, task[aux] == end_depot_tasks[0])
-#  instead of task[agent1_count - 1] == end_depot_tasks[0]
+#  option set to avoid writing ((aux:=Var()) == agent1_count - 1, task[aux] == end_depot_tasks[0]) instead of task[agent1_count - 1] == end_depot_tasks[0]
 options.force_element_index = True
 
-tasks, task_orderings, agents, locations, nSuctionCups, zones = data
+assert variant("static") or variant("dynamic")
+
+tasks, task_orderings, agents, locations, nSuctionCups, zones = data or load_json_data("p-04-GG-GG-3-4.json")
+
 tray_tasks, camera_tasks, output_task, empty_gripper_tasks = tasks
 gripper_ordering, suction_ordering, fixture_ordering = task_orderings
 durations, times, fixtureWorkObstruction = agents
 location_order, tray_locations, camera_locations, fixture_locations, airgun_locations, output_locations = locations
 
-assert variant() in ("static", "dynamic") and variant("static") == (zones is None)
+assert variant("static") == (zones is None)
 
 nLocations, nAgents, nActualTasks = len(times[0]), len(durations), len(durations[0])  # number of actual tasks, i.e. excluding dummy start & end tasks
 assert nAgents == 2
@@ -368,7 +368,7 @@ minimize(
 )
 
 """ Comments
-One redundant constraint not coded for the moment: (about enforinge sequencing of fixture tasks)
+1) One redundant constraint not coded for the moment: (about enforcing sequencing of fixture tasks)
 """
 
 #     fixture_zones = [v for v in range(max_zones - len(fixture_locations) + 1, max_zones + 1)]  # by design the fixture zones are last

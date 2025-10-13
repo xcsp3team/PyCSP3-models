@@ -43,10 +43,16 @@ satisfy(
 
 minimize(
     Sum(
-        conjunction(y[i] == u, y[j] == v, x[u][v] != M[i][j])
-        for u in range(nBlocks) for v in range(nBlocks) for i in range(nNodes) for j in range(nNodes) if i != j
+        conjunction(
+            y[i] == u,
+            y[j] == v,
+            x[u][v] != M[i][j]
+        ) for u in range(nBlocks) for v in range(nBlocks) for i in range(nNodes) for j in range(nNodes) if i != j
     )
     + Sum(
-        both(y[i] == u, x[u][u] != M[i][i]) for u in range(nBlocks) for i in range(nNodes)
+        both(
+            y[i] == u,
+            x[u][u] != M[i][i]
+        ) for u in range(nBlocks) for i in range(nNodes)
     )
 )

@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020/2022 Minizinc challenges.
-The MZN model was proposed by Greame Gange, with a Licence that seems to be like the MIT Licence.
+The original MZN model was proposed by Greame Gange, with a Licence that seems to be like the MIT Licence.
 
 ## Data Example
   070-070-15-070-04.json
@@ -21,15 +21,20 @@ The MZN model was proposed by Greame Gange, with a Licence that seems to be like
 
 from pycsp3 import *
 
-min_signal_strength, distances, demands, capacities = data
+assert not variant() or variant("any")
+
+min_signal_strength, distances, demands, capacities = data or load_json_data("070-070-15-070-04.json")
+
+maxPower, PowerScale = 10, 10_000
+
 nHandsets, nTowers = len(demands), len(capacities)
-maxPower, PowerScale = 10, 10000
+H, T = range(nHandsets), range(nTowers)
 
 rnk = TypeRank.ANY if variant("any") else TypeRank.FIRST
 
 effective_power = cp_array([0] + [2 * (p - 1) * (p - 1) for p in range(1, maxPower + 1)])  # we add 0 for the constraint Element
-attenuation = [[PowerScale / (distances[h][t] * distances[h][t]) for t in range(nTowers)] for h in range(nHandsets)]
-attenuation_i = cp_array([[round(attenuation[h][t]) for t in range(nTowers)] for h in range(nHandsets)])
+attenuation = [[PowerScale / (distances[h][t] * distances[h][t]) for t in T] for h in H]
+attenuation_i = cp_array([[round(attenuation[h][t]) for t in T] for h in H])
 
 
 def min_transmit_power(t, h):
@@ -50,21 +55,21 @@ quality = VarArray(size=nHandsets, dom={0, 1})
 
 satisfy(
     # choosing the right towers for handsets
-    [tr[h] == MaximumArg([attenuation_i[h][t] * effective_power[pr[t]] for t in range(nTowers)], rank=rnk) for h in range(nHandsets)],
+    [tr[h] == MaximumArg([attenuation_i[h][t] * effective_power[pr[t]] for t in T], rank=rnk) for h in H],
 
     # ensuring minimum signal strength
     [
         If(
             tr[h] == t,
             Then=pr[t] >= min_transmit_power(t, h)
-        ) for h in range(nHandsets) for t in range(nTowers)
+        ) for h in H for t in T
     ],
 
     # determining which towers are overloaded
-    [od[t] == (Sum(demands[h] * (tr[h] == t) for h in range(nHandsets)) > capacities[t]) for t in range(nTowers)],
+    [od[t] == (Sum(demands[h] * (tr[h] == t) for h in H) > capacities[t]) for t in T],
 
     # determining the connection quality of handsets
-    [quality[h] != od[tr[h]] for h in range(nHandsets)]
+    [quality[h] != od[tr[h]] for h in H]
 )
 
 maximize(

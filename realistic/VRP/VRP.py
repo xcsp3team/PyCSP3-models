@@ -25,6 +25,8 @@ from pycsp3 import *
 capacity, demands, distances = data or load_json_data("P-n20-k2.json")
 
 n = len(demands)  # number of nodes (including 0 for the depot)
+N = range(1, n)  # note that we start at 1 (because this is the way we need it)
+
 k = n - 1  # because n has been incremented in the parser
 
 # x[i][j] is 1 iff the arc (i,j) is part of a route
@@ -35,10 +37,10 @@ u = VarArray(size=n, dom=lambda i: {0} if i == 0 else range(capacity + 1))
 
 satisfy(
     # exactly one incoming arc for each node j other than the depot
-    [ExactlyOne(x[:, j]) for j in range(1, n)],
+    [ExactlyOne(x[:, j]) for j in N],
 
     # exactly one outgoing arc for each node i other than the depot
-    [ExactlyOne(x[i]) for i in range(1, n)],
+    [ExactlyOne(x[i]) for i in N],
 
     # no more than 'k' vehicles leaving the depot
     Sum(x[:, 0]) <= k,
@@ -52,11 +54,11 @@ satisfy(
             u[i],
             -u[j],
             capacity * x[i][j]
-        ) <= capacity - demands[j] for i in range(1, n) for j in range(1, n) if i != j
+        ) <= capacity - demands[j] for i in N for j in N if i != j
     ],
 
     # satisfying demand at each node
-    [u[i] >= demands[i] for i in range(1, n)]
+    [u[i] >= demands[i] for i in N]
 )
 
 minimize(

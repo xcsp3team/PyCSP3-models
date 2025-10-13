@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015/2017 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   10-24-10.json
@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python TD_TSP.py -data=<datafile.dzn> -parser=TD_TSP_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2017/results2017.html
+  - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
   realistic, mzn15, mzn17
@@ -21,7 +21,10 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-durations, nSteps, granularity, times = data
+assert not variant() or variant("plus")
+
+durations, nSteps, granularity, times = data or load_json_data("10-34-00.json")
+
 nVisits = len(durations)
 horizon = nSteps * (granularity - 1) + 1
 
@@ -63,8 +66,15 @@ satisfy(
 
     # taking into account travel time constraints
     [
-        [at[i] >= at[j] + durations[j] + times[:, i, :][j][at[j] // granularity] for i in range(1, nVisits + 1) if (j := prv[i],)],
-        [at[nxt[i]] >= at[i] + durations[i] + times[i][nxt[i]][at[i] // granularity] for i in range(nVisits)]
+        [
+            at[i] >= at[j] + durations[j] + times[:, i, :][j][at[j] // granularity]
+            for i in range(1, nVisits + 1) if (j := prv[i],)
+        ],
+
+        [
+            at[nxt[i]] >= at[i] + durations[i] + times[i][nxt[i]][at[i] // granularity]
+            for i in range(nVisits)
+        ]
     ],
 
     # imposing some conditions on last visit time  tag(redundant)

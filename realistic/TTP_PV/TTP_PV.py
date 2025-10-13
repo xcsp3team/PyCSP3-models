@@ -7,7 +7,7 @@ The sum of the traveling distance of each team has to be minimized.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014/2019 Minizinc challenges.
 The venue of each game has already been decided.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   circ08bbal.json
@@ -22,7 +22,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Links
   - https://www.csplib.org/Problems/prob068/models/
   - https://link.springer.com/article/10.1007/s10951-008-0097-1
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   realistic, csplib, mzn14, mzn17, mzn22
@@ -30,24 +30,27 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-nTeams, venues = data
-nRounds = nTeams - 1
+nTeams, venues = data or load_json_data("circ08bbal.json")
+
 assert nTeams % 2 == 0, "an even number of teams is expected"
 
-distances = cp_array([min(abs(v1 - v2), nTeams - abs(v1 - v2)) for v2 in range(nTeams)] for v1 in range(nTeams))
+nRounds = nTeams - 1
+R, T = range(nRounds), range(nTeams)
+
+distances = cp_array([min(abs(v1 - v2), nTeams - abs(v1 - v2)) for v2 in T] for v1 in T)
 
 
-def automaton():
+def build_automaton():
     qi, q01, q02, q03, q11, q12, q13 = states = "q", "q01", "q02", "q03", "q11", "q12", "q13"
     t2 = [(qi, 0, q01), (qi, 1, q11), (q01, 0, q02), (q01, 1, q11), (q11, 0, q01), (q11, 1, q12), (q02, 1, q11), (q12, 0, q01)]
     t3 = [(q02, 0, q03), (q12, 1, q13), (q03, 1, q11), (q13, 0, q01)]
     return Automaton(start=qi, final={q for q in states if q != qi}, transitions=t2 + t3)
 
 
-A = automaton()
+A = build_automaton()
 
-# o[i][k] is the opponent (team) of the ith team  at the kth round
-o = VarArray(size=[nTeams, nRounds], dom=range(nTeams))
+# opp[i][k] is the opponent (team) of the ith team  at the kth round
+opp = VarArray(size=[nTeams, nRounds], dom=range(nTeams))
 
 # h[i][k] is 1 iff the ith team plays at home at the kth round
 h = VarArray(size=[nTeams, nRounds], dom={0, 1})
@@ -57,25 +60,25 @@ t = VarArray(size=[nTeams, nRounds + 1], dom=range(nTeams // 2 + 1))
 
 satisfy(
     # ensuring predefined venues
-    [venues[i][o[i][k]] == h[i][k] for i in range(nTeams) for k in range(nRounds)],
+    [venues[i][opp[i][k]] == h[i][k] for i in T for k in R],
 
     # a team cannot play against itself
-    [o[i][k] != i for i in range(nTeams) for k in range(nRounds)],
+    [opp[i][k] != i for i in T for k in R],
 
     # in round k, i plays j means j plays i
-    [o[o[i][k]][k] == i for i in range(nTeams) for k in range(nRounds)],
+    [opp[opp[i][k]][k] == i for i in T for k in R],
 
     # each team plays once against all other teams
-    [AllDifferent(row) for row in o],
+    [AllDifferent(opp[i]) for i in T],
 
     # at each round, opponents are all different  tag(redundant)
-    [AllDifferent(col) for col in columns(o)],
+    [AllDifferent(opp[:, j]) for j in R],
 
     # at most 3 consecutive games at home, or consecutive games away
-    [h[i] in A for i in range(nTeams)],
+    [h[i] in A for i in T],
 
     # tag(symmetry-breaking)
-    o[0][0] < o[0][-1],
+    opp[0][0] < opp[0][-1],
 
     # computing travelled distances wrt venues of current and next-round games
     [
@@ -84,8 +87,8 @@ satisfy(
             If(
                 h[i][0] == 1,
                 Then=t[i][0] == 0,
-                Else=t[i][0] == distances[i][o[i][0]]
-            ) for i in range(nTeams)
+                Else=t[i][0] == distances[i][opp[i][0]]
+            ) for i in T
         ],
 
         [
@@ -93,11 +96,11 @@ satisfy(
                 (h[i][k], h[i][k + 1]),
                 Cases={
                     (1, 1): t[i][k + 1] == 0,
-                    (0, 1): t[i][k + 1] == distances[o[i][k]][i],
-                    (1, 0): t[i][k + 1] == distances[i][o[i][k + 1]],
-                    (0, 0): t[i][k + 1] == distances[o[i][k]][o[i][k + 1]]
+                    (0, 1): t[i][k + 1] == distances[opp[i][k]][i],
+                    (1, 0): t[i][k + 1] == distances[i][opp[i][k + 1]],
+                    (0, 0): t[i][k + 1] == distances[opp[i][k]][opp[i][k + 1]]
                 }
-            ) for i in range(nTeams) for k in range(nRounds - 1)
+            ) for i in T for k in R[:-1]
         ],
 
         [
@@ -105,8 +108,8 @@ satisfy(
             If(
                 h[i][-1] == 1,
                 Then=t[i][-1] == 0,
-                Else=t[i][-1] == distances[o[i][-1]][i]
-            ) for i in range(nTeams)
+                Else=t[i][-1] == distances[opp[i][-1]][i]
+            ) for i in T
         ]
     ],
 

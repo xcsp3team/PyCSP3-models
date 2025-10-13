@@ -25,7 +25,7 @@ For the original MZN model, proposed by Buser Say, no Licence was explicitly men
 
 from pycsp3 import *
 
-n, eq_constraints, ge_constraints, iff_constraints, (AA, BB) = data
+n, eq_constraints, ge_constraints, iff_constraints, (AA, BB) = data or load_json_data("sysadmin-4-2s.json")
 
 # x[i] is the value (0 or 1) of the ith variable
 x = VarArray(size=n, dom={0, 1})
@@ -45,7 +45,7 @@ minimize(
     AA * x[BB]
 )
 
-"""
+""" Comments
 1) having coefficients (A) and indexes (B) separate avoids slowing down posting constraints, as in:
  [Sum(c[i * 2] * x[c[i * 2 + 1] - 1] for i in range(len(c) // 2)) == c[-1] for c in ceq],
  [Sum(c[i * 2] * x[c[i * 2 + 1] - 1] for i in range(len(c) // 2)) >= c[-1] for c in cge],

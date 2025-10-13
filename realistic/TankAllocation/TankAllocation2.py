@@ -30,19 +30,22 @@ from pycsp3 import *
 
 from pycsp3.tools.utilities import number_of_values_for_sum_ge
 
-volumes, conflicts, tanks = data
+assert not variant() or variant("reif")
+
+volumes, conflicts, tanks = data or load_json_data("chemical.json")
+
 capacities, impossible_cargos, neighbours = zip(*tanks)
 nCargos, nTanks = len(volumes), len(tanks)
-conflicts = [(i, j) for i, j in conflicts if volumes[i] > 0 and volumes[j] > 0]
-# assert all(volumes[i] > 0 and volumes[j] > 0 for i, j in conflicts)
 
-sorted_capacities = sorted(list(enumerate(capacities)), key=lambda v: v[1])
+conflicts = [(i, j) for i, j in conflicts if volumes[i] > 0 and volumes[j] > 0]
+
+sorted_capacities = sorted(enumerate(capacities), key=lambda v: v[1])
 nMaxTanks = [number_of_values_for_sum_ge(sorted(capacities), volume) for volume in volumes]
 impossible_tanks = [[j for j in range(nTanks) if i in impossible_cargos[j]] for i in range(nCargos)]
 DUMMY_TANK = -1
 
-C = [i for i in range(nCargos) if volumes[i] != 0]  # relevant cargos
-A = sorted(list(set([(i, j) for i in range(nTanks) for j in neighbours[i]] + [(j, i) for i in range(nTanks) for j in neighbours[i]])))
+relevantCargoes = [i for i in range(nCargos) if volumes[i] != 0]
+all_neighbors = sorted((i, j) for i in range(nTanks) for j in neighbours[i])  # we assume symmetry of neighborhood
 
 
 def T(cargo):
@@ -66,19 +69,19 @@ y = VarArray(size=nTanks, dom={0, 1})
 
 satisfy(
     # using compatible tanks for each cargo
-    [x[i][k] not in impossible_tanks[i] for i in C for k in range(nMaxTanks[i])],
+    [x[i][k] not in impossible_tanks[i] for i in relevantCargoes for k in range(nMaxTanks[i])],
 
     # using different tanks
     AllDifferent(x, excepting=-1),
 
     # ensuring each cargo is shipped
-    [x[i] in T(i) for i in C],
+    [x[i] in T(i) for i in relevantCargoes],
 
     # ensuring no adjacent tanks containing incompatible cargo
-    [(x[i][k], x[j][q]) not in A for i, j in conflicts for k in range(nMaxTanks[i]) for q in range(nMaxTanks[j])],
+    [(x[i][k], x[j][q]) not in all_neighbors for i, j in conflicts for k in range(nMaxTanks[i]) for q in range(nMaxTanks[j])],
 
     # computing if tanks are used
-    [Exist(x, value=j, reified_by=y[j]) for j in range(nTanks)] if variant("reif")
+    [Exist(within=x, value=j, reified_by=y[j]) for j in range(nTanks)] if variant("reif")
     else [y[j] == (j in flatten(x)) for j in range(nTanks)]
 )
 

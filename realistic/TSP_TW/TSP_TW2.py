@@ -24,9 +24,12 @@ See IJCAI paper below.
 
 from pycsp3 import *
 
-distances, windows = data
+distances, windows = data or load_json_data("n020w020-1.json")
+
 horizon = max(latest for (_, latest) in windows) + 1
+
 n = len(distances)
+N = range(n)
 
 # x[i] is the node succeeding to the ith node
 x = VarArray(size=n, dom=range(n))
@@ -39,7 +42,7 @@ satisfy(
     a[0] == 0,
 
     # avoiding self-loops
-    [x[i] != i for i in range(n)],
+    [x[i] != i for i in N],
 
     # forming a circuit
     Circuit(x),
@@ -49,11 +52,11 @@ satisfy(
         If(
             x[i] != 0,
             Then=a[x[i]] >= a[i] + distances[i][x[i]]
-        ) for i in range(n)
+        ) for i in N
     ]
 )
 
 minimize(
     # minimizing travelled distance
-    Sum(distances[i, x[i]] for i in range(n))
+    Sum(distances[i, x[i]] for i in N)
 )

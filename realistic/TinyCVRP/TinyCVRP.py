@@ -21,8 +21,10 @@ For the original MZN model: MIT Licence.
 
 from pycsp3 import *
 
-capacities, demands, etas = data
+capacities, demands, etas = data or load_json_data("easy-04.json")
+
 nVehicles, nCustomers, nPlaces = len(capacities), len(demands) - 1, len(demands)
+V, P = range(nVehicles), range(1, nPlaces)  # note that P starts at 1 (because it is the way we need it)
 
 # visit[i][j] is 1 if the ith vehicle visits the jth place
 visit = VarArray(size=[nVehicles, nPlaces], dom={0, 1})
@@ -35,17 +37,17 @@ last = VarArray(size=nVehicles, dom=range(nPlaces))
 
 satisfy(
     # not exceeding the capacity of each vehicle
-    [demands * visit[i] <= capacities[i] for i in range(nVehicles)],
+    [demands * visit[i] <= capacities[i] for i in V],
 
     # visiting each customer location exactly once by one vehicle
-    [Sum(visit[:, j]) == 1 for j in range(1, nPlaces)],
+    [Sum(visit[:, j]) == 1 for j in P],
 
     # handling start from depot
     [
         (
             visit[i][0] == 1,
             order[i][0] == 1
-        ) for i in range(nVehicles)
+        ) for i in V
     ],
 
     # ensuring sequential order for visited locations (tour allocation)
@@ -54,23 +56,23 @@ satisfy(
             visit[i][j] == 1,
             Then=order[i][j] > Maximum(order[i][k] * visit[i][k] for k in range(j)),
             Else=order[i][j] == 0
-        ) for i in range(nVehicles) for j in range(1, nPlaces)
+        ) for i in V for j in P
     ],
 
     # handling return to depot
     [
-        order[i][-1] == Maximum(order[i][j] * visit[i][j] for j in range(1, nPlaces)) + 1
-        for i in range(nVehicles)
+        order[i][-1] == Maximum(order[i][j] * visit[i][j] for j in P) + 1
+        for i in V
     ],
 
     # computing the last customer of each vehicle
-    [last[i] == Maximum(j * visit[i][j] for j in range(1, nPlaces)) for i in range(nVehicles)]
+    [last[i] == Maximum(j * visit[i][j] for j in P) for i in V]
 )
 
 minimize(
     # minimizing the total ETA, including the return to the depot
-    Sum(visit[i][j] * visit[i][k] * etas[j][k] for i in range(nVehicles) for j, k in combinations(nPlaces, 2))
-    + Sum(visit[i][last[i]] * etas[last[i]][0] for i in range(nVehicles))
+    Sum(visit[i][j] * visit[i][k] * etas[j][k] for i in V for j, k in combinations(nPlaces, 2))
+    + Sum(visit[i][last[i]] * etas[last[i]][0] for i in V)
 )
 
 # java ace TinyCVRP-hard-18.xml -rr -ale=4 => 6058 in 591s

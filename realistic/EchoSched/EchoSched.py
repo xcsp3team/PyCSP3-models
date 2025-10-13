@@ -36,8 +36,8 @@ satisfy(
 
     # ensuring precedence constraints
     [
-        x[j][v1] >= x[j][v2] + durations[j][v2][y[j][v2]] for j in J for m1 in M for m2 in M
-        if m1 != m2 and (v1 := m1 if precedences[j][m1] > precedences[j][m2] else m2, v2 := m2 if v1 == m1 else m1)
+        x[j][v1] >= x[j][v2] + durations[j][v2][y[j][v2]]
+        for j in J for m1 in M for m2 in M if m1 != m2 and (v1 := m1 if precedences[j][m1] > precedences[j][m2] else m2, v2 := m2 if v1 == m1 else m1)
     ],
 
     # ensuring no overlapping

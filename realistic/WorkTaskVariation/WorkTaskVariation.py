@@ -39,9 +39,12 @@ extended_activity_run_costs = activity_run_costs + [[0] * (nSlots + 1)]
 
 R, S, A = range(nResources), range(nSlots), range(nActivities)
 
-q = Automaton.q
-t = [(q(0), NONE, q(1)), (q(1), NONE, q(1)), (q(0), ne(NONE), q(2)), (q(1), ne(NONE), q(2)), (q(2), ne(NONE), q(2)), (q(2), NONE, q(3)), (q(3), NONE, q(3))]
-Automaton = Automaton(start=q(0), final=[q(1), q(2), q(3)], transitions=t)  # automaton for None* [^None]* None*
+Aut = Automaton(
+    start=(q := Automaton.q)(0),
+    final=[q(1), q(2), q(3)],
+    transitions=[(q(0), NONE, q(1)), (q(1), NONE, q(1)), (q(0), ne(NONE), q(2)), (q(1), ne(NONE), q(2)), (q(2), ne(NONE), q(2)), (q(2), NONE, q(3)),
+                 (q(3), NONE, q(3))]
+)  # automaton for None* [^None]* None*
 
 # schedule[r][s] is the activity for resource r in slot s
 schedule = VarArray(size=[nResources, nSlots], dom=range(nActivities + 1))  # +1 for None
@@ -63,7 +66,12 @@ frequency_ends = VarArray(size=[nResources, nActivities], dom=range(nSlots + 1))
 
 satisfy(
     # ensuring all shifts are only Activities (i.e., not None) surrounded with None
-    [schedule[r] in Automaton for r in R],
+    [
+        Regular(
+            scope=schedule[r],
+            automaton=Aut
+        ) for r in R
+    ],
 
     # respecting requirements for each slot (column in the schedule)
     [

@@ -20,7 +20,9 @@ See "Solving the Wastewater Treatment Plant Problem with SMT", by Miquel Bofill,
 
 from pycsp3 import *
 
-nIndustries, nPeriods, plantCapacity, tankFlow, tankCapacity, sd, spans = data  # sd for schedule flow of discharge
+assert not variant() or variant("short")
+
+nIndustries, nPeriods, plantCapacity, tankFlow, tankCapacity, sd, spans = data or load_json_data("ex04400.json")  # sd for schedule flow of discharge
 
 
 def table_compatibility(i, j):
@@ -72,10 +74,11 @@ satisfy(
 
     # spanning constraints
     [
-        c[i][start:stop] in {
-            tuple([0] * (stop - start)),
-            tuple(sd[i][start:stop])
-        } for (i, start, stop) in spans
+        Table(
+            scope=c[i][start:stop],
+            supports={tuple([0] * (stop - start)), tuple(sd[i][start:stop])}
+        )
+        for (i, start, stop) in spans
     ]
 )
 

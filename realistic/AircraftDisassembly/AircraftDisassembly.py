@@ -82,7 +82,10 @@ satisfy(
     [
         If(
             assign[a][unavailable.resources[i]],
-            Then=either(x[a] + durations[a] <= unavailable.starts[i], x[a] >= unavailable.ends[i])
+            Then=either(
+                x[a] + durations[a] <= unavailable.starts[i],
+                x[a] >= unavailable.ends[i]
+            )
         ) for i in range(nUnavailable) for a in A
     ],
 

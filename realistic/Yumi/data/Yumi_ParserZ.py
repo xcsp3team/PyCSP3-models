@@ -21,7 +21,7 @@ next_line()
 skip_empty_lines(or_prefixed_by="%")
 empty_gripper_task = decrement(values(line()))
 
-data['taks'] = OrderedDict(
+data['tasks'] = OrderedDict(
     [("tray_tasks", tray_tasks), ("camera_tasks", camera_tasks), ('output_task', output_task), ('empty_gripper_task', empty_gripper_task)]
 )
 

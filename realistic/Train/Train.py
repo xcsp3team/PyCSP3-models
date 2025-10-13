@@ -8,7 +8,7 @@ The objective is to reschedule the trains to minimize the average travel time of
 Trains are not able to overtake preceding trains, however they do have the option to skip a station and wait longer at a station to collect more passengers.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2012/2014/2018 Minizinc challenges.
-No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   01.json
@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
   python Train.py -data=<datafile.dzn> -parser=Train_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge/2018/results/
 
 ## Tags
   realistic, mzn12, mzn14, mzn18
@@ -29,10 +29,13 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 from pycsp3 import *
 
-maxTime, delay, stations, trains, capacity = data
+maxTime, delay, stations, trains, capacity = data or load_json_data("01.json")
+
 passengerStarts, passengerFlows, distances = zip(*stations)
 arrSchedules, depSchedules = zip(*trains)
+
 nTrains, nStations = len(trains), len(stations)
+T, S = range(nTrains), range(nStations)
 
 horizon = maxTime + 1
 delayStation = min(j for j in range(nStations) if depSchedules[delay.train][j] > delay.time)  # destination when delayed
@@ -60,15 +63,15 @@ dwell = VarArray(size=[nTrains, nStations], dom=range(horizon))
 
 satisfy(
     # all trains 'arrive' at the first station at time 0
-    [arr[i][0] == 0 for i in range(nTrains)],
+    [arr[i][0] == 0 for i in T],
 
     # all trains 'depart' from the last station as soon as they arrive there
-    [dep[i][-1] == arr[i][-1] for i in range(nTrains)],
+    [dep[i][-1] == arr[i][-1] for i in T],
 
     # handling the (fictive) delay
     [
         # before the delay, the schedule is respected
-        [dep[i][j] == depSchedules[i][j] for i in range(nTrains) for j in range(nStations - 1) if depSchedules[i][j] <= delay.time],
+        [dep[i][j] == depSchedules[i][j] for i in T for j in S[:-1] if depSchedules[i][j] <= delay.time],
 
         # if in motion, the arrival of the delayed train is at least the departure time at the previous station
         # plus the ordinary travel time plus the duration of the delay
@@ -80,45 +83,45 @@ satisfy(
     ],
 
     # trains depart after they arrive
-    [dep[i][j] >= arr[i][j] for i in range(nTrains) for j in range(nStations)],
+    [dep[i][j] >= arr[i][j] for i in T for j in S],
 
     # trains never depart earlier than scheduled
-    [dep[i][j] >= depSchedules[i][j] for i in range(nTrains) for j in range(nStations - 1)],
+    [dep[i][j] >= depSchedules[i][j] for i in T for j in S[:-1]],
 
     # ensuring a minimum travel time between stations
-    [arr[i][j + 1] >= dep[i][j] + distances[j] for i in range(nTrains) for j in range(nStations - 1)],
+    [arr[i][j + 1] >= dep[i][j] + distances[j] for i in T for j in S[:-1]],
 
     # at first station, trains leave in order
-    [dep[i][0] < dep[i + 1][0] for i in range(nTrains - 1)],
+    [dep[i][0] < dep[i + 1][0] for i in T[:-1]],
 
     # at most one train dwelling at a station at a given time
-    [dep[i][j] <= arr[i + 1][j] - 2 for i in range(nTrains - 1) for j in range(1, nStations - 1)],
+    [dep[i][j] <= arr[i + 1][j] - 2 for i in T[:-1] for j in S[1:- 1]],
 
     # the sigma values partition time at each station
-    [sigmaL[i][j] <= sigmaU[i][j] for i in range(nTrains) for j in range(nStations)],
+    [sigmaL[i][j] <= sigmaU[i][j] for i in T for j in S],
 
     # for the first and last trains, the sigma values are equal to the extreme times of passenger arrivals
     [
         (
             sigmaL[0][j] == passengerStarts[j],
             sigmaU[-1][j] == depSchedules[-1][j]
-        ) for j in range(1, nStations - 1)
+        ) for j in S[1:-1]
     ],
 
     # the sigma values join together
-    [sigmaU[i][j] == sigmaL[i + 1][j] for i in range(nTrains - 1) for j in range(nStations)],
+    [sigmaU[i][j] == sigmaL[i + 1][j] for i in T[:-1] for j in S],
 
     # you can't pick up people after you leave
     [
-        [sigmaU[i][j] <= dep[i][j] for i in range(nTrains - 1) for j in range(nStations - 1)],
-        [sigmaU[-1][j] <= dep[-1][j] for j in range(nStations - 1)],
+        [sigmaU[i][j] <= dep[i][j] for i in T[:-1] for j in S[:-1]],
+        [sigmaU[-1][j] <= dep[-1][j] for j in S[:-1]],
     ],
 
     # managing collect and load variables
     [
-        [collect[i][j] == (sigmaU[i][j] - sigmaL[i][j]) * passengerFlows[j] for i in range(nTrains) for j in range(nStations)],
-        [load[i][0] == collect[i][0] for i in range(nTrains)],
-        [load[i][j] == load[i][j - 1] + collect[i][j] for i in range(nTrains) for j in range(1, nStations)],
+        [collect[i][j] == (sigmaU[i][j] - sigmaL[i][j]) * passengerFlows[j] for i in T for j in S],
+        [load[i][0] == collect[i][0] for i in T],
+        [load[i][j] == load[i][j - 1] + collect[i][j] for i in T for j in S[1:]],
     ],
 
     # if a train picks anyone up, then it must pick everyone up
@@ -130,7 +133,7 @@ satisfy(
                 sigmaU[i][j] == depSchedules[-1][j],
                 load[i][j] + (sigmaU[i][j] < depSchedules[-1][j]) * passengerFlows[j] > capacity
             )
-        ) for i in range(nTrains) for j in range(nStations - 1)
+        ) for i in T for j in S[:-1]
     ],
 
     # managing boarding time
@@ -139,31 +142,31 @@ satisfy(
             capacity - load[i][j - 1] < 100,
             Then=collect[i][j] <= dwell[i][j] * 20,
             Else=collect[i][j] <= dwell[i][j] * 50
-        ) for i in range(nTrains) for j in range(1, nStations)
+        ) for i in T for j in S[1:]
     ],
 
-    [collect[i][0] <= (dep[i][0] - arr[i][0]) * 50 for i in range(nTrains)],
+    [collect[i][0] <= (dep[i][0] - arr[i][0]) * 50 for i in T],
 
     # tag(redundant)
-    [collect[i][j] <= (dep[i][j] - arr[i][j]) * 50 for i in range(nTrains) for j in range(1, nStations)],
+    [collect[i][j] <= (dep[i][j] - arr[i][j]) * 50 for i in T for j in S[1:]],
 
     # computing dwelling times of trains in stations
-    [dwell[i][j] == dep[i][j] - arr[i][j] for i in range(nTrains) for j in range(nStations)]
+    [dwell[i][j] == dep[i][j] - arr[i][j] for i in T for j in S]
 )
 
 minimize(
     # minimizing the number of transported people combined with the time take taken to transport them
-    Sum(load[i][-1] * arr[i][-1] for i in range(nTrains))
+    Sum(load[i][-1] * arr[i][-1] for i in T)
 )
 
-"""
-1) some other ways of posting constraints are:
+""" Comments
+1) Some other ways of posting constraints are:
   arr[delay.train][delayStation] >= dep[delay.train][delayStation - 1] + delay.duration + distances[delayStation - 1]
  if delayStation > 0 and delay.time < depSchedules[delay.train][delayStation - 1] + distances[delayStation - 1] else None,
 
  [(sigmaU[i][j] <= sigmaL[i][j]) | (sigmaU[i][j] == dep[i][j]) | (sigmaU[i][j] == depSchedules[-1][j]) |
-  (load[i][j] + (sigmaU[i][j] < depSchedules[-1][j]) * passengerFlows[j] > capacity) for i in range(nTrains) for j in range(nStations - 1)],
+  (load[i][j] + (sigmaU[i][j] < depSchedules[-1][j]) * passengerFlows[j] > capacity) for i in T for j in S[:-1]],
 
- [(capacity - load[i][j - 1] >= 100) | (collect[i][j] <= dwell[i][j] * 20) for i in range(nTrains) for j in range(1, nStations)],
- [(capacity - load[i][j - 1] < 100) | (collect[i][j] <= dwell[i][j] * 50) for i in range(nTrains) for j in range(1, nStations)],
+ [(capacity - load[i][j - 1] >= 100) | (collect[i][j] <= dwell[i][j] * 20) for i in T for j in S[1:]],
+ [(capacity - load[i][j - 1] < 100) | (collect[i][j] <= dwell[i][j] * 50) for i in T for j in S[1:]],
 """

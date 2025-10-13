@@ -32,21 +32,24 @@ This problem has its roots in Bioinformatics and Coding Theory.
 
 from pycsp3 import *
 
-words, n = data  # each word has 4 symbols from {C,G} and is such that its reverse and Watson-Crick complement differ in at least 4 positions
+words, n = data or (load_json_data("words.json"), 25)
+
 m = 8  # size of the words
 
-# x[i][k] is the kth letter (0-A, 1-C, 2-G, 3-T) of the ith word
+N, M = range(n), range(m)
+
+# x[i][j] is the jth letter (0-A, 1-C, 2-G, 3-T) of the ith word
 x = VarArray(size=[n, m], dom=range(4))
 
-# y[i][k] is the kth letter of the Watson-Crick complement of the ith word (in x)
+# y[i][j] is the jth letter of the Watson-Crick complement of the ith word (in x)
 y = VarArray(size=[n, m], dom=range(4))
 
 satisfy(
     # computing the Watson-Crick complement of words
-    [x[i][k] + y[i][k] == 3 for i in range(n) for k in range(m)],
+    [x[i][j] + y[i][j] == 3 for i in N for j in M],
 
     # each word must be well-formed
-    [x[i] in words for i in range(n)],
+    [x[i] in words for i in N],
 
     # ordering words  tag(symmetry-breaking)
     LexIncreasing(x, strict=True),
@@ -54,21 +57,26 @@ satisfy(
     # each pair of distinct words differ in at least 4 positions
     [
         Sum(
-            x[i][k] != x[j][k] for k in range(m)
-        ) >= 4 for i, j in combinations(n, 2)
+            x[i1][j] != x[i2][j] for j in M
+        ) >= 4 for i1, i2 in combinations(N, 2)
     ],
 
     # each pair of distinct words are such that the reverse of the former and the Watson-Crick complement of the latter differ in at least 4 positions
     [
         Sum(
-            x[i][7 - k] != y[j][k] for k in range(m)
-        ) >= 4 for i in range(n) for j in range(n) if i != j
+            x[i1][7 - j] != y[i2][j] for j in M
+        ) >= 4 for i1 in N for i2 in N if i1 != i2
     ]
 )
 
 """ Comments
 1) For computing the Watson-Crick complement of words, we could have written:
-   [(x[i][k], y[i][k]) in {(0, 3), (1, 2), (2, 1), (3, 0)} for i in range(n) for k in range(8)],
+   [(x[i][j], y[i][j]) in {(0, 3), (1, 2), (2, 1), (3, 0)} for i in N for j in M],
 
 2) The second parameter n is given independently of the JSON file
+
+3) Data used for the 2023 competition are: [5, 15, 25, 35, 45, 55, 65, 75, 85, 100]
+   together with the file "words.json"
+   
+4) Each word in words.json has 8 symbols from {C,G} and is such that its reverse and Watson-Crick complement differ in at least 4 positions
 """

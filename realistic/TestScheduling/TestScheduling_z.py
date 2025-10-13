@@ -11,8 +11,7 @@ While those resources are used for a test, no other test can use the resource.
 The objective is to finish the set of all tests as quickly as possible."
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2018 Minizinc challenge.
-The MZN model was proposed by Gustav Björdal (in 2018).
-No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
+The original MZN model was proposed by Gustav Björdal (in 2018) - no licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Data Example
   ex_z.json
@@ -26,8 +25,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Links
   - https://www.csplib.org/Problems/prob073/
-  - https://www.minizinc.org/challenge2018/results2018.html
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, csplib, mzn18, mzn23
@@ -35,10 +33,12 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 from pycsp3 import *
 
-nMachines, capacities, tests = data
+nMachines, capacities, tests = data or load_json_data("ex_z.json")
+
 if isinstance(capacities, int):
     capacities = [1] * capacities
 durations, machines, resources = zip(*tests)
+
 nResources, nTests = len(capacities), len(tests)
 
 # lb and ub are minimal and maximal values for the make-span
@@ -62,14 +62,25 @@ satisfy(
     # avoiding tests to overlap when run on the same machine
     [
         Cumulative(
-            tasks=[Task(origin=s[i], length=durations[i], height=x[i] == m) for i in range(nTests)]
+            tasks=[
+                Task(
+                    origin=s[i],
+                    length=durations[i],
+                    height=x[i] == m
+                ) for i in range(nTests)
+            ]
         ) <= 1 for m in range(nMachines)
     ],
 
     # avoiding tests to overlap when using the same resource
     [
         NoOverlap(
-            tasks=[Task(origin=s[i], length=durations[i]) for i in range(nTests) if r in resources[i]]
+            tasks=[
+                Task(
+                    origin=s[i],
+                    length=durations[i]
+                ) for i in range(nTests) if r in resources[i]
+            ]
         ) for r in range(nResources)
     ],
 

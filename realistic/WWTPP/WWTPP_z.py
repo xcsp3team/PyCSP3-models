@@ -2,8 +2,7 @@
 Waste Water Treatment Plant Scheduling Problem.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2010/2011 Minizinc challenges.
-The MZN model was proposed by Miquel Bofill.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The orginal MZN model was proposed by Miquel Bofill - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   02840.json
@@ -25,7 +24,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-plant_capacity, flows, capacities, d = data
+plant_capacity, flows, capacities, d = data or load_json_data("02840.json")
+
 nIndustries, nSteps = 8, 24  # len(d), len(d[0])
 
 T1 = ([(1, 1)] + [(1, i) for i in range(2, 25, 2)] + [(2, i) for i in range(1, 13)] + [(2, i) for i in range(14, 25)]

@@ -5,7 +5,7 @@ The problem is to minimize the number of steps for converting an initial colorin
 by applying at most "k" changes of colors at each step, while always maintaining a valid coloring.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the orihinal MZn model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   k05-05.json
@@ -18,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python TimeChangingGraphColoring.py -data=<datafile.dzn> -parser=TimeChangingGraphColoring_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2017/results2017.html
+  - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
   realistic, mzn17
@@ -26,7 +26,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-k, edges, initial_coloring, final_coloring = data
+k, edges, initial_coloring, final_coloring = data or load_json_data("k05-05.json")
+
 n, m = len(initial_coloring), len(edges)  # n is the number of nodes, and m is the number of edges
 
 nColors = max(max(initial_coloring), max(final_coloring)) + 1
@@ -67,7 +68,7 @@ minimize(
 1) Sum(Hamming(x[t], x[t + 1]) for t in range(nSteps - 1)
  is equivalent to:
   Sum(x[t][i] != x[t + 1][i] for t in range(nSteps - 1) for i in range(n))
-2) >ith a good assumption, as in:
+2) With a good assumption, as in:
   java ace TimeChangingGraphColoring-k10_34.xml -ub=434
  the instance is closed in a few seconds
 """

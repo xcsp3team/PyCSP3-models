@@ -3,7 +3,7 @@ Artificial Teeth Scheduling Problem.
 See ICAPS paper link below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2021 Minizinc challenge.
-The MZN model was proposed by Felix Winter, with a Licence that seems to be like the MIT Licence.
+The original MZN model was proposed by Felix Winter, with a Licence that seems to be like the MIT Licence.
 Accompanying instances are based on real-life instances.
 
 ## Data Example

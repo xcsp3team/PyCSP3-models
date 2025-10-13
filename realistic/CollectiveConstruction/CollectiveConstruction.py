@@ -29,7 +29,7 @@ The MZN model was proposed by Edward Lam - no licence was explicitly mentioned (
 
 from pycsp3 import *
 
-nAgents, horizon, width, depth, height, building = data  # or load_json_data("037.json")
+nAgents, horizon, width, depth, height, building = data or load_json_data("037.json")
 
 assert width == depth  # for simplicity, the model is built with this assumption
 n = width

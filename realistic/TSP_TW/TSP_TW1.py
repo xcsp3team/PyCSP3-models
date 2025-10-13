@@ -24,10 +24,13 @@ See IJCAI paper below.
 
 from pycsp3 import *
 
-distances, windows = data
+distances, windows = data or load_json_data("n020w020-1.json")
+
 Earliest, Latest = cp_array(zip(*windows))
 horizon = max(Latest) + 1
+
 n = len(distances)
+N = range(n)
 
 # x[i] is the customer (node) visited in the ith position
 x = VarArray(size=n + 1, dom=range(n))
@@ -47,13 +50,15 @@ satisfy(
 
     # enforcing time windows
     [
-        [Earliest[x[i]] <= a[x[i]] for i in range(n)],
-        [a[x[i]] <= Latest[x[i]] for i in range(n)],
-        [a[x[i + 1]] >= a[x[i]] + distances[x[i], x[i + 1]] for i in range(n - 1)]
+        [Earliest[x[i]] <= a[x[i]] for i in N],
+
+        [a[x[i]] <= Latest[x[i]] for i in N],
+
+        [a[x[i + 1]] >= a[x[i]] + distances[x[i], x[i + 1]] for i in N[:-1]]
     ]
 )
 
 minimize(
     # minimizing travelled distance
-    Sum(distances[x[i], x[(i + 1) % n]] for i in range(n))
+    Sum(distances[x[i], x[(i + 1) % n]] for i in N)
 )

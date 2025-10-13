@@ -112,7 +112,7 @@ maximize(
 
 """ Comments
 1) shaded * clues  
- is equivelent to  
+ is equivalent to  
    Sum(shaded[i][j] * clues[i][j] for i in range(n) for j in range(n))
 """
 

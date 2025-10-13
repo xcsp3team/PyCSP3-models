@@ -32,10 +32,11 @@ This problem has its roots in Bioinformatics and Coding Theory.
 
 from pycsp3 import *
 
-words, transitions, n = data  # each word has 4 symbols from {C,G} and is such that its reverse and Watson-Crick complement differ in at least 4 positions
+words, transitions, n = data or (load_json_data("words.json"), load_json_data("mdd.json"), 25)
+
 M = MDD(transitions)
 
-# x[i][k] is the kth letter (0-A, 1-C, 2-G, 3-T) of the ith word
+# x[i][j] is the jth letter (0-A, 1-C, 2-G, 3-T) of the ith word
 x = VarArray(size=[n, 8], dom=range(4))
 
 satisfy(
@@ -46,7 +47,7 @@ satisfy(
     # ordering words  tag(symmetry-breaking)
     LexIncreasing(x, strict=True),
 
-    [x[i] + x[j] in M for i, j in combinations(n, 2)]
+    [x[i1] + x[i2] in M for i1, i2 in combinations(n, 2)]
 )
 
 """ Comments
@@ -55,4 +56,7 @@ satisfy(
 
 2) Is-it possible to reasoning with Cardinality constraints?
    something like [Cardinality(x[:,k], occurrences={v:range(n//4 +3) for v in range(4)}) for k in range(8)],
+   
+3) Data used for the 2023 competition are: [5, 15, 25, 35, 45, 55, 65, 75, 85, 100]
+   together with the files "words.json" and "mdd.json"
 """

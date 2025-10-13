@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2022 Minizinc challenge.
-The MZN model was proposed by Bogdan David, under the MIT Licence.
+The original MZN model was proposed by Bogdan David, under the MIT Licence.
 
 ## Data Example
   07-500.json
@@ -23,10 +23,12 @@ The MZN model was proposed by Bogdan David, under the MIT Licence.
 
 from pycsp3 import *
 
-lbWP, nVMs, requirements, types, prices = data  # requirements per components, type and price of possible VMs
+lbWP, nVMs, requirements, types, prices = data or load_json_data("07-500.json")  # requirements per components, type and price of possible VMs
+
+assert len(requirements) == 5
+
 nComponents, nFeatures = 5, len(requirements[0])  # features are hardware settings (CPU, Memory, Storage)
 nTypes = len(types)  # note that a dummy type has been added at last position by the parser
-assert len(requirements) == 5
 
 # WP for WordPress, SQL for MySQL, DNS for DNS_LoadBalancer, HTTP for HTTP_LoadBalancer, VS for Varnish Software
 WP, SQL, DNS, HTTP, VS = range(nComponents)

@@ -21,14 +21,14 @@ For the original MZN model, no Licence was explicitly mentioned (MIT Licence ass
 
 from pycsp3 import *
 
-stops, routes, services, engines, makespan, min_sep = data
+stops, routes, services, engines, makespan, min_sep = data or load_json_data("05.json")
 
 nStops, nRoutes, nServices, nEngines, nSteps = len(stops.types), len(routes), len(services.routes), len(engines.names), len(routes[0])  # max_route_length
 S, I = range(nServices), range(nSteps)
 
 TERMINUS, ORDINARY, HUB = range(3)
 SING, DOUB, QUAD, NONE = range(4)
-DUMMY = nStops - 1  # also dstop
+DUMMY = nStops - 1  # also called dstop
 
 sroutes = cp_array(routes[services.routes[s]] for s in S)
 slengths = cp_array(next((i for i in I if sroutes[s][i] == DUMMY), nSteps) for s in S)
@@ -216,5 +216,5 @@ minimize(
   If instead we write:
     [eng[s] == eng[prv[s] - nEngine]]
   we have an error (the domain of values of the expression prv[s] - nEngines being incompatible with the index range of the array 'eng' 
-  If we use the option force_element_index to true, this is not correct because the expression is within a logical expression (then part)
+  If we use the option -force_element_index to true, this is not correct because the expression is within a logical expression (then part)
 """

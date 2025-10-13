@@ -8,10 +8,10 @@ visiting each location u exactly once and between times etu and ltu.
 The departure time at the last-visited location is to be minimised.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2025 Minizinc challenge.
-The original mzn model was proposed by  Frej Knutar Lewander (MIT Licence assumed).
+The original MZN model was proposed by Frej Knutar Lewander (MIT Licence assumed).
 
 ## Data Example
-  n020w140-005.jso
+  n020w140-005.json
 
 ## Model
   constraints: Circuit, Element
@@ -30,14 +30,16 @@ The original mzn model was proposed by  Frej Knutar Lewander (MIT Licence assume
 
 from pycsp3 import *
 
-durations, early_times, late_times = data
+durations, early_times, late_times = data or load_json_data("n020w140-005.json")
+
 nLocations = len(durations)
+L = range(nLocations)
 
 maxDuration = max(max(t) for t in durations)
 minEarly = min(min(t) for t in early_times)
 maxLate = max(max(t) for t in late_times)
 
-depot = 0  # The first location is the depot
+DEPOT = 0  # The first location is the depot
 
 # pred[l] = the location visited before location l:
 pred = VarArray(size=nLocations, dom=range(nLocations))
@@ -55,26 +57,26 @@ dep = VarArray(size=nLocations, dom=range(minEarly, maxLate + 1))
 departurePred = VarArray(size=nLocations, dom=range(maxLate + 1))
 
 satisfy(
-    [durToPred[i] == durations[i][pred[i]] for i in range(nLocations)],
+    [durToPred[i] == durations[i][pred[i]] for i in L],
 
     # starting at time 0 from the depot
-    dep[depot] == 0,
+    dep[DEPOT] == 0,
 
-    [dep[i] == max(arr[i], early_times[i]) for i in range(1, nLocations)],
+    [dep[i] == max(arr[i], early_times[i]) for i in L[1:]],
 
-    [departurePred[i] == dep[pred[i]] for i in range(nLocations)],
+    [departurePred[i] == dep[pred[i]] for i in L],
 
     # The arrival at location l is the departure from location pred[l] + The duration from pred[l] to l:
-    [arr[i] == departurePred[i] + durToPred[i] for i in range(nLocations)],
+    [arr[i] == departurePred[i] + durToPred[i] for i in L],
 
     #  ensuring a circuit
     Circuit(pred, no_self_looping=True),
 
     # The departure from location l is before its latest visiting time late[l]:
-    [dep[i] <= late_times[i] for i in range(nLocations)]
+    [dep[i] <= late_times[i] for i in L]
 )
 
 minimize(
     # minimizing the arrival time at depot
-    arr[depot]
+    arr[DEPOT]
 )
