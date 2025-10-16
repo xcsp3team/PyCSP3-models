@@ -30,19 +30,21 @@ The variant "b" was used for the 2024 competition
 """
 from pycsp3 import *
 
-n = data
+assert not variant() or variant("b") or variant("mini")
+
+n = data or 10
 
 EMPTY, QUEEN, KNIGHT = range(3)
 
-Cells = [(i, j) for i in range(n) for j in range(n)]
+P = [(i, j) for i in range(n) for j in range(n)]  # coordinates of points
 
 
 def queen_attack(i, j):
-    return [(a, b) for a, b in Cells if (a, b) != (i, j) and (a == i or b == j or abs(i - a) == abs(j - b))]
+    return [(a, b) for a, b in P if (a, b) != (i, j) and (a == i or b == j or abs(i - a) == abs(j - b))]
 
 
 def knight_attack(i, j):
-    return [(a, b) for a, b in Cells if a != i and b != j and abs(i - a) + abs(j - b) == 3]
+    return [(a, b) for a, b in P if a != i and b != j and abs(i - a) + abs(j - b) == 3]
 
 
 # x[i][j] indicates what is present in the cell with coordinates (i,j)
@@ -58,10 +60,10 @@ if not variant():
 
     satisfy(
         # computing the number of queens
-        q == Sum(x[i][j] == QUEEN for i, j in Cells),
+        q == Sum(x[i][j] == QUEEN for i, j in P),
 
         # computing the number of knights
-        k == Sum(x[i][j] == KNIGHT for i, j in Cells),
+        k == Sum(x[i][j] == KNIGHT for i, j in P),
 
         # ensuring that no two pieces (queens or knights) attack each other
         [
@@ -71,7 +73,7 @@ if not variant():
                     QUEEN: Sum(x[queen_attack(i, j)]) == 0,
                     KNIGHT: Sum(x[knight_attack(i, j)]) == 0
                 }
-            ) for i, j in Cells
+            ) for i, j in P
         ]
     )
 
@@ -84,8 +86,9 @@ elif variant("mini"):
     sk = VarArray(size=[n, n], dom=lambda i, j: range(len(knight_attack(i, j)) + 1))
 
     satisfy(
-        [(qb[i][j], x[i][j]) in [(1, QUEEN), (0, EMPTY), (0, KNIGHT)] for i, j in Cells],
-        [(kb[i][j], x[i][j]) in [(1, KNIGHT), (0, EMPTY), (0, QUEEN)] for i, j in Cells],
+        [(qb[i][j], x[i][j]) in [(1, QUEEN), (0, EMPTY), (0, KNIGHT)] for i, j in P],
+
+        [(kb[i][j], x[i][j]) in [(1, KNIGHT), (0, EMPTY), (0, QUEEN)] for i, j in P],
 
         # computing the number of queens
         q == Sum(qb),
@@ -93,10 +96,11 @@ elif variant("mini"):
         # computing the number of knights
         k == Sum(kb),
 
-        [sb[i][j] == Sum(x[queen_attack(i, j)]) for i, j in Cells],
-        [sk[i][j] == Sum(x[knight_attack(i, j)]) for i, j in Cells],
+        [sb[i][j] == Sum(x[queen_attack(i, j)]) for i, j in P],
 
-        [(x[i][j], sb[i][j], sk[i][j]) in [(QUEEN, 0, ANY), (KNIGHT, ANY, 0), (EMPTY, ANY, ANY)] for i, j in Cells]
+        [sk[i][j] == Sum(x[knight_attack(i, j)]) for i, j in P],
+
+        [(x[i][j], sb[i][j], sk[i][j]) in [(QUEEN, 0, ANY), (KNIGHT, ANY, 0), (EMPTY, ANY, ANY)] for i, j in P]
     )
 
 if not variant():
@@ -115,7 +119,9 @@ elif variant("b"):
     maximize(
         q + k
     )
+
 elif variant("mini"):
+
     z = Var(dom=range(2 * n + 1))
 
     satisfy(

@@ -2,7 +2,7 @@
 Place knights, rooks, queens, bishops on an n*n chessboard so that none takes each other.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2023 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   03.json
@@ -23,7 +23,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry
 
-n, values, limits = data
+n, values, limits = data or load_json_data("03.json")
+
 nPieces = 5
 KNIGHT, BISHOP, ROOK, QUEEN, EMPTY = range(nPieces)
 
@@ -98,7 +99,7 @@ satisfy(
     ],
 
     # tag(symmetry-breaking)
-    [x <= x[symmetry] for symmetry in symmetries]
+    [x <= x[symmetry] for symmetry in [sym.apply_on(n) for sym in TypeSquareSymmetry]]
 )
 
 maximize(

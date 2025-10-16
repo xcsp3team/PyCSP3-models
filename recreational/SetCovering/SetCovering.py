@@ -2,7 +2,7 @@
 Given a set of subsets S_1,...,S_m$of the universal set U={1,...,n},
 find the smallest subset of subsets T of S such that their union is U.
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model
@@ -20,8 +20,10 @@ find the smallest subset of subsets T of S such that their union is U.
 
 from pycsp3 import *
 
-subsets = data
+subsets = data or load_json_data("example.json")
+
 V = sorted({v for subset in subsets for v in subset})
+
 m = len(subsets)
 
 # x[i] is 1 iff the ith subset is selected
@@ -42,5 +44,5 @@ minimize(
 
 """ Comments
 1) We avoid using values instead of V (or vals) as name for the list of bid values 
-   as it may enter in conflict with the function values() in a notebook 
+   as it may enter in conflict with the function values() in a Jupyter notebook 
 """

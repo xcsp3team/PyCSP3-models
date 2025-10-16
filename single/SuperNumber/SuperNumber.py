@@ -28,6 +28,8 @@ Using divisibility rules allows us to use less expensive operations (constraints
 
 from pycsp3 import *
 
+assert not variant() or variant("rules")
+
 # x is the ith digit of the number
 x = VarArray(size=10, dom=lambda i: {0} if i == 9 else range(10))
 

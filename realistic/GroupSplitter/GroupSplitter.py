@@ -101,18 +101,43 @@ satisfy(
     # respecting the minimum size of a group
     [
         (
-            Count(g1, value=i) >= minGroupSize,
-            Count(g2, value=i) >= minGroupSize
+            Count(within=g1, value=i) >= minGroupSize,
+            Count(within=g2, value=i) >= minGroupSize
         ) for i in range(nGroups) if nGroups > 1
     ],
 
     # linking variables with table constraints
     [
-        [(ua1[i], avl1[i], end1[i], dur1[i], cell1[i], pr1[i]) in T1 for i in range(nUsers)],
-        [(ua2[i], avl2[i], end2[i], dur2[i], cell2[i], pr2[i]) in T2 for i in range(nUsers)],
-        [(ua1[i], ur1[i]) in enumerate(prf1[i]) for i in range(nUsers)],
-        [(ua2[i], ur2[i]) in enumerate(prf2[i]) for i in range(nUsers)],
-        [(cell1[i], cell2[i], dt[i]) in T3 for i in range(nUsers)]
+        [
+            Table(
+                scope=(ua1[i], avl1[i], end1[i], dur1[i], cell1[i], pr1[i]),
+                supports=T1
+            ) for i in range(nUsers)
+        ],
+        [
+            Table(
+                scope=(ua2[i], avl2[i], end2[i], dur2[i], cell2[i], pr2[i]),
+                supports=T2
+            ) for i in range(nUsers)
+        ],
+        [
+            Table(
+                scope=(ua1[i], ur1[i]),
+                supports=enumerate(prf1[i])
+            ) for i in range(nUsers)
+        ],
+        [
+            Table(
+                scope=(ua2[i], ur2[i]),
+                supports=enumerate(prf2[i])
+            ) for i in range(nUsers)
+        ],
+        [
+            Table(
+                scope=(cell1[i], cell2[i], dt[i]),
+                supports=T3
+            ) for i in range(nUsers)
+        ]
     ],
 
     # user's activity is also group's activity

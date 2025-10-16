@@ -101,9 +101,9 @@ satisfy(
     # ensuring correspondence between encodings and byte labels
     (
         [(x[i] == ASCII) == (y[i] == A) for i in N],
-        [If(x[i] == EUCJP, Then=y[i] in (E1, E2)) for i in N],
-        [If(x[i] == SJIS, Then=y[i] in (S11, S21, S22)) for i in N],
-        [If(x[i] == UTF8, Then=y[i] in (U21, U22, U31, U32, U33, U41, U42, U43, U44)) for i in N],
+        [If(x[i] == EUCJP, Then=y[i] in {E1, E2}) for i in N],
+        [If(x[i] == SJIS, Then=y[i] in {S11, S21, S22}) for i in N],
+        [If(x[i] == UTF8, Then=y[i] in {U21, U22, U31, U32, U33, U41, U42, U43, U44}) for i in N],
         [(x[i] == UNKNOWN) == (y[i] == Ukn) for i in N]
     ),
 
@@ -132,7 +132,7 @@ satisfy(
         [y[0] != U33, y[1] != U33],
         [Iff(y[i] == U31, y[i + 2] == U33) for i in N[:-2]],
         [If(y[i] == U31, Then=cs[i] == 1) for i in N],
-        [If(y[i] in (U32, U33), Then=cs[i] == 0) for i in N]
+        [If(y[i] in {U32, U33}, Then=cs[i] == 0) for i in N]
     ),
 
     # about UTF8 (4 bytes) while paying attention to ranges F0-F7, 80-BF, 80-BF, 80-BF
@@ -146,7 +146,7 @@ satisfy(
         [y[0] != U44, y[1] != U44, y[2] != U44],
         [iff(y[i] == U41, y[i + 3] == U44) for i in N[: - 3]],
         [If(y[i] == U41, Then=cs[i] == 1) for i in N],
-        [If(y[i] in (U42, U43, U44), Then=cs[i] == 0) for i in N]
+        [If(y[i] in {U42, U43, U44}, Then=cs[i] == 0) for i in N]
     ),
 
     # about EUC-JP (2 bytes) while paying attention to ranges (A1-A8, AD, B0-F4, F9-FC), (A1-FE)
@@ -177,7 +177,7 @@ satisfy(
     # about unknown characters
     (
         [If(y[i] == Ukn, Then=cs[i]) for i in N],
-        Count(x, value=UNKNOWN) == z
+        Count(within=x, value=UNKNOWN) == z
     )
 )
 

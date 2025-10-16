@@ -48,7 +48,12 @@ if not variant():
         [ld[j] == sizes * [sb[i] == j for i in range(nOrders)] for j in range(nSlabs)],
 
         # computing the loss of each slab
-        [(ld[j], ls[j]) in enumerate(possibleLosses) for j in range(nSlabs)],
+        [
+            Table(
+                scope=(ld[j], ls[j]),
+                supports=enumerate(possibleLosses)
+            ) for j in range(nSlabs)
+        ],
 
         # no more than two colors for each slab
         [
@@ -81,7 +86,12 @@ elif variant("01"):
         [ld[j] == y[j] * sizes for j in range(nSlabs)],
 
         # computing the loss of each slab
-        [(ld[j], ls[j]) in enumerate(possibleLosses) for j in range(nSlabs)],
+        [
+            Table(
+                scope=(ld[j], ls[j]),
+                supports=enumerate(possibleLosses)
+            ) for j in range(nSlabs)
+        ],
 
         # no more than two colors for each slab
         [Sum(z[j]) <= 2 for j in range(nSlabs)]

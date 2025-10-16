@@ -31,6 +31,7 @@ from pycsp3.dashboard import options
 assert not variant() or variant("table") or variant("hybrid")
 
 preferences = data or load_json_data("sr0006.json")
+
 n = len(preferences)
 
 

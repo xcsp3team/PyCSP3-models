@@ -27,11 +27,13 @@ Important: the model, below, has not been checked to exactly correspond to this 
 
 from pycsp3 import *
 
-frog, grid = data
-frog = tuple(frog)
+assert not variant() or variant("table")
+
+frog, grid = data or load_json_data("06.json")
+
 n = len(grid)
 
-zeros = [tuple(frog)] + [(i, j) for i in range(n) for j in range(n) if grid[i][j] == 0 and (i, j) != frog]
+zeros = [tuple(frog)] + [(i, j) for i in range(n) for j in range(n) if grid[i][j] == 0 and (i, j) != tuple(frog)]
 nZeros = len(zeros)
 
 compatible_zeros = [(k, l) for k in range(nZeros) for l in range(nZeros) if k != l and (zeros[k][0] == zeros[l][0] or zeros[k][1] == zeros[l][1])]

@@ -1,7 +1,7 @@
 """
 Given A set of subsets S_1,...,S_m of the universal set U={1,...,n}, what is the largest number of mutually disjoint subsets from S?
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model
@@ -19,8 +19,10 @@ Given A set of subsets S_1,...,S_m of the universal set U={1,...,n}, what is the
 
 from pycsp3 import *
 
-subsets = data
+subsets = data or load_json_data("example.json")
+
 V = sorted({v for subset in subsets for v in subset})
+
 m = len(subsets)
 
 # x[i] is 1 iff the ith subset is selected

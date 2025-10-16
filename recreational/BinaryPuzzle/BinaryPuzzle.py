@@ -26,11 +26,12 @@ One has to fill the remaining empty cells with either 0 or 1 according to the fo
 
 from pycsp3 import *
 
+assert not variant() or variant("regular")
+
 n = data or 20
-m = n // 2
 
 assert n % 2 == 0
-assert not variant() or variant("regular")
+m = n // 2
 
 # x[i][j] is the value in the cell of the grid at coordinates (i,j)
 x = VarArray(size=[n, n], dom={0, 1})

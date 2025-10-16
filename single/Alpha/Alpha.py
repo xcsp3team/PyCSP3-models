@@ -17,6 +17,8 @@ Well-known crypto-arithmetic puzzle of unknown origin (e.g., a model is present 
 
 from pycsp3 import *
 
+assert not variant() or variant("var")
+
 if not variant():
     def of(word):
         return x[alphabet_positions(word)]

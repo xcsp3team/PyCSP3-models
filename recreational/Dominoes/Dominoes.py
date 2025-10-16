@@ -24,6 +24,8 @@ One has to find the position (and rotation) of each domino.
 
 from pycsp3 import *
 
+assert not variant() or variant("table")
+
 grid = data or load_json_data("grid01.json")
 
 nRows, nCols, nValues = len(grid), len(grid[0]), len(grid)

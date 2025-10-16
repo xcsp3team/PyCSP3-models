@@ -23,7 +23,9 @@ from pycsp3 import *
 durations = data or load_json_data("GP-os-01.json")  # durations[i][j] is the duration of operation/machine j for job i
 
 horizon = sum(sum(t) for t in durations) + 1
+
 n, m = len(durations), len(durations[0])
+N, M = range(n), range(m)
 
 # s[i][j] is the start time of the jth operation for the ith job
 s = VarArray(size=[n, m], dom=range(horizon))
@@ -39,29 +41,34 @@ sd = VarArray(size=[n, m], dom=range(horizon))
 
 satisfy(
     # operations must be ordered on each job
-    [Increasing(s[i], lengths=d[i]) for i in range(n)],
+    [Increasing(s[i], lengths=d[i]) for i in N],
 
     # each machine must be used for each job
-    [AllDifferent(mc[i]) for i in range(n)],
+    [AllDifferent(mc[i]) for i in N],
 
-    [(mc[i][j], d[i][j]) in enumerate(durations[i]) for j in range(m) for i in range(n)],
+    [
+        Table(
+            scope=(mc[i][j], d[i][j]),
+            supports=enumerate(durations[i])
+        ) for j in M for i in N
+    ],
 
     # tag(channeling)
-    [sd[i][mc[i][j]] == s[i][j] for j in range(m) for i in range(n)],
+    [sd[i][mc[i][j]] == s[i][j] for j in M for i in N],
 
     # no overlap on resources
     [
         NoOverlap(
             origins=sd[:, j],
             lengths=durations[:, j]
-        ) for j in range(m)
+        ) for j in M
     ],
 
     # tag(redundant)
-    [s[i][-1] + d[i][-1] >= sum(durations[i]) for i in range(n)]
+    [s[i][-1] + d[i][-1] >= sum(durations[i]) for i in N]
 )
 
 minimize(
     # minimizing the makespan
-    Maximum(s[i][-1] + d[i][-1] for i in range(n))
+    Maximum(s[i][-1] + d[i][-1] for i in N)
 )

@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   execute 'python CrosswordsOpt.py -data=<datafile.dzn> -parser=CrosswordsOpt_ParserZ.py -export' to get JSON files
@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python CrosswordsOpt.py -data=<datafile.dzn> -parser=CrosswordsOpt_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2017/results2017.html
+  - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
   recreational, mzn17
@@ -21,17 +21,17 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-grid, clues, dictionary = data
+grid, clues, dictionary = data or load_json_data("05-02-dict-55.json")
+
 n, m, nClues = len(grid), len(grid[0]), len(clues)
 
 # values associated with letters
-values = cp_array(1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10)
+values = cp_array(1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10)  # we need cp_array for posting constraints Element
 
 
 def well_formed_word_for(k, clue):
     scp = x[clue.row:clue.row + clue.length, clue.col] if clue.down == 1 else x[clue.row, clue.col:clue.col + clue.length]
     r = len(scp)
-    assert r == clue.length
     words = dictionary[r]
     return [scp[i] == words[:, i][w[k]] for i in range(r)]
     # return [scp[i] == words[w[k], i] for i in range(len(scp))] takes much longer time

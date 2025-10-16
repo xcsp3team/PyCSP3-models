@@ -25,6 +25,7 @@ from pycsp3 import *
 assert not variant() or variant("bis")
 
 durations, playing = data or load_json_data("rs.json")
+
 nPieces, nPlayers = len(durations), len(playing)
 
 PP = [(i, j) for i in range(nPlayers) for j in range(nPieces)]
@@ -58,9 +59,7 @@ if not variant():
 
     minimize(
         # minimizing the waiting time of players (i.e. without playing)
-        Sum(
-            durations[p[j]] * conjunction(playing[i][p[j]] == 0, s[i] <= j, j <= e[i]) for i, j in PP
-        )
+        Sum(durations[p[j]] * conjunction(playing[i][p[j]] == 0, s[i] <= j, j <= e[i]) for i, j in PP)
     )
 
 elif variant("bis"):
@@ -89,9 +88,7 @@ elif variant("bis"):
 
     minimize(
         # minimizing the waiting time of players (i.e. without playing)
-        Sum(
-            durations[p[j]] * conjunction(ep[i][j] == 0, s[i] <= j, j <= e[i]) for i, j in PP
-        )
+        Sum(durations[p[j]] * conjunction(ep[i][j] == 0, s[i] <= j, j <= e[i]) for i, j in PP)
     )
 
 """ Comments

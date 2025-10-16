@@ -21,7 +21,9 @@ In its simplest form, it is a way of coloring the vertices of a graph such that 
 
 from pycsp3 import *
 
-nNodes, nColors, edges = data
+assert not variant() or variant("csp")
+
+nNodes, nColors, edges = data or load_json_data("rand01.json")
 
 # x[i] is the color assigned to the ith node of the graph
 x = VarArray(size=nNodes, dom=range(nColors))

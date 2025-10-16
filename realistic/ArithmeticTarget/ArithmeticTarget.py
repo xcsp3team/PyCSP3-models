@@ -100,7 +100,7 @@ satisfy(
     # determining parents
     [
         parent[i] == conjunction(
-            x[i] not in (VAL, NO),
+            x[i] not in {VAL, NO},
             x[left[i]] != NO,
             x[right[i]] != NO,
             left[i] == i + 1,
@@ -115,7 +115,7 @@ satisfy(
     # determining unused elements
     [
         unused[i] == conjunction(
-            x[i] in (NO, VAL),
+            x[i] in {NO, VAL},
             left[i] == 0,
             right[i] == 0,
             If(x[i] == VAL, Then=index[i] != 0),
@@ -168,12 +168,12 @@ satisfy(
         ],
 
         # symmetry of Addition and Multiplication
-        [If(x[i] in (ADD, MUL), Then=x[left[i]] <= x[right[i]]) for i in M],
+        [If(x[i] in {ADD, MUL}, Then=x[left[i]] <= x[right[i]]) for i in M],
 
         # distributivity of multiplication
         [
             If(
-                x[i] in (ADD, SUB), x[left[i]] == MUL, x[right[i]] == MUL,
+                x[i] in {ADD, SUB}, x[left[i]] == MUL, x[right[i]] == MUL,
                 Then=[
                     z1[left[left[i]]] != z1[left[right[i]]],
                     z1[left[left[i]]] != z1[right[right[i]]],
@@ -185,7 +185,7 @@ satisfy(
         # distributivity of division
         [
             If(
-                x[i] in (ADD, SUB), x[left[i]] == DIV, x[right[i]] == DIV,
+                x[i] in {ADD, SUB}, x[left[i]] == DIV, x[right[i]] == DIV,
                 Then=z1[right[left[i]]] != z1[right[right[i]]]
             ) for i in M
         ],

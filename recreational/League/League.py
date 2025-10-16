@@ -24,10 +24,13 @@ from pycsp3 import *
 leagueSize, players = data or load_json_data("010-03-04.json")  # rankings and countries of players
 
 rankings, countries = zip(*players)
+
 nPlayers = len(players)
 nLeagues = nPlayers // leagueSize + (1 if nPlayers % leagueSize != 0 else 0)
 nFullLeagues = nLeagues if nPlayers % leagueSize == 0 else nLeagues - (leagueSize - nPlayers % leagueSize)
 sizes = [leagueSize + (0 if i < nFullLeagues else -1) for i in range(nLeagues)]
+
+T = {(i, rankings[i], countries[i]) for i in range(nPlayers)}
 
 # p[i][j] is the jth player of the ith league
 p = VarArray(size=[nLeagues, leagueSize], dom=lambda i, j: range(nPlayers) if j < sizes[i] else None)
@@ -37,8 +40,6 @@ r = VarArray(size=[nLeagues, leagueSize], dom=lambda i, j: rankings if j < sizes
 
 # c[i][j] is the country of the jth player of the ith league
 c = VarArray(size=[nLeagues, leagueSize], dom=lambda i, j: countries if j < sizes[i] else None)
-
-T = {(i, rankings[i], countries[i]) for i in range(nPlayers)}
 
 satisfy(
     # each player belongs to only one league
@@ -50,5 +51,5 @@ satisfy(
 
 minimize(
     # minimizing overall differences between highest and lowest rankings of players in leagues while paying attention to numbers of countries
-    Sum(Maximum(r[i]) - Minimum(r[i]) for i in range(nLeagues)) * 100 - Sum(NValues(c[i]) for i in range(nLeagues))
+    100 * Sum(Maximum(r[i]) - Minimum(r[i]) for i in range(nLeagues)) - Sum(NValues(c[i]) for i in range(nLeagues))
 )

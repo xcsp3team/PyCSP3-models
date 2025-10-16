@@ -1,7 +1,7 @@
 """
 The Quadratic Assignment Problem (QAP) has remained one of the great challenges in combinatorial optimization (from QAPLIB).
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model
@@ -21,7 +21,8 @@ The Quadratic Assignment Problem (QAP) has remained one of the great challenges 
 
 from pycsp3 import *
 
-weights, distances = data or load_json_data("example.json")  # facility weights and location distances
+weights, distances = data or load_json_data("example.json")
+
 n = len(weights)
 
 T = {(i, j, distances[i][j]) for i in range(n) for j in range(n) if i != j}
@@ -40,12 +41,16 @@ satisfy(
     [(x[i], x[j], d[i][j]) in T for i, j in combinations(n, 2) if weights[i][j] != 0]
 )
 
+print(type(d * weights))
+
 minimize(
     # minimizing summed up distances multiplied by flows
     d * weights
 )
 
 """ Comments
+0) data are for facility weights and location distances
+
 1) d * weights is possible because d is of type 'ListVar' and because None values (and associated coeffs) will be discarded
 
 2) weights * d is also possible because weights is of type 'ListInt' and because None values (and associated coeffs) will be discarded

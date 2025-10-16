@@ -24,6 +24,8 @@ the three friends be satisfied?
 
 from pycsp3 import *
 
+assert not variant() or variant("integer")
+
 if not variant():
     a, b = "a", "b"  # two symbols
 

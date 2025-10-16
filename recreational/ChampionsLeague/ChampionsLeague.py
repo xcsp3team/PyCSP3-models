@@ -24,6 +24,8 @@ from pycsp3 import *
 
 import random
 
+assert not variant() or variant("strict")
+
 if isinstance(data, int):
     random.seed(data)  # data is used as a seed
     schedule = [list(range(36)) for _ in range(8)]

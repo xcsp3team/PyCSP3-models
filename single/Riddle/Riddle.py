@@ -19,6 +19,8 @@ Illustrative problem used in the PyCSP3 guide (See Chapter 1)
 
 from pycsp3 import *
 
+assert variant() in ("v1", "v2", "v3a", "v3b", "v4a", "v4b", "v5")
+
 if variant("v1"):
     x1 = Var(range(15))
     x2 = Var(range(15))

@@ -6,7 +6,7 @@ The purpose of the game is to fill a grid of size n × n with all values ranging
   from the previous number (there must be a one square gap between the numbers).
 
 ## Data
-  A unique integer n
+  n, an integer denoting the order of the instance
 
 ## Model
   constraints: AllDifferent, Count, Table
@@ -25,14 +25,17 @@ The purpose of the game is to fill a grid of size n × n with all values ranging
 
 from pycsp3 import *
 
+assert not variant() or variant("table")
+
 n = data or 5
+
+N = range(n)
 
 # x[i][j] is the value in the grid at row i and column j
 x = VarArray(size=[n, n], dom=range(1, n * n + 1))
 
-# possible neighbours
-offsets = [(-3, 0), (3, 0), (0, -3), (0, 3), (-2, -2), (-2, 2), (2, -2), (2, 2)]
-N = [[[x[i + oi][j + oj] for (oi, oj) in offsets if 0 <= i + oi < n and 0 <= j + oj < n] for j in range(n)] for i in range(n)]
+offsets = [(-3, 0), (3, 0), (0, -3), (0, 3), (-2, -2), (-2, 2), (2, -2), (2, 2)]  # for possible neighbours
+y = [[[x[i + oi][j + oj] for (oi, oj) in offsets if 0 <= i + oi < n and 0 <= j + oj < n] for j in N] for i in N]  # auxiliary array of variables
 
 satisfy(
     # putting all values from 1 to n*n in the grid
@@ -47,21 +50,21 @@ if not variant():
         # each cell must be linked to its neighbors
         If(
             x[i][j] < n * n,
-            Then=Exist(y == x[i][j] + 1 for y in N[i][j])
-        ) for i in range(n) for j in range(n)
+            Then=Exist(k == x[i][j] + 1 for k in y[i][j])
+        ) for i in N for j in N
     )
 
 
 elif variant("table"):
 
     def T(i, j):
-        r = len(N[i][j])
-        return [(k, *[k + 1 if i == j else ANY for i in range(r)]) for k in range(1, n * n) for j in range(r)] + [(n * n, *[ANY] * r)]
+        r = len(y[i][j])
+        return [(k, [k + 1 if i == j else ANY for i in range(r)]) for k in range(1, n * n) for j in range(r)] + [(n * n, [ANY] * r)]
 
 
     satisfy(
         # each cell must be linked to its neighbors
-        (x[i][j], N[i][j]) in T(i, j) for i in range(n) for j in range(n)
+        (x[i][j], y[i][j]) in T(i, j) for i in N for j in N
     )
 
 """ Comments

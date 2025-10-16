@@ -22,6 +22,7 @@ It was created by Yello Games LTD.
 from pycsp3 import *
 
 grid, horizon = data if isinstance(data, tuple) else (data, 3 * len(data))  # horizon is the number of allowed moves
+
 n, m = len(grid), len(grid[0])
 
 EMPTY, WALL, BALL = range(3)

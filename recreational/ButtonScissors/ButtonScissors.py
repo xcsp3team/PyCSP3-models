@@ -26,7 +26,8 @@ From LPCP contest 2021 (Problem 2):
 
 from pycsp3 import *
 
-nColors, patch = data
+nColors, patch = data or load_json_data("01.json")
+
 n = len(patch)
 
 nDiagonalTypes = 2 * n - 3  # number of possible downward diagonals (and, similarly, number of upward diagonals); diagonals with at least 2 cells

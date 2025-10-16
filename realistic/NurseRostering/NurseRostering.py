@@ -83,10 +83,10 @@ satisfy(
     [x[d][p] == OFF for d in range(nDays) for p in range(nStaffs) if d in daysOff[p]],
 
     # computing number of days
-    [Count(x[:, p], value=s) == nd[p][s] for p in range(nStaffs) for s in range(nShifts)],
+    [Count(within=x[:, p], value=s) == nd[p][s] for p in range(nStaffs) for s in range(nShifts)],
 
     # computing number of persons
-    [Count(x[d], value=s) == np[d][s] for d in range(nDays) for s in range(nShifts)],
+    [Count(within=x[d], value=s) == np[d][s] for d in range(nDays) for s in range(nShifts)],
 
     # computing worked weekends
     [
@@ -106,7 +106,7 @@ satisfy(
     [nd[p] * lengths in range(minTimes[p], maxTimes[p] + 1) for p in range(nStaffs)],
 
     # maximum consecutive worked shifts
-    [Count(x[i:i + kmax[p] + 1, p], value=OFF) >= 1 for p in range(nStaffs) for i in range(nDays - kmax[p])],
+    [Count(within=x[i:i + kmax[p] + 1, p], value=OFF) >= 1 for p in range(nStaffs) for i in range(nDays - kmax[p])],
 
     # minimum consecutive worked shifts
     [x[i: i + kmin[p] + 1, p] in automaton(kmin[p], True) for p in range(nStaffs) for i in range(nDays - kmin[p])],
@@ -129,7 +129,12 @@ satisfy(
     [(x[d][p] == sp[off_r[p][d].shift]) == (cf[p][d] != 0) for p in range(nStaffs) for d in range(nDays) if off_r[p][d]],
 
     # cost of under or over covering
-    [(np[d][s], cc[d][s]) in enumerate(costs(d, s)) for d in range(nDays) for s in range(nShifts)]
+    [
+        Table(
+            scope=(np[d][s], cc[d][s]),
+            supports=enumerate(costs(d, s))
+        ) for d in range(nDays) for s in range(nShifts)
+    ]
 )
 
 minimize(

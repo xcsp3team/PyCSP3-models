@@ -5,7 +5,7 @@ Model-based diagnosis can be seen as taking as input a partially parameterized s
 Its output is a set of assumptions which, together with the structural description, logically imply the observations,
 or that are consistent with the observations.
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model
@@ -23,7 +23,9 @@ or that are consistent with the observations.
 
 from pycsp3 import *
 
-functions, gates = data  # note that the two first gates are special, inserted for reserving indexes 0 and 1 (for false and true)
+functions, gates = data or load_json_data(
+    "example.json")  # note that the two first gates are special, inserted for reserving indexes 0 and 1 (for false and true)
+
 nGates = len(gates)
 
 # x[i] is -1 if the ith gate is not faulty (otherwise 0 or 1 when stuck-at-0 or stuck-at-1)

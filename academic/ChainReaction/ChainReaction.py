@@ -42,9 +42,7 @@ if variant("mini"):
 
     satisfy(
         # ensuring that two consecutive numbers v and w of the chain are such that either v evenly divides w or w evenly divides v
-        [
-            (x[i], x[i + 1]) in T for i in range(n - 1)
-        ]
+        (x[i], x[i + 1]) in T for i in range(n - 1)
     )
 
 else:

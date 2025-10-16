@@ -76,8 +76,10 @@ if not variant():
 elif variant("table"):
     satisfy(
         # computing assembled car options
-        (c[i], o[i]) in enumerate(options)
-        for i in range(nCars)
+        Table(
+            scope=(c[i], o[i]),
+            supports=enumerate(options)
+        ) for i in range(nCars)
     )
 
 satisfy(
@@ -104,10 +106,11 @@ satisfy(
  Cardinality(c, occurrences=demands)
    is a shortcut for:
  Cardinality(c, occurrences={j: demands[j] for j in range(nClasses)})
-5) Note that:
+5) It is no more possible to write directly (ie. using enumerate for posting a table with operator 'in"):
  (c[i], o[i]) in enumerate(options) for i in range(nCars)
-    is a shortcut for:
- (c[i], *o[i]) in {(j, *options) for j, (_, options) in enumerate(classes)} for i in range(nCars)
+ Table constraints must be posted with:
+   - the function Table as in the model
+   - or with the operator in and a right operand which is a list or set of tuples   
 WARNING: tuples are flattened when necessary
 6) Note that:
  If(c[i] == j, Then=o[i] == opts) for i in range(nCars) for j, (_, opts) in enumerate(classes)

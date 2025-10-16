@@ -41,7 +41,7 @@ if isinstance(data, int):
     n, r, nSteps = len(instances[data]), 4, 15  # n is the order of the series (example: 1 2 3 4 5 6 for n = 6), r is the size of the rotation slice
     init_board = instances[data]
 else:
-    n, r, nSteps, seed = data  # seed to shuffle an initial series (1 2 3 4 5 6) so as to obtain an initial instance
+    n, r, nSteps, seed = data or (10, 4, 20, 0)  # seed to shuffle an initial series (1 2 3 4 5 6) so as to obtain an initial instance
     init_board = Random(seed).sample([i for i in range(1, n + 1)], n)
 
 # final_board = list(range(1, n + 1))

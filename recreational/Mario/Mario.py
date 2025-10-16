@@ -10,7 +10,7 @@ From a more general point of view, the problem is to find a path in a graph:
  - The sum of weights associated to arcs in the path is restricted (fuel consumption)
  - The sum of weights associated to nodes in the path has to be maximized (gold coins)
 
-This problem was proposed by maury Ollagnier and Jean-Guillaume Fages.
+This problem was proposed by Maury Ollagnier and Jean-Guillaume Fages.
 
 ## Data Example
   easy-2.json
@@ -33,7 +33,7 @@ This problem was proposed by maury Ollagnier and Jean-Guillaume Fages.
 
 from pycsp3 import *
 
-assert not variant() or variant("table") or variant("aux")
+assert not variant() or variant("aux") or variant("table")
 
 marioHouse, luigiHouse, fuelLimit, houses = data or load_json_data("easy-2.json")
 
@@ -68,7 +68,10 @@ else:
     elif variant("table"):
         satisfy(
             # fuel consumption at each step
-            (s[i], f[i]) in {(j, fuel) for (j, fuel) in enumerate(fuels[i])} for i, house in enumerate(houses)
+            Table(
+                scope=(s[i], f[i]),
+                supports=[(j, fuel) for (j, fuel) in enumerate(fuels[i])]
+            ) for i, house in enumerate(houses)
         )
 
     satisfy(
@@ -86,40 +89,3 @@ maximize(
     # maximizing collected gold
     Sum((s[i] != i) * golds[i] for i in range(nHouses) if golds[i] != 0)
 )
-
-""" Comments
-1) Note that the code below, when building the table is more compact than:
- [(s[i], f[i]) in [(j, houses[i].fuelConsumption[j]) for j in range(len(houses[i].fuelConsumption))] for i in range(nHouses)],
- or [(s[i], f[i]) in [(j, fuel) for j, fuel in enumerate(houses[i].fuelConsumption)] for i in range(nHouses)],
-
-2) Note that introducing auxiliary variables for handling gold earned at each house could be as follows:
- # g[i] is the gold earned at house i
- g = VarArray(size=nHouses, dom=lambda i: {0, houses[i].gold})
- 
-  in that case, We need to introduce additional constraints, while the objective becomes:
- maximize(
-   # maximizing collected gold
-   Sum(g)
- )
-"""
-
-"""
-/mario_medium_3.dzn = 1618 at the minizinc challenge 2017
-but not the same bound with this Pycsp3 model
-
-t = [5, 15]
-
-cnt = 0
-for row in fuels:
-    m = min(v for v in row if v != 0)
-    print("i ", m)
-    cnt += m
-print(cnt)
-print(golds)
-print(sum(golds), " ", sum(golds[i] for i in range(nHouses) if i not in t))
-
-satisfy(
-    [s[i] == i for i in t],
-    [s[i] != i for i in range(nHouses) if i not in t]
-)
-"""
