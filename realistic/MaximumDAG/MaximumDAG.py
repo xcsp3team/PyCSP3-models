@@ -16,7 +16,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence ass
   python MaximumDAG.py -data=<datafile.dzn> -parser=MaximumDAG_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2016/results2016.html
+  - https://www.minizinc.org/challenge/2016/results/
 
 ## Tags
   realistic, mzn16

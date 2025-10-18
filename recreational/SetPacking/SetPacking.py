@@ -30,7 +30,10 @@ x = VarArray(size=m, dom={0, 1})
 
 satisfy(
     # avoiding intersection of subsets
-    Count(scp, value=1) <= 1 for scp in [[x[i] for i, subset in enumerate(subsets) if v in subset] for v in V]
+    Count(
+        within=[x[i] for i, subset in enumerate(subsets) if v in subset],
+        value=1
+    ) <= 1 for v in V
 )
 
 maximize(

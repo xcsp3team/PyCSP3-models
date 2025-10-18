@@ -23,7 +23,8 @@ uniqueness of the solution and/or for making the task easier.
 
 from pycsp3 import *
 
-r_sums, c_sums, matrix = data
+r_sums, c_sums, matrix = data or load_json_data("01.json")
+
 m, n = len(r_sums), len(c_sums)
 
 # x[i][j] is the value in the cell at row i and column j

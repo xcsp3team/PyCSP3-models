@@ -1,7 +1,7 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017/2022 Minizinc challenges.
-The MZN model was proposed by Hakan Kjellerstrand, after translating the one by Neng-Fa Zhou in Picat.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Hakan Kjellerstrand, after translating the one by Neng-Fa Zhou in Picat
+- no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   g16-p20-a20.json
@@ -16,7 +16,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://ieeexplore.ieee.org/document/8372050
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   realistic, mzn17, mzn22
@@ -24,10 +24,15 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-agents, horizon, neighbors, = data
+assert not variant() or (variant("table") and (not subvariant() or subvariant("mks")))
+
+agents, horizon, neighbors, = data or load_json_data("g16-p20-a20.json*")
+
 # horizon +=10 for testing
 src, dst = zip(*agents)
+
 nAgents, nNodes = len(agents), len(neighbors)
+A, N = range(nAgents), range(nNodes)
 
 # assert all(agent[0] != agent[1] for agent in agents)  # not necessarily true (as seen in one instance in mzn 22)
 
@@ -47,31 +52,31 @@ if not variant():
 
     satisfy(
         # computing the status at any time
-        [s[t][a][i] == (x[t][a] == i) for t in range(horizon + 1) for a in range(nAgents) for i in range(nNodes)],
+        [s[t][a][i] == (x[t][a] == i) for t in range(horizon + 1) for a in A for i in N],
 
         # setting positions of agents
         (
-            [s[0][a][src[a]] == 1 for a in range(nAgents)],
-            [s[-1][a][dst[a]] == 1 for a in range(nAgents)]
+            [s[0][a][src[a]] == 1 for a in A],
+            [s[-1][a][dst[a]] == 1 for a in A]
         ),
 
         # each agent occupies exactly one node at each time
-        [Sum(s[t][a]) == 1 for t in range(horizon + 1) for a in range(nAgents)],
+        [Sum(s[t][a]) == 1 for t in range(horizon + 1) for a in A],
 
         # no two agents occupy the same node at any time
-        [Sum(s[t, :, i]) <= 1 for t in range(horizon + 1) for i in range(nNodes)],
+        [Sum(s[t, :, i]) <= 1 for t in range(horizon + 1) for i in N],
 
         # every transition is valid
         [
             If(
                 s[t][a][i],
                 Then=disjunction(s[t + 1][a][j] == 1 for j in neighbors[i])  # using Exist instead is inefficient (too many aux variables)
-            ) for t in range(horizon) for a in range(nAgents) for i in range(nNodes)
+            ) for t in range(horizon) for a in A for i in N
         ],
 
         # computing when it is finished for agents
         (
-            [y[t][a] == (e[a] == t) for t in range(horizon + 1) for a in range(nAgents)],
+            [y[t][a] == (e[a] == t) for t in range(horizon + 1) for a in A],
             [
                 If(
                     y[t][a],
@@ -79,7 +84,7 @@ if not variant():
                         s[t - 1][a][dst[a]] == 0,
                         [s[t1][a][dst[a]] == 1 for t1 in range(t, horizon + 1)]
                     ]
-                ) for t in range(1, horizon + 1) for a in range(nAgents)
+                ) for t in range(1, horizon + 1) for a in A
             ]
         ),
 
@@ -91,7 +96,7 @@ if not variant():
             If(
                 x[t][a] == dst[a],
                 Then=x[t + 1][a] == dst[a]
-            ) for t in range(horizon) for a in range(nAgents)
+            ) for t in range(horizon) for a in A
         ],
 
         # source node of agent
@@ -103,7 +108,7 @@ if not variant():
         # end times of the agent
         [
             e[a] == Sum((t + 1) * both(s[t][a][dst[a]] == 0, s[t + 1][a][dst[a]] == 1) for t in range(1, horizon)) + s[0][a][dst[a]]
-            for a in range(nAgents)
+            for a in A
         ]
     )
 
@@ -130,11 +135,11 @@ elif variant("table"):
             If(
                 x[t][a] == dst[a],
                 Then=x[t + 1][a] == dst[a]
-            ) for t in range(horizon) for a in range(nAgents)
+            ) for t in range(horizon) for a in A
         ],
 
         # agents can only move to connected nodes
-        [(x[t][a], x[t + 1][a]) in T for t in range(horizon) for a in range(nAgents)],
+        [(x[t][a], x[t + 1][a]) in T for t in range(horizon) for a in A],
 
         # setting agents at their initial positions
         x[0] == src,
@@ -143,7 +148,7 @@ elif variant("table"):
         x[-1] == dst,
 
         # computing end times of agents
-        [(e[a] == t + 1) == both(x[t][a] != dst[a], x[t + 1][a] == dst[a]) for t in range(horizon) for a in range(nAgents)]
+        [(e[a] == t + 1) == both(x[t][a] != dst[a], x[t + 1][a] == dst[a]) for t in range(horizon) for a in A]
     )
 
     if subvariant("mks"):

@@ -19,7 +19,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence is 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/0167865585900613
   - https://ojs.aaai.org/index.php/AAAI/article/view/5530
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
   realistic, mzn19

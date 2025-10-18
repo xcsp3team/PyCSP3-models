@@ -1,6 +1,6 @@
 {
   "nFacilities": 5,
-  "maxItems": 10,
+  "maxItemsPerDay": 10,
   "maxDay": 20,
   "items": [
     {"kind": 1, "facility": [0, 1], "producedDay": 10, "deadlineDay": 11},

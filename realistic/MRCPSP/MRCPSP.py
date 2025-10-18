@@ -6,7 +6,7 @@ The MZN model was proposed by Ria Szeredi and Andreas Schutt (Copyright: Data61,
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  j30-15-5.json
+  j30-15-05.json
 
 ## Model
   constraints: Cumulative, Element, Sum
@@ -16,7 +16,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python MRCPSP.py -data=<datafile.dzn> -parser=MRCPSP_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, mzn16, mzn23
@@ -24,13 +24,17 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-capacities, types, modes, successors, durations, requirements = data
-nResources, nTasks, nModes = len(capacities), len(modes), len(durations)
+resources, mode_durations, tasks = data or load_json_data("j30-15-05.json")
+
+capacities, types = resources
+modes, successors, requirements = tasks
+
+nResources, nTasks, nModes = len(capacities), len(modes), len(mode_durations)
 
 renewable = [k for k in range(nResources) if types[k] == 1]  # renewable resources
 non_renewable = [k for k in range(nResources) if types[k] == 2]  # non-renewable resources
 
-UB = sum(max(durations[m] for m in modes[i]) for i in range(nTasks))
+UB = sum(max(mode_durations[m] for m in modes[i]) for i in range(nTasks))
 
 
 def activities_in_disjunction(i, j, k):
@@ -54,7 +58,7 @@ am = VarArray(size=nModes, dom={0, 1})
 x = VarArray(size=nTasks, dom=range(UB + 1))
 
 # d[i] is the duration of the ith task
-d = VarArray(size=nTasks, dom=lambda i: {durations[i] for i in modes[i]})
+d = VarArray(size=nTasks, dom=lambda i: {mode_durations[i] for i in modes[i]})
 
 # r[k][i] is the requirement (quantity) of the kth resource for the ith task
 r = VarArray(size=[nResources, nTasks], dom=lambda k, i: {requirements[k, m] for m in modes[i]})
@@ -67,7 +71,7 @@ satisfy(
     (
         [am[tm[i]] == 1 for i in range(nTasks)],
         [Sum(am[modes[i]]) == 1 for i in range(nTasks)],
-        [d[i] == durations[tm[i]] for i in range(nTasks)],
+        [d[i] == mode_durations[tm[i]] for i in range(nTasks)],
         [r[k][i] == requirements[k][tm[i]] for k in range(nResources) for i in range(nTasks)]
     ),
 

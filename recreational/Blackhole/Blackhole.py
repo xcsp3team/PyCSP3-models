@@ -1,7 +1,7 @@
 """
 Problem 081 on CSPLib
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model

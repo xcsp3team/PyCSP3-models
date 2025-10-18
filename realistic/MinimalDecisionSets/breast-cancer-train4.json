@@ -1,4 +1,5 @@
 {
+  "features": ["age", "menopause", "tumor-size", "inv-nodes", "node-caps", "deg-malig", "breast", "breast-quad", "irradiat", "target"],
   "nItems": 229,
   "db": [
     [0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0],

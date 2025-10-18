@@ -27,7 +27,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python LinearToProgram.py -data=<datafile.dzn> -parser=LinearToProgram_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.minizinc.org/challenge/2013/results/
 
 ## Tags
   realistic, mzn13
@@ -38,13 +38,12 @@ from pycsp3 import *
 nInputs, nLines, nPlus, coefficients, real_parameters = data or load_json_data("l2p01.json")
 
 nExamples, nLocal = len(real_parameters), 2 * nPlus + (nLines - nPlus)
+L, E = range(nLines), range(nExamples)
 
 f = lambda i: sum(2 if j < nPlus else 1 for j in range(i))
 intervals = [[0, 1] if i == 0 else list(range(f(i), f(i + 1))) for i in range(nLines)]
 
 max_x_ = 2 * max(max(abs(v) for row in real_parameters for v in row), max(abs(coefficients * real_parameters[s]) for s in range(nExamples)))
-
-L, E = range(nLines), range(nExamples)
 
 line_o = VarArray(size=nLines, dom=range(nInputs, nInputs + nLines))
 

@@ -19,7 +19,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python Nside.py -data=<datafile.dzn> -parser=Nside_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
   realistic, mzn19
@@ -29,7 +29,7 @@ from pycsp3 import *
 
 assert not variant() or variant("test")
 
-nDays, costs, centerWorkers, worksheets, blocks, arcs = data or load_json_data("easy-0200-50.json")  # costs if for perturbation costs
+nDays, costs, centerWorkers, worksheets, blocks, arcs = data or load_json_data("easy-0200-50.json")  # costs is for perturbation costs
 
 work_center, mandatory, importance, est, lst, durations, roads, workers = zip(*worksheets)
 nRoads, nCenters, nWorksheets = len(costs) - 1, len(centerWorkers), len(mandatory)
@@ -103,7 +103,7 @@ elif variant('test'):
     )
 
 """ Comments
-1) This part of the MZn model is not useful : Fits in schedule
+1) This part of the MZN model is not useful : Fits in schedule
     [e[i] <= nDays  for i in W]
 2) The variant 'test' does not seem efficient
 3) For ACE, -di=0 -valh=Last 

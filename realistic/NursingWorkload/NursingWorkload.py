@@ -22,7 +22,7 @@ See Problem 069 at CSPLib.
 
 from pycsp3 import *
 
-nNurses, minPatientsPerNurse, maxPatientsPerNurse, maxWorkloadPerNurse, demandsPerZone = data
+nNurses, minPatientsPerNurse, maxPatientsPerNurse, maxWorkloadPerNurse, demandsPerZone = data or load_json_data("2zones1.json")
 
 Patient = namedtuple("Patient", ["zone", "demand"])
 patients = [Patient(i, demand) for i, t in enumerate(demandsPerZone) for demand in t]

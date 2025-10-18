@@ -9,7 +9,7 @@ A Scheduling problem, such that:
    b) minimizing groups (minimizing use of facilities)
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   n025f5d20m10k3.json
@@ -22,7 +22,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   python GfdSchedule1.py -data=<datafile.dzn> -parser=GfdSchedule_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2015/results2015.html
+  - https://www.minizinc.org/challenge/2015/results/
 
 ## Tags
   realistic, mzn15
@@ -30,14 +30,17 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 from pycsp3 import *
 
-nFacilities, maxItemsPerDay, maxDay, items = data
+nFacilities, maxItemsPerDay, maxDay, items = data or load_json_data("n025f5d20m10k3.json")
+
 kinds, facilities, producedDays, deadlineDays = zip(*items)
+
 nItems, nGroups = len(kinds), len(kinds)
+I = range(nItems)
 
 # for any kind k, we record a pair (b,t) for the base and the set t of items having kind t
-items_per_kinds = [(len([i for i in range(nItems) if kinds[i] < k]), [i for i in range(nItems) if kinds[i] == k]) for k in range(min(kinds), max(kinds) + 1)]
+kind_items = [(len([i for i in I if kinds[i] < k]), [i for i in I if kinds[i] == k]) for k in range(min(kinds), max(kinds) + 1)]
 
-ub_dlp = sum(maxDay - deadlineDays[i] for i in range(nItems))
+ub_dlp = sum(maxDay - deadlineDays[i] for i in I)
 
 # group[i] is the group of the ith item
 group = VarArray(size=nItems, dom=range(nGroups))
@@ -65,30 +68,36 @@ z = Var(dom=range(1, ub_dlp * 100 + nItems + 1))
 
 satisfy(
     # computing item process days
-    [ipd[i] == gpd[group[i]] for i in range(nItems)],
+    [ipd[i] == gpd[group[i]] for i in I],
 
     # items of different kinds cannot be assigned to the same group
-    [group[i] != group[j] for i, j in combinations(nItems, 2) if kinds[i] != kinds[j]],
+    [group[i] != group[j] for i, j in combinations(I, 2) if kinds[i] != kinds[j]],
 
     # limiting group number selection range
-    [group[i] in range(b, b + len(t)) for b, t in items_per_kinds for i in t],
+    [group[i] in range(b, b + len(t)) for b, t in kind_items for i in t],
 
     # handling non-used groups (numbers)
-    [NotExist(group, value=j) == both(facility[j] == -1, gpd[j] == 0) for j in range(nGroups)],
+    [
+        NotExist(
+            within=group,
+            value=j
+        ) == both(facility[j] == -1, gpd[j] == 0)
+        for j in range(nGroups)
+    ],
 
     # setting group order  tag(symmetry-breaking)
     [
-        [group[i] < b + k + 1 for b, t in items_per_kinds for k, i in enumerate(t)],
+        [group[i] < b + k + 1 for b, t in kind_items for k, i in enumerate(t)],
         [
             If(
-                facility[j1] == -1,
-                Then=facility[j2] == -1
-            ) for b, t in items_per_kinds for j1, j2 in combinations(range(b, b + len(t)), 2)
+                facility[b + j1] == -1,
+                Then=facility[b + j2] == -1
+            ) for b, t in kind_items for j1, j2 in combinations(len(t), 2)
         ]
     ],
 
     # items must be assigned to groups that are compatible wrt their facilities
-    [facility[group[i]] in facilities[i] for i in range(nItems)],
+    [facility[group[i]] in facilities[i] for i in I],
 
     # determining which facilities are used by groups
     [gf[j][k] == (facility[j] == k) for j in range(nGroups) for k in range(nFacilities)],
@@ -102,13 +111,13 @@ satisfy(
     ],
 
     # items must be assigned to groups that are compatible wrt their processed days
-    [producedDays[i] < gpd[group[i]] for i in range(nItems)],
+    [producedDays[i] < gpd[group[i]] for i in I],
 
     # respecting the limit of items per day
-    [Count(ipd, value=d) <= maxItemsPerDay for d in range(1, maxDay + 1)],
+    [Count(within=ipd, value=d) <= maxItemsPerDay for d in range(1, maxDay + 1)],
 
     # computing the deadline penalty
-    z1 == Sum((ipd[i] > deadlineDays[i]) * (ipd[i] - deadlineDays[i]) for i in range(nItems)),
+    z1 == Sum((ipd[i] > deadlineDays[i]) * (ipd[i] - deadlineDays[i]) for i in I),
 
     # computing the number of assigned groups
     z2 == NValues(group)
@@ -119,5 +128,5 @@ minimize(
 )
 
 """ Comments
-1) The objective is not connected to the rest of the variables. Hence the optimum is always 1. This is fixed in 2016.
+1) Following the MZN model in 2015, the objective is not connected to the rest of the variables. Hence the optimum is always 1. This is fixed in 2016.
 """

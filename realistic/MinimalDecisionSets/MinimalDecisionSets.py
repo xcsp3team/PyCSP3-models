@@ -13,7 +13,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence is 
   python MinimalDecisionSets.py -data=<datafile.dzn> -parser=MinimalDecisionSets_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, mzn20
@@ -21,15 +21,15 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence is 
 
 from pycsp3 import *
 
-nItems, db = data
+features, nItems, db = data or load_json_data("breast-cancer-train4.json")
 
-n = 5  # max number of nodes
+n, nFeatures = 5, len(features)  # n is the max number of nodes (a constant here)
 
-nFeatures = len(db[0])
-target, dummy = nFeatures - 1, nFeatures  # dummy is a special value
-
-for row in db:
-    row.append(0)  # adding 0 for the dummy value (simpler for the element constraint later)
+assert len(db[0]) in (nFeatures, nFeatures + 1)
+TARGET, DUMMY = nFeatures - 1, nFeatures  # dummy is a special value
+if len(db[0]) == nFeatures:
+    for row in db:
+        row.append(0)  # adding 0 for the dummy value (simpler for the element constraint later)
 
 # sgn[j] is 1 if the corresponding feature is true
 sgn = VarArray(size=n, dom={0, 1})
@@ -54,10 +54,10 @@ z = Var(dom=range(n + 1))
 
 satisfy(
     # we have a leaf when reaching the target
-    [leaf[j + 1] == (ftr[j] == target) for j in range(n)],
+    [leaf[j + 1] == (ftr[j] == TARGET) for j in range(n)],
 
     # unused nodes correspond to the dummy feature
-    [unused[j] == (ftr[j] == dummy) for j in range(n)],
+    [unused[j] == (ftr[j] == DUMMY) for j in range(n)],
 
     # computing z
     Sum(unused) == n - z,

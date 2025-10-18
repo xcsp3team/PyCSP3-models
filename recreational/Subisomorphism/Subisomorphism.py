@@ -22,18 +22,17 @@ the objective is to determine whether Gp is isomorphic to some subgraph(s) in Gt
 
 from pycsp3 import *
 
-n, m, p_edges, t_edges = data
+n, m, pattern_edges, target_edges = data or load_json_data("A-01.json")  # n = nPatternNodes, m = nTargetNodes
 
+# T = target_edges + [(j, i) for (i, j) in target_edges]
 
-def structures():
-    both_way_table = {(i, j) for (i, j) in t_edges} | {(j, i) for (i, j) in t_edges}
-    p_degrees = [len([edge for edge in p_edges if i in edge]) for i in range(n)]
-    t_degrees = [len([edge for edge in t_edges if i in edge]) for i in range(m)]
-    degree_conflicts = [{j for j in range(m) if t_degrees[j] < p_degrees[i]} for i in range(n)]
-    return [i for (i, j) in p_edges if i == j], [i for (i, j) in t_edges if i == j], both_way_table, degree_conflicts
+p_degrees = [len([edge for edge in pattern_edges if i in edge]) for i in range(n)]
+t_degrees = [len([edge for edge in target_edges if i in edge]) for i in range(m)]
 
+pattern_loops = [i for (i, j) in pattern_edges if i == j]
+target_loops = [i for (i, j) in target_edges if i == j]
 
-p_loops, t_loops, T, conflicts = structures()
+target_edges = target_edges + [(j, i) for (i, j) in target_edges]  # we add symmetric edges
 
 # x[i] is the target node to which the ith pattern node is mapped
 x = VarArray(size=n, dom=range(m))
@@ -43,11 +42,16 @@ satisfy(
     AllDifferent(x),
 
     # preserving edges
-    [(x[i], x[j]) in T for (i, j) in p_edges],
+    [(x[i], x[j]) in target_edges for (i, j) in pattern_edges],
 
     # being careful of self-loops
-    [x[i] in t_loops for i in p_loops],
+    [x[i] in target_loops for i in pattern_loops],
 
     # tag(redundant)
-    [x[i] not in C for i, C in enumerate(conflicts)]
+    [
+        Table(
+            scope=x[i],
+            conflicts={j for j in range(m) if t_degrees[j] < p_degrees[i]}
+        ) for i in range(n)
+    ]
 )

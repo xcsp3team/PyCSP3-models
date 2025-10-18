@@ -34,9 +34,7 @@ occupants, patients, max_surgery, room_capacities, max_ot, weight_selection, wei
 oc_length_of_stay, oc_gender, oc_room = occupants
 length_of_stay, gender, incompatible_rooms, mandatory, surgery_duration, surgeon, release_day, due_day = patients
 
-nOccupants, nPatients, nSurgeons, nRooms, nTheaters = len(oc_gender), len(gender), len(max_surgery), len(room_capacities), len(max_ot)
-nDays = len(max_ot[0])
-
+nOccupants, nPatients, nSurgeons, nRooms, nTheaters, nDays = len(oc_gender), len(gender), len(max_surgery), len(room_capacities), len(max_ot), len(max_ot[0])
 P, D = range(nPatients), range(nDays)
 
 selection = VarArray(size=nPatients, dom={0, 1})

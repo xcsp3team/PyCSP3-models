@@ -31,7 +31,7 @@ from pycsp3.classes.main.annotations import ValHeuristic
 
 assert variant() in ("dec1", "dec2", "table", "hybrid")
 
-patterns = [  # 10 papers from Jefferson paper
+patterns = [  # 10 patterns from Jefferson paper
     [(0, 2), (0, 3), (1, 2), (1, 4), (2, 2), (2, 4), (3, 2), (3, 4), (4, 2), (4, 4), (5, 2), (5, 4), (6, 2), (6, 3)],
     [(0, 2), (1, 2), (2, 3), (2, 5), (2, 6), (3, 2), (3, 4), (4, 0), (4, 1), (4, 3), (5, 4), (6, 4)],
     [(0, 2), (0, 3), (0, 4), (1, 2), (2, 0), (2, 3), (2, 5), (2, 6), (3, 0), (3, 2), (3, 4), (3, 6), (4, 0), (4, 1), (4, 3), (4, 6), (5, 4), (6, 2), (6, 3),
@@ -46,7 +46,8 @@ patterns = [  # 10 papers from Jefferson paper
     [(2, 2), (2, 4), (4, 2), (4, 4)]
 ]
 
-origin_x, origin_y, pattern = data
+origin_x, origin_y, pattern = data or (3, 3, 1)
+
 init_board, final_board = generate_boards("english", origin_x, origin_y)
 n, m = len(init_board), len(init_board[0])
 

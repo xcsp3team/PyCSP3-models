@@ -25,7 +25,8 @@ import math
 
 from pycsp3 import *
 
-n, clues = data  # n (order of the grid) is typically 9 -- if not 0, clues[i][j] is a value imposed at row i and col j
+n, clues = data or load_json_data("p20.json")  # n (order of the grid) is typically 9 -- if not 0, clues[i][j] is a value imposed at row i and col j
+
 base = int(math.sqrt(n))
 assert base * base == n
 

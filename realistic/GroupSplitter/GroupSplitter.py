@@ -4,8 +4,7 @@ where the activities for subgroups are supposed to  match better members' prefer
 The aim of our model is to find the best activities and group combinations to recommend.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
-The MZN model was proposed by Jacopo Mauro and Tong Liu.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The original MZN model was proposed by Jacopo Mauro and Tong Liu - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   execute 'python GroupSplitter.py -data=<datafile.dzn> -parser=GroupSplitter_ParserZ.py -export' to get a JSON file
@@ -19,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - http://amsdottorato.unibo.it/9068/1/main.pdf
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
   realistic, mzn17, mzn19, mzn25
@@ -28,7 +27,9 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 from pycsp3 import *
 
 nGroups, minGroupSize, startAfter, maxWait, ratingBalance, prf1, prf2, nTimeSlots, act1, act2, distances = data
+
 nUsers, nCells, nActivities1, nActivities2 = len(prf1), len(distances), len(act1), len(act2)
+U = range(nUsers)
 
 T1 = [tuple(j if i == 0 else act1[j][i - 1] for i in range(6)) for j in range(nActivities1)]
 T2 = [tuple(j if i == 0 else act2[j][i - 1] for i in range(6)) for j in range(nActivities2)]
@@ -112,31 +113,31 @@ satisfy(
             Table(
                 scope=(ua1[i], avl1[i], end1[i], dur1[i], cell1[i], pr1[i]),
                 supports=T1
-            ) for i in range(nUsers)
+            ) for i in U
         ],
         [
             Table(
                 scope=(ua2[i], avl2[i], end2[i], dur2[i], cell2[i], pr2[i]),
                 supports=T2
-            ) for i in range(nUsers)
+            ) for i in U
         ],
         [
             Table(
                 scope=(ua1[i], ur1[i]),
                 supports=enumerate(prf1[i])
-            ) for i in range(nUsers)
+            ) for i in U
         ],
         [
             Table(
                 scope=(ua2[i], ur2[i]),
                 supports=enumerate(prf2[i])
-            ) for i in range(nUsers)
+            ) for i in U
         ],
         [
             Table(
                 scope=(cell1[i], cell2[i], dt[i]),
                 supports=T3
-            ) for i in range(nUsers)
+            ) for i in U
         ]
     ],
 
@@ -145,7 +146,7 @@ satisfy(
         (
             ua1[i] == ga1[g1[i]],
             ua2[i] == ga2[g2[i]]
-        ) for i in range(nUsers)
+        ) for i in U
     ],
 
     # activity temporal constraints
@@ -157,7 +158,7 @@ satisfy(
             x2[i] <= end2[i] - dur2[i],
             x2[i] >= x1[i] + dur1[i] + dt[i],
             x2[i] <= x1[i] + dur1[i] + maxWait
-        ) for i in range(nUsers)
+        ) for i in U
     ],
 
     # user 0 belongs always to the first group  tag(symmetry-breaking)
@@ -171,10 +172,10 @@ satisfy(
         (
             g1[i] <= i,
             g2[i] <= i
-        ) for i in range(nUsers)
+        ) for i in U
     ],
 
-    [x1[i] >= startAfter for i in range(nUsers)]
+    [x1[i] >= startAfter for i in U]
 )
 
 maximize(

@@ -1,6 +1,6 @@
 """
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model

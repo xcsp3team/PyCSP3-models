@@ -32,27 +32,24 @@ bp1, bp2 = False, True  # hard coding
 nDays, nSkills, shifts, ages, occupants, patients, surgeons, theaters, rooms, nurses, weights = data or load_json_data("i01.json")
 
 nShifts, nPatients, nSurgeons, nTheaters, nRooms, nNurses = nDays * 3, len(patients), len(surgeons), len(theaters), len(rooms), len(nurses)
-assert shifts == ["early", "late", "night"]
+P, D, R = range(nPatients), range(nDays), range(nRooms)
 
 GENDERS, A, B = ["A", "B"], 0, 1
-assert all(patient.gender in GENDERS for patient in patients) and all(occupant.gender in GENDERS for occupant in occupants)
 OCCUPANTS, PATIENTS, SURGEONS, THEATERS, ROOMS, NURSES = ALL = [[obj.id for obj in t] for t in (occupants, patients, surgeons, theaters, rooms, nurses)]
-assert all(int(t[0][1:]) == 0 and all(int(t[i][1:]) + 1 == int(t[i + 1][1:]) for i in range(len(t) - 1)) for t in ALL)
 DUMMY_DAY, DUMMY_ROOM, DUMMY_THEATER, DUMMY_NURSE = nDays, nRooms, nTheaters, nNurses
 MAX = 100_000_000
 
+assert shifts == ["early", "late", "night"]
+assert all(patient.gender in GENDERS for patient in patients) and all(occupant.gender in GENDERS for occupant in occupants)
+assert all(int(t[0][1:]) == 0 and all(int(t[i][1:]) + 1 == int(t[i + 1][1:]) for i in range(len(t) - 1)) for t in ALL)
+
 max_stay = max(patient.length_of_stay for patient in patients)
-shift_nurses = [[[i for i in range(nNurses) if any(asg.day == d and asg.shift == s for asg in nurses[i].working_shifts)] for s in shifts] for d in range(nDays)]
-surgery_times = [sum(surgeon.max_surgery_time[d] for surgeon in surgeons) for d in range(nDays)]
-sum_surgery_times = sum(surgery_times)
-theater_times = [sum(theater.availability[d] for theater in theaters) for d in range(nDays)]
-times = sorted([patient.surgery_duration for patient in patients])
-nb_min_unscheduled = nPatients - number_max_of_values_for_sum_le(times, sum_surgery_times)
-maxll = [number_max_of_values_for_sum_le(t, surgery_times[d]) for d in range(nDays)
+shift_nurses = [[[i for i in range(nNurses) if any(asg.day == d and asg.shift == s for asg in nurses[i].working_shifts)] for s in shifts] for d in D]
+surgery_times = [sum(surgeon.max_surgery_time[d] for surgeon in surgeons) for d in D]
+nb_min_unscheduled = nPatients - number_max_of_values_for_sum_le(sorted(patient.surgery_duration for patient in patients), sum(surgery_times))
+maxll = [number_max_of_values_for_sum_le(t, surgery_times[d]) for d in D
          if (t := sorted(p.surgery_duration for p in patients if p.surgery_release_day <= d <= p.surgery_due_day and
                          surgeons[SURGEONS.index(p.surgeon_id)].max_surgery_time[d] >= p.surgery_duration),)]
-
-P, D, R = range(nPatients), range(nDays), range(nRooms)
 
 # pd[i] is the patient admission day of the ith patient
 pd = VarArray(size=nPatients, dom=range(nDays + 1))  # +1 for DUMMY_DAY
@@ -85,7 +82,7 @@ satisfy(
     [pd[i] in range(patients[i].surgery_release_day, patients[i].surgery_due_day + 1) for i in P if patients[i].mandatory],
 
     # assigning patients to compatible rooms
-    [pr[i].not_among(T) for i in P if (T := [int(s[1:]) for s in patients[i].incompatible_room_ids])],
+    [pr[i].not_among(T) for i in P if (T := [ROOMS.index(s) for s in patients[i].incompatible_room_ids])],
 
     # computing ptd
     [ptd[i] == pd[i] * (nTheaters + 1) + pt[i] for i in P],
@@ -139,21 +136,19 @@ satisfy(
     # respecting room capacities
     [
         Cumulative(
-            [
-                Task(
-                    origin=pd[i],
-                    length=(pr[i] == r) * pl[i],
-                    height=1
-                ) for i in P
-            ]
-            +
-            [
-                Task(
-                    origin=0,
-                    length=occupant.length_of_stay,
-                    height=1
-                ) for i, occupant in enumerate(occupants) if occupant.room_id == rooms[r].id
-            ]
+            tasks=[
+                      Task(
+                          origin=pd[i],
+                          length=(pr[i] == r) * pl[i],
+                          height=1
+                      ) for i in P
+                  ] + [
+                      Task(
+                          origin=0,
+                          length=occupant.length_of_stay,
+                          height=1
+                      ) for i, occupant in enumerate(occupants) if occupant.room_id == rooms[r].id
+                  ]
         ) <= rooms[r].capacity for r in R
     ],
 

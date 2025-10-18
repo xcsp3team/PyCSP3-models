@@ -8,7 +8,7 @@ A set of activities must be executed so that the project duration is minimised w
   - workers availability, i.e., a worker can perform only one activity in each time period.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2012 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   easy-01.json
@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python MSPSP.py -data=<datafile.dzn> -parser=MSPSP_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2012/results2012.html
+  - https://www.minizinc.org/challenge/2012/results/
 
 ## Tags
   realistic, mzn12
@@ -29,7 +29,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-skills, durations, requirements, successors = data
+skills, requirements, tasks = data or load_json_data("easy-01.json")
+
+durations, successors = tasks
+
 nWorkers, nTasks, nSkills = len(skills), len(durations), len(requirements)
 
 rc = [len([j for j in range(nWorkers) if i in skills[j]]) for i in range(nSkills)]
@@ -62,7 +65,13 @@ satisfy(
     # non-overlapping constraints for the workers  tag(redundant)
     [
         Cumulative(
-            tasks=[Task(origin=s[i], length=durations[i], height=w[j][i]) for i in WTasks[j]]
+            tasks=[
+                Task(
+                    origin=s[i],
+                    length=durations[i],
+                    height=w[j][i]
+                ) for i in WTasks[j]
+            ]
         ) <= 1 for j in range(nWorkers) if len(WTasks[j]) > 1
     ],
 
@@ -72,7 +81,13 @@ satisfy(
     # cumulative skill constraints
     [
         Cumulative(
-            tasks=[Task(origin=s[i], length=durations[i], height=requirements[k][i]) for i in RTasks[k]]
+            tasks=[
+                Task(
+                    origin=s[i],
+                    length=durations[i],
+                    height=requirements[k][i]
+                ) for i in RTasks[k]
+            ]
         ) <= rc[k] for k in range(nSkills) if len(RTasks[k]) > 1 and sum(requirements[k][RTasks[k]]) > rc[k]
     ],
 

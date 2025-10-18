@@ -6,7 +6,7 @@ Techniques for instruction selection – the task of choosing the instructions f
 This is the case in the PhD thesis of Gabriel Hjort Blindell in 2018,
 with an approach that combines instruction selection with global code motion and block ordering.
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015/2020 Minizinc challenges.
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015/2020/2025 Minizinc challenges.
 The original MZN model was proposed by Gabriel Hjort Blindell (Copyright (c) 2013-2015)
 
 ## Data Example
@@ -23,7 +23,7 @@ The original MZN model was proposed by Gabriel Hjort Blindell (Copyright (c) 201
   - https://www.semanticscholar.org/paper/Universal-Instruction-Selection-Blindell/79f97178fb5493e0a1fe32073773de19faf22868
   - https://link.springer.com/chapter/10.1007/978-3-319-23219-5_42
   - https://link.springer.com/book/10.1007/978-3-319-34019-7
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2025/results/
 
 ## Tags
   realistic, mzn15, mzn20, mzn25
@@ -31,12 +31,13 @@ The original MZN model was proposed by Gabriel Hjort Blindell (Copyright (c) 201
 
 from pycsp3 import *
 
-entryBlockOfFunction, blocks, nData, nOperations, matches, nLocations, constraints = data
+entryBlockOfFunction, blocks, nData, nOperations, matches, nLocations, constraints = data or load_json_data("A3PZaPjnUz.json")
+
 funLocDomain, inBlock, inBlockSucc, locDomain, sameLoc = constraints
 nBlocks, nMatches = len(blocks), len(matches)
 
 statesInFunction = []  # checked in the parser
-execFrequencies = cp_array([block.execFrequency for block in blocks] + [0])  # we add 0
+execFrequencies = cp_array([block.execFrequency for block in blocks] + [0])  # we add 0 ; we need cp_array for a constraint Element
 
 
 def is_dominated(i2, m2):
@@ -207,7 +208,7 @@ minimize(
     Sum(matches[m].latency * execFrequencies[pl[m]] for m in non_dominated)
 )
 
-"""
+""" Comments
 1) it would be reasonable to decompose:
  [belong(pl[m], {p, nBlocks}) & If(sl[m], Then=succ[p] == q) for m, p, q in inBlockSucc],
 

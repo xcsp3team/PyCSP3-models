@@ -14,7 +14,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence ass
   python Chessboard.py -data=<datafile.json>
 
 ## Links
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   recreational, mzn23

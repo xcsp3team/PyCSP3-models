@@ -27,7 +27,8 @@ as it shows how a nice and compact model can be written.
 
 from pycsp3 import *
 
-w_rankings, m_rankings = data  # ranking by women and men
+w_rankings, m_rankings = data or load_json_data("example.json")  # ranking by women and men
+
 n = len(w_rankings)
 Men, Women = range(n), range(n)
 

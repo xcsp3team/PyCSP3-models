@@ -1,6 +1,6 @@
 """
 The model, below, is close to (can be seen as the close translation of) the one (called network_50) submitted to the 2024 Minizinc challenges.
-Original model with MIT Licence (Copyright 2024 Maxime Mahout, François Fages).
+The original MZN model is accompanied with a MIT Licence (Copyright 2024 Maxime Mahout, François Fages).
 
 ## Data Example
   09.json
@@ -14,8 +14,7 @@ Original model with MIT Licence (Copyright 2024 Maxime Mahout, François Fages).
   python MetabolicNetwork.py -data=<datafile.dzn> -parser=MetabolicNetwork_ParserZ.py
 
 ## Links
-  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
-  - https://www.minizinc.org/challenge2014/results2024.html
+  - https://www.minizinc.org/challenge/2024/results/
   - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags
@@ -25,8 +24,6 @@ Original model with MIT Licence (Copyright 2024 Maxime Mahout, François Fages).
 from pycsp3 import *
 
 nReactions, stoichiometry_matrix, reversible_indicators = data or load_json_data("09.json")
-
-nMetabolites, nReversibleReactions = len(stoichiometry_matrix), len(reversible_indicators)
 
 iub = 50  # integer upper bound
 
@@ -44,10 +41,10 @@ satisfy(
     [z[j] == (x[j] > 0) for j in range(nReactions)],
 
     # handling steady-states
-    [x * stoichiometry_matrix[i] == 0 for i in range(nMetabolites)],
+    [x * row == 0 for row in stoichiometry_matrix],
 
     # respecting reversibility
-    [z * reversible_indicators[i] <= 1 for i in range(nReversibleReactions)]
+    [z * row <= 1 for row in reversible_indicators]
 )
 
 minimize(

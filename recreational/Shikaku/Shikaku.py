@@ -19,7 +19,8 @@ A logic puzzle. See "Shikaku as a Constraint Problem" by Helmut Simonis.
 
 from pycsp3 import *
 
-nRows, nCols, rooms = data
+nRows, nCols, rooms = data or load_json_data("grid01.json")
+
 nRooms = len(rooms)
 
 
@@ -58,14 +59,14 @@ satisfy(
     ],
 
     # respecting the surface of each room
-    [(rgt[i] - lft[i]) * (bot[i] - top[i]) == v for i, (_, _, v) in enumerate(rooms)],
+    [(rgt[i] - lft[i]) * (bot[i] - top[i]) == rooms[i].value for i in range(nRooms)],
 
     # rooms must not overlap
     [no_overlapping(i, j) for i, j in combinations(nRooms, 2)]
 )
 
 """ Comments
-1) It is also possible to write (but this is less compact):
+1) Of course, it is also possible to write:
  [lft[i] <= rooms[i].col for i in range(nRooms)],
  [rgt[i] > rooms[i].col for i in range(nRooms)],
  [top[i] <= rooms[i].row for i in range(nRooms)],

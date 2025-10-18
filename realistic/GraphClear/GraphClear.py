@@ -31,7 +31,8 @@ This MZN model was mentioned to be adapted from https://github.com/Kurorororo/di
 
 from pycsp3 import *
 
-n, node_weights, edge_weights = data
+n, node_weights, edge_weights = data or load_json_data("n20-2022-14.json")
+
 edges = [(i, j) for i in range(n) for j in range(n) if edge_weights[i][j] > 0]
 m = len(edges)
 

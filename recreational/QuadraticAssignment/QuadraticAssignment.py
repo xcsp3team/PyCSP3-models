@@ -41,8 +41,6 @@ satisfy(
     [(x[i], x[j], d[i][j]) in T for i, j in combinations(n, 2) if weights[i][j] != 0]
 )
 
-print(type(d * weights))
-
 minimize(
     # minimizing summed up distances multiplied by flows
     d * weights

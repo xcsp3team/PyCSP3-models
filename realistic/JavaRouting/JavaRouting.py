@@ -25,7 +25,7 @@ Unfortunately, we didn't find any information about the origin of this problem/m
 
 from pycsp3 import *
 
-choos, listg, chose, initi, mapge, cin, binop, objec, expec, celt, cad, cnot, expecX, cimp, listgX, mapgeX = data
+choos, listg, chose, initi, mapge, cin, binop, objec, expec, celt, cad, cnot, expecX, cimp, listgX, mapgeX = data or load_json_data("trip-6-3.json")
 
 
 def range_for(t, decrementing=False):

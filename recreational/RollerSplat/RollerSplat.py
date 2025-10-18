@@ -9,6 +9,7 @@ It was created by Yello Games LTD.
   constraints: Element, Table
 
 ## Execution
+  python RollerSplat.py -data=datafile.json
   python RollerSplat.py -data=[datafile.json,h=number]
 
 ## Links
@@ -21,57 +22,63 @@ It was created by Yello Games LTD.
 
 from pycsp3 import *
 
+if data is None:
+    data = load_json_data("04.json")
 grid, horizon = data if isinstance(data, tuple) else (data, 3 * len(data))  # horizon is the number of allowed moves
 
 n, m = len(grid), len(grid[0])
-
-EMPTY, WALL, BALL = range(3)
-origin_x, origin_y = next(((i, j) for i in range(n) for j in range(m) if grid[i][j] == BALL))
+N, M = range(n), range(m)
 
 TOP, RGT, BOT, LFT = Directions = range(4)
+EMPTY, WALL, BALL = range(3)
+
+origin_x, origin_y = next(((i, j) for i in N for j in M if grid[i][j] == BALL))
 
 
-def reachable(i, j, direction):
-    tab = []
-    if direction == TOP:
-        while 0 <= i and grid[i][j] != WALL:
-            tab.append((i, j))
-            i -= 1
-    elif direction == BOT:
-        while i < n and grid[i][j] != WALL:
-            tab.append((i, j))
-            i += 1
-    elif direction == LFT:
-        while 0 <= j and grid[i][j] != WALL:
-            tab.append((i, j))
-            j -= 1
-    elif direction == RGT:
-        while j < m and grid[i][j] != WALL:
-            tab.append((i, j))
-            j += 1
-    return None if len(tab) <= 1 else tab
+def build_moves():
+    def reachable(i, j, direction):
+        tab = []
+        if direction == TOP:
+            while 0 <= i and grid[i][j] != WALL:
+                tab.append((i, j))
+                i -= 1
+        elif direction == BOT:
+            while i < n and grid[i][j] != WALL:
+                tab.append((i, j))
+                i += 1
+        elif direction == LFT:
+            while 0 <= j and grid[i][j] != WALL:
+                tab.append((i, j))
+                j -= 1
+        elif direction == RGT:
+            while j < m and grid[i][j] != WALL:
+                tab.append((i, j))
+                j += 1
+        return None if len(tab) <= 1 else tab
+
+    moves = []  # certainly, some moves could be discarded because they are not possible
+    for i in range(n):
+        for j in range(m):
+            # if grid[i][j] == WALL:
+            if t := reachable(i - 1, j, TOP):
+                moves.append(t)
+            if t := reachable(i + 1, j, BOT):
+                moves.append(t)
+            if t := reachable(i, j - 1, LFT):
+                moves.append(t)
+            if t := reachable(i, j + 1, RGT):
+                moves.append(t)
+    return moves
 
 
-Moves = []  # certainly, some moves could be discarded because they are not possible
-for i in range(n):
-    for j in range(m):
-        # if grid[i][j] == WALL:
-        if t := reachable(i - 1, j, TOP):
-            Moves.append(t)
-        if t := reachable(i + 1, j, BOT):
-            Moves.append(t)
-        if t := reachable(i, j - 1, LFT):
-            Moves.append(t)
-        if t := reachable(i, j + 1, RGT):
-            Moves.append(t)
-
+Moves = build_moves()
 nMoves = len(Moves)
 
-PaintingMoves = [[[k for k, t in enumerate(Moves) if (i, j) in t] for j in range(m)] for i in range(n)]
+PaintingMoves = [[[k for k in range(nMoves) if (i, j) in Moves[k]] for j in M] for i in N]
 
 T = [(k, q) for k in range(nMoves) for q in range(nMoves) if Moves[k][-1] == Moves[q][0]] + [(ANY, -1)]
 
-Cells = [(i, j) for i in range(n) for j in range(m) if grid[i][j] != WALL]
+Cells = [(i, j) for i in N for j in M if grid[i][j] != WALL]
 
 # x[i][j] is the time of the painting move (in y) for cell at position (i,j)
 x = VarArray(size=[n, m], dom=lambda i, j: range(horizon) if grid[i][j] != WALL else None)
@@ -84,7 +91,7 @@ z = Var(range(horizon))
 
 satisfy(
     # the initial move depends on the position of the ball
-    y[0] in {k for k, t in enumerate(Moves) if t[0] == (origin_x, origin_y)},
+    y[0] in {k for k in range(nMoves) if Moves[k][0] == (origin_x, origin_y)},
 
     # each cell is painted by a move that traverses it
     [y[x[i][j]] in PaintingMoves[i][j] for i, j in Cells],

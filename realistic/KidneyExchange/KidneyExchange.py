@@ -6,8 +6,7 @@ The problem consists of the prize-collecting assignment problem and an addition 
 has a maximum length K.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
-The MZN model was proposed by Edward Lam and Vicky Mak-Hau.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The original MZN model was proposed by Edward Lam and Vicky Mak-Hau - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   3-20-025-2.json

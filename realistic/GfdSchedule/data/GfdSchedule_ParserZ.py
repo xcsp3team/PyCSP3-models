@@ -2,7 +2,7 @@ from pycsp3.problems.data.parsing import *
 
 nItems = number_in(line())
 data['nFacilities'] = number_in(next_line())
-data['maxItems'] = number_in(next_line())
+data['maxItemsPerDay'] = number_in(next_line())
 data['maxDay'] = number_in(next_line())
 next_line()
 kinds = numbers_in(next_line())

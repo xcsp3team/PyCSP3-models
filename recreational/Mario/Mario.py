@@ -38,7 +38,9 @@ assert not variant() or variant("aux") or variant("table")
 marioHouse, luigiHouse, fuelLimit, houses = data or load_json_data("easy-2.json")
 
 fuels, golds = zip(*houses)  # using cp_array is not necessary since intern arrays have the right type (for the constraint Element)
+
 nHouses = len(houses)
+H = range(nHouses)
 
 # s[i] is the house succeeding to the ith house (itself if not part of the route)
 s = VarArray(size=nHouses, dom=range(nHouses))
@@ -46,13 +48,7 @@ s = VarArray(size=nHouses, dom=range(nHouses))
 if not variant():
     satisfy(
         # we cannot consume more than the available fuel
-        Sum(fuels[i][s[i]] for i in range(nHouses)) <= fuelLimit,
-
-        # Mario must make a tour (not necessarily complete)
-        Circuit(s),
-
-        # Mario's house succeeds to Luigi's house
-        s[luigiHouse] == marioHouse
+        Sum(fuels[i][s[i]] for i in H) <= fuelLimit
     )
 
 else:
@@ -62,7 +58,7 @@ else:
     if variant("aux"):
         satisfy(
             # fuel consumption at each step
-            fuels[i][s[i]] == f[i] for i in range(nHouses)
+            fuels[i][s[i]] == f[i] for i in H
         )
 
     elif variant("table"):
@@ -70,22 +66,24 @@ else:
             # fuel consumption at each step
             Table(
                 scope=(s[i], f[i]),
-                supports=[(j, fuel) for (j, fuel) in enumerate(fuels[i])]
-            ) for i, house in enumerate(houses)
+                supports=[(j, fuels[i][j]) for j in H]
+            ) for i in H
         )
 
     satisfy(
         # we cannot consume more than the available fuel
-        Sum(f) <= fuelLimit,
-
-        # Mario must make a tour (not necessarily complete)
-        Circuit(s),
-
-        # Mario's house succeeds to Luigi's house
-        s[luigiHouse] == marioHouse
+        Sum(f) <= fuelLimit
     )
+
+satisfy(
+    # Mario must make a tour (not necessarily complete)
+    Circuit(s),
+
+    # Mario's house succeeds to Luigi's house
+    s[luigiHouse] == marioHouse
+)
 
 maximize(
     # maximizing collected gold
-    Sum((s[i] != i) * golds[i] for i in range(nHouses) if golds[i] != 0)
+    Sum((s[i] != i) * golds[i] for i in H if golds[i] != 0)
 )

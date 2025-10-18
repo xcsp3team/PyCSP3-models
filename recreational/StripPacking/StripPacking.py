@@ -19,9 +19,10 @@ A a 2-dimensional geometric minimization problem.
 
 from pycsp3 import *
 
-width, height = data.container
-rectangles = data.rectangles
+(width, height), rectangles = data or load_json_data("C1P1.json")
+
 nRectangles = len(rectangles)
+R = range(nRectangles)
 
 # x[i] is the x-coordinate of the ith rectangle
 x = VarArray(size=nRectangles, dom=range(width))
@@ -40,17 +41,17 @@ r = VarArray(size=nRectangles, dom={0, 1})
 
 satisfy(
     # horizontal control
-    [x[i] + w[i] <= width for i in range(nRectangles)],
+    [x[i] + w[i] <= width for i in R],
 
     # vertical control
-    [y[i] + h[i] <= height for i in range(nRectangles)],
+    [y[i] + h[i] <= height for i in R],
 
     # managing rotation
     [(r[i], w[i], h[i]) in {(0, wgt, hgt), (1, hgt, wgt)} for i, (wgt, hgt) in enumerate(rectangles)],
 
     # no overlapping between rectangles
     NoOverlap(
-        origins=[(x[i], y[i]) for i in range(nRectangles)],
-        lengths=[(w[i], h[i]) for i in range(nRectangles)]
+        origins=[(x[i], y[i]) for i in R],
+        lengths=[(w[i], h[i]) for i in R]
     )
 )

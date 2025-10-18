@@ -14,7 +14,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence ass
 
 ## Links
   - https://www.ijcai.org/proceedings/2024/858
-  - https://www.minizinc.org/challenge2024/results2024.html
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   realistic, mzn24

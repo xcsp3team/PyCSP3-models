@@ -3,8 +3,7 @@ Mapping an H263 encoder on a system with a network on chip/
 This is a simplified version of the model presented in the paper cited below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
-The MZN model was proposed by Krzysztof Kuchcinski.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Krzysztof Kuchcinski - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   mesh2x2-2.json
@@ -18,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S0045790614002286
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   realistic, mzn15, mzn16, mzn18, mzn21
@@ -27,11 +26,11 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 from pycsp3.problems.data.parsing import split_with_rows_of_size
 
-nProcessors, nLinks, bandwidth, src_dst, inStreams, processorLoad, actorLoads, arcs = data
-nFlows = len(src_dst)
+nProcessors, nLinks, bandwidth, src_dst, inStreams, processorLoad, actorLoads, arcs = data or load_json_data("mesh2x2-2.json")
 
-n, m = nProcessors + 2, len(arcs)  # n is the number of nodes
-assert m == nLinks + 2 * nProcessors
+nFlows, nArcs = len(src_dst), len(arcs)
+
+assert nArcs == nLinks + 2 * nProcessors
 MAX = 10000
 
 balance = [[0] * nProcessors + [inStreams[i], -inStreams[i]] for i in range(nFlows)]
@@ -66,7 +65,7 @@ lf = VarArray(size=nLinks, dom=range(bandwidth + 1))
 pf = VarArray(size=nProcessors, dom=range(5 * bandwidth + 1))
 
 # y[k][j] is the value of the kth flow on the jth arc
-y = VarArray(size=[nFlows, m], dom=range(max(max(inStreams), bandwidth) + 1))
+y = VarArray(size=[nFlows, nArcs], dom=range(max(max(inStreams), bandwidth) + 1))
 
 total_flow = VarArray(size=[2 * nProcessors * nFlows + nLinks], dom=range(max(max(inStreams), bandwidth) + 1))
 
@@ -104,9 +103,9 @@ satisfy(
 
     # about flow processors
     [
-        [p[i] == p[j] for i in range(nFlows) for j in range(i + 1, nFlows) if src_dst[i][0] == src_dst[j][0]],
+        [p[i] == p[j] for i, j in combinations(nFlows, 2) if src_dst[i][0] == src_dst[j][0]],
         [p[i] == p[nFlows + j] for i in range(nFlows) for j in range(nFlows) if src_dst[i][0] == src_dst[j][1]],
-        [p[nFlows + i] == p[nFlows + j] for i in range(nFlows) for j in range(i + 1, nFlows) if src_dst[i][1] == src_dst[j][1]]
+        [p[nFlows + i] == p[nFlows + j] for i, j in combinations(nFlows, 2) if src_dst[i][1] == src_dst[j][1]]
     ]
 )
 
