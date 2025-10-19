@@ -34,7 +34,10 @@ if isinstance(data, int):
     schedule = [[[row[i * 2], row[i * 2 + 1]] for i in range(len(row) // 2)] for row in schedule]
     position = 8
 else:
-    schedule, position = data or load_json_data("2024-15.json")  # position is 8 or 24 for example
+    full_schedule, position = data or (load_json_data("phase1-2024.json"), 15)  # position is between 1 and 36)
+    teams = sorted({match[0] for day in full_schedule for match in day})
+    assert len(teams) == 36
+    schedule = [[[teams.index(match[0]), teams.index(match[1])] for match in day] for day in full_schedule]
 
 nWeeks, nMatchesPerWeek, nTeams = len(schedule), len(schedule[0]), len(schedule[0]) * 2
 W, T = range(nWeeks), range(nTeams)

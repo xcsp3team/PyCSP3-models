@@ -24,7 +24,7 @@ grid = data or load_json_data("example.json")  # -1 is for a white cell, 0 to 4 
 
 n, m = len(grid), len(grid[0])
 
-Cells = [(i, j) for i in range(n) for j in range(m)]
+P = [(i, j) for i in range(n) for j in range(m)]
 
 
 def scope(i, j, mode):
@@ -75,13 +75,13 @@ x = VarArray(size=[n, m], dom={0, 1})
 
 satisfy(
     # at most 1 bulb on each maximal sequence of white cells on rows
-    [Count(scp) <= 1 for scp in [scope(i, j, 'h') for i, j in Cells] if scp],
+    [Count(scp) <= 1 for scp in [scope(i, j, 'h') for i, j in P] if scp],
 
     # at most 1 bulb on each maximal sequence of white cells on columns
-    [Count(scp) <= 1 for scp in [scope(i, j, 'v') for i, j in Cells] if scp],
+    [Count(scp) <= 1 for scp in [scope(i, j, 'v') for i, j in P] if scp],
 
-    [Count(scp) >= 1 for scp in [scope(i, j, 'f') for i, j in Cells] if scp],
+    [Count(scp) >= 1 for scp in [scope(i, j, 'f') for i, j in P] if scp],
 
     # tag(clues)
-    [Count(scp) == k for (scp, k) in [(scope(i, j, 's'), grid[i][j]) for i, j in Cells] if scp and 0 <= k <= 4]
+    [Count(scp) == k for (scp, k) in [(scope(i, j, 's'), grid[i][j]) for i, j in P] if scp and 0 <= k <= 4]
 )

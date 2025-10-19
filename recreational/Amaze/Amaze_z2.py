@@ -25,7 +25,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-n, m, points = data  # points[v] gives the pair of points for value v+1
+n, m, points = data or load_json_data("simple.json")  # points[v] gives the pair of points for value v+1
+
 nPoints, nCells = len(points), n * m
 
 starts = [(v - 1) * m + w - 1 for (v, w), _ in points]

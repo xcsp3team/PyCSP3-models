@@ -1,7 +1,8 @@
 """
 See "The First Evaluation of Pseudo-Boolean Solvers (PB'05)" by Vasco M. Manquinho and Olivier Roussel. J. Satisf. Boolean Model. Comput. 2(1-4): 103-143 (2006)
 
-## Data
+## Data Illustration
+  example.json
 
 ## Model
   constraints: Sum
@@ -18,7 +19,7 @@ See "The First Evaluation of Pseudo-Boolean Solvers (PB'05)" by Vasco M. Manquin
 
 from pycsp3 import *
 
-n, e, constraints, objective = data  # n and e respectively denote the numbers of variables and constraints
+n, e, constraints, objective = data or load_json_data("example.json")  # n and e respectively denote the numbers of variables and constraints
 
 x = VarArray(size=n, dom={0, 1})
 

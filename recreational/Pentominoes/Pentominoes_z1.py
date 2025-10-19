@@ -14,7 +14,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence ass
 
 ## Links
   - https://fr.wikipedia.org/wiki/Pentomino
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.minizinc.org/challenge/2013/results/
 
 ## Tags
   recreational, mzn08, mzn11, mzn13

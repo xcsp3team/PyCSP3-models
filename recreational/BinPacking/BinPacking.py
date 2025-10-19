@@ -31,7 +31,10 @@ from pycsp3 import *
 from itertools import groupby
 from math import ceil
 
-capacity, weights = data  # bin capacity and item weights
+assert not variant() or variant("table")
+
+capacity, weights = data or load_json_data("n1c1w4a.json")  # bin capacity and item weights
+
 weights.sort()  # in case weights are not sorted
 nItems = len(weights)
 
@@ -89,7 +92,7 @@ if not variant():
 elif variant("table"):
     def table():
         def table_recursive(n_stored, i, curr):
-            assert len(tuples) < 200000000, "impossible to build a table of moderate size"  # hard coding (value)
+            assert len(tuples) < 200_000_000, "impossible to build a table of moderate size"  # hard coding (value)
             assert curr + weights[i] <= capacity
             tmp[n_stored] = weights[i]
             curr += weights[i]

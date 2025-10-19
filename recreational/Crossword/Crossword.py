@@ -26,7 +26,10 @@ Given a grid with imposed black cells (spots) and a dictionary, the problem is t
 
 from pycsp3 import *
 
-spots, dict_name = data
+assert not variant() or variant("alt")
+
+spots, dict_name = data or load_json_data("vg6-7-ogd.json")
+
 words = dict()
 for line in open(dict_name):
     code = alphabet_positions(line.strip().lower())

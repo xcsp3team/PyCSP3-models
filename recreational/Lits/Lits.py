@@ -81,8 +81,14 @@ satisfy(
 
     # no two tetrominoes of the same shape can touch
     [
-        [(s[i][j], s[i][j + 1]) not in {(v, v) for v in range(4)} for i in range(1, n + 1) for j in range(1, m) if puzzle[i - 1][j - 1] != puzzle[i - 1][j]],
-        [(s[i][j], s[i + 1][j]) not in {(v, v) for v in range(4)} for j in range(1, m + 1) for i in range(1, n) if puzzle[i - 1][j - 1] != puzzle[i][j - 1]]
+        [
+            (s[i][j], s[i][j + 1]) not in {(v, v) for v in range(4)}
+            for i in range(1, n + 1) for j in range(1, m) if puzzle[i - 1][j - 1] != puzzle[i - 1][j]
+        ],
+        [
+            (s[i][j], s[i + 1][j]) not in {(v, v) for v in range(4)}
+            for j in range(1, m + 1) for i in range(1, n) if puzzle[i - 1][j - 1] != puzzle[i][j - 1]
+        ]
     ],
 
     # ensuring connection

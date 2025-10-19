@@ -14,9 +14,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python Nonogram_z.py -data=<datafile.dzn> -parser=Nonogram_ParserZ.py
 
 ## Links
-  - https://www.csplib.org/Problems/prob012/
-  - https://www.minizinc.org/challenge2013/results2013.html
   - https://en.wikipedia.org/wiki/Nonogram
+  - https://www.csplib.org/Problems/prob012/
+  - https://www.minizinc.org/challenge/2013/results/
+
 
 ## Tags
   recreational, mzn09, mzn11, mzn12, mzn13

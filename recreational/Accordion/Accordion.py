@@ -36,7 +36,7 @@ See Experimental Data for TabID Journal Paper (URL given below).
 
 from pycsp3 import *
 
-cards = data
+cards = data or load_json_data("11-01.json")
 
 n, nSteps = len(cards), len(cards)
 T, N = range(nSteps - 1), range(n)  # T used for iterating from 0 to nSteps-1 (excluded)
@@ -96,7 +96,7 @@ satisfy(
 
         [
             If(
-                both(i > pt[t], i < pf[t]),
+                i > pt[t], i < pf[t],
                 Then=x[t][i] == x[t + 1][i]
             ) for t in T for i in N
         ],

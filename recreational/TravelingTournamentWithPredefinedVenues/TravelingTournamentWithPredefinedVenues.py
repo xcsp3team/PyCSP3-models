@@ -21,7 +21,8 @@ Problem 068 on CSPLib
 
 from pycsp3 import *
 
-nTeams, venues = data
+nTeams, venues = data or load_json_data("circ8bbal.json")
+
 nRounds = nTeams - 1
 assert nTeams % 2 == 0, "an even number of teams is expected"
 nConsecutiveGames = 2 if variant("a2") else 3  # used in one comment

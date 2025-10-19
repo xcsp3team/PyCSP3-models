@@ -27,7 +27,8 @@ Important: we assume in the model below that each specified integer delimits its
 
 from pycsp3 import *
 
-puzzle = data
+puzzle = data or load_json_data("3-3-3.json")
+
 n, m = len(puzzle), len(puzzle[0])
 
 Region = namedtuple("Region", ["i", "j", "size"])

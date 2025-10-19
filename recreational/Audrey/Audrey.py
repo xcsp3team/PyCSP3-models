@@ -29,6 +29,8 @@ The problem can be generalized for any order n.
 
 from pycsp3 import *
 
+assert not variant() or variant("display1") or variant("display2")
+
 n = data or 10
 n2 = n * n
 

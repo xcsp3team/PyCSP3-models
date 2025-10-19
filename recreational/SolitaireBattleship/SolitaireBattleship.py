@@ -21,7 +21,8 @@ See Problem 014 on CSPLib
 
 from pycsp3 import *
 
-fleet, hints, rowSums, colSums = data
+fleet, hints, rowSums, colSums = data or load_json_data("12-12-5-0.json")
+
 surfaces = [ship.size * ship.cnt for ship in fleet]
 pos, neg = [ship.size for ship in fleet], [-ship.size for ship in fleet]
 hints = [] if hints is None else hints
@@ -66,12 +67,12 @@ def hint_ctr(c, i, j):
             s[i][j - 1] == (1 if c == 'r' else 0),
             s[i][j + 1] == (1 if c == 'l' else 0)
         ]
-    if c == 'm':
-        return [
-            s[i][j] == 1,
-            t[i][j] not in {-2, -1, 0, 1, 2},
-            (s[i - 1][j], s[i + 1][j], s[i][j - 1], s[i][j + 1]) in {(0, 0, 1, 1), (1, 1, 0, 0)}
-        ]
+    assert c == 'm'
+    return [
+        s[i][j] == 1,
+        t[i][j] not in {-2, -1, 0, 1, 2},
+        (s[i - 1][j], s[i + 1][j], s[i][j - 1], s[i][j + 1]) in {(0, 0, 1, 1), (1, 1, 0, 0)}
+    ]
 
 
 satisfy(

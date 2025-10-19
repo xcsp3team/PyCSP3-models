@@ -20,7 +20,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://en.wikipedia.org/wiki/Fillomino
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   recreational, mzn09, mzn11, mzn14
@@ -31,6 +31,7 @@ from pycsp3 import *
 puzzle = data or load_json_data("08.json")
 
 n, m = len(puzzle), len(puzzle[0])
+P = [(i, j) for i in range(n) for j in range(m)]
 
 horizon = min(9, n + m) + 1
 
@@ -45,10 +46,8 @@ def join(r, c):
     ]
 
 
-same_in_range = [
-    [sum(puzzle[rr][cc] == puzzle[r][c] for rr in range(n) for cc in range(m) if (rr > r or rr == r and cc > c) and abs(rr - r) + abs(cc - c) < puzzle[r][c])
-     for c in range(m)] for r in range(n)
-]
+same_in_range = [[sum(puzzle[i][j] == puzzle[r][c] for i, j in P if (i > r or i == r and j > c) and abs(i - r) + abs(j - c) < puzzle[r][c]) for c in range(m)]
+                 for r in range(n)]
 
 # size[k] is the size of the area k
 size = VarArray(size=n * m, dom=range(n * m + 1))
@@ -64,21 +63,21 @@ what = VarArray(size=[n, m], dom=range(1, 10))
 
 satisfy(
     # setting clues
-    [what[i][j] == puzzle[i][j] for i in range(n) for j in range(m) if puzzle[i][j] > 0],
+    [what[i][j] == puzzle[i][j] for i, j in P if puzzle[i][j] > 0],
 
     # setting unambiguous roots at time 0
     [
         (
             when[i][j] == 0,
             area[i][j] == i * m + j
-        ) for i in range(n) for j in range(m) if puzzle[i][j] > 0 and same_in_range[i][j] == 0
+        ) for i, j in P if puzzle[i][j] > 0 and same_in_range[i][j] == 0
     ],
 
     # each cell contains the number corresponding to the size of its area
-    [what[i][j] == size[area[i][j]] for i in range(n) for j in range(m)],
+    [what[i][j] == size[area[i][j]] for i, j in P],
 
     # each area size is the number of cells in that area
-    [size[k] == Sum(area[i][j] == k for i in range(n) for j in range(m)) for k in range(n * m)],
+    [size[k] == Sum(area[i][j] == k for i, j in P) for k in range(n * m)],
 
     # each cell is either the root of an area or is an extension of a neighbouring cell
     [
@@ -86,16 +85,16 @@ satisfy(
             when[i][j] == 0,
             Then=area[i][j] == i * m + j,
             Else=AtLeastOne(join(i, j))  # TODO test AtLeastOne vs disjunction
-        ) for i in range(n) for j in range(m)
+        ) for i, j in P
     ],
 
     # the distance to the area root of a cell cannot be larger than the size of the area
-    [when[i][j] <= size[area[i][j]] for i in range(n) for j in range(m)],
+    [when[i][j] <= size[area[i][j]] for i, j in P],
 
     # neighbouring areas must have different sizes
     [
-        [(x != y) == (size[x] != size[y]) for i in range(n) for j in range(1, m) if (x := area[i][j - 1], y := area[i][j])],
-        [(x != y) == (size[x] != size[y]) for i in range(1, n) for j in range(m) if (x := area[i - 1][j], y := area[i][j])]
+        [(x != y) == (size[x] != size[y]) for i, j in P if j > 0 and (x := area[i][j - 1], y := area[i][j])],
+        [(x != y) == (size[x] != size[y]) for i, j in P if i > 0 and (x := area[i - 1][j], y := area[i][j])]
     ]
 )
 

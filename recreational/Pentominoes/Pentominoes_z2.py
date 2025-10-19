@@ -13,7 +13,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence is 
   python Pentominoes_z2.py -data=<datafile.dzn> -parser=Pentominoes_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   recreational, mzn20

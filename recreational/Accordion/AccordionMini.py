@@ -35,7 +35,8 @@ See Experimental Data for TabID Journal Paper (URL given below).
 
 from pycsp3 import *
 
-cards = data
+cards = data or load_json_data("11-01.json")
+
 n, nSteps = len(cards), len(cards)
 
 # pf[t] is the pile which is moved from at time t

@@ -27,6 +27,8 @@ The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Lice
 
 from pycsp3 import *
 
+assert not variant() or variant("det")
+
 n, tiles = data or load_json_data("s05-t20-s17-close.json")
 nTiles = len(tiles)
 

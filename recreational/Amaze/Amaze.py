@@ -18,7 +18,8 @@ while paying attention to not having crossed lines.
 
 from pycsp3 import *
 
-n, m, points = data  # points[v] gives the pair of points for value v(+1)
+n, m, points = data or load_json_data("simple.json")  # points[v] gives the pair of points for value v(+1)
+
 points.insert(0, [])  # inserting a dummy entry at index 0 to simplify correspondences later
 decrement(points)  # because we start indexing at 0
 

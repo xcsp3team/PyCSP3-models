@@ -17,7 +17,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence ass
   python League_z.py -data=<datafile.dzn> -parser=League_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2012/results2012.html
+  - https://www.minizinc.org/challenge/2012/results/
 
 ## Tags
   realistic, mzn12

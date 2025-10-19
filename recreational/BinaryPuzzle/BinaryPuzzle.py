@@ -31,7 +31,8 @@ assert not variant() or variant("regular")
 n = data or 20
 
 assert n % 2 == 0
-m = n // 2
+
+N = range(n)
 
 # x[i][j] is the value in the cell of the grid at coordinates (i,j)
 x = VarArray(size=[n, n], dom={0, 1})
@@ -39,16 +40,16 @@ x = VarArray(size=[n, n], dom={0, 1})
 if not variant():
     satisfy(
         # ensuring the same number of 0s and 1s in rows
-        [Sum(x[i]) == m for i in range(n)],
+        [Sum(x[i]) == n // 2 for i in N],
 
         # ensuring the same number of 0s and 1s in columns
-        [Sum(x[:, j]) == m for j in range(n)],
+        [Sum(x[:, j]) == n // 2 for j in N],
 
         # forbidding sequences of 3 consecutive 0s or 1s in rows
-        [Sum(x[i, j:j + 3]) in range(1, 3) for i in range(n) for j in range(n - 2)],
+        [Sum(x[i, j:j + 3]) in {1, 2} for i in N for j in N[:-2]],
 
         # forbidding sequences of 3 consecutive 0s or 1s in columns
-        [Sum(x[i:i + 3, j]) in range(1, 3) for j in range(n) for i in range(n - 2)]
+        [Sum(x[i:i + 3, j]) in {1, 2} for j in N for i in N[:-2]]
     )
 
 elif variant("regular"):
@@ -56,24 +57,24 @@ elif variant("regular"):
 
     q = Automaton.q
     t = [(q(0, 0, 0), 0, q(0, 1, 0)), (q(0, 0, 0), 1, (q(1, 0, 1)))] \
-        + [(q(i, j, k), 0, q(i, j + 1, 0)) for i in range(m + 1) for j, k in pairs if j < 2] \
-        + [(q(i, j, k), 1, q(i + 1, 0, k + 1)) for i in range(m) for j, k in pairs if k < 2]
-    A = Automaton(start=q(0, 0, 0), final=[q(m, j, k) for j, k in pairs], transitions=t)
+        + [(q(i, j, k), 0, q(i, j + 1, 0)) for i in range(n // 2 + 1) for j, k in pairs if j < 2] \
+        + [(q(i, j, k), 1, q(i + 1, 0, k + 1)) for i in range(n // 2) for j, k in pairs if k < 2]
+    A = Automaton(start=q(0, 0, 0), final=[q(n // 2, j, k) for j, k in pairs], transitions=t)
 
     satisfy(
         # ensuring the same number of 0s and 1s in rows, while forbidding sequences of 3 consecutive 0s or 1s
-        [x[i] in A for i in range(n)],
+        [x[i] in A for i in N],
 
         # ensuring the same number of 0s and 1s in columns, while forbidding sequences of 3 consecutive 0s or 1s
-        [x[:, j] in A for j in range(n)]
+        [x[:, j] in A for j in N]
     )
 
 satisfy(
     # forbidding identical rows
-    AllDifferentList(x[i] for i in range(n)),  # .to_table(),
+    AllDifferentList(x[i] for i in N),  # .to_table(),
 
     # forbidding identical columns
-    AllDifferentList(x[:, j] for j in range(n))  # .to_table()
+    AllDifferentList(x[:, j] for j in N)  # .to_table()
 )
 
 """ Comments

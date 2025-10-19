@@ -25,7 +25,7 @@ See problem 080 at CSPLib.
 
 from pycsp3 import *
 
-n, blocks = data
+n, blocks = data or load_json_data("28-1449787798.json")
 
 # q[i] is the column where is put the ith queen (at row i)
 q = VarArray(size=n, dom=range(n))

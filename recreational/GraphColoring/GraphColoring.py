@@ -24,6 +24,7 @@ from pycsp3 import *
 assert not variant() or variant("sum")
 
 n, edges, colorings, multiColorings = data or load_json_data("1-fullins-3.json")  # n = number of nodes -- multi-coloring not taken into account for the moment
+
 colorings = colorings if colorings else []
 
 # c[i] is the color assigned to the ith node

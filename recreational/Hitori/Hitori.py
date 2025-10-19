@@ -63,8 +63,14 @@ satisfy(
 
     # if two identical clues are adjacent then all equal clue values in the row/col have to be shaded
     [
-        [[shaded[i][k] == 1 for k in N if k not in (j, j + 1) and clues[i][k] == clues[i][j]] for i in N for j in N[:- 1] if clues[i][j] == clues[i][j + 1]],
-        [[shaded[k][j] == 1 for k in N if k not in (i, i + 1) and clues[k][j] == clues[i][j]] for i in N[:- 1] for j in N if clues[i][j] == clues[i + 1][j]]
+        [
+            [shaded[i][k] == 1 for k in N if k not in (j, j + 1) and clues[i][k] == clues[i][j]]
+            for i in N for j in N[:- 1] if clues[i][j] == clues[i][j + 1]
+        ],
+        [
+            [shaded[k][j] == 1 for k in N if k not in (i, i + 1) and clues[k][j] == clues[i][j]]
+            for i in N[:- 1] for j in N if clues[i][j] == clues[i + 1][j]
+        ]
     ],
 
     #  a cell between two identical cells cannot be shaded

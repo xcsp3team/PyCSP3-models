@@ -29,8 +29,9 @@ from pycsp3 import *
 from pycsp3.classes.main.annotations import ValHeuristic
 from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry
 
-n = data or 5
 assert not variant() or variant("bis")
+
+n = data or 5
 
 states = [
     ("Alabama", 5_024_279),  # 0
@@ -143,7 +144,11 @@ elif variant("bis"):
         [x[row] for row in symmetry]
      ) for symmetry in symmetries
 2) with z[k] == 0, l'instance xml est différente et ACE ne reconnait pas la dcecomposition possible (et c'est tres inefficace)
+3) the table constraint involved in the 'If' expression needs some kind of reification, which is handled (when compiling) by building a ternary constraint 
+   in order to make a link with the condition of the 'If' expression.
 """
+
+[Table(scope=(z[k][q], z[k][q + 1]), supports=T) for q in Q[:-1]],
 
 # satisfy(
 #     # tag(special)

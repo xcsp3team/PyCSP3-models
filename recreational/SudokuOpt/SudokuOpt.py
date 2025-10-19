@@ -15,7 +15,7 @@ MIT Licence.
 
 ## Links
   - http://www.hakank.org/minizinc/sudoku_problems2/
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   recreational, mzn22

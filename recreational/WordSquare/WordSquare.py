@@ -29,6 +29,8 @@ From Wikipedia:
 
 from pycsp3 import *
 
+assert not variant() or variant("hak") or variant("tab1") or variant("tab2")
+
 n, dict_name = data
 
 words = []

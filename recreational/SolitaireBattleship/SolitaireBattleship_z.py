@@ -26,7 +26,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-ships, hints, rsums, csums = data
+ships, hints, rsums, csums = data or load_json_data("12-12-5-1.json")
+
 n, maxShip = len(hints), len(ships)
 
 submarine, destroyer, cruiser, battleship = range(4)

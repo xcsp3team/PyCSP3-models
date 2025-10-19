@@ -25,7 +25,8 @@ The objective is to pack all the items into the minimum number of bins so that t
 from pycsp3 import *
 from math import ceil
 
-capacity, weights = data  # bin capacity and item weights
+capacity, weights = data or load_json_data("n1c1w4a.json")  # bin capacity and item weights
+
 weights.sort()
 nItems = len(weights)
 

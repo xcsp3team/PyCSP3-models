@@ -23,8 +23,7 @@ or that are consistent with the observations.
 
 from pycsp3 import *
 
-functions, gates = data or load_json_data(
-    "example.json")  # note that the two first gates are special, inserted for reserving indexes 0 and 1 (for false and true)
+functions, gates = data or load_json_data("example.json")  # the two first gates are special, inserted for reserving indexes 0 and 1 (for false and true)
 
 nGates = len(gates)
 
