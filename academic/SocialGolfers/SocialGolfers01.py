@@ -29,6 +29,7 @@ For the original problem, the values of and are respectively 8 and 4.
 from pycsp3 import *
 
 nGroups, size, nWeeks = data or (4, 4, 5)  # size is the size of the groups
+
 nPlayers = nGroups * size
 
 # x[w][g][p] is 1 iff on week w the group g admits the player p

@@ -16,7 +16,7 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist (Licence at https://githu
   python Perfect1Factorization.py -data=number
 
 ## Links
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   academic, mzn09, mzn15, mzn20, mzn21
@@ -24,7 +24,10 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist (Licence at https://githu
 
 from pycsp3 import *
 
+assert not variant() or variant("dec")
+
 n = data or 10  # number of nodes
+
 m = n - 1  # number of matchings
 
 # x[i] is the ith complete matching

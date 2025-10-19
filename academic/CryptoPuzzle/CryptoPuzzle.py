@@ -38,7 +38,10 @@ consisting of a mathematical equation among unknown numbers, whose digits are re
 
 from pycsp3 import *
 
+assert not variant() or variant("carry")
+
 word1, word2, word3 = words = [w.lower() for w in data] if data else ("no", "no", "yes")
+
 n = len(word1)
 assert len(word2) == n and len(word3) in {n, n + 1}
 

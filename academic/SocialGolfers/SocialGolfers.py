@@ -40,6 +40,7 @@ from pycsp3 import *
 assert not variant() or variant("cnt")
 
 nGroups, size, nWeeks = data or (4, 4, 5)  # size is the size of the groups
+
 nPlayers = nGroups * size
 
 # g[w][p] is the group admitting on week w the player p

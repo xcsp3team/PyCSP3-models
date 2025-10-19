@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://link.springer.com/article/10.1007/s10601-006-9014-4
   - https://www.sciencedirect.com/science/article/abs/pii/S1571065314000596?via%3Dihub
   - https://link.springer.com/chapter/10.1007/11564751_7
-  - https://www.minizinc.org/challenge2017/results2017.html
+  - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
   academic, csplib, mzn15, mzn17

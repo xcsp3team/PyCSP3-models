@@ -13,7 +13,7 @@ The original MZN model was proposed by David Gerault, under the MIT Licence.
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-031-30872-7_10
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   academic, mzn23

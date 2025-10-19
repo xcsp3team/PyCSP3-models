@@ -26,6 +26,7 @@ from pycsp3 import *
 assert not variant() or variant("opt")
 
 n, m, d = data or (6, 6, 0)  # number of dice, number of sides of each die, and number of possible values
+
 d = 2 * m if d == 0 else d  # computing the number of possible values if necessary
 
 N, M = range(n), range(m)

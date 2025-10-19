@@ -28,7 +28,10 @@ from CP'23 paper whose URL is given below:
 from pycsp3 import *
 from pycsp3.classes.main.annotations import ValHeuristic
 
+assert not variant() or variant("table") or variant("mini")
+
 n, m, p, R = data or (2, 2, 2, 7)
+
 U, V, W = n * m, m * p, n * p
 
 T = []

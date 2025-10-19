@@ -12,7 +12,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python MQueens.py -data=[number]
 
 ## Links
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   academic, mzn14
@@ -22,8 +22,10 @@ from pycsp3 import *
 
 n = data or 11
 
-perms = [[i * n + j if k == 0 else (n - j - 1) * n + i if k == 1 else (n - i - 1) * n + (n - j - 1) if k == 2 else i * n + (n - j - 1)
-          for i in range(n) for j in range(n)] for k in range(4)]
+N = range(n)
+
+perms = [[i * n + j if k == 0 else (n - j - 1) * n + i if k == 1 else (n - i - 1) * n + (n - j - 1) if k == 2 else i * n + (n - j - 1) for i in N for j in N]
+         for k in range(4)]
 
 
 def scope(i, j, k):
@@ -42,14 +44,14 @@ satisfy(
     # constraining the presence of queens
     [
         x[i][j] == conjunction(
-            NotExist(x[i][k] for k in range(n) if k != j),
-            NotExist(x[k][j] for k in range(n) if k != i),
-            NotExist(scope(i, j, k) for k in range(1, n))
-        ) for i in range(n) for j in range(n)
+            NotExist(x[i][k] for k in N if k != j),
+            NotExist(x[k][j] for k in N if k != i),
+            NotExist(scope(i, j, k) for k in N[1:])
+        ) for i in N for j in N
     ],
 
     # computing the position of queens in rows
-    [q[i] == Sum((j + 1) * x[i][j] for j in range(n)) for i in range(n)],
+    [q[i] == Sum((j + 1) * x[i][j] for j in N) for i in N],
 
     # tag(symmetry-breaking)
     [LexIncreasing(flat_x, [flat_x[pj[pi.index(k)]] for k in range(n * n)]) for i, pi in enumerate(perms) for j, pj in enumerate(perms) if i != j]
@@ -57,7 +59,7 @@ satisfy(
 
 minimize(
     # minimizing the number of queens
-    Sum(q[i] > 0 for i in range(n))
+    Sum(q[i] > 0 for i in N)
 )
 
 """ Comments

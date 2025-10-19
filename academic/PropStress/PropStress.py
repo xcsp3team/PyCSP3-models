@@ -9,7 +9,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python PropStress.py -data=number
 
 ## Links
-  - https://www.minizinc.org/challenge2009/results2009.html
+  - https://www.minizinc.org/challenge/2009/results/
 
 ## Tags
   academic, mzn09
@@ -18,6 +18,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 from pycsp3 import *
 
 n = data or 10  # number of iterations of change per loop
+
 k = n  # number of times round the loop
 m = n  # m^2 propagators per change of loop
 

@@ -9,7 +9,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python GridColoring.py -data=[number,number]
 
 ## Links
-  - https://www.minizinc.org/challenge2015/results2015.html
+  - https://www.minizinc.org/challenge/2015/results/
 
 ## Tags
   academic, mzn10, mzn11, mzn15
@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-n, m = data
+n, m = data or (5, 6)
 
 # x[i][j] is the color for the cell with coordinates (i,j)
 x = VarArray(size=[n, m], dom=range(1, min(n, m) + 1))

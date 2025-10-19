@@ -9,7 +9,7 @@ For the original MZN model, no Licence was explicitly mentioned (MIT Licence ass
   python SearchStress.py -data=[number,number]
 
 ## Links
-  - https://www.minizinc.org/challenge2008/results2008.html
+  - https://www.minizinc.org/challenge/2008/results/
 
 ## Tags
   academic, mzn08

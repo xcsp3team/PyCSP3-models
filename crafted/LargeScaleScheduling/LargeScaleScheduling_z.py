@@ -17,7 +17,7 @@ The original MZN model was proposed by the BeCool team at UCLouvain - no licence
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-23219-5_11
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge/2018/results/
 
 ## Tags
   crafted, mzn15, mzn18

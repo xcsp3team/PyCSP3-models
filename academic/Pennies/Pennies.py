@@ -16,7 +16,7 @@ The original model involves an option type while we use the special value -1.
 
 ## Links
   - https://blog.computationalcomplexity.org/2023/06/can-you-put-n-pennies-on-n-x-n.html
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   academic, mzn23

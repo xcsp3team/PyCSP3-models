@@ -23,7 +23,7 @@ The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Lice
 
 ## Links
   - https://en.wikipedia.org/wiki/Dobble
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   academic, mzn21
@@ -31,6 +31,8 @@ The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Lice
 
 from pycsp3 import *
 import math
+
+assert not variant() or variant("01")
 
 n, percentage = data or (3, 97)
 
@@ -58,9 +60,7 @@ elif variant("01"):
     b = VarArray(size=[nCards, nSymbols], dom={0, 1})
 
     satisfy(
-        [
-            b[i][j] == ExactlyOne(x[i], value=j) for i in range(nCards) for j in range(nSymbols)
-        ],
+        [b[i][j] == ExactlyOne(x[i], value=j) for i in range(nCards) for j in range(nSymbols)],
 
         [
             Sum(

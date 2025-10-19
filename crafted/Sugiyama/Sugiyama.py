@@ -16,7 +16,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://en.wikipedia.org/wiki/Layered_graph_drawing
-  - https://www.minizinc.org/challenge2010/results2010.html
+  - https://www.minizinc.org/challenge/2010/results/
 
 ## Tags
   crafted, mzn10
@@ -24,7 +24,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-widths, n, edges = data
+widths, n, edges = data or load_json_data("g3-8-8-2.json")
+
 src, dst = zip(*edges)
 nLayers, e = len(widths), len(src)
 

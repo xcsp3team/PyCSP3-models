@@ -23,8 +23,12 @@ See Problem 084 on CSPLib
 from pycsp3 import *
 
 n = data or 35
+
 assert n % 2 == 1
+
 m = (n - 1) // 2
+
+N, M = range(n), range(m)
 
 # x[i] is the ith value of the first sequence
 x = VarArray(size=n, dom={-1, 1})
@@ -39,9 +43,8 @@ satisfy(
 
     # quadratic constraints
     [
-        Sum(x[i] * x[i + k] for i in range(n))
-        + Sum(y[i] * y[i + k] for i in range(n))
-        == -2 for k in range(1, m + 1)
+        Sum(x[i] * x[i + k + 1] for i in N) + Sum(y[i] * y[i + k + 1] for i in N) == -2
+        for k in M
     ]
 )
 
@@ -50,5 +53,5 @@ satisfy(
   x[i + k]
 is equivalent to:
   x[(i + k) % n] 
- You can avoid this behavior by using the option -dont_adjust_indexing
+ You can avoid this behavior by using the option -dont_adjust_indexing 
 """

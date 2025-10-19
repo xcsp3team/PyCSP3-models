@@ -23,7 +23,8 @@ Important: the model, below, does not exactly correspond to this statement (it w
 
 from pycsp3 import *
 
-d, m, p, t, n = data
+d, m, p, t, n = data or (32, 6, 6, 2, 17)
+
 assert t == 2  # for the moment
 
 T = lambda k: build_table([range(p), range(d), range(d)], lambda v1, v2, v3: not (v1 != k) or (v2 != v3))
@@ -52,6 +53,9 @@ satisfy(
     Increasing(draw, strict=True),
 
     [
-        (tol[i], x[i][j], draw[k]) in T(k) for i in range(n) for j in range(m) for k in range(p)
+        Table(
+            scope=(tol[i], x[i][j], draw[k]),
+            supports=T(k)
+        ) for i in range(n) for j in range(m) for k in range(p)
     ]
 )

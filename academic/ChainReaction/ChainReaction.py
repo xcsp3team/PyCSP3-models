@@ -27,6 +27,8 @@ From JaneStreet:
 
 from pycsp3 import *
 
+assert not variant() or variant("opt") or variant("mini")
+
 n, k = data or (20, 100)
 
 # x[i] is the ith value of the chain

@@ -18,14 +18,14 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://mathworld.wolfram.com/CostasArray.html
-  - https://www.minizinc.org/challenge2015/results2015.html
+  - https://www.minizinc.org/challenge/2015/results/
 
 ## Tags
   academic, mzn10, mzn11, mzn15
 """
 from pycsp3 import *
 
-n = data
+n = data or 15
 
 # x[i] is the ith value of the Costas array
 x = VarArray(size=n, dom=range(1, n + 1))

@@ -25,7 +25,7 @@ The original MZN model was proposed by Peter J. Stuckey, with a Licence that sem
 
 ## Links
   - https://research.ibm.com/haifa/ponderthis/challenges/December2012.html
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   academic, mzn18, mzn21, mzn24
@@ -33,6 +33,8 @@ The original MZN model was proposed by Peter J. Stuckey, with a Licence that sem
 
 from pycsp3 import *
 from pycsp3.classes.auxiliary.enums import TypeSquareSymmetry, TypeRectangleSymmetry
+
+assert not variant() or variant("table")
 
 n, m = data or (4, 7)  # number of rows and number of columns
 

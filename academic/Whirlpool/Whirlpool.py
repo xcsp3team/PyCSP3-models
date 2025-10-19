@@ -18,7 +18,7 @@ For the original MZN model, no Licence was explicitly mentioned (MIT Licence is 
   python Whirlpool.py -data=[number,number]
 
 ## Links
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   academic, mzn20

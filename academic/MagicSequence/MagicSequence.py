@@ -30,27 +30,30 @@ from pycsp3 import *
 
 n = data or 8
 
+N = range(n)
+
 # x[i] is the ith value of the sequence
-x = VarArray(size=n, dom=range(n))
+x = VarArray(size=n, dom=N)
 
 satisfy(
     # each value i occurs exactly x[i] times in the sequence
     Cardinality(
         within=x,
-        occurrences={i: x[i] for i in range(n)}
+        occurrences={i: x[i] for i in N}
     ),
 
     # tag(redundant)
     [
         Sum(x) == n,
-        Sum((i - 1) * x[i] for i in range(n)) == 0
+        Sum((i - 1) * x[i] for i in N) == 0
     ]
 )
 
 """ Comments
 1) Sum((i - 1) * x[i] for i in range(n)) == 0
-   can be equivalently written x * range(-1, n - 1) == 0
-   but range(-1, n - 1) * x == 0 is currently not possible (requires 'cursing' * for range objects)
-2) One can also write:
-   Cardinality(x, occurrences=x)
+   can be equivalently written x * range(-1, n - 1) == 0  (or range(-1, n - 1) * x == 0 )
+2) Note that
+ occurrences=x
+  is equivalent to:
+ occurrences={i: x[i] for i in range(n)}
 """

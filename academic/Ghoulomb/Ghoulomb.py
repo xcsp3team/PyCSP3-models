@@ -18,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python Ghoulomb.py -data=[number,number,number]
 
 ## Links
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.minizinc.org/challenge/2013/results/
 
 ## Tags
   academic, mzn10, mzn13
@@ -26,7 +26,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-m1, m2, m3 = data
+m1, m2, m3 = data or (3, 10, 20)
+
 k = 0  # just used for the comments
 
 

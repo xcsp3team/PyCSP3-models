@@ -25,6 +25,7 @@ Important: the model, below, does not exactly correspond to this statement (it w
 from pycsp3 import *
 
 d, m, p, t, n = data or (32, 6, 6, 2, 17)
+
 assert t == 2  # for the moment
 
 # x[i][j] is the jth value on the ith ticket

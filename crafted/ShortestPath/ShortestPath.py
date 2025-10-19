@@ -24,7 +24,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-n, edges, start, end = data
+n, edges, start, end = data or load_json_data("00.json")
+
 src, dst, lgt = zip(*edges)
 m = len(edges)
 

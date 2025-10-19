@@ -7,8 +7,7 @@ in consecutive or two consecutive time periods.
 The goal is to minimise the overall cost.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2008 Minizinc challenge.
-The MZN model was proposed by Jakob Puchinger.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Jakob Puchinger - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   01.json
@@ -29,7 +28,8 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-costs, loads, demands, truck1, truck2 = data
+costs, loads, demands, truck1, truck2 = data or load_json_data("01.json")
+
 nTrucks, horizon = len(costs), len(demands)
 
 # x[i][t] is 1 if the ith truck is used at time t

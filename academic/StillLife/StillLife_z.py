@@ -26,9 +26,11 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-n = data
+assert not variant() or variant("table")
 
-cells = [(i, j) for i in range(n) for j in range(n)]
+n = data or 8
+
+P = [(i, j) for i in range(n) for j in range(n)]
 
 # x[i][j] is 1 iff the cell at row i and col j is alive
 x = VarArray(size=[n, n], dom={0, 1})
@@ -48,7 +50,7 @@ satisfy(
     ],
 
     # computing the number of alive neighbours
-    [y[i][j] == Sum(x.around(i, j)) for i, j in cells]
+    [y[i][j] == Sum(x.around(i, j)) for i, j in P]
 )
 
 if not variant():
@@ -59,7 +61,7 @@ if not variant():
                 x[i][j] == 0,
                 Then=y[i][j] != 3,
                 Else=y[i][j] in {2, 3}
-            ) for i, j in cells
+            ) for i, j in P
         ]
     )
 
@@ -68,7 +70,7 @@ elif variant("table"):
 
     satisfy(
         # imposing still life rules
-        (x[i][j], y[i][j]) in T for i, j in cells
+        (x[i][j], y[i][j]) in T for i, j in P
     )
 
 maximize(

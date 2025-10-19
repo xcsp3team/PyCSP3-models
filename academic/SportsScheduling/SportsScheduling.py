@@ -27,7 +27,10 @@ indicating the two involved teams (for example, one playing at home, and the oth
 
 from pycsp3 import *
 
+assert not variant() or variant("dummy")
+
 nTeams = data or 8
+
 nWeeks, nPeriods, nMatches = nTeams - 1, nTeams // 2, (nTeams - 1) * nTeams // 2
 
 

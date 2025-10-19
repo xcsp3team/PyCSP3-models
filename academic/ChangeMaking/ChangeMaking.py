@@ -31,6 +31,8 @@ of making a change for a specific amount of money, without considering the order
 
 from pycsp3 import *
 
+assert not variant() or variant("compact")
+
 k = data or 13
 
 if not variant():

@@ -22,21 +22,12 @@ See Experimental Data for TabID Journal Paper (URL given below).
 ## Tags
   academic, xcsp25
 """
-from reportlab.lib.pagesizes import elevenSeventeen
 
 from pycsp3 import *
 
-n = data
+n = data or 10
+
 D = range(2, n * n + 1)
-
-cache = {}
-
-
-def T(d):
-    if d not in cache:
-        cache[d] = [(u, v) for u in D for v in D if u % d != 0 or v % d != 0]
-    return cache[d]
-
 
 # x[i] is the value of the ith element of the coprime set
 x = VarArray(size=n, dom=D)
@@ -45,18 +36,34 @@ satisfy(
     # setting a lower-bound
     [x[i] >= x[-1] // 2 for i in range(n - 1)],
 
-    # ensuring that we have coprime integers
-    [(x[i], x[j]) in T(d) for i, j in combinations(n, 2) for d in D] if variant("table") else
-    [
+    # tag(symmetry-breaking)
+    Increasing(x, strict=True)
+)
+
+if variant("table"):
+    cache = {}
+
+
+    def T(d):
+        if d not in cache:
+            cache[d] = [(u, v) for u in D for v in D if u % d != 0 or v % d != 0]
+        return cache[d]
+
+
+    satisfy(
+        # ensuring that we have coprime integers
+        (x[i], x[j]) in T(d) for i, j in combinations(n, 2) for d in D
+    )
+
+else:
+    satisfy(
+        # ensuring that we have coprime integers
         either(
             x[i] % d != 0,
             x[j] % d != 0
         ) for i, j in combinations(n, 2) for d in D
-    ],
 
-    # tag(symmetry-breaking)
-    Increasing(x, strict=True)
-)
+    )
 
 minimize(
     # minimizing the highest value of the set

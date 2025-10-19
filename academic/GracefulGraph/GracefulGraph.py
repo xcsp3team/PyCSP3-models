@@ -28,6 +28,7 @@ and when each edge (x,y) is labelled with |f(x)−f(y)|, the edge labels are all
 from pycsp3 import *
 
 k, p = data or (2, 4)  # k is the size of each clique K (number of nodes) -- p is the size of each path P (or equivalently, number of cliques)
+
 nEdges = int(((k * (k - 1)) * p) / 2 + k * (p - 1))
 
 # cn[i][j] is the color of the jth node of the ith clique

@@ -24,7 +24,7 @@ Informally the Domino problem is an undirected constraint graph with a cycle and
 
 from pycsp3 import *
 
-n, d = data  # number of dominoes and number of values
+n, d = data or (100, 6)  # number of dominoes and number of values
 
 # x[i] is the value of the ith domino
 x = VarArray(size=n, dom=range(d))

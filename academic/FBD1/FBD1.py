@@ -23,6 +23,7 @@ The original mzn model was proposed by Andrew Gill (MIT Licence assumed).
 from pycsp3 import *
 
 k = data or 5
+
 ub = 5 + k ** 3  # uUpper bound for the design size
 
 # x[i] is the ith design variable

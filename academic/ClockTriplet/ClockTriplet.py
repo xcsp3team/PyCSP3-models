@@ -35,6 +35,7 @@ due to the number of permutations.
 from pycsp3 import *
 
 r, n = data or (3, 12)
+
 ub = sum(n - v for v in range(r))
 
 # x[i] is the ith number in the circle

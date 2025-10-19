@@ -26,7 +26,9 @@ n, s = data or (4, 3)
 domain = range(s, s + 3 * n * n - 3 * n + 1)
 assert sum(domain) % (2 * n - 1) == 0, "No magic hexagon for order=" + str(n) + " and start=" + str(s)
 magic = sum(domain) // (2 * n - 1)
+
 d = n + n - 1  # longest diameter
+D = range(d)
 
 
 def scope(i, right):
@@ -42,13 +44,13 @@ satisfy(
     AllDifferent(x),
 
     # all rows sum to the magic value
-    [Sum(x[i]) == magic for i in range(d)],
+    [Sum(x[i]) == magic for i in D],
 
     # all right-sloping diagonals sum to the magic value
-    [Sum(scope(i, True)) == magic for i in range(d)],
+    [Sum(scope(i, True)) == magic for i in D],
 
     # all left-sloping diagonals sum to the magic value
-    [Sum(scope(i, False)) == magic for i in range(d)],
+    [Sum(scope(i, False)) == magic for i in D],
 
     # tag(symmetry-breaking)
     [

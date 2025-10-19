@@ -23,6 +23,8 @@ It can be useful to test the efficiency of filtering/reasoning algorithms.
 
 from pycsp3 import *
 
+assert not variant() or variant("dec")
+
 n = data or 8  # number of pigeons
 
 # p[i] is the hole where is put the ith pigeon

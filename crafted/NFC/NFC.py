@@ -13,7 +13,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python NFC.py -data=<datafile.dzn> -parser=NFC_ParserZ.py
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   crafted, mzn16, mzn22
@@ -21,10 +21,12 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 from pycsp3 import *
 
-shift, workers = data
-nPeriods = len(workers)
+shift, workers = data or load_json_data("12-2-05.json")
 
-A = [(i, (i + 1) % nPeriods) for i in range(nPeriods)] + [(i, (i + nPeriods - shift) % nPeriods) for i in range(nPeriods)]
+nPeriods = len(workers)
+P = range(nPeriods)
+
+A = [(i, (i + 1) % nPeriods) for i in P] + [(i, (i + nPeriods - shift) % nPeriods) for i in P]
 
 # w[i] is the number of workers at the ith period
 w = VarArray(size=nPeriods, dom=range(max(workers) + 1))
@@ -36,7 +38,7 @@ z = Var(dom=range(nPeriods * max(workers) + 1))
 
 satisfy(
     # ensuring a minimum number of workers at each period
-    [w[i] >= workers[i] for i in range(nPeriods)],
+    [w[i] >= workers[i] for i in P],
 
     # computing the cost of the flow
     Flow(
@@ -46,7 +48,7 @@ satisfy(
         weights=[1] * nPeriods + [0] * nPeriods
     ) == z,
 
-    [w[i] == Sum(f[i + 1:i + 1 + shift]) for i in range(nPeriods)]
+    [w[i] == Sum(f[i + 1:i + 1 + shift]) for i in P]
 )
 
 minimize(

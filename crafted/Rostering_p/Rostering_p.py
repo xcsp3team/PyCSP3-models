@@ -33,7 +33,7 @@ The model/automaton below is made stricter so as (hopefully) to generate harder 
 
 from pycsp3 import *
 
-preset, forbidden, n = data
+preset, forbidden, n = data or load_json_data("roster-5-00-02.json")
 
 
 def automaton():

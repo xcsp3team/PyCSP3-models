@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   python NaiveMagicSequence.py -data=<number>
 
 ## Links
-  - https://www.minizinc.org/challenge2015/results2015.html
+  - https://www.minizinc.org/challenge/2015/results/
 
 ## Tags
   academic, mzn08, mzn13, mzn15

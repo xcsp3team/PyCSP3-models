@@ -44,7 +44,10 @@ This problem (and its variants) is said to have many practical applications incl
 
 from pycsp3 import *
 
+assert not variant() or variant("dec") or variant("aux")
+
 n = data or 8
+
 ub = n * n + 1  # a trivial upper-bound of an optimal ruler length
 
 # x[i] is the position of the ith tick
@@ -55,11 +58,13 @@ if not variant():
         # all distances are different
         AllDifferent(abs(x[i] - x[j]) for i, j in combinations(n, 2))
     )
+
 elif variant("dec"):
     satisfy(
         # all distances are different
         abs(x[i] - x[j]) != abs(x[k] - x[l]) for i, j in combinations(range(n), 2) for k, l in combinations(range(i + 1, n), 2)
     )
+
 elif variant("aux"):
     # y[i][j] is the distance between x[i] and x[j], for i strictly less than j
     y = VarArray(size=[n, n], dom=lambda i, j: range(1, ub) if i < j else None)

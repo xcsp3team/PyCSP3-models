@@ -27,7 +27,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-018-9297-2
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   academic, mzn19, mzn24
@@ -41,7 +41,7 @@ mzn = (
         + [(6, 26, 8, 2, 25, 4, 4, 3), (20, 20, 22, 6, 15, 6, 5, 4), (36, 37, 40, 3, 35, 9, 9, 9), (36, 37, 40, 6, 35, 9, 10, 8), (35, 27, 52, 6, 22, 1, 0, 0)]
 )
 
-nFoxes, nGeese, nCorns, boatCapacity, horizon, pf, pg, pc = mzn[data] if isinstance(data, int) else data
+nFoxes, nGeese, nCorns, boatCapacity, horizon, pf, pg, pc = mzn[data] if isinstance(data, int) else data if data else mzn[0]
 
 EAST = [i for i in range(1, horizon + 1) if i % 2 == 1]
 WEST = [i for i in range(1, horizon + 1) if i % 2 != 1]

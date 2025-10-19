@@ -29,6 +29,8 @@ following the same path), the tour is closed; otherwise, it is open.
 
 from pycsp3 import *
 
+assert not variant() or variant("table")
+
 n = data or 8
 
 # x[i] is the cell number where the ith knight is put

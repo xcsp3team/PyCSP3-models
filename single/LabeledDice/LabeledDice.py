@@ -26,6 +26,7 @@ from pycsp3 import *
 
 words = ["buoy", "cave", "celt", "flub", "fork", "hemp", "judy", "junk", "limn", "quip", "swag", "visa", "wish"]
 letters = alphabet_positions(words)  # indexes of present letters
+
 cubes = range(1, 5)  # the indexes 0, 1, 2, 3 of the four cubes
 
 # x[i] is the cube where the ith letter of the alphabet is put

@@ -21,7 +21,7 @@ in which every possible length-n string on A occurs exactly once as a substring.
   - https://en.wikipedia.org/wiki/De_Bruijn_sequence
   - https://mathworld.wolfram.com/deBruijnSequence.html
   - http://www.hakank.org/common_cp_models/#debruijn
-  - https://www.minizinc.org/challenge2008/results2008.html
+  - https://www.minizinc.org/challenge/2008/results/
 
 ## Tags
   academic, mzn08
@@ -29,7 +29,8 @@ in which every possible length-n string on A occurs exactly once as a substring.
 
 from pycsp3 import *
 
-b, n = data
+b, n = data or (3, 6)
+
 m = b ** n
 powers = [b ** i for i in range(n - 1, -1, -1)]
 

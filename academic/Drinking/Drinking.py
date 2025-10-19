@@ -24,6 +24,8 @@ The model, below, correspond to an optimization variant of this problem, used fo
 
 from pycsp3 import *
 
+assert not variant() or variant("mini")
+
 n = data or 101  # number of minutes (time slots)
 
 # x[i] is 1 iff time i is drinking time

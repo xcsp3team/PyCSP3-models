@@ -15,7 +15,7 @@ In an alternate notation for block designs, an S(t,k,n) would be a t-(n,k,1) des
 
 ## Links
   - https://en.wikipedia.org/wiki/Steiner_system
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   academic, mzn21

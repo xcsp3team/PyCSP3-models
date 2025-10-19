@@ -50,6 +50,8 @@ A BIBD is therefore specified by its parameters (v,b,r,k,l).
 
 from pycsp3 import *
 
+assert not variant() or variant("aux")
+
 v, b, r, k, ld = data or (6, 0, 0, 3, 8)
 b = (ld * v * (v - 1)) // (k * (k - 1)) if b == 0 else b  # when specified at 0, b is automatically computed
 r = (ld * (v - 1)) // (k - 1) if r == 0 else r  # when specified at 0, r is automatically computed

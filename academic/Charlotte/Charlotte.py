@@ -22,7 +22,10 @@ Together, they work shifts which they share out over long periods (several weeks
 from pycsp3 import *
 import random
 
+assert not variant() or variant("mini")
+
 nWeeks, seed = data or (6, 0)
+
 nNurses = 3
 assert nWeeks % nNurses == 0
 nDays = nWeeks * 7
