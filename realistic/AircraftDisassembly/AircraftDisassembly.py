@@ -38,7 +38,7 @@ A, R, S = range(nActivities), range(nResources), range(nSkills)
 
 skill_capacities = [sum(skill_mastery[:, s]) for s in S]  # capacity of each skill
 consumption = [[(required_mass[j] if locations[j] in comp_prod[i, 0] else -required_mass[j] if locations[j] in comp_prod[i, 1] else 0) for j in A] for i in M]
-resAct = [[i for i in A if consumption[m][i] != 0] for m in M]  # set of "non-zero" activities for each mass balanced
+reservoir_activities = [[i for i in A if consumption[m][i] != 0] for m in M]  # set of "non-zero" activities for each mass balanced
 
 # x[i] is the starting time of the ith activity
 x = VarArray(size=nActivities, dom=range(horizon + 1))
@@ -75,7 +75,7 @@ satisfy(
                     Then=overlap[u] == 0
                 ) for r in set(useful_resources[i]).intersection(set(useful_resources[j]))
             ]
-        ) for u, (i, j) in enumerate(unrelated_precedences) if not any(skill_requirements[i][s] + skill_requirements[j][s] > skill_capacities[s] for s in S)
+        ) for u, (i, j) in enumerate(unrelated_precedences) if all(skill_requirements[i][s] + skill_requirements[j][s] <= skill_capacities[s] for s in S)
     ],
 
     # Resource unavailable constraint
@@ -93,7 +93,7 @@ satisfy(
     [Sum(contrib[a][r][s] for r in useful_resources[a]) == skill_requirements[a][s] for a in A for s in S if skill_requirements[a][s] > 0],
 
     # Non-Multi-Tasking constraint: Maximum of one contribution by each activity
-    [Sum(contrib[a][r][s] for s in S if skill_mastery[r][s] == 1 and skill_requirements[a][s] > 0) <= 1 for a in A for r in useful_resources[a]],
+    [Sum(contrib[a][r][s] for s in S if skill_requirements[a][s] > 0 and skill_mastery[r][s] == 1) <= 1 for a in A for r in useful_resources[a]],
 
     # Skill constraint: Resources only use skills they have mastered
     [contrib[a][r][s] <= skill_mastery[r][s] for a in A for r in useful_resources[a] for s in S],
@@ -115,9 +115,9 @@ satisfy(
     # constraint for correct reservoir levels at the start of activities
     [
         (
-            Sum(consumption[m][j] * act_leq_act[j][i] for j in resAct[m]) <= maxDiff[m],
-            Sum(consumption[m][j] * act_leq_act[j][i] for j in resAct[m]) >= -maxDiff[m]
-        ) for m in M for i in resAct[m]
+            Sum(consumption[m][j] * act_leq_act[j][i] for j in reservoir_activities[m]) <= maxDiff[m],
+            Sum(consumption[m][j] * act_leq_act[j][i] for j in reservoir_activities[m]) >= -maxDiff[m]
+        ) for m in M for i in reservoir_activities[m]
     ],
 
     #  constraint for act_leq_act

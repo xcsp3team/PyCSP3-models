@@ -22,11 +22,11 @@ from pycsp3 import *
 
 numbers, target = data or load_json_data("0814.json")
 
-n, m = len(numbers), len(numbers) * 2
-
 nTokens = 6
 VAL, ADD, SUB, MUL, DIV, NO = range(nTokens)
-M = range(1, m)
+
+n, m = len(numbers), len(numbers) * 2
+M = range(1, m)  # note that we start at 1 (this is the way we need it)
 
 
 def domain(v):
@@ -100,7 +100,7 @@ satisfy(
     # determining parents
     [
         parent[i] == conjunction(
-            x[i] not in {VAL, NO},
+            x[i].not_among(VAL, NO),
             x[left[i]] != NO,
             x[right[i]] != NO,
             left[i] == i + 1,
@@ -115,7 +115,7 @@ satisfy(
     # determining unused elements
     [
         unused[i] == conjunction(
-            x[i] in {NO, VAL},
+            x[i].among(NO, VAL),
             left[i] == 0,
             right[i] == 0,
             If(x[i] == VAL, Then=index[i] != 0),
@@ -144,7 +144,8 @@ satisfy(
                 SUB: z1[i] == z1[left[i]] - z1[right[i]],
                 MUL: z1[i] == z1[left[i]] * z1[right[i]],
                 DIV: z1[i] * z1[right[i]] == z1[left[i]],
-                NO: z1[i] == 0}
+                NO: z1[i] == 0
+            }
         ) for i in M
     ],
 
@@ -157,7 +158,8 @@ satisfy(
                 Cases={
                     ADD: x[left[i]] != ADD,
                     MUL: x[left[i]] != MUL,
-                    SUB: x[left[i]] != SUB}
+                    SUB: x[left[i]] != SUB
+                }
             ) for i in M
         ],
 
@@ -168,24 +170,25 @@ satisfy(
         ],
 
         # symmetry of Addition and Multiplication
-        [If(x[i] in {ADD, MUL}, Then=x[left[i]] <= x[right[i]]) for i in M],
+        [If(x[i].among(ADD, MUL), Then=x[left[i]] <= x[right[i]]) for i in M],
 
         # distributivity of multiplication
         [
             If(
-                x[i] in {ADD, SUB}, x[left[i]] == MUL, x[right[i]] == MUL,
+                x[i].among(ADD, SUB), x[left[i]] == MUL, x[right[i]] == MUL,
                 Then=[
                     z1[left[left[i]]] != z1[left[right[i]]],
                     z1[left[left[i]]] != z1[right[right[i]]],
                     z1[right[left[i]]] != z1[left[right[i]]],
-                    z1[right[left[i]]] != z1[right[right[i]]]]
+                    z1[right[left[i]]] != z1[right[right[i]]]
+                ]
             ) for i in M
         ],
 
         # distributivity of division
         [
             If(
-                x[i] in {ADD, SUB}, x[left[i]] == DIV, x[right[i]] == DIV,
+                x[i].among(ADD, SUB), x[left[i]] == DIV, x[right[i]] == DIV,
                 Then=z1[right[left[i]]] != z1[right[right[i]]]
             ) for i in M
         ],

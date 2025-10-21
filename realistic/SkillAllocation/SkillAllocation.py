@@ -36,7 +36,12 @@ y = VarArray(size=[nEngineers, nTrainings], dom=range(-1, nSkills))
 
 satisfy(
     # computing new skills
-    [y[e][t] in {-1}.union(s for s in range(nSkills) if engineerSkills[e][s] == 0) for e in E for t in T],
+    [
+        Table(
+            scope=y[e][t],
+            supports={-1} | {s for s in range(nSkills) if engineerSkills[e][s] == 0}
+        ) for e in E for t in T
+    ],
 
     # not exceeding the maximum number of jobs per engineer
     [Sum(x[i] == e for i in J) <= nMaxJobs for e in E],
@@ -47,7 +52,7 @@ satisfy(
     # ensuring that a qualified engineer is assigned to each job
     [
         If(
-            x[i] not in qualifiedEngineers[i],
+            x[i].not_among(qualifiedEngineers[i]),
             Then=Exist(
                 both(
                     y[e][t] == jobs[i][0],

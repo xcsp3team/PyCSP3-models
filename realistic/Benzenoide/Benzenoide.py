@@ -32,7 +32,8 @@ n = data or 8  # order of the coronenoide
 
 w = 2 * n - 1  # maximal width
 W = range(w)
-widths = [w - abs(n - i - 1) for i in range(w)]
+
+widths = [w - abs(n - i - 1) for i in W]
 
 
 def valid(*t):
@@ -67,8 +68,10 @@ satisfy(
 
     # ensuring connectedness
     [
-        (y[i][j], x[i][j], y[neighbors[i][j]]) in T1(i, j)
-        for i in W for j in range(widths[i])
+        Table(
+            scope=(y[i][j], x[i][j], y[neighbors[i][j]]),
+            supports=T1(i, j)
+        ) for i in W for j in range(widths[i])
     ],
 
     # exactly n hexagons
@@ -76,8 +79,10 @@ satisfy(
 
     # ensuring no holes
     [
-        (x[i][j], x[neighbors[i][j]]) in T2
-        for i in W for j in range(widths[i]) if len(neighbors[i][j]) == 6
+        Table(
+            scope=(x[i][j], x[neighbors[i][j]]),
+            supports=T2
+        ) for i in W for j in range(widths[i]) if len(neighbors[i][j]) == 6
     ],
 
     # tag(symmetry-breaking)
@@ -103,7 +108,7 @@ satisfy(
 )
 
 minimize(
-    Sum(x[i][j] * ((n - i) * w + (n - j)) for i in W for j in W if j < widths[i])
+    Sum(x[i][j] * ((n - i) * w + (n - j)) for i in W for j in range(widths[i]))
 )
 
 """ Comments

@@ -1,4 +1,6 @@
 """
+The problem si to determine city positions using road distances (like MDS plotting but allows missing values).
+
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017 challenge.
 For the original MZN model, no Licence was explicitly mentioned (MIT Licence assumed).
 
@@ -21,15 +23,15 @@ For the original MZN model, no Licence was explicitly mentioned (MIT Licence ass
 
 from pycsp3 import *
 
-n, roads = data or load_json_data("5-05.json")
+nCities, roads = data or load_json_data("5-05.json")
 
 maxDistance = max(road.distance for road in roads)
 
 # x[i] is the x-coordinate of the ith city
-x = VarArray(size=n, dom=range(maxDistance + 1))
+x = VarArray(size=nCities, dom=range(maxDistance + 1))
 
 # y[i] is the y-coordinate of the ith city
-y = VarArray(size=n, dom=range(maxDistance + 1))
+y = VarArray(size=nCities, dom=range(maxDistance + 1))
 
 satisfy(
     # tag(symmetry-breaking)

@@ -1,6 +1,6 @@
 {
-  "k": 18,
-  "b": 9,
+  "nCavities": 18,
+  "nWiredCavityPairs": 9,
   "atomic": [
     [3, 7],
     [4, 7],

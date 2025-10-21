@@ -6,7 +6,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 The original MZN model was proposed by Felix Winter, with a Licence that seems to be like the MIT Licence.
 Accompanying instances are based on real-life instances.
 
-## Data Example
+## Data Illustration
   05-0p15.json
 
 ## Model
@@ -27,20 +27,19 @@ Accompanying instances are based on real-life instances.
 
 from pycsp3 import *
 
-setup_times, maxColors, cyclesPerJob, nJobs, nColors, nLines, compatibilities, programs, moulds, demands = data or load_json_data("05-0p15.json")
+setup_times, maxColors, cyclesPerJob, nJobs, nLines, compatibilities, programs, moulds, demands = data or load_json_data("05-0p15.json")
 
 slots, cycle_time = [list(t) for t in zip(*programs)]  # we need lists to be able to insert a new value (0)
-dqty, ddue, dcol, dmld = zip(*demands)
-nPrograms, nMoulds, nDemands = len(programs), len(moulds), len(demands)
-
-J, M, C, D = range(nJobs), range(nMoulds), range(nColors), range(nDemands)
 
 slots0 = cp_array([0] + slots)
 cycle_time0 = cp_array([0] + cycle_time)
 maxMoulds = max(slots)  # per job
 
+nPrograms, nMoulds, nDemands, nColors = len(programs), len(moulds), len(demands), len(compatibilities)
+J, M, C, D = range(nJobs), range(nMoulds), range(nColors), range(nDemands)
+
 demandedColors = [[c for c in C if any(color == c + 1 and mould == m + 1 for (_, _, color, mould) in demands)] for m in M]
-compatibleDemands = [[d2 for d2 in D if ddue[d2] <= ddue[d] and dmld[d2] == dmld[d] and dcol[d2] == dcol[d]] for d in D]
+compatibleDemands = [[d for d in D if demands[d].due <= d and demands[d].mould == m and demands[d].color == c] for (_, d, c, m) in demands]
 
 lb, ub = min(cycle_time) * cyclesPerJob.min, nJobs * cyclesPerJob.max * max(cycle_time) + nJobs * setup_times.program
 timeline = range(lb, ub + 1)
@@ -76,7 +75,7 @@ mks = Var(dom=timeline)
 wst = Var(dom=range(maxMoulds * cyclesPerJob.max * nJobs))
 
 # the tardiness of all demands
-trd = Var(dom=range(sum(max(0, ub - ddue[d]) for d in D)))
+trd = Var(dom=range(sum(max(0, ub - demands[d].due) for d in D)))
 
 satisfy(
     # breaking symmetries  tag(symmetry-breaking)
@@ -160,17 +159,17 @@ satisfy(
     (
         (
             de[d] == je[dfj[d]],
-            Sum(jmp[i][dmld[d] - 1][dcol[d] - 1] * (i <= dfj[d]) for i in J) >= K,
-            Sum(jmp[i][dmld[d] - 1][dcol[d] - 1] * (i < dfj[d]) for i in J) < K,
+            Sum(jmp[i][mould - 1][color - 1] * (i <= dfj[d]) for i in J) >= K,
+            Sum(jmp[i][mould - 1][color - 1] * (i < dfj[d]) for i in J) < K,
             jp[dfj[d]] > 0
-        ) for d in D if [K := sum(dqty[d2] for d2 in compatibleDemands[d])]
+        ) for d, (_, _, color, mould) in enumerate(demands) if [K := sum(demands[d2].quantity for d2 in compatibleDemands[d])]
     ),
 
     # computing objective components
     [
         mks == Maximum(je),
-        wst == Sum(jmp) - sum(dqty),
-        trd == Sum((de[d] > ddue[d]) * (de[d] - ddue[d]) for d in D)
+        wst == Sum(jmp) - sum(demand.quantity for demand in demands),
+        trd == Sum((de[d] > demands[d].due) * (de[d] - demands[d].due) for d in D)
     ]
 )
 
@@ -181,7 +180,7 @@ minimize(
 """ Comments
 1) One could write:
    [If(jp[j] == 0, Then=jp[j + 1] == 0) for j in range(nJobs - 1)],
-   [If(jp[j] == 0, Then=jl[j] == yclesPerJob.min) for j in range(nJobs)]
+   [If(jp[j] == 0, Then=jl[j] == cyclesPerJob.min) for j in range(nJobs)]
   for symmetry breaking
 
 2) Don't use (K := sum(dqty[d2] for d2 in compatibleDemands[d])) because it may be o and bool((0)) is False.

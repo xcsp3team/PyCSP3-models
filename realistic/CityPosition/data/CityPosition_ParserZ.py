@@ -1,6 +1,6 @@
 from pycsp3.problems.data.parsing import *
 
-data['n'] = number_in(line())
+data['nCities'] = number_in(line())
 r = number_in(next_line())
 next_line()
 src = decrement(numbers_in(next_line()))

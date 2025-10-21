@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://en.wikipedia.org/wiki/Vehicle_routing_problem
-  - https://www.minizinc.org/challenge2015/results2015.html
+  - https://www.minizinc.org/challenge/2015/results/
 
 ## Tags
   realistic, mzn15

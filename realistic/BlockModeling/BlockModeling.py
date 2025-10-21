@@ -3,7 +3,7 @@ Block modeling has a long history in the analysis of social networks.
 The core problem is to take a graph and divide it into k clusters and interactions between those clusters described by a k × k image matrix.
 See CP'19 paper whose URL is given below.
 
-## Data
+## Data Illustration
   kansas.json
 
 ## Model
@@ -26,9 +26,10 @@ See CP'19 paper whose URL is given below.
 
 from pycsp3 import *
 
-M, nBlocks = data or load_json_data("kansas-2.json")
+matrix, nBlocks = data or load_json_data("kansas-2.json")
 
-nNodes = len(M)
+nNodes = len(matrix)
+N, B = range(nNodes), range(nBlocks)
 
 # x[i][j] is the value in the grid at the ith row and jth column
 x = VarArray(size=[nBlocks, nBlocks], dom={0, 1})
@@ -38,7 +39,7 @@ y = VarArray(size=nNodes, dom=range(nBlocks))
 
 satisfy(
     # partial symmetry breaking constraint
-    y[i] <= i for i in range(nBlocks - 1)
+    y[u] <= u for u in B[:-1]
 )
 
 minimize(
@@ -46,13 +47,13 @@ minimize(
         conjunction(
             y[i] == u,
             y[j] == v,
-            x[u][v] != M[i][j]
-        ) for u in range(nBlocks) for v in range(nBlocks) for i in range(nNodes) for j in range(nNodes) if i != j
+            x[u][v] != matrix[i][j]
+        ) for u in B for v in B for i in N for j in N if i != j
     )
     + Sum(
         both(
             y[i] == u,
-            x[u][u] != M[i][i]
-        ) for u in range(nBlocks) for i in range(nNodes)
+            x[u][u] != matrix[i][i]
+        ) for u in B for i in N
     )
 )

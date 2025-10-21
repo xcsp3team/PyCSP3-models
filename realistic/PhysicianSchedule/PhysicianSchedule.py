@@ -121,7 +121,7 @@ satisfy(
         demands[v1][1][j][v3] == Sum(
             conjunction(
                 st[i][j] == v1,
-                sh[i][j] in {1, 2},
+                sh[i][j].among(1, 2),
                 sk[i][j] == v3
             ) for i in range(nPersons)
         ) for v1 in range(1, nStations) if commons[v1] == 0 for j in range(nDays) for v3 in range(1, nSkills)
@@ -143,7 +143,7 @@ satisfy(
         Count(
             both(
                 st[i][j] == v1,
-                sh[i][j] in ({1, 2} if commons[v1] == 0 and v2 == 1 else {v2})
+                sh[i][j].among({1, 2} if commons[v1] == 0 and v2 == 1 else {v2})
             ) for i in range(nPersons) if persons[i].preferences[v1][v3] < 4
         ) >= demands[v1][v2][j][v3]
         for v1 in range(1, nStations) for v2 in range(1, nShifts) if v2 != 2 or commons[v1] == 1 for j in range(nDays) for v3 in range(1, nSkills)
@@ -156,7 +156,7 @@ satisfy(
                 departments[st[i][j]] == subDp,
                 commons[st[i][j]] == 0,
                 sh[i][j] == 2,
-                sk[i][j] in subSk
+                sk[i][j].among(subSk)
             ) for i in range(nPersons)
         ) == subDm[j] for (subDp, subSk, subDm) in subsums for j in range(nDays)
     ],
@@ -166,9 +166,12 @@ satisfy(
 
     # avoiding forbidden shift sequences
     [
-        [sh[i][0] not in forbiddenSequences[persons[i].histShift] for i in range(nPersons)],
+        [sh[i][0] not in (forbiddenSequences[persons[i].histShift]) for i in range(nPersons)],
 
-        [sh[i][j + 1] not in forbiddenSequences[sh[i][j]] for i in range(nPersons) for j in range(nDays - 1)]
+        [(sh[i][j], sh[i][j + 1]) in [(v, w) for v in range(nShifts) for w in range(nShifts) if w not in forbiddenSequences[v]]
+         for i in range(nPersons) for j in range(nDays - 1)],
+
+        # [sh[i][j + 1] not in (forbiddenSequences[sh[i][j]]) for i in range(nPersons) for j in range(nDays - 1)]
     ],
 
     # handling forbidden days

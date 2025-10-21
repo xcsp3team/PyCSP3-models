@@ -17,7 +17,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence is 
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-66158-2_31
-  - https://www.minizinc.org/challenge2017/results2017.html
+  - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
   realistic, mzn17, mzn24
@@ -27,7 +27,7 @@ from pycsp3 import *
 
 assert not variant() or variant("mzn24")
 
-m, together, separate, graph, W = data or load_json_data("strike-s2-k8.json")  # m is the maximum number of searched communities
+nCommunities, together, separate, graph, W = data or load_json_data("strike-s2-k8.json")
 
 n = len(graph)  # number of nodes
 
@@ -39,7 +39,7 @@ def domain_z():
 
 
 # x[i] is the community of the ith node
-x = VarArray(size=n, dom=range(m))
+x = VarArray(size=n, dom=range(nCommunities))
 
 # z is the weighted sum of nodes belonging to the same communities
 z = Var(dom=domain_z)

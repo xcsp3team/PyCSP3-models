@@ -25,12 +25,13 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence is 
 
 from pycsp3 import *
 
-k, b, atomic, disjunctive, soft, direct = data or load_json_data("A031.json")
+nCavities, nWiredCavityPairs, atomic, disjunctive, soft, direct = data or load_json_data("A031.json")
 
+b = nWiredCavityPairs
 assert b > 0 and isinstance(direct, list), str(direct)
 
 # x[i] is the position of the ith cavity
-x = VarArray(size=k, dom=range(k))
+x = VarArray(size=nCavities, dom=range(nCavities))
 
 satisfy(
     AllDifferent(x),
@@ -40,8 +41,8 @@ satisfy(
     [
         either(
             x[i] < x[j],
-            x[k] < x[l]
-        ) for i, j, k, l in disjunctive
+            x[k] < x[q]
+        ) for i, j, k, q in disjunctive
     ],
 
     [
@@ -61,36 +62,41 @@ satisfy(
     [
         either(
             x[i] < x[j],
-            x[i] < x[l]
-        ) for i, j, k, l in disjunctive if i == k
+            x[i] < x[q]
+        ) for i, j, k, q in disjunctive if i == k
     ]
 )
 
 tmp = [
-    [both(x[j] < x[i], x[i] < x[j + g]) for j in range(2 * b) for g in [b if j < b else -b] if i not in {j, j + g}]
+    [
+        both(
+            x[j] < x[i],
+            x[i] < x[j + g]
+        ) for j in range(2 * b) for g in [b if j < b else -b] if i not in {j, j + g}
+    ]
     for i in range(2 * b)
 ]
 
 minimize(
-    Sum(abs(x[i] - x[i + b]) > 1 for i in range(b)) * k ** 3
+    Sum(abs(x[i] - x[i + b]) > 1 for i in range(b)) * nCavities ** 3
     +
-    Maximum(Sum(t) for t in tmp) * k ** 2
+    Maximum(Sum(t) for t in tmp) * nCavities ** 2
     +
-    Maximum(abs(x[i] - x[i + b]) - 1 for i in range(b)) * k
+    Maximum(abs(x[i] - x[i + b]) - 1 for i in range(b)) * nCavities
     +
     Sum(x[i] > x[j] for i, j in soft)
 )
 
-"""
-1) note that:
+""" Comments
+1) Note that:
  either(x[i] < x[j], x[k] < x[l])
   is equivalent to:
    (x[i] < x[j]) | (x[k] < x[l])
-2) note that:
+2) Note that:
   both(x[j] < x[i], x[i] < x[j + g])
    is equivalent to:
   (x[j] < x[i]) & (x[i] < x[j + g])
-3) a useless array is present in the minizinc model.
+3) A useless array is present in the minizinc model.
  if variant("mz"):
      y = VarArray(size=k, dom=range(k))
 
@@ -98,12 +104,3 @@ minimize(
          AllDifferent(y)
      )
 """
-
-# minimize(
-#     Sum(
-#         [k ** 3 * (abs(x[i] - x[i + b]) > 1) for i in range(b)],
-#         Maximum((Sum(t) for t in tmp)) * k ** 2,
-#         [Maximum(abs(x[i] - x[i + b]) - 1 for i in range(b)) * k],
-#         [x[i] > x[j] for i, j in soft]
-#     )
-# )

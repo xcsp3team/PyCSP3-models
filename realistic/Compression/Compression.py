@@ -81,10 +81,7 @@ satisfy(
     # managing parents
     [
         parent[root] == -1,
-        [
-            (parent[nInternals + j] != -1) == (sl[j] > 0)
-            for j in range(nPatterns)
-        ],
+        [(parent[nInternals + j] != -1) == (sl[j] > 0) for j in range(nPatterns)],
         Cardinality(
             within=parent,
             occurrences={k: pcount[k] for k in range(nInternals)}

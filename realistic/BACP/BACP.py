@@ -4,7 +4,7 @@ Problem 30 in CSPLib.
 BACP is to design a balanced academic curriculum by assigning periods to courses in a way that the academic load of each period is balanced,
 i.e., as similar as possible.
 
-## Data Example
+## Data Illustration
   10.json
 
 ## Model
@@ -51,16 +51,18 @@ co = VarArray(size=nPeriods, dom=range(minCourses, maxCourses + 1))
 cr = VarArray(size=nPeriods, dom=range(minCredits, maxCredits + 1))
 
 if variant("m1"):
-    def table(c):
-        return {(0,) * p + (credits[c],) + (0,) * (nPeriods - p - 1) + (p,) for p in P}
-
 
     # cp[c][p] is 0 if the course c is not planned at period p, the number of credits for c otherwise
     cp = VarArray(size=[nCourses, nPeriods], dom=lambda c, p: {0, credits[c]})
 
     satisfy(
         # channeling between arrays cp and s
-        [(cp[c], s[c]) in table(c) for c in C],
+        [
+            Table(
+                scope=(cp[c], s[c]),
+                supports={(0,) * p + (credits[c],) + (0,) * (nPeriods - p - 1) + (p,) for p in P}
+            ) for c in C
+        ],
 
         # counting the number of courses in each period
         [Count(within=s, value=p) == co[p] for p in P],
@@ -107,5 +109,5 @@ annotate(decision=s)
 
 """ Comments
 1) The way we build the table could also be written as:
- return {tuple(credits[c] if j == p else p if j == nPeriods else 0 for j in range(nPeriods + 1)) for p in P}
+  {tuple(credits[c] if j == p else p if j == nPeriods else 0 for j in range(nPeriods + 1)) for p in P}
 """

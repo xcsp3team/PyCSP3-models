@@ -39,6 +39,7 @@ from pycsp3 import *
 flights, airlines = data or load_json_data("03.json")
 
 durations, requirements, x = zip(*flights)  # requirements in terms of numbers of counters; x stands for starts
+
 nFlights, nAirlines, nCounters = len(flights), len(airlines), sum(requirements)
 
 # y[i] is the first counter (index) of the series required by the ith flight

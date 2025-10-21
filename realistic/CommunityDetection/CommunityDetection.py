@@ -27,7 +27,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence is 
 
 from pycsp3 import *
 
-graph, m, together, separate = data or load_json_data("n050-e2500-s10-d5-c4-p90.json")  # m is the maximum number of searched communities
+graph, nCommunities, together, separate = data or load_json_data("n050-e2500-s10-d5-c4-p90.json")
 
 n = len(graph)  # number of nodes
 
@@ -41,7 +41,7 @@ def modularity_matrix():
 W = modularity_matrix()
 
 # x[i] is the community of the ith node
-x = VarArray(size=n, dom=range(m))
+x = VarArray(size=n, dom=range(nCommunities))
 
 satisfy(
     # considering nodes that must belong to the same community

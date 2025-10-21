@@ -15,10 +15,10 @@
 
 from pycsp3 import *
 
-height, width, bugs, lengths = data or load_json_data("example.json")
+height, width, lengths, bugs = data or load_json_data("example.json")
 
 nBugs, nTypes = len(bugs), len(lengths)
-groups = [[i for i in range(nBugs) if data.bugs[i].type == k] for k in range(nTypes)]  # groups[k] is the group of bugs of type k
+groups = [[i for i in range(nBugs) if bugs[i].type == k] for k in range(nTypes)]  # groups[k] is the group of bugs of type k
 
 # x[i][j] is the index of a bug (or -1)
 x = VarArray(size=[height, width], dom=range(-1, nBugs))

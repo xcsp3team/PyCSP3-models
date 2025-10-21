@@ -48,7 +48,7 @@ satisfy(
     # a rook or a queen prevents putting any other piece in the same row
     [
         If(
-            Exist(x[i][j] in {ROOK, QUEEN} for j in range(n)),  # we can also write x[i][j].among(R,Q)
+            Exist(x[i][j].among(ROOK, QUEEN) for j in range(n)),  # we can also write x[i][j].among(R,Q)
             Then=Sum(x[i][j] != EMPTY for j in range(n)) <= 1
         ) for i in range(n)
     ],
@@ -56,7 +56,7 @@ satisfy(
     # a rook or a queen prevents any other piece in the same column
     [
         If(
-            Exist(x[i][j] in {ROOK, QUEEN} for i in range(n)),
+            Exist(x[i][j].among(ROOK, QUEEN) for i in range(n)),
             Then=Sum(x[i][j] != EMPTY for i in range(n)) <= 1
         ) for j in range(n)
     ],
@@ -64,7 +64,7 @@ satisfy(
     # a bishop or a queen prevents putting any other piece in the same upward diagonal
     [
         If(
-            Exist(v in {BISHOP, QUEEN} for v in dgn),
+            Exist(v.among(BISHOP, QUEEN) for v in dgn),
             Then=Sum(v != EMPTY for v in dgn) <= 1
         ) for dgn in diagonals_up(x)
     ],
@@ -72,7 +72,7 @@ satisfy(
     # a bishop or a queen prevents putting any other piece in the same downward diagonal
     [
         If(
-            Exist(v in {BISHOP, QUEEN} for v in dgn),
+            Exist(v.among(BISHOP, QUEEN) for v in dgn),
             Then=Sum(v != EMPTY for v in dgn) <= 1
         ) for dgn in diagonals_down(x)
     ],

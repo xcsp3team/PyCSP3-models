@@ -1,6 +1,6 @@
 {
-  "roll_wid": 315,
-  "max_roll_len": 20000,
+  "roll_width": 315,
+  "max_roll_length": 20000,
   "roomCarpets": [
     {"rectangleIds": [0], "possibleRotations": [0, 1], "maxLength": 181, "mawWidth": 131},
     {"rectangleIds": [1], "possibleRotations": [0], "maxLength": 170, "mawWidth": 231},

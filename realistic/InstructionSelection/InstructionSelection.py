@@ -110,13 +110,13 @@ satisfy(
     [sl[m] == (pl[m] != nBlocks) for m in range(nMatches)],
 
     # selected matches that have an entry block must be placed in entry block
-    [pl[m] in {b, nBlocks} for m in non_dominated for b in matches[m].entryBlock],
+    [pl[m].among(b, nBlocks) for m in non_dominated for b in matches[m].entryBlock],
 
     # a datum defined by a selected match must be defined in either the block wherein the match is placed or in one of the blocks spanned by the match
     [
         If(
             sl[m],
-            Then=(x[i] in matches[m].spannedBlocks) if len(matches[m].spannedBlocks) > 0 else (x[i] == pl[m])
+            Then=x[i].among(matches[m].spannedBlocks) if len(matches[m].spannedBlocks) > 0 else (x[i] == pl[m])
         ) for m in non_dominated for i in matches[m].dataDefined
     ],
 
@@ -162,7 +162,7 @@ satisfy(
         ],
         [
             both(
-                pl[m] in {p, nBlocks},
+                pl[m].among(p, nBlocks),
                 If(sl[m], Then=succ[p] == q)
             ) for m, p, q in inBlockSucc
         ],
@@ -170,7 +170,7 @@ satisfy(
         [
             If(
                 sl[m],
-                Then=y[l] in range(mi, ma + 1)
+                Then=y[l].among(range(mi, ma + 1))
             ) for m, l, mi, ma in locDomain if mi != -1 and ma != -1
         ],
         [y[i] in range(mi, ma + 1) for i, mi, ma in funLocDomain]

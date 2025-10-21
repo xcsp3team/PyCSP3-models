@@ -9,15 +9,15 @@ The schedule must satisfy several operational constraints, the main ones being:
 
 This model has been co-developed by teams of ONERA and CRIL.
 
-## Data Example
-  2-178-70-2.json
+## Data Illustration
+  example.json
 
 ## Model
   constraints: Cumulative, NoOverlap, Sum
 
 ## Execution
   python AircraftAssemblyLine.py -data=<datafile.json>
-  python AircraftAssemblyLine.py -data=<xcsp23/datafile.json> -parser=AircraftAssemblyLine_Converter.py
+  python AircraftAssemblyLine.py -data=<datafile.json> -parser=AircraftAssemblyLine_Converter.py
 
 ## Links
   - https://drops.dagstuhl.de/opus/frontdoor.php?source_opus=19069
@@ -30,25 +30,20 @@ This model has been co-developed by teams of ONERA and CRIL.
 
 from pycsp3 import *
 
-takt, areas, stations, tasks, tasksPerMachine, precedences = data or load_json_data("data-example.json")
-
-nAreas, nStations, nTasks, nMachines = len(areas), len(stations), len(tasks), len(tasksPerMachine)
-A, S, T, M = range(nAreas), range(nStations), range(nTasks), range(nMachines)
+takt, areas, stations, tasks, tasksPerMachine, precedences = data or load_json_data("example.json")
 
 areaCapacities, areaTasks = zip(*areas)  # number of operators who can work, and tasks per area
 stationMachines, stationMaxOperators = zip(*stations)
 durations, operators, usedAreaRooms, neutralizedAreas = zip(*tasks)
-usedAreas = [set(j for j in A if usedAreaRooms[i][j] > 0) for i in T]
 
-lb = (req := sum(durations[i] * operators[i] for i in T)) // takt + (1 if req % takt != 0 else 0)
+nAreas, nStations, nTasks, nMachines = len(areas), len(stations), len(tasks), len(tasksPerMachine)
+A, S, T, M = range(nAreas), range(nStations), range(nTasks), range(nMachines)
 
 
-def station_of_task(i):
+def station_of_task(i):  # station of the ith task (-1 if it can be everywhere)
     r = next((j for j in M if i in tasksPerMachine[j]), -1)
     return -1 if r == -1 else next(j for j in S if stationMachines[j][r] == 1)
 
-
-stationOfTasks = [station_of_task(i) for i in T]  # station of the ith task (-1 if it can be everywhere)
 
 # x[i] is the starting time of the ith task
 x = VarArray(size=nTasks, dom=range(takt * nStations + 1))
@@ -64,7 +59,7 @@ satisfy(
     [x[i] // takt == (x[i] + durations[i] - 1) // takt for i in T if durations[i] > 1],
 
     # ensuring that tasks are put on the right stations (wrt needed machines)
-    [x[i] // takt == stationOfTasks[i] for i in T if stationOfTasks[i] != -1],
+    [x[i] // takt == station_i for i in T if (station_i := station_of_task(i)) != -1],
 
     # respecting precedence relations
     [x[i] + durations[i] <= x[j] for (i, j) in precedences],
@@ -79,7 +74,7 @@ satisfy(
                     height=usedAreaRooms[i][q]
                 ) for i in areaTasks[q]
             ]
-        ) <= areaCapacities[q] for q in A if len(areaTasks[q]) > 1
+        ) <= areaCapacities[q] for q in A
     ],
 
     # computing/restricting the number of operators at each station
@@ -102,7 +97,7 @@ satisfy(
                 (x[i], durations[i]),
                 (x[j], durations[j])
             ]
-        ) for i in T for j in T if i != j and len(usedAreas[i].intersection(neutralizedAreas[j])) > 0
+        ) for i in T for j in T if i != j and (usedAreas := set(j for j in A if usedAreaRooms[i][j] > 0)) and not usedAreas.isdisjoint(neutralizedAreas[j])
     ],
 
     # avoiding tasks using the same machine to overlap
@@ -112,7 +107,7 @@ satisfy(
         ) for q in M
     ],
 
-    # Sum(z) >= lb
+    # Sum(z) >= (req := sum(durations[i] * operators[i] for i in T)) // takt + (1 if req % takt != 0 else 0)  # a lower bound
 )
 
 minimize(

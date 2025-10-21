@@ -35,6 +35,7 @@ from pycsp3 import *
 flights, airlines = data or load_json_data("03.json")
 
 durations, requirements, x = zip(*flights)  # requirements in terms of numbers of counters; x stands for starts
+
 nFlights, Counters = len(flights), range(sum(requirements))
 
 # y[i] is the first counter (index) of the series required by the ith flight
@@ -49,16 +50,6 @@ satisfy(
 )
 
 minimize(
-    Sum(
-        [Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airline for j in airline if i != j) for airline in airlines],
-        Maximum(y[i] + requirements[i] for i in range(nFlights))
-    )
+    Sum(Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airline for j in airline if i != j) for airline in airlines)
+    + Maximum(y[i] + requirements[i] for i in range(nFlights))
 )
-
-""" Comments
-1) One can also write:
-  minimize(
-     Sum(Maximum(y[i] + (requirements[i] - 1) - y[j] for i in airline for j in airline if i != j) for airline in airlines))
-     + Maximum(y[i] + requirements[i] for i in range(nFlights))
-  )
-"""

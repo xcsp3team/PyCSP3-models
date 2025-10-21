@@ -10,7 +10,7 @@ Balanced academic curriculum problem:
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2010/2011 Minizinc challenges.
 For the original MZN model, no Licence was explicitly mentioned (MIT Licence assumed).
 
-## Data Example
+## Data Illustration
   10.json
 
 ## Model
@@ -72,7 +72,7 @@ satisfy(
         (
             prod >= K * load_min,
             prod <= K * z
-        ) for (prod, K) in ((course_loads * [x[c] > k for c in C], nPeriods - k - 1) for k in P)
+        ) for (prod, K) in [(course_loads * [x[c] > k for c in C], nPeriods - k - 1) for k in P]
     ]
 )
 

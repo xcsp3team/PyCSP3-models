@@ -99,9 +99,9 @@ satisfy(
 )
 
 """ Comments
-1) the table variant seems far more efficient
+1) The table variant seems far more efficient
 2) (c[i], o[i]) is a possible shortcut for (c[i], *o[i])
-3) the redundant constraints seem important
+3) The redundant constraints seem important
 4) Note that:
  Cardinality(c, occurrences=demands)
    is a shortcut for:

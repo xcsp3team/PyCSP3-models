@@ -6,7 +6,7 @@ and there is an intersection on the items they bid for, then we can accept bid A
 However, if A and B are bids on disjoint sets of items then these two bids are compatible with each other, and we might accept both.
 The problem then is to accept compatible bids such that we maximise the sum of the values of those bids (i.e. make most money).
 
-## Data
+## Data Illustration
   example.json
 
 ## Model
@@ -29,6 +29,7 @@ bids = data or default_data("example.json")
 
 items = sorted({item for bid in bids for item in bid.items})
 vals = integer_scaling(bid.value for bid in bids)
+
 nBids = len(bids)
 
 # x[i] is 1 iff the ith bid is selected
@@ -36,10 +37,8 @@ x = VarArray(size=nBids, dom={0, 1})
 
 satisfy(
     # avoiding intersection of bids
-    Count(
-        within=scp,
-        value=1)
-    <= 1 for item in items if (scp := [x[i] for i, bid in enumerate(bids) if item in bid.items],)
+    AtMostOne(within=scp, value=1)
+    for item in items if (scp := [x[i] for i, bid in enumerate(bids) if item in bid.items],)
 )
 
 maximize(

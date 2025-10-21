@@ -1,6 +1,7 @@
 {
   "height": 4,
   "width": 6,
+  "bugTypeLengths": [3, 2],
   "bugs": [
     {"row": 0, "col": 2, "type": 1},
     {"row": 0, "col": 3, "type": 1},
@@ -12,6 +13,5 @@
     {"row": 2, "col": 5, "type": 0},
     {"row": 3, "col": 4, "type": 1},
     {"row": 3, "col": 5, "type": 1}
-  ],
-  "bugTypeLengths": [3, 2]
+  ]
 }

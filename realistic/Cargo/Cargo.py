@@ -7,7 +7,7 @@ The goal is to minimize the average delay time of the vessels over a long planni
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2013/2017/2018 Minizinc challenges.
 See links below to papers related to this problem.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   22.json
@@ -142,7 +142,7 @@ minimize(
 )
 
 """ Comments
-1) comb that seems to be used to guide search is not inserted above
+1) comb that seems to be used to guide search (in the MZn model) is not inserted above
  comb = flatten([[tR[i], tS__[i], h__[i]][k] for i in range(nPiles) for k in range(3)])
 2) The following variable is not computed (because non necessary)
 # sum_delay is the sum of vessel delays (waiting times)

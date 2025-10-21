@@ -11,8 +11,8 @@ name = options.data  # the name of the JSON file whose format must be converted
 with open(name) as f:
     d = json.load(f)
 
-data['roll_wid'] = d.get("roll_wid")
-data['max_roll_len'] = d.get("max_roll_len")
+data['roll_width'] = d.get("roll_wid")
+data['max_roll_length'] = d.get("max_roll_len")
 
 nRm = d.get("n_rm")
 

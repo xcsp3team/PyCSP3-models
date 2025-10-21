@@ -27,6 +27,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence ass
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-017-9270-5
+  - https://www.jair.org/index.php/jair/article/view/17032
   - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
@@ -129,7 +130,7 @@ satisfy(
         [y[0] != U33, y[1] != U33],
         [Iff(y[i] == U31, y[i + 2] == U33) for i in N[:-2]],
         [If(y[i] == U31, Then=cs[i] == 1) for i in N],
-        [If(y[i] in {U32, U33}, Then=cs[i] == 0) for i in N]
+        [If(y[i].among(U32, U33), Then=cs[i] == 0) for i in N]
     ),
 
     # about UTF8 (4 bytes) while paying attention to ranges F0-F7, 80-BF, 80-BF, 80-BF
@@ -143,7 +144,7 @@ satisfy(
         [y[0] != U44, y[1] != U44, y[2] != U44],
         [iff(y[i] == U41, y[i + 3] == U44) for i in N[: - 3]],
         [If(y[i] == U41, Then=cs[i] == 1) for i in N],
-        [If(y[i] in {U42, U43, U44}, Then=cs[i] == 0) for i in N]
+        [If(y[i].among(U42, U43, U44), Then=cs[i] == 0) for i in N]
     ),
 
     # about EUC-JP (2 bytes) while paying attention to ranges (A1-A8, AD, B0-F4, F9-FC), (A1-FE)

@@ -1,5 +1,5 @@
 {
-  "n": 5,
+  "nCities": 5,
   "roads": [
     {"src": 4, "dst": 0, "distance": 133},
     {"src": 2, "dst": 4, "distance": 224},

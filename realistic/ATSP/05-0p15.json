@@ -9,7 +9,6 @@
     "max": 30
   },
   "max_jobs": 15,
-  "nColors": 1,
   "nLines": 1,
   "color_compatibility": [[1]],
   "programs": [

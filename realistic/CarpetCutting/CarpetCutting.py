@@ -6,7 +6,7 @@ See the "Optimal Carpet Cutting" conference paper published at CP'11.
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
 For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
-## Data
+## Data Illustration
   test01.json
 
 ## Model

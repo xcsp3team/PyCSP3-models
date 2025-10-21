@@ -1,7 +1,7 @@
 from pycsp3.problems.data.parsing import *
 
-data['roll_wid'] = number_in(line())
-data['max_roll_len'] = number_in(next_line())
+data['roll_width'] = number_in(line())
+data['max_roll_length'] = number_in(next_line())
 nRm = number_in(next_line())
 l = next_line()
 rm_rec_ids = decrement([numbers_in(tok) for tok in l[l.index("{") + 1:l.rindex("}")].split("}, {")])

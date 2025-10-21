@@ -33,6 +33,7 @@ nPlanes, times, costs, separations = data or load_json_data("airland01.json")
 
 earliest, target, latest = zip(*times)
 early_penalties, late_penalties = zip(*costs)
+
 P = range(nPlanes)
 
 # x[i] is the landing time of the ith plane
@@ -69,8 +70,10 @@ if not variant():
 elif variant("table"):
     satisfy(
         # computing earliness and tardiness of planes
-        (x[i], erl[i], trd[i]) in {(v, max(0, target[i] - v), max(0, v - target[i])) for v in x[i].dom}
-        for i in P
+        Table(
+            scope=(x[i], erl[i], trd[i]),
+            supports={(v, max(0, target[i] - v), max(0, v - target[i])) for v in x[i].dom}
+        ) for i in P
     )
 
 minimize(

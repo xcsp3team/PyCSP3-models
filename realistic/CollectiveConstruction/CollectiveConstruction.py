@@ -7,7 +7,7 @@ and then remove the ramps upon completion of the building.
 See CP paper cited below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-The MZN model was proposed by Edward Lam - no licence was explicitly mentioned (MIT Licence is assumed).
+The original MZN model was proposed by Edward Lam - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   037.json
@@ -21,6 +21,7 @@ The MZN model was proposed by Edward Lam - no licence was explicitly mentioned (
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-030-58475-7_43
+  - https://link.springer.com/chapter/10.1007/978-3-030-05816-6_3
   - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
@@ -31,7 +32,7 @@ from pycsp3 import *
 
 nAgents, horizon, width, depth, height, building = data or load_json_data("037.json")
 
-assert width == depth  # for simplicity, the model is built with this assumption
+assert width == depth  # for simplicity, the model is built with this assumption (as all currently available instances verify this)
 n = width
 
 UNUSED, MOVE, BLOCK = actions = 0, 1, 2
@@ -47,11 +48,7 @@ def at_border(i):
 
 def neighbours(i, *, off=False, itself=False):
     assert 0 <= i < n * n
-    row, col = i // n, i % n
-    t = [(row - 1) * n + col] if 0 < row else []
-    t += [(row + 1) * n + col] if row + 1 < n else []
-    t += [row * n + col - 1] if 0 < col else []
-    t += [row * n + col + 1] if col + 1 < n else []
+    t = [rr * n + cc for rr, cc in [(i // n + ro, i % n + co) for ro, co in [(-1, 0), (1, 0), (0, -1), (0, 1)]] if 0 <= rr < n and 0 <= cc < n]
     return sorted(t + ([i] if itself else []) + ([n * n, n * n + 1] if off and at_border(i) else []))
 
 
@@ -79,10 +76,7 @@ dlv = VarArray(size=[horizon, n * n], dom=lambda t, i: {0} if t in {0, horizon -
 
 satisfy(
     # change in height: the height of a cell evolves of at most 1 at each step
-    [
-        abs(hgt[t + 1][i] - hgt[t][i]) <= 1
-        for t, i in P(0, horizon - 2)
-    ],
+    [abs(hgt[t + 1][i] - hgt[t][i]) <= 1 for t, i in P(0, horizon - 2)],
 
     # agents stay at the same position when doing a block operation
     [
@@ -218,6 +212,5 @@ minimize(
 )
 
 """ Comments
-1) Not sure that the model is exactly the same as the Minizinc one. 
-2) Use -dont_use_aux_cache when compiling (otherwise, too long)
+1) Use -dont_use_aux_cache when compiling (otherwise, too long)
 """
