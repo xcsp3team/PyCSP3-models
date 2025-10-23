@@ -4,7 +4,7 @@ The Relational-To-Ontology Mapping Problem is viewed here as a Steiner Tree Prob
 See IJCAI paper below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   3-09.json

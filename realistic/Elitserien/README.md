@@ -10,7 +10,7 @@ In a 14-team league, form 2 divisions which hold a SRRT (Single Round-Robin Tour
   - each division must have 3 pairs of complementary schedules
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014/2016/2018/2023 Minizinc challenges.
-The MZN model was proposed by Jeff Larson and Mats Carlsson, and described in the papers mentioned below.
+The original MZN model was proposed by Jeff Larson and Mats Carlsson, and described in the papers mentioned below.
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
@@ -28,7 +28,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S0377221716309584?via%3Dihub
   - https://link.springer.com/chapter/10.1007/978-3-319-07046-9_11
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, mzn14, mzn16, mzn18, mzn23

@@ -8,8 +8,7 @@ and then remove the ramps upon completion of the building.
 See CP paper cited below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-The MZN model was proposed by Edward Lam.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The original MZN model was proposed by Edward Lam - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   037.json
@@ -25,7 +24,8 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-030-58475-7_43
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://link.springer.com/chapter/10.1007/978-3-030-05816-6_3
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, mzn20

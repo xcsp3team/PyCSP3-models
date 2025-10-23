@@ -1,7 +1,7 @@
 # Problem: Fastfood
 
 ## Data Example
-  02.json
+  ff01.json
 
 ## Model
   constraints: [Minimum](https://pycsp.org/documentation/constraints/Minimum), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)

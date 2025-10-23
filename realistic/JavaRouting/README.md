@@ -2,7 +2,10 @@
 
 The model, below, is rebuilt from instances submitted to the 2013/2021 Minizinc challenges.
 These instances are initially automatically generated from a problem description in Java.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original DZN files, no licence was explicitly mentioned (MIT Licence assumed).
+
+The model, below, is an attempt to rebuild the original model from DZN files.
+Unfortunately, we didn't find any information about the origin of this problem/model.
 
 ## Data Example
   trip6-3.json

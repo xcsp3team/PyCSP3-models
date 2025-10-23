@@ -22,7 +22,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
   realistic, mzn19

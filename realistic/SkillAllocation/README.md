@@ -1,7 +1,7 @@
 # Problem: SkillAllocation
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   2w-1.json
@@ -16,7 +16,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge2012/results2012.html
 
 ## Tags
-  realistic, mzn20
+  realistic, mzn20, mzn25

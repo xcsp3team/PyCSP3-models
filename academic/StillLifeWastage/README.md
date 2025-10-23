@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Links
   - https://en.wikipedia.org/wiki/Still_life_(cellular_automaton)
   - https://link.springer.com/chapter/10.1007/978-3-642-04244-7_22
-  - https://www.minizinc.org/challenge2012/results2012.html
+  - https://www.minizinc.org/challenge/2012/results/
 
 ## Tags
   academic, mzn12

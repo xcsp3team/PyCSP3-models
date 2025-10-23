@@ -11,8 +11,7 @@ It represents the formula as a set of itemsets, and imposes constraints on both 
 It is based on the conference paper mentioned below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2011/2012/2013 Minizinc challenges.
-The MZN model was proposed by the KULeuven team.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by the KULeuven team - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   hepatitis-k2.json
@@ -29,7 +28,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Links
   - http://dx.doi.org/10.1016/j.artint.2011.05.002
   - http://dtai.cs.kuleuven.be/CP4IM/
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.minizinc.org/challenge/2013/results/
 
 ## Tags
   realistic, mzn11, mzn12, mzn13

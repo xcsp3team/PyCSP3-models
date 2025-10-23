@@ -1,8 +1,7 @@
 # Problem: VRP
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
-The MZN model was proposed by Jakob Puchinger.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Jakob Puchinger - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   P-n20-k2.json
@@ -18,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://en.wikipedia.org/wiki/Vehicle_routing_problem
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.minizinc.org/challenge/2013/results/
 
 ## Tags
   realistic, mzn09, mzn11, mzn12, mzn13

@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   academic, mzn14

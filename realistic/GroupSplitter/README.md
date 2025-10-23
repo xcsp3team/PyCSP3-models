@@ -5,8 +5,7 @@ where the activities for subgroups are supposed to  match better members' prefer
 The aim of our model is to find the best activities and group combinations to recommend.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
-The MZN model was proposed by Jacopo Mauro and Tong Liu.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The original MZN model was proposed by Jacopo Mauro and Tong Liu - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   execute 'python GroupSplitter.py -data=<datafile.dzn> -parser=GroupSplitter_ParserZ.py -export' to get a JSON file
@@ -22,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - http://amsdottorato.unibo.it/9068/1/main.pdf
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
-  realistic, mzn17, mzn19
+  realistic, mzn17, mzn19, mzn25

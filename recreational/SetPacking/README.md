@@ -2,7 +2,7 @@
 
 Given A set of subsets S_1,...,S_m of the universal set U={1,...,n}, what is the largest number of mutually disjoint subsets from S?
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model

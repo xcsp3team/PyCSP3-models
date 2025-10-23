@@ -30,5 +30,8 @@ Note that 1 is not prime, and that the queen does not attack its own cell.
   python QueenAttacking.py -data=number -variant=table
 ```
 
+## Links
+  - https://www.csplib.org/Problems/prob029/
+
 ## Tags
   academic, csplib

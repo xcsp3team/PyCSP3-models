@@ -23,10 +23,10 @@ From CSPLib, Problem 077 (and proposed by David Hemmi, Guido Tack and Mark Walla
     Machines and durations are given for optional operations."
 
 The model, below, is close to (can be seen as the close translation of) the one present at CSPLib.
-The MZN model was proposed by Andreas Schutt (Copyright 2013 National ICT Australia).
+The original MZN model was proposed by Andreas Schutt (Copyright 2013 National ICT Australia).
 
 ## Data Example
-  easy01.json
+  see data files from the 2025 competition
 
 ## Model
   constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Sum](https://pycsp.org/documentation/constraints/Sum)

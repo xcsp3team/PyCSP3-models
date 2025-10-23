@@ -24,7 +24,7 @@ in which every possible length-n string on A occurs exactly once as a substring.
   - https://en.wikipedia.org/wiki/De_Bruijn_sequence
   - https://mathworld.wolfram.com/deBruijnSequence.html
   - http://www.hakank.org/common_cp_models/#debruijn
-  - https://www.minizinc.org/challenge2008/results2008.html
+  - https://www.minizinc.org/challenge/2008/results/
 
 ## Tags
   academic, mzn08

@@ -2,7 +2,7 @@
 
 Problem 081 on CSPLib
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model
@@ -25,4 +25,4 @@ Problem 081 on CSPLib
 
 #### Blackhole_z.py
  - constraints: [Channel](https://pycsp.org/documentation/constraints/Channel), [Table](https://pycsp.org/documentation/constraints/Table)
- - tags: recreational, csplib, mzn09, mzn11, mzn13
+ - tags: recreational, csplib, mzn09, mzn11, mzn13, mzn25

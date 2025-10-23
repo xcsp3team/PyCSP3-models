@@ -8,7 +8,7 @@ Tasks cannot be interrupted.
 The goal is to schedule each job to minimise the finishing time (makespan).
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014 Minizinc challenge.
-The MZN model was proposed by Diarmuid Grimes (adapted from Ralph Becket model).
+The original MZN model was proposed by Diarmuid Grimes (adapted from Ralph Becket model).
 Instances were taken from benchmarks proposed by Taillard, Gueret and Prin, and Brucker et al.; see links below.
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
@@ -29,7 +29,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://www.sciencedirect.com/science/article/abs/pii/037722179390182M
   - https://link.springer.com/article/10.1023/A:1018930613891
   - https://www.sciencedirect.com/science/article/pii/S0166218X96001163
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   realistic, mzn14

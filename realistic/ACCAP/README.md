@@ -13,7 +13,6 @@ Simultaneously, the goal is to cluster flights from the same airline together
 in the same check-in area, achieving this by minimizing the sum of the total distances (d)
 between the counters of each pair of flights from the same airline.
 
-
 ## Data Example
   03.json
 
@@ -29,7 +28,6 @@ between the counters of each pair of flights from the same airline.
 
 ## Links
   - https://www.researchgate.net/publication/281979436_Optimizing_the_Airport_Check-In_Counter_Allocation_Problem
-  - https://www.minizinc.org/challenge2022/results2022.html
 
 ## Tags
   realistic

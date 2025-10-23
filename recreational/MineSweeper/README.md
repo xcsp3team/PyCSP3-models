@@ -15,7 +15,7 @@ A logic puzzle video game.
 ```
 
 ## Links
- - https://en.wikipedia.org/wiki/Minesweeper_(video_game)
+  - https://en.wikipedia.org/wiki/Minesweeper_(video_game)
 
 ## Tags
   recreational

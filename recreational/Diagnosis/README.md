@@ -6,7 +6,7 @@ Model-based diagnosis can be seen as taking as input a partially parameterized s
 Its output is a set of assumptions which, together with the structural description, logically imply the observations,
 or that are consistent with the observations.
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model

@@ -14,6 +14,7 @@ See CP paper below.
 ## Execution
 ```
   python SREFLP.py -data=<datafile.json>
+  python SREFLP.py -data=<datafile.json> -variant=mini
   python SREFLP.py -data=<datafile.txt> -parser=SREFLP_Parser.py
 ```
 

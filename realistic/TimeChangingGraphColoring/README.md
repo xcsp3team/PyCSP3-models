@@ -6,7 +6,7 @@ The problem is to minimize the number of steps for converting an initial colorin
 by applying at most "k" changes of colors at each step, while always maintaining a valid coloring.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the orihinal MZn model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   k05-05.json
@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2017/results2017.html
+  - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
   realistic, mzn17

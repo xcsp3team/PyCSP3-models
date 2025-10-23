@@ -8,7 +8,7 @@ The goal is to minimize the average delay time of the vessels over a long planni
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2013/2017/2018 Minizinc challenges.
 See links below to papers related to this problem.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   22.json
@@ -26,7 +26,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
   - https://optimization-online.org/wp-content/uploads/2013/02/3755.pdf
   - https://www.sciencedirect.com/science/article/pii/S2192437620301217
   - https://link.springer.com/chapter/10.1007/978-3-319-07046-9_12
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge/2018/results/
   - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags

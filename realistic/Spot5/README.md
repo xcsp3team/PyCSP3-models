@@ -10,8 +10,7 @@ The  management problems  to  be solved  can  be roughly  described as follows:
   - find an admissible subset S' of S (imperative  constraints set) which maximizes the sum of the weights of the photographs in S'.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014/2015/2022 Minizinc challenges.
-The MZN model was proposed by Simon de Givry.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Simon de Givry - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   not shown because large data files
@@ -27,7 +26,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://link.springer.com/article/10.1023/A:1026488509554
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   realistic, mzn14, mzn15, mzn22

@@ -4,7 +4,7 @@ On a board, put the maximal number of black and white queens while having no att
 The number of black queens must be equal to the number of white queens.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2021 Minizinc challenge.
-The model was created by Hendrik 'Henk' Bierlee, with a licence that seems to be like a MIT Licence.
+The original MZN model was created by Hendrik 'Henk' Bierlee, with a licence that seems to be like a MIT Licence.
 
 ## Data
   An integer n
@@ -20,7 +20,7 @@ The model was created by Hendrik 'Henk' Bierlee, with a licence that seems to be
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-540-24664-0_19
   - https://oeis.org/A250000
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   academic, mzn21, mzn24

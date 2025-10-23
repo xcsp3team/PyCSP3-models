@@ -1,6 +1,6 @@
 # Problem: SchedulingOS
 
-Open-shop Scheduling Problem.
+Open-shop Scheduling
 
 ## Data Example
   GP-os-01.json

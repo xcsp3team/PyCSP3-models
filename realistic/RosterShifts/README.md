@@ -1,7 +1,7 @@
 # Problem: RosterShifts
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   small.json
@@ -15,7 +15,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, mzn23

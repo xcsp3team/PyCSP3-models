@@ -15,7 +15,8 @@ The original model was written by Kelvin Davis (MIT Licence).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://mssanz.org.au/modsim2023/files/davis.pdf
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, mzn23

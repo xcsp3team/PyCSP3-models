@@ -22,7 +22,7 @@ The Licence seems to be like a MIT Licence.
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2010/results2010.html
+  - https://www.minizinc.org/challenge/2010/results/
 
 ## Tags
   realistic, mzn10

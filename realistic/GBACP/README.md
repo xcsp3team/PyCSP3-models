@@ -24,7 +24,7 @@ See CSPLib.
   - https://opthub.uniud.it/problem/timetabling/gbac
   - https://link.springer.com/chapter/10.1007/978-3-540-88439-2_11
   - https://www.csplib.org/Problems/prob064/
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2020/results/
   - https://www.cril.univ-artois.fr/XCSP23/competitions/cop/cop
 
 ## Tags

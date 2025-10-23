@@ -21,7 +21,7 @@ The MZN model was proposed by Andreas Schutt (Copyright 2013 National ICT Austra
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.minizinc.org/challenge/2013/results/
 
 ## Tags
   realistic, mzn13

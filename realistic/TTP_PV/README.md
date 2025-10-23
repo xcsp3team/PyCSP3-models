@@ -8,7 +8,7 @@ The sum of the traveling distance of each team has to be minimized.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014/2019 Minizinc challenges.
 The venue of each game has already been decided.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   circ08bbal.json
@@ -25,7 +25,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Links
   - https://www.csplib.org/Problems/prob068/models/
   - https://link.springer.com/article/10.1007/s10951-008-0097-1
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   realistic, csplib, mzn14, mzn17, mzn22

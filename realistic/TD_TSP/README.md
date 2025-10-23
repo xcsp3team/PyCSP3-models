@@ -1,7 +1,7 @@
 # Problem: TD_TSP
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015/2017 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   10-24-10.json
@@ -16,7 +16,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2017/results2017.html
+  - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
   realistic, mzn15, mzn17

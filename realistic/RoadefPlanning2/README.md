@@ -1,6 +1,6 @@
 # Problem: RoadefPlanning2
 
-The ROADEF1 conference is the largest French-speaking event aimed at bringing together researchers from various domains, including combinatorial optimization,
+The ROADEF conference is the largest French-speaking event aimed at bringing together researchers from various domains, including combinatorial optimization,
  operational research, constraint programming and industrial engineering.
 This event is organized annually and welcomes around 600 participants.
 ROADEF includes plenary sessions, tutorials in semi-plenary sessions, and multiple parallel sessions.
@@ -8,12 +8,11 @@ The conference also involves many working groups consisting of researchers colla
  on specific themes covered by the conference, with each parallel session usually being organized by one or more of these working group.
 The problem si to schedule ROADEF parallel sessions into available time slots while avoiding clashes among research working groups.
 
-
 ## Data Example
   2021.json
 
 ## Model
-  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Lex](https://pycsp.org/documentation/constraints/Lex), [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 
 ## Execution
 ```

@@ -26,7 +26,7 @@ The original MZN model was proposed by Mikael Zayenz Lagerkvist, with a MIT Lice
 
 ## Links
   - https://en.wikipedia.org/wiki/Dobble
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   academic, mzn21

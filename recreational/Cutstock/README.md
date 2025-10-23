@@ -1,8 +1,8 @@
 # Problem: Cutstock
 
-Related papers:
- - Mathematical methods of organizing and planning production, L. V. Kantorovich, Management Science, 6(4):366–422, 1960
- - From High-Level Model to Branch-and-Price Solution in G12, J. Puchinger, P. Stuckey, M. Wallace, and S. Brand, CPAIOR 2008: 218-232
+In the cutting stock problem, we are given items with associated lengths and demands.
+We are further given stock pieces of equal length and an upper bound on the number of required stock pieces for satisfying the demand.
+The objective is to minimize the number of used pieces.
 
 ## Data Example
   small.json
@@ -17,6 +17,8 @@ Related papers:
 ```
 
 ## Links
+  - https://pubsonline.informs.org/doi/10.1287/mnsc.6.4.366
+  - https://link.springer.com/chapter/10.1007/978-3-540-68155-7_18
   - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags

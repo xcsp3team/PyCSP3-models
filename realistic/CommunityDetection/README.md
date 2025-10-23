@@ -7,7 +7,7 @@ to same or different communities.
 See CP paper cited below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2021 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   n050-e2500-s10-d5-c4-p90.json
@@ -22,7 +22,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-66158-2_31
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   realistic, notebook, mzn21

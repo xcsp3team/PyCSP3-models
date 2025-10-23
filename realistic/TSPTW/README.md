@@ -11,7 +11,7 @@ The departure time at the last-visited location is to be minimised.
 This model is a simplified (but equivalent) version of TSPTW_z (submitted to the 2025 Minizinc challenge).
 
 ## Data Example
-  n020w140-005.jso
+  n020w140-005.json
 
 ## Model
   constraints: [Circuit](https://pycsp.org/documentation/constraints/Circuit), [Element](https://pycsp.org/documentation/constraints/Element)

@@ -3,7 +3,7 @@
 Weighted multi-set cover.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2021 Minizinc challenge.
-The MZN model was proposed by Mikael Zayenz Lagerkvist.
+The original MZN model was proposed by Mikael Zayenz Lagerkvist.
 The model and the instances are extracted from an industrial use-case.
 MIT License.
 
@@ -20,7 +20,7 @@ MIT License.
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   realistic, mzn21

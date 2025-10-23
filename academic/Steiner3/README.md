@@ -20,5 +20,8 @@ elements in {1...n} such that any two triples have at most one common element.
   python Steiner3.py -data=number
 ```
 
+## Links
+  - https://www.csplib.org/Problems/prob044/
+
 ## Tags
   academic, csplib

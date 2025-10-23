@@ -22,7 +22,7 @@ The MZN model was proposed by Hendrik 'Henk' Bierlee, under the MIT Licence.
 ## Links
   - https://oeis.org/A250000
   - https://link.springer.com/chapter/10.1007/978-3-540-24664-0_19
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   academic, mzn22

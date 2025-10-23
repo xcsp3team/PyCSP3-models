@@ -11,7 +11,7 @@ From a more general point of view, the problem is to find a path in a graph:
  - The sum of weights associated to arcs in the path is restricted (fuel consumption)
  - The sum of weights associated to nodes in the path has to be maximized (gold coins)
 
-This problem was proposed by maury Ollagnier and Jean-Guillaume Fages.
+This problem was proposed by Maury Ollagnier and Jean-Guillaume Fages.
 
 ## Data Example
   easy-2.json

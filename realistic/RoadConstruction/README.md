@@ -3,8 +3,7 @@
 Road construction problem.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014 Minizinc challenge.
-The MZN model was proposed by Rehan Abdul Aziz.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Rehan Abdul Aziz - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   09.json
@@ -19,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
   realistic, mzn14, mzn17

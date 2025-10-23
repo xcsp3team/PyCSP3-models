@@ -3,7 +3,7 @@
 Place knights, rooks, queens, bishops on an n*n chessboard so that none takes each other.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2023 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   03.json
@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   recreational, mzn23

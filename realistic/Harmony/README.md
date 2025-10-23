@@ -1,7 +1,7 @@
 # Problem: Harmony
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2024 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   brother.json
@@ -17,7 +17,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://www.ijcai.org/proceedings/2024/858
-  - https://www.minizinc.org/challenge2024/results2024.html
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   realistic, mzn24

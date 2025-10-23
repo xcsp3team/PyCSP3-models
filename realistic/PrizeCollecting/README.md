@@ -17,7 +17,7 @@ See also the model in Minizinc
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2016/results2016.html
+  - https://www.minizinc.org/challenge/2016/results/
 
 ## Tags
   realistic

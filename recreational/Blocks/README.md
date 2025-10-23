@@ -21,7 +21,7 @@ The MZN model was proposed by Mats Carlsson, under the MIT Licence.
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   recreational, mzn22

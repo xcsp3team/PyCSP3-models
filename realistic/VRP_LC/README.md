@@ -8,7 +8,7 @@ The MZN model was proposed by Edward Lam, and described in the 2016 paper of Con
 No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
-  09-5-10-s1.json
+  09-05-10-s1.json
 
 ## Model
   constraints: [Circuit](https://pycsp.org/documentation/constraints/Circuit), [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Element](https://pycsp.org/documentation/constraints/Element), [Sum](https://pycsp.org/documentation/constraints/Sum)
@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - https://link.springer.com/article/10.1007/s10601-016-9241-2
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge/2023/results/
   - https://www.cril.univ-artois.fr/XCSP24/competitions/cop/cop
 
 ## Tags

@@ -19,7 +19,7 @@ The MZN model was proposed by Mikael Zayenz Lagerkvist (Licence at https://githu
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   academic, mzn09, mzn15, mzn20, mzn21

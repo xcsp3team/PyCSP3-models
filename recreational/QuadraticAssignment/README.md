@@ -2,7 +2,7 @@
 
 The Quadratic Assignment Problem (QAP) has remained one of the great challenges in combinatorial optimization (from QAPLIB).
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model

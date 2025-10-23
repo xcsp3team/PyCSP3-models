@@ -2,8 +2,8 @@
 
 Discrete Lot Sizing problem.
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
-The MZN model was proposed by Andrea Rendl-Pitrey (Satalia).
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019/2020 Minizinc challenge.
+The original MZN model was proposed by Andrea Rendl-Pitrey (Satalia).
 MIT Licence.
 
 ## Data Example
@@ -20,7 +20,7 @@ MIT Licence.
 
 ## Links
   - https://www.csplib.org/Problems/prob058/
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, csplib, mzn19, mzn20

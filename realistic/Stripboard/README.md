@@ -5,7 +5,7 @@ Layout for electrical components on stripboard.
 Taking component footprints, pin locations and pinlist as input and trying to produce the most compact layout.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019/2022 Minizinc challenges.
-MIT Licence (Copyright 2022 Monash University, model by Jason Nguyen, for the original mzn model)
+MIT Licence (Copyright 2022 Monash University, model by Jason Nguyen, for the original MZN model)
 
 ## Data Example
   common-emitter-simple.json
@@ -21,8 +21,7 @@ MIT Licence (Copyright 2022 Monash University, model by Jason Nguyen, for the or
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
-  - https://www.minizinc.org/challenge2025/results2025.html
+  - https://www.minizinc.org/challenge/2025/results/
 
 ## Tags
   realistic, mzn22, mzn25

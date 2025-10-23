@@ -4,7 +4,7 @@ The Hospitals/Residents problem with Couples (HRC) models the allocation of inte
 where couples are allowed to submit joint preference lists over pairs of (typically geographically close) hospitals.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017/2019 Minizinc challenges.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   exp1-1-5460.json

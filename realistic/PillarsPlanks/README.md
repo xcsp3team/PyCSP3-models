@@ -16,7 +16,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, mzn20

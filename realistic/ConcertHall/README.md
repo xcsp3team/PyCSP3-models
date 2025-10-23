@@ -23,7 +23,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Links
   - https://link.springer.com/article/10.1007/s10601-006-7095-8
   - https://link.springer.com/chapter/10.1007/978-3-319-98334-9_10
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge/2024/results/
 
 ## Tags
   realistic, mzn18, mzn24

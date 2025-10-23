@@ -15,6 +15,7 @@ An ideal loading plan should maximize the total volume of unused tanks (i.e. fre
 ## Execution
 ```
   python TankAllocation1.py -data=<datafile.json>
+  python TankAllocation1.py -data=<datafile.json> -variant=bp
   python TankAllocation1.py -data=<datafile.json> -parser=TankAllocation_Converter.py
   python TankAllocation1.py -data=<datafile.txt> -parser=TankAllocation_Parser.py
 ```
@@ -31,8 +32,10 @@ An ideal loading plan should maximize the total volume of unused tanks (i.e. fre
 
 from pycsp3 import *
 
-volumes, conflicts, tanks = data
-T = conflicts + [(v, u) for u, v in conflicts]
+assert not variant() or variant("bp")
+
+volumes, conflicts, tanks = data or load_json_data("chemical.json")
+
 capacities, impossible_cargos, neighbours = zip(*tanks)
 nCargos, nTanks = len(volumes), len(tanks)
 
@@ -41,7 +44,8 @@ MAX = sum(capacities) + 1
 
 sorted_capacities = sorted(capacities)
 ranges = [range(number_of_values_for_sum_ge(sorted_capacities, volume, True), number_of_values_for_sum_ge(sorted_capacities, volume) + 1) for volume in volumes]
-# print(ranges)
+
+T = conflicts + [(v, u) for u, v in conflicts]
 
 # x[i] is the cargo (type) of the ith tank (DUMMY_CARGO, if empty)
 x = VarArray(size=nTanks, dom=range(nCargos + 1))
@@ -52,12 +56,6 @@ satisfy(
 
     # ensuring no adjacent tanks containing incompatible cargo
     [(x[i], x[j]) not in T for i in range(nTanks) for j in neighbours[i]]
-
-    # # tag(redundant)
-    # Cardinality(
-    #     within=x,
-    #     occurrences={j: ranges[j] for j in range(nCargos)} | {nCargos: range(nTanks - sum(r.start for r in ranges) + 1)}
-    # )
 )
 
 if not variant():
@@ -77,7 +75,11 @@ elif variant("bp"):
     ld = VarArray(size=nCargos + 1, dom=lambda j: range(MAX) if j == DUMMY_CARGO else range(volumes[j], volumes[j] + max(capacities) + 1))
 
     satisfy(
-        BinPacking(x, sizes=capacities, loads=ld)
+        BinPacking(
+            partition=x,
+            sizes=capacities,
+            loads=ld
+        )
     )
 
     maximize(

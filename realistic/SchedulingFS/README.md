@@ -1,5 +1,6 @@
 # Problem: SchedulingFS
 
+Flow-shop Scheduling
 
 ## Data Example
   04-04-0.json

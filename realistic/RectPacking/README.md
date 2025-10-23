@@ -1,6 +1,6 @@
 # Problem: RectPacking
 
-The rectangle (square) packing problem consists of squares (bowes)
+The rectangle (square) packing problem consists of squares (boxes)
 to be put in an enclosing rectangle (container) without overlapping of the squares.
 
 

@@ -5,8 +5,7 @@ The objective is to find an optimal schedule so that tasks start as close as pos
 penalizing earliness or tardiness according to the given weight for earliness and tardiness per task.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
-The MZN model was proposed by the University of Melbourne and NICTA.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The original MZN model was proposed by the University of Melbourne and NICTA - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   j30-27-5-3.json
@@ -21,7 +20,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
   realistic, mzn19

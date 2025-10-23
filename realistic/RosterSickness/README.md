@@ -1,7 +1,7 @@
 # Problem: RosterSickness
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2022 Minizinc challenge.
-The MZN model was proposed by Ties Westendorp, under the MIT Licence.
+The original MZN model was proposed by Ties Westendorp, under the MIT Licence.
 
 ## Data Example
   small-4.json
@@ -16,7 +16,7 @@ The MZN model was proposed by Ties Westendorp, under the MIT Licence.
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   realistic, mzn22

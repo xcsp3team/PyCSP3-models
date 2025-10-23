@@ -2,7 +2,7 @@
 
 This model finds a shortest program to compute a linear combination of variables.
 The difficulty is that the program can only use the binary plus and the unary minus.
-To symbolic program is linked to a set of examples against which it must conform.
+The symbolic program is linked to a set of examples against which it must conform.
 This is one part of a counter-example guided loop, where examples are added when a counter example is found for the generated programs.
 The counter-example generation is the other part and not included in this problem, which only does the program generation.
 As an example, if the linear combination is -2 * p0 + -1 * p1 + 2 * p2, then a shortest program (among others) might be:
@@ -14,7 +14,7 @@ As an example, if the linear combination is -2 * p0 + -1 * p1 + 2 * p2, then a s
   - return x7
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2013 Minizinc challenge.
-The MZN model was proposed by Jean-Noel Monette, Uppsala University.
+The original MZN model was proposed by Jean-Noel Monette, Uppsala University.
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
@@ -30,7 +30,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2013/results2013.html
+  - https://www.minizinc.org/challenge/2013/results/
 
 ## Tags
   realistic, mzn13

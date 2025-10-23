@@ -8,7 +8,7 @@ which depends on the travel time taking into account that the travel speed decre
 Note that there are no items in first city and there are always the same number of items in each other city.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2023 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZn model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   n10-k03-c5000-l10000-u10100-r46.json
@@ -24,7 +24,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Links
   - https://sites.google.com/view/ttp-gecco2023/home
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, mzn23

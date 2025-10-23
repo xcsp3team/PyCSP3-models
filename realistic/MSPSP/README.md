@@ -9,7 +9,7 @@ A set of activities must be executed so that the project duration is minimised w
   - workers availability, i.e., a worker can perform only one activity in each time period.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2012 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   easy-01.json
@@ -24,7 +24,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2012/results2012.html
+  - https://www.minizinc.org/challenge/2012/results/
 
 ## Tags
   realistic, mzn12

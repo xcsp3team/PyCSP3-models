@@ -12,7 +12,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2009/results2009.html
+  - https://www.minizinc.org/challenge/2009/results/
 
 ## Tags
   academic, mzn09

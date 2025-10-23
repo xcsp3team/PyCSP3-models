@@ -11,6 +11,9 @@ For some tests, additional, possibly more than one, global resources are needed.
 While those resources are used for a test, no other test can use the resource.
 The objective is to finish the set of all tests as quickly as possible."
 
+## Data Example
+  t020m10r03-1.json
+
 ## Model
   constraints: [Cumulative](https://pycsp.org/documentation/constraints/Cumulative), [Maximum](https://pycsp.org/documentation/constraints/Maximum), [NoOverlap](https://pycsp.org/documentation/constraints/NoOverlap)
 

@@ -21,7 +21,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Links
   - https://www.sciencedirect.com/science/article/abs/pii/S1383762103000754
   - https://github.com/radsz/jacop/tree/develop/src/main/java/org/jacop/examples/fd/filters
-  - https://www.minizinc.org/challenge2016/results2016.html
+  - https://www.minizinc.org/challenge/2016/results/
 
 ## Tags
   realistic, mzn10, mzn12, mzn13, mzn16

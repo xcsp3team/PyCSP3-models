@@ -20,7 +20,7 @@ The licence seems to be like a MIT Licence.
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-030-78230-6_29
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
   realistic, mzn21

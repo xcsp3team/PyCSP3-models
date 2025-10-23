@@ -10,7 +10,7 @@ A Scheduling problem, such that:
    b) minimizing groups (minimizing use of facilities)
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   n025f5d20m10k3.json
@@ -25,7 +25,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2015/results2015.html
+  - https://www.minizinc.org/challenge/2015/results/
 
 ## Tags
   realistic, mzn15

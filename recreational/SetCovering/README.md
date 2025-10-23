@@ -3,7 +3,7 @@
 Given a set of subsets S_1,...,S_m$of the universal set U={1,...,n},
 find the smallest subset of subsets T of S such that their union is U.
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model

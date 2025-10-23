@@ -33,5 +33,8 @@ so that the white queens do not attack the black queens (and necessarily vice ve
   python PeacableArmies.py -data=number -variant=m2
 ```
 
+## Links
+  - https://www.csplib.org/Problems/prob110/
+
 ## Tags
   academic, csplib

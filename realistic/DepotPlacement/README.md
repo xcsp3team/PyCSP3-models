@@ -18,7 +18,7 @@ The model, below, is close to (can be seen as the close translation of) the one 
 No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
-  ratt-99-5.json
+  rat-99-5.json
 
 ## Model
   constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Count](https://pycsp.org/documentation/constraints/Count), [Element](https://pycsp.org/documentation/constraints/Element), [Maximum](https://pycsp.org/documentation/constraints/Maximum)
@@ -30,7 +30,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2016/results2016.html
+  - https://www.minizinc.org/challenge/2016/results/
 
 ## Tags
   realistic, mzn10, mzn11, mzn16

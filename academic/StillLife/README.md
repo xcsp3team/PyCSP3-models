@@ -18,7 +18,9 @@ The configuration of live and dead cells at time t leads to a new configuration 
   A pair (n,m), where n is the number of rows and m the number of columns.
 
 ## Model
-  There are two variants, a classical one and a "wastage" one.
+  There are two variants:
+    - a classical one
+    - a "wastage" one.
 
   constraints: [Sum](https://pycsp.org/documentation/constraints/Sum), [Table](https://pycsp.org/documentation/constraints/Table)
 

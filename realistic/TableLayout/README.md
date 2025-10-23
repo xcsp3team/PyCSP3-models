@@ -5,7 +5,7 @@ When the table contains text, minimizing the height of the table for a fixed max
 See links to papers below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2011 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   1000-1615-479.json
@@ -22,7 +22,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ## Links
   - https://dl.acm.org/doi/abs/10.1145/2034691.2034697
   - https://pubsonline.informs.org/doi/10.1287/ijoc.2014.0637
-  - https://www.minizinc.org/challenge2011/results2011.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, mzn11, mzn23

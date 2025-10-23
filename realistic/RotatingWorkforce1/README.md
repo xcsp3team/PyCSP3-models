@@ -7,14 +7,13 @@ All workers complete the same schedule, just starting at different days.
 See CPAIOR paper cited below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2018/2019 Minizinc challenges.
-The MZN model was proposed by Andreas Schutt.
-No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
+The original MZN model was proposed by Andreas Schutt - no licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Data Example
   0103.json
 
 ## Model
-  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Regular](https://pycsp.org/documentation/constraints/Regular)
+  constraints: [Cardinality](https://pycsp.org/documentation/constraints/Cardinality), [Regular](https://pycsp.org/documentation/constraints/Regular), [Sum](https://pycsp.org/documentation/constraints/Sum)
 
 ## Execution
 ```
@@ -24,7 +23,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Links
   - https://link.springer.com/chapter/10.1007/978-3-319-93031-2_31
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2019/results/
 
 ## Tags
   realistic, mzn18, mzn19

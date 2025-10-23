@@ -4,7 +4,7 @@ Block modeling has a long history in the analysis of social networks.
 The core problem is to take a graph and divide it into k clusters and interactions between those clusters described by a k × k image matrix.
 See CP'19 paper whose URL is given below.
 
-## Data
+## Data Illustration
   kansas.json
 
 ## Model

@@ -5,8 +5,7 @@ and in which order to visit the purchase locations, in order to minimize the tot
 Travel costs are asymmetric, and cities are laid out on a grid with travel only allowed between horizontally and vertically adjacent cities.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2012/2016 Minizinc challenges.
-The MZN model was proposed by Kathryn Francis.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Kathryn Francis - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   3-3-30-1.json
@@ -21,7 +20,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2016/results2016.html
+  - https://www.minizinc.org/challenge/2016/results/
 
 ## Tags
   realistic, mzn12, mzn16

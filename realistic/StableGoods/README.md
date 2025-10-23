@@ -1,7 +1,7 @@
 # Problem: StableGoods
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The model (main variant), below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   s-d06.json
@@ -16,7 +16,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, mzn20

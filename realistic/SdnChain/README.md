@@ -8,10 +8,9 @@ that composes the service.
 See paper link below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-It seems that the original MZN model was proposed by Liu, Tong, et al.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+It seems that the original MZN model was proposed by Liu, Tong, et al. - No licence was explicitly mentioned (MIT Licence is assumed).
 
-NB: We obtain the same bounds for all instances except for the instance d30 where we get 22 (with ACE and Choco) instead of 23.
+NB: We obtain the same bounds (wrt the MZN model) for all instances except for the instance d30 where we get 22 (with ACE and Choco) instead of 23.
 After double checking, we didn't find what is the difference between the two models
 TODO : problem with an instance (bound)
 
@@ -29,7 +28,7 @@ TODO : problem with an instance (bound)
 
 ## Links
   - https://inria.hal.science/hal-02395208
-  - https://www.minizinc.org/challenge2020/results2020.html
+  - https://www.minizinc.org/challenge/2020/results/
 
 ## Tags
   realistic, mzn20

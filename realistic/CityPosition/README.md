@@ -1,7 +1,9 @@
 # Problem: CityPosition
 
+The problem si to determine city positions using road distances (like MDS plotting but allows missing values).
+
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017 challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
+For the original MZN model, no Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   5-05.json
@@ -16,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2017/results2017.html
+  - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
   realistic, mzn17

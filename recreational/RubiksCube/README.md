@@ -5,7 +5,7 @@ The problem associated with the 1D Rubik’s Cube can be defined in general term
 given a scrambled vector V of size n, the objective is to return the shortest sequence of rotations (of length g) so as to restore the original ordered vector.
 
 ## Data
-  An integer (or four integers)
+  Four integers (or one integer for some predefined instances)
 
 ## Model
   constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent)

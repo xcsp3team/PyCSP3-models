@@ -7,7 +7,7 @@ and there is an intersection on the items they bid for, then we can accept bid A
 However, if A and B are bids on disjoint sets of items then these two bids are compatible with each other, and we might accept both.
 The problem then is to accept compatible bids such that we maximise the sum of the values of those bids (i.e. make most money).
 
-## Data
+## Data Illustration
   example.json
 
 ## Model

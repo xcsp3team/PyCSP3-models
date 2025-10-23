@@ -8,8 +8,7 @@ restrictions on the draft of ships that may safely enter the port.
 Draft is the distance between the waterline and the ship’s keel, and is a function of the amount of cargo loaded onto the ship."
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2011/2012/2014 Minizinc challenges.
-The MZN model was proposed by Elena Kelareva.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Elena Kelareva - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   3-Ships.json
@@ -25,7 +24,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://ojs.aaai.org/index.php/ICAPS/article/view/13494
-  - https://www.minizinc.org/challenge2012/results2012.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   realistic, mzn11, mzn12, mzn14

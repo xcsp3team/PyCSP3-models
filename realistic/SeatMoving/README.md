@@ -3,8 +3,7 @@
 The problem is to move a person from a start position to a goal position.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-The MZN model was proposed by Toshimitsu Fujiwara.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+The original MZN model was proposed by Toshimitsu Fujiwara - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   sm-10-12-00.json
@@ -19,7 +18,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2021/results2021.html
+  - www.minizinc.org/challenge/2021/results/
 
 ## Tags
   realistic, mzn18, mzn21

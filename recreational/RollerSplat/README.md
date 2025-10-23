@@ -11,6 +11,7 @@ It was created by Yello Games LTD.
 
 ## Execution
 ```
+  python RollerSplat.py -data=datafile.json
   python RollerSplat.py -data=[datafile.json,h=number]
 ```
 

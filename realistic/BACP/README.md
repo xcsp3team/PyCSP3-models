@@ -1,11 +1,11 @@
 # Problem: BACP
 
-Problem 30 of the CSPLib.
+Problem 30 in CSPLib.
 
 BACP is to design a balanced academic curriculum by assigning periods to courses in a way that the academic load of each period is balanced,
 i.e., as similar as possible.
 
-## Data Example
+## Data Illustration
   10.json
 
 ## Model
@@ -26,6 +26,8 @@ i.e., as similar as possible.
 
 ## Links
  - https://www.csplib.org/Problems/prob030/
+ - https://www.researchgate.net/publication/2521521_Modelling_a_Balanced_Academic_Curriculum_Problem
+ - https://webperso.info.ucl.ac.be/~pdupont/pdupont/pdf/BACP_symcon_07.pdf
 
 ## Tags
   realistic, notebook, csplib

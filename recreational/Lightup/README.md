@@ -1,8 +1,8 @@
 # Problem: Lightup
 
-It is a logic puzzle.
+A logic puzzle.
 
-## Data Example
+## Data Illustration
   example.json
 
 ## Model

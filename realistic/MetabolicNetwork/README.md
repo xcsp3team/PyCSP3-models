@@ -1,7 +1,7 @@
 # Problem: MetabolicNetwork
 
 The model, below, is close to (can be seen as the close translation of) the one (called network_50) submitted to the 2024 Minizinc challenges.
-Original model with MIT Licence (Copyright 2024 Maxime Mahout, François Fages).
+The original MZN model is accompanied with a MIT Licence (Copyright 2024 Maxime Mahout, François Fages).
 
 ## Data Example
   09.json
@@ -17,8 +17,7 @@ Original model with MIT Licence (Copyright 2024 Maxime Mahout, François Fages).
 ```
 
 ## Links
-  - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
-  - https://www.minizinc.org/challenge2014/results2024.html
+  - https://www.minizinc.org/challenge/2024/results/
   - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags

@@ -7,7 +7,7 @@ The purpose of the game is to fill a grid of size n × n with all values ranging
   from the previous number (there must be a one square gap between the numbers).
 
 ## Data
-  A unique integer n
+  n, an integer denoting the order of the instance
 
 ## Model
   constraints: [AllDifferent](https://pycsp.org/documentation/constraints/AllDifferent), [Count](https://pycsp.org/documentation/constraints/Count), [Table](https://pycsp.org/documentation/constraints/Table)

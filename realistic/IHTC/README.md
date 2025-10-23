@@ -6,8 +6,7 @@ The Integrated Healthcare Timetabling Problem (IHTP), brings together three NP-h
   - (iii) the nurse for each room during each shift of the scheduling period, and (iv) the operating theater (OT) for each admitted patient.
 See ihtc2024.github.io
 
-Important; the model proposed below is an abridged version wrt the full problem.
-
+Important; the model proposed below (by C. Lecoutre) is an abridged version wrt the full problem.
 
 ## Data Example
   i01.json

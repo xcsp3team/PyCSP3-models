@@ -1,7 +1,10 @@
 # Problem: GraphScan
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2023 Minizinc challenge.
-The original model seems to have been written by Peter Schneider-Kamp (MIT Licence assumed).
+Problem of global coverage-path planning for linear-infrastructure inspection using multiple autonomous UAVs (Autonomous unmanned aerial vehicles, or drones).
+The problem is mathematically formulated as a variant of the Min–Max K-Chinese Postman Problem (MM K-CPP) with multi-weight edges.
+
+The model, below, is close to (can be seen as the close translation of) the one submitted to the 2023 Minizinc challenge (directory multi-agent-graph-coverage).
+The original MZN model seems to have been written by Peter Schneider-Kamp (MIT Licence assumed).
 
 ## Data
   n10-p1500-c15.json
@@ -15,7 +18,8 @@ The original model seems to have been written by Peter Schneider-Kamp (MIT Licen
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://findresearcher.sdu.dk/ws/portalfiles/portal/241768335/drones_07_00563.pdf
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, mzn23

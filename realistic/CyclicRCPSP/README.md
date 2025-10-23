@@ -19,7 +19,7 @@ The original model has: Copyright (C) 2011 The University of Melbourne and NICTA
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2014/results2014.html
+  - https://www.minizinc.org/challenge/2014/results/
 
 ## Tags
   realistic, mzn11, mzn14

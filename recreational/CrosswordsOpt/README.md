@@ -1,7 +1,7 @@
 # Problem: CrosswordsOpt
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2017 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   execute 'python CrosswordsOpt.py -data=<datafile.dzn> -parser=CrosswordsOpt_ParserZ.py -export' to get JSON files
@@ -16,7 +16,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2017/results2017.html
+  - https://www.minizinc.org/challenge/2017/results/
 
 ## Tags
   recreational, mzn17

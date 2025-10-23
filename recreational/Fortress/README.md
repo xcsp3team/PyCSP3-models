@@ -6,7 +6,7 @@ From LPCP contest 2022 (problem 1):
      All point-of-interests must be inside the perimeter of the walls, the number of walls must be minimized,
      and as a second optimization criteria we prefer to minimize the amount of cells inside the perimeter of the walls.
 
-Important: Important: the model, below, has not been checked to exactly correspond to this statement (it was written for the 2025 XCSP3 competition).
+Important: the model, below, has not been checked to exactly correspond to this statement (it was written for the 2025 XCSP3 competition).
 
 ## Data Example
   03.json

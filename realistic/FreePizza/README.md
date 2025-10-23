@@ -10,11 +10,8 @@ paid for. Similarly, a voucher (3, 2) means that if you pay for 3 pizzas you can
 free as long as they each cost no more than the cheapest of the 3 pizzas you paid for. The aim is to
 obtain all the ordered pizzas for the least possible cost. Note that not all vouchers need to be used.
 
-The model, below, is close to (can be seen as the close translation of) the one submitted to the 2015 Minizinc challenge.
-No Licence was explicitly mentioned (MIT Licence assumed).
-
 ## Data Example
-  pizza06.json
+  06b.json
 
 ## Model
   constraints: [Count](https://pycsp.org/documentation/constraints/Count), [Sum](https://pycsp.org/documentation/constraints/Sum)

@@ -2,10 +2,10 @@
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.
 Instances (and the model) wre developed in the context of the ESPRIT PROJECT 22165 CHIC-2, with contributions from:
-  - IC-Parc, Imperial College, London,
-  - Bouygues research, Paris,
-  - EuroDecision, Paris,
-No Licence was explicitly mentioned (MIT Licence is assumed).
+  - IC-Parc, Imperial College, London
+  - Bouygues research, Paris
+  - EuroDecision, Paris
+For the original MZN model, no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   05.json
@@ -20,7 +20,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, mzn09, mzn11, mzn15, mzn23

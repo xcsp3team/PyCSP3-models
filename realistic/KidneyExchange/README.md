@@ -7,9 +7,7 @@ The problem consists of the prize-collecting assignment problem and an addition 
 has a maximum length K.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2019 Minizinc challenge.
-The MZN model was proposed by Edward Lam and Vicky Mak-Hau.
-No Licence was explicitly mentioned (MIT Licence is assumed).
-
+The original MZN model was proposed by Edward Lam and Vicky Mak-Hau - no licence was explicitly mentioned (MIT Licence is assumed).
 
 ## Data Example
   3-20-025-2.json
@@ -28,7 +26,7 @@ No Licence was explicitly mentioned (MIT Licence is assumed).
   - https://en.wikipedia.org/wiki/Optimal_kidney_exchange
   - https://www.preflib.org/dataset/00036
   - https://link.springer.com/article/10.1007/s10878-015-9932-4
-  - https://www.minizinc.org/challenge2019/results2019.html
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   realistic, notebook, mzn19, mzn23

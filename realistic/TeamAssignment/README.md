@@ -1,8 +1,7 @@
 # Problem: TeamAssignment
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2018/2022 Minizinc challenges.
-The MZN model was proposed by Erik Thörnbald (Uppsala University).
-No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
+The original MZN model was proposed by Erik Thörnbald (Uppsala University) - no licence was explicitly mentioned (so, MIT Licence is currently assumed).
 
 ## Data Example
   2-5-6.json
@@ -17,7 +16,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2022/results2022.html
+  - https://www.minizinc.org/challenge/2022/results/
 
 ## Tags
   realistic, mzn18, mzn22

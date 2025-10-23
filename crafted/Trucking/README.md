@@ -8,8 +8,7 @@ in consecutive or two consecutive time periods.
 The goal is to minimise the overall cost.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2008 Minizinc challenge.
-The MZN model was proposed by Jakob Puchinger.
-No Licence was explicitly mentioned (MIT Licence assumed).
+The original MZN model was proposed by Jakob Puchinger - no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   01.json

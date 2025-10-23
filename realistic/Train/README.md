@@ -9,7 +9,7 @@ The objective is to reschedule the trains to minimize the average travel time of
 Trains are not able to overtake preceding trains, however they do have the option to skip a station and wait longer at a station to collect more passengers.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2012/2014/2018 Minizinc challenges.
-No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
+For the original MZN model, no licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   01.json
@@ -24,7 +24,7 @@ No Licence was explicitly mentioned (so, MIT Licence is currently assumed).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2018/results2018.html
+  - https://www.minizinc.org/challenge/2018/results/
 
 ## Tags
   realistic, mzn12, mzn14, mzn18

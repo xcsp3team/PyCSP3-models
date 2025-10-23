@@ -19,7 +19,7 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Links
   - https://en.wikipedia.org/wiki/Layered_graph_drawing
-  - https://www.minizinc.org/challenge2010/results2010.html
+  - https://www.minizinc.org/challenge/2010/results/
 
 ## Tags
   crafted, mzn10

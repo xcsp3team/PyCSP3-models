@@ -21,7 +21,7 @@ The original model was written by Danyal Mirza  from Ericsson (MIT Licence).
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2025/results2025.html
+  - https://www.minizinc.org/challenge/2025/results/
 
 ## Tags
   realistic, mzn25

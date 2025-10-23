@@ -1,7 +1,7 @@
 # Problem: Speck
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2023 Minizinc challenge.
-The MZN model was proposed by David Gerault, under the MIT Licence.
+The original MZN model was proposed by David Gerault, under the MIT Licence.
 
 ## Data
   Two integers (n,nr)
@@ -15,7 +15,8 @@ The MZN model was proposed by David Gerault, under the MIT Licence.
 ```
 
 ## Links
-  - https://www.minizinc.org/challenge2023/results2023.html
+  - https://link.springer.com/chapter/10.1007/978-3-031-30872-7_10
+  - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
   academic, mzn23

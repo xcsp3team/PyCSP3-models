@@ -7,7 +7,7 @@ The Integrated Healthcare Timetabling Problem (IHTP), brings together three NP-h
 See ihtc2024.github.io
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2025 Minizinc challenges.
-The original mzn model by  Lucas Kletzander -- No Licence was explicitly mentioned (MIT Licence assumed).
+The original mzn model by Lucas Kletzander -- No Licence was explicitly mentioned (MIT Licence assumed).
 
 ## Data Example
   i02.json

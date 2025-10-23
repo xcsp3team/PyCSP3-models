@@ -25,8 +25,6 @@ MIT Licence (Copyright 2021 Johan Ludde Wessénassumed)
   - https://link.springer.com/chapter/10.1007/978-3-030-58942-4_33
   - https://github.com/LuddeWessen/assembly-robot-manager-minizinc
   - https://www.minizinc.org/challenge2021/results2021.html
-  - https://www.minizinc.org/challenge2022/results2022.html
-  - https://www.minizinc.org/challenge2023/results2023.html
   - https://www.minizinc.org/challenge2024/results2024.html
 
 ## Tags

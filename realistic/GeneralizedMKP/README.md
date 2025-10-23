@@ -15,6 +15,7 @@ See Wikipedia.
 ## Execution
 ```
   python GeneralizedMKP.py -data=<datafile.json>
+  python GeneralizedMKP.py -data=[number,<datafile.txt>] -parser=GeneralizedMKP_Parser.py
 ```
 
 ## Links
