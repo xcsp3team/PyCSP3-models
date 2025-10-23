@@ -28,10 +28,10 @@ n, values, limits = data or load_json_data("03.json")
 nPieces = 5
 KNIGHT, BISHOP, ROOK, QUEEN, EMPTY = range(nPieces)
 
-symmetries = [sym.apply_on(n) for sym in TypeSquareSymmetry]
-
 skips = [(-2, -1), (-2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -1), (2, 1)]
 knight_neighbors = [[[(i + oi, j + oj) for (oi, oj) in skips if 0 <= i + oi < n and 0 <= j + oj < n] for j in range(n)] for i in range(n)]
+
+N = range(n)
 
 # x[i][j] is the piece in the cell of coordinates s(i,j)
 x = VarArray(size=[n, n], dom=range(nPieces))
@@ -48,17 +48,17 @@ satisfy(
     # a rook or a queen prevents putting any other piece in the same row
     [
         If(
-            Exist(x[i][j].among(ROOK, QUEEN) for j in range(n)),  # we can also write x[i][j].among(R,Q)
-            Then=Sum(x[i][j] != EMPTY for j in range(n)) <= 1
-        ) for i in range(n)
+            Exist(x[i][j].among(ROOK, QUEEN) for j in N),  # we can also write x[i][j].among(R,Q)
+            Then=Sum(x[i][j] != EMPTY for j in N) <= 1
+        ) for i in N
     ],
 
     # a rook or a queen prevents any other piece in the same column
     [
         If(
-            Exist(x[i][j].among(ROOK, QUEEN) for i in range(n)),
-            Then=Sum(x[i][j] != EMPTY for i in range(n)) <= 1
-        ) for j in range(n)
+            Exist(x[i][j].among(ROOK, QUEEN) for i in N),
+            Then=Sum(x[i][j] != EMPTY for i in N) <= 1
+        ) for j in N
     ],
 
     # a bishop or a queen prevents putting any other piece in the same upward diagonal
@@ -82,7 +82,7 @@ satisfy(
         If(
             x[i][j] == KNIGHT,
             Then=x[k][q] == EMPTY
-        ) for i in range(n) for j in range(n) for (k, q) in knight_neighbors[i][j]
+        ) for i in N for j in N for (k, q) in knight_neighbors[i][j]
     ],
 
     # tag(redundant)
@@ -104,7 +104,7 @@ satisfy(
 
 maximize(
     # maximizing the summed values of placed pieces
-    Sum(values[x[i][j]] for i in range(n) for j in range(n))
+    Sum(values[x[i][j]] for i in N for j in N)
 )
 
 """ Comments

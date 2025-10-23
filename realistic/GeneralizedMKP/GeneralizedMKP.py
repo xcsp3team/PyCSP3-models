@@ -60,9 +60,7 @@ maximize(
 
 """ Comments
 1) Wrt the minizinc model, must we write  >= z or == z ?
-
 2) One can write wcondition=eq(w[j]) or wcondition=le(w[j]) or wlimit=w[j]
-
 3) For being compatible with the competition mini-track, we use:
   [x * weights <= w[j] for j, weights in enumerate(w_matrix)],
   [x * pmatrix[j] >= z for j, weights in enumerate(w_matrix)],
