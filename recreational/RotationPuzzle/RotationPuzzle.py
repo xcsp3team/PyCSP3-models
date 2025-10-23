@@ -68,7 +68,12 @@ satisfy(
     x[0] == grid,
 
     # ensuring a correct transition between two successive times
-    [(r[t], x[t][i], x[t - 1][scopes[i]]) in tables[i] for i in range(nCells) for t in range(1, nPeriods)],
+    [
+        Table(
+            scope=(r[t], x[t][i], x[t - 1][scopes[i]]),
+            supports=tables[i]
+        ) for i in range(nCells) for t in range(1, nPeriods)
+    ],
 
     # ensuring that the final state is reached at time given by f
     [x[f][i] == i for i in range(nCells)],
@@ -98,4 +103,6 @@ minimize(
    x[t - 1][scopes[i]]
  is equivalent to:   
    (x[t - 1][j] for j in scopes[i]) 
+5) Instead of the 'If' construction, we could post:
+ [(f, r[t]) in [(v, ANY) for v in range(t + 1, nPeriods)] + [(v, 0) for v in range(t + 1)] for t in range(1, nPeriods)],
 """

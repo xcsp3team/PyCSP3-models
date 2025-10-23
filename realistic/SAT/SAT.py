@@ -7,7 +7,7 @@ The SATisfiability problem.
 ## Model
   There are three variants.
 
-  constraints: Clause, Sum
+  constraints: Clause, Sum, Table
 
 ## Execution:
   python SAT.py -data=<datafile.json> -variant=clause
@@ -72,5 +72,8 @@ elif variant("dual"):  # dual construction
     x = VarArray(size=e, dom=lambda i: range(1, 2 ** len(clauses[i])))
 
     satisfy(
-        (x[i], x[j]) in T for i, j in combinations(e, 2) if (T := dual_table(i, j)) is not None
+        Table(
+            scope=(x[i], x[j]),
+            supports=T
+        ) for i, j in combinations(e, 2) if (T := dual_table(i, j)) is not None
     )

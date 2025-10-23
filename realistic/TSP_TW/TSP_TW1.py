@@ -24,6 +24,8 @@ See IJCAI paper below.
 
 from pycsp3 import *
 
+assert not variant() or variant("mini")
+
 distances, windows = data or load_json_data("n020w020-1.json")
 
 Earliest, Latest = cp_array(zip(*windows))
@@ -39,26 +41,65 @@ x = VarArray(size=n + 1, dom=range(n))
 a = VarArray(size=n, dom=range(horizon))
 
 satisfy(
-    #  making it a tour while starting and ending at city 0
+    # making it a tour while starting and ending at city 0
     [
         x[0] == 0,
         x[-1] == 0,
         a[0] == 0
     ],
 
-    AllDifferent(x[:-1]),
-
-    # enforcing time windows
-    [
-        [Earliest[x[i]] <= a[x[i]] for i in N],
-
-        [a[x[i]] <= Latest[x[i]] for i in N],
-
-        [a[x[i + 1]] >= a[x[i]] + distances[x[i], x[i + 1]] for i in N[:-1]]
-    ]
+    AllDifferent(x[:-1])
 )
 
-minimize(
-    # minimizing travelled distance
-    Sum(distances[x[i], x[(i + 1) % n]] for i in N)
-)
+if not variant():
+    satisfy(
+        # enforcing time windows
+        [
+            [Earliest[x[i]] <= a[x[i]] for i in N],
+            [a[x[i]] <= Latest[x[i]] for i in N],
+            [a[x[i + 1]] >= a[x[i]] + distances[x[i], x[i + 1]] for i in N[:-1]]
+        ]
+    )
+
+    minimize(
+        # minimizing travelled distance
+        Sum(distances[x[i], x[(i + 1) % n]] for i in N)
+    )
+
+elif variant("mini"):
+
+    ee = VarArray(size=n, dom=Earliest)
+    el = VarArray(size=n, dom=Latest)
+    ea = VarArray(size=n, dom=range(horizon))
+    dx = VarArray(size=n, dom=distances)
+
+    T = [(distances[i][j], i, j) for i in N for j in N]
+
+    satisfy(
+        # computing times
+        [
+            [ee[i] == Earliest[x[i]] for i in N],
+            [el[i] == Latest[x[i]] for i in N],
+            [ea[i] == a[x[i]] for i in N]
+        ],
+
+        # computing travelled distances
+        [
+            Table(
+                scope=(dx[i], x[i], x[(i + 1) % n]),
+                supports=T
+            ) for i in N
+        ],
+
+        # enforcing time windows
+        [
+            [ee[i] <= ea[i] for i in N],
+            [ea[i] <= el[i] for i in N],
+            [ea[i + 1] >= ea[i] + dx[i] for i in N[:-1]]
+        ]
+    )
+
+    minimize(
+        # minimizing travelled distance
+        Sum(dx)
+    )

@@ -9,7 +9,7 @@ for i in range(n):
     costs.append(OrderedDict(
         [("early_penalty", int(float(next_str()) * 100)), ("late_penalty", int(float(next_str()) * 100))]))  # [int(float(next_str()) * 100) for _ in range(2)])
     separations.append([next_int() for _ in range(n)])
-data["n"] = n
+data["nPlanes"] = n
 data["times"] = times
 data["costs"] = costs
 data["separations"] = separations

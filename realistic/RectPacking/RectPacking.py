@@ -42,7 +42,7 @@ satisfy(
     # no overlap on boxes
     NoOverlap(
         origins=[(x[i], y[i]) for i in B],
-        lengths=boxes
+        lengths=[(w, h) for (w, h) in boxes]
     ),
 
     # tag(symmetry-breaking)
@@ -55,4 +55,5 @@ satisfy(
 """ Comments
 1) Even if elements of boxes are named tuples, one can write length=boxes instead of lengths=[(w, h) for (w, h) in boxes]
 2) See also CP papers on short supports
+3) One could write: lengths=boxes
 """

@@ -12,7 +12,7 @@ The original MZN model was proposed by Toshimitsu Fujiwara - no licence was expl
 
 ## Execution
   python SeatMoving.py -data=sm-10-13-00.json
-  python SeatMoving.py -data=sm-10-13-00.dzn -dataparser=SeatMoving_ParserZ.py
+  python SeatMoving.py -data=sm-10-13-00.dzn -parser=SeatMoving_ParserZ.py
 
 ## Links
   - www.minizinc.org/challenge/2021/results/
