@@ -36,11 +36,11 @@ n = len(grid)
 zeros = [tuple(frog)] + [(i, j) for i in range(n) for j in range(n) if grid[i][j] == 0 and (i, j) != tuple(frog)]
 nZeros = len(zeros)
 
-compatible_zeros = [(k, l) for k in range(nZeros) for l in range(nZeros) if k != l and (zeros[k][0] == zeros[l][0] or zeros[k][1] == zeros[l][1])]
+compatible_zeros = [(k, q) for k in range(nZeros) for q in range(nZeros) if k != q and (zeros[k][0] == zeros[q][0] or zeros[k][1] == zeros[q][1])]
 
 if not variant():
     # x[i] is the zero that follows the ith zero
-    x = VarArray(size=nZeros, dom=lambda i: {l for k, l in compatible_zeros if k == i} | ({0} if i != 0 else set()))
+    x = VarArray(size=nZeros, dom=lambda i: {q for k, q in compatible_zeros if k == i} | ({0} if i != 0 else set()))
 
     satisfy(
         # ensuring a circuit

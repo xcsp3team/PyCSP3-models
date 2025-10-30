@@ -72,10 +72,10 @@ satisfy(
         (
             If(x[i][j] != WATER, Then=x[i + 1][j + 1] == WATER),
             If(x[i][j] != WATER, Then=x[i + 1][j - 1] == WATER),
-            If(x[i][j] in {SUB, LEFT, RIGHT, TOP}, Then=x[i - 1][j] == WATER),
-            If(x[i][j] in {SUB, LEFT, RIGHT, BOT}, Then=x[i + 1][j] == WATER),
-            If(x[i][j] in {SUB, LEFT, TOP, BOT}, Then=x[i][j - 1] == WATER),
-            If(x[i][j] in {SUB, RIGHT, TOP, BOT}, Then=x[i][j + 1] == WATER)
+            If(x[i][j].among(SUB, LEFT, RIGHT, TOP), Then=x[i - 1][j] == WATER),
+            If(x[i][j].among(SUB, LEFT, RIGHT, BOT), Then=x[i + 1][j] == WATER),
+            If(x[i][j].among(SUB, LEFT, TOP, BOT), Then=x[i][j - 1] == WATER),
+            If(x[i][j].among(SUB, RIGHT, TOP, BOT), Then=x[i][j + 1] == WATER)
         ) for i, j in cells
     ],
 

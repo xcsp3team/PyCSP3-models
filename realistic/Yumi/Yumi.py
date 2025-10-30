@@ -4,7 +4,7 @@ occupying similar floor area and having similar reach.
 YuMi in particular caters to small-parts assembly manufacturing.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2021/2022/2023/204 Minizinc challenges.
-MIT Licence (Copyright 2021 Johan Ludde Wessénassumed)
+For the original MZN model, Copyright 2021 by Johan Ludde Wessénassumed (MIT Licence).
 
 ## Data Example
   p-04-GG-GG-3.4.json

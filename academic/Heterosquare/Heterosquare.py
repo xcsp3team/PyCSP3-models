@@ -29,12 +29,13 @@ Important: the variants of the model, below, are here for hardening the problem 
 
 from pycsp3 import *
 
+assert not variant() or variant() in ("easy", "fair", "hard")
+
 n = data or 8
 
 lb, ub = (n * (n + 1)) // 2, ((n * n) * (n * n + 1)) // 2
 
 if variant():
-    assert variant() in ("easy", "fair", "hard")
     if variant("easy"):
         lb = lb * (n // 2)
     elif variant("fair"):
@@ -66,7 +67,10 @@ satisfy(
     [cs[j] == Sum(x[:, j]) for j in range(n)],
 
     # computing diagonal sums
-    [ds[0] == Sum(diagonal_down(x)), ds[1] == Sum(diagonal_up(x))],
+    [
+        ds[0] == Sum(diagonal_down(x)),
+        ds[1] == Sum(diagonal_up(x))
+    ],
 
     # all sums must be different
     AllDifferent(rs, cs, ds),

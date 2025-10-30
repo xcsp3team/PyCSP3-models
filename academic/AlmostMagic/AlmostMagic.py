@@ -31,6 +31,8 @@ assert not variant() or variant("opt")
 
 n, p = data or (3, 100)
 
+N = range(n)
+
 # x[k][i][j] is the value at row i and column j in the kth region
 x = VarArray(size=[4, n, n], dom=range(1, p))
 
@@ -54,8 +56,8 @@ satisfy(
     # ensuring almost magic regions
     [
         (
-            [ctr_sum(x[k][i], y[k]) for i in range(n)],
-            [ctr_sum(x[k][:, j], y[k]) for j in range(n)],
+            [ctr_sum(x[k][i], y[k]) for i in N],
+            [ctr_sum(x[k][:, j], y[k]) for j in N],
             ctr_sum(diagonal_down(x[k]), y[k]),
             ctr_sum(diagonal_up(x[k]), y[k])
         ) for k in range(4)
@@ -63,10 +65,10 @@ satisfy(
 
     # dealing with overlapping cells
     [
-        [x[0][i][-1] == x[1][i - 1][0] for i in range(1, n)],
-        [x[0][-1][j - 1] == x[2][0][j] for j in range(1, n)],
-        [x[1][-1][j - 1] == x[3][0][j] for j in range(1, n)],
-        [x[2][i][-1] == x[3][i - 1][0] for i in range(1, n)]
+        [x[0][i][-1] == x[1][i - 1][0] for i in N[1:]],
+        [x[0][-1][j - 1] == x[2][0][j] for j in N[1:]],
+        [x[1][-1][j - 1] == x[3][0][j] for j in N[1:]],
+        [x[2][i][-1] == x[3][i - 1][0] for i in N[1:]]
     ]
 )
 
