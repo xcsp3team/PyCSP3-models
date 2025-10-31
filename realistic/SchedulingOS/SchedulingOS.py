@@ -1,5 +1,12 @@
 """
-Open-shop Scheduling
+From Wikipedia:
+    Open-shop scheduling is an optimization problem in computer science and operations research.
+    It is a variant of optimal job scheduling.
+    In a general job-scheduling problem, we are given n jobs J1, J2, ..., Jn of varying processing times,
+    which need to be scheduled on m machines with varying processing power, while trying to minimize the makespan
+    - the total length of the schedule (that is, when all the jobs have finished processing).
+    In the specific variant known as open-shop scheduling, each job consists of a set of operations O1, O2, ..., On
+    which need to be processed in an arbitrary order.
 
 ## Data Example
   GP-os-01.json
@@ -12,6 +19,7 @@ Open-shop Scheduling
 
 ## Links
   - https://en.wikipedia.org/wiki/Open-shop_scheduling
+  - https://dl.acm.org/doi/10.1145/321978.321985
   - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags

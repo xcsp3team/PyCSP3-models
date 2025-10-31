@@ -35,20 +35,22 @@ assert not variant() or variant("reif")
 volumes, conflicts, tanks = data or load_json_data("chemical.json")
 
 capacities, impossible_cargos, neighbours = zip(*tanks)
+sorted_capacities = sorted(enumerate(capacities), key=lambda v: v[1])
+
 nCargos, nTanks = len(volumes), len(tanks)
+C, T = range(nCargos), range(nTanks)
 
 conflicts = [(i, j) for i, j in conflicts if volumes[i] > 0 and volumes[j] > 0]
 
-sorted_capacities = sorted(enumerate(capacities), key=lambda v: v[1])
 nMaxTanks = [number_of_values_for_sum_ge(sorted(capacities), volume) for volume in volumes]
-impossible_tanks = [[j for j in range(nTanks) if i in impossible_cargos[j]] for i in range(nCargos)]
+impossible_tanks = [[j for j in T if i in impossible_cargos[j]] for i in C]
 DUMMY_TANK = -1
 
-relevantCargoes = [i for i in range(nCargos) if volumes[i] != 0]
-all_neighbors = sorted((i, j) for i in range(nTanks) for j in neighbours[i])  # we assume symmetry of neighborhood
+relevantCargoes = [i for i in C if volumes[i] != 0]
+all_neighbors = sorted((i, j) for i in T for j in neighbours[i])  # we assume symmetry of neighborhood
 
 
-def T(cargo):
+def shipping_table(cargo):
     def rec_f(volume, tab, tmp, cursor_cap, cursor_tmp):
         for j in range(cursor_cap, nTanks):
             tmp[cursor_tmp] = sorted_capacities[j]
@@ -75,19 +77,24 @@ satisfy(
     AllDifferent(x, excepting=-1),
 
     # ensuring each cargo is shipped
-    [x[i] in T(i) for i in relevantCargoes],
+    [x[i] in shipping_table(i) for i in relevantCargoes],
 
     # ensuring no adjacent tanks containing incompatible cargo
-    [(x[i][k], x[j][q]) not in all_neighbors for i, j in conflicts for k in range(nMaxTanks[i]) for q in range(nMaxTanks[j])],
+    [
+        Table(
+            scope=(x[i][k], x[j][q]),
+            conflicts=all_neighbors
+        ) for i, j in conflicts for k in range(nMaxTanks[i]) for q in range(nMaxTanks[j])
+    ],
 
     # computing if tanks are used
-    [Exist(within=x, value=j, reified_by=y[j]) for j in range(nTanks)] if variant("reif")
-    else [y[j] == (j in flatten(x)) for j in range(nTanks)]
+    [Exist(within=x, value=j, reified_by=y[j]) for j in T] if variant("reif")
+    else [y[j] == (j in flatten(x)) for j in T]
 )
 
 maximize(
     # maximizing free space
-    Sum(capacities[j] * (y[j] == 0) for j in range(nTanks))
+    Sum(capacities[j] * (y[j] == 0) for j in T)
 )
 
 # # tag(symmetry-breaking)  TODO this is not correct considering the way tables are built

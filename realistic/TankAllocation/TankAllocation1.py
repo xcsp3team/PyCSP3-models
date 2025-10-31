@@ -34,42 +34,47 @@ assert not variant() or variant("bp")
 volumes, conflicts, tanks = data or load_json_data("chemical.json")
 
 capacities, impossible_cargos, neighbours = zip(*tanks)
+sorted_capacities = sorted(capacities)
+
 nCargos, nTanks = len(volumes), len(tanks)
+C, T = range(nCargos), range(nTanks)
 
 DUMMY_CARGO = nCargos
 MAX = sum(capacities) + 1
 
-sorted_capacities = sorted(capacities)
-ranges = [range(number_of_values_for_sum_ge(sorted_capacities, volume, True), number_of_values_for_sum_ge(sorted_capacities, volume) + 1) for volume in volumes]
-
-T = conflicts + [(v, u) for u, v in conflicts]
+conflicts_table = conflicts + [(v, u) for u, v in conflicts]
 
 # x[i] is the cargo (type) of the ith tank (DUMMY_CARGO, if empty)
 x = VarArray(size=nTanks, dom=range(nCargos + 1))
 
 satisfy(
     # allocating a compatible cargo to each tank
-    [x[i] not in impossible_cargos[i] for i in range(nTanks)],
+    [x[i] not in impossible_cargos[i] for i in T],
 
     # ensuring no adjacent tanks containing incompatible cargo
-    [(x[i], x[j]) not in T for i in range(nTanks) for j in neighbours[i]]
+    [
+        Table(
+            scope=(x[i], x[j]),
+            conflicts=conflicts_table
+        ) for i in T for j in neighbours[i]
+    ]
 )
 
 if not variant():
     satisfy(
         # ensuring each cargo is shipped
-        [Sum(capacities[i] * (x[i] == cargo) for i in range(nTanks) if cargo not in impossible_cargos[i]) >= volumes[cargo] for cargo in range(nCargos)]
+        [Sum(capacities[i] * (x[i] == c) for i in T if c not in impossible_cargos[i]) >= volumes[c] for c in C]
     )
 
     maximize(
         # maximizing free space
-        Sum(capacities[i] * (x[i] == DUMMY_CARGO) for i in range(nTanks))
+        Sum(capacities[i] * (x[i] == DUMMY_CARGO) for i in T)
     )
 
 elif variant("bp"):
 
     # ld[j] is volume (load) available for the jth cargo
-    ld = VarArray(size=nCargos + 1, dom=lambda j: range(MAX) if j == DUMMY_CARGO else range(volumes[j], volumes[j] + max(capacities) + 1))
+    ld = VarArray(size=nCargos + 1, dom=lambda c: range(MAX) if c == DUMMY_CARGO else range(volumes[c], volumes[c] + max(capacities) + 1))
 
     satisfy(
         BinPacking(
@@ -86,11 +91,13 @@ elif variant("bp"):
 
 """
 1) this redundant constraint seems to be counter-productive:
-    # tag(redundant)
-    Cardinality(
-        within=x,
-        occurrences={j: ranges[j] for j in range(nCargos)} | {nCargos: range(nTanks - sum(r.start for r in ranges) + 1)}
-    )
+  ranges = [range(number_of_values_for_sum_ge(sorted_capacities, volume, True), number_of_values_for_sum_ge(sorted_capacities, volume) + 1) for volume in volumes]
+    
+  # tag(redundant)
+  Cardinality(
+      within=x,
+      occurrences={j: ranges[j] for j in range(nCargos)} | {nCargos: range(nTanks - sum(r.start for r in ranges) + 1)}
+  )
 """
 
 # maximize(

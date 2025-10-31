@@ -34,17 +34,24 @@ assert n <= 100 and m <= 100  # otherwise, we have for example to change the con
 
 OUT, IN, WALL = 0, 1, 10000  # 10000 is enough for a grid up to 100*100
 
-points = [(i, j) for i in range(n) for j in range(m) if grid[i][j] != 0]
-in_required = [(i, j) for i in range(n) for j in range(m) if any((k, l) for k, l in points if abs(k - i) + abs(l - j) < grid[k][l])]
+P = [(i, j) for i in range(n) for j in range(m) if grid[i][j] != 0]
+
+in_required = [(i, j) for i in range(n) for j in range(m) if any((k, l) for k, l in P if abs(k - i) + abs(l - j) < grid[k][l])]
 
 # table used for computing states of cells
-T = {(OUT, OUT, ANY, ANY, ANY), (OUT, ANY, OUT, ANY, ANY), (OUT, ANY, ANY, OUT, ANY), (OUT, ANY, ANY, ANY, OUT),
-     (IN, ne(OUT), ne(OUT), ne(OUT), ne(OUT)), (WALL, ANY, ANY, ANY, ANY)}
+T = {
+    (OUT, OUT, ANY, ANY, ANY),
+    (OUT, ANY, OUT, ANY, ANY),
+    (OUT, ANY, ANY, OUT, ANY),
+    (OUT, ANY, ANY, ANY, OUT),
+    (IN, ne(OUT), ne(OUT), ne(OUT), ne(OUT)),
+    (WALL, ANY, ANY, ANY, ANY)
+}
 
-top = min(i - grid[i][j] for i, j in points)
-bot = max(i + grid[i][j] for i, j in points)
-left = min(j - grid[i][j] for i, j in points)
-right = max(j + grid[i][j] for i, j in points)
+top = min(i - grid[i][j] for i, j in P)
+bot = max(i + grid[i][j] for i, j in P)
+left = min(j - grid[i][j] for i, j in P)
+right = max(j + grid[i][j] for i, j in P)
 assert top > 0 and bot < n - 1 and left > 0 and right < m - 1  # otherwise, it is always possible to add a dummy border in the data
 
 
@@ -61,7 +68,10 @@ x = VarArray(size=[n, m], dom=domain_x)
 
 satisfy(
     # computing the state of cells with respect to their (cross) neighbors
-    x.cross(i, j) in T for i in range(top, bot + 1) for j in range(left, right + 1)
+    Table(
+        scope=x.cross(i, j),
+        supports=T
+    ) for i in range(top, bot + 1) for j in range(left, right + 1)
 )
 
 minimize(

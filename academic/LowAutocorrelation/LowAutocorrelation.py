@@ -15,6 +15,7 @@ Each bit in the sequence takes the value +1 or -1.
   python LowAutocorrelation.py -data=number
 
 ## Links
+  - https://www.csplib.org/Problems/prob005/
   - https://www.cril.univ-artois.fr/XCSP25/competitions/cop/cop
 
 ## Tags

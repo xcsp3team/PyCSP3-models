@@ -1,5 +1,5 @@
 """
-How many points a team can get while being ranked at a given position?
+In the new organization (since 2024) of the Football Champions's league, how many points a team can get in Phase 1 (playing 8 matches) while being ranked at a given position?
 
 ## Data Example
   2024.json
@@ -89,7 +89,9 @@ satisfy(
     better_target < position,
 
     # the position of the target team must be compatible with the specified target position
-    better_target == position - 1 if variant("strict") else better_target + equal_target == position
+    better_target == position - 1
+    if variant("strict") else
+    better_target + equal_target == position
 )
 
 maximize(

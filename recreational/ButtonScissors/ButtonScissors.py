@@ -58,8 +58,8 @@ def attack(k1, k2):
 
 
 attacks = [[attack(k1, k2) for k2 in range(n * n)] for k1 in range(n * n)]
-pairs = [(k1, k2) for k1, k2 in combinations(n * n, 2) if attacks[k1][k2]]
-nMaxCuts = len(pairs)
+P = [(k1, k2) for k1, k2 in combinations(n * n, 2) if attacks[k1][k2]]
+nMaxCuts = len(P)
 
 # x[i][j] is the time at which the cell is cut
 x = VarArray(size=n * n, dom=range(nMaxCuts))
@@ -69,14 +69,14 @@ c = VarArray(size=n * n, dom=range(nCodes))
 
 satisfy(
     # unreachable cells cannot be cut together
-    [x[k1] != x[k2] for k1, k2 in combinations(n * n, 2) if (k1, k2) not in pairs],
+    [x[k1] != x[k2] for k1, k2 in combinations(n * n, 2) if (k1, k2) not in P],
 
     # ensuring that cuts can be performed
     [
         either(
             x[k1] != x[k2],
             x[k3] <= x[k1] if same else x[k3] < x[k1]
-        ) for k1, k2 in pairs for k3, same in attacks[k1][k2].between
+        ) for k1, k2 in P for k3, same in attacks[k1][k2].between
     ],
 
     # cells cut together (at the same time) must have the same cut code
@@ -84,11 +84,11 @@ satisfy(
         either(
             x[k1] != x[k2],
             both(c[k1] == c[k2], c[k1] == attacks[k1][k2].code)
-        ) for k1, k2 in pairs
+        ) for k1, k2 in P
     ],
 
     # a cut must involve at least two buttons
-    [Count(x, value=v) != 1 for v in range(nMaxCuts)]
+    [Count(within=x, value=v) != 1 for v in range(nMaxCuts)]
 )
 
 minimize(

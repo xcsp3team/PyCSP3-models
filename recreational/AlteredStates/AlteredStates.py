@@ -1,7 +1,7 @@
 """
 From JaneStreet:
     Enter letters into a n×n grid above to achieve the highest score you can.
-    You earn points for each of the 50 U.S. states present in your grid.
+    You earn points for each of the 50 U.S. states present in your grid. Note that:
       - states can be spelled by making King’s moves from square to square
       - the score for a state is its length (main variant)
       - if a state appears multiple times in your grid, it only scores once
@@ -86,14 +86,15 @@ states = [
     ("Wyoming", 576_851)  # 49
 ]
 names, populations = zip(*states)
-nStates, max_length = len(states), max(len(name) for name in names)
+lengths = [len(name) for name in names]
+nStates, M = len(states), max(lengths)
 
-symmetries = [[i * n + j for i, j in s] for sym in TypeSquareSymmetry if [s := flatten(sym.apply_on(n), keep_tuples=True), ]]
+symmetries = [[i * n + j for i, j in S] for sym in TypeSquareSymmetry if (S := flatten(sym.apply_on(n), keep_tuples=True))]
 
 words = [alphabet_positions(name.lower()) for name in names]  # words converted to numbers (0 to 25)
 
-T = [(i * n + j, (i + k) * n + (j + p)) for i in range(n) for j in range(n) for k in [-1, 0, 1] for p in [-1, 0, 1] if
-     0 <= i + k < n and 0 <= j + p < n and (k, p) != (0, 0)]
+T = [(i * n + j, (i + k) * n + (j + p)) for i in range(n) for j in range(n) for k in [-1, 0, 1] for p in [-1, 0, 1]
+     if 0 <= i + k < n and 0 <= j + p < n and (k, p) != (0, 0)]
 
 # x[ij] is the letter (index) in cell whose index is ij
 x = VarArray(size=n * n, dom=range(26))
@@ -102,7 +103,7 @@ x = VarArray(size=n * n, dom=range(26))
 y = VarArray(size=nStates, dom={0, 1})
 
 # z[k][q] is the (flat) cell index in x of the qth letter of the kth state, or 0 if the state is not present
-z = VarArray(size=[nStates, max_length], dom=lambda k, q: range(n * n) if q < len(names[k]) else None)
+z = VarArray(size=[nStates, M], dom=lambda k, q: range(n * n) if q < lengths[k] else None)
 
 satisfy(
     # ensuring the coherence of putting or not the states in the grid
@@ -114,7 +115,7 @@ satisfy(
                 [x[z[k][q]] == words[k][q] for q in Q] if not variant() else Sum(x[z[k][q]] != words[k][q] for q in Q) <= 1,  # ensuring the name is present
                 [(z[k][q], z[k][q + 1]) in T for q in Q[:-1]]  # ensuring connectedness of letters
             ]
-        ) for k in range(nStates) if (Q := range(len(names[k])))
+        ) for k in range(nStates) if (Q := range(lengths[k]))
     ],
 
     # tag(symmetry-breaking)
@@ -123,7 +124,7 @@ satisfy(
 
 if not variant():
     maximize(
-        y * [len(name) for name in names]
+        y * lengths
     )
 
 elif variant("bis"):
@@ -146,9 +147,10 @@ elif variant("bis"):
 2) with z[k] == 0, l'instance xml est différente et ACE ne reconnait pas la dcecomposition possible (et c'est tres inefficace)
 3) the table constraint involved in the 'If' expression needs some kind of reification, which is handled (when compiling) by building a ternary constraint 
    in order to make a link with the condition of the 'If' expression.
+4) Data used for the 2025 competition are: [2, 3, 4, 5, 6, 8, 10, 12, 15]
 """
 
-[Table(scope=(z[k][q], z[k][q + 1]), supports=T) for q in Q[:-1]],
+# [Table(scope=(z[k][q], z[k][q + 1]), supports=T) for q in Q[:-1]],
 
 # satisfy(
 #     # tag(special)

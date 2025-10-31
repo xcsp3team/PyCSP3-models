@@ -28,7 +28,7 @@ The original MZN model was proposed by Andreas Schutt (Copyright 2013 National I
   see data files from the 2025 competition
 
 ## Model
-  constraints: Cumulative, Sum, Count
+  constraints: Count, Cumulative, Sum
 
 ## Execution
   python FlexibleJobshopScen.py -data=<datafile.json>
@@ -45,8 +45,9 @@ The original MZN model was proposed by Andreas Schutt (Copyright 2013 National I
 
 from pycsp3 import *
 
-first_scen, last_scen, nMachines, tasks, options, option_machines, weights, durations = data or load_json_data("dh-5-16-20.json")
+nMachines, tasks, options, option_machines, scenarios = data or load_json_data("dh-5-16-20.json")
 
+first_scen, last_scen, weights, durations = scenarios
 assert first_scen == 0 and 0 < last_scen < len(durations)
 nScenarios = last_scen + 1
 

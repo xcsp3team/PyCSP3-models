@@ -32,14 +32,14 @@ grid = data or load_json_data("03.json")
 n, m = len(grid), len(grid[0])
 N, M = range(n), range(m)
 
-points = [(i, j) for i in N for j in M if grid[i][j] != 0]
+P = [(i, j) for i in N for j in M if grid[i][j] != 0]
 
-left = min(j - grid[i][j] for i, j in points) - 1
-right = max(j + grid[i][j] for i, j in points) + 1
-top = min(i - grid[i][j] for i, j in points) - 1
-bot = max(i + grid[i][j] for i, j in points) + 1
+left = min(j - grid[i][j] for i, j in P) - 1
+right = max(j + grid[i][j] for i, j in P) + 1
+top = min(i - grid[i][j] for i, j in P) - 1
+bot = max(i + grid[i][j] for i, j in P) + 1
 
-neighborhoods = [[(k, q) for k in N for q in M if abs(k - i) + abs(q - j) < grid[i][j]] for i, j in points]
+neighborhoods = [[(k, q) for k in N for q in M if abs(k - i) + abs(q - j) < grid[i][j]] for i, j in P]
 
 # w[i][j] is 1 iff the cell (i,j) is a wall
 w = VarArray(size=[n, m], dom=lambda i, j: {0, 1} if i in range(top, bot + 1) and j in range(left, right + 1) else {0})
@@ -58,16 +58,27 @@ satisfy(
     [w[i][j] == 0 for neighborhood in neighborhoods for i, j in neighborhood],
 
     # setting the status of the border
-    [(w[i][j], f[i][j]) in {(0, 1), (1, 0)} for i in N for j in M if i in (0, n - 1) or j in (0, m - 1)],
+    [
+        Table(
+            scope=(w[i][j], f[i][j]),
+            supports={(0, 1), (1, 0)}
+        ) for i in N for j in M if i in (0, n - 1) or j in (0, m - 1)
+    ],
 
     # setting the status of the point of interest
-    [f[i][j] == 0 for i, j in points],
+    [f[i][j] == 0 for i, j in P],
 
     [
         Table(
             scope=(w[i][j], f.cross(i, j)),
-            supports={(0, 0, 0, 0, 0, 0), (0, 1, 1, ANY, ANY, ANY), (0, 1, ANY, 1, ANY, ANY), (0, 1, ANY, ANY, 1, ANY),
-                      (0, 1, ANY, ANY, ANY, 1), (1, 0, ANY, ANY, ANY, ANY)}
+            supports={
+                (0, 0, 0, 0, 0, 0),
+                (0, 1, 1, ANY, ANY, ANY),
+                (0, 1, ANY, 1, ANY, ANY),
+                (0, 1, ANY, ANY, 1, ANY),
+                (0, 1, ANY, ANY, ANY, 1),
+                (1, 0, ANY, ANY, ANY, ANY)
+            }
         ) for i in N[1:-1] for j in M[1:- 1]
     ],
 
