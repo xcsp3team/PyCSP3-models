@@ -40,17 +40,17 @@ def automaton():
     # q(1,i) means before break and just after reading i
     # q(2,i) means just after reading break (0) and i before
     # q(3,i) means after break and just after reading i
-    q, rng = Automaton.q, range(1, n)
-    t = [(q(0), 0, q(2, 0))] + [(q(2, 0), i, q(3, i)) for i in rng]
-    t.extend((q(0), i, q(1, i)) for i in rng)
+    q, N = Automaton.q, range(1, n)
+    t = [(q(0), 0, q(2, 0))] + [(q(2, 0), i, q(3, i)) for i in N]
+    t.extend((q(0), i, q(1, i)) for i in N)
     # BE CAREFUL: rule below made stricter than Pesant's rule
-    t.extend((q(1, i), j, q(1, j)) for i in rng for j in (i - 1, i + 1) if 1 <= j < n)
-    t.extend((q(1, i), 0, q(2, i)) for i in rng)
+    t.extend((q(1, i), j, q(1, j)) for i in N for j in (i - 1, i + 1) if 1 <= j < n)
+    t.extend((q(1, i), 0, q(2, i)) for i in N)
     # BE CAREFUL: rule below made stricter than Pesant's rule
-    t.extend((q(2, i), j, q(3, j)) for i in rng for j in rng if abs(i - j) != 1)
+    t.extend((q(2, i), j, q(3, j)) for i in N for j in N if abs(i - j) != 1)
     # BE CAREFUL: rule below made stricter than Pesant's rule
-    t.extend((q(3, i), j, q(3, j)) for i in rng for j in (i - 1, i + 1) if 1 <= j < n)
-    return Automaton(start=q(0), final=[q(2, i) for i in rng] + [q(3, i) for i in rng], transitions=t)
+    t.extend((q(3, i), j, q(3, j)) for i in N for j in (i - 1, i + 1) if 1 <= j < n)
+    return Automaton(start=q(0), final=[q(2, i) for i in N] + [q(3, i) for i in N], transitions=t)
 
 
 A = automaton()

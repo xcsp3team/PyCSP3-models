@@ -35,9 +35,9 @@ if isinstance(data, int):
     position = 8
 else:
     full_schedule, position = data or (load_json_data("phase1-2024.json"), 15)  # position is between 1 and 36)
-    teams = sorted({match[0] for day in full_schedule for match in day})
+    teams = sorted({team1 for day in full_schedule for (team1, _) in day})
     assert len(teams) == 36
-    schedule = [[[teams.index(match[0]), teams.index(match[1])] for match in day] for day in full_schedule]
+    schedule = [[[teams.index(team1), teams.index(team2)] for (team1, team2) in day] for day in full_schedule]
 
 nWeeks, nMatchesPerWeek, nTeams = len(schedule), len(schedule[0]), len(schedule[0]) * 2
 W, T = range(nWeeks), range(nTeams)
@@ -68,13 +68,18 @@ equal_target = Var(dom=range(nTeams))
 
 satisfy(
     # computing points won for every match
-    [(x[w][k], y[w][i], y[w][j]) in {(WON, 3, 0), (DRAWN, 1, 1), (LOST, 0, 3)} for w in W for k, (i, j) in enumerate(schedule[w])],
+    [
+        Table(
+            scope=(x[w][k], y[w][i], y[w][j]),
+            supports={(WON, 3, 0), (DRAWN, 1, 1), (LOST, 0, 3)}
+        ) for w in W for k, (i, j) in enumerate(schedule[w])
+    ],
 
     # computing the number of points of each team
     [z[i] == Sum(y[:, i]) for i in T],
 
     # tag(redundant)
-    [Sum(y[w]) in range(2 * nMatchesPerWeek, 3 * nMatchesPerWeek + 1) for w in W],
+    [Sum(y[w]).among(range(2 * nMatchesPerWeek, 3 * nMatchesPerWeek + 1)) for w in W],
 
     # linking the target team with  its score
     z[target] == z_target,

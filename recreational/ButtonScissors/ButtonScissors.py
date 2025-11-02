@@ -37,23 +37,24 @@ Attack = namedtuple("Attack", ["code", "between"])
 
 
 def attack(k1, k2):
-    # returns a pair composed of an attack code, followed by a list of the cells between k1 and k2
-    # (together with a Boolean indicating if it has the same value as the end cells)
+    """
+    Returns a pair composed of an attack code, followed by a list of the cells between k1 and k2
+    (together with a Boolean indicating if this is the same value as in the end cells)
+    """
+
     i1, j1, i2, j2 = k1 // n, k1 % n, k2 // n, k2 % n
-    if k1 >= k2:
+    if k1 >= k2 or patch[i1][j1] != patch[i2][j2]:
         return None  # we only need to reason with k1 < k2
-    if patch[i1][j1] != patch[i2][j2]:
-        return None
-    if i1 == i2:  # same row
-        return Attack(i1, [(i1 * n + j, patch[i1][j] == patch[i1][j1]) for j in range(min(j1, j2) + 1, max(j1, j2))])
-    if j1 == j2:  # same column
-        return Attack(n + j1, [(i * n + j1, patch[i][j1] == patch[i1][j1]) for i in range(min(i1, i2) + 1, max(i1, i2))])
-    if abs(i1 - i2) == abs(j1 - j2):  # same diagonal
-        assert i1 < i2
+    v = patch[i1][j1]
+    if i1 == i2:  # same row (and we know that j1 < j2)
+        return Attack(i1, [(i1 * n + j, patch[i1][j] == v) for j in range(j1 + 1, j2)])
+    if j1 == j2:  # same column (and we know that i1 < i2)
+        return Attack(n + j1, [(i * n + j1, patch[i][j1] == v) for i in range(i1 + 1, i2)])
+    if abs(i1 - i2) == abs(j1 - j2):  # same diagonal (and we know that i1 < i2)
         if j1 < j2:  # downward diagonal
-            return Attack(2 * n + (j1 - i1 + n - 2), [((i1 + k) * n + j1 + k, patch[i1 + k][j1 + k] == patch[i1][j1]) for k in range(1, i2 - i1)])
+            return Attack(2 * n + (j1 - i1 + n - 2), [((i1 + k) * n + j1 + k, patch[i1 + k][j1 + k] == v) for k in range(1, i2 - i1)])
         else:  # upward diagonal
-            return Attack(2 * n + nDiagonalTypes + i2 + j2 - 1, [((i2 - k) * n + j2 + k, patch[i2 - k][j2 + k] == patch[i1][j1]) for k in range(1, i2 - i1)])
+            return Attack(2 * n + nDiagonalTypes + i2 + j2 - 1, [((i2 - k) * n + j2 + k, patch[i2 - k][j2 + k] == v) for k in range(1, i2 - i1)])
     return None
 
 

@@ -5,7 +5,6 @@ From JaneStreet:
     For this puzzle, place distinct positive integers into the empty grid above such that each of four bold-outlined 3-by-3 regions is an almost magic square.
     Your goal is to do so in a way that minimizes the overall sum of the integers you use.
 
-
 ## Data
   two numbers n and p
 
@@ -41,14 +40,6 @@ y = VarArray(size=4, dom=range(p * 3))
 
 distinct = flatten(x[0], x[1][0][1:], x[1][1][1:], x[1][2][2], x[2][0][0], x[2][1][:-1], x[2][2][:-1], x[3])
 
-
-def ctr_sum(t, k):
-    return (
-        Sum(t) >= k,
-        Sum(t) <= k + 1
-    )
-
-
 satisfy(
     # ensuring different values
     AllDifferent(distinct),
@@ -56,11 +47,10 @@ satisfy(
     # ensuring almost magic regions
     [
         (
-            [ctr_sum(x[k][i], y[k]) for i in N],
-            [ctr_sum(x[k][:, j], y[k]) for j in N],
-            ctr_sum(diagonal_down(x[k]), y[k]),
-            ctr_sum(diagonal_up(x[k]), y[k])
-        ) for k in range(4)
+            Sum(t) >= y[k],
+            Sum(t) <= y[k] + 1
+        )
+        for k in range(4) for t in rows(x[k]) + columns(x[k]) + diagonals(x[k])
     ],
 
     # dealing with overlapping cells
@@ -79,6 +69,7 @@ if variant("opt"):
 
 """ Comments
 1) data used for the 2025 competition are: [(3,30), (3,35), (3,40), (3,70), (4,50), (4,80), (5,70), (6,100), (7,130), (8,160), (9,200), (10,250)]
+2) rows(x[k]) is used just for readability (semantic) ; here, this is equivalent to x[k] 
 """
 
 # annotate(

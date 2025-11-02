@@ -43,13 +43,12 @@ satisfy(
 
     # tag(symmetry-breaking)
     [
-        [xc[i][0] == n - x[i + 1] for i in range(lB - 1)],  # gap in the first column
-
-        [xc[i][i + 1] == 0 for i in range(lB - 1)],  # 0 in the diagonal
-
-        [xc[i][j] == (x[j] + xc[i][0]) % n for i in range(lB - 1) for j in range(1, lB) if j != i + 1],
-
-        [LexIncreasing(x, xc[i][i + 1: i + 1 + lB], strict=True) for i in range(lB - 1)]  # strict=True because it also discards periodic rythms
+        (
+            xc[i][0] == n - x[i + 1],  # gap in the first column
+            xc[i][i + 1] == 0,  # 0 in the diagonal
+            [xc[i][j] == (x[j] + xc[i][0]) % n for j in range(1, lB) if j != i + 1],
+            LexIncreasing(x, xc[i][i + 1: i + 1 + lB], strict=True)  # strict=True because it also discards periodic rythms
+        ) for i in range(lB - 1)
     ] if not variant("table") else None,
 )
 

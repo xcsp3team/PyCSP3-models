@@ -75,7 +75,12 @@ satisfy(
     ],
 
     # avoiding some specific successive shifts
-    [(x[i], x[i + 1]) not in {(LATE, EARLY), (NIGHT, EARLY), (NIGHT, LATE)} for i in D],
+    [
+        Table(
+            scope=(x[i], x[i + 1]),
+            conflicts={(LATE, EARLY), (NIGHT, EARLY), (NIGHT, LATE)}
+        ) for i in D
+    ],
 
     # ensuring the right number of employees
     [

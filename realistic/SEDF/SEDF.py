@@ -36,6 +36,8 @@ inv, tab, k, m, ld = data or load_json_data("19-1-C19-3-3-1.json")
 
 n = len(inv)
 
+N, M, K = range(n), range(m), range(k)
+
 # x[i][j] is the jth value of the ith list
 x = VarArray(size=[m, k], dom=range(1, n + 1))
 
@@ -43,15 +45,15 @@ satisfy(
     # ensuring all different values
     AllDifferent(x),
 
-    [Increasing(x[i], strict=True) for i in range(m)],
+    [Increasing(x[i], strict=True) for i in M],
 
     Increasing(x[:, 0], strict=True),
 
     # ensuring the right number of occurrences
     [
         Cardinality(
-            within=[tab[x[i1][j1], inv[x[i2][j2]]] for j1 in range(k) for i2 in range(m) if i1 != i2 for j2 in range(k)],
-            occurrences={i: 0 if i == 1 else ld for i in range(1, n + 1)}
-        ) for i1 in range(m)
+            within=[tab[x[i1][j1], inv[x[i2][j2]]] for j1 in K for i2 in M if i1 != i2 for j2 in K],
+            occurrences={v + 1: 0 if v == 0 else ld for v in N}
+        ) for i1 in M
     ]
 )
