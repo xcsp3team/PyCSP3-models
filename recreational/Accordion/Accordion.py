@@ -87,26 +87,20 @@ satisfy(
 
     # ensuring unmoved cards are copied from one timestep to the next one
     [
-        [
-            If(
-                i < pt[t],
-                Then=x[t][i] == x[t + 1][i]
-            ) for t in T for i in N
-        ],
-
-        [
-            If(
-                i > pt[t], i < pf[t],
-                Then=x[t][i] == x[t + 1][i]
-            ) for t in T for i in N
-        ],
-
-        [
-            If(
-                i >= pf[t],
-                Then=x[t + 1][i] == x[t][i + 1]
-            ) for t in T for i in N[:-1]
-        ]
+        If(
+            i < pt[t],
+            Then=x[t][i] == x[t + 1][i]
+        ) for t in T for i in N
+    ] + [
+        If(
+            i > pt[t], i < pf[t],
+            Then=x[t][i] == x[t + 1][i]
+        ) for t in T for i in N
+    ] + [
+        If(
+            i >= pf[t],
+            Then=x[t + 1][i] == x[t][i + 1]
+        ) for t in T for i in N[:-1]
     ],
 
     # unused slots are filled up with zero

@@ -52,7 +52,9 @@ minimize(
 )
 
 """ Comments
-1) [Sum(x[truck2][t: t + 2]) <= 1 for t in range(horizon - 1)],
- is more compact than: 
-   [Sum(x[truck2][t] for t in range(t, t + 2)) <= 1 for t in range(horizon - 1)],
+1) [AtMostOne(x[truck2][t: t + 2]) for t in range(horizon - 1)]
+ is mmediate (to understand at first sight) than:
+   [Sum(x[truck2][t: t + 2]) <= 1 for t in range(horizon - 1)]
+ which, itself, is more compact than: 
+   [Sum(x[truck2][t] for t in range(t, t + 2)) <= 1 for t in range(horizon - 1)]
 """

@@ -73,8 +73,7 @@ tmp = [
             x[j] < x[i],
             x[i] < x[j + g]
         ) for j in range(2 * b) for g in [b if j < b else -b] if i not in {j, j + g}
-    ]
-    for i in range(2 * b)
+    ] for i in range(2 * b)
 ]
 
 minimize(

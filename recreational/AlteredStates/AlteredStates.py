@@ -112,7 +112,10 @@ satisfy(
             y[k] == 0,
             Then=[z[k][q] == 0 for q in Q],  # we force 0 to avoid symmetries  z[k] == 0,
             Else=[
-                [x[z[k][q]] == words[k][q] for q in Q] if not variant() else Sum(x[z[k][q]] != words[k][q] for q in Q) <= 1,  # ensuring the name is present
+                [x[z[k][q]] == words[k][q] for q in Q]
+                if not variant() else
+                Sum(x[z[k][q]] != words[k][q] for q in Q) <= 1,  # ensuring the name is present
+
                 [(z[k][q], z[k][q + 1]) in T for q in Q[:-1]]  # ensuring connectedness of letters
             ]
         ) for k in range(nStates) if (Q := range(lengths[k]))

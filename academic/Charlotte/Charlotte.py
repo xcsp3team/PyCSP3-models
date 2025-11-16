@@ -70,7 +70,7 @@ if not variant("mini"):
         # ensuring equity for off days
         [Sum(x[i][j] == OFF for i in range(nDays)) == nOffShifts for j in range(nNurses)],
 
-        # ensuring equity for small days
+        # ensuring equity for short days
         [Sum(x[i][j] == SHORT for i in range(nDays)) == nShortShifts for j in range(nNurses)],
 
         # ensuring equity for long days

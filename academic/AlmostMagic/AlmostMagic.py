@@ -30,7 +30,7 @@ assert not variant() or variant("opt")
 
 n, p = data or (3, 100)
 
-N = range(n)
+N = range(1, n)  # note that we start at 1
 
 # x[k][i][j] is the value at row i and column j in the kth region
 x = VarArray(size=[4, n, n], dom=range(1, p))
@@ -55,10 +55,10 @@ satisfy(
 
     # dealing with overlapping cells
     [
-        [x[0][i][-1] == x[1][i - 1][0] for i in N[1:]],
-        [x[0][-1][j - 1] == x[2][0][j] for j in N[1:]],
-        [x[1][-1][j - 1] == x[3][0][j] for j in N[1:]],
-        [x[2][i][-1] == x[3][i - 1][0] for i in N[1:]]
+        [x[0][i][-1] == x[1][i - 1][0] for i in N],
+        [x[0][-1][j - 1] == x[2][0][j] for j in N],
+        [x[1][-1][j - 1] == x[3][0][j] for j in N],
+        [x[2][i][-1] == x[3][i - 1][0] for i in N]
     ]
 )
 
@@ -69,7 +69,7 @@ if variant("opt"):
 
 """ Comments
 1) data used for the 2025 competition are: [(3,30), (3,35), (3,40), (3,70), (4,50), (4,80), (5,70), (6,100), (7,130), (8,160), (9,200), (10,250)]
-2) rows(x[k]) is used just for readability (semantic) ; here, this is equivalent to x[k] 
+2) rows(x[k]) is used just for readability (semantic usage) ; here, this is equivalent to x[k] 
 """
 
 # annotate(
