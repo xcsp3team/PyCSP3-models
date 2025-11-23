@@ -36,12 +36,14 @@ entryBlockOfFunction, blocks, nData, nOperations, matches, nLocations, constrain
 funLocDomain, inBlock, inBlockSucc, locDomain, sameLoc = constraints
 nBlocks, nMatches = len(blocks), len(matches)
 
+inBlockSucc = [] if inBlockSucc == [[]] else inBlockSucc
+
 statesInFunction = []  # checked in the parser
 execFrequencies = cp_array([block.execFrequency for block in blocks] + [0])  # we add 0 ; we need cp_array for a constraint Element
 
 
 def is_dominated(i2, m2):
-    excluded = set(sameLoc[:, 0]) | set(inBlock[:, 0]) | set(inBlockSucc[:, 0])
+    excluded = set(sameLoc[:, 0]) | set(inBlock[:, 0]) | (set(inBlockSucc[:, 0] if len(inBlockSucc) > 0 else set()))
     for i1, m1 in enumerate(matches):
         if i1 == i2 or i1 in excluded or i2 in excluded:
             continue
@@ -166,7 +168,9 @@ satisfy(
                 If(sl[m], Then=succ[p] == q)
             ) for m, p, q in inBlockSucc
         ],
-        [pl[m] in {p, nBlocks} for m, p in inBlock],
+        [
+            pl[m] in {p, nBlocks} for m, p in inBlock]
+        ,
         [
             If(
                 sl[m],

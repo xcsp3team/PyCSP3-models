@@ -108,7 +108,7 @@ satisfy(
     # setting the distance of shaded cells to -1
     [(rootd[i][j] == -1) == shaded[i][j] for i in N for j in N],
 
-    # ensuring conectedness (covering tree)
+    # ensuring connectedness (covering tree)
     [scp in T for i in N for j in N if (scp := rootd.cross(i, j), T := table(len(scp) - 1))]
 )
 
