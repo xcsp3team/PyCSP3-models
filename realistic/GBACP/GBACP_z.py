@@ -70,5 +70,5 @@ minimize(
 )
 
 """ Comments
-1) Note that x[curriculum] is equivalent to  [x[i] fort i in curriculum]
+1) Note that x[curriculum] is equivalent to  [x[i] for i in curriculum]
 """
