@@ -26,7 +26,6 @@ See CP'19 paper whose URL is given below.
 
 from pycsp3 import *
 
-print(data)
 matrix, nBlocks = data or load_json_data("kansas-2.json")
 
 nNodes = len(matrix)
