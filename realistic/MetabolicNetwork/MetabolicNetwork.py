@@ -1,10 +1,11 @@
 """
-A metabolic network representing a set of metabolic reactions, is a directed hypergraph (M,R,S) of nodes M ,
-of hyperedges R, and of integer-valued or real-valued stoichiometry weights on hyperedges S (usually represented by a stoichiometry matrix).
-Additionally, one might want to distinguish subsets of M: the set of internal metabolites Int from the set of external metabolites Ext
-which is generally defined as the set of nodes m for which either the metabolite m is never consumed or the metabolite m is never produced.
-In other words, M = Int ∪ Ext, with Ext = {m ∈ M | d+(m) = 0 ∧ d−(m) = 0} and Int = M \ Ext, where d+(m)
-and d−(m) respectively represent in degree and out degree in graph theory terms.
+A metabolic network representing a set of metabolic reactions, is a directed hypergraph (M,R,S) of nodes M, of hyperedges R,
+and of integer-valued or real-valued stoichiometry weights on hyperedges S (usually represented by a stoichiometry matrix).
+Additionally, one might want to distinguish subsets of M:
+  the set of internal metabolites Int from the set of external metabolites Ext which is generally defined as the set of nodes m
+  for which either the metabolite m is never consumed or the metabolite m is never produced.
+In other words, M = Int union Ext, with m in Ext if m in M and d+(m) = 0 and d−(m) = 0, and m in Int if m in M and m not in Ext,
+where d+(m) and d−(m) respectively represent in degree and out degree in graph theory terms.
 The field of dealing with analysis and construction of metabolic models is called metabolic modelling.
 
 The model, below, is close to (can be seen as the close translation of) the one (called network_50) submitted to the 2024 Minizinc challenges.

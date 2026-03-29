@@ -1,5 +1,8 @@
 from pycsp3.problems.data.parsing import *
 
+# in dzn data files, we change service routes : we just put the index of the routes (starting at 0 for ROUTE(1) for example)
+# also we put stype on a single line and we transform service_sart and service_end into an array of integers when defined in comprehension
+
 STYPE = [TERMINUS, ORDINARY, HUB] = ["TERMINUS", "ORDINARY", "HUB"]
 LINE = [SING, DOUB, QUAD, NONE] = ["SING", "DOUB", "QUAD", "NONE"]
 
@@ -17,9 +20,10 @@ ln = next_line()
 s = ln[ln.index('[') + 1:ln.rindex(']')].split(', ')
 stype = [STYPE.index(tok) for tok in s]
 next_line()
-travel_times = [numbers_in(next_line()) for _ in range(nStops)]
+travel_times = [numbers_in(next_line().replace("<>","-1")) for _ in range(nStops)]  # -1 instead of <>
 next_line()
 lines = [[LINE.index(tok.strip()) for tok in ln[ln.index('|') + 1:].split(', ')] for _ in range(nStops) if (ln := next_line(),)]
+
 assert nStops == len(minimal_wait) == len(skip_cost) == len(platform) == len(stype) == len(travel_times) == len(travel_times[0]) == len(lines) == len(lines[0])
 data['stops'] = OrderedDict(
     [("minimal_waits", minimal_wait), ("skip_costs", skip_cost), ("n_platforms", platform), ("types", stype), ("travel_times", travel_times), ("lines", lines)])
@@ -42,9 +46,10 @@ data['routes'] = routes
 ln = next_line(repeat=1)
 services = [tok.strip() for tok in ln[ln.index('{') + 1:ln.rindex('}')].split(',')]
 nServices = len(services)
-service_routes = decrement(numbers_in(next_line()))
+service_routes = numbers_in(next_line())
 service_starts = numbers_in(next_line())
 service_ends = numbers_in(next_line())
+
 assert nServices == len(service_routes) == len(service_starts) == len(service_ends)
 data['services'] = OrderedDict([("routes", service_routes), ("starts", service_starts), ("ends", service_ends)])
 

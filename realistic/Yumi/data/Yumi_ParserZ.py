@@ -1,5 +1,6 @@
 from pycsp3.problems.data.parsing import *
 
+# in dzn data files, we change '= [||];' in '=[|' followed by a new line with '|];'
 nAgents = 2
 
 

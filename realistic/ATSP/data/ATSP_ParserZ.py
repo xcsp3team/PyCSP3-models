@@ -1,5 +1,7 @@
 from pycsp3.problems.data.parsing import *
 
+# in some dzn data files, we move some line sto get the same format (sequence of fields)
+
 program_setup_time = number_in(line())
 sequence_setup_time = number_in(next_line())
 data['setup_times'] = OrderedDict([("program", program_setup_time), ("sequence", sequence_setup_time)])
