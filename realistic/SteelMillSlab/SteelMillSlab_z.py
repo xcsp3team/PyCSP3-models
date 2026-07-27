@@ -66,7 +66,7 @@ satisfy(
 )
 
 minimize(
-    # minimizing total weight of steel produces
+    # minimizing total weight of steel produced
     Sum(gaps[y[i]] for i in range(nSlabs))
 )
 

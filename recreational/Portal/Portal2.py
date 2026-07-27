@@ -37,6 +37,7 @@ options.force_element_index = True
 board, k = data or load_json_data("rand-10-9-010.json")
 
 n, m = len(board), len(board[0])
+N, M = range(n), range(m)
 
 PLAYER_NORTH, PLAYER_SOUTH, PLAYER_EAST, PLAYER_WEST, WALL, WALL_NO_PORTAL, EMPTY, PIT, GOAL = cells = ('^', 'v', '>', '<', 'X', 'N', ' ', 'O', '!')
 NORTH, SOUTH, EAST, WEST = headings = range(4)
@@ -44,8 +45,8 @@ LEFT, RIGHT, MOVE, SHOOT = actions = range(4)
 nHeadings, nActions = len(headings), len(actions)
 
 ABSENT = -1
-init = next(((i, j) for i in range(n) for j in range(m) if board[i][j] in (PLAYER_NORTH, PLAYER_SOUTH, PLAYER_EAST, PLAYER_WEST)), ABSENT)
-goal = next(((i, j) for i in range(n) for j in range(m) if board[i][j] == GOAL), ABSENT)
+init = next(((i, j) for i in N for j in M if board[i][j] in (PLAYER_NORTH, PLAYER_SOUTH, PLAYER_EAST, PLAYER_WEST)), ABSENT)
+goal = next(((i, j) for i in N for j in M if board[i][j] == GOAL), ABSENT)
 assert init != ABSENT and goal != ABSENT
 init_heading = cells.index(board[init[0]][init[1]])
 
@@ -71,10 +72,10 @@ def next_wall_ver(i, j, h):
     return i
 
 
-Tw = [(i, j, h, ii if valid else -1, jj if valid else -1) for i in range(n) for j in range(m) for h in range(nHeadings)
+Tw = [(i, j, h, ii if valid else -1, jj if valid else -1) for i in N for j in M for h in range(nHeadings)
       if (ii := next_wall_ver(i, j, h), jj := next_wall_hor(i, j, h), valid := ii != -1 and jj != -1 and board[ii][jj] == WALL)]
 
-Td = [(i, j, h, ii if valid else -1, jj if valid else -1) for i in range(n) for j in range(m) for h in range(nHeadings)
+Td = [(i, j, h, ii if valid else -1, jj if valid else -1) for i in N for j in M for h in range(nHeadings)
       if (ii := i + (1 if h == SOUTH else -1 if h == NORTH else 0),
           jj := j + (1 if h == EAST else -1 if h == WEST else 0),
           valid := 0 <= ii < n and 0 <= jj < m)]
@@ -119,7 +120,7 @@ satisfy(
     ],
 
     # avoiding pits
-    [pos[t] in {(i, j) for i in range(n) for j in range(m) if board[i][j] != PIT} for t in range(k)],
+    [pos[t] in {(i, j) for i in N for j in M if board[i][j] != PIT} for t in range(k)],
 
     # ensuring that portals are different
     [

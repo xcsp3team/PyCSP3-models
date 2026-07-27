@@ -122,7 +122,7 @@ satisfy(
    [t[i][j], t[i][j - 1], t[i][j + 1], t[i - 1][j], t[i + 1][j]] 
    
 2) gt(1) when building a tuple allows to handle all tuples with a value > 1
-   Later, it will be possible to generate smart tables instead of starred tables 
+   With the option -keep_hybrid, hybrid tables are generated instead of starred tables 
    
 3) For the mini-track of the competition, we replace the group "controlling the size of each region") by:
     [(a[i][j][k], x[i + 1][j + 1]) in [(1, k)] + [(0, v) for v in range(nRegions) if v != k] for i in range(n) for j in range(n) for k in range(nRegions)],

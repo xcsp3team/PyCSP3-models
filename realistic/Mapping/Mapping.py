@@ -1,5 +1,5 @@
 """
-Mapping an H263 encoder on a system with a network on chip/
+Mapping an H263 encoder on a system with a network on chip.
 This is a simplified version of the model presented in the paper cited below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the Minizinc challenges.

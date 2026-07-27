@@ -26,7 +26,7 @@ The original MZN model was proposed by Edward Lam and Vicky Mak-Hau - no licence
   - https://www.minizinc.org/challenge/2023/results/
 
 ## Tags
-  realistic, notebook, mzn19, mzn23
+  realistic, notebook, mzn19, mzn23, xcsp23
 """
 
 from pycsp3 import *

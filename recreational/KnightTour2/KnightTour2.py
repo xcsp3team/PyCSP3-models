@@ -28,7 +28,7 @@ n = data or 8
 def domain_x(i):
     r, c = i // n, i % n
     t = [(r - 2, c - 1), (r - 2, c + 1), (r - 1, c - 2), (r - 1, c + 2), (r + 1, c - 2), (r + 1, c + 2), (r + 2, c - 1), (r + 2, c + 1)]
-    return {k * n + l for (k, l) in t if 0 <= k < n and 0 <= l < n}
+    return {k * n + q for (k, q) in t if 0 <= k < n and 0 <= q < n}
 
 
 # x[i] is the cell number that comes in the tour (by the knight) after cell i

@@ -128,7 +128,7 @@ satisfy(
         ) for i in squares
     ) <= w,
 
-    # when the unit square is not considered, its origin is assigned to (0, 0)
+    # when the unit square is not considered, its origin is assigned to (0,0)
     [
         x[0] == 0,
         y[0] == 0
