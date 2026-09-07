@@ -24,5 +24,6 @@ proximity_to_destination = numbers_in(next_line())
 data['proximity'] = OrderedDict([("to_source", proximity_to_source), ("to_destination", proximity_to_destination)])
 assert vnflist_size == len(proximity_to_source) == len(proximity_to_destination)
 n_domain_constraints = number_in(next_line())
-data['domain_constraints'] = decrement(split_with_rows_of_size(numbers_in(next_line()), 4))
+data['domain_constraints'] = data['domain_constraints'] = [[d - 1, t - 1, mi, ma] for d, t, mi, ma in split_with_rows_of_size(numbers_in(next_line()), 4)]
+# decrement(split_with_rows_of_size(numbers_in(next_line()), 4))
 assert n_domain_constraints == len(data['domain_constraints'])

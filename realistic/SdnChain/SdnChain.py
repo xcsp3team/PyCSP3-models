@@ -26,9 +26,10 @@ TODO : problem with an instance (bound)
 ## Links
   - https://inria.hal.science/hal-02395208
   - https://www.minizinc.org/challenge/2020/results/
+  - https://www.minizinc.org/challenge/2026/results/
 
 ## Tags
-  realistic, mzn20
+  realistic, mzn20, mzn26
 """
 
 from pycsp3 import *

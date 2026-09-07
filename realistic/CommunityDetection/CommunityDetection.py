@@ -22,7 +22,7 @@ For the original MZN model, no licence was explicitly mentioned (MIT Licence is 
   - https://www.minizinc.org/challenge/2021/results/
 
 ## Tags
-  realistic, notebook, mzn21
+  realistic, notebook, mzn21, mzn26
 """
 
 from pycsp3 import *
