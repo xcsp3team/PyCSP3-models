@@ -10,7 +10,7 @@ In a 14-team league, form 2 divisions which hold a SRRT (Single Round-Robin Tour
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2014/2016/2018/2023 Minizinc challenges.
 The original MZN model was proposed by Jeff Larson and Mats Carlsson, and described in the papers mentioned below.
-No Licence was explicitly mentioned (MIT Licence is assumed).
+No License was explicitly mentioned (MIT License is assumed).
 
 ## Data Example
   handball01.json
@@ -112,6 +112,8 @@ satisfy(
         [row[t] in north_teams for t in group1],
         [row[t] in south_teams for t in group2]
     ],
+
+    AllDifferent(row), # was Channel(row, teams) initially; here, we need to ensure AllDifferent
 
     # handling derbys
     [
@@ -270,3 +272,6 @@ can be replaced by:
   [row[t] in [opp[row[u]][derbyPeriod] for u in derbySet if u != t]
     for derbySet, derbyPeriod in derbys if len(derbySet) == 4 for t in derbySet]
 """
+
+
+

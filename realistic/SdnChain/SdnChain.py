@@ -7,11 +7,7 @@ that composes the service.
 See paper link below.
 
 The model, below, is close to (can be seen as the close translation of) the one submitted to the 2020 Minizinc challenge.
-It seems that the original MZN model was proposed by Liu, Tong, et al. - No licence was explicitly mentioned (MIT Licence is assumed).
-
-NB: We obtain the same bounds (wrt the MZN model) for all instances except for the instance d30 where we get 22 (with ACE and Choco) instead of 23.
-After double checking, we didn't find what is the difference between the two models
-TODO : problem with an instance (bound)
+It seems that the original MZN model was proposed by Liu, Tong, et al. - No license was explicitly mentioned (MIT License is assumed).
 
 ## Data Example
   d10n780-1.json
