@@ -19,7 +19,7 @@ One has to find the position (and rotation) of each domino.
   - https://www.cril.univ-artois.fr/XCSP23/competitions/csp/csp
 
 ## Tags
-  recreational, xcsp23
+  recreational, xcsp23, xcsp26
 """
 
 from pycsp3 import *
@@ -80,5 +80,5 @@ elif variant("table"):
       abs(x[i][j] - y[i][j]) != nCols,  # if not adjacent values in the same column
       Then=(abs(x[i][j] - y[i][j]) == 1) & (x[i][j] // nCols == y[i][j] // nCols)  # then adjacent values in the same line
    ) for i, j in dominoes
-
+2) The main variant was used for the 2023 competition, and the 'table' variant as used for the 2026 competition
 """
