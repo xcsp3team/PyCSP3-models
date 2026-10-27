@@ -34,6 +34,10 @@ No Licence was explicitly mentioned (MIT Licence assumed).
 """
 
 from pycsp3 import *
+from pycsp3.dashboard import options
+
+# below, option set because real_parameters[e][line_i[j]] is only defined when line_i[j] < nInputs (see the If)
+options.force_element_index = True
 
 nInputs, nLines, nPlus, coefficients, real_parameters = data or load_json_data("l2p01.json")
 
