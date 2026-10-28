@@ -35,7 +35,7 @@ if not variant():
 
         either(
             x[0] + 1 == x[-1],
-            Or=both(
+            both(
                 x[0] == x[-1],
                 x[0] == d - 1
             )

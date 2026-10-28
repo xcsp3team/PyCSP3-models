@@ -98,7 +98,7 @@ elif variant("aux"):
         [
             p[k] == either(
                 q == x[j],
-                Or=conjunction(row(q) != row(x[j]), col(q) != col(x[j]), abs(row(q) - row(x[j])) != abs(col(q) - col(x[j])))
+                conjunction(row(q) != row(x[j]), col(q) != col(x[j]), abs(row(q) - row(x[j])) != abs(col(q) - col(x[j])))
             ) for k, j in enumerate(p - 1 for p in primes)
         ]
     )
