@@ -26,6 +26,7 @@ nTokens = 6
 VAL, ADD, SUB, MUL, DIV, NO = range(nTokens)
 
 n, m = len(numbers), len(numbers) * 2
+numbers = cp_array([0] + list(numbers))  # numbers[k] is the kth number (k >= 1), the index 0 standing for no number
 M = range(1, m)  # note that we start at 1 (this is the way we need it)
 
 
